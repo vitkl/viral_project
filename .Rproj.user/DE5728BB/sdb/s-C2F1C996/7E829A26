@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: Which InterProScan signatures work on Mac and which output format stores domain\n  vs family information?\nauthor: \"Vitalii Kleshchevnikov\"\ndate: \"22/06/2017\"\noutput:\n  html_document: default\n---\n\nInstructions on how to use InterProScan: https://github.com/ebi-pf-team/interproscan/wiki/HowToRun \n\n```{r setup, include=FALSE}\nknitr::opts_chunk$set(echo = TRUE)\n```\n\n```{r, results='hide',message=FALSE,warning=FALSE,error=FALSE}\nsignatures = c(\"CDD\",\"COILS\",\"Gene3D\",\"HAMAP\",\"MobiDBLite\",\"PANTHER\",\"Pfam\",\"PIRSF\",\"PRINTS\",\"ProDom\",\"PROSITEPATTERNS\",\"PROSITEPROFILES\",\"SFLD\",\"SMART\",\"SUPERFAMILY\",\"TIGRFAM\")\n\nfor(signature in signatures){\n    system(paste0(\"./interproscan-5.24-63.0/interproscan.sh -appl \",signature,\" -i ./interproscan-5.24-63.0/test_proteins.fasta -f xml -iprlookup -goterms -dp -b ./interproscan_mac_test/dp_\",signature))\n}\n```\n\n### Signatures from these resources work on Mac:  \n\n```{r}\nlist.files(\"./interproscan_mac_test/\")\n```\n\n\n### Trying different formats\n\n```{r}\n# xml is already done\n# tsv\nsystem(\"./interproscan-5.24-63.0/interproscan.sh -appl Pfam -i ./interproscan-5.24-63.0/test_proteins.fasta -f tsv -iprlookup -goterms -b ./interproscan_mac_test/Pfam\")\n# gff3\nsystem(\"./interproscan-5.24-63.0/interproscan.sh -appl Pfam -i ./interproscan-5.24-63.0/test_proteins.fasta -f gff3 -iprlookup -goterms -b ./interproscan_mac_test/Pfam\")\n```",
+    "created" : 1498123758955.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "764937618",
+    "id" : "7E829A26",
+    "lastKnownWriteTime" : 1498126694,
+    "last_content_update" : 1498126694762,
+    "path" : "~/Desktop/viral_project/InterProScan_on_Mac.Rmd",
+    "project_path" : "InterProScan_on_Mac.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
