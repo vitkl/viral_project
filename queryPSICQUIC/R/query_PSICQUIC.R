@@ -4,6 +4,7 @@
 ##' @details See \url{https://psicquic.github.io/MiqlReference.html} or \url{https://psicquic.github.io/MiqlReference27.html} for the description of MIQL query language.
 ##' @details Unlike rawQuery function from PSICQUIC package this function allows to use all IMEx databases by passing "imex" to database argument and also separates the choice of output format from the query. Output format options: \url{https://psicquic.github.io/formats.html}
 ##' @details This function also splits large query result into chunks (2500 interactions) to limit the load on the PSICQUIC servers.
+##' @details List of data provider names accepted by the function: "imex", "APID Interactomes", "BioGrid", "bhf-ucl", "ChEMBL", "HPIDb", "InnateDB", "InnateDB-All", "IntAct", "mentha", "MPIDB", "MatrixDB", "MINT", "Reactome", "Reactome-FIs", "EBI-GOA-miRNA", "I2D", "I2D-IMEx", "InnateDB-IMEx", "MolCon", "UniProt", "MBInfo", "VirHostNet", "BAR", "EBI-GOA-nonIntAct", "ZINC"
 ##' @param query search query in MIQL query language, as you would type in PSICQUIC View client: \url{http://www.ebi.ac.uk/Tools/webservices/psicquic/view/home.xhtml}
 ##' @param format output format (most widely used tabular format is tab25, use tab27 for more data columns)
 ##' @param database PSICQUIC service (full list: \url{http://www.ebi.ac.uk/Tools/webservices/psicquic/registry/registry?action=STATUS}), use "imex" shorthand to choose all IMEx databases
@@ -14,9 +15,25 @@
 ##' @export query_PSICQUIC
 ##' @examples
 ##' query_PSICQUIC(query = "id:P74565 AND detmethod:\"MI:0018\"",
-##'                format = "tab25",
+##'                format = "tab27",
 ##'                database = "imex",
-##'                file = "P74565_2H_interactions.tsv")
+##'                file = "P74565_2H_interactions_imex_tab27.tsv")
+##'
+##' query_PSICQUIC(query = "id:P74565 AND detmethod:\"MI:0018\"",
+##'                format = "tab25",
+##'                database = "mentha",
+##'                file = "P74565_2H_interactions_mentha_tab25.tsv")
+##'
+##' query_PSICQUIC(query = "id:P74565,
+##'                format = "tab25",
+##'                database = "mentha",
+##'                file = "P74565_2H_interactions_mentha_tab25.tsv")
+##'
+##' query_PSICQUIC(query = "id:156",
+##'                format = "tab25",
+##'                database = "BioGrid",
+##'                file = "entrezgene156_interactions_BioGrid_tab25.tsv")
+##'
 ##' @author Vitalii Kleshchevnikov
 query_PSICQUIC = function(query, format, database, file){
   library(PSICQUIC)
@@ -66,7 +83,7 @@ query_PSICQUIC = function(query, format, database, file){
   if(format == "tab27") colnames(SPECIES_ID_interactome) = unlist(strsplit(readLines("ftp://ftp.ebi.ac.uk/pub/databases/intact/current/psimitab/intact.txt",  n = 1), "\t"))
 
   # write results to table
-  fwrite(SPECIES_ID_interactome, file, sep = "\t")
+  if(nrow(SPECIES_ID_interactome) > 0) fwrite(SPECIES_ID_interactome, file, sep = "\t") else message("no interactions matching your query")
 
   # returns the query settings, how many interactions per database retrieved and which databases are inactive
   res_summary = data.table(query = query,
