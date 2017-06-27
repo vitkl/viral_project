@@ -6,7 +6,7 @@ Author: Vitalii Kleshchevnikov
 Maintainer: Vitalii Kleshchevnikov <vitalii@ebi.ac.uk>
 Description: Package contains high-level functions for retrieving molecular interaction data using PSICQUIC service. 
     Builds upon Bioconductor PSICQUIC package and uses data.table. 
-    Currently (Version: 0.1.0) contains only one function query_PSICQUIC
+    Currently (Version: 0.1.1) contains only one function query_PSICQUIC
 License: GNU GPLv3
 Encoding: UTF-8
 LazyData: true

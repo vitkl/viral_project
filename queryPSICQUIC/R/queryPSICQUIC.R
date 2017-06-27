@@ -35,7 +35,6 @@
 ##'
 ##' @author Vitalii Kleshchevnikov
 queryPSICQUIC = function(query, format, database, file){
-  library(PSICQUIC)
   ## Load PSICQUIC functionality
   psicquic <- PSICQUIC()
   providers <- providers(psicquic)
