@@ -1,5 +1,5 @@
 ##' Use PSICQUIC to query for molecular interactions (using MIQL, specifying database and output format)
-##' @name query_PSICQUIC
+##' @name queryPSICQUIC
 ##' @description query_PSICQUIC function queries a specified molecular interaction database using MIQL query language, retrieves the data in a specified format and saves it to a file
 ##' @details See \url{https://psicquic.github.io/MiqlReference.html} or \url{https://psicquic.github.io/MiqlReference27.html} for the description of MIQL query language.
 ##' @details Unlike rawQuery function from PSICQUIC package this function allows to use all IMEx databases by passing "imex" to database argument and also separates the choice of output format from the query. Output format options: \url{https://psicquic.github.io/formats.html}
@@ -12,30 +12,29 @@
 ##' @return saves query result to a file, returns the query settings, how many interactions per database retrieved and which databases are inactive
 ##' @import data.table
 ##' @import PSICQUIC
-##' @export query_PSICQUIC
-##' @examples
-##' query_PSICQUIC(query = "id:P74565 AND detmethod:\"MI:0018\"",
+##' @export queryPSICQUIC
+##' @examples queryPSICQUIC(query = "id:P74565 AND detmethod:\"MI:0018\"",
 ##'                format = "tab27",
 ##'                database = "imex",
 ##'                file = "P74565_2H_interactions_imex_tab27.tsv")
 ##'
-##' query_PSICQUIC(query = "id:P74565 AND detmethod:\"MI:0018\"",
+##' @examples queryPSICQUIC(query = "id:P74565 AND detmethod:\"MI:0018\"",
 ##'                format = "tab25",
 ##'                database = "mentha",
 ##'                file = "P74565_2H_interactions_mentha_tab25.tsv")
 ##'
-##' query_PSICQUIC(query = "id:P74565,
+##' @examples queryPSICQUIC(query = "id:P74565",
 ##'                format = "tab25",
 ##'                database = "mentha",
 ##'                file = "P74565_2H_interactions_mentha_tab25.tsv")
 ##'
-##' query_PSICQUIC(query = "id:156",
+##' @examples queryPSICQUIC(query = "id:156",
 ##'                format = "tab25",
 ##'                database = "BioGrid",
 ##'                file = "entrezgene156_interactions_BioGrid_tab25.tsv")
 ##'
 ##' @author Vitalii Kleshchevnikov
-query_PSICQUIC = function(query, format, database, file){
+queryPSICQUIC = function(query, format, database, file){
   library(PSICQUIC)
   ## Load PSICQUIC functionality
   psicquic <- PSICQUIC()
