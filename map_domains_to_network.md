@@ -1,47 +1,17 @@
----
-title: "Mapping domains to the protein interaction network"
-author: "Vitalii Kleshchevnikov"
-date: "29/06/2017"
-output: 
-  html_document: 
-    keep_md: yes
-    toc: yes
----
+# Mapping domains to the protein interaction network
+Vitalii Kleshchevnikov  
+29/06/2017  
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 
-packages = c("data.table","downloader","R.utils","UniProt.ws", "PSICQUIC", "ggplot2", "rtracklayer", "Biostrings", "queryPSICQUIC")
-if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
-      packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
-      install.packages(packages_to_install)
-      packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
-      source("https://bioconductor.org/biocLite.R")
-      biocLite(packages_to_install)
-      devtools::install_github("vitkl/viral_project/queryPSICQUIC")
-}
 
-suppressPackageStartupMessages({
-    library(data.table)
-    library(downloader)
-    library(R.utils)
-    library(UniProt.ws)
-    library(PSICQUIC)
-    library(ggplot2)
-    library(rtracklayer)
-    library(Biostrings)
-    library(queryPSICQUIC)
-    source("viral_functions.R")
-})
-```
-
-Date: `r Sys.time()`
+Date: 2017-07-07 16:50:55
 
 ## Read InterProScan result and filter for "Domain", "Active_site", "Binding_site", "Conserved_site", "PTM" signatures
 
 I read InterProScan result and the InterPro_entry_types file. InterProScan output format description: https://github.com/ebi-pf-team/interproscan/wiki/OutputFormats  
 
-```{r InterPro_entry_types}
+
+```r
 # read InterProScan result
 InterProScan_result = import(con = "./processed_data_files/all_human_viral_protein_domains.gff3", format = "gff3")
 # clean InterPro ID in the Dbxref column
@@ -66,15 +36,22 @@ names(seq_length) = seqnames(InterProScan_result)[InterProScan_result$type == "p
 seqlengths(InterProScan_result) = seq_length[match(names(seqlengths(InterProScan_result)),names(seq_length))]
 # sanity check
 seqlengths(InterProScan_result)[c("P69713", "P06748-3", "P06821", "O00562", "O15230")] == end(InterProScan_result[c("P69713", "P06748-3", "P06821", "O00562", "O15230")])
+```
 
+```
+##   P69713 P06748-3   P06821   O00562   O15230 
+##     TRUE     TRUE     TRUE     TRUE     TRUE
+```
 
+```r
 # create a subset that contains "Domain", "Active_site", "Binding_site", "Conserved_site", "PTM" signatures
 InterProScan_domains = InterProScan_result[InterProScan_result$ENTRY_TYPE %in% c("Domain", "Active_site", "Binding_site", "Conserved_site", "PTM")]
 ```
 
 ## Remove redundancy in the identified domains (signatures of the same domain from different InterPro member databases)
 
-```{r remove_redundancy}
+
+```r
 # generate Granges which contain feature start
 domain_start = resize(InterProScan_domains, width = 1, fix="start", use.names=TRUE)
 # generate Granges which contain feature end
@@ -93,25 +70,47 @@ overlap_end = overlap_end[(queryHits(overlap_end) != subjectHits(overlap_end))]
 # calculate the distance between positions of overlapping start features
 overlap_start_dist = distance(domain_start[queryHits(overlap_start)], domain_start[subjectHits(overlap_start)])
 hist(overlap_start_dist, breaks = seq(0,100,1))
+```
+
+![](map_domains_to_network_files/figure-html/remove_redundancy-1.png)<!-- -->
+
+```r
 # calculate the distance between positions of overlapping end features
 overlap_end_dist = distance(domain_end[queryHits(overlap_end)], domain_end[subjectHits(overlap_end)])
 hist(overlap_end_dist, breaks = seq(0,100,1))
+```
 
+![](map_domains_to_network_files/figure-html/remove_redundancy-2.png)<!-- -->
+
+```r
 # find features in which both the start and the end overlap
 overlap_start_n_end = intersect(overlap_start, overlap_end)
 
 # calculate the distance between positions of overlapping start features
 overlap_both_start_dist = distance(domain_start[queryHits(overlap_start_n_end)], domain_start[subjectHits(overlap_start_n_end)])
 hist(overlap_both_start_dist, breaks = seq(0,100,1))
+```
+
+![](map_domains_to_network_files/figure-html/remove_redundancy-3.png)<!-- -->
+
+```r
 # calculate the distance between positions of overlapping end features
 overlap_both_end_dist = distance(domain_end[queryHits(overlap_start_n_end)], domain_end[subjectHits(overlap_start_n_end)])
 hist(overlap_both_end_dist, breaks = seq(0,100,1))
+```
 
+![](map_domains_to_network_files/figure-html/remove_redundancy-4.png)<!-- -->
+
+```r
 # sum these distances
 overlap_both_sum_dist = overlap_both_start_dist + overlap_both_end_dist
 hist(overlap_both_sum_dist, breaks = seq(0,200,1))
 abline(v=20)
+```
 
+![](map_domains_to_network_files/figure-html/remove_redundancy-5.png)<!-- -->
+
+```r
 # select distance difference cutoff
 overlap_start_n_end = overlap_start_n_end[overlap_both_sum_dist < 20]
 # generate non-redundant domain annotatations by keeping only the first domain signature among overlapping signatures
@@ -128,7 +127,8 @@ protein_domain_pair = unique(data.table(IDs_protein = as.character(seqnames(Inte
 
 I read interaction data and clean this data to make it more useble. Then, I filter and keep only human-viral interactions.
 
-```{r human_viral}
+
+```r
 all_viral_interaction = fread("./data_files/human_viral_interactions.txt", stringsAsFactors = F)
 
 # changing column names to data.table-compatible format
@@ -168,7 +168,13 @@ all_viral_interaction[, pair_species_id := apply(data.table(Taxid_interactor_A,T
                                                function(a) { z = sort(a)
                                                paste0(z[1],"_",z[2]) })]
 }
+```
 
+```
+## Warning in eval(jsub, SDenv, parent.frame()): NAs introduced by coercion
+```
+
+```r
 # filter only human-viral interactions
 all_viral_interaction = all_viral_interaction[Taxid_interactor_A == "9606" | Taxid_interactor_B == "9606",]
 all_viral_interaction = unique(all_viral_interaction)
@@ -178,7 +184,8 @@ Both the network and the domain data contain more information than necessary for
   
 First, we need to rearrange interactions so that one column contains viral proteins and the other contains human proteins (in the database some interactions are stored viral-human and some are human-viral.   
 
-```{r arrange_interactions}
+
+```r
 all_viral_interaction_ab = all_viral_interaction[Taxid_interactor_A == "9606" & Taxid_interactor_B != "9606",
                                                  .(IDs_interactor_human = IDs_interactor_A, 
                                                    IDs_interactor_viral = IDs_interactor_B, 
@@ -194,7 +201,8 @@ all_viral_interaction_simp = unique(rbind(all_viral_interaction_ab, all_viral_in
 
 Next, the frequency of each domain is calculated and simplified domain information (IDs_protein, IDs_domain, domain_type) is integrated with the simplified network data described above.  
 
-```{r simplified interactions}
+
+```r
 protein_domain_pair_temp = copy(protein_domain_pair)[, IDs_interactor_human := IDs_protein][, IDs_protein := NULL][, IDs_domain_human := IDs_domain][, IDs_domain := NULL]
 # calculate domain count and frequency
 protein_domain_pair_temp[, domain_count := length(unique(IDs_interactor_human)), by = IDs_domain_human]
@@ -225,7 +233,8 @@ fwrite(viral_human_w_domains, file = "./processed_data_files/viral_human_net_w_d
 
 ## Summary of the network
 
-```{r summary_pairs, fig.height=9, fig.width=9}
+
+```r
 pairs(viral_human_w_domains[,.(domain_frequency, 
                                IDs_interactor_viral_degree, 
                                IDs_interactor_human_degree, 
@@ -235,7 +244,10 @@ pairs(viral_human_w_domains[,.(domain_frequency,
                                fold_enrichment)])
 ```
 
-```{r, fig.height=9, fig.width=13}
+![](map_domains_to_network_files/figure-html/summary_pairs-1.png)<!-- -->
+
+
+```r
 # function to accomodate ggplot2::geom_bin2d in GGally::ggpairs, taken from http://ggobi.github.io/ggally/#custom_functions
 d2_bin <- function(data, mapping, ..., low = "#132B43", high = "#56B1F7") {
     ggplot(data = data, mapping = mapping) +
@@ -255,6 +267,8 @@ GGally::ggpairs(viral_human_w_domains[,.(domain_frequency,
     theme(strip.text.y = element_text(angle = 0),
           strip.text.x = element_text(size = 5))
 ```
+
+![](map_domains_to_network_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 
 rf <- colorRampPalette(rev(brewer.pal(11,'Spectral')))
 r <- rf(32)

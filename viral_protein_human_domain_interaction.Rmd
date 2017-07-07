@@ -1,0 +1,541 @@
+---
+title: "viral protein - human domain interaction"
+author: "Vitalii Kleshchevnikov"
+date: "10/05/2017"
+output: 
+  html_document: 
+    fig_height: 6
+    fig_width: 8
+    keep_md: yes
+    toc: yes
+    toc_depth: 4
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, message = F, warning = F)
+packages = c("data.table","downloader","R.utils","UniProt.ws", "igraph","Matrix","expm", "caTools", "IRanges","PSICQUIC","ggplot2", "clusterProfiler", "scales", "qvalue", "gplots", "RColorBrewer", "DT")
+if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
+      packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+      install.packages(packages_to_install)
+      packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+      source("https://bioconductor.org/biocLite.R")
+      biocLite(packages_to_install)
+}
+
+suppressPackageStartupMessages({
+        library(data.table)
+        library(downloader)
+        library(R.utils)
+        library(UniProt.ws)
+        library(igraph)
+        library(Matrix)
+        library(expm)
+        library(caTools)
+        library(IRanges)
+        library(PSICQUIC)
+        library(ggplot2)
+        library(clusterProfiler)
+        library(scales)
+        library(qvalue)
+        library(gplots)
+        library(RColorBrewer)
+        library(DT)
+        })
+```
+
+I download all protein-protein interactions from IntAct (IMEx databases) involving viral proteins using PSICQUIC service in MITAB2.7 format.
+
+```{r PSICQUIC}
+if(!file.exists("./source_files/human_viral_interactions.txt")){
+    ## Load PSICQUIC functionality
+    psicquic <- PSICQUIC()
+    providers <- providers(psicquic)
+    ## Choose IMEx databases
+    databases <- c("IntAct", "MINT", "bhf-ucl", "MPIDB", "MatrixDB", 
+                   "HPIDb","I2D-IMEx","InnateDB-IMEx", "MolCon", "UniProt", "MBInfo")
+    
+    # query for interactions for taxon 10239 - viruses
+    PSICQUIC_query = paste("species:10239")
+    SPECIES_ID_interactome = data.table()
+    NO_SPECIES_ID_interactome = character(length = length(databases))
+    for(indices in 1:length(databases)) {
+      if(databases[indices] %in% providers) {
+        ## Query for the number of interactions
+        PSICQUIC_query1 = paste0(PSICQUIC_query, "?format=count") 
+        N_interactions <- unlist(rawQuery(psicquic, databases[indices], PSICQUIC_query1))
+        ## if there are any interactions - Query for the interactions by 1000 at a time
+        if(N_interactions > 0){
+          N_start = 1
+          N_nrows = 2500
+          for(n_starts in seq(from = N_start, to = N_interactions, by = N_nrows)){
+            PSICQUIC_query2 = paste0(PSICQUIC_query, "?format=","tab27","&firstResult=", n_starts,
+                                     "&maxResults=", N_nrows) 
+            SPECIES_ID_interactome_d <- as.data.table(rawQuery(psicquic, databases[indices], PSICQUIC_query2))
+            SPECIES_ID_interactome <- rbind(SPECIES_ID_interactome, SPECIES_ID_interactome_d)
+          }
+        }
+        ## if the query finds no interactors
+        else {
+          NO_SPECIES_ID_interactome[indices] = databases[indices]
+        }
+      }
+      ## if the database is not active
+      else {
+        NO_SPECIES_ID_interactome[indices] = databases[indices]
+      }
+    }
+fwrite(SPECIES_ID_interactome,"./source_files/human_viral_interactions.txt", sep = "\t")
+all_viral_interaction = SPECIES_ID_interactome
+}
+
+all_viral_interaction = fread("./source_files/human_viral_interactions.txt", stringsAsFactors = F)
+```
+
+I filter and keep only human-viral interactions.
+
+```{r human_viral}
+colnames(all_viral_interaction) = unlist(strsplit(readLines("ftp://ftp.ebi.ac.uk/pub/databases/intact/current/psimitab/intact.txt",  n = 1), "\t"))
+
+# changing column names to data.table-compatible format
+{
+colnames(all_viral_interaction) = gsub(" ","_",colnames(all_viral_interaction))
+colnames(all_viral_interaction) = gsub("\\(|\\)","",colnames(all_viral_interaction))
+colnames(all_viral_interaction) = gsub("#","",colnames(all_viral_interaction))
+}
+# cleaning Taxid "taxid:9606(human)|taxid:9606(Homo sapiens)" to 9606
+{
+all_viral_interaction[, Taxid_interactor_A := gsub("taxid:|\\(.*$","",Taxid_interactor_A)]
+all_viral_interaction[, Taxid_interactor_B := gsub("taxid:|\\(.*$","",Taxid_interactor_B)]
+all_viral_interaction[, Host_organisms := gsub("taxid:|\\(.*$","",Host_organisms)]
+# saving identifier types and cleaning interactor ids
+all_viral_interaction[, interactor_IDs_databases_A := gsub(":.*$","",IDs_interactor_A)]
+all_viral_interaction[, interactor_IDs_databases_B := gsub(":.*$","",IDs_interactor_B)]
+all_viral_interaction[, IDs_interactor_A := gsub("^.*:","",IDs_interactor_A)]
+all_viral_interaction[, IDs_interactor_B := gsub("^.*:","",IDs_interactor_B)]
+# cleaning other information
+all_viral_interaction[, bait_prey_status_A := gsub("^.*\\(|\\)","",Experimental_roles_interactor_A)]
+all_viral_interaction[, bait_prey_status_B := gsub("^.*\\(|\\)","",Experimental_roles_interactor_B)]
+all_viral_interaction[, Publication_Identifiers := gsub("^.*pubmed:|\\|.*$","",Publication_Identifiers)]
+all_viral_interaction[, Confidence_values := gsub("^intact-miscore:","",Confidence_values)]
+all_viral_interaction[, Confidence_values := gsub("-","NA",Confidence_values)]
+all_viral_interaction[, Confidence_values := as.numeric(Confidence_values)]
+#all_viral_interaction[, Interaction_identifiers := unlist(gsubfn::strapplyc(Interaction_identifiers,"EBI-[[:digit:]]+",simplify = T)), by =Interaction_identifiers]
+# generating unique identifier for interacting pairs
+all_viral_interaction[, pair_id := apply(data.table(IDs_interactor_A,IDs_interactor_B,stringsAsFactors = F), 1,
+                                               function(a) { z = sort(a)
+                                               paste0(z[1],"_",z[2]) })]
+all_viral_interaction[, pair_species_id := apply(data.table(Taxid_interactor_A,Taxid_interactor_B,stringsAsFactors = F), 1,
+                                               function(a) { z = sort(a)
+                                               paste0(z[1],"_",z[2]) })]
+}
+
+# filter only human-viral interactions
+all_viral_interaction = all_viral_interaction[Taxid_interactor_A == "9606" | Taxid_interactor_B == "9606",]
+
+## function to remove any isoform "-1" XXXXXX-1 from IDs
+isoform_id_all_remover <- function(isoform_ids) {
+  temp = gsub("-[[:digit:]]+$","",isoform_ids)
+  # remove peptide ids
+  # gsub("-PRO_[[:digit:]]+$","",temp)
+}
+# convert to canonical identifiers with exception to peptide ids XXXXXX-PRO_
+all_viral_interaction[, IDs_interactor_A_clean := isoform_id_all_remover(IDs_interactor_A)]
+all_viral_interaction[, IDs_interactor_B_clean := isoform_id_all_remover(IDs_interactor_B)]
+
+# select species, proteins
+species_id = all_viral_interaction[, unique(c(Taxid_interactor_A, Taxid_interactor_B))]
+species_id = species_id[-which(species_id == "9606")]
+viral_proteins = unique(c(all_viral_interaction[Taxid_interactor_A != "9606", IDs_interactor_A_clean], all_viral_interaction[Taxid_interactor_B != "9606", IDs_interactor_B_clean]))
+human_proteins = unique(c(all_viral_interaction[Taxid_interactor_A == "9606", IDs_interactor_A_clean], all_viral_interaction[Taxid_interactor_B == "9606", IDs_interactor_B_clean]))
+```
+
+```{r, results='hide'}
+#find species names
+if(!file.exists("./source_files/viral_species_names.txt")){
+species_names = data.table()
+for(specie in species_id){
+      species_names_temp = fread(paste0("http://www.uniprot.org/uniprot/?compress=no&query=organism:",specie,"&fil=&force=no&format=tab&columns=organism,organism-id"), stringsAsFactors = F)
+      species_names = rbind(species_names, unique(species_names_temp))
+}
+fwrite(species_names,"./source_files/viral_species_names.txt", sep = "\t")
+}
+species_names = fread("./source_files/viral_species_names.txt", colClasses = "character",stringsAsFactors = F)
+```
+
+I get domains from InterPro. 
+
+```{r get_interpro}
+get_interpro = function(){
+# Downloading UniprotID to InterPro, gz-unzipping, splitting file into many small files
+url_interpro = "ftp://ftp.ebi.ac.uk/pub/databases/interpro/protein2ipr.dat.gz"
+filename_interpro = paste0("./source_files/protein2ipr_release_", format(Sys.Date(), "%m-%Y.dat.gz"))
+filename_interpro1 = substr(filename_interpro, 1, nchar(filename_interpro)-3)
+filename_interpro2 = substr(filename_interpro, 1, nchar(filename_interpro)-7)
+#
+if(!(length(list.files(filename_interpro2)) > 0)) {
+  # Downloading UniprotID to InterPro
+  downloader::download(url_interpro, filename_interpro)
+  # gz-unzipping UniprotID to InterPro
+  system(paste("gunzip", filename_interpro))
+  # splitting file into many 5-million-line files
+  system(paste("mkdir", filename_interpro2))
+  system(paste0("split -l 5000000 ", 
+                filename_interpro1," ",
+                filename_interpro2,"/"))
+}
+filename_interpro3 = list.files(filename_interpro2)
+# returns the vector of paths to interpro files
+return(paste0(filename_interpro2, "/",filename_interpro3))
+}
+
+proteins2domains = function(proteins, interpro_files){
+  domains = data.table::data.table()
+  for(file in interpro_files){
+    interpro = data.table::fread(file = file, colClasses = "character", stringsAsFactors = F, header = F, sep = "\t")
+    domains = rbind(domains, interpro[V1 %in% proteins,])
+  }
+  setnames(domains, names(domains), c("UniprotID", "InterProID", "Description", "DomainID", "start", "stop"))
+  return(domains)
+}
+
+domains2proteins = function(domains, interpro_files){
+  proteins = data.table::data.table()
+  for(file in interpro_files){
+    interpro = data.table::fread(file = file, colClasses = "character", stringsAsFactors = F, header = F, sep = "\t")
+    proteins = rbind(proteins, interpro[V2 %in% domains,])
+  }
+  setnames(proteins, names(proteins), c("UniprotID", "InterProID", "Description", "DomainID", "start", "stop"))
+  return(proteins)
+}
+
+interpro_files = get_interpro()
+if(!file.exists("./processed_files/human_domains")){
+      human_domains = proteins2domains(human_proteins, interpro_files)
+      fwrite(human_domains, "./processed_files/human_domains")
+}
+human_domains = fread("./processed_files/human_domains", colClasses = "character", stringsAsFactors = F, header = T, sep = ",")
+
+#if(!file.exists("./processed_files/human_protein_with_domains")){
+#      human_protein_with_domains = domains2proteins(human_domains$InterProID,interpro_files)
+#      fwrite(human_protein_with_domains, "./processed_files/human_protein_with_domains")
+#}
+#human_protein_with_domains = fread("./processed_files/human_protein_with_domains", colClasses = "character", stringsAsFactors = F, header = T, sep = ",")
+```
+
+There are `r nrow(unique(human_domains[,.(UniprotID,InterProID)]))` protein-domain pairs for human proteins which interact with viral proteins. `r nrow(unique(human_domains[,.(UniprotID)]))` proteins, `r nrow(unique(human_domains[,.(InterProID)]))` domains (or families). InterPro doesn't allow to easily distinguish between them (only through XML).   
+
+The pipeline uses canonical proteins indentifiers for human proteins (InterPro domains are mapped to canonical UniprotKB indentifiers) but accounts for isoforms and peptides in viral proteins.  
+
+```{r unique_interactions}
+all_viral_interaction_ab = all_viral_interaction[Taxid_interactor_A == "9606" & Taxid_interactor_B != "9606", .(IDs_interactor_A = IDs_interactor_A_clean, IDs_interactor_B, Taxid_interactor_A, Taxid_interactor_B)]
+all_viral_interaction_ba = all_viral_interaction[Taxid_interactor_A != "9606" & Taxid_interactor_B == "9606", .(IDs_interactor_A = IDs_interactor_B_clean, IDs_interactor_B = IDs_interactor_A, Taxid_interactor_A = Taxid_interactor_B, Taxid_interactor_B = Taxid_interactor_A)]
+all_viral_interaction_simp = unique(rbind(all_viral_interaction_ab, all_viral_interaction_ba))
+```
+
+# 1 Number of viral proteins per human domain (no overrepresentation analysis)   
+
+```{r human_domains_for_viral_proteins}
+colnames(human_domains)[1] = "IDs_interactor_A"
+domains_viral_interactions = copy(unique(all_viral_interaction_simp[human_domains[,.(IDs_interactor_A,InterProID)], on = "IDs_interactor_A", allow.cartesian = T]))
+domains_viral_interactions[, viral_proteins_per_human_domain := length(unique(IDs_interactor_B)), by = InterProID]
+
+ggplot(unique(domains_viral_interactions[,.(InterProID,viral_proteins_per_human_domain)]), aes(x = viral_proteins_per_human_domain)) + geom_histogram() +
+    ggtitle(paste0("the number of viral proteins per human domain (",length(unique(domains_viral_interactions[,InterProID]))," total) \n(no domain overrepresentation analysis), max: ",max(domains_viral_interactions$viral_proteins_per_human_domain)))+
+        theme(panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
+              panel.background = element_rect(fill = '#FFFFFF', colour = 'grey')) + 
+        scale_x_log10(breaks = c(1,5,6,7,2^c(1:8), 3^c(1:3)))+ 
+        scale_y_continuous(breaks = seq(0,1600, 50))+
+    xlab("viral proteins per human domain")
+```
+
+
+# 2 Permutation test performed to identify over-represented human domains for each interacting viral protein produces weird p-value distribution
+
+```{r permut, fig.width=8,fig.height=6}
+domains_viral_interactions = unique(domains_viral_interactions)
+domain_count = copy(domains_viral_interactions)[, .(viral_interacting_human_proteins_with_specific_domain = length(unique(IDs_interactor_A)), random = "no"), by = .(IDs_interactor_B, InterProID)]
+set.seed(1)
+random_sample = copy(domains_viral_interactions)[, InterProID := sample(InterProID)][, .(viral_interacting_human_proteins_with_specific_domain = length(unique(IDs_interactor_A)), random = "yes"), by = .(IDs_interactor_B, InterProID)]
+
+repres = rbind(domain_count, random_sample)
+
+ggplot(repres, aes(x = viral_interacting_human_proteins_with_specific_domain, color = as.factor(random))) + geom_freqpoly() +
+    ggtitle(paste0("the number of human proteins containing specific domain \nand interacting with specific viral protein (",length(unique(domain_count[,IDs_interactor_B]))," viral proteins total), max: ",max(domain_count$viral_interacting_human_proteins_with_specific_domain)))+
+    theme(panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
+          panel.background = element_rect(fill = '#FFFFFF', colour = 'grey')) + 
+    scale_x_log10(breaks = 2^c(1:8))+ scale_y_log10(breaks = 2^c(1:12))+
+    xlab("human proteins with a specific domain per viral protein")
+
+# permutations: 1000 takes about 6-7 minutes
+if(!file.exists("./processed_files/human_domains_pval")){
+    set.seed(1)
+    domain_count[, permutation_result := {
+        rowSums(replicate(10, {
+            rowSums(replicate(1000, {
+                x = copy(domains_viral_interactions)[, InterProID := sample(InterProID)][, .(sample = length(unique(IDs_interactor_A))), by = .(IDs_interactor_B, InterProID)]
+                x = x[domain_count[,.(IDs_interactor_B,InterProID, viral_interacting_human_proteins_with_specific_domain)], on = c("IDs_interactor_B", "InterProID"),]
+                x[is.na(sample), sample := 0][, sample < viral_interacting_human_proteins_with_specific_domain]
+            }))
+        }))
+    }]
+    fwrite(domain_count, "./processed_files/human_domains_pval", sep = "\t")
+}
+domain_count = fread("./processed_files/human_domains_pval", colClasses = c("character","character","numeric","character","numeric"), stringsAsFactors = F, header = T, sep = "\t")
+
+domain_count[, permutation_pval := 1 - permutation_result/(10*1000)]
+domain_count = domain_count[IDs_interactor_B != "" & InterProID != "",]
+
+# plotting the distributions of resulting pvalues
+ggplot(domain_count, aes(x = permutation_pval)) + geom_histogram(bins = 100) +
+    ggtitle(paste0("Permutation pvalue distribution: \nis a specific domain enriched among human interactors of a particular viral protein"))+
+    theme(panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
+          panel.background = element_rect(fill = '#FFFFFF', colour = 'grey')) + 
+    scale_x_continuous(breaks = seq(0,1,0.05))+
+    xlab("permutation pvalue")
+```
+
+Correcting p-values for multiple hypothesis testing using q-value approach.
+May not be appropriate considering how different the distribution of p-values is from uniform.
+Plot below shows pi and lamda used in calculating q-value, how pvalue is converted to qvalue and other data.  
+
+```{r adjusting_pval}
+pvals = domain_count$permutation_pval
+names(pvals) = paste0(domain_count$IDs_interactor_B, "_", domain_count$InterProID)
+
+qvals_out = qvalue(domain_count$permutation_pval)
+
+plot(qvals_out)
+```
+
+`r sum(qvals_out$qvalues < 0.01)` viral protein - human domain associations have lower than p = 0.05 probability of being identified by chance (qvalue corrected). 
+
+
+
+# 3 Binging similarity as an explanation for weird p-value distribution
+
+Viral proteins represent very specific subset of the human interactome. We generate the null distribution permuting which viral proteins interact with which human proteins. Binding preferrences of viral proteins with respect to specific human domains may be one of the factors contributing to the skew in null distribution that we observe. In the other words, this network may have higher fraction of the true positives than we would expect.   
+
+## Viral protein binding similarity (based on the overlap in human domains they bind, kappa score)
+
+Kappa score is a way of measuring categorical similarity. Here kappa score is converted to distance (1 - kappa score). The more similar proteins or domains are the lower the score (red on the heatmap). Kappa score is calculated as described in [DAVID tool paper from 2007](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2375021/figure/F2/).   
+In this plot, all viral proteins are compared by which InterPro features are present in human proteins that they interact with.  
+
+```{r similarity_between_viral_proteins, fig.width=12, fig.height=12}
+# change `-` to `.` to avoid problems with data.table
+domain_count[, IDs_interactor_B := gsub("-",".",IDs_interactor_B)]
+if(!file.exists("./processed_files/viral_protein_similarity")){
+    viral_protein_similarity = categ_dist(domain_count[,.(InterProID, IDs_interactor_B)], ignore_limit = T)
+    save(viral_protein_similarity, file = "./processed_files/viral_protein_similarity")
+}
+load("./processed_files/viral_protein_similarity")
+
+heatmap.2(1-viral_protein_similarity$similarity_matrix,
+           distfun = function(x){as.dist(x)}, 
+           trace = "none")
+```
+
+
+
+```{r similarity_between_domains, eval=FALSE, fig.width=12, fig.height=12}
+## human domain binding similarity (based on the overlap in viral protein they bind, kappa score) - all
+if(!file.exists("./processed_files/domain_similarity")){
+domain_similarity = categ_dist(domain_count[,.(IDs_interactor_B,InterProID)], ignore_limit = T)
+    save(domain_similarity, file = "./processed_files/domain_similarity")
+}
+load("./processed_files/domain_similarity")
+
+heatmap.2(1-domain_similarity$similarity_matrix,
+           distfun = function(x){as.dist(x)}, 
+           trace = "none")
+```
+
+
+
+# 4 Viral proteins with only a few known interacting partners as an explanation for weird p-value distribution
+
+```{r}
+domains_viral_interactions[, degree_interactor_B := length(unique(IDs_interactor_A)), by = IDs_interactor_B]
+domain_count = domain_count[unique(domains_viral_interactions[,.(IDs_interactor_B, degree_interactor_B)]), on = "IDs_interactor_B"]
+
+rf <- colorRampPalette(rev(brewer.pal(11,'Spectral')))
+r <- rf(32)
+
+ggplot(unique(domain_count[,.(IDs_interactor_B,InterProID,degree_interactor_B,permutation_pval)]), aes(x = degree_interactor_B, y = permutation_pval)) + stat_bin2d(bins=25)+
+    ggtitle("p-value tends to be higher the more interactions viral protein has overal")+
+        theme(panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
+              panel.background = element_rect(fill = '#FFFFFF', colour = 'grey')) + 
+        scale_x_log10(breaks = 2^c(1:8))+ 
+        scale_y_log10(breaks = 10^c(0:-8),
+                labels = trans_format("log10", math_format(10^.x)))+
+    xlab("viral protein degree") + scale_fill_gradientn(colours=r)
+
+ggplot(unique(domain_count[,.(IDs_interactor_B,InterProID,viral_interacting_human_proteins_with_specific_domain,permutation_pval)]), aes(x = viral_interacting_human_proteins_with_specific_domain, y = permutation_pval)) + stat_bin2d(bins=25) +
+    ggtitle("large fraction of p < 0.05 (below the line) come \nfrom 'single viral protein' - 'single human domain' associations")+
+        theme(panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
+              panel.background = element_rect(fill = '#FFFFFF', colour = 'grey')) + 
+        scale_x_log10(breaks = 2^c(1:8))+ 
+        scale_y_log10(breaks = c(10^c(0:-8), 0.05),
+                labels = trans_format("log10", math_format(10^.x)))+ geom_hline(yintercept = 0.05)+
+    xlab("the number of human proteins with a specific domain per viral protein") + scale_fill_gradientn(colours=r)
+```
+
+P-value indeed depends on the number of "viral protein"-"human domain" interactions. We need to filter those out either from the permutation data already generated (section 5) or remove single "viral protein"-"human domain" interactions from the networks before permutation test (section 6).
+
+# 5 Filter out 'viral protein'-'human domain' interactions when there is less than 4 human proteins with a specific domain per viral protein (after permutation analysis performed earlier)
+
+```{r}
+domain_count_filtered = domain_count[viral_interacting_human_proteins_with_specific_domain >= 4,]
+pvals = domain_count_filtered[, permutation_pval]
+names(pvals) = paste0(domain_count_filtered$IDs_interactor_B, "_", domain_count_filtered$InterProID)
+
+qvals_out = qvalue(pvals)
+
+plot(qvals_out)
+
+qplot(qvals_out$qvalues) + geom_histogram(bins = 40) +
+    ggtitle(paste0("Permutation pvalue distribution: \nis a specific domain enriched among human interactors of a particular viral protein"))+
+    theme(panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
+          panel.background = element_rect(fill = '#FFFFFF', colour = 'grey')) + 
+    scale_x_continuous(breaks = seq(0,1,0.05))+
+    xlab("permutation qvalue")
+```
+
+  
+  
+
+# 6 Repeat permutation test while removing 'viral protein'-'human domain' interactions when there is less than 4 human proteins with a specific domain per viral protein
+
+```{r filter4_permut, fig.width=8,fig.height=6}
+domains_viral_interactions = unique(domains_viral_interactions)
+domain_count_filter4 = copy(domains_viral_interactions)[, .(viral_interacting_human_proteins_with_specific_domain = length(unique(IDs_interactor_A)), random = "no"), by = .(IDs_interactor_B, InterProID)][viral_interacting_human_proteins_with_specific_domain >= 4,]
+set.seed(1)
+random_sample_filter4 = copy(domains_viral_interactions)[, InterProID := sample(InterProID)][, .(viral_interacting_human_proteins_with_specific_domain = length(unique(IDs_interactor_A)), random = "yes"), by = .(IDs_interactor_B, InterProID)][viral_interacting_human_proteins_with_specific_domain >= 4,]
+
+repres = rbind(domain_count_filter4, random_sample_filter4)
+
+ggplot(repres, aes(x = viral_interacting_human_proteins_with_specific_domain, color = as.factor(random))) + geom_freqpoly() +
+    ggtitle(paste0("the number of human proteins containing specific domain \nand interacting with specific viral protein (",length(unique(domain_count_filter4[,IDs_interactor_B]))," viral proteins total), max: ",max(domain_count_filter4$viral_interacting_human_proteins_with_specific_domain)))+
+    theme(panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
+          panel.background = element_rect(fill = '#FFFFFF', colour = 'grey')) + 
+    scale_x_log10(breaks = 2^c(1:8))+ scale_y_log10(breaks = 2^c(1:12))+
+    xlab("human proteins with a specific domain per viral protein")
+
+domains_viral_interactions_filter4 = domains_viral_interactions[IDs_interactor_B %in% domain_count_filter4$IDs_interactor_B & InterProID %in% domain_count_filter4$InterProID,]
+# permutations: 1000 takes about 6-7 minutes
+if(!file.exists("./processed_files/human_domains_pval_filter4")){
+    set.seed(1)
+    domain_count_filter4[, permutation_result := {
+        rowSums(replicate(10, {
+            rowSums(replicate(1000, {
+                x = copy(domains_viral_interactions_filter4)[, InterProID := sample(InterProID)][, .(sample = length(unique(IDs_interactor_A))), by = .(IDs_interactor_B, InterProID)]
+                x = x[domain_count_filter4[,.(IDs_interactor_B,InterProID, viral_interacting_human_proteins_with_specific_domain)], on = c("IDs_interactor_B", "InterProID"),]
+                x[is.na(sample), sample := 0][, sample < viral_interacting_human_proteins_with_specific_domain]
+            }))
+        }))
+    }]
+    fwrite(domain_count_filter4, "./processed_files/human_domains_pval_filter4", sep = "\t")
+}
+domain_count_filter4 = fread("./processed_files/human_domains_pval_filter4", colClasses = c("character","character","numeric","character","numeric"), stringsAsFactors = F, header = T, sep = "\t")
+
+domain_count_filter4[, permutation_pval := 1 - permutation_result/(10*1000)]
+domain_count_filter4 = domain_count_filter4[IDs_interactor_B != "" & InterProID != "",]
+
+# plotting the distributions of resulting pvalues
+ggplot(domain_count_filter4, aes(x = permutation_pval)) + geom_histogram(bins = 100) +
+    ggtitle(paste0("Permutation pvalue distribution: \nis a specific domain enriched among human interactors of a particular viral protein"))+
+    theme(panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
+          panel.background = element_rect(fill = '#FFFFFF', colour = 'grey')) + 
+    scale_x_continuous(breaks = seq(0,1,0.05))+
+    xlab("permutation pvalue")
+```
+
+```{r qvalue2}
+pvals_filter4 = domain_count_filter4[, permutation_pval]
+names(pvals_filter4) = paste0(domain_count_filter4$IDs_interactor_B, "_", domain_count_filter4$InterProID)
+
+qvals_filter4_out = qvalue(pvals_filter4)
+
+plot(qvals_filter4_out)
+
+qplot(qvals_filter4_out$qvalues) + geom_histogram(bins = 40) +
+    ggtitle(paste0("Permutation qvalue distribution: \nis a specific domain enriched among human interactors of a particular viral protein"))+
+    theme(panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
+          panel.background = element_rect(fill = '#FFFFFF', colour = 'grey')) + 
+    scale_x_continuous(breaks = seq(0,1,0.01))+
+    xlab("permutation qvalue")
+```
+
+```{r bonferroni}
+domain_count_filter4[, permutation_pval_adj := p.adjust(permutation_pval,"bonferroni")]
+qplot(domain_count_filter4[, permutation_pval_adj]) + geom_histogram(bins = 40) +
+    ggtitle(paste0("Permutation pvalue (bonferroni corrected) distribution: \nis a specific domain enriched among human interactors of a particular viral protein"))+
+    theme(panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
+          panel.background = element_rect(fill = '#FFFFFF', colour = 'grey')) + 
+    scale_x_continuous(breaks = seq(0,1,0.05))+
+    xlab("permutation pvalue (bonferroni corrected)")
+```
+
+# 7 Different viral proteins share domains in human proteins   
+
+### Viral protein binding similarity (based on the overlap in human domains they bind, kappa score) - significant pairs after bonferroni correction  
+
+```{r similarity_between_viral_proteins2, fig.width=12, fig.height=12}
+if(!file.exists("./processed_files/viral_protein_similaritysignificant")){
+viral_protein_similaritysignificant = categ_dist(domain_count_filter4[,.(InterProID, IDs_interactor_B)],terms_to_compare = domain_count_filter4[p.adjust(domain_count_filter4[, permutation_pval],"bonferroni") < 0.05, unique(IDs_interactor_B)], ignore_limit = T)
+    save(viral_protein_similaritysignificant, file = "./processed_files/viral_protein_similaritysignificant")
+}
+load("./processed_files/viral_protein_similaritysignificant")
+
+heatmap.2(1-viral_protein_similaritysignificant$similarity_matrix,
+           distfun = function(x){as.dist(x)}, 
+           trace = "none")
+```
+
+# 8 Different human domains share viral proteins  
+
+### Human domain binding similarity (based on the overlap in viral proteins they bind, kappa score) - significant pairs after bonferroni correction  
+
+```{r similarity_between_domains2, fig.width=12, fig.height=12}
+if(!file.exists("./processed_files/domain_similaritysignificant")){
+domain_similaritysignificant = categ_dist(domain_count_filter4[,.(IDs_interactor_B,InterProID)],terms_to_compare =  domain_count_filter4[p.adjust(domain_count_filter4[, permutation_pval],"bonferroni") < 0.05, unique(InterProID)], ignore_limit = T)
+    save(domain_similaritysignificant, file = "./processed_files/domain_similaritysignificant")
+}
+load("./processed_files/domain_similaritysignificant")
+
+heatmap.2(1-domain_similaritysignificant$similarity_matrix,
+           distfun = function(x){as.dist(x)}, 
+           trace = "none")
+```
+
+# 9 Number of viral proteins per human domain (after overrepresentation analysis)   
+
+```{r human_domains_for_viral_proteins_signif}
+domain_count_filter4[, viral_proteins_per_human_domain := length(unique(IDs_interactor_B)), by = InterProID]
+
+ggplot(unique(domain_count_filter4[,.(InterProID,viral_proteins_per_human_domain)]), aes(x = viral_proteins_per_human_domain)) + geom_histogram() +
+    ggtitle(paste0("the number of viral proteins per unique human domain (",length(unique(domain_count_filter4[,InterProID]))," domains total) \n(after the domain overrepresentation analysis), max: ",max(domain_count_filter4$viral_proteins_per_human_domain)," proteins"))+
+        theme(panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
+              panel.background = element_rect(fill = '#FFFFFF', colour = 'grey')) + 
+        scale_x_log10(breaks = c(1,5,6,7,2^c(1:8), 3^c(1:8)))+ 
+        scale_y_continuous(breaks = seq(0,100, 5))+
+    xlab("viral proteins per human domain")
+```
+
+
+The simplest experiment to confirm these result would be to look for human proteins which have viral-interacting domain but have not been detected interacting with the corresponding viral protein.  
+
+# 10 Results in an interactive table
+
+```{r domain_count_filter4_view}
+domain_protein = unique(domain_count_filter4[permutation_pval_adj < 0.05,][copy(human_domains[,.(InterProID,Description)]), on = "InterProID", allow.cartesian = T, nomatch = 0][, c("permutation_result","random") := NULL][,permutation_pval_adj:= signif(permutation_pval_adj,2)][,permutation_pval:= signif(permutation_pval,2)])
+domain_protein = domain_protein[all_viral_interaction[,.(IDs_interactor_B = c(IDs_interactor_A,IDs_interactor_B), Taxid = c(Taxid_interactor_A,Taxid_interactor_B))], on ="IDs_interactor_B", nomatch = 0] #features = c(Features_interactor_A, Features_interactor_B)
+colnames(species_names) = c("Organism","Taxid")
+domain_protein = unique(copy(domain_protein[species_names, on = "Taxid", nomatch = 0]))
+colnames(domain_protein)
+colnames(domain_protein)[1] = "viral protein ID (interactor_B)"
+colnames(domain_protein)[2] = "human domain ID (InterProID)"
+colnames(domain_protein)[3] = "N human proteins with InterProID domain interacting with interactor B"
+colnames(domain_protein)[6] = "viral proteins per InterProID domain (human)"
+colnames(domain_protein)[7] = "InterProID domain decription"
+datatable(domain_protein)
+```
