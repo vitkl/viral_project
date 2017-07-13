@@ -4,7 +4,7 @@ Vitalii Kleshchevnikov
 
 
 
-Date: 2017-07-07 16:50:55
+Date: 2017-07-10 13:29:40
 
 ## Read InterProScan result and filter for "Domain", "Active_site", "Binding_site", "Conserved_site", "PTM" signatures
 
@@ -256,16 +256,24 @@ d2_bin <- function(data, mapping, ..., low = "#132B43", high = "#56B1F7") {
         scale_y_log10() + scale_x_log10()
 }
 
+log10_density = function(data, mapping, ...){
+    ggplot(data = data, mapping = mapping) +
+        geom_density(...) +
+        scale_x_log10()
+}
+
 GGally::ggpairs(viral_human_w_domains[,.(domain_frequency, 
                                          IDs_interactor_viral_degree, 
                                          IDs_interactor_human_degree, 
                                          IDs_domain_human_per_IDs_interactor_viral, 
                                          IDs_interactor_viral_per_IDs_domain_human,
                                          domain_frequency_per_IDs_interactor_viral,
-                                         fold_enrichment)], lower = list(continuous = d2_bin)) +
-    theme_light()+
+                                         fold_enrichment)], 
+                lower = list(continuous = d2_bin), 
+                diag = list(continuous = log10_density)) +
+    theme_light() +
     theme(strip.text.y = element_text(angle = 0),
-          strip.text.x = element_text(size = 5))
+          strip.text.x = element_text(angle = 90))
 ```
 
 ![](map_domains_to_network_files/figure-html/unnamed-chunk-1-1.png)<!-- -->

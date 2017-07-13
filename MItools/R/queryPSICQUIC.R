@@ -1,5 +1,6 @@
 ##' Use PSICQUIC to query for molecular interactions (using MIQL, specifying database and output format)
 ##' @name queryPSICQUIC
+##' @author Vitalii Kleshchevnikov
 ##' @description query_PSICQUIC function queries a specified molecular interaction database using MIQL query language, retrieves the data in a specified format and saves it to a file
 ##' @details See \url{https://psicquic.github.io/MiqlReference.html} or \url{https://psicquic.github.io/MiqlReference27.html} for the description of MIQL query language.
 ##' @details Unlike rawQuery function from PSICQUIC package this function allows to use all IMEx databases by passing "imex" to database argument and also separates the choice of output format from the query. Output format options: \url{https://psicquic.github.io/formats.html}

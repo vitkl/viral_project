@@ -1,0 +1,13 @@
+Package: MItools
+Type: Package
+Title: Molecular interaction data tools, retrieving data using PSICQUIC service
+Version: 0.1.0
+Author: Vitalii Kleshchevnikov
+Maintainer: Vitalii Kleshchevnikov <vitalii@ebi.ac.uk>
+Description: Package contains high-level functions for retrieving and manipulating molecular interaction data using PSICQUIC service. 
+    Builds upon Bioconductor PSICQUIC package and uses data.table.
+License: GNU GPLv3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1.9000
+Depends: PSICQUIC, data.table, Biostrings

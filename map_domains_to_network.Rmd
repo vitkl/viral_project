@@ -225,15 +225,12 @@ fwrite(viral_human_w_domains, file = "./processed_data_files/viral_human_net_w_d
 
 ## Summary of the network
 
-```{r summary_pairs, fig.height=9, fig.width=9}
-pairs(viral_human_w_domains[,.(domain_frequency, 
-                               IDs_interactor_viral_degree, 
-                               IDs_interactor_human_degree, 
-                               IDs_domain_human_per_IDs_interactor_viral, 
-                               IDs_interactor_viral_per_IDs_domain_human,
-                               domain_frequency_per_IDs_interactor_viral,
-                               fold_enrichment)])
-```
+The plot below show the relationships (2D histogram), distribution density (on the diagonal) and pearson correlation for a number of parameters characterising human domains, viral proteins or it's interactions:
+
+1. domain_frequency is the number of human proteins with a particular domain divided by the total number of human proteins (the attribute of a human domain)
+2. IDs_interactor_viral_degree is the number of interactions each viral protein has (the attribute of a viral protein)
+3. IDs_interactor_human_degree is the number of interactions each human protein has (the attribute of a human protein)
+4. IDs_domain_human_per_IDs_interactor_viral is the number of domain types that are present in proteins which a particular viral protein interacts with (the attribute of a viral protein)
 
 ```{r, fig.height=9, fig.width=13}
 # function to accomodate ggplot2::geom_bin2d in GGally::ggpairs, taken from http://ggobi.github.io/ggally/#custom_functions
@@ -244,16 +241,24 @@ d2_bin <- function(data, mapping, ..., low = "#132B43", high = "#56B1F7") {
         scale_y_log10() + scale_x_log10()
 }
 
+log10_density = function(data, mapping, ...){
+    ggplot(data = data, mapping = mapping) +
+        geom_density(...) +
+        scale_x_log10()
+}
+
 GGally::ggpairs(viral_human_w_domains[,.(domain_frequency, 
                                          IDs_interactor_viral_degree, 
                                          IDs_interactor_human_degree, 
                                          IDs_domain_human_per_IDs_interactor_viral, 
                                          IDs_interactor_viral_per_IDs_domain_human,
                                          domain_frequency_per_IDs_interactor_viral,
-                                         fold_enrichment)], lower = list(continuous = d2_bin)) +
-    theme_light()+
-    theme(strip.text.y = element_text(angle = 0),
-          strip.text.x = element_text(size = 5))
+                                         fold_enrichment)], 
+                lower = list(continuous = d2_bin), 
+                diag = list(continuous = log10_density)) +
+    theme_light() +
+    theme(strip.text.y = element_text(angle = 60, size = 10),
+          strip.text.x = element_text(angle = 90, size = 10))
 ```
 
 rf <- colorRampPalette(rev(brewer.pal(11,'Spectral')))

@@ -1,6 +1,6 @@
 ##gff-version 3
 ##source-version rtracklayer 1.36.3
-##date 2017-07-07
+##date 2017-07-10
 O15230	Pfam	protein_match	632	673	0.0000013	+	.	ID=match$7_632_673;date=29-06-2017;Target=O15230 632 673;signature_desc=Laminin EGF domain;Name=PF00053;status=T;Dbxref=IPR002049;ENTRY_TYPE=Domain
 O15230	Pfam	protein_match	677	725	0.0000000028	+	.	ID=match$7_677_725;date=29-06-2017;Target=O15230 677 725;signature_desc=Laminin EGF domain;Name=PF00053;status=T;Dbxref=IPR002049;ENTRY_TYPE=Domain
 O15230	Pfam	protein_match	2070	2117	0.0000000078	+	.	ID=match$7_2070_2117;date=29-06-2017;Target=O15230 2070 2117;signature_desc=Laminin EGF domain;Name=PF00053;status=T;Dbxref=IPR002049;ENTRY_TYPE=Domain
