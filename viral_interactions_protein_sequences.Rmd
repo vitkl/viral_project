@@ -128,8 +128,6 @@ canonical_human = human_proteins[-c(grep("-[[:digit:]]+", human_proteins, value 
 canonical_viral = viral_proteins[-c(grep("-[[:digit:]]+", viral_proteins, value = F),grep("-PRO_[[:digit:]]+$", viral_proteins, value = F))]
 isoform_human = grep("-[[:digit:]]+", human_proteins, value = T)
 isoform_viral = grep("-[[:digit:]]+", viral_proteins, value = T)
-postproc_human = grep("-PRO_[[:digit:]]+$", human_proteins, value = T)
-postproc_viral = grep("-PRO_[[:digit:]]+$", viral_proteins, value = T)
 
 canonical_and_isoform = c(canonical_human, canonical_viral, isoform_human, isoform_viral)
 

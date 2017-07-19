@@ -19,6 +19,6 @@ edgelist2degree = function(mitab, sep = "\\|"){
     degrees = mitab_t[, .(c(ida, idb))][, .N, by = V1]
     setnames(degrees, colnames(degrees), c("ID", "N"))
   } else stop("pair_id column not supplied")
-  setorder(degrees, N, UNIPROT)
+  setorder(degrees, N, ID)
   return(degrees)
 }

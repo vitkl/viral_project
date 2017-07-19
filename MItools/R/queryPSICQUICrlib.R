@@ -1,24 +1,24 @@
 ##' download PSICQUIC query search result (only IMEx databases) to R library - queryPSICQUIC package - data directory
 ##' @name queryPSICQUICrlib
 ##' @author Vitalii Kleshchevnikov
-##' @description saves PSIQUIC search results to the local R library
+##' @description saves PSIQUIC search results to the local R library or to the directory specified
 ##' @details \code{queryPSICQUICrlib} queries IMEx databases using PSICQUIC if the local copy of the query result is not available or if there is a new IntAct release. The functions will still work for non-IMEx databases but it will check the IntAct release date and that is not meaningful for tracking updates of other resources.
 ##' @param ... args passed to \code{\link{queryPSICQUIC}}
 ##' @return data.table containing the query result
 ##' @import data.table
 ##' @examples queryPSICQUIC:::downloadPSICQUICrlib(query = "id:P74565 AND detmethod:\"MI:0018\"", format = "tab27", database = "imex")
 
-queryPSICQUICrlib = function(...){
+queryPSICQUICrlib = function(..., directory = NULL){
   # create data directory in /default.library/queryPSICQUIC/ if it doesn't exist
-  pkg_dir = paste0(.libPaths(), "/MItools", "/data/")[1]
-  if(!dir.exists(pkg_dir)) dir.create(pkg_dir)
+  if(is.null(directory)){
+    pkg_dir = paste0(.libPaths(), "/MItools", "/data/")[1]
+    if(!dir.exists(pkg_dir)) dir.create(pkg_dir)
+    # create a filepath that uniquely identifies the search result and contains a timestamp
+    # find out last release date
+    pkg_dir_last_release = paste0(pkg_dir, lastIntActRelease())
+  }
+  if(!is.null(directory)) pkg_dir_last_release = paste0(directory, lastIntActRelease())
 
-  # create a filepath that uniquely identifies the search result and contains a timestamp
-  # find out last release date
-  last_release = fread("ftp://ftp.ebi.ac.uk/pub/databases/intact/current/")
-  last_release = last_release[V9 == "all.zip", paste0(V6,V7, "_", gsub(":",".", V8))]
-
-  pkg_dir_last_release = paste0(pkg_dir, year(Sys.Date()), last_release)
   # create directory for the last release date
   if(!dir.exists(pkg_dir_last_release)) dir.create(pkg_dir_last_release)
   stopifnot(dir.exists(pkg_dir_last_release))

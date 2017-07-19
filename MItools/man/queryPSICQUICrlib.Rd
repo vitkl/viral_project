@@ -4,7 +4,7 @@
 \alias{queryPSICQUICrlib}
 \title{download PSICQUIC query search result (only IMEx databases) to R library - queryPSICQUIC package - data directory}
 \usage{
-queryPSICQUICrlib(...)
+queryPSICQUICrlib(..., directory = NULL)
 }
 \arguments{
 \item{...}{args passed to \code{\link{queryPSICQUIC}}}
@@ -13,7 +13,7 @@ queryPSICQUICrlib(...)
 data.table containing the query result
 }
 \description{
-saves PSIQUIC search results to the local R library
+saves PSIQUIC search results to the local R library or to the directory specified
 }
 \details{
 \code{queryPSICQUICrlib} queries IMEx databases using PSICQUIC if the local copy of the query result is not available or if there is a new IntAct release. The functions will still work for non-IMEx databases but it will check the IntAct release date and that is not meaningful for tracking updates of other resources.

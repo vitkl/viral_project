@@ -5,7 +5,7 @@
 \title{Retrieve interactome (proteins only or not) of a given taxonomic species from a particular database}
 \usage{
 fullInteractome(MITABdata = NULL, taxid = "9606", database = "imex",
-  format = "tab25", clean = TRUE, protein_only = TRUE)
+  format = "tab25", clean = TRUE, protein_only = TRUE, directory = NULL)
 }
 \arguments{
 \item{MITABdata}{data.table containing molecular interaction data as returned by \code{\link{queryPSICQUICrlib}}, default in NULL}
@@ -19,6 +19,15 @@ fullInteractome(MITABdata = NULL, taxid = "9606", database = "imex",
 \item{clean}{logical (1L), if TRUE extract specific information using \code{\link{cleanMITAB}}, default is TRUE}
 
 \item{protein_only}{logical (1L), if TRUE the interaction participants are restricted to proteins (exclude other types of molecules such as RNA or small molecules), default is TRUE}
+
+\item{directory}{directory where to store the data, if NULL the data is stored in <R-package-library>/MItools/data}
+}
+\value{
+data.table containing molecular interaction data in either of these two formats:
+
+if \code{clean} is TRUE: contains columns as described in \code{\link{cleanMITAB}};
+
+if \code{clean} is FALSE: contains a standard set of columns for MITAB2.5 or MITAB2.7 depending on \code{format};
 }
 \description{
 Retrieve interactome (proteins only or not) of a given taxonomic species from a particular database. Interactome can be additionally cleaned to include only specific information: \code{\link{cleanMITAB}}
@@ -35,6 +44,8 @@ Another option is to supply \code{MITABdata} to be cleaned and filtered
 \examples{
 # retrive a full set of human (9606) protein-protein interactions from IMEx databases in MITAB2.5 format, cleans and select specific columns
 full = fullInteractome(taxid = "9606", database = "imex", format = "tab25", clean = TRUE, protein_only = TRUE)
+# retrive a full set of human (9606) protein-protein interactions from IMEx databases in MITAB2.5 format, cleans and select specific columns; save it to the specific directory inside working directory
+full = fullInteractome(taxid = "9606", database = "imex", format = "tab25", clean = TRUE, protein_only = TRUE, directory = "./data/")
 }
 \author{
 Vitalii Kleshchevnikov

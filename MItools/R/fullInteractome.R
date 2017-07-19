@@ -12,17 +12,24 @@
 ##' @param format character (1L), argument for \code{\link{queryPSICQUIC}}, default is "tab25"
 ##' @param clean logical (1L), if TRUE extract specific information using \code{\link{cleanMITAB}}, default is TRUE
 ##' @param protein_only logical (1L), if TRUE the interaction participants are restricted to proteins (exclude other types of molecules such as RNA or small molecules), default is TRUE
+##' @param directory directory where to store the data, if NULL the data is stored in <R-package-library>/MItools/data
+##' @return data.table containing molecular interaction data in either of these two formats:
+##' @return if \code{clean} is TRUE: contains columns as described in \code{\link{cleanMITAB}};
+##' @return if \code{clean} is FALSE: contains a standard set of columns for MITAB2.5 or MITAB2.7 depending on \code{format};
 ##' @import data.table
 ##' @export fullInteractome
 ##' @examples
 ##' # retrive a full set of human (9606) protein-protein interactions from IMEx databases in MITAB2.5 format, cleans and select specific columns
 ##' full = fullInteractome(taxid = "9606", database = "imex", format = "tab25", clean = TRUE, protein_only = TRUE)
-fullInteractome = function(MITABdata = NULL, taxid = "9606", database = "imex", format = "tab25", clean = TRUE, protein_only = TRUE){
+##' # retrive a full set of human (9606) protein-protein interactions from IMEx databases in MITAB2.5 format, cleans and select specific columns; save it to the specific directory inside working directory
+##' full = fullInteractome(taxid = "9606", database = "imex", format = "tab25", clean = TRUE, protein_only = TRUE, directory = "./data/")
+fullInteractome = function(MITABdata = NULL, taxid = "9606", database = "imex", format = "tab25", clean = TRUE, protein_only = TRUE, directory = NULL){
   # if the interaction data for species taxid and from database is not saved in the library - queryPSICQUIC for interaction data for taxid interactions in the database and in MITAB2.5 format, save results to the library
   if(is.null(MITABdata)){
     full_interactome = queryPSICQUICrlib(query = paste0("taxidA:",taxid," AND ", "taxidB:",taxid),
                                          format = format,
-                                         database = database)
+                                         database = database,
+                                         directory = directory)
   }
   if(!is.null(MITABdata)) full_interactome = copy(MITABdata)
 
