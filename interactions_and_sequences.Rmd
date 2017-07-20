@@ -51,9 +51,6 @@ all_viral_interaction = all_viral_interaction[Taxid_interactor_A == "9606" | Tax
 all_viral_interaction = unique(all_viral_interaction)
 ```
 
-There are `r length(viral_proteins)` viral_proteins (including isoforms and postprocessed chains).  
-There are `r length(human_proteins)` human_proteins (including isoforms and postprocessed chains).  
-
 ## Searching for human-human PPI
 
 I download all human-human protein-protein interactions from IntAct (IMEx databases) using PSICQUIC service in MITAB2.5 format and clean the data.
@@ -69,6 +66,10 @@ human_human_proteins = all_human_interaction[,unique(c(IDs_interactor_A,IDs_inte
 all_proteins = unique(c(viral_proteins, human_viral_proteins, human_human_proteins))
 all_proteins = all_proteins[order(all_proteins)]
 ```
+
+There are `r length(viral_proteins)` viral_proteins (including isoforms and postprocessed chains).  
+There are `r length(human_viral_proteins)` human_proteins involved in human-viral interactions (including isoforms and postprocessed chains).  
+There are `r length(human_human_proteins)` human_proteins involved in human-human interactions (including isoforms and postprocessed chains).  
 
 ## Finding protein sequences
 
