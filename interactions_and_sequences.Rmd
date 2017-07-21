@@ -16,7 +16,7 @@ if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
       packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
       source("https://bioconductor.org/biocLite.R")
       biocLite(packages_to_install)
-      devtools::install_github("vitkl/viral_project/MItools")
+      devtools::install_github("vitkl/MItools")
 }
 
 suppressPackageStartupMessages({
@@ -56,7 +56,7 @@ all_viral_interaction = unique(all_viral_interaction)
 I download all human-human protein-protein interactions from IntAct (IMEx databases) using PSICQUIC service in MITAB2.5 format and clean the data.
 
 ```{r PSICQUIC_human_human}
-all_human_interaction = fullInteractome(taxid = "9606", database = "imex", format = "tab25",
+all_human_interaction = fullInteractome(taxid = "9606", database = "imex", format = "tab27",
                                         clean = TRUE, protein_only = TRUE, directory = "./data_files/")
 
 # select proteins
@@ -89,6 +89,7 @@ These categories require different approaches of retrieving sequences.
 # Filtering sequence names by group
 canonical_all_proteins = all_proteins[-c(grep("-[[:digit:]]+", all_proteins, value = F),grep("-PRO_[[:digit:]]+$", all_proteins, value = F))]
 isoform_all_proteins = grep("-[[:digit:]]+", all_proteins, value = T)
+canonical_and_isoform = c(canonical_all_proteins, isoform_all_proteins)
 
 # dowloading FASTA for canonical_and_isoform sequences if file with this data doesn't exist or doesn't contain all sequences
 download_fasta(uniprot_ac = canonical_and_isoform, file_name = "./data_files/canonical_and_isoform.fasta")
@@ -132,8 +133,14 @@ InterProScan works on Linux system only. /my_interproscan/interproscan-5.25-64.0
 
 ```{bash}
 # bsub rsync /nfs/research/petsalaki/users/vitalii /hps/nobackup/research/petsalaki/users/ -r -av --delete
+if [ -e ./processed_data_files/all_human_viral_protein_domains.gff3 ]
+then
 ../../my_interproscan/interproscan-5.25-64.0/interproscan.sh -i ./data_files/all_human_viral_proteins.fasta -f gff3 -iprlookup -goterms -b ./processed_data_files/all_human_viral_protein_domains
 # bsub rsync /hps/nobackup/research/petsalaki/users/vitalii /nfs/research/petsalaki/users/ -r -av
+gzip ./processed_data_files/all_human_viral_protein_domains.gff3
+else
+echo "InterProScan has been run before: all_human_viral_protein_domains.gff3 file exists"
+fi
 ```
 
 ```{r}
