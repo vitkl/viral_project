@@ -1,0 +1,26 @@
+# Domain enrichment by permutation
+Vitalii Kleshchevnikov  
+25/07/2017  
+
+
+
+## Null hypothesis description
+
+![One of the ways to describe the problem of finding domains that are likely to mediate interaction of human proteins with viral proteins is by drawing a network which has 3 types of elements: viral proteins (V1, V2, V3), human proteins (H1-10) and human domains (D1-10).](./images/net_start.jpg) 
+
+![We can then calculate the probability of observing a specific domain, say D6, among human interacting partners of a specific viral protein, say V2. First, we compute the fraction of human interacting partners of V2 that contain domain D6.](./images/net_start_calc.jpg) 
+
+![Next, we permute which human proteins interact with V1, V2 and V3, keeping the number of interaction per both viral and human proteins as well as number of edges (interactions) constant](./images/net_scram.jpg)
+![and compute the fraction of human interacting partners of V2 that contain domain D6 again. That fraction was 1/4 and now it is zero which is less than 1/4. We repeat this 1 000 000 times and count how many times the fraction observed in the real network is higher than the fraction in the permuted network. This gives us the expected probability of seeing specific domain D6 among interacting partners viral protein V2 if the binding of V2 to H6 was independent of domain D6 present in H6.](./images/net_scram_calc.jpg) 
+
+![Importantly, the procedure described doesn't account for the fact that if the number of interactions is small, any domain will be present in a higher fraction of the human interacting partners of the specific viral protein than of the background set of proteins. This leads to extremely high rate of false positives. To account for that we can calculate the frequency of the frequency at which any domain appears among human interacting partners of a specific viral protein](./images/net_start_fraq.jpg) 
+
+![Next, we can calculate this fraction many times to obtain it's distribution, calculate the fraction of times the observed specific domain fraction (like D5 which is 3/5) is higher than the fraction of any random domain. Next, we integrate it with the probability of seeing specific domain among human interacting partners viral protein](./images/net_scram_fraq.jpg) 
+
+So, an improtant question is why not use the latter approach alone and how to combine probabilities produced by both into a single probability.
+
+## How often do we observe specific fold enrichment value among interactors of a viral protein
+
+#### Probability distribution under the NULL hypothesis: How often specific domain fold enrichment among interactors of a specific viral protein (attribute of a pair viral_protein-human_domain) is observed as compared to any domain fold enrichment among interactors of that viral protein (attribute of a viral_protein, distribution), the latter is derived from permutation mimicking as if viral protein was binding to a different set of human proteins  
+Using fold enrichent as a statistic accounts for domain frequency in the background distribution.
+

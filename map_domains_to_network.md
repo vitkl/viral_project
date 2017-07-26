@@ -4,7 +4,7 @@ Vitalii Kleshchevnikov
 
 
 
-Date: 2017-07-10 13:29:40
+Date: 2017-07-25 16:14:47
 
 ## Read InterProScan result and filter for "Domain", "Active_site", "Binding_site", "Conserved_site", "PTM" signatures
 
@@ -12,16 +12,19 @@ I read InterProScan result and the InterPro_entry_types file. InterProScan outpu
 
 
 ```r
-# read InterProScan result
+# ungzip and read InterProScan result
+gunzip("./processed_data_files/all_human_viral_protein_domains.gff3.gz", remove = F)
 InterProScan_result = import(con = "./processed_data_files/all_human_viral_protein_domains.gff3", format = "gff3")
+unlink("./processed_data_files/all_human_viral_protein_domains.gff3")
 # clean InterPro ID in the Dbxref column
 InterProScan_result$Dbxref = gsub("InterPro:","", InterProScan_result$Dbxref)
 InterProScan_result$Dbxref = gsub("\"","", InterProScan_result$Dbxref)
 InterProScan_result$Ontology_term = gsub("\"","", InterProScan_result$Ontology_term)
 # read InterPro_entry_types mapping table
-InterPro_entry_types = fread("./processed_data_files/InterPro_entry_types.txt", stringsAsFactors = F)
+if(!file.exists("./processed_data_files/entry.list")) download("ftp://ftp.ebi.ac.uk/pub/databases/interpro/entry.list", "./processed_data_files/entry.list")
+InterPro_entry_types = fread("./processed_data_files/entry.list", stringsAsFactors = F)
 # find matching signatures
-matching_signatures = match(as.character(InterProScan_result$Dbxref), InterPro_entry_types$INTERPRO_ID)
+matching_signatures = match(as.character(InterProScan_result$Dbxref), InterPro_entry_types$ENTRY_AC)
 # add signature type information to the gff2 file
 InterProScan_result$ENTRY_TYPE = InterPro_entry_types$ENTRY_TYPE[matching_signatures]
 # add names metadata to allow subsetting with a character
@@ -45,7 +48,7 @@ seqlengths(InterProScan_result)[c("P69713", "P06748-3", "P06821", "O00562", "O15
 
 ```r
 # create a subset that contains "Domain", "Active_site", "Binding_site", "Conserved_site", "PTM" signatures
-InterProScan_domains = InterProScan_result[InterProScan_result$ENTRY_TYPE %in% c("Domain", "Active_site", "Binding_site", "Conserved_site", "PTM")]
+InterProScan_domains = InterProScan_result[InterProScan_result$ENTRY_TYPE %in% c("Domain", "Active_site", "Binding_site", "Conserved_site", "PTM", "Repeat")]
 ```
 
 ## Remove redundancy in the identified domains (signatures of the same domain from different InterPro member databases)
@@ -105,14 +108,14 @@ hist(overlap_both_end_dist, breaks = seq(0,100,1))
 # sum these distances
 overlap_both_sum_dist = overlap_both_start_dist + overlap_both_end_dist
 hist(overlap_both_sum_dist, breaks = seq(0,200,1))
-abline(v=20)
+abline(v=10)
 ```
 
 ![](map_domains_to_network_files/figure-html/remove_redundancy-5.png)<!-- -->
 
 ```r
 # select distance difference cutoff
-overlap_start_n_end = overlap_start_n_end[overlap_both_sum_dist < 20]
+overlap_start_n_end = overlap_start_n_end[overlap_both_sum_dist < 10]
 # generate non-redundant domain annotatations by keeping only the first domain signature among overlapping signatures
 overlap_start_n_end_nonred = overlap_start_n_end[queryHits(overlap_start_n_end) < subjectHits(overlap_start_n_end)]
 InterProScan_domains_nonred = InterProScan_domains[unique(queryHits(overlap_start_n_end_nonred))]
@@ -129,60 +132,13 @@ I read interaction data and clean this data to make it more useble. Then, I filt
 
 
 ```r
-all_viral_interaction = fread("./data_files/human_viral_interactions.txt", stringsAsFactors = F)
-
-# changing column names to data.table-compatible format
-{
-colnames(all_viral_interaction) = gsub(" ","_",colnames(all_viral_interaction))
-colnames(all_viral_interaction) = gsub("\\(|\\)","",colnames(all_viral_interaction))
-colnames(all_viral_interaction) = gsub("#","",colnames(all_viral_interaction))
-}
-# cleaning Taxid "taxid:9606(human)|taxid:9606(Homo sapiens)" to 9606
-{
-all_viral_interaction[, Taxid_interactor_A := gsub("taxid:|\\(.*$","",Taxid_interactor_A)]
-all_viral_interaction[, Taxid_interactor_B := gsub("taxid:|\\(.*$","",Taxid_interactor_B)]
-all_viral_interaction[, Host_organisms := gsub("taxid:|\\(.*$","",Host_organisms)]
-# saving identifier types and cleaning interactor ids
-all_viral_interaction[, interactor_IDs_databases_A := gsub(":.*$","",IDs_interactor_A)]
-all_viral_interaction[, interactor_IDs_databases_B := gsub(":.*$","",IDs_interactor_B)]
-all_viral_interaction[, IDs_interactor_A := gsub("^.*:","",IDs_interactor_A)]
-all_viral_interaction[, IDs_interactor_B := gsub("^.*:","",IDs_interactor_B)]
-# isoform "-1" is a canonical sequence, IntAct uses isoform "-1" when it's clear that the isoform is "-1" and a canonical identifier if it's not clear which isoform was used in the experiment. Removing isoform sign "-1":
-all_viral_interaction[, IDs_interactor_A := gsub("-1$", "", IDs_interactor_A)]
-all_viral_interaction[, IDs_interactor_B := gsub("-1$", "", IDs_interactor_B)]
-# removing interactions if at least one interactor has non-uniprot id
-all_viral_interaction = all_viral_interaction[interactor_IDs_databases_A == "uniprotkb",][interactor_IDs_databases_B == "uniprotkb",]
-# cleaning other information
-all_viral_interaction[, bait_prey_status_A := gsub("^.*\\(|\\)","",Experimental_roles_interactor_A)]
-all_viral_interaction[, bait_prey_status_B := gsub("^.*\\(|\\)","",Experimental_roles_interactor_B)]
-all_viral_interaction[, Publication_Identifiers := gsub("^.*pubmed:|\\|.*$","",Publication_Identifiers)]
-all_viral_interaction[, Confidence_values := gsub("^intact-miscore:","",Confidence_values)]
-all_viral_interaction[, Confidence_values := gsub("-","NA",Confidence_values)]
-all_viral_interaction[, Confidence_values := as.numeric(Confidence_values)]
-#all_viral_interaction[, Interaction_identifiers := unlist(gsubfn::strapplyc(Interaction_identifiers,"EBI-[[:digit:]]+",simplify = T)), by =Interaction_identifiers]
-# generating unique identifier for interacting pairs
-all_viral_interaction[, pair_id := apply(data.table(IDs_interactor_A,IDs_interactor_B,stringsAsFactors = F), 1,
-                                               function(a) { z = sort(a)
-                                               paste0(z[1],"_",z[2]) })]
-all_viral_interaction[, pair_species_id := apply(data.table(Taxid_interactor_A,Taxid_interactor_B,stringsAsFactors = F), 1,
-                                               function(a) { z = sort(a)
-                                               paste0(z[1],"_",z[2]) })]
-}
-```
-
-```
-## Warning in eval(jsub, SDenv, parent.frame()): NAs introduced by coercion
-```
-
-```r
-# filter only human-viral interactions
-all_viral_interaction = all_viral_interaction[Taxid_interactor_A == "9606" | Taxid_interactor_B == "9606",]
-all_viral_interaction = unique(all_viral_interaction)
+all_viral_interaction = fread("./data_files/viral_interactions.txt", stringsAsFactors = F)
+all_viral_interaction = cleanMITAB(all_viral_interaction)
 ```
 
 Both the network and the domain data contain more information than necessary for identifying domains likely to mediate interaction. Selecting only what's necessary: viral_protein_UniprotID - human_protein_UniprotID - human_domain_InterProID.  
   
-First, we need to rearrange interactions so that one column contains viral proteins and the other contains human proteins (in the database some interactions are stored viral-human and some are human-viral.   
+First, we need to rearrange interactions so that one column contains viral proteins and the other contains human proteins (in the database some interactions are stored viral-human order and some in human-viral order).   
 
 
 ```r
@@ -233,18 +189,12 @@ fwrite(viral_human_w_domains, file = "./processed_data_files/viral_human_net_w_d
 
 ## Summary of the network
 
+The plot below show the relationships (2D histogram), distribution density (on the diagonal) and pearson correlation for a number of parameters characterising human domains, viral proteins or it's interactions:
 
-```r
-pairs(viral_human_w_domains[,.(domain_frequency, 
-                               IDs_interactor_viral_degree, 
-                               IDs_interactor_human_degree, 
-                               IDs_domain_human_per_IDs_interactor_viral, 
-                               IDs_interactor_viral_per_IDs_domain_human,
-                               domain_frequency_per_IDs_interactor_viral,
-                               fold_enrichment)])
-```
-
-![](map_domains_to_network_files/figure-html/summary_pairs-1.png)<!-- -->
+1. domain_frequency is the number of human proteins with a particular domain divided by the total number of human proteins (the attribute of a human domain)
+2. IDs_interactor_viral_degree is the number of interactions each viral protein has (the attribute of a viral protein)
+3. IDs_interactor_human_degree is the number of interactions each human protein has (the attribute of a human protein)
+4. IDs_domain_human_per_IDs_interactor_viral is the number of domain types that are present in proteins which a particular viral protein interacts with (the attribute of a viral protein)
 
 
 ```r
@@ -267,32 +217,14 @@ GGally::ggpairs(viral_human_w_domains[,.(domain_frequency,
                                          IDs_interactor_human_degree, 
                                          IDs_domain_human_per_IDs_interactor_viral, 
                                          IDs_interactor_viral_per_IDs_domain_human,
+                                         domain_count_per_IDs_interactor_viral,
                                          domain_frequency_per_IDs_interactor_viral,
                                          fold_enrichment)], 
                 lower = list(continuous = d2_bin), 
                 diag = list(continuous = log10_density)) +
     theme_light() +
-    theme(strip.text.y = element_text(angle = 0),
-          strip.text.x = element_text(angle = 90))
+    theme(strip.text.y = element_text(angle = 0, size = 10),
+          strip.text.x = element_text(angle = 90, size = 10))
 ```
 
 ![](map_domains_to_network_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
-
-rf <- colorRampPalette(rev(brewer.pal(11,'Spectral')))
-r <- rf(32)
-ggplot(viral_human_w_domains[,.(domain_frequency, 
-                                IDs_interactor_viral_degree, 
-                                IDs_interactor_human_degree, 
-                                IDs_domain_human_per_IDs_interactor_viral, 
-                                IDs_interactor_viral_per_IDs_domain_human,
-                                domain_frequency_per_IDs_interactor_viral,
-                                fold_enrichment)],
-       aes(x = degree_interactor_B, y = permutation_pval)) +
-    stat_bin2d(bins=25)+
-    ggtitle("p-value tends to be higher the more interactions viral protein has overal")+
-    theme(panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
-          panel.background = element_rect(fill = '#FFFFFF', colour = 'grey')) + 
-    scale_x_log10(breaks = 2^c(1:8))+ 
-    scale_y_log10(breaks = 10^c(0:-8),
-                  labels = trans_format("log10", math_format(10^.x)))+
-    xlab("viral protein degree") + scale_fill_gradientn(colours=r)
