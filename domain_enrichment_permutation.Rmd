@@ -11,7 +11,7 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-packages = c("data.table","R.utils", "ggplot2", "MItools", "GGally", "DT")
+packages = c("data.table","R.utils", "ggplot2", "MItools", "DT", "qvalue", "GGally")
 if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
       packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
       install.packages(packages_to_install)
@@ -26,9 +26,14 @@ suppressPackageStartupMessages({
     library(R.utils)
     library(ggplot2)
     library(MItools)
-    library(GGally)
     library(DT)
+    library(qvalue)
+    library(GGally)
 })
+
+# cores to use for multiprocessing
+if(detectCores() <= 4) cores_to_use = detectCores() - 1
+if(detectCores() > 4) cores_to_use = 15
 ```
 
 ## Null hypothesis description
@@ -36,58 +41,189 @@ suppressPackageStartupMessages({
 ## How often do we observe specific fold enrichment value among interactors of a viral protein
 
 #### Probability distribution under the NULL hypothesis: How often specific domain fold enrichment among interactors of a specific viral protein (attribute of a pair viral_protein-human_domain) is observed as compared to any domain fold enrichment among interactors of that viral protein (attribute of a viral_protein, distribution), the latter is derived from permutation mimicking as if viral protein was binding to a different set of human proteins  
-Using fold enrichent as a statistic accounts for domain frequency in the background distribution.
+Using fold enrichent as a statistic accounts for domain frequency in the background distribution. Background distribution of domain frequency in based on all human proteins with known PPI. 
 
 
 One of the ways to describe the problem of finding domains that are likely to mediate interaction of human proteins with viral proteins is by drawing a network which has 3 types of elements: viral proteins (V1, V2, V3), human proteins (H1-10) and human domains (D1-10).
-```{r, out.width = "500px"}
+```{r f1, out.width = "500px"}
 knitr::include_graphics("./images/net_start.jpg")
 ```
 
 
 First, we compute the fraction of human interacting partners of V2 that contain domain D6. Then, we compute the fold enrichment by dividing this fraction by the domain frequency among all proteins in the network.
-```{r, out.width = "500px"}
+```{r f2, out.width = "500px"}
 knitr::include_graphics("./images/net_start_calc.jpg")
 ```
 
 Next, we can calculate the frequency of the fraction of human interacting partners of V2 that contain domain D6 (for every viral protein and every human domain).
-```{r, out.width = "500px"}
+```{r f3, out.width = "500px"}
 knitr::include_graphics("./images/net_start_fraq.jpg")
 ```
 
 Next, we permute which human proteins interact with V1, V2 and V3, keeping the number of interaction per both viral and human proteins as well as number of edges (interactions) constant
-```{r, out.width = "500px"}
+```{r f4, out.width = "500px"}
 knitr::include_graphics("./images/net_scram.jpg")
 ```
 
 and compute the fraction of new random human interacting partners of V2 that contain any domain
-```{r, out.width = "500px"}
+```{r f5, out.width = "500px"}
 knitr::include_graphics("./images/net_scram_fraq.jpg")
 ```
 
 Finally, we compare each real fold enrichment value to the distribution of fold enrichment of randomly associated domains. For each human domain-viral protein value we calculate the fraction of the (random) distribution that is as high or higher than the real value. We repeat this procedure 100 000 times averaging out the fraction which gives us the probability of specific human domain - specific viral protein co-occurence if the domain and the protein were unrelated.  
-```{r, out.width = "200px"}
+```{r f6, out.width = "200px"}
 knitr::include_graphics("./images/net_start_fraq_plot.jpg")
 ```
-```{r, out.width = "200px"}
+```{r f7, out.width = "200px"}
 knitr::include_graphics("./images/net_scram_fraq_plot.jpg")
 ```
 
 
 ## Load network 
 
-```{r}
-viral_human_net_w_domains = fread("./processed_data_files/viral_human_net_w_domains", sep = "\t", stringsAsFactors = F)
+```{r load}
+viral_human_net_w_domains_d = fread("./processed_data_files/viral_human_net_w_domains", sep = "\t", stringsAsFactors = F)
 
 # generate minimal information tables
-viral_human_net = unique(viral_human_net_w_domains[,.(IDs_interactor_viral, IDs_interactor_human, IDs_interactor_viral_degree)])
+viral_human_net = unique(viral_human_net_w_domains_d[,.(IDs_interactor_viral, IDs_interactor_human, IDs_interactor_viral_degree)])
 datatable(viral_human_net)
-domains_proteins = unique(viral_human_net_w_domains[,.(IDs_interactor_human, IDs_domain_human, domain_frequency)])
+domains_proteins = unique(viral_human_net_w_domains_d[,.(IDs_interactor_human, IDs_domain_human, domain_frequency)])
 datatable(domains_proteins)
-viral_human_net_w_domains = unique(viral_human_net_w_domains[,.(IDs_interactor_viral, IDs_interactor_human, IDs_domain_human, fold_enrichment)])
+viral_human_net_w_domains = unique(viral_human_net_w_domains_d[,.(IDs_interactor_viral, IDs_interactor_human, IDs_domain_human, fold_enrichment)])
 datatable(viral_human_net_w_domains)
 ```
 
-```{r}
+## Calculate fold enrichment distribution of each viral protein in any domain and plot a few examples
 
+```{r viral_foldEnrichDist, fig.height=12, fig.width=12}
+if(!file.exists("./large_processed_data_files/viral_foldEnrichDist.tsv.gz")){
+    # calculate fold enrichment distribution
+    viral_foldEnrichDist = foldEnrichmentDist(net = viral_human_net, 
+                                              protein_annot = domains_proteins, 
+                                              N = 5000, cores = cores_to_use, seed = 3245)
+    fwrite(viral_foldEnrichDist, "./large_processed_data_files/viral_foldEnrichDist.tsv", sep = "\t")
+    gzip("./large_processed_data_files/viral_foldEnrichDist.tsv", remove = T)
+}
+gunzip("./large_processed_data_files/viral_foldEnrichDist.tsv.gz", remove = F)
+viral_foldEnrichDist = fread("./large_processed_data_files/viral_foldEnrichDist.tsv", sep = "\t", stringsAsFactors = F)
+unlink("./large_processed_data_files/viral_foldEnrichDist.tsv")
+
+# plot a few random cases
+set.seed(1)
+plotFoldEnrichmentDist(proteinID = sample(unique(viral_human_net$IDs_interactor_viral), 9), 
+                       fold_enrichment_dist = viral_foldEnrichDist, 
+                       data = viral_human_net_w_domains, text_lab = F)
+```
+
+## Calculate P value for each viral protein and each human domain association
+
+```{r Pvals}
+if(!file.exists("./processed_data_files/viralProtein_humanDomain_pval.tsv")){
+    # calculate pvalue
+    Pvals = foldEnrichmentPval(fold_enrichment_dist = viral_foldEnrichDist, 
+                               data = viral_human_net_w_domains, cores = cores_to_use)
+    fwrite(Pvals, "./processed_data_files/viralProtein_humanDomain_pval.tsv", sep = "\t")
+}
+Pvals = fread("./processed_data_files/viralProtein_humanDomain_pval.tsv", sep = "\t", stringsAsFactors = F)
+
+# plot pvalue distribution
+ggplot(Pvals, aes(x = Pval)) + geom_histogram(bins = 100) + ggtitle("viral protein and human domain association \n pvalue distribution") + theme_light() + xlim(0,1)
+
+# calculate fdr adjusted pvalue
+Pvals[, Pval_fdr := p.adjust(Pval, method = "fdr")]
+ggplot(Pvals, aes(x = Pval_fdr)) + geom_histogram(bins = 100) + ggtitle("viral protein and human domain association \n FDR adjusted pvalue distribution") + theme_light() + xlim(0,1)
+
+# calculate q-value
+Pvals_qvalue = Pvals[, qvalue(Pval)]
+Pvals[, Qval := qvalue(Pval)$qvalues]
+plot(Pvals_qvalue)
+ggplot((Pvals), aes(x = Qval)) + geom_histogram(bins = 100) + ggtitle("viral protein and human domain association \n qvalue adjusted pvalue distribution") + theme_light() + xlim(0,1)
+
+# plot fold enrichment vs pvalue
+ggplot(Pvals, aes(x = fold_enrichment, y = Pval)) + geom_bin2d() + ggtitle("viral protein and human domain association \n fold enrichment vs p-value") + ylab("p-value") + xlab("fold enrichment") + scale_x_log10()
+```
+
+## Relationships between pvalue statistic and protein/domain properties
+
+```{r, fig.height=12, fig.width=12}
+# merge results to original data
+viral_human_net_w_domains_d2 = viral_human_net_w_domains_d[Pvals, on = c("IDs_interactor_viral", "IDs_domain_human", "fold_enrichment")]
+
+# function to accomodate ggplot2::geom_bin2d in GGally::ggpairs, taken from http://ggobi.github.io/ggally/#custom_functions
+d2_bin <- function(data, mapping, ..., low = "#132B43", high = "#56B1F7") {
+    ggplot(data = data, mapping = mapping) +
+        geom_bin2d(...) +
+        scale_fill_gradient(low = low, high = high) +
+        scale_y_log10() + scale_x_log10()
+}
+
+log10_density = function(data, mapping, ...){
+    ggplot(data = data, mapping = mapping) +
+        geom_density(...) +
+        scale_x_log10()
+}
+
+GGally::ggpairs(viral_human_net_w_domains_d2[,.(domain_count, domain_frequency, 
+                                               Taxid_interactor_viral,
+                                               IDs_interactor_viral_degree, 
+                                               IDs_interactor_human_degree, 
+                                               domain_count_per_IDs_interactor_viral,
+                                               domain_frequency_per_IDs_interactor_viral,
+                                               fold_enrichment,
+                                               Pval, Pval_fdr, Qval)], 
+                lower = list(continuous = d2_bin), 
+                diag = list(continuous = log10_density)) +
+    theme_light() +
+    theme(strip.text.y = element_text(angle = 0, size = 10),
+          strip.text.x = element_text(angle = 90, size = 10))
+```
+```{r, fig.height=6, fig.width=6}
+hist(viral_human_net_w_domains_d2[Pval_fdr < 0.35, domain_count_per_IDs_interactor_viral], main = "number of human proteins with specific domain per viral protein \n the lowest FDR corrected peak (0.35 < pval)", xlab = "how many times domain is repeated")
+hist(viral_human_net_w_domains_d2[Pval_fdr < 0.35, domain_count], main = "domain prevalence in the background set \n the lowest FDR corrected peak (0.35 < pval)", xlab = "domain count in background")
+```
+
+## Try deleting domain with low background counts
+
+```{r}
+# delete domain with background count <= 1
+d1 = domainEnrichment(backgr_domain_count = 0, 
+                      net = viral_human_net,
+                      protein_annot = domains_proteins, 
+                      data = viral_human_net_w_domains,
+                      N = 5000, cores = cores_to_use, seed = 1, 
+                      all.data = viral_human_net_w_domains_d)
+# delete domain with background count <= 2
+d2 = domainEnrichment(backgr_domain_count = 2, 
+                      net = viral_human_net,
+                      protein_annot = domains_proteins, 
+                      data = viral_human_net_w_domains,
+                      N = 5000, cores = cores_to_use, seed = 1, 
+                      all.data = viral_human_net_w_domains_d)
+# delete domain with background count <= 4
+d4 = domainEnrichment(backgr_domain_count = 4, 
+                      net = viral_human_net,
+                      protein_annot = domains_proteins, 
+                      data = viral_human_net_w_domains,
+                      N = 5000, cores = cores_to_use, seed = 1, 
+                      all.data = viral_human_net_w_domains_d)
+# delete domain with background count <= 8
+d8 = domainEnrichment(backgr_domain_count = 8, 
+                      net = viral_human_net,
+                      protein_annot = domains_proteins, 
+                      data = viral_human_net_w_domains,
+                      N = 5000, cores = cores_to_use, seed = 1, 
+                      all.data = viral_human_net_w_domains_d)
+# delete domain with background count <= 16
+d16 = domainEnrichment(backgr_domain_count = 16, 
+                      net = viral_human_net,
+                      protein_annot = domains_proteins, 
+                      data = viral_human_net_w_domains,
+                      N = 5000, cores = cores_to_use, seed = 1, 
+                      all.data = viral_human_net_w_domains_d)
+save(list(d1, d2, d4, d8, d16), "./large_processed_data_files/low_background_counts")
+```
+
+
+```{r}
+sessionInfo()
 ```

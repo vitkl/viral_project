@@ -134,6 +134,8 @@ I read interaction data and clean this data to make it more useble. Then, I filt
 ```{r human_viral}
 all_viral_interaction = fread("./data_files/viral_interactions.txt", stringsAsFactors = F)
 all_viral_interaction = cleanMITAB(all_viral_interaction)
+# pick proteins only
+all_viral_interaction = all_viral_interaction[interactor_IDs_databases_A == "uniprotkb" & interactor_IDs_databases_B == "uniprotkb", ]
 ```
 
 Both the network and the domain data contain more information than necessary for identifying domains likely to mediate interaction. Selecting only what's necessary: viral_protein_UniprotID - human_protein_UniprotID - human_domain_InterProID.  
@@ -161,6 +163,7 @@ protein_domain_pair_temp = copy(protein_domain_pair)[, IDs_interactor_human := I
 # calculate domain count and frequency
 protein_domain_pair_temp[, domain_count := length(unique(IDs_interactor_human)), by = IDs_domain_human]
 protein_domain_pair_temp[, domain_frequency := domain_count / length(unique(IDs_interactor_human))]
+
 # I only keep interactins in which human protein has a known domain (nomatch = 0)
 viral_human_w_domains = protein_domain_pair_temp[all_viral_interaction_simp, on = "IDs_interactor_human", nomatch = 0]
 
