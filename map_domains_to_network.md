@@ -4,7 +4,7 @@ Vitalii Kleshchevnikov
 
 
 
-Date: 2017-07-25 16:14:47
+Date: 2017-07-31 11:10:59
 
 ## Read InterProScan result and filter for "Domain", "Active_site", "Binding_site", "Conserved_site", "PTM" signatures
 
@@ -134,6 +134,8 @@ I read interaction data and clean this data to make it more useble. Then, I filt
 ```r
 all_viral_interaction = fread("./data_files/viral_interactions.txt", stringsAsFactors = F)
 all_viral_interaction = cleanMITAB(all_viral_interaction)
+# pick proteins only
+all_viral_interaction = all_viral_interaction[interactor_IDs_databases_A == "uniprotkb" & interactor_IDs_databases_B == "uniprotkb", ]
 ```
 
 Both the network and the domain data contain more information than necessary for identifying domains likely to mediate interaction. Selecting only what's necessary: viral_protein_UniprotID - human_protein_UniprotID - human_domain_InterProID.  
@@ -163,14 +165,16 @@ protein_domain_pair_temp = copy(protein_domain_pair)[, IDs_interactor_human := I
 # calculate domain count and frequency
 protein_domain_pair_temp[, domain_count := length(unique(IDs_interactor_human)), by = IDs_domain_human]
 protein_domain_pair_temp[, domain_frequency := domain_count / length(unique(IDs_interactor_human))]
-# I only keep interactins in which human protein has a known domain (nomatch = 0)
-viral_human_w_domains = protein_domain_pair_temp[all_viral_interaction_simp, on = "IDs_interactor_human", nomatch = 0]
 
 # calculate network descriptive stats
 # viral protein degree
-viral_human_w_domains[, IDs_interactor_viral_degree := length(unique(IDs_interactor_human)), by = IDs_interactor_viral]
+all_viral_interaction_simp[, IDs_interactor_viral_degree := length(unique(IDs_interactor_human)), by = IDs_interactor_viral]
 # human protein degree
-viral_human_w_domains[, IDs_interactor_human_degree := length(unique(IDs_interactor_viral)), by = IDs_interactor_human]
+all_viral_interaction_simp[, IDs_interactor_human_degree := length(unique(IDs_interactor_viral)), by = IDs_interactor_human]
+
+# I keep all interactions even if a human protein has no known domain
+viral_human_w_domains = merge(protein_domain_pair_temp, all_viral_interaction_simp, all.x = F, all.y = T, by = "IDs_interactor_human", allow.cartesian = T)
+
 # human domains per viral protein
 viral_human_w_domains[, IDs_domain_human_per_IDs_interactor_viral := length(unique(IDs_domain_human)), by = IDs_interactor_viral]
 # viral protein per human domain
@@ -178,10 +182,13 @@ viral_human_w_domains[, IDs_interactor_viral_per_IDs_domain_human := length(uniq
 
 # domain count but per viral protein human domain instances (how many proteins the domain is located in) per viral protein (ID) and human domain (ID)
 viral_human_w_domains[, domain_count_per_IDs_interactor_viral := length(unique(IDs_interactor_human)), by = .(IDs_interactor_viral, IDs_domain_human)]
+viral_human_w_domains[is.na(IDs_domain_human), domain_count_per_IDs_interactor_viral := 0]
 # domain frequency but per viral protein
 viral_human_w_domains[, domain_frequency_per_IDs_interactor_viral := domain_count_per_IDs_interactor_viral / IDs_interactor_viral_degree, by = IDs_interactor_viral]
+viral_human_w_domains[is.na(IDs_domain_human), domain_frequency_per_IDs_interactor_viral := 0]
 # fold enrichment
 viral_human_w_domains[, fold_enrichment := domain_frequency_per_IDs_interactor_viral / domain_frequency]
+viral_human_w_domains[is.na(IDs_domain_human), fold_enrichment := 0]
 
 # save resulting network
 fwrite(viral_human_w_domains, file = "./processed_data_files/viral_human_net_w_domains", sep = "\t")
@@ -212,7 +219,7 @@ log10_density = function(data, mapping, ...){
         scale_x_log10()
 }
 
-GGally::ggpairs(viral_human_w_domains[,.(domain_frequency, 
+GGally::ggpairs(viral_human_w_domains[!is.na(IDs_domain_human),.(domain_frequency, 
                                          IDs_interactor_viral_degree, 
                                          IDs_interactor_human_degree, 
                                          IDs_domain_human_per_IDs_interactor_viral, 
