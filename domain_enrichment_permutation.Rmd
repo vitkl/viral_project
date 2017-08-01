@@ -105,6 +105,8 @@ viral_human_net = unique(viral_human_net_w_domains_d[,.(IDs_interactor_viral, ID
 domains_proteins = unique(viral_human_net_w_domains_d[,.(IDs_interactor_human, IDs_domain_human, domain_frequency)])
 
 viral_human_net_w_domains = unique(viral_human_net_w_domains_d[,.(IDs_interactor_viral, IDs_interactor_human, IDs_domain_human, domain_frequency_per_IDs_interactor_viral, fold_enrichment)])
+# remove viral proteins with no corresponding human domains from this version of the data: we can't calculate the probability of viral protein - human domain interaction if there isn't any. However, permutations of viral-human interaction network are performed on all interactions including the one's when human partner doesn't have any domains, viral_human_net contains all interactions.
+viral_human_net_w_domains = viral_human_net_w_domains[IDs_domain_human != "",]
 ```
 
 ## Calculate fold enrichment distribution of each viral protein in any domain and plot a few examples
@@ -121,14 +123,6 @@ if(!file.exists("./large_processed_data_files/viral_foldEnrichDist.tsv.gz")){
 gunzip("./large_processed_data_files/viral_foldEnrichDist.tsv.gz", remove = F)
 viral_foldEnrichDist = fread("./large_processed_data_files/viral_foldEnrichDist.tsv", sep = "\t", stringsAsFactors = F)
 unlink("./large_processed_data_files/viral_foldEnrichDist.tsv")
-
-# sanity check: calculate fold enrichment distribution again and compare if results match!
-viral_foldEnrichDist2 = foldEnrichmentDist(net = viral_human_net, 
-                                           protein_annot = domains_proteins, 
-                                           N = 5000, cores = cores_to_use, seed = 1, frequency = frequency)
-all.equal(viral_foldEnrichDist,  viral_foldEnrichDist2)
-viral_foldEnrichDist; viral_foldEnrichDist2
-rm(viral_foldEnrichDist2)
 
 # plot a few random cases
 set.seed(1)
@@ -213,7 +207,8 @@ hist(viral_human_net_w_domains_d2[Pval_fdr < 0.35, domain_count], main = "domain
                           protein_annot = domains_proteins, 
                           data = viral_human_net_w_domains,
                           N = 5000, cores = cores_to_use, seed = 1, 
-                          all.data = viral_human_net_w_domains_d, frequency = frequency)
+                          all.data = viral_human_net_w_domains_d, 
+                          frequency = frequency, pValPlot = "Pval")
 # sanity check whether pipeline above gives the same result as the domainEnrichment function
     d0$Pvals; Pvals
     all.equal(d0$Pvals, Pvals)
@@ -225,7 +220,8 @@ if(!file.exists("./large_processed_data_files/minus_low_background_counts")){
                           protein_annot = domains_proteins, 
                           data = viral_human_net_w_domains,
                           N = 1000, cores = cores_to_use, seed = 1, 
-                          all.data = viral_human_net_w_domains_d, frequency = frequency)
+                          all.data = viral_human_net_w_domains_d, 
+                          frequency = frequency, pValPlot = "Pval")
     
     # delete domains with background count <= 1
     d1 = domainEnrichment(backgr_domain_count = 1, 
@@ -233,7 +229,8 @@ if(!file.exists("./large_processed_data_files/minus_low_background_counts")){
                           protein_annot = domains_proteins, 
                           data = viral_human_net_w_domains,
                           N = 1000, cores = cores_to_use, seed = 1, 
-                          all.data = viral_human_net_w_domains_d, frequency = frequency)
+                          all.data = viral_human_net_w_domains_d, 
+                          frequency = frequency, pValPlot = "Pval")
     
     # delete domains with background count <= 2
     d2 = domainEnrichment(backgr_domain_count = 2, 
@@ -241,7 +238,8 @@ if(!file.exists("./large_processed_data_files/minus_low_background_counts")){
                           protein_annot = domains_proteins, 
                           data = viral_human_net_w_domains,
                           N = 1000, cores = cores_to_use, seed = 1, 
-                          all.data = viral_human_net_w_domains_d, frequency = frequency)
+                          all.data = viral_human_net_w_domains_d, 
+                          frequency = frequency, pValPlot = "Pval")
 
     # delete domain with background count <= 4
     d4 = domainEnrichment(backgr_domain_count = 4, 
@@ -249,7 +247,8 @@ if(!file.exists("./large_processed_data_files/minus_low_background_counts")){
                           protein_annot = domains_proteins, 
                           data = viral_human_net_w_domains,
                           N = 1000, cores = cores_to_use, seed = 1, 
-                          all.data = viral_human_net_w_domains_d, frequency = frequency)
+                          all.data = viral_human_net_w_domains_d, 
+                          frequency = frequency, pValPlot = "Pval")
 
     # delete domains with background count <= 8
     d8 = domainEnrichment(backgr_domain_count = 8, 
@@ -257,7 +256,8 @@ if(!file.exists("./large_processed_data_files/minus_low_background_counts")){
                           protein_annot = domains_proteins, 
                           data = viral_human_net_w_domains,
                           N = 1000, cores = cores_to_use, seed = 1, 
-                          all.data = viral_human_net_w_domains_d, frequency = frequency)
+                          all.data = viral_human_net_w_domains_d, 
+                          frequency = frequency, pValPlot = "Pval")
 
     # delete domains with background count <= 16
     d16 = domainEnrichment(backgr_domain_count = 16, 
@@ -265,7 +265,8 @@ if(!file.exists("./large_processed_data_files/minus_low_background_counts")){
                            protein_annot = domains_proteins, 
                            data = viral_human_net_w_domains,
                            N = 1000, cores = cores_to_use, seed = 1, 
-                           all.data = viral_human_net_w_domains_d, frequency = frequency)
+                           all.data = viral_human_net_w_domains_d, 
+                          frequency = frequency, pValPlot = "Pval")
     
     save(d0, d1, d2, d4, d8, d16, file = "./large_processed_data_files/minus_low_background_counts")
 }

@@ -98,6 +98,8 @@ viral_human_net = unique(viral_human_net_w_domains_d[,.(IDs_interactor_viral, ID
 domains_proteins = unique(viral_human_net_w_domains_d[,.(IDs_interactor_human, IDs_domain_human, domain_frequency)])
 
 viral_human_net_w_domains = unique(viral_human_net_w_domains_d[,.(IDs_interactor_viral, IDs_interactor_human, IDs_domain_human, domain_frequency_per_IDs_interactor_viral, fold_enrichment)])
+# remove viral proteins with no corresponding human domains from this version of the data: we can't calculate the probability of viral protein - human domain interaction if there isn't any. However, permutations of viral-human interaction network are performed on all interactions including the one's when human partner doesn't have any domains, viral_human_net contains all interactions.
+viral_human_net_w_domains = viral_human_net_w_domains[IDs_domain_human != "",]
 ```
 
 ## Calculate fold enrichment distribution of each viral protein in any domain and plot a few examples
@@ -118,65 +120,17 @@ viral_foldEnrichDist = fread("./large_processed_data_files/viral_foldEnrichDist.
 
 ```
 ## 
-Read 0.0% of 51210281 rows
-Read 18.3% of 51210281 rows
-Read 36.6% of 51210281 rows
-Read 55.1% of 51210281 rows
-Read 72.8% of 51210281 rows
-Read 91.4% of 51210281 rows
+Read 9.1% of 51210281 rows
+Read 27.9% of 51210281 rows
+Read 46.0% of 51210281 rows
+Read 63.7% of 51210281 rows
+Read 82.5% of 51210281 rows
+Read 99.4% of 51210281 rows
 Read 51210281 rows and 2 (of 2) columns from 1.181 GB file in 00:00:08
 ```
 
 ```r
 unlink("./large_processed_data_files/viral_foldEnrichDist.tsv")
-
-# sanity check: calculate fold enrichment distribution again and compare if results match!
-viral_foldEnrichDist2 = foldEnrichmentDist(net = viral_human_net, 
-                                           protein_annot = domains_proteins, 
-                                           N = 5000, cores = cores_to_use, seed = 1, frequency = frequency)
-all.equal(viral_foldEnrichDist,  viral_foldEnrichDist2)
-```
-
-```
-## [1] TRUE
-```
-
-```r
-viral_foldEnrichDist; viral_foldEnrichDist2
-```
-
-```
-##           IDs_interactor_viral sampled_fold_enrichment
-##        1:           A0A0C7TUY8                506.8182
-##        2:           A0A0C7TUY8                206.4815
-##        3:           A0A0C7TUY8                218.6275
-##        4:           A0A0C7TUY8               2787.5000
-##        5:           A0A0C7TUY8              11150.0000
-##       ---                                             
-## 51210277:               X5HMX4                  0.0000
-## 51210278:               X5HMX4                359.6774
-## 51210279:               X5HMX4                  0.0000
-## 51210280:               X5HMX4                137.6543
-## 51210281:               X5HMX4               1858.3333
-```
-
-```
-##           IDs_interactor_viral sampled_fold_enrichment
-##        1:           A0A0C7TUY8                506.8182
-##        2:           A0A0C7TUY8                206.4815
-##        3:           A0A0C7TUY8                218.6275
-##        4:           A0A0C7TUY8               2787.5000
-##        5:           A0A0C7TUY8              11150.0000
-##       ---                                             
-## 51210277:               X5HMX4                  0.0000
-## 51210278:               X5HMX4                359.6774
-## 51210279:               X5HMX4                  0.0000
-## 51210280:               X5HMX4                137.6543
-## 51210281:               X5HMX4               1858.3333
-```
-
-```r
-rm(viral_foldEnrichDist2)
 
 # plot a few random cases
 set.seed(1)
@@ -230,14 +184,6 @@ ggplot((Pvals), aes(x = Qval)) + geom_histogram(bins = 100) + ggtitle("viral pro
 ```r
 # plot fold enrichment vs pvalue
 ggplot(Pvals, aes(x = fold_enrichment, y = Pval)) + geom_bin2d() + ggtitle("viral protein and human domain association \n fold enrichment vs p-value") + ylab("p-value") + xlab("fold enrichment") + scale_x_log10()
-```
-
-```
-## Warning: Transformation introduced infinite values in continuous x-axis
-```
-
-```
-## Warning: Removed 483 rows containing non-finite values (stat_bin2d).
 ```
 
 ![](domain_enrichment_permutation_files/figure-html/Pvals-4.png)<!-- -->
@@ -302,7 +248,8 @@ hist(viral_human_net_w_domains_d2[Pval_fdr < 0.35, domain_count], main = "domain
                           protein_annot = domains_proteins, 
                           data = viral_human_net_w_domains,
                           N = 5000, cores = cores_to_use, seed = 1, 
-                          all.data = viral_human_net_w_domains_d, frequency = frequency)
+                          all.data = viral_human_net_w_domains_d, 
+                          frequency = frequency, pValPlot = "Pval")
 # sanity check whether pipeline above gives the same result as the domainEnrichment function
     d0$Pvals; Pvals
 ```
@@ -336,29 +283,29 @@ hist(viral_human_net_w_domains_d2[Pval_fdr < 0.35, domain_count], main = "domain
 
 ```
 ##        IDs_interactor_viral IDs_domain_human fold_enrichment       Pval
-##     1:           A0A0C7TUY8                          0.00000 1.00000000
-##     2:           A0A0K1LEV0        IPR000795       557.50000 0.30040221
-##     3:           A0A0K1LEV0        IPR031157      3716.66667 0.06473102
-##     4:           A0A0K1LEV0        IPR009000     11150.00000 0.03871292
-##     5:           A0A0K1LEV0        IPR009001      1238.88889 0.19444444
+##     1:           A0A0K1LEV0        IPR000795       557.50000 0.30040221
+##     2:           A0A0K1LEV0        IPR031157      3716.66667 0.06473102
+##     3:           A0A0K1LEV0        IPR009000     11150.00000 0.03871292
+##     4:           A0A0K1LEV0        IPR009001      1238.88889 0.19444444
+##     5:               A0MPS7        IPR015030      3716.66667 0.03814059
 ##    ---                                                                 
-## 12841:               W6AVY5        IPR003103       309.72222 0.16096474
-## 12842:               W6AVY5                          0.00000 1.00000000
-## 12843:               W6AVY5        IPR001623        29.49735 0.55100275
-## 12844:               W6AVY5        IPR019734        13.97243 0.67602569
-## 12845:               X5HMX4                          0.00000 1.00000000
-##         Pval_fdr      Qval
-##     1: 1.0000000 0.7517588
-##     2: 0.6062611 0.4557621
-##     3: 0.3694070 0.2777050
-##     4: 0.3374132 0.2536533
-##     5: 0.5096392 0.3831257
-##    ---                    
-## 12841: 0.4743345 0.3565852
-## 12842: 1.0000000 0.7517588
-## 12843: 0.7831155 0.5887139
-## 12844: 0.8465781 0.6364225
-## 12845: 1.0000000 0.7517588
+## 12358:               U5TQE9        IPR000719        20.88015 0.68064689
+## 12359:               U5TQE9        IPR011029       109.31373 0.47268823
+## 12360:               W6AVY5        IPR003103       309.72222 0.16096474
+## 12361:               W6AVY5        IPR001623        29.49735 0.55100275
+## 12362:               W6AVY5        IPR019734        13.97243 0.67602569
+##         Pval_fdr       Qval
+##     1: 0.5834643 0.17813432
+##     2: 0.3555165 0.10854082
+##     3: 0.3247257 0.09914024
+##     4: 0.4904756 0.14974445
+##     5: 0.3247257 0.09914024
+##    ---                     
+## 12358: 0.8163324 0.24923001
+## 12359: 0.7157610 0.21852511
+## 12360: 0.4564985 0.13937108
+## 12361: 0.7536686 0.23009846
+## 12362: 0.8147449 0.24874533
 ```
 
 ```r
@@ -366,7 +313,7 @@ hist(viral_human_net_w_domains_d2[Pval_fdr < 0.35, domain_count], main = "domain
 ```
 
 ```
-## [1] "Different number of rows"
+## [1] TRUE
 ```
 
 ```r
@@ -377,7 +324,8 @@ if(!file.exists("./large_processed_data_files/minus_low_background_counts")){
                           protein_annot = domains_proteins, 
                           data = viral_human_net_w_domains,
                           N = 1000, cores = cores_to_use, seed = 1, 
-                          all.data = viral_human_net_w_domains_d, frequency = frequency)
+                          all.data = viral_human_net_w_domains_d, 
+                          frequency = frequency, pValPlot = "Pval")
     
     # delete domains with background count <= 1
     d1 = domainEnrichment(backgr_domain_count = 1, 
@@ -385,7 +333,8 @@ if(!file.exists("./large_processed_data_files/minus_low_background_counts")){
                           protein_annot = domains_proteins, 
                           data = viral_human_net_w_domains,
                           N = 1000, cores = cores_to_use, seed = 1, 
-                          all.data = viral_human_net_w_domains_d, frequency = frequency)
+                          all.data = viral_human_net_w_domains_d, 
+                          frequency = frequency, pValPlot = "Pval")
     
     # delete domains with background count <= 2
     d2 = domainEnrichment(backgr_domain_count = 2, 
@@ -393,7 +342,8 @@ if(!file.exists("./large_processed_data_files/minus_low_background_counts")){
                           protein_annot = domains_proteins, 
                           data = viral_human_net_w_domains,
                           N = 1000, cores = cores_to_use, seed = 1, 
-                          all.data = viral_human_net_w_domains_d, frequency = frequency)
+                          all.data = viral_human_net_w_domains_d, 
+                          frequency = frequency, pValPlot = "Pval")
 
     # delete domain with background count <= 4
     d4 = domainEnrichment(backgr_domain_count = 4, 
@@ -401,7 +351,8 @@ if(!file.exists("./large_processed_data_files/minus_low_background_counts")){
                           protein_annot = domains_proteins, 
                           data = viral_human_net_w_domains,
                           N = 1000, cores = cores_to_use, seed = 1, 
-                          all.data = viral_human_net_w_domains_d, frequency = frequency)
+                          all.data = viral_human_net_w_domains_d, 
+                          frequency = frequency, pValPlot = "Pval")
 
     # delete domains with background count <= 8
     d8 = domainEnrichment(backgr_domain_count = 8, 
@@ -409,7 +360,8 @@ if(!file.exists("./large_processed_data_files/minus_low_background_counts")){
                           protein_annot = domains_proteins, 
                           data = viral_human_net_w_domains,
                           N = 1000, cores = cores_to_use, seed = 1, 
-                          all.data = viral_human_net_w_domains_d, frequency = frequency)
+                          all.data = viral_human_net_w_domains_d, 
+                          frequency = frequency, pValPlot = "Pval")
 
     # delete domains with background count <= 16
     d16 = domainEnrichment(backgr_domain_count = 16, 
@@ -417,7 +369,8 @@ if(!file.exists("./large_processed_data_files/minus_low_background_counts")){
                            protein_annot = domains_proteins, 
                            data = viral_human_net_w_domains,
                            N = 1000, cores = cores_to_use, seed = 1, 
-                           all.data = viral_human_net_w_domains_d, frequency = frequency)
+                           all.data = viral_human_net_w_domains_d, 
+                          frequency = frequency, pValPlot = "Pval")
     
     save(d0, d1, d2, d4, d8, d16, file = "./large_processed_data_files/minus_low_background_counts")
 }
@@ -557,7 +510,7 @@ sessionInfo()
 ## [8] methods   base     
 ## 
 ## other attached packages:
-##  [1] GGally_1.3.1        qvalue_2.8.0        MItools_0.1.4      
+##  [1] GGally_1.3.1        qvalue_2.8.0        MItools_0.1.5      
 ##  [4] Biostrings_2.44.1   XVector_0.16.0      PSICQUIC_1.14.0    
 ##  [7] plyr_1.8.4          httr_1.2.1          biomaRt_2.32.1     
 ## [10] IRanges_2.10.2      S4Vectors_0.14.3    BiocGenerics_0.22.0
