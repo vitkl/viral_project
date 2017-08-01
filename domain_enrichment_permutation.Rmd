@@ -46,14 +46,14 @@ if(detectCores() <= 4) cores_to_use = detectCores() - 1
 if(detectCores() > 4) cores_to_use = 15
 
 # frequency in a set (of human interacting partners of viral protein) or fold_enrichment?
-frequency = F 
+frequency = F
 ```
 
 ## Null hypothesis description
 
 ## How often do we observe specific fold enrichment value among interactors of a viral protein
 
-#### Probability distribution under the NULL hypothesis: How often specific domain fold enrichment among interactors of a specific viral protein (attribute of a pair viral_protein-human_domain) is observed as compared to any domain fold enrichment among interactors of that viral protein (attribute of a viral_protein, distribution), the latter is derived from permutation mimicking as if viral protein was binding to a different set of human proteins  
+#### Probability of actual fold enrichment under the NULL distribution: How often specific domain fold enrichment among interactors of a specific viral protein (attribute of a viral_protein-human_domain pair) is observed as compared to any domain fold enrichment among interactors of that viral protein (attribute of a viral_protein, NULL distribution), the latter is derived from permutation mimicking as if viral protein was binding to a different set of human proteins  
 Using fold enrichent as a statistic accounts for domain frequency in the background distribution. Background distribution of domain frequency in based on all human proteins with known PPI. 
 
 
@@ -68,33 +68,26 @@ First, we compute the fraction of human interacting partners of V2 that contain 
 knitr::include_graphics("./images/net_start_calc.jpg")
 ```
 
-Next, we can calculate the frequency of the fraction of human interacting partners of V2 that contain domain D6 (for every viral protein and every human domain).
-```{r f3, out.width = "450px"}
-knitr::include_graphics("./images/net_start_fraq.jpg")
-```
-
 Next, we permute which human proteins interact with V1, V2 and V3, keeping the number of interaction per both viral and human proteins as well as number of edges (interactions) constant
 ```{r f4, out.width = "450px"}
 knitr::include_graphics("./images/net_scram.jpg")
 ```
 
-and compute the fraction of new random human interacting partners of V2 that contain any domain
-```{r f5, out.width = "450px"}
-knitr::include_graphics("./images/net_scram_fraq.jpg")
-```
+Finally, we repeat this procedure 1000-5000 times which gives us the probability of specific human domain - specific viral protein co-occurence if the domain and the protein were unrelated.  
 
-Finally, we compare each real fold enrichment value to the distribution of fold enrichment of randomly associated domains. For each human domain-viral protein value we calculate the fraction of the (random) distribution that is as high or higher than the real value. We repeat this procedure 1000-5000 times averaging out the fraction which gives us the probability of specific human domain - specific viral protein co-occurence if the domain and the protein were unrelated.  
+We calculate this by comparing real fold enrichment value to the distribution of fold enrichment of randomly associated domains. For each human domain-viral protein value we calculate the fraction of the (random, NULL) distribution that is as high or higher than the real value.  
+
 ```{r f6, out.width = "200px"}
-knitr::include_graphics("./images/net_start_fraq_plot.jpg")
+knitr::include_graphics("./images/net_start_fraq.jpg")
 ```
 ```{r f7, out.width = "200px"}
-knitr::include_graphics("./images/net_scram_fraq_plot.jpg")
+knitr::include_graphics("./images/net_scram_fraq.jpg")
 ```
 
 
 ## Load network 
 
-Network is save by "Map_domains_to_network.Rmd" script where details of how the network was obtained are specified.
+Network is saved by "Map_domains_to_network.Rmd" script which describes how the network and domain data were obtained.
 
 ```{r load}
 viral_human_net_w_domains_d = fread("./processed_data_files/viral_human_net_w_domains", sep = "\t", stringsAsFactors = F)
@@ -105,6 +98,7 @@ viral_human_net = unique(viral_human_net_w_domains_d[,.(IDs_interactor_viral, ID
 domains_proteins = unique(viral_human_net_w_domains_d[,.(IDs_interactor_human, IDs_domain_human, domain_frequency)])
 
 viral_human_net_w_domains = unique(viral_human_net_w_domains_d[,.(IDs_interactor_viral, IDs_interactor_human, IDs_domain_human, domain_frequency_per_IDs_interactor_viral, fold_enrichment)])
+
 # remove viral proteins with no corresponding human domains from this version of the data: we can't calculate the probability of viral protein - human domain interaction if there isn't any. However, permutations of viral-human interaction network are performed on all interactions including the one's when human partner doesn't have any domains, viral_human_net contains all interactions.
 viral_human_net_w_domains = viral_human_net_w_domains[IDs_domain_human != "",]
 ```
