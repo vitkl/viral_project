@@ -131,7 +131,7 @@ $(document).ready(function () {
 </ul>
 </div>
 
-<p>Date: 2017-07-31 11:10:59</p>
+<p>Date: 2017-08-02 13:17:02</p>
 <div id="read-interproscan-result-and-filter-for-domain-active_site-binding_site-conserved_site-ptm-signatures" class="section level2">
 <h2>Read InterProScan result and filter for “Domain”, “Active_site”, “Binding_site”, “Conserved_site”, “PTM” signatures</h2>
 <p>I read InterProScan result and the InterPro_entry_types file. InterProScan output format description: <a href="https://github.com/ebi-pf-team/interproscan/wiki/OutputFormats" class="uri">https://github.com/ebi-pf-team/interproscan/wiki/OutputFormats</a></p>
@@ -217,7 +217,9 @@ InterProScan_domains_nonred = InterProScan_domains[unique(queryHits(overlap_star
 export(InterProScan_domains_nonred, con = &quot;./processed_data_files/InterProScan_domains_nonredundant.gff3&quot;, format = &quot;gff3&quot;)
 
 # take protein-domain pair discarding range information
-protein_domain_pair = unique(data.table(IDs_protein = as.character(seqnames(InterProScan_domains_nonred)), IDs_domain = as.character(InterProScan_domains_nonred$Dbxref), domain_type = InterProScan_domains_nonred$ENTRY_TYPE))</code></pre>
+protein_domain_pair = unique(data.table(IDs_protein = as.character(seqnames(InterProScan_domains_nonred)), IDs_domain = as.character(InterProScan_domains_nonred$Dbxref), domain_type = InterProScan_domains_nonred$ENTRY_TYPE))
+# save simplified table
+fwrite(protein_domain_pair, file = &quot;./processed_data_files/protein_domain_pair&quot;, sep = &quot;\t&quot;)</code></pre>
 </div>
 <div id="map-domain-information-on-the-protein-interaction-network" class="section level2">
 <h2>Map domain information on the protein interaction network</h2>

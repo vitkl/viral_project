@@ -4,7 +4,7 @@ Vitalii Kleshchevnikov
 
 
 
-Date: 2017-07-31 11:10:59
+Date: 2017-08-02 13:17:02
 
 ## Read InterProScan result and filter for "Domain", "Active_site", "Binding_site", "Conserved_site", "PTM" signatures
 
@@ -124,6 +124,8 @@ export(InterProScan_domains_nonred, con = "./processed_data_files/InterProScan_d
 
 # take protein-domain pair discarding range information
 protein_domain_pair = unique(data.table(IDs_protein = as.character(seqnames(InterProScan_domains_nonred)), IDs_domain = as.character(InterProScan_domains_nonred$Dbxref), domain_type = InterProScan_domains_nonred$ENTRY_TYPE))
+# save simplified table
+fwrite(protein_domain_pair, file = "./processed_data_files/protein_domain_pair", sep = "\t")
 ```
 
 ## Map domain information on the protein interaction network
