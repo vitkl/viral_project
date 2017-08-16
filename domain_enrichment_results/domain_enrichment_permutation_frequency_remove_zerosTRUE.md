@@ -2,7 +2,7 @@
 Vitalii Kleshchevnikov  
 25/07/2017  
 
-2017-08-03
+2017-08-08
 
 ## Installing/loading packages
 
@@ -46,27 +46,27 @@ Luckily, the network that we have is a bipartite undirected network (viral prote
 One of the ways to describe the problem of finding domains that are likely to mediate interaction of human proteins with viral proteins is by drawing a network which has 3 types of elements: viral proteins (V1, V2, V3), human proteins (H1-10) and human domains (D1-10).
 
 ```r
-knitr::include_graphics("./images/net_start.jpg")
+knitr::include_graphics("../images/net_start.jpg")
 ```
 
-<img src="./images/net_start.jpg" width="450px" />
+<img src="../images/net_start.jpg" width="450px" />
 
 
 First, we compute the fraction of human interacting partners of V2 that contain domain D6. Then, we compute the fold enrichment by dividing this fraction by the domain frequency among all proteins in the network. **Alternatively, we use the domain frequency as a statistic**
 
 ```r
-knitr::include_graphics("./images/net_start_calc.jpg")
+knitr::include_graphics("../images/net_start_calc.jpg")
 ```
 
-<img src="./images/net_start_calc.jpg" width="450px" />
+<img src="../images/net_start_calc.jpg" width="450px" />
 
 Next, we permute which human proteins interact with V1, V2 and V3, keeping the number of interaction per both viral and human proteins as well as number of edges (interactions) constant
 
 ```r
-knitr::include_graphics("./images/net_scram.jpg")
+knitr::include_graphics("../images/net_scram.jpg")
 ```
 
-<img src="./images/net_scram.jpg" width="450px" />
+<img src="../images/net_scram.jpg" width="450px" />
 
 Finally, we repeat this procedure 1000-5000 times which gives us the probability of specific human domain - specific viral protein co-occurence if the domain and the protein were unrelated.  
 
@@ -74,16 +74,16 @@ We calculate this by comparing real fold enrichment value to the distribution of
 
 
 ```r
-knitr::include_graphics("./images/net_start_fraq.jpg")
+knitr::include_graphics("../images/net_start_fraq.jpg")
 ```
 
-<img src="./images/net_start_fraq.jpg" width="200px" />
+<img src="../images/net_start_fraq.jpg" width="200px" />
 
 ```r
-knitr::include_graphics("./images/net_scram_fraq.jpg")
+knitr::include_graphics("../images/net_scram_fraq.jpg")
 ```
 
-<img src="./images/net_scram_fraq.jpg" width="200px" />
+<img src="../images/net_scram_fraq.jpg" width="200px" />
 
 
 ## Load network 
@@ -92,7 +92,7 @@ Network is saved by "Map_domains_to_network.Rmd" script which describes how the 
 
 
 ```r
-viral_human_net_w_domains_d = fread("./processed_data_files/viral_human_net_w_domains", sep = "\t", stringsAsFactors = F)
+viral_human_net_w_domains_d = fread("../processed_data_files/viral_human_net_w_domains", sep = "\t", stringsAsFactors = F)
 
 # generate minimal information tables
 viral_human_net = unique(viral_human_net_w_domains_d[,.(IDs_interactor_viral, IDs_interactor_human, IDs_interactor_viral_degree)])
@@ -110,8 +110,8 @@ viral_human_net_w_domains = viral_human_net_w_domains[IDs_domain_human != "",]
 
 ```r
 # generate filename for fold enrichment / frequency results
-if(frequency) filename.gz = paste0("./large_processed_data_files/viral_domainFrequency_remove_zeros",remove_zeros,".tsv.gz")
-if(!frequency) filename.gz = paste0("./large_processed_data_files/viral_domainfoldEnrichDist_remove_zeros",remove_zeros,".tsv.gz")
+if(frequency) filename.gz = paste0("../large_processed_data_files/viral_domainFrequency_remove_zeros",remove_zeros,".tsv.gz")
+if(!frequency) filename.gz = paste0("../large_processed_data_files/viral_domainfoldEnrichDist_remove_zeros",remove_zeros,".tsv.gz")
 filename = substr(filename.gz, 1, nchar(filename.gz) -3)
 
 if(!file.exists(filename.gz)){
@@ -128,8 +128,9 @@ viral_foldEnrichDist = fread(filename, sep = "\t", stringsAsFactors = F)
 
 ```
 ## 
-Read 66.6% of 19255176 rows
-Read 19255176 rows and 2 (of 2) columns from 0.388 GB file in 00:00:03
+Read 41.1% of 19255176 rows
+Read 94.3% of 19255176 rows
+Read 19255176 rows and 2 (of 2) columns from 0.388 GB file in 00:00:04
 ```
 
 ```r
@@ -171,7 +172,7 @@ plotFoldEnrichmentDist(proteinID = sample(unique(viral_human_net_w_domains$IDs_i
 
 ```r
 # generate filename for pvalue (incl. corrected) results
-filename = paste0("./processed_data_files/viralProtein_humanDomain_pval_remove_zeros",remove_zeros,"frequency",frequency,".tsv")
+filename = paste0("../processed_data_files/viralProtein_humanDomain_pval_remove_zeros",remove_zeros,"frequency",frequency,".tsv")
 
 if(!file.exists(filename)){
     proctime = proc.time()
@@ -182,14 +183,6 @@ if(!file.exists(filename)){
     fwrite(Pvals, filename, sep = "\t")
     proctime
 }
-```
-
-```
-##    user  system elapsed 
-##  10.823   6.344 288.909
-```
-
-```r
 Pvals = fread(filename, sep = "\t", stringsAsFactors = F)
 
 # plot pvalue distribution
@@ -308,7 +301,7 @@ remove_rare_domains = function(backgr_domain_count){
 }
 
 # generate filename for results excluding low_background_counts
-filename = paste0("./large_processed_data_files/domEnrich_minus_low_background_counts_remove_zeros",remove_zeros,"frequency",frequency)
+filename = paste0("../large_processed_data_files/domEnrich_minus_low_background_counts_remove_zeros",remove_zeros,"frequency",frequency)
 
 if(!file.exists(filename)){
 
@@ -460,6 +453,43 @@ d16$distPlot
 
 ![](domain_enrichment_permutation_frequency_remove_zerosTRUE_files/figure-html/unnamed-chunk-5-12.png)<!-- -->
 
+```r
+domainsCUMfreq = function(d){
+    top = d$Pvals[Pval < 0.5,]
+    merged = top[d$all.data, on = c("IDs_interactor_viral","IDs_domain_human", "domain_frequency_per_IDs_interactor_viral"), nomatch = 0]
+    dom_count = unique(merged[,.(IDs_interactor_viral, IDs_domain_human, domain_count)])
+    
+    cumulative_freq = numeric(200)
+    for(i in 1:200){
+        cumulative_freq[i] = dom_count[, sum(domain_count <= i)]
+    }
+    domainsvsfreq = data.table(domain_count = 1:200, cumulative_freq = cumulative_freq)
+}
+d = list(d0, d1, d2, d4, d8, d16)
+domainsCUMfreq_res = data.table()
+for(ind in 1:6){
+    temp = domainsCUMfreq(d[[ind]])
+    temp[, how_many_removed := c(0,1,2,4,8,16)[ind]]
+    temp[, how_many_total := nrow(unique(d[[ind]]$Pvals[Pval < 0.5,.(IDs_interactor_viral, IDs_domain_human)]))]
+    temp[, frac_removed := cumulative_freq/how_many_total]
+    domainsCUMfreq_res = rbind(domainsCUMfreq_res, temp)
+}
+n_association = nrow(unique(d0$Pvals[Pval < 0.5,.(IDs_interactor_viral, IDs_domain_human)]))
+qplot(x= domain_count, y = frac_removed, data = domainsCUMfreq_res, color = as.factor(how_many_removed)) #+ ylim(0, n_association) #+ geom_hline(aes(yintercept = how_many_total, color = as.factor(how_many_removed)))
+```
+
+![](domain_enrichment_permutation_frequency_remove_zerosTRUE_files/figure-html/unnamed-chunk-5-13.png)<!-- -->
+
+```r
+top = d1$Pvals[Pval < 0.5,]
+merged = top[d1$all.data, on = c("IDs_interactor_viral","IDs_domain_human", "domain_frequency_per_IDs_interactor_viral"), nomatch = 0]
+unique(merged[,.(IDs_interactor_viral, IDs_domain_human, domain_count)])[, sum(domain_count < 8)]
+```
+
+```
+## [1] 1057
+```
+
 ## How does my permutation pvalue distribution compare to generic fisher-test based enrichment test?
 
 This can help to evaluate how weird is the obtained distribution.
@@ -467,14 +497,20 @@ This can help to evaluate how weird is the obtained distribution.
 
 ```r
 # read all domain annotations: 
-protein_domain_pair = fread("./processed_data_files/protein_domain_pair", sep = "\t", stringsAsFactors = F)
+protein_domain_pair = fread("../processed_data_files/protein_domain_pair", sep = "\t", stringsAsFactors = F)
 enriched = clusterProfiler::enricher(gene = viral_human_net$IDs_interactor_human,
                           pvalueCutoff = 1, pAdjustMethod = "BH", 
                           universe = protein_domain_pair$IDs_protein,
                           minGSSize = 10, maxGSSize = 500, qvalueCutoff = 1, 
                           TERM2GENE = protein_domain_pair[,.(IDs_domain, IDs_protein)], 
                           TERM2NAME = NA)
+```
 
+```
+## 
+```
+
+```r
 ggplot(as.data.frame(enriched), aes(x = pvalue)) + geom_histogram(bins = 100) + ggtitle("human domains enriched in viral-interacting human proteins \n Fisher test (clusterProfiler) pvalue distribution") + theme_light() + xlim(-0.01,1.01)
 ```
 
@@ -493,9 +529,9 @@ gc()
 ```
 
 ```
-##           used  (Mb) gc trigger   (Mb)   max used    (Mb)
-## Ncells 5094222 272.1   12002346  641.0   12002346   641.0
-## Vcells 6025302  46.0  991577331 7565.2 1679673706 12814.9
+##           used  (Mb) gc trigger   (Mb)   max used   (Mb)
+## Ncells 4836074 258.3    8273852  441.9    6861544  366.5
+## Vcells 4645360  35.5  823340624 6281.6 1029172193 7852.0
 ```
 
 ```r
@@ -503,7 +539,7 @@ Sys.Date()
 ```
 
 ```
-## [1] "2017-08-03"
+## [1] "2017-08-08"
 ```
 
 ```r
@@ -516,7 +552,7 @@ sessionInfo()
 ## Running under: macOS Sierra 10.12.6
 ## 
 ## Matrix products: default
-## BLAS: /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib
+## BLAS: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRblas.0.dylib
 ## LAPACK: /Library/Frameworks/R.framework/Versions/3.4/Resources/lib/libRlapack.dylib
 ## 
 ## locale:
@@ -532,7 +568,7 @@ sessionInfo()
 ##  [7] plyr_1.8.4          httr_1.2.1          biomaRt_2.32.1     
 ## [10] IRanges_2.10.2      S4Vectors_0.14.3    BiocGenerics_0.22.0
 ## [13] ggplot2_2.2.1       R.utils_2.5.0       R.oo_1.21.0        
-## [16] R.methodsS3_1.7.1   data.table_1.10.4   rmarkdown_1.6      
+## [16] R.methodsS3_1.7.1   data.table_1.10.4  
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] Biobase_2.36.2             tidyr_0.6.3               
@@ -546,29 +582,29 @@ sessionInfo()
 ## [17] RColorBrewer_1.1-2         colorspace_1.3-2          
 ## [19] htmltools_0.3.6            Matrix_1.2-10             
 ## [21] XML_3.98-1.9               pkgconfig_2.0.1           
-## [23] devtools_1.13.3            clusterProfiler_3.5.2     
-## [25] zlibbioc_1.22.0            GO.db_3.4.1               
-## [27] scales_0.4.1               BiocParallel_1.10.1       
-## [29] tibble_1.3.3               withr_2.0.0               
-## [31] SummarizedExperiment_1.6.3 lazyeval_0.2.0            
-## [33] proto_1.0.0                magrittr_1.5              
-## [35] memoise_1.1.0              DOSE_3.3.0                
-## [37] evaluate_0.10.1            MASS_7.3-47               
-## [39] tools_3.4.0                matrixStats_0.52.2        
-## [41] stringr_1.2.0              munsell_0.4.3             
-## [43] DelayedArray_0.2.7         AnnotationDbi_1.38.1      
-## [45] vcd_1.4-3                  compiler_3.4.0            
-## [47] GenomeInfoDb_1.12.2        caTools_1.17.1            
-## [49] rlang_0.1.1                grid_3.4.0                
-## [51] RCurl_1.95-4.8             igraph_1.1.2              
-## [53] bitops_1.0-6               labeling_0.3              
-## [55] gtable_0.2.0               DBI_0.7                   
-## [57] reshape_0.8.6              reshape2_1.4.2            
-## [59] R6_2.2.2                   zoo_1.8-0                 
-## [61] GenomicAlignments_1.12.1   gridExtra_2.2.1           
-## [63] knitr_1.16                 rtracklayer_1.36.3        
-## [65] bit_1.1-12                 fastmatch_1.1-0           
-## [67] fgsea_1.2.1                rprojroot_1.2             
-## [69] GOSemSim_2.3.0             stringi_1.1.5             
-## [71] Rcpp_0.12.12               lmtest_0.9-35
+## [23] clusterProfiler_3.5.2      zlibbioc_1.22.0           
+## [25] GO.db_3.4.1                scales_0.4.1              
+## [27] BiocParallel_1.10.1        tibble_1.3.3              
+## [29] SummarizedExperiment_1.6.3 lazyeval_0.2.0            
+## [31] proto_1.0.0                magrittr_1.5              
+## [33] memoise_1.1.0              DOSE_3.3.0                
+## [35] evaluate_0.10.1            MASS_7.3-47               
+## [37] tools_3.4.0                matrixStats_0.52.2        
+## [39] stringr_1.2.0              munsell_0.4.3             
+## [41] DelayedArray_0.2.7         AnnotationDbi_1.38.1      
+## [43] vcd_1.4-3                  compiler_3.4.0            
+## [45] GenomeInfoDb_1.12.2        caTools_1.17.1            
+## [47] rlang_0.1.1                grid_3.4.0                
+## [49] RCurl_1.95-4.8             igraph_1.1.2              
+## [51] bitops_1.0-6               labeling_0.3              
+## [53] rmarkdown_1.6              gtable_0.2.0              
+## [55] DBI_0.7                    reshape_0.8.6             
+## [57] reshape2_1.4.2             R6_2.2.2                  
+## [59] zoo_1.8-0                  gridExtra_2.2.1           
+## [61] GenomicAlignments_1.12.1   knitr_1.16                
+## [63] rtracklayer_1.36.3         bit_1.1-12                
+## [65] fastmatch_1.1-0            fgsea_1.2.1               
+## [67] rprojroot_1.2              stringi_1.1.5             
+## [69] GOSemSim_2.3.0             Rcpp_0.12.12              
+## [71] lmtest_0.9-35
 ```

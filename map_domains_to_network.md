@@ -4,7 +4,7 @@ Vitalii Kleshchevnikov
 
 
 
-Date: 2017-08-02 13:17:02
+Date: 2017-08-15 19:33:54
 
 ## Read InterProScan result and filter for "Domain", "Active_site", "Binding_site", "Conserved_site", "PTM" signatures
 
@@ -164,9 +164,12 @@ Next, the frequency of each domain is calculated and simplified domain informati
 
 ```r
 protein_domain_pair_temp = copy(protein_domain_pair)[, IDs_interactor_human := IDs_protein][, IDs_protein := NULL][, IDs_domain_human := IDs_domain][, IDs_domain := NULL]
+
+# calculate total number of human proteins
+protein_domain_pair_temp[, N_prot_w_interactors := length(unique(IDs_interactor_human))]
 # calculate domain count and frequency
 protein_domain_pair_temp[, domain_count := length(unique(IDs_interactor_human)), by = IDs_domain_human]
-protein_domain_pair_temp[, domain_frequency := domain_count / length(unique(IDs_interactor_human))]
+protein_domain_pair_temp[, domain_frequency := domain_count / N_prot_w_interactors]
 
 # calculate network descriptive stats
 # viral protein degree
@@ -191,6 +194,7 @@ viral_human_w_domains[is.na(IDs_domain_human), domain_frequency_per_IDs_interact
 # fold enrichment
 viral_human_w_domains[, fold_enrichment := domain_frequency_per_IDs_interactor_viral / domain_frequency]
 viral_human_w_domains[is.na(IDs_domain_human), fold_enrichment := 0]
+
 
 # save resulting network
 fwrite(viral_human_w_domains, file = "./processed_data_files/viral_human_net_w_domains", sep = "\t")

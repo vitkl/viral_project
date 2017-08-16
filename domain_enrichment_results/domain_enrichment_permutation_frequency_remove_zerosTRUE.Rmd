@@ -75,18 +75,18 @@ Luckily, the network that we have is a bipartite undirected network (viral prote
 
 One of the ways to describe the problem of finding domains that are likely to mediate interaction of human proteins with viral proteins is by drawing a network which has 3 types of elements: viral proteins (V1, V2, V3), human proteins (H1-10) and human domains (D1-10).
 ```{r f1, out.width = "450px"}
-knitr::include_graphics("./images/net_start.jpg")
+knitr::include_graphics("../images/net_start.jpg")
 ```
 
 
 First, we compute the fraction of human interacting partners of V2 that contain domain D6. Then, we compute the fold enrichment by dividing this fraction by the domain frequency among all proteins in the network. **Alternatively, we use the domain frequency as a statistic**
 ```{r f2, out.width = "450px"}
-knitr::include_graphics("./images/net_start_calc.jpg")
+knitr::include_graphics("../images/net_start_calc.jpg")
 ```
 
 Next, we permute which human proteins interact with V1, V2 and V3, keeping the number of interaction per both viral and human proteins as well as number of edges (interactions) constant
 ```{r f4, out.width = "450px"}
-knitr::include_graphics("./images/net_scram.jpg")
+knitr::include_graphics("../images/net_scram.jpg")
 ```
 
 Finally, we repeat this procedure 1000-5000 times which gives us the probability of specific human domain - specific viral protein co-occurence if the domain and the protein were unrelated.  
@@ -94,10 +94,10 @@ Finally, we repeat this procedure 1000-5000 times which gives us the probability
 We calculate this by comparing real fold enrichment value to the distribution of fold enrichment of randomly associated domains. For each human domain-viral protein value we calculate the fraction of the (random, NULL) distribution that is as high or higher than the real value.  
 
 ```{r f6, out.width = "200px"}
-knitr::include_graphics("./images/net_start_fraq.jpg")
+knitr::include_graphics("../images/net_start_fraq.jpg")
 ```
 ```{r f7, out.width = "200px"}
-knitr::include_graphics("./images/net_scram_fraq.jpg")
+knitr::include_graphics("../images/net_scram_fraq.jpg")
 ```
 
 
@@ -106,7 +106,7 @@ knitr::include_graphics("./images/net_scram_fraq.jpg")
 Network is saved by "Map_domains_to_network.Rmd" script which describes how the network and domain data were obtained.
 
 ```{r load}
-viral_human_net_w_domains_d = fread("./processed_data_files/viral_human_net_w_domains", sep = "\t", stringsAsFactors = F)
+viral_human_net_w_domains_d = fread("../processed_data_files/viral_human_net_w_domains", sep = "\t", stringsAsFactors = F)
 
 # generate minimal information tables
 viral_human_net = unique(viral_human_net_w_domains_d[,.(IDs_interactor_viral, IDs_interactor_human, IDs_interactor_viral_degree)])
@@ -123,8 +123,8 @@ viral_human_net_w_domains = viral_human_net_w_domains[IDs_domain_human != "",]
 
 ```{r viral_foldEnrichDist, fig.height=12, fig.width=12}
 # generate filename for fold enrichment / frequency results
-if(frequency) filename.gz = paste0("./large_processed_data_files/viral_domainFrequency_remove_zeros",remove_zeros,".tsv.gz")
-if(!frequency) filename.gz = paste0("./large_processed_data_files/viral_domainfoldEnrichDist_remove_zeros",remove_zeros,".tsv.gz")
+if(frequency) filename.gz = paste0("../large_processed_data_files/viral_domainFrequency_remove_zeros",remove_zeros,".tsv.gz")
+if(!frequency) filename.gz = paste0("../large_processed_data_files/viral_domainfoldEnrichDist_remove_zeros",remove_zeros,".tsv.gz")
 filename = substr(filename.gz, 1, nchar(filename.gz) -3)
 
 if(!file.exists(filename.gz)){
@@ -156,7 +156,7 @@ plotFoldEnrichmentDist(proteinID = sample(unique(viral_human_net_w_domains$IDs_i
 
 ```{r Pvals}
 # generate filename for pvalue (incl. corrected) results
-filename = paste0("./processed_data_files/viralProtein_humanDomain_pval_remove_zeros",remove_zeros,"frequency",frequency,".tsv")
+filename = paste0("../processed_data_files/viralProtein_humanDomain_pval_remove_zeros",remove_zeros,"frequency",frequency,".tsv")
 
 if(!file.exists(filename)){
     proctime = proc.time()
@@ -269,7 +269,7 @@ remove_rare_domains = function(backgr_domain_count){
 }
 
 # generate filename for results excluding low_background_counts
-filename = paste0("./large_processed_data_files/domEnrich_minus_low_background_counts_remove_zeros",remove_zeros,"frequency",frequency)
+filename = paste0("../large_processed_data_files/domEnrich_minus_low_background_counts_remove_zeros",remove_zeros,"frequency",frequency)
 
 if(!file.exists(filename)){
 
@@ -313,6 +313,33 @@ d8$PvalPlot
 d8$distPlot
 d16$PvalPlot
 d16$distPlot
+
+domainsCUMfreq = function(d){
+    top = d$Pvals[Pval < 0.5,]
+    merged = top[d$all.data, on = c("IDs_interactor_viral","IDs_domain_human", "domain_frequency_per_IDs_interactor_viral"), nomatch = 0]
+    dom_count = unique(merged[,.(IDs_interactor_viral, IDs_domain_human, domain_count)])
+    
+    cumulative_freq = numeric(200)
+    for(i in 1:200){
+        cumulative_freq[i] = dom_count[, sum(domain_count <= i)]
+    }
+    domainsvsfreq = data.table(domain_count = 1:200, cumulative_freq = cumulative_freq)
+}
+d = list(d0, d1, d2, d4, d8, d16)
+domainsCUMfreq_res = data.table()
+for(ind in 1:6){
+    temp = domainsCUMfreq(d[[ind]])
+    temp[, how_many_removed := c(0,1,2,4,8,16)[ind]]
+    temp[, how_many_total := nrow(unique(d[[ind]]$Pvals[Pval < 0.5,.(IDs_interactor_viral, IDs_domain_human)]))]
+    temp[, frac_removed := cumulative_freq/how_many_total]
+    domainsCUMfreq_res = rbind(domainsCUMfreq_res, temp)
+}
+n_association = nrow(unique(d0$Pvals[Pval < 0.5,.(IDs_interactor_viral, IDs_domain_human)]))
+qplot(x= domain_count, y = frac_removed, data = domainsCUMfreq_res, color = as.factor(how_many_removed)) #+ ylim(0, n_association) #+ geom_hline(aes(yintercept = how_many_total, color = as.factor(how_many_removed)))
+
+top = d1$Pvals[Pval < 0.5,]
+merged = top[d1$all.data, on = c("IDs_interactor_viral","IDs_domain_human", "domain_frequency_per_IDs_interactor_viral"), nomatch = 0]
+unique(merged[,.(IDs_interactor_viral, IDs_domain_human, domain_count)])[, sum(domain_count < 8)]
 ```
 
 ## How does my permutation pvalue distribution compare to generic fisher-test based enrichment test?
@@ -321,7 +348,7 @@ This can help to evaluate how weird is the obtained distribution.
 
 ```{r}
 # read all domain annotations: 
-protein_domain_pair = fread("./processed_data_files/protein_domain_pair", sep = "\t", stringsAsFactors = F)
+protein_domain_pair = fread("../processed_data_files/protein_domain_pair", sep = "\t", stringsAsFactors = F)
 enriched = clusterProfiler::enricher(gene = viral_human_net$IDs_interactor_human,
                           pvalueCutoff = 1, pAdjustMethod = "BH", 
                           universe = protein_domain_pair$IDs_protein,
