@@ -8,7 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-packages = c("MItools", "rtracklayer", "ggplot2", "GGally")
+packages = c("MItools", "rtracklayer", "ggplot2", "GGally", "RColorBrewer")
 if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
     packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
     # specifying mirror is necessary for some Linux systems
@@ -24,6 +24,7 @@ suppressPackageStartupMessages({
     library(rtracklayer)
     library(ggplot2)
     library(GGally)
+    library(RColorBrewer)
 })
 ```
 
@@ -34,8 +35,6 @@ suppressPackageStartupMessages({
 if(detectCores() <= 4) cores_to_use = detectCores() - 1
 if(detectCores() > 4) cores_to_use = 15
 
-# Do I remove proteins with missing domains before ... not relevant anymore (however necessary for the code to work as of 17.08): these proteins are accounted for in permutationPval function and the count of human proteins not missing domains per viral protein is reported in not_missing column
-include_missing_Z_as_zero = TRUE
 # how many permutations?
 N_permut = 1000
 ```
@@ -45,23 +44,64 @@ N_permut = 1000
 ## Calculate empirical pvalues using either frequency of a domain among interacting partners of viral protein or Fisher test p-value
 
 ```{r calculate_pvals}
-# frequency
+# frequency function: set up standard parameters
+permuteFrequency = function(data, select_nodes = NULL){
+    res = permutationPval(interactions2permute = IDs_interactor_viral ~ IDs_interactor_human, # first set of interacting pairs (XY) that are to be permuted
+                          associations2test = IDs_interactor_viral ~ IDs_domain_human, # set of interacting pairs to be tested (XZ), YZ interactions are assumed
+                          node_attr = list(IDs_interactor_viral ~ IDs_interactor_viral_degree,
+                                           IDs_domain_human ~ domain_count,
+                                           IDs_interactor_viral + IDs_domain_human ~ domain_frequency_per_IDs_interactor_viral),
+                          data = data,
+                          statistic = IDs_interactor_viral + IDs_domain_human ~ .N / IDs_interactor_viral_degree,
+                          select_nodes = select_nodes,
+                          N = N_permut,
+                          cores = cores_to_use, seed = 2)
+    return(res)
+}
 data = fread("./processed_data_files/viral_human_net_w_domains", sep = "\t", stringsAsFactors = F)
-time = proc.time()
-res = permutationPval(interactions2permute = IDs_interactor_viral ~ IDs_interactor_human, # first set of interacting pairs (XY) that are to be permuted
-                      associations2test = IDs_interactor_viral ~ IDs_domain_human, # set of interacting pairs to be tested (XZ), YZ interactions are assumed
-                      node_attr = list(IDs_interactor_viral ~ IDs_interactor_viral_degree,
-                                       IDs_domain_human ~ domain_count,
-                                       IDs_interactor_viral + IDs_domain_human ~ domain_frequency_per_IDs_interactor_viral),
-                      data = data,
-                      statistic = IDs_interactor_viral + IDs_domain_human ~ .N / IDs_interactor_viral_degree,
-                      #select_nodes = IDs_domain_human ~ domain_count >= 1,
-                      N = N_permut,
-                      cores = cores_to_use, seed = 2, include_missing_Z_as_zero = include_missing_Z_as_zero)
-proc.time() - time
-hist(res$data_with_pval[, .(IDs_interactor_viral, IDs_domain_human, p.value)][, p.value], breaks = seq(0,1,0.01))
 
-# Fisher test
+# frequency: all proteins and domains
+time = proc.time()
+res = permuteFrequency(data, select_nodes = NULL)
+proc.time() - time
+permutationPvalPlot(res, main = "frequency: all proteins and domains")
+
+# frequency: removed low background count domains
+res_low_back = permuteFrequency(data, select_nodes = IDs_domain_human ~ domain_count >= 3)
+permutationPvalPlot(res_low_back, main = "frequency: removed low background count domains (>= 3)")
+
+# frequency: not considering (fixing interactions, degree of every node in the network stays the same, but only high degree proteins are taken into account, equivalent to  permuting only interactions of protein with the degree higher than 1) and viral proteins with the degree of 1
+res_low_deg = permuteFrequency(data, select_nodes = IDs_interactor_viral ~ IDs_interactor_viral_degree >= 2)
+permutationPvalPlot(res_low_deg, main = "frequency: not considering viral proteins with the degree of 1")
+
+# frequency: BOTH removed low background count domains AND considering viral proteins with the degree of 1
+
+res_low_deg_back = permuteFrequency(data, select_nodes = list(IDs_domain_human ~ domain_count >= 3,
+                                                              IDs_interactor_viral ~ IDs_interactor_viral_degree >= 2))
+permutationPvalPlot(res_low_deg_back, main = "frequency: removed low background count domains (>= 3)\nAND not considering viral proteins with the degree of 1")
+
+# Fisher test: set up standard parameters
+permuteFisherTest = function(data, select_nodes = NULL){
+    resFISHER = permutationPval(interactions2permute = IDs_interactor_viral ~ IDs_interactor_human, # first set of interacting pairs (XY) that are to be permuted
+                                associations2test = IDs_interactor_viral ~ IDs_domain_human, # set of interacting pairs to be tested (XZ), YZ interactions are assumed
+                                node_attr = list(IDs_interactor_viral ~ IDs_interactor_viral_degree, # attribute of X
+                                                 IDs_domain_human ~ domain_count + N_prot_w_interactors, # attributes of Z
+                                                 IDs_interactor_viral + IDs_domain_human ~ domain_count_per_IDs_interactor_viral), # attribute of both X and Z
+                                data = data, # data.table containing data
+                                statistic = IDs_interactor_viral + IDs_domain_human ~ fisher.test(
+                                    matrix(c(unique(domain_count_per_IDs_interactor_viral), 
+                                             unique(IDs_interactor_viral_degree) - unique(domain_count_per_IDs_interactor_viral),
+                                             unique(domain_count), 
+                                             unique(N_prot_w_interactors) - unique(domain_count)),
+                                           2,2), 
+                                    alternative = "greater", conf.int = F)$p.value, # formula to calculate statisic by evaluating right-hand-side expression for each X and Z pair, right-hand-side expression is what is normally put in j in data.table DT[i, j, by], left-hand-side expression contains column names of X and Z which are used in by in data.table
+                                select_nodes = select_nodes, # select a subset of the data, only nodes 
+                                N = N_permut, # number of permutations
+                                cores = cores_to_use, seed = 1)
+    # permutationPval returns the number of cases when permuted statitic is higher than the observed statistic (right tail of the distribution), in this case we are interested in the reverse - the lower tail, when p-values from permuted distribution that are lower than the observed p-value
+    resFISHER$data_with_pval[, p.value := 1 - p.value]
+    return(resFISHER)
+}
 # contingency matrix:
 matrix(c("unique(domain_count_per_IDs_interactor_viral)", 
          "unique(IDs_interactor_viral_degree) - unique(domain_count_per_IDs_interactor_viral)", 
@@ -69,26 +109,9 @@ matrix(c("unique(domain_count_per_IDs_interactor_viral)",
          "unique(N_prot_w_interactors) - unique(domain_count)"),2,2)
 # test
 time = proc.time()
-resFISHER = permutationPval(interactions2permute = IDs_interactor_viral ~ IDs_interactor_human, # first set of interacting pairs (XY) that are to be permuted
-                            associations2test = IDs_interactor_viral ~ IDs_domain_human, # set of interacting pairs to be tested (XZ), YZ interactions are assumed
-                            node_attr = list(IDs_interactor_viral ~ IDs_interactor_viral_degree, # attribute of X
-                                             IDs_domain_human ~ domain_count + N_prot_w_interactors, # attributes of Z
-                                             IDs_interactor_viral + IDs_domain_human ~ domain_count_per_IDs_interactor_viral), # attribute of both X and Z
-                            data = data, # data.table containing data
-                            statistic = IDs_interactor_viral + IDs_domain_human ~ fisher.test(
-                                matrix(c(unique(domain_count_per_IDs_interactor_viral), 
-                                         unique(IDs_interactor_viral_degree) - unique(domain_count_per_IDs_interactor_viral),
-                                         unique(domain_count), 
-                                         unique(N_prot_w_interactors) - unique(domain_count)),
-                                       2,2), 
-                                alternative = "greater", conf.int = F)$p.value, # formula to calculate statisic by evaluating right-hand-side expression for each X and Z pair, right-hand-side expression is what is normally put in j in data.table DT[i, j, by], left-hand-side expression contains column names of X and Z which are used in by in data.table
-                            #select_nodes = IDs_domain_human ~ domain_count >= 1, # select a subset of the data, only nodes 
-                            N = N_permut, # number of permutations
-                            cores = cores_to_use, seed = 1, include_missing_Z_as_zero = include_missing_Z_as_zero)
-# permutationPval returns the number of cases when observed statistic is lower than permuted statitic (right tail of the distribution), in this case we are interested in the reverse - the lower tail
-resFISHER$data_with_pval[, p.value := 1 - p.value]
+resFISHER = permuteFisherTest(data, select_nodes = NULL)
 proc.time() - time
-hist(resFISHER$data_with_pval[, .(IDs_interactor_viral, IDs_domain_human, p.value)][, p.value], breaks = seq(0,1,0.01))
+permutationPvalPlot(resFISHER, main = "Fisher test P-value: all proteins and domains")
 ```
 
 ## Viral protein degree and the background domain count of top-scoring proteins
@@ -112,30 +135,28 @@ log10_density = function(data, mapping, ...){
         scale_x_log10()
 }
 
+PermutResult2D = function(res, N){
+    GGally::ggpairs(res$data_pval_simp[order(p.value)[1:N],.(domain_count, 
+                                                             IDs_interactor_viral_degree, 
+                                                             domain_count_per_IDs_interactor_viral,
+                                                             p.value)], 
+                    lower = list(continuous = d2_bin_log10)#, 
+                    #diag = list(continuous = geom_density)
+    ) +
+        theme_light() +
+        theme(strip.text.y = element_text(angle = 0, size = 10),
+              strip.text.x = element_text(angle = 90, size = 10))
+}
+
 # frequency of a domain
-GGally::ggpairs(res$data_pval_simp[order(p.value)[1:250],.(domain_count, 
-                                                           IDs_interactor_viral_degree, 
-                                                           domain_count_per_IDs_interactor_viral,
-                                                           p.value)], 
-                lower = list(continuous = d2_bin_log10)#, 
-                #diag = list(continuous = geom_density)
-) +
-    theme_light() +
-    theme(strip.text.y = element_text(angle = 0, size = 10),
-          strip.text.x = element_text(angle = 90, size = 10)) +
+PermutResult2D(res = res, N = 250) +
     ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: frequency of a domain among interacting partners of a viral protein")
+# frequency of a domain: removed low background count domains
+PermutResult2D(res = res, N = 250) +
+    ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: frequency of a domain among interacting partners of a viral protein \n removed low background count domains")
 
 # Fisher test p-value
-GGally::ggpairs(resFISHER$data_pval_simp[order(p.value)[1:250],.(domain_count, 
-                                                                 IDs_interactor_viral_degree, 
-                                                                 domain_count_per_IDs_interactor_viral,
-                                                                 p.value)], 
-                lower = list(continuous = d2_bin_log10)#, 
-                #diag = list(continuous = geom_density)
-) +
-    theme_light() +
-    theme(strip.text.y = element_text(angle = 0, size = 10),
-          strip.text.x = element_text(angle = 90, size = 10)) +
+PermutResult2D(res = resFISHER, N = 250) + 
     ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: Fisher test p-value")
 ```
 
@@ -158,12 +179,12 @@ domains_not_mapped = unique(domains_known[!domains_known %in% domains_mapping$an
 I did Fisher test to evaluate if the domains that we find are enriched in domains known to interact with linear motifs (from ELM). I have picked some number of viral protein - human domain associations from the top (by p-value). Then I counted how many known domains we have found and did Fisher test. I decided to compare two statistic choices (frequency of a domain among interacting partners of a viral protein or Fisher test p-value) on how many of the known domains we tend to find. Finally, I was choosing different cutoffs (different number of top p-value pairs). 
 
 ```{r overrepresentation_test}
-test_enrichment = function(N, res, domains_known_mapped, random = F, seed = 1){
+test_enrichment = function(N, res, domains_known_mapped, random = F, seed = 1, name = ""){
     if(random) {set.seed(seed); domains_found = res$data_pval[sample(1:nrow(res$data_pval), N), unique(IDs_domain_human)]}
     if(!random){
         res$data_pval = unique(res$data_with_pval[,.(IDs_interactor_viral, IDs_domain_human, p.value, domain_type, domain_count, IDs_interactor_viral_degree)])
         res$data_pval[, pval_fdr := p.adjust(p.value, method = "fdr")]
-        hist(res$data_pval[, pval_fdr], breaks = seq(0,1,0.01))
+        # hist(res$data_pval[, pval_fdr], breaks = seq(0,1,0.01))
         
         domains_found = res$data_pval[order(p.value)[1:N], unique(IDs_domain_human)]
     }
@@ -175,11 +196,17 @@ test_enrichment = function(N, res, domains_known_mapped, random = F, seed = 1){
     
     test = fisher.test(table(known, found), alternative = "greater", conf.int = T)
     
-    return(c(test$p.value, test$estimate, table_res["TRUE", "TRUE"]))
+    return(c(test$p.value, test$estimate, table_res["TRUE", "TRUE"], name = name))
 }
 
 enrichment = sapply(seq(25, 500, 25), test_enrichment, res, domains_known_mapped)
 colnames(enrichment) = seq(25, 500, 25)
+enrichment_low_back = sapply(seq(25, 500, 25), test_enrichment, res_low_back, domains_known_mapped)
+colnames(enrichment_low_back) = seq(25, 500, 25)
+enrichment_low_deg = sapply(seq(25, 500, 25), test_enrichment, res_low_deg, domains_known_mapped)
+colnames(enrichment_low_deg) = seq(25, 500, 25)
+enrichment_low_deg_back = sapply(seq(25, 500, 25), test_enrichment, res_low_deg_back, domains_known_mapped)
+colnames(enrichment_low_deg_back) = seq(25, 500, 25)
 enrichmentFISHER = sapply(seq(25, 500, 25), test_enrichment, resFISHER, domains_known_mapped)
 colnames(enrichmentFISHER) = seq(25, 500, 25)
 enrichmentRANDOM = sapply(seq(25, 500, 25), test_enrichment, res, domains_known_mapped, random = T, seed = 1)
@@ -189,11 +216,27 @@ colnames(enrichmentRANDOM) = seq(25, 500, 25)
 ## As we include more proteins, the number of known domains we find increases and then levels off (probably because some of the known domains do not interact with viral proteins).
 
 ```{r domains_found, fig.height = 6, fig.width = 9}
-plot(colnames(enrichment), enrichment[3,], ylab = "known domain found", xlab = "top N viral protein - domain pairs selected", col = "red", type = "l", ylim = c(0,length(domains_known_mapped)+1))
-lines(x = colnames(enrichment), y = enrichmentFISHER[3,], col = "blue", type = "l")
-lines(x = colnames(enrichment), y = enrichmentRANDOM[3,], col = "violet", type = "l")
-abline(h = length(domains_known_mapped), col = "green")
-legend(x = 80, y = 50, c("statictic used in permutation test:","domain frequency among interactors of a viral protein", "Fisher test pval: domain overrepresentation over the background", "N random proteins", "domains known to interact with linear motifs"), col = c("white","red", "blue", "violet", "green"), lty = 1 , merge = TRUE)
+plotEnrichment = function(..., domains_known_mapped, type = "count", plot_type = plot_type){
+    res = list(...)
+    typenum = match(type, c("pval", "odds_ratio", "count"))
+    ngroups = length(res)
+    if(type == "count") color = brewer.pal(ngroups + 1, "Dark2") else color = brewer.pal(ngroups, "Dark2")
+    if(is.na(typenum)) stop("'type' should be one of “count”, “odds_ratio”, “pval”")
+    leg_pos_y = max(sapply(res, function(x, typenum) max(x[typenum,]), typenum))
+    leg_pos_x = max(sapply(res, function(x) max(as.numeric(colnames(x))))) * 0.16
+    if(type == "count") plot(colnames(res[[1]]), resres[[1]][typenum,], ylab = "known domain found", xlab = "top N viral protein - domain pairs selected", col = color[1], type = plot_type, ylim = c(0,length(domains_known_mapped)+1))
+    if(type != "count") plot(colnames(resres[[1]]), resres[[1]][typenum,], ylab = "known domain found", xlab = "top N viral protein - domain pairs selected", col = color[1], type = plot_type, ylim = c(0,leg_pos_y+1))
+    for (i in 2:ngroups) {
+        lines(x = colnames(res[[i]]), y = res[[i]][typenum,], col = color[2], type = plot_type)
+    }
+    if(type == "count") abline(h = length(domains_known_mapped), col = color[ngroups + 1])
+    legend(x = leg_pos_x, y = leg_pos_y, 
+           c("statictic used in permutation test:",
+             sapply(res, function(x) x)
+             "domain frequency among interactors of a viral protein", "Fisher test pval: domain overrepresentation over the background", "N random proteins", "domains known to interact with linear motifs"), 
+           col = c("white", color), lty = 1 , merge = TRUE)
+}
+
 ```
 
 ## As we include more proteins, the Fisher test odds ratio decreases (we add more stuff that is not known). Odds ratio measures how much more likely are we to find a domain using our procedure if it’s a known domain as compared to if it’s not a known domain.
