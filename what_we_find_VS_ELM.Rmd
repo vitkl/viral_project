@@ -179,8 +179,8 @@ domains_not_mapped = unique(domains_known[!domains_known %in% domains_mapping$an
 I did Fisher test to evaluate if the domains that we find are enriched in domains known to interact with linear motifs (from ELM). I have picked some number of viral protein - human domain associations from the top (by p-value). Then I counted how many known domains we have found and did Fisher test. I decided to compare two statistic choices (frequency of a domain among interacting partners of a viral protein or Fisher test p-value) on how many of the known domains we tend to find. Finally, I was choosing different cutoffs (different number of top p-value pairs). 
 
 ```{r overrepresentation_test}
-test_enrichment = function(N, res, domains_known_mapped, random = F, seed = 1, name = ""){
-    if(random) {set.seed(seed); domains_found = res$data_pval[sample(1:nrow(res$data_pval), N), unique(IDs_domain_human)]}
+test_enrichment = function(N, res, domains_known_mapped, random = F, name = ""){
+    if(random) {domains_found = res$data_pval[sample(1:nrow(res$data_pval), N), unique(IDs_domain_human)]}
     if(!random){
         res$data_pval = unique(res$data_with_pval[,.(IDs_interactor_viral, IDs_domain_human, p.value, domain_type, domain_count, IDs_interactor_viral_degree)])
         res$data_pval[, pval_fdr := p.adjust(p.value, method = "fdr")]
@@ -196,56 +196,81 @@ test_enrichment = function(N, res, domains_known_mapped, random = F, seed = 1, n
     
     test = fisher.test(table(known, found), alternative = "greater", conf.int = T)
     
-    return(c(test$p.value, test$estimate, table_res["TRUE", "TRUE"], name = name))
+    return(c(pval = test$p.value, odds_ratio = test$estimate, count = table_res["TRUE", "TRUE"], name = name))
 }
 
-enrichment = sapply(seq(25, 500, 25), test_enrichment, res, domains_known_mapped)
+enrichment = sapply(seq(25, 500, 25), test_enrichment, res, domains_known_mapped, name = "domain frequency among interactors of a viral protein")
 colnames(enrichment) = seq(25, 500, 25)
-enrichment_low_back = sapply(seq(25, 500, 25), test_enrichment, res_low_back, domains_known_mapped)
+enrichment_low_back = sapply(seq(25, 500, 25), test_enrichment, res_low_back, domains_known_mapped, name = "domain frequency: low background removed")
 colnames(enrichment_low_back) = seq(25, 500, 25)
-enrichment_low_deg = sapply(seq(25, 500, 25), test_enrichment, res_low_deg, domains_known_mapped)
+enrichment_low_deg = sapply(seq(25, 500, 25), test_enrichment, res_low_deg, domains_known_mapped, name = "domain frequency: degree of 1 removed")
 colnames(enrichment_low_deg) = seq(25, 500, 25)
-enrichment_low_deg_back = sapply(seq(25, 500, 25), test_enrichment, res_low_deg_back, domains_known_mapped)
+enrichment_low_deg_back = sapply(seq(25, 500, 25), test_enrichment, res_low_deg_back, domains_known_mapped, name = "domain frequency: degree of 1 AND low background removed")
 colnames(enrichment_low_deg_back) = seq(25, 500, 25)
-enrichmentFISHER = sapply(seq(25, 500, 25), test_enrichment, resFISHER, domains_known_mapped)
+enrichmentFISHER = sapply(seq(25, 500, 25), test_enrichment, resFISHER, domains_known_mapped, name = "Fisher test pval: domain overrepresentation over the background")
 colnames(enrichmentFISHER) = seq(25, 500, 25)
-enrichmentRANDOM = sapply(seq(25, 500, 25), test_enrichment, res, domains_known_mapped, random = T, seed = 1)
-colnames(enrichmentRANDOM) = seq(25, 500, 25)
+
+set.seed(1)
+X = replicate(1, {
+    enrichmentRANDOM = sapply(seq(25, 500, 25), test_enrichment, res, domains_known_mapped, random = T, name = "N random proteins")[1:3,]
+    colnames(enrichmentRANDOM) = seq(25, 500, 25)
+    #enrichmentRANDOM[1,] = as.numeric(enrichmentRANDOM[1,])
+    #enrichmentRANDOM[2,] = as.numeric(enrichmentRANDOM[2,])
+    #enrichmentRANDOM[3,] = as.numeric(enrichmentRANDOM[3,])
+    enrichmentRANDOM
+})
+
 ```
 
 ## As we include more proteins, the number of known domains we find increases and then levels off (probably because some of the known domains do not interact with viral proteins).
 
 ```{r domains_found, fig.height = 6, fig.width = 9}
 plotEnrichment = function(..., domains_known_mapped, type = "count", plot_type = plot_type){
+    
     res = list(...)
     typenum = match(type, c("pval", "odds_ratio", "count"))
     ngroups = length(res)
+    
     if(type == "count") color = brewer.pal(ngroups + 1, "Dark2") else color = brewer.pal(ngroups, "Dark2")
     if(is.na(typenum)) stop("'type' should be one of “count”, “odds_ratio”, “pval”")
-    leg_pos_y = max(sapply(res, function(x, typenum) max(x[typenum,]), typenum))
+    
+    leg_pos_y = max(sapply(res, function(x, typenum) max(as.numeric(x[typenum,])), typenum))
+    if(type == "count") leg_pos_y = length(domains_known_mapped) - 1
     leg_pos_x = max(sapply(res, function(x) max(as.numeric(colnames(x))))) * 0.16
-    if(type == "count") plot(colnames(res[[1]]), resres[[1]][typenum,], ylab = "known domain found", xlab = "top N viral protein - domain pairs selected", col = color[1], type = plot_type, ylim = c(0,length(domains_known_mapped)+1))
-    if(type != "count") plot(colnames(resres[[1]]), resres[[1]][typenum,], ylab = "known domain found", xlab = "top N viral protein - domain pairs selected", col = color[1], type = plot_type, ylim = c(0,leg_pos_y+1))
+    
+    if(type == "pval") ylim = c(0, 1)
+    if(type == "count") ylim = c(0,length(domains_known_mapped)+1)
+    if(type == "odds_ratio") ylim = c(0,leg_pos_y)
+    
+    plot(colnames(res[[1]]), res[[1]][typenum,], 
+         ylab = "known domain found", xlab = "top N viral protein - domain pairs selected", 
+         col = color[1], type = plot_type, ylim = ylim)
+    
     for (i in 2:ngroups) {
-        lines(x = colnames(res[[i]]), y = res[[i]][typenum,], col = color[2], type = plot_type)
+        lines(x = colnames(res[[i]]), y = res[[i]][typenum,], col = color[i], type = plot_type)
     }
+    
     if(type == "count") abline(h = length(domains_known_mapped), col = color[ngroups + 1])
-    legend(x = leg_pos_x, y = leg_pos_y, 
-           c("statictic used in permutation test:",
-             sapply(res, function(x) x)
-             "domain frequency among interactors of a viral protein", "Fisher test pval: domain overrepresentation over the background", "N random proteins", "domains known to interact with linear motifs"), 
+    
+    legend_names = c("statictic used in permutation test:")
+    for(i in 1:ngroups){
+        legend_names = c(legend_names, unique(res[[i]]["name",]))
+    }
+    
+    if(type == "count") legend_names = c(legend_names, "domains known to interact with linear motifs")
+    
+    legend(x = leg_pos_x, y = leg_pos_y, legend_names, 
            col = c("white", color), lty = 1 , merge = TRUE)
 }
 
+plotEnrichment(enrichment, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back, enrichmentFISHER, enrichmentRANDOM, 
+               domains_known_mapped = domains_known_mapped, type = "count", plot_type = "l")
 ```
 
 ## As we include more proteins, the Fisher test odds ratio decreases (we add more stuff that is not known). Odds ratio measures how much more likely are we to find a domain using our procedure if it’s a known domain as compared to if it’s not a known domain.
 
 ```{r fisher_odds_ratio, fig.height = 6, fig.width = 9}
-plot(colnames(enrichment), enrichment[2,], ylab = "Fisher test odds ratio", xlab = "top N viral protein - domain pairs selected", col = "red", type = "l", ylim = c(0,max(c(enrichment[2,], enrichmentFISHER[2,]))))
-lines(x = colnames(enrichment), y = enrichmentFISHER[2,], col = "blue", type = "l")
-lines(x = colnames(enrichment), y = enrichmentRANDOM[2,], col = "violet", type = "l")
-legend(x = 80, y = max(enrichment[2,]) - 1, c("statictic used in permutation test:","domain frequency among interactors of a viral protein", "Fisher test pval: domain overrepresentation over the background", "N random proteins"), col = c("white","red", "blue", "violet"), lty = 1 ,merge = TRUE)
+plotEnrichment(enrichment, enrichmentFISHER, enrichmentRANDOM, domains_known_mapped = domains_known_mapped, type = "pval", plot_type = "l")
 ```
 
 ## corresponding P-values from the Fisher test 
@@ -261,7 +286,7 @@ legend(x = 80, y = max(c(enrichment[1,], enrichmentFISHER[1,])), c("statictic us
 ## R session information
 
 ```{r}
-rm(list = ls())
+#rm(list = ls())
 gc()
 Sys.Date()
 sessionInfo()
