@@ -1,0 +1,33 @@
+---
+title: "Install SLIMSuite"
+author: "Vitalii Kleshchevnikov"
+date: "31/08/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(downloader)
+library(R.utils)
+```
+
+## Install SLIMSuite
+
+Details on how to install the slim and new versions of the software can be found here:   http://slimsuite.blogspot.co.uk/2013/08/availability-installation-and-setup.html  
+
+```{r install}
+url = "https://github.com/slimsuite/SLiMSuite/releases/download/v1.2.0/slimsuite.2016-09-12.tgz"
+direct = "../../software/"
+if(!dir.exists(direct)) dir.create(direct)
+filename = "slimsuite.2016-09-12.tgz"
+filepath = paste0(direct, filename)
+if(!file.exists(filepath)) download(url, filepath)
+untar(filepath, exdir = direct,list=F)
+```
+
+## SLIMSuite manuals
+
+All manuals can be found here: https://github.com/slimsuite/SLiMSuite/tree/master/docs/manuals   
+  
+SLiMFinder manual: https://github.com/slimsuite/SLiMSuite/blob/master/docs/manuals/SLiMFinder%20Manual.pdf  
+CompariMotif Manual: https://github.com/slimsuite/SLiMSuite/blob/master/docs/manuals/CompariMotif%20Manual.pdf  

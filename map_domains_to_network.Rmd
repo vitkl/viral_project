@@ -43,42 +43,51 @@ Date: `r Sys.time()`
 I read InterProScan result and the InterPro_entry_types file. InterProScan output format description: https://github.com/ebi-pf-team/interproscan/wiki/OutputFormats  
 
 ```{r InterPro_entry_types}
-# ungzip and read InterProScan result
-gunzip("./processed_data_files/all_human_viral_protein_domains.gff3.gz", remove = F)
-InterProScan_result = import(con = "./processed_data_files/all_human_viral_protein_domains.gff3", format = "gff3")
-unlink("./processed_data_files/all_human_viral_protein_domains.gff3")
-# clean InterPro ID in the Dbxref column
-InterProScan_result$Dbxref = gsub("InterPro:","", InterProScan_result$Dbxref)
-InterProScan_result$Dbxref = gsub("\"","", InterProScan_result$Dbxref)
-InterProScan_result$Ontology_term = gsub("\"","", InterProScan_result$Ontology_term)
-# read InterPro_entry_types mapping table
-if(!file.exists("./processed_data_files/entry.list")) download("ftp://ftp.ebi.ac.uk/pub/databases/interpro/entry.list", "./processed_data_files/entry.list")
-InterPro_entry_types = fread("./processed_data_files/entry.list", stringsAsFactors = F)
-# find matching signatures
-matching_signatures = match(as.character(InterProScan_result$Dbxref), InterPro_entry_types$ENTRY_AC)
-# add signature type information to the gff2 file
-InterProScan_result$ENTRY_TYPE = InterPro_entry_types$ENTRY_TYPE[matching_signatures]
-# add names metadata to allow subsetting with a character
-names(InterProScan_result) = seqnames(InterProScan_result)
-
-# import seqence length information correctly into the GRanges object format
-# find seqence length
-seq_length = end(InterProScan_result)[InterProScan_result$type == "polypeptide"]
-# name the vector
-names(seq_length) = seqnames(InterProScan_result)[InterProScan_result$type == "polypeptide"]
-# match names in the vector and in the GRanges seqlengths slot
-seqlengths(InterProScan_result) = seq_length[match(names(seqlengths(InterProScan_result)),names(seq_length))]
-# sanity check
-seqlengths(InterProScan_result)[c("P69713", "P06748-3", "P06821", "O00562", "O15230")] == end(InterProScan_result[c("P69713", "P06748-3", "P06821", "O00562", "O15230")])
-
-
+# read InterProScan result, download and add InterPro Entry Types information, extract from relevant columns and add names metadata and sequence length information
+InterProScan_result = readInterProGFF3("./processed_data_files/all_human_viral_protein_domains.gff3.gz")
+InterProScan_result = addInterProEntryTypes(InterProScan_result, "./data_files/entry.list")
 # create a subset that contains "Domain", "Active_site", "Binding_site", "Conserved_site", "PTM" signatures
-InterProScan_domains = InterProScan_result[InterProScan_result$ENTRY_TYPE %in% c("Domain", "Active_site", "Binding_site", "Conserved_site", "PTM", "Repeat")]
+InterProScan_domains = SubsetByInterProEntryType(InterProScan_result)
+
+InterProScan_domains_list = split(InterProScan_domains, data.table(seqnames(InterProScan_domains), InterProScan_domains$Dbxref))
+Nrow = length(InterProScan_domains_list[[3]])
+reduce(InterProScan_domains_list[[3]])
 ```
 
 ## Remove redundancy in the identified domains (signatures of the same domain from different InterPro member databases)
 
 ```{r remove_redundancy}
+
+positionalDistance = function(InterProScan_domains, maxgap = 100){
+    # generate Granges which contain feature start
+domain_start = resize(InterProScan_domains, width = 1, fix="start", use.names=TRUE)
+# generate Granges which contain feature end
+domain_end = resize(InterProScan_domains, width = 1, fix="end", use.names=TRUE)
+
+# find features with overlapping start (including feature with itself)
+overlap_start = findOverlaps(query = domain_start, maxgap = maxgap)
+# find features with overlapping end (including feature with itself)
+overlap_end = findOverlaps(query = domain_end, maxgap = maxgap)
+
+# remove overlapping start of feature with itself
+overlap_start = overlap_start[(queryHits(overlap_start) != subjectHits(overlap_start))]
+# remove overlapping end of feature with itself
+overlap_end = overlap_end[(queryHits(overlap_end) != subjectHits(overlap_end))]
+
+# find features in which both the start and the end overlap
+overlap_start_n_end = intersect(overlap_start, overlap_end)
+
+# calculate the distance between positions of overlapping start features
+overlap_both_start_dist = distance(domain_start[queryHits(overlap_start_n_end)], domain_start[subjectHits(overlap_start_n_end)])
+# calculate the distance between positions of overlapping end features
+overlap_both_end_dist = distance(domain_end[queryHits(overlap_start_n_end)], domain_end[subjectHits(overlap_start_n_end)])
+
+# sum these distances
+overlap_total_dist = overlap_both_start_dist + overlap_both_end_dist
+
+# map distances to domains
+
+}
 # generate Granges which contain feature start
 domain_start = resize(InterProScan_domains, width = 1, fix="start", use.names=TRUE)
 # generate Granges which contain feature end
@@ -94,13 +103,6 @@ overlap_start = overlap_start[(queryHits(overlap_start) != subjectHits(overlap_s
 # remove overlapping end of feature with itself
 overlap_end = overlap_end[(queryHits(overlap_end) != subjectHits(overlap_end))]
 
-# calculate the distance between positions of overlapping start features
-overlap_start_dist = distance(domain_start[queryHits(overlap_start)], domain_start[subjectHits(overlap_start)])
-hist(overlap_start_dist, breaks = seq(0,100,1))
-# calculate the distance between positions of overlapping end features
-overlap_end_dist = distance(domain_end[queryHits(overlap_end)], domain_end[subjectHits(overlap_end)])
-hist(overlap_end_dist, breaks = seq(0,100,1))
-
 # find features in which both the start and the end overlap
 overlap_start_n_end = intersect(overlap_start, overlap_end)
 
@@ -112,12 +114,20 @@ overlap_both_end_dist = distance(domain_end[queryHits(overlap_start_n_end)], dom
 hist(overlap_both_end_dist, breaks = seq(0,100,1))
 
 # sum these distances
-overlap_both_sum_dist = overlap_both_start_dist + overlap_both_end_dist
-hist(overlap_both_sum_dist, breaks = seq(0,200,1))
+overlap_total_dist = overlap_both_start_dist + overlap_both_end_dist
+overlap_total_dist = data.table(overlap_total_dist = overlap_total_dist,
+                                queryHits = InterProScan_domains[queryHits(overlap_start_n_end)]$Dbxref,
+                                subjectHits = InterProScan_domains[subjectHits(overlap_start_n_end)]$Dbxref)
+hist(overlap_total_dist, breaks = seq(0,200,1))
 abline(v=10)
 
+
+
+
+
+
 # select distance difference cutoff
-overlap_start_n_end = overlap_start_n_end[overlap_both_sum_dist < 10]
+overlap_start_n_end = overlap_start_n_end[overlap_total_dist < 10]
 # generate non-redundant domain annotatations by keeping only the first domain signature among overlapping signatures
 overlap_start_n_end_nonred = overlap_start_n_end[queryHits(overlap_start_n_end) < subjectHits(overlap_start_n_end)]
 InterProScan_domains_nonred = InterProScan_domains[unique(queryHits(overlap_start_n_end_nonred))]
