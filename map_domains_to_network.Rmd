@@ -34,6 +34,9 @@ suppressPackageStartupMessages({
     library(MItools)
     library(GGally)
 })
+# cores to use for multiprocessing: is the number of cores is small -> we are not on a cluster -> use all; if the number of cores is large -> we are on cluster -> use only 15 or 7 cores (n requested-1)
+if(detectCores() <= 4) cores_to_use = detectCores() - 1
+if(detectCores() > 4) cores_to_use = 31
 ```
 
 Date: `r Sys.time()`
@@ -49,44 +52,86 @@ InterProScan_result = addInterProEntryTypes(InterProScan_result, "./data_files/e
 # create a subset that contains "Domain", "Active_site", "Binding_site", "Conserved_site", "PTM" signatures
 InterProScan_domains = SubsetByInterProEntryType(InterProScan_result)
 
-InterProScan_domains_list = split(InterProScan_domains, data.table(seqnames(InterProScan_domains), InterProScan_domains$Dbxref))
-Nrow = length(InterProScan_domains_list[[3]])
-reduce(InterProScan_domains_list[[3]])
+InterProScan_domains_list = split(InterProScan_domains, paste0(seqnames(InterProScan_domains),"|", InterProScan_domains$Dbxref))
+
+cores = cores_to_use
+# set up parallel processing
+# create cluster
+if(is.null(cores)) cores = detectCores()-1
+cl <- makeCluster(cores)
+# get library support needed to run the code
+clusterEvalQ(cl, {library(MItools); library(data.table); library(BiocGenerics)})
+# put objects in place that might be needed for the code
+clusterExport(cl, c("InterProScan_domains_list"), envir=environment())
+
+InterProScan_domains_list = parSapply(cl, InterProScan_domains_list, function(InterProScan_domain){
+    Nseq = length(InterProScan_domain)
+    reduced = reduce(InterProScan_domain, with.revmap=T)
+    metadata_orig = mcols(InterProScan_domain)
+    metadata_new = metadata_orig[-which(colnames(metadata_orig) %in% c("status", "signature_desc", "md5", "ID", "type", "phase"))]
+    metadata_new$source = (as.character(metadata_new$source))
+    
+    mapping = character(Nseq)
+    for (i in 1:length(reduced$revmap)) {
+        number = reduced$revmap[[i]]
+        mapping[number] = i
+    }
+    metadata_new_list = split(metadata_new, mapping)
+    new_metadata_new_list = SplitDataFrameList()
+    for (i in 1:length(metadata_new_list)) {
+        temp_metadata = metadata_new_list[[i]]
+        temp_metadata$source = paste0(temp_metadata$source, collapse="|")
+        temp_metadata$score = paste0(temp_metadata$score, collapse="|")
+        temp_metadata$Target = paste0(temp_metadata$Target, collapse="|")
+        temp_metadata$Name = paste0(temp_metadata$Name, collapse="|")
+        # convert CharacterList to character first 
+        temp_metadata$Ontology_term = sapply(temp_metadata$Ontology_term, paste0, collapse=",")
+        temp_metadata$Ontology_term = paste0(temp_metadata$Ontology_term, collapse="|")
+        new_metadata_new_list[[i]] = unique(temp_metadata)
+    }
+    metadata_new = do.call("rbind", new_metadata_new_list)
+    mcols(reduced) = metadata_new
+    return(reduced)
+})
+stopCluster(cl)
+
+InterProScan_domains_list = as(InterProScan_domains_list,"GRangesList")
+InterProScan_domains_nonred = unlist(InterProScan_domains_list, use.names=F)
 ```
 
 ## Remove redundancy in the identified domains (signatures of the same domain from different InterPro member databases)
 
-```{r remove_redundancy}
+```{r remove_redundancy, eval=FALSE}
 
 positionalDistance = function(InterProScan_domains, maxgap = 100){
     # generate Granges which contain feature start
-domain_start = resize(InterProScan_domains, width = 1, fix="start", use.names=TRUE)
-# generate Granges which contain feature end
-domain_end = resize(InterProScan_domains, width = 1, fix="end", use.names=TRUE)
-
-# find features with overlapping start (including feature with itself)
-overlap_start = findOverlaps(query = domain_start, maxgap = maxgap)
-# find features with overlapping end (including feature with itself)
-overlap_end = findOverlaps(query = domain_end, maxgap = maxgap)
-
-# remove overlapping start of feature with itself
-overlap_start = overlap_start[(queryHits(overlap_start) != subjectHits(overlap_start))]
-# remove overlapping end of feature with itself
-overlap_end = overlap_end[(queryHits(overlap_end) != subjectHits(overlap_end))]
-
-# find features in which both the start and the end overlap
-overlap_start_n_end = intersect(overlap_start, overlap_end)
-
-# calculate the distance between positions of overlapping start features
-overlap_both_start_dist = distance(domain_start[queryHits(overlap_start_n_end)], domain_start[subjectHits(overlap_start_n_end)])
-# calculate the distance between positions of overlapping end features
-overlap_both_end_dist = distance(domain_end[queryHits(overlap_start_n_end)], domain_end[subjectHits(overlap_start_n_end)])
-
-# sum these distances
-overlap_total_dist = overlap_both_start_dist + overlap_both_end_dist
-
-# map distances to domains
-
+    domain_start = resize(InterProScan_domains, width = 1, fix="start", use.names=TRUE)
+    # generate Granges which contain feature end
+    domain_end = resize(InterProScan_domains, width = 1, fix="end", use.names=TRUE)
+    
+    # find features with overlapping start (including feature with itself)
+    overlap_start = findOverlaps(query = domain_start, maxgap = maxgap)
+    # find features with overlapping end (including feature with itself)
+    overlap_end = findOverlaps(query = domain_end, maxgap = maxgap)
+    
+    # remove overlapping start of feature with itself
+    overlap_start = overlap_start[(queryHits(overlap_start) != subjectHits(overlap_start))]
+    # remove overlapping end of feature with itself
+    overlap_end = overlap_end[(queryHits(overlap_end) != subjectHits(overlap_end))]
+    
+    # find features in which both the start and the end overlap
+    overlap_start_n_end = intersect(overlap_start, overlap_end)
+    
+    # calculate the distance between positions of overlapping start features
+    overlap_both_start_dist = distance(domain_start[queryHits(overlap_start_n_end)], domain_start[subjectHits(overlap_start_n_end)])
+    # calculate the distance between positions of overlapping end features
+    overlap_both_end_dist = distance(domain_end[queryHits(overlap_start_n_end)], domain_end[subjectHits(overlap_start_n_end)])
+    
+    # sum these distances
+    overlap_total_dist = overlap_both_start_dist + overlap_both_end_dist
+    
+    # map distances to domains
+    
 }
 # generate Granges which contain feature start
 domain_start = resize(InterProScan_domains, width = 1, fix="start", use.names=TRUE)
@@ -131,6 +176,9 @@ overlap_start_n_end = overlap_start_n_end[overlap_total_dist < 10]
 # generate non-redundant domain annotatations by keeping only the first domain signature among overlapping signatures
 overlap_start_n_end_nonred = overlap_start_n_end[queryHits(overlap_start_n_end) < subjectHits(overlap_start_n_end)]
 InterProScan_domains_nonred = InterProScan_domains[unique(queryHits(overlap_start_n_end_nonred))]
+```
+
+```{r}
 # save results
 export(InterProScan_domains_nonred, con = "./processed_data_files/InterProScan_domains_nonredundant.gff3", format = "gff3")
 
@@ -145,10 +193,19 @@ fwrite(protein_domain_pair, file = "./processed_data_files/protein_domain_pair",
 I read interaction data and clean this data to make it more useble. Then, I filter and keep only human-viral interactions.
 
 ```{r human_viral}
-all_viral_interaction = fread("./data_files/viral_interactions.txt", stringsAsFactors = F)
+all_viral_interaction = queryPSICQUICrlib(query = "species:10239",
+                format = "tab27",
+                database = "imex",
+                directory = "./data_files/", 
+                releaseORdate = "2017Jul12"
+                # ,just_list_releases = T,
+                )
 all_viral_interaction = cleanMITAB(all_viral_interaction)
 # pick proteins only
-all_viral_interaction = all_viral_interaction[interactor_IDs_databases_A == "uniprotkb" & interactor_IDs_databases_B == "uniprotkb", ]
+all_viral_interaction$data = all_viral_interaction$data[interactor_IDs_databases_A == "uniprotkb" & interactor_IDs_databases_B == "uniprotkb", ]
+# filter only human-viral interactions
+all_viral_interaction$data = all_viral_interaction$data[Taxid_interactor_A == "9606" | Taxid_interactor_B == "9606",]
+all_viral_interaction$data = unique(all_viral_interaction$data)
 ```
 
 Both the network and the domain data contain more information than necessary for identifying domains likely to mediate interaction. Selecting only what's necessary: viral_protein_UniprotID - human_protein_UniprotID - human_domain_InterProID.  
@@ -156,12 +213,12 @@ Both the network and the domain data contain more information than necessary for
 First, we need to rearrange interactions so that one column contains viral proteins and the other contains human proteins (in the database some interactions are stored viral-human order and some in human-viral order).   
 
 ```{r arrange_interactions}
-all_viral_interaction_ab = all_viral_interaction[Taxid_interactor_A == "9606" & Taxid_interactor_B != "9606",
+all_viral_interaction_ab = all_viral_interaction$data[Taxid_interactor_A == "9606" & Taxid_interactor_B != "9606",
                                                  .(IDs_interactor_human = IDs_interactor_A, 
                                                    IDs_interactor_viral = IDs_interactor_B, 
                                                    Taxid_interactor_human = Taxid_interactor_A, 
                                                    Taxid_interactor_viral = Taxid_interactor_B)]
-all_viral_interaction_ba = all_viral_interaction[Taxid_interactor_A != "9606" & Taxid_interactor_B == "9606",
+all_viral_interaction_ba = all_viral_interaction$data[Taxid_interactor_A != "9606" & Taxid_interactor_B == "9606",
                                                  .(IDs_interactor_human = IDs_interactor_B,
                                                    IDs_interactor_viral = IDs_interactor_A,
                                                    Taxid_interactor_human = Taxid_interactor_B,
@@ -186,7 +243,7 @@ all_viral_interaction_simp[, IDs_interactor_viral_degree := length(unique(IDs_in
 # human protein degree
 all_viral_interaction_simp[, IDs_interactor_human_degree := length(unique(IDs_interactor_viral)), by = IDs_interactor_human]
 
-# I keep all interactions even if a human protein has no known domain
+# I keep all interactions even if a human protein has no known domain (all.x = F, all.y = T)
 viral_human_w_domains = merge(protein_domain_pair_temp, all_viral_interaction_simp, all.x = F, all.y = T, by = "IDs_interactor_human", allow.cartesian = T)
 
 # human domains per viral protein
