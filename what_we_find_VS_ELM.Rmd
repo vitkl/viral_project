@@ -47,6 +47,7 @@ N_permut = 400000
 ## Calculate empirical pvalues using either frequency of a domain among interacting partners of viral protein or Fisher test p-value
 
 ```{r calculate_pvals}
+data = fread("./processed_data_files/viral_human_net_w_domains", sep = "\t", stringsAsFactors = F)
 # frequency function: set up standard parameters
 permuteFrequency = function(data, select_nodes = NULL, also_permuteYZ = F){
     res = permutationPval(interactions2permute = IDs_interactor_viral ~ IDs_interactor_human, # first set of interacting pairs (XY) that are to be permuted
@@ -61,7 +62,6 @@ permuteFrequency = function(data, select_nodes = NULL, also_permuteYZ = F){
                           cores = cores_to_use, seed = 2, also_permuteYZ = also_permuteYZ)
     return(res)
 }
-data = fread("./processed_data_files/viral_human_net_w_domains", sep = "\t", stringsAsFactors = F)
 
 # frequency: all proteins and domains - # permute IDs_interactor_viral ~ IDs_interactor_human
 time = proc.time()
