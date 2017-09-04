@@ -36,7 +36,7 @@ suppressPackageStartupMessages({
 ```{r}
 # cores to use for multiprocessing: is the number of cores is small -> we are not on a cluster -> use all; if the number of cores is large -> we are on cluster -> use only 15 or 7 or 31 cores (n requested-1)
 if(detectCores() <= 4) cores_to_use = detectCores() - 1
-if(detectCores() > 4) cores_to_use = 31
+if(detectCores() > 4) cores_to_use = 20
 
 # how many permutations?
 N_permut = 200000

@@ -1,0 +1,265 @@
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for SLiMFinder V5.2.3: Mon Sep  4 12:17:20 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=ncbi_blast_2.6.0/bin/ iupath=iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas dismask=T
+#CMD	00:00:00	Full Command List: log=slimfinder.log blast+path=ncbi_blast_2.6.0/bin/ iupath=iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas dismask=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#ERR	00:00:00	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing; again...
+#ERR	00:00:00	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing; again...
+#ERR	00:00:00	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for DYIN_DROME__Q24246
+#ERR	00:00:00	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying SWA_DROME__P40688 RecName: Full=Protein swallow; again...
+#ERR	00:00:00	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying SWA_DROME__P40688 RecName: Full=Protein swallow; again...
+#ERR	00:00:00	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(SWA_DROME__P40688 RecName: Full=Protein swallow;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for SWA_DROME__P40688
+#ERR	00:00:00	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow; again...
+#ERR	00:00:00	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow; again...
+#ERR	00:00:00	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for SWA_DROPS__Q9U9I5
+#ERR	00:00:00	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1; again...
+#ERR	00:00:00	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1; again...
+#ERR	00:00:00	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for DC1I1_MOUSE__O88485
+#ERR	00:00:00	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69; again...
+#ERR	00:00:00	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69; again...
+#ERR	00:00:00	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for ZMY11_HUMAN__Q15326
+#ERR	00:00:00	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2; again...
+#ERR	00:00:00	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2; again...
+#ERR	00:00:00	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for DC1I2_HUMAN__Q13409
+#ERR	00:00:00	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death; again...
+#ERR	00:00:00	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death; again...
+#ERR	00:00:00	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for B2L11_HUMAN__O43521
+#MASK	00:00:00	Masked DYIN_DROME__Q24246 "low complexity" regions. (6 X added.)
+#MASK	00:00:00	Masked SWA_DROME__P40688 "low complexity" regions. (16 X added.)
+#MASK	00:00:00	Masked SWA_DROPS__Q9U9I5 "low complexity" regions. (6 X added.)
+#MASK	00:00:00	Masked DC1I1_MOUSE__O88485 "low complexity" regions. (8 X added.)
+#MASK	00:00:00	Masked ZMY11_HUMAN__Q15326 "low complexity" regions. (6 X added.)
+#MASK	00:00:00	Masked DC1I2_HUMAN__Q13409 "low complexity" regions. (3 X added.)
+#MASK	00:00:00	Masked B2L11_HUMAN__O43521 "low complexity" regions. (4 X added.)
+#MASK	00:00:00	MetMask: 7 N-terminal Ms masked
+#MASK	00:00:00	Masked B2L11_HUMAN__O43521 position-specific AAs. (1 X added.)
+#MASK	00:00:00	example: Masking of input sequences complete.
+#SPACE	00:00:00	Motif Space, 2 positions: 1,200 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 72,000 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 4,320,000 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 259,200,000 motifs
+#DIM	00:00:00	Read dimers from 7 seq: 1,192 dimers
+#DIM	00:00:00	Reducing dimers: 1,036 >= 2 of 4 UPC 
+#SLIM	00:00:00	Selecting 2aa SLiMs: 1,036 >= 2 of 4 UPC
+#AMB	00:00:00	Adding Wildcard ambiguity: 100.0% (0 amb motifs)
+#AMB	00:00:00	Adding Degeneracy ambiguity: 100.0% (0 amb motifs)
+#SLIM	00:00:06	Extending 3aa SLiMs >= 2 of 4 UPC: 3,600 SLiMs
+#AMB	00:00:07	Adding Wildcard ambiguity: 100.0% (947 amb motifs)
+#AMB	00:00:08	Adding Degeneracy ambiguity: 100.0% (1,729 amb motifs)
+#SLIM	00:00:17	Extending 4aa SLiMs >= 2 of 4 UPC: 1,029 SLiMs
+#AMB	00:00:17	Adding Wildcard ambiguity: 100.0% (19 amb motifs)
+#AMB	00:00:18	Adding Degeneracy ambiguity: 100.0% (15 amb motifs)
+#SLIM	00:00:20	Extending 5aa SLiMs >= 2 of 4 UPC: 222 SLiMs
+#AMB	00:00:20	Adding Wildcard ambiguity: 100.0% (0 amb motifs)
+#AMB	00:00:20	Adding Degeneracy ambiguity: 100.0% (1 amb motifs)
+#SLIM	00:00:20	8,598 SLiMs >= 2 of 4 UPC
+#SAVE	00:00:21	SLiMFinder Intermediate saved as ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle (Python pickle).
+#GZIP	00:00:21	./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle zipped.
+#SLIM	00:00:21	Filtering 8,598 SLiMs: 2,996 retained.
+#PROB	00:00:22	Calculating [Sig] SLiM Probabilities (Sig<=0.10) complete: 0 ranked SLiMs.
+#COMB	00:00:22	Combined Occurrence Attributes complete.
+#CLOUD	00:00:22	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:00:22	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.2017-09-04.masked.fas.     
+#EXTRA	00:00:22	No SLiMs for additional outputs
+#RES	00:00:22	SLiMFinder results output to  and occ..
+#RES	00:00:22	Additional dataset results output to ./SLIMFinder/QSLIMFinder/example.*
+#WARN	00:00:22	1 warning messages: check log for details.
+#WARN	00:00:22	21 error messages! Check log for details.
+#LOG	00:00:22	SLiMFinder V5.2.3 End: Mon Sep  4 12:17:42 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for SLiMFinder V5.2.3: Mon Sep  4 12:18:47 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=ncbi_blast_2.6.0/bin/ iupath=iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas dismask=T
+#CMD	00:00:00	Full Command List: log=slimfinder.log blast+path=ncbi_blast_2.6.0/bin/ iupath=iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas dismask=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	SLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	SLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#SPACE	00:00:00	Motif Space, 2 positions: 1,200 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 72,000 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 4,320,000 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 259,200,000 motifs
+#SLIM	00:00:00	Filtering 8,598 SLiMs: 2,996 retained.
+#PROB	00:00:01	Calculating [Sig] SLiM Probabilities (Sig<=0.10) complete: 0 ranked SLiMs.
+#COMB	00:00:01	Combined Occurrence Attributes complete.
+#CLOUD	00:00:01	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:00:01	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.2017-09-04.masked.fas.     
+#EXTRA	00:00:01	No SLiMs for additional outputs
+#RES	00:00:01	SLiMFinder results output to  and occ..
+#RES	00:00:01	Additional dataset results output to ./SLIMFinder/QSLIMFinder/example.*
+#WARN	00:00:01	1 warning messages: check log for details.
+#LOG	00:00:01	SLiMFinder V5.2.3 End: Mon Sep  4 12:18:48 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for SLiMFinder V5.2.3: Mon Sep  4 12:19:04 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas dismask=T
+#CMD	00:00:00	Full Command List: log=slimfinder.log blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas dismask=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	SLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	SLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#SPACE	00:00:00	Motif Space, 2 positions: 1,200 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 72,000 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 4,320,000 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 259,200,000 motifs
+#SLIM	00:00:00	Filtering 8,598 SLiMs: 2,996 retained.
+#PROB	00:00:01	Calculating [Sig] SLiM Probabilities (Sig<=0.10) complete: 0 ranked SLiMs.
+#COMB	00:00:01	Combined Occurrence Attributes complete.
+#CLOUD	00:00:01	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:00:01	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.2017-09-04.masked.fas.     
+#EXTRA	00:00:01	No SLiMs for additional outputs
+#RES	00:00:01	SLiMFinder results output to  and occ..
+#RES	00:00:01	Additional dataset results output to ./SLIMFinder/QSLIMFinder/example.*
+#WARN	00:00:01	1 warning messages: check log for details.
+#LOG	00:00:01	SLiMFinder V5.2.3 End: Mon Sep  4 12:19:05 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for SLiMFinder V5.2.3: Mon Sep  4 12:19:53 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/ seqin=./SLIMFinder/example.fas dismask=T
+#CMD	00:00:00	Full Command List: log=slimfinder.log blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/ seqin=./SLIMFinder/example.fas dismask=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	SLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	SLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#SPACE	00:00:00	Motif Space, 2 positions: 1,200 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 72,000 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 4,320,000 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 259,200,000 motifs
+#SLIM	00:00:00	Filtering 8,598 SLiMs: 2,996 retained.
+#PROB	00:00:01	Calculating [Sig] SLiM Probabilities (Sig<=0.10) complete: 0 ranked SLiMs.
+#COMB	00:00:01	Combined Occurrence Attributes complete.
+#CLOUD	00:00:01	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:00:01	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.2017-09-04.masked.fas.     
+#EXTRA	00:00:01	No SLiMs for additional outputs
+#RES	00:00:01	SLiMFinder results output to ./SLIMFinder/QSLIMFinder and .occ./SLIMFinder/QSLIMFinder.
+#RES	00:00:01	Additional dataset results output to ./SLIMFinder/QSLIMFinder/example.*
+#WARN	00:00:01	1 warning messages: check log for details.
+#LOG	00:00:01	SLiMFinder V5.2.3 End: Mon Sep  4 12:19:55 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for SLiMFinder V5.2.3: Mon Sep  4 12:20:20 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/SLIMFinder_res.csv seqin=./SLIMFinder/example.fas dismask=T
+#CMD	00:00:00	Full Command List: log=slimfinder.log blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/SLIMFinder_res.csv seqin=./SLIMFinder/example.fas dismask=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	SLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	SLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#SPACE	00:00:00	Motif Space, 2 positions: 1,200 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 72,000 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 4,320,000 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 259,200,000 motifs
+#SLIM	00:00:00	Filtering 8,598 SLiMs: 2,996 retained.
+#PROB	00:00:01	Calculating [Sig] SLiM Probabilities (Sig<=0.10) complete: 0 ranked SLiMs.
+#COMB	00:00:01	Combined Occurrence Attributes complete.
+#CLOUD	00:00:01	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:00:01	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.2017-09-04.masked.fas.     
+#EXTRA	00:00:01	No SLiMs for additional outputs
+#RES	00:00:01	SLiMFinder results output to ./SLIMFinder/QSLIMFinder/SLIMFinder_res.csv and ./SLIMFinder/QSLIMFinder/SLIMFinder_res.occ.csv.
+#RES	00:00:01	Additional dataset results output to ./SLIMFinder/QSLIMFinder/example.*
+#WARN	00:00:01	1 warning messages: check log for details.
+#LOG	00:00:01	SLiMFinder V5.2.3 End: Mon Sep  4 12:20:22 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for SLiMFinder V5.2.3: Mon Sep  4 12:22:18 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/SLIMFinder_res.csv seqin=./SLIMFinder/example.fas dismask=T cloudfix=T
+#CMD	00:00:00	Full Command List: log=slimfinder.log blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/SLIMFinder_res.csv seqin=./SLIMFinder/example.fas dismask=T cloudfix=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	SLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	SLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#SPACE	00:00:00	Motif Space, 2 positions: 1,200 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 72,000 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 4,320,000 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 259,200,000 motifs
+#SLIM	00:00:00	Filtering 8,598 SLiMs: 2,996 retained.
+#PROB	00:00:01	Calculating [Sig] SLiM Probabilities (Sig<=0.10) complete: 0 ranked SLiMs.
+#COMB	00:00:01	Combined Occurrence Attributes complete.
+#CLOUD	00:00:01	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FIX	00:00:01	CloudFix filter: 0 SLiM (0 cloud) removed.
+#FAS	00:00:01	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.l5w2o2a3.2017-09-04.masked.fas.     
+#EXTRA	00:00:01	No SLiMs for additional outputs
+#RES	00:00:01	SLiMFinder results output to ./SLIMFinder/QSLIMFinder/SLIMFinder_res.csv and ./SLIMFinder/QSLIMFinder/SLIMFinder_res.occ.csv.
+#RES	00:00:01	Additional dataset results output to ./SLIMFinder/QSLIMFinder/example.*
+#LOG	00:00:01	SLiMFinder V5.2.3 End: Mon Sep  4 12:22:19 2017

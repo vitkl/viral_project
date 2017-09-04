@@ -1,0 +1,827 @@
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep  4 11:59:02 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas blast+path=../software/ncbi_blast_2.6.0/bin/ resdir=./SLIMFinder/QSLIMFinder resfile=./SLIMFinder/res.csv dismask=T
+#CMD	00:00:00	Full Command List: log=qslimfinder.log seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas blast+path=../software/ncbi_blast_2.6.0/bin/ resdir=./SLIMFinder/QSLIMFinder resfile=./SLIMFinder/res.csv dismask=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	No UPC file found.
+#FAS	00:00:00	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.slimdb.     
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#DB 	00:00:00	../software/ncbi_blast_2.6.0/bin/makeblastdb -in "./SLIMFinder/QSLIMFinder/example.slimdb" -out "./SLIMFinder/QSLIMFinder/example.slimdb" -title "/Users/vitalii/Desktop/vitalii/viral_project/SLIMFinder/QSLIMFinder/example.slimdb" -parse_seqids -dbtype prot
+#SYS	00:00:00	../software/ncbi_blast_2.6.0/bin/blastp -query ./SLIMFinder/QSLIMFinder/example.slimdb -db ./SLIMFinder/QSLIMFinder/example.slimdb -out ./SLIMFinder/QSLIMFinder/example.self.blast -seg yes -comp_based_stats F -soft_masking true -evalue 1.000000e-04 -num_descriptions 7 -num_alignments 7
+#INDEX	00:00:00	Indexed "Search" on "Query": 7 unique; 0 missing entries
+#CLUST	00:00:00	4 clusters generated from 7 keys (maxdis=1.00)
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#MST	00:00:00	MST for 7 sequences = 5.223.
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#MAT	00:00:00	example GABLAM Distance matrix out to ./SLIMFinder/QSLIMFinder/example.dis.tdt (text format).
+#ERR	00:00:00	No sequences mapped for focal group "Query"
+#FOCUS	00:00:00	Mapped 0 focal sequences in 0 group(s)
+#ERR	00:00:00	Query needed for QSLiMFinder. Quitting run.
+#WARN	00:00:00	1 warning messages: check log for details.
+#WARN	00:00:00	2 error messages! Check log for details.
+#LOG	00:00:00	QSLiMFinder V2.1.1 End: Mon Sep  4 11:59:02 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep  4 11:59:57 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas blast+path=../software/ncbi_blast_2.6.0/bin/ resdir=./SLIMFinder/QSLIMFinder resfile=./SLIMFinder/res.csv dismask=T
+#CMD	00:00:00	Full Command List: log=qslimfinder.log seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas blast+path=../software/ncbi_blast_2.6.0/bin/ resdir=./SLIMFinder/QSLIMFinder resfile=./SLIMFinder/res.csv dismask=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#QRY	00:00:00	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:00	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:00	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#ERR	00:00:00	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing; again...
+#ERR	00:00:00	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing; again...
+#ERR	00:00:00	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for DYIN_DROME__Q24246
+#ERR	00:00:00	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying SWA_DROME__P40688 RecName: Full=Protein swallow; again...
+#ERR	00:00:00	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying SWA_DROME__P40688 RecName: Full=Protein swallow; again...
+#ERR	00:00:00	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(SWA_DROME__P40688 RecName: Full=Protein swallow;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for SWA_DROME__P40688
+#ERR	00:00:00	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow; again...
+#ERR	00:00:00	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow; again...
+#ERR	00:00:00	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for SWA_DROPS__Q9U9I5
+#ERR	00:00:00	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1; again...
+#ERR	00:00:00	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1; again...
+#ERR	00:00:00	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for DC1I1_MOUSE__O88485
+#ERR	00:00:00	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69; again...
+#ERR	00:00:00	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69; again...
+#ERR	00:00:00	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for ZMY11_HUMAN__Q15326
+#ERR	00:00:00	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2; again...
+#ERR	00:00:00	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2; again...
+#ERR	00:00:00	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for DC1I2_HUMAN__Q13409
+#ERR	00:00:00	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death; again...
+#ERR	00:00:00	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death; again...
+#ERR	00:00:00	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for B2L11_HUMAN__O43521
+#MASK	00:00:00	Masked DYIN_DROME__Q24246 "low complexity" regions. (6 X added.)
+#MASK	00:00:00	Masked SWA_DROME__P40688 "low complexity" regions. (16 X added.)
+#MASK	00:00:00	Masked SWA_DROPS__Q9U9I5 "low complexity" regions. (6 X added.)
+#MASK	00:00:00	Masked DC1I1_MOUSE__O88485 "low complexity" regions. (8 X added.)
+#MASK	00:00:00	Masked ZMY11_HUMAN__Q15326 "low complexity" regions. (6 X added.)
+#MASK	00:00:00	Masked DC1I2_HUMAN__Q13409 "low complexity" regions. (3 X added.)
+#MASK	00:00:00	Masked B2L11_HUMAN__O43521 "low complexity" regions. (4 X added.)
+#MASK	00:00:00	MetMask: 7 N-terminal Ms masked
+#MASK	00:00:00	Masked B2L11_HUMAN__O43521 position-specific AAs. (1 X added.)
+#MASK	00:00:00	example: Masking of input sequences complete.
+#SPACE	00:00:00	Motif Space, 2 positions: 1,200 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 72,000 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 4,320,000 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 259,200,000 motifs
+#DIM	00:00:00	Read dimers from 7 seq: 1,192 dimers -> 849 Query dimers.
+#DIM	00:00:00	Reducing dimers: 1,036 >= 2 of 4 UPC 
+#SPACE	00:00:00	Query Motif Space, 2 positions: 1,200 motifs -> 849 Query motifs
+#SLIM	00:00:00	Selecting 2aa SLiMs: 1,036 >= 2 of 4 UPC -> 800 of 849 query motifs
+#AMB	00:00:00	Adding Wildcard ambiguity: 100.0% (0 amb motifs)
+#AMB	00:00:00	Adding Degeneracy ambiguity: 100.0% (0 amb motifs)
+#SLIM	00:00:06	Extending 3aa SLiMs >= 2 of 4 UPC: 3,600 SLiMs
+#SPACE	00:00:07	Exact Query Motif Space, 3 positions: 72,000 motifs -> 5,435 Query motifs
+#AMB	00:00:07	Adding Wildcard ambiguity: 100.0% (480 amb motifs)
+#AMB	00:00:08	Adding Degeneracy ambiguity: 100.0% (903 amb motifs)
+#SLIM	00:00:17	Extending 4aa SLiMs >= 2 of 4 UPC: 1,029 SLiMs
+#SPACE	00:00:21	Exact Query Motif Space, 4 positions: 4,320,000 motifs -> 17,220 Query motifs
+#AMB	00:00:21	Adding Wildcard ambiguity: 100.0% (8 amb motifs)
+#AMB	00:00:21	Adding Degeneracy ambiguity: 100.0% (9 amb motifs)
+#SLIM	00:00:24	Extending 5aa SLiMs >= 2 of 4 UPC: 222 SLiMs
+#SPACE	00:00:39	Exact Query Motif Space, 5 positions: 259,200,000 motifs -> 51,372 Query motifs
+#AMB	00:00:39	Adding Wildcard ambiguity: 100.0% (0 amb motifs)
+#AMB	00:00:39	Adding Degeneracy ambiguity: 100.0% (0 amb motifs)
+#SLIM	00:00:40	7,287 SLiMs >= 2 of 4 UPC
+#SAVE	00:00:40	QSLiMFinder Intermediate saved as ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle (Python pickle).
+#GZIP	00:00:40	./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle zipped.
+#SLIM	00:00:40	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:00:41	Calculating [QSig] SLiM Probabilities (Sig<=0.10) complete: 0 ranked SLiMs.
+#COMB	00:00:41	Combined Occurrence Attributes complete.
+#CLOUD	00:00:41	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:00:41	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.2017-09-04.masked.fas.     
+#EXTRA	00:00:41	No SLiMs for additional outputs
+#RES	00:00:41	QSLiMFinder results output to ./SLIMFinder/res.csv and ./SLIMFinder/res.occ.csv.
+#RES	00:00:41	Additional dataset results output to ./SLIMFinder/QSLIMFinder/example*
+#WARN	00:00:41	1 warning messages: check log for details.
+#WARN	00:00:41	21 error messages! Check log for details.
+#LOG	00:00:41	QSLiMFinder V2.1.1 End: Mon Sep  4 12:00:38 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep  4 12:13:53 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=ncbi_blast_2.6.0/bin/ iupath=iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=ncbi_blast_2.6.0/bin/ iupath=iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#QRY	00:00:00	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:00	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:00	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	QSLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	QSLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#SPACE	00:00:00	Motif Space, 2 positions: 849 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 5,435 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 17,220 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 51,372 motifs
+#SLIM	00:00:00	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:00:01	Calculating [QSig] SLiM Probabilities (Sig<=0.10) complete: 0 ranked SLiMs.
+#COMB	00:00:01	Combined Occurrence Attributes complete.
+#CLOUD	00:00:01	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:00:01	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.2017-09-04.masked.fas.     
+#EXTRA	00:00:01	No SLiMs for additional outputs
+#RES	00:00:01	QSLiMFinder results output to ./SLIMFinder/res.csv and ./SLIMFinder/res.occ.csv.
+#RES	00:00:01	Additional dataset results output to ./SLIMFinder/QSLIMFinder/example*
+#WARN	00:00:01	1 warning messages: check log for details.
+#LOG	00:00:01	QSLiMFinder V2.1.1 End: Mon Sep  4 12:13:55 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep  4 12:16:06 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=ncbi_blast_2.6.0/bin/ iupath=iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=ncbi_blast_2.6.0/bin/ iupath=iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#QRY	00:00:00	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:00	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:00	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	QSLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	QSLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#SPACE	00:00:00	Motif Space, 2 positions: 849 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 5,435 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 17,220 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 51,372 motifs
+#SLIM	00:00:00	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:00:01	Calculating [QSig] SLiM Probabilities (Sig<=0.10) complete: 0 ranked SLiMs.
+#COMB	00:00:01	Combined Occurrence Attributes complete.
+#CLOUD	00:00:01	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:00:01	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.2017-09-04.masked.fas.     
+#EXTRA	00:00:01	No SLiMs for additional outputs
+#RES	00:00:01	QSLiMFinder results output to  and occ..
+#RES	00:00:01	Additional dataset results output to ./SLIMFinder/QSLIMFinder/example*
+#WARN	00:00:01	1 warning messages: check log for details.
+#LOG	00:00:01	QSLiMFinder V2.1.1 End: Mon Sep  4 12:16:07 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep  4 12:16:07 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=ncbi_blast_2.6.0/bin/ iupath=iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas dismask=T
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=ncbi_blast_2.6.0/bin/ iupath=iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas dismask=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#ERR	00:00:00	Need query for QSLiMFinder. None set.
+#WARN	00:00:00	1 warning messages: check log for details.
+#WARN	00:00:00	1 error messages! Check log for details.
+#LOG	00:00:00	QSLiMFinder V2.1.1 End: Mon Sep  4 12:16:07 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep  4 12:17:19 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=ncbi_blast_2.6.0/bin/ iupath=iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=ncbi_blast_2.6.0/bin/ iupath=iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#QRY	00:00:00	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:00	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:00	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	QSLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	QSLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#SPACE	00:00:00	Motif Space, 2 positions: 849 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 5,435 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 17,220 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 51,372 motifs
+#SLIM	00:00:00	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:00:01	Calculating [QSig] SLiM Probabilities (Sig<=0.10) complete: 0 ranked SLiMs.
+#COMB	00:00:01	Combined Occurrence Attributes complete.
+#CLOUD	00:00:01	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:00:01	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.2017-09-04.masked.fas.     
+#EXTRA	00:00:01	No SLiMs for additional outputs
+#RES	00:00:01	QSLiMFinder results output to  and occ..
+#RES	00:00:01	Additional dataset results output to ./SLIMFinder/QSLIMFinder/example*
+#WARN	00:00:01	1 warning messages: check log for details.
+#LOG	00:00:01	QSLiMFinder V2.1.1 End: Mon Sep  4 12:17:20 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep  4 12:18:46 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=ncbi_blast_2.6.0/bin/ iupath=iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=ncbi_blast_2.6.0/bin/ iupath=iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#QRY	00:00:00	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:00	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:00	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	QSLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	QSLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#SPACE	00:00:00	Motif Space, 2 positions: 849 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 5,435 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 17,220 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 51,372 motifs
+#SLIM	00:00:00	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:00:01	Calculating [QSig] SLiM Probabilities (Sig<=0.10) complete: 0 ranked SLiMs.
+#COMB	00:00:01	Combined Occurrence Attributes complete.
+#CLOUD	00:00:01	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:00:01	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.2017-09-04.masked.fas.     
+#EXTRA	00:00:01	No SLiMs for additional outputs
+#RES	00:00:01	QSLiMFinder results output to  and occ..
+#RES	00:00:01	Additional dataset results output to ./SLIMFinder/QSLIMFinder/example*
+#WARN	00:00:01	1 warning messages: check log for details.
+#LOG	00:00:01	QSLiMFinder V2.1.1 End: Mon Sep  4 12:18:47 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep  4 12:19:02 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile= seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#QRY	00:00:00	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:00	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:00	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	QSLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	QSLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#SPACE	00:00:00	Motif Space, 2 positions: 849 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 5,435 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 17,220 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 51,372 motifs
+#SLIM	00:00:00	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:00:00	Calculating [QSig] SLiM Probabilities (Sig<=0.10) complete: 0 ranked SLiMs.
+#COMB	00:00:00	Combined Occurrence Attributes complete.
+#CLOUD	00:00:00	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:00:00	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.2017-09-04.masked.fas.     
+#EXTRA	00:00:00	No SLiMs for additional outputs
+#RES	00:00:00	QSLiMFinder results output to  and occ..
+#RES	00:00:00	Additional dataset results output to ./SLIMFinder/QSLIMFinder/example*
+#WARN	00:00:00	1 warning messages: check log for details.
+#LOG	00:00:00	QSLiMFinder V2.1.1 End: Mon Sep  4 12:19:03 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep  4 12:19:52 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/ seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/ seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#QRY	00:00:00	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:00	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:00	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	QSLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	QSLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#SPACE	00:00:00	Motif Space, 2 positions: 849 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 5,435 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 17,220 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 51,372 motifs
+#SLIM	00:00:00	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:00:01	Calculating [QSig] SLiM Probabilities (Sig<=0.10) complete: 0 ranked SLiMs.
+#COMB	00:00:01	Combined Occurrence Attributes complete.
+#CLOUD	00:00:01	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:00:01	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.2017-09-04.masked.fas.     
+#EXTRA	00:00:01	No SLiMs for additional outputs
+#RES	00:00:01	QSLiMFinder results output to ./SLIMFinder/QSLIMFinder and .occ./SLIMFinder/QSLIMFinder.
+#RES	00:00:01	Additional dataset results output to ./SLIMFinder/QSLIMFinder/example*
+#WARN	00:00:01	1 warning messages: check log for details.
+#LOG	00:00:01	QSLiMFinder V2.1.1 End: Mon Sep  4 12:19:53 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep  4 12:20:19 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#QRY	00:00:00	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:00	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:00	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	QSLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	QSLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#SPACE	00:00:00	Motif Space, 2 positions: 849 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 5,435 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 17,220 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 51,372 motifs
+#SLIM	00:00:00	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:00:01	Calculating [QSig] SLiM Probabilities (Sig<=0.10) complete: 0 ranked SLiMs.
+#COMB	00:00:01	Combined Occurrence Attributes complete.
+#CLOUD	00:00:01	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:00:01	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.2017-09-04.masked.fas.     
+#EXTRA	00:00:01	No SLiMs for additional outputs
+#RES	00:00:01	QSLiMFinder results output to ./SLIMFinder/QSLIMFinder/res.csv and ./SLIMFinder/QSLIMFinder/res.occ.csv.
+#RES	00:00:01	Additional dataset results output to ./SLIMFinder/QSLIMFinder/example*
+#WARN	00:00:01	1 warning messages: check log for details.
+#LOG	00:00:01	QSLiMFinder V2.1.1 End: Mon Sep  4 12:20:20 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep  4 12:22:17 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T cloudfix=T
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T cloudfix=T
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#QRY	00:00:00	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:00	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:00	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	QSLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	QSLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#SPACE	00:00:00	Motif Space, 2 positions: 849 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 5,435 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 17,220 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 51,372 motifs
+#SLIM	00:00:00	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:00:01	Calculating [QSig] SLiM Probabilities (Sig<=0.10) complete: 0 ranked SLiMs.
+#COMB	00:00:01	Combined Occurrence Attributes complete.
+#CLOUD	00:00:01	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FIX	00:00:01	CloudFix filter: 0 SLiM (0 cloud) removed.
+#FAS	00:00:01	7 Sequences output to ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.2017-09-04.masked.fas.     
+#EXTRA	00:00:01	No SLiMs for additional outputs
+#RES	00:00:01	QSLiMFinder results output to ./SLIMFinder/QSLIMFinder/res.csv and ./SLIMFinder/QSLIMFinder/res.occ.csv.
+#RES	00:00:01	Additional dataset results output to ./SLIMFinder/QSLIMFinder/example*
+#LOG	00:00:01	QSLiMFinder V2.1.1 End: Mon Sep  4 12:22:18 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep  4 12:23:40 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T cloudfix=T probcut=1
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T cloudfix=T probcut=1
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#QRY	00:00:00	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:00	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:00	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	QSLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	QSLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#SPACE	00:00:00	Motif Space, 2 positions: 849 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 5,435 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 17,220 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 51,372 motifs
+#SLIM	00:00:00	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:00:01	Calculating [QSig] SLiM Probabilities (Sig<=1.00) complete: 1,000 ranked SLiMs.
+#COMB	00:00:02	Combined Occurrence Attributes complete.
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep  4 12:24:03 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T cloudfix=T probcut=1
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T cloudfix=T probcut=1
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#QRY	00:00:00	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:00	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:00	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	QSLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	QSLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#SPACE	00:00:00	Motif Space, 2 positions: 849 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 5,435 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 17,220 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 51,372 motifs
+#SLIM	00:00:00	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:00:01	Calculating [QSig] SLiM Probabilities (Sig<=1.00) complete: 1,000 ranked SLiMs.
+#COMB	00:00:02	Combined Occurrence Attributes complete.
+#CLOUD	00:13:08	Making "Motif Clouds" for 1000 Sig Motifs: 133 Clouds
+#FIX	00:13:08	CloudFix filter: 130 SLiM (117 cloud) removed.
+#WARN	00:13:09	Multiple motif offsets for K..QT.S vs T.[ST].[GS]
+#WARN	00:13:09	Multiple motif offsets for K..QT.S vs T.[ST].S
+#WARN	00:13:09	Multiple motif offsets for K..QT.S vs T.{0,1}T.{0,1}T.{0,2}G
+#WARN	00:13:09	Multiple motif offsets for K..QT.S vs T.{0,1}T.{0,1}T
+#WARN	00:13:13	Multiple motif offsets for T.T.[GS] vs T.[ST].[GS]
+#WARN	00:13:13	Multiple motif offsets for T.T.[GS] vs T.{0,1}T.{0,1}T.{0,2}G
+#WARN	00:13:13	Multiple motif offsets for T.T.[GS] vs T.[ST]T
+#WARN	00:13:13	Multiple motif offsets for T.T.[GS] vs T.{0,1}T.{0,1}T
+#WARN	00:13:17	Multiple motif offsets for T.[ST].[GS] vs QT.S
+#WARN	00:13:17	Multiple motif offsets for T.[ST].[GS] vs T.[ST].S
+#WARN	00:13:17	Multiple motif offsets for T.[ST].[GS] vs T.{0,1}T.{0,1}T.{0,2}G
+#WARN	00:13:17	Multiple motif offsets for T.[ST].[GS] vs [ST].T[ST]..[GS]
+#WARN	00:13:17	Multiple motif offsets for T.[ST].[GS] vs T.[ST]T
+#WARN	00:13:17	Multiple motif offsets for T.[ST].[GS] vs T.{0,1}T.{0,1}T
+#WARN	00:13:17	Multiple motif offsets for T.[ST].[GS] vs [ST].ST
+#WARN	00:13:18	Multiple motif offsets for QT.S vs T.[ST].S
+#WARN	00:13:18	Multiple motif offsets for QT.S vs T.{0,1}T.{0,1}T.{0,2}G
+#WARN	00:13:18	Multiple motif offsets for QT.S vs T.{0,1}T.{0,1}T
+#WARN	00:13:21	Multiple motif offsets for [ST].TP vs S.{0,1}T.T
+#WARN	00:13:21	Multiple motif offsets for [ST].TP vs S.{0,1}T..P
+#WARN	00:13:23	Multiple motif offsets for T.[ST].S vs T.{0,1}T.{0,1}T.{0,2}G
+#WARN	00:13:23	Multiple motif offsets for T.[ST].S vs T.[ST]T
+#WARN	00:13:23	Multiple motif offsets for T.[ST].S vs T.{0,1}T.{0,1}T
+#WARN	00:13:24	Multiple motif offsets for [ST]T.T vs [ST].T[ST]..[GS]
+#WARN	00:13:24	Multiple motif offsets for [ST]T.T vs T.[ST]T
+#WARN	00:13:24	Multiple motif offsets for [ST]T.T vs [ST].ST
+#WARN	00:13:24	Multiple motif offsets for T.{0,1}T.{0,1}T.{0,2}G vs [ST].T[ST]..[GS]
+#WARN	00:13:24	Multiple motif offsets for T.{0,1}T.{0,1}T.{0,2}G vs T.[ST]T
+#WARN	00:13:24	Multiple motif offsets for T.{0,1}T.{0,1}T.{0,2}G vs T.{0,1}T.{0,1}T
+#WARN	00:13:24	Multiple motif offsets for T.{0,1}T.{0,1}T.{0,2}G vs [ST].ST
+#WARN	00:13:26	Multiple motif offsets for [ST].T[ST]..[GS] vs T.{0,1}T.{0,1}T
+#WARN	00:13:26	Multiple motif offsets for [ST].T[ST]..[GS] vs S..[ST][ST]
+#WARN	00:13:26	Multiple motif offsets for [GS]T.[ST] vs [ST].ST
+#WARN	00:13:27	Multiple motif offsets for T.[ST]T vs T.{0,1}T.{0,1}T
+#WARN	00:13:27	Multiple motif offsets for T.{0,1}T.{0,1}T vs [ST].ST
+#WARN	00:13:28	Multiple motif offsets for S..[ST].T vs S.{0,1}T.T
+#WARN	00:13:28	Multiple motif offsets for S..[ST].T vs [LV][GS].[GS]..[ST]
+#WARN	00:13:28	Multiple motif offsets for S..[ST].T vs S.[AS]..[ST]
+#WARN	00:13:34	Multiple motif offsets for [ST]..[ST]..[GS] vs S..[ST][ST]
+#WARN	00:13:34	Multiple motif offsets for [ST]..[ST]..[GS] vs TS..[ST]
+#WARN	00:13:34	Multiple motif offsets for [ST]..[ST]..[GS] vs TS..S
+#WARN	00:13:34	Multiple motif offsets for [ST]..[ST]..[GS] vs [ST]S..[ST]
+#WARN	00:13:34	Multiple motif offsets for [ST]..[ST]..[GS] vs [ST][GS]..S
+#WARN	00:13:34	Multiple motif offsets for [ST]..[ST]..[GS] vs [ST][AS]..S
+#WARN	00:13:34	Multiple motif offsets for [ST]..[ST]..[GS] vs TS..[GS]
+#WARN	00:13:34	Multiple motif offsets for [ST]..[ST]..[GS] vs [ST][AS]..[GS]
+#WARN	00:13:34	Multiple motif offsets for [ST]..[ST]..[GS] vs [GS]..[GS]S
+#WARN	00:13:34	Multiple motif offsets for [ST]..[ST]..[GS] vs SD.S
+#WARN	00:13:34	Multiple motif offsets for [ST]..[ST]..[GS] vs S[DE].[AS]
+#WARN	00:13:34	Multiple motif offsets for [ST]..[ST]..[GS] vs [AGS]..[GS]S
+#WARN	00:13:37	Multiple motif offsets for [ST].[AG]..[GS] vs [GS][GS].[AG]
+#WARN	00:13:43	Multiple motif offsets for S..[ST][ST] vs [GS]..[ST]..[AS]
+#WARN	00:13:43	Multiple motif offsets for S..[ST][ST] vs [ST]S..[ST]
+#WARN	00:13:43	Multiple motif offsets for S..[ST][ST] vs [ST][GS]..S
+#WARN	00:13:43	Multiple motif offsets for S..[ST][ST] vs [ST][AS]..S
+#WARN	00:13:43	Multiple motif offsets for S..[ST][ST] vs S..[AGS]..[AS]
+#WARN	00:13:43	Multiple motif offsets for S..[ST][ST] vs [ST][AS]..[GS]
+#WARN	00:13:43	Multiple motif offsets for S..[ST][ST] vs [GS]S..[GS]
+#WARN	00:13:43	Multiple motif offsets for S..[ST][ST] vs [GS][GS]..[GS]
+#WARN	00:13:44	Multiple motif offsets for [GS]..[ST]..[AS] vs TS..[ST]
+#WARN	00:13:44	Multiple motif offsets for [GS]..[ST]..[AS] vs TS..S
+#WARN	00:13:44	Multiple motif offsets for [GS]..[ST]..[AS] vs [ST]S..[ST]
+#WARN	00:13:44	Multiple motif offsets for [GS]..[ST]..[AS] vs [ST][GS]..S
+#WARN	00:13:44	Multiple motif offsets for [GS]..[ST]..[AS] vs [ST][AS]..S
+#WARN	00:13:44	Multiple motif offsets for [GS]..[ST]..[AS] vs TS..[GS]
+#WARN	00:13:44	Multiple motif offsets for [GS]..[ST]..[AS] vs S..[AGS]..[AS]
+#WARN	00:13:44	Multiple motif offsets for [GS]..[ST]..[AS] vs [ST][AS]..[GS]
+#WARN	00:13:45	Multiple motif offsets for [GS]..[ST]..[AS] vs [GS]..[AGS]D
+#WARN	00:13:45	Multiple motif offsets for [GS]..[ST]..[AS] vs [GS]..[GS]S
+#WARN	00:13:45	Multiple motif offsets for [GS]..[ST]..[AS] vs SD.S
+#WARN	00:13:45	Multiple motif offsets for [GS]..[ST]..[AS] vs S[DE].[AS]
+#WARN	00:13:45	Multiple motif offsets for [GS]..[ST]..[AS] vs [AGS]..[GS]S
+#WARN	00:13:45	Multiple motif offsets for [GS]..[ST]..[AS] vs [ST][AG].[AS]
+#WARN	00:13:50	Multiple motif offsets for TS..[ST] vs S..[AGS]..[AS]
+#WARN	00:13:50	Multiple motif offsets for TS..[ST] vs [GS]..S[DE].[AS]
+#WARN	00:13:51	Multiple motif offsets for TS..S vs S..[AGS]..[AS]
+#WARN	00:13:51	Multiple motif offsets for TS..S vs [GS]..S[DE].[AS]
+#WARN	00:13:51	Multiple motif offsets for [ST]S..[ST] vs S..[AGS]..[AS]
+#WARN	00:13:51	Multiple motif offsets for [ST]S..[ST] vs [GS]..S[DE].[AS]
+#WARN	00:13:51	Multiple motif offsets for [ST]S..[ST] vs [GS]..[GS]S
+#WARN	00:13:51	Multiple motif offsets for [ST]S..[ST] vs [AGS]..[GS]S
+#WARN	00:13:51	Multiple motif offsets for [ST]S..[ST] vs S[AS].[AGS]
+#WARN	00:13:52	Multiple motif offsets for [ST][GS]..S vs S..[AGS]..[AS]
+#WARN	00:13:52	Multiple motif offsets for [ST][GS]..S vs [GS]..S[DE].[AS]
+#WARN	00:13:52	Multiple motif offsets for [ST][GS]..S vs [GS]..[GS]S
+#WARN	00:13:52	Multiple motif offsets for [ST][GS]..S vs [AGS]..[GS]S
+#WARN	00:13:52	Multiple motif offsets for [ST][GS]..S vs S[AS].[AGS]
+#WARN	00:13:53	Multiple motif offsets for [ST][AS]..S vs [AS].[ST]S
+#WARN	00:13:53	Multiple motif offsets for [ST][AS]..S vs [AGS].[ST]S
+#WARN	00:13:53	Multiple motif offsets for [ST][AS]..S vs S..[AGS]..[AS]
+#WARN	00:13:53	Multiple motif offsets for [ST][AS]..S vs [GS]..S[DE].[AS]
+#WARN	00:13:53	Multiple motif offsets for [ST][AS]..S vs [GS]..[GS]S
+#WARN	00:13:53	Multiple motif offsets for [ST][AS]..S vs [AGS]..[GS]S
+#WARN	00:13:53	Multiple motif offsets for [ST][AS]..S vs [ST][AG].[AS]
+#WARN	00:13:53	Multiple motif offsets for [ST][AS]..S vs S[AS].[AGS]
+#WARN	00:13:53	Multiple motif offsets for [ST][AS]..S vs SA.[AS]
+#WARN	00:13:54	Multiple motif offsets for [AS].[ST]S vs [ST][AS]..[GS]
+#WARN	00:13:54	Multiple motif offsets for [AS].[ST]S vs [ST][AG].[AS]
+#WARN	00:13:54	Multiple motif offsets for [AS].[ST]S vs S[AS].[AGS]
+#WARN	00:13:54	Multiple motif offsets for [AS].[ST]S vs SA.[AS]
+#WARN	00:13:55	Multiple motif offsets for TS..[GS] vs S..[AGS]..[AS]
+#WARN	00:13:55	Multiple motif offsets for TS..[GS] vs [GS]..S[DE].[AS]
+#WARN	00:13:56	Multiple motif offsets for [AGS].[ST]S vs [ST][AS]..[GS]
+#WARN	00:13:56	Multiple motif offsets for [AGS].[ST]S vs [ST][AG].[AS]
+#WARN	00:13:56	Multiple motif offsets for [AGS].[ST]S vs S[AS].[AGS]
+#WARN	00:13:56	Multiple motif offsets for [AGS].[ST]S vs SA.[AS]
+#WARN	00:13:57	Multiple motif offsets for S..[AGS]..[AS] vs [ST][AS]..[GS]
+#WARN	00:13:57	Multiple motif offsets for S..[AGS]..[AS] vs [GS]..S[DE].[AS]
+#WARN	00:13:57	Multiple motif offsets for S..[AGS]..[AS] vs [GS]..[GS]S
+#WARN	00:13:57	Multiple motif offsets for S..[AGS]..[AS] vs SD.S
+#WARN	00:13:57	Multiple motif offsets for S..[AGS]..[AS] vs S[DE].[AS]
+#WARN	00:13:57	Multiple motif offsets for S..[AGS]..[AS] vs [AGS]..[GS]S
+#WARN	00:13:57	Multiple motif offsets for S..[AGS]..[AS] vs [ST]..[AGS]..A
+#WARN	00:13:57	Multiple motif offsets for S..[AGS]..[AS] vs [GS]..[GS]..A
+#WARN	00:13:57	Multiple motif offsets for S..[AGS]..[AS] vs [AS]..[AG].[ILM]
+#WARN	00:13:58	Multiple motif offsets for [ST][AS]..[GS] vs [GS]..S[DE].[AS]
+#WARN	00:13:58	Multiple motif offsets for [ST][AS]..[GS] vs [GS]..[GS]S
+#WARN	00:13:58	Multiple motif offsets for [ST][AS]..[GS] vs [AGS]..[GS]S
+#WARN	00:13:58	Multiple motif offsets for [ST][AS]..[GS] vs A.[ST]S
+#WARN	00:13:58	Multiple motif offsets for [ST][AS]..[GS] vs [ST][AG].[AS]
+#WARN	00:13:58	Multiple motif offsets for [ST][AS]..[GS] vs S[AS].[AGS]
+#WARN	00:13:58	Multiple motif offsets for [ST][AS]..[GS] vs SA.[AS]
+#WARN	00:13:59	Multiple motif offsets for G..[AGS]G vs [GS][GS].[AG]
+#WARN	00:14:00	Multiple motif offsets for G..[GS][GS] vs [GS]S..[GS]
+#WARN	00:14:00	Multiple motif offsets for G..[GS][GS] vs [GS][GS]..[GS]
+#WARN	00:14:00	Multiple motif offsets for G..[GS][GS] vs GS..G
+#WARN	00:14:00	Multiple motif offsets for G..[GS][GS] vs [AG]S..[AG]
+#WARN	00:14:01	Multiple motif offsets for [LV][GS].[GS]..[ST] vs [LV][GS]..T
+#WARN	00:14:02	Multiple motif offsets for S.[AS]..[ST] vs [AS][IV][ST][ST]
+#WARN	00:14:07	Multiple motif offsets for SLQ vs S.{0,1}LQ
+#WARN	00:14:08	Multiple motif offsets for [GS]..S[DE].[AS] vs [GS]..[AGS]D
+#WARN	00:14:08	Multiple motif offsets for [GS]..S[DE].[AS] vs SD.S
+#WARN	00:14:08	Multiple motif offsets for [GS]..S[DE].[AS] vs S[DE].[AS]
+#WARN	00:14:08	Multiple motif offsets for [GS]..S[DE].[AS] vs G.{0,1}DS
+#WARN	00:14:08	Multiple motif offsets for [GS]..S[DE].[AS] vs [AS][DE]..D
+#WARN	00:14:08	Multiple motif offsets for [GS]..S[DE].[AS] vs [DE].[AS]D
+#WARN	00:14:08	Multiple motif offsets for [GS]..S[DE].[AS] vs S[DE]..D
+#WARN	00:14:09	Multiple motif offsets for [GS]..[AGS]D vs SD.S
+#WARN	00:14:09	Multiple motif offsets for [GS]..[AGS]D vs S[DE].[AS]
+#WARN	00:14:10	Multiple motif offsets for [GS]..[GS]S vs [GS][GS].[AG]
+#WARN	00:14:10	Multiple motif offsets for [GS]..[GS]S vs [GS]S..[GS]
+#WARN	00:14:10	Multiple motif offsets for [GS]..[GS]S vs [GS][GS]..[GS]
+#WARN	00:14:10	Multiple motif offsets for [GS]..[GS]S vs [AGS]S.[AG]
+#WARN	00:14:10	Multiple motif offsets for [GS]..[GS]S vs GS..G
+#WARN	00:14:10	Multiple motif offsets for [GS]..[GS]S vs [AG]S..[AG]
+#WARN	00:14:11	Multiple motif offsets for SD.S vs [GS]..[ST][DE]
+#WARN	00:14:11	Multiple motif offsets for SD.S vs S..[ST]D
+#WARN	00:14:11	Multiple motif offsets for SD.S vs [GS]..[GS][DE]
+#WARN	00:14:11	Multiple motif offsets for SD.S vs [DE].[AS]D
+#WARN	00:14:11	Multiple motif offsets for S[DE].[AS] vs [GS]..[ST][DE]
+#WARN	00:14:11	Multiple motif offsets for S[DE].[AS] vs S..[ST]D
+#WARN	00:14:11	Multiple motif offsets for S[DE].[AS] vs [GS]..[GS][DE]
+#WARN	00:14:11	Multiple motif offsets for S[DE].[AS] vs [GS]..[ST]E
+#WARN	00:14:11	Multiple motif offsets for S[DE].[AS] vs [DE].[AS]D
+#WARN	00:14:11	Multiple motif offsets for S[DE].[AS] vs D.{0,1}S.{0,1}E
+#WARN	00:14:12	Multiple motif offsets for [AGS]..[GS]S vs [GS][GS].[AG]
+#WARN	00:14:12	Multiple motif offsets for [AGS]..[GS]S vs [GS]S..[GS]
+#WARN	00:14:12	Multiple motif offsets for [AGS]..[GS]S vs [GS][GS]..[GS]
+#WARN	00:14:12	Multiple motif offsets for [AGS]..[GS]S vs [AGS]S.[AG]
+#WARN	00:14:12	Multiple motif offsets for [AGS]..[GS]S vs GS..G
+#WARN	00:14:12	Multiple motif offsets for [AGS]..[GS]S vs [AG]S..[AG]
+#WARN	00:14:13	Multiple motif offsets for [GS]..[ST][DE] vs G.{0,1}DS
+#WARN	00:14:13	Multiple motif offsets for [GS]..[ST][DE] vs [AS][DE]..D
+#WARN	00:14:13	Multiple motif offsets for [GS]..[ST][DE] vs S[DE]..D
+#WARN	00:14:15	Multiple motif offsets for [GS]..[GS][DE] vs G.{0,1}DS
+#WARN	00:14:15	Multiple motif offsets for [GS]..[GS][DE] vs [AS][DE]..D
+#WARN	00:14:15	Multiple motif offsets for [GS]..[GS][DE] vs S[DE]..D
+#WARN	00:14:16	Multiple motif offsets for [ST]..[AGS]..A vs [GS]..[GS]..A
+#WARN	00:14:16	Multiple motif offsets for [ST]..[AGS]..A vs [GS]..[AG][ST]
+#WARN	00:14:16	Multiple motif offsets for [ST]..[AGS]..A vs [AS]..[AG].[ILM]
+#WARN	00:14:17	Multiple motif offsets for [ST]..[AGS]..A vs S..A[ST]
+#WARN	00:14:17	Multiple motif offsets for [ST]..[AGS]..A vs [ST]..AS
+#WARN	00:14:25	Multiple motif offsets for [GS][GS].[AG] vs [GS]S..[GS]
+#WARN	00:14:25	Multiple motif offsets for [GS][GS].[AG] vs [GS][GS]..[GS]
+#WARN	00:14:25	Multiple motif offsets for [GS][GS].[AG] vs [GS]..[AG][ST]
+#WARN	00:14:25	Multiple motif offsets for [GS][GS].[AG] vs GS..G
+#WARN	00:14:25	Multiple motif offsets for [GS][GS].[AG] vs [AG]S..[AG]
+#WARN	00:14:25	Multiple motif offsets for [GS][GS].[AG] vs G.G.[GS]
+#WARN	00:14:26	Multiple motif offsets for [AS][FIV].[ST] vs V.{0,1}S.{0,1}S
+#WARN	00:14:31	Multiple motif offsets for S..[FLV][AS] vs [IL][GS]..[FV]
+#WARN	00:14:31	Multiple motif offsets for S..[FLV][AS] vs LS..[FV]
+#WARN	00:14:38	Multiple motif offsets for [AS][IV][ST][ST] vs S.{0,1}V.{0,1}S
+#WARN	00:14:38	Multiple motif offsets for [AS][IV][ST][ST] vs [LV][GS]..T
+#WARN	00:14:46	Multiple motif offsets for [GS]S..[GS] vs [GS]..[AG][ST]
+#WARN	00:14:46	Multiple motif offsets for [GS]S..[GS] vs S[AS].[AGS]
+#WARN	00:14:49	Multiple motif offsets for [GS][GS]..[GS] vs [GS]..[AG][ST]
+#WARN	00:14:49	Multiple motif offsets for [GS][GS]..[GS] vs S[AS].[AGS]
+#WARN	00:14:51	Multiple motif offsets for D[ST][DE].[AS] vs G.{0,1}DS
+#WARN	00:14:52	Multiple motif offsets for D[ST][DE].[AS] vs D.{0,1}S.{1,2}A
+#WARN	00:14:54	Multiple motif offsets for [GS]..[ST]E vs G.{0,1}DS
+#WARN	00:14:55	Multiple motif offsets for G.{0,1}DS vs [AGS]D[GS]
+#WARN	00:14:55	Multiple motif offsets for G.{0,1}DS vs [AG]DS
+#WARN	00:14:56	Multiple motif offsets for [AG].S..A vs [ST][AG].[AS]
+#WARN	00:14:56	Multiple motif offsets for [AG].S..A vs S[AS].[AGS]
+#WARN	00:14:56	Multiple motif offsets for [AG].S..A vs SA.[AS]
+#WARN	00:14:57	Multiple motif offsets for [ST][AG].[AS] vs A.{0,1}S..A
+#WARN	00:15:05	Multiple motif offsets for [AS]..S[IMV] vs [AS][LMV]..[LM]
+#WARN	00:15:08	Multiple motif offsets for [AGS]S.[AG] vs [GS]..[AG][ST]
+#WARN	00:15:09	Multiple motif offsets for [GS]..[AG][ST] vs GS..G
+#WARN	00:15:09	Multiple motif offsets for [GS]..[AG][ST] vs [AG]S..[AG]
+#WARN	00:15:11	Multiple motif offsets for S[AS].[AGS] vs A.{0,1}S..A
+#WARN	00:15:12	Multiple motif offsets for SA.[AS] vs A.{0,1}S..A
+#WARN	00:15:22	Multiple motif offsets for G.G.[ST] vs [AG].[GS][DE]
+#WARN	00:15:26	Multiple motif offsets for [AG]S..[AG] vs [ST]..AS
+#WARN	00:15:42	Multiple motif offsets for [DE].[AS]D vs D.{0,1}S.{0,1}E
+#WARN	00:15:43	Multiple motif offsets for D.[DE].[AS] vs D.{0,1}S.{1,2}A
+#WARN	00:15:45	Multiple motif offsets for [AG].[GS][DE] vs [AGS]D[GS]
+#WARN	00:15:45	Multiple motif offsets for [AG].[GS][DE] vs G.G.[GS]
+#WARN	00:15:45	Multiple motif offsets for [AG].[GS][DE] vs [AG]DS
+#WARN	00:15:45	Multiple motif offsets for [AG].[GS][DE] vs G.G.S
+#WARN	00:15:57	Multiple motif offsets for P..R.P vs R.P..R
+#WARN	00:16:01	Multiple motif offsets for S.A[IV] vs S.[AS]..I
+#WARN	00:16:10	Multiple motif offsets for G.G.[GS] vs [DE][AG].[GS]
+#WARN	00:16:12	Multiple motif offsets for [DE]EF vs E.{0,1}EF
+#WARN	00:16:22	Multiple motif offsets for [DE][HK].[KR] vs K.{0,1}K.K
+#WARN	00:16:27	Multiple motif offsets for E..[DE][LM] vs EL.{0,1}E
+#WARN	00:16:27	Multiple motif offsets for E..[DE][LM] vs EL.E.Q
+#WARN	00:16:27	Multiple motif offsets for E..[DE][LM] vs EL.E
+#WARN	00:16:28	Multiple motif offsets for [DE]..[DE][LM] vs EL.{0,1}E
+#WARN	00:16:28	Multiple motif offsets for [DE]..[DE][LM] vs EL.E.Q
+#WARN	00:16:28	Multiple motif offsets for [DE]..[DE][LM] vs EL.E
+#WARN	00:16:32	Multiple motif offsets for R[KR].K vs RR..[HK]
+#WARN	00:16:44	Multiple motif offsets for [DE][AG].[GS] vs E.[DE][GS]
+#WARN	00:16:47	Multiple motif offsets for [ST][DE].[DE] vs [DE].[DE].E
+#WARN	00:16:57	Multiple motif offsets for A[LMV]..[MV] vs [LV].[AGS][LM]
+#WARN	00:16:57	Multiple motif offsets for A[LMV]..[MV] vs [LV].[AGS]M
+#WARN	00:16:57	Multiple motif offsets for A[LMV]..[MV] vs [LV].[AGS][IM]
+#WARN	00:16:57	Multiple motif offsets for [AS][LMV]..[LM] vs [LV].[AGS][LM]
+#WARN	00:16:57	Multiple motif offsets for [AS][LMV]..[LM] vs [LV].[AGS]M
+#WARN	00:16:57	Multiple motif offsets for [AS][LMV]..[LM] vs [LV].[AGS][IM]
+#WARN	00:17:12	Multiple motif offsets for [FL].[LV].R vs L.{0,1}R.{0,1}F
+#WARN	00:17:12	Multiple motif offsets for [IL].[DE]E vs E[DE]E
+#WARN	00:17:13	Multiple motif offsets for SE.{0,1}Q vs E.[AS][DE]
+#WARN	00:17:14	Multiple motif offsets for [DE].[DE].E vs [LV]..E.[DE]
+#WARN	00:17:14	Multiple motif offsets for [DE].[DE].E vs [ILV]..E.[DE]
+#WARN	00:17:14	Multiple motif offsets for [DE].[DE].E vs E.{0,1}D.{0,2}E
+#WARN	00:17:14	Multiple motif offsets for [DE].[DE].E vs L..E.E
+#WARN	00:17:14	Multiple motif offsets for [DE].[DE].E vs [FL]..[DE].[DE]
+#WARN	00:17:14	Multiple motif offsets for [DE].[DE].E vs E[DE]E
+#WARN	00:17:14	Multiple motif offsets for [DE].[DE].E vs E.E..D
+#WARN	00:17:14	Multiple motif offsets for [DE].[DE].E vs E.{0,1}E..D
+#WARN	00:17:14	Multiple motif offsets for [DE].[DE].E vs D..D.{0,1}E
+#WARN	00:17:14	Multiple motif offsets for [DE].[DE].E vs E.{0,1}EA
+#WARN	00:17:15	Multiple motif offsets for R[DE].E vs [HR]..E.[DE]
+#WARN	00:17:19	Multiple motif offsets for D..[DE]E vs E[DE]E
+#WARN	00:17:26	Multiple motif offsets for [LV]..[LMV].S vs [LV].[AGS][IM]
+#WARN	00:17:27	Multiple motif offsets for [FL]..[DE].[DE] vs [FW][DE].[DE]
+#WARN	00:17:27	Multiple motif offsets for G.{0,2}SK vs G.{0,2}S.{0,2}G
+#WARN	00:17:37	Multiple motif offsets for E[DE]E vs E[DE].A
+#WARN	00:17:37	Multiple motif offsets for E[DE]E vs M.{0,1}EE
+#WARN	00:17:37	Multiple motif offsets for E[DE]E vs E[DE]..V
+#WARN	00:17:41	Multiple motif offsets for [ILM]..L.[LV] vs [LM].[IL]L
+#WARN	00:17:42	Multiple motif offsets for DE.{0,1}L vs D..E.{0,1}L
+#WARN	00:17:49	Multiple motif offsets for RR..[HK] vs RR.[KR]
+#WARN	00:17:49	Multiple motif offsets for RR.[KR] vs [HR]..[HR].K
+#WARN	00:17:57	Multiple motif offsets for [LM].[IL]L vs [IM]..[LM].[FLV]
+#WARN	00:17:57	Multiple motif offsets for [LM].[IL]L vs [LM]L..[IL]
+#WARN	00:17:58	Multiple motif offsets for E[DE].A vs E.{0,1}EA
+#WARN	00:18:06	Multiple motif offsets for F..[HR]..R vs [FH]..[FHY]..R
+#WARN	00:18:07	Multiple motif offsets for [FH]..[FHY]..R vs [FH]..[HR]S
+#WARN	00:18:10	Multiple motif offsets for [FV]..[HR]L vs R[FL]..[HK]
+#ALN	00:18:11	Unaligned peptides: aligning with PeptCluster
+#AAPROP	00:18:11	Reading AA Properties from aaprop.txt... ...I L V C A G M F Y W H K R E Q D N S T P ...Hydrophobic ...Polar ...Small ...Proline ...Positive ...Negative ...Charged ...Tiny ...Aliphatic ...Aromatic ...Done!
+#GAPX	00:18:11	PeptLen: 39; MaxLen: 40; Termini: True => 37 x 1 gap variants.
+#GAPX	00:18:11	PeptLen: 38; MaxLen: 40; Termini: True => 666 x 2 gap variants.
+#GAPX	00:18:14	PeptLen: 37; MaxLen: 40; Termini: True => 7,770 x 3 gap variants.
+#GAPX	00:38:10	PeptLen: 36; MaxLen: 40; Termini: True => 66,045 x 4 gap variants.
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep  4 13:20:06 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T cloudfix=F probcut=1
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T cloudfix=F probcut=1
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#QRY	00:00:00	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:00	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:00	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:00	QSLiMFinder Intermediate loaded: ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:00	QSLiMFinder Pickle ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#SPACE	00:00:00	Motif Space, 2 positions: 849 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 5,435 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 17,220 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 51,372 motifs
+#SLIM	00:00:00	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:00:01	Calculating [QSig] SLiM Probabilities (Sig<=1.00) complete: 1,000 ranked SLiMs.
+#COMB	00:00:02	Combined Occurrence Attributes complete.

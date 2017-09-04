@@ -1,0 +1,68 @@
+---
+title: 'QSLIMFinder: domain instances, human to search, viral to filter'
+author: "Vitalii Kleshchevnikov"
+date: "04/09/2017"
+output: 
+  html_document: 
+    keep_md: yes
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+packages = c("MItools", "rtracklayer", "ggplot2", "GGally", "RColorBrewer", "R.utils")
+if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    # specifying mirror is necessary for some Linux systems
+    install.packages(packages_to_install, dependencies = T, repos = "http://mirrors.ebi.ac.uk/CRAN/")
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    source("https://bioconductor.org/biocLite.R")
+    biocLite(packages_to_install)
+    devtools::install_github("vitkl/MItools")
+}
+
+suppressPackageStartupMessages({
+    library(MItools)
+    library(rtracklayer)
+    library(ggplot2)
+    library(GGally)
+    library(RColorBrewer)
+})
+
+SLIMFinder_dir = "./SLIMFinder/"
+if(!dir.exists(SLIMFinder_dir)) dir.create(SLIMFinder_dir)
+fwrite(fread("./SLIMFinder/filelist.txt"), "./SLIMFinder/filelist.txt", sep = "\t")
+```
+
+## Run QSLIMFinder 
+
+```{bash}
+software_PATH="../software/"
+SLIM_PATH=$software_PATH"slimsuite/tools/"
+QSLIMFinder=$SLIM_PATH"qslimfinder.py"
+IUPRED_PATH=$software_PATH"iupred/iupred"
+BLAST_PATH=$software_PATH"ncbi_blast_2.6.0/bin/"
+
+res_dir="./SLIMFinder/QSLIMFinder/"
+res_path=$res_dir"res.csv"
+echo $QSLIMFinder
+echo $IUPRED_PATH
+#python $QSLIMFinder 
+
+#QSLIMFinder
+while IFS=$'\t' read -r data query;
+do
+ python $QSLIMFinder blast+path=$BLAST_PATH iupath=$IUPRED_PATH resdir=$res_dir resfile=$res_path seqin=$data query=$query dismask=T consmask=T cloudfix=F probcut=1
+done < ./SLIMFinder/filelist.txt
+
+res_dir="./SLIMFinder/QSLIMFinder/"
+res_path=$res_dir"SLIMFinder_res.csv"
+SLIMFinder=$SLIM_PATH"slimfinder.py"
+#SLIMFinder
+while IFS=$'\t' read -r data query;
+do
+ python $SLIMFinder blast+path=$BLAST_PATH iupath=$IUPRED_PATH resdir=$res_dir resfile=$res_path seqin=$data dismask=T cloudfix=F probcut=1
+done < ./SLIMFinder/filelist.txt
+```
+

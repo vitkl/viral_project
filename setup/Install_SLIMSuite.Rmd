@@ -31,3 +31,20 @@ All manuals can be found here: https://github.com/slimsuite/SLiMSuite/tree/maste
   
 SLiMFinder manual: https://github.com/slimsuite/SLiMSuite/blob/master/docs/manuals/SLiMFinder%20Manual.pdf  
 CompariMotif Manual: https://github.com/slimsuite/SLiMSuite/blob/master/docs/manuals/CompariMotif%20Manual.pdf  
+
+# Install BLAST+
+
+```{r blast}
+blast_path = paste0(direct, "ncbi-blast-2.6.0+-x64-macosx.tar.gz")
+if(!file.exists(blast_path)) download("ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.6.0+-x64-macosx.tar.gz",
+         blast_path)
+untar(blast_path, exdir = direct, list=F)
+system("mv ../../software/ncbi-blast-2.6.0+ ../../software/ncbi_blast_2.6.0")
+
+```
+
+# Install IUPRED
+
+Go to :
+Unzip the emailed file.
+Compile IUPRED
