@@ -39,7 +39,7 @@ if(detectCores() <= 4) cores_to_use = detectCores() - 1
 if(detectCores() > 4) cores_to_use = 31
 
 # how many permutations?
-N_permut = 400000
+N_permut = 200000
 ```
 
 # How many of the domains identified using our approach are in the ELM database (as compared to the population of all domains we tested)?
