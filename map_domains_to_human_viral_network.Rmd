@@ -49,8 +49,8 @@ protein_domain_pair = fread(file = "./processed_data_files/protein_domain_pair",
 all_viral_interaction = queryPSICQUICrlib(query = "species:10239",
                 format = "tab27",
                 database = "imex",
-                directory = "./data_files/", 
-                releaseORdate = "2017Jul12"
+                directory = "./data_files/"
+                # , releaseORdate = "2017Jul12"
                 # ,just_list_releases = T,
                 )
 all_viral_interaction = cleanMITAB(all_viral_interaction)

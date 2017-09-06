@@ -36,17 +36,17 @@ suppressPackageStartupMessages({
 ```{r}
 # cores to use for multiprocessing: is the number of cores is small -> we are not on a cluster -> use all; if the number of cores is large -> we are on cluster -> use only 15 or 7 or 31 cores (n requested-1)
 if(detectCores() <= 4) cores_to_use = detectCores() - 1
-if(detectCores() > 4) cores_to_use = 20
+if(detectCores() > 4) cores_to_use = 31
 
 # how many permutations?
-N_permut = 200000
+N_permut = 10000
 ```
 
 # How many of the domains identified using our approach are in the ELM database (as compared to the population of all domains we tested)?
 
 ## Calculate empirical pvalues using either frequency of a domain among interacting partners of viral protein or Fisher test p-value
 
-```{r calculate_pvals}
+```{r calculate_pvals_freq}
 data = fread("./processed_data_files/viral_human_net_w_domains", sep = "\t", stringsAsFactors = F)
 # frequency function: set up standard parameters
 permuteFrequency = function(data, select_nodes = NULL, also_permuteYZ = F){
@@ -96,6 +96,10 @@ res_low_deg_back = permuteFrequency(data, select_nodes = list(IDs_domain_human ~
 #all.equal(res_low_deg_back$data_with_pval[complete.cases(res_low_deg_back$data_with_pval),p.value], res_low_deg_back_alt$data_with_pval[complete.cases(res_low_deg_back_alt$data_with_pval),p.value])
 plot(res_low_deg_back, main = "frequency: no low background count domains (>= 3)\nAND not considering viral proteins with the degree of 1")
 
+save(res, file="./processed_data_files/what_we_find_VS_ELM_output_freq.RData")
+```
+
+```{r calculate_pvals_count}
 # count function: set up standard parameters
 permuteCount = function(data, select_nodes = NULL, also_permuteYZ = F){
     res = permutationPval(interactions2permute = IDs_interactor_viral ~ IDs_interactor_human, # first set of interacting pairs (XY) that are to be permuted
@@ -116,6 +120,10 @@ res_count = permuteCount(data, select_nodes = NULL)
 proc.time() - time
 plot(res_count, main = "count: all proteins and domains")
 
+save(list = ls(), file="./processed_data_files/what_we_find_VS_ELM_clust.RData")
+```
+
+```{r calculate_pvals_FisherTest}
 # Fisher test: set up standard parameters
 permuteFisherTest = function(data, select_nodes = NULL, also_permuteYZ = F){
     resFISHER = permutationPval(interactions2permute = IDs_interactor_viral ~ IDs_interactor_human, # first set of interacting pairs (XY) that are to be permuted
@@ -155,6 +163,38 @@ time = proc.time()
 resFISHER_both = permuteFisherTest(data, select_nodes = NULL, also_permuteYZ = T)
 proc.time() - time
 plot(resFISHER_both, main = "Fisher test P-value: all proteins and domains \npermute BOTH IDs_interactor_viral ~ IDs_interactor_human AND IDs_interactor_human ~ IDs_domain_human")
+
+save(resFISHER, file="./processed_data_files/what_we_find_VS_ELM_output_FISHER.RData")
+```
+
+```{r calculate_pvals_freq_rev}
+# frequency function: set up standard parameters
+permuteFrequencyRev = function(data, select_nodes = NULL, also_permuteYZ = F){
+    res = permutationPval(interactions2permute = IDs_domain_human ~ IDs_interactor_human, # first set of interacting pairs (XY) that are to be permuted
+                          associations2test = IDs_domain_human ~ IDs_interactor_viral, # set of interacting pairs to be tested (XZ), YZ interactions are assumed
+                          node_attr = list(IDs_interactor_viral ~ IDs_interactor_viral_degree,
+                                           IDs_domain_human ~ domain_count,
+                                           IDs_interactor_viral + IDs_domain_human ~ domain_frequency_per_IDs_interactor_viral),
+                          data = data,
+                          statistic = IDs_interactor_viral + IDs_domain_human ~ .N / domain_count,
+                          select_nodes = select_nodes,
+                          N = N_permut,
+                          cores = cores_to_use, seed = 2, also_permuteYZ = also_permuteYZ)
+    return(res)
+}
+
+# frequency: all proteins and domains - # permute IDs_domain_human ~ IDs_interactor_human
+time = proc.time()
+resRev = permuteFrequencyRev(data, select_nodes = NULL)
+proc.time() - time
+plot(resRev, main = "frequency reverse: viral protein frequency among proteins with a domain")
+# multiply one way and the reverse-way probabilities
+mix = resRev
+mix$data_with_pval = resRev$data_with_pval[res$data_with_pval, on = c("IDs_domain_human", "IDs_interactor_viral", "IDs_interactor_human", "domain_type", "N_prot_w_interactors", "domain_count", "domain_frequency", "Taxid_interactor_human", "Taxid_interactor_viral", "IDs_interactor_viral_degree", "domain_frequency_per_IDs_interactor_viral", "fold_enrichment", "IDs_interactor_viral_per_IDs_domain_human", "domain_count_per_IDs_interactor_viral", "IDs_interactor_human_degree", "IDs_domain_human_per_IDs_interactor_viral")]
+mix$data_with_pval[, p.value := p.value * i.p.value]
+plot(mix, main = "frequency mix: p-val viral protein-domain * p-val domain-viral protein")
+
+save(mix, file="./processed_data_files/what_we_find_VS_ELM_output_freq_mix.RData")
 ```
 
 ## Viral protein degree and the background domain count of top-scoring proteins
@@ -195,7 +235,7 @@ PermutResult2D = function(res, N){
 
 # frequency
 PermutResult2D(res = res, N = 250) +
-    ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: frequency of a domain among interacting partners of a viral protein")
+    ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: frequency of a domain among interacting partners of a viral protein (viral-domain)")
 PermutResult2D(res = res_both, N = 250) +
     ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: frequency of a domain among interacting partners of a viral protein \n permute BOTH IDs_interactor_viral ~ IDs_interactor_human AND IDs_interactor_human ~ IDs_domain_human")
 PermutResult2D(res = res_low_back, N = 250) +
@@ -208,6 +248,12 @@ PermutResult2D(res = res_low_deg_back, N = 250) +
 # count
 PermutResult2D(res = res_count, N = 250) +
     ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: count of a domain among interacting partners of a viral protein")
+
+# reverse frequency
+PermutResult2D(res = res, N = 250) +
+    ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: viral protein frequency among proteins with a domain")
+PermutResult2D(res = mix, N = 250) +
+    ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: frequency p-val viral protein-domain * frequency p-val domain-viral protein")
 
 # Fisher test p-value
 PermutResult2D(res = resFISHER, N = 250) + 
@@ -254,7 +300,7 @@ testEnrichment = function(N, res, domains_known_mapped, random = F, name = ""){
     return(c(pval = test$p.value, odds_ratio = as.vector(test$estimate), count = table_res["TRUE", "TRUE"], name = name))
 }
 runningTestEnrichment = function(res, name){
-    enrichment = sapply(Ns, testEnrichment, res, domains_known_mapped, name = "domain frequency among interactors of a viral protein")
+    enrichment = sapply(Ns, testEnrichment, res, domains_known_mapped, name = name)
 colnames(enrichment) = Ns
 return(enrichment)
 }
@@ -266,6 +312,10 @@ enrichment_both = runningTestEnrichment(res_both, name = "domain frequency among
 enrichment_low_back = runningTestEnrichment(res_low_back, name = "domain frequency: no low background")
 enrichment_low_deg = runningTestEnrichment(res_low_deg, name = "domain frequency: no degree of 1")
 enrichment_low_deg_back = runningTestEnrichment(res_low_deg_back, name = "domain frequency: no degree of 1 AND no low background")
+
+# reverse frequency and mix
+enrichmentRev = runningTestEnrichment(resRev, name = "viral protein frequency among proteins with a domain")
+enrichmentMix = runningTestEnrichment(mix, name = "mix of viral protein -> domain and domain -> viral protein")
 
 # count
 enrichment_count = runningTestEnrichment(res_count, name = "domain count among interactors of a viral protein")
@@ -311,6 +361,7 @@ random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25)){
 }
 
 enrichmentRANDOM = random_domains(1000, 1)
+save(list = ls(), file="./processed_data_files/what_we_find_VS_ELM_clust.RData")
 ```
 
 ## As we include more proteins, the number of known domains we find increases and then levels off (probably because some of the known domains do not interact with viral proteins).
@@ -322,7 +373,7 @@ plotEnrichment = function(..., random_domains = NULL, domains_known_mapped, type
     typenum = match(type, c("pval", "odds_ratio", "count"))
     ngroups = length(res)
     
-    if(type == "count") color = brewer.pal(ngroups + 1, "Dark2") else color = brewer.pal(ngroups, "Dark2")
+    if(type == "count") color = colorRampPalette(brewer.pal(7, "Dark2"))(ngroups + 1) else color = colorRampPalette(brewer.pal(7, "Dark2"))(ngroups)
     if(is.na(typenum)) stop("'type' should be one of “count”, “odds_ratio”, “pval”")
     
     leg_pos_y = max(sapply(res, function(x, typenum) max(as.numeric(x[typenum,])), typenum))
@@ -374,7 +425,7 @@ plotEnrichment = function(..., random_domains = NULL, domains_known_mapped, type
 }
 
 plotEnrichment(enrichment, enrichment_both, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
-               enrichment_count, enrichmentFISHER, enrichmentFISHER_both,
+               enrichment_count, enrichmentRev, enrichmentMix, enrichmentFISHER, enrichmentFISHER_both,
                random_domains = enrichmentRANDOM, 
                domains_known_mapped = domains_known_mapped, type = "count", plot_type = "l")
 ```
@@ -383,7 +434,7 @@ plotEnrichment(enrichment, enrichment_both, enrichment_low_back, enrichment_low_
 
 ```{r fisher_odds_ratio, fig.height = 9, fig.width = 10}
 plotEnrichment(enrichment, enrichment_both, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
-               enrichment_count, enrichmentFISHER, enrichmentFISHER_both,
+               enrichment_count, enrichmentRev, enrichmentMix, enrichmentFISHER, enrichmentFISHER_both,
                random_domains = enrichmentRANDOM, 
                domains_known_mapped = domains_known_mapped, type = "odds_ratio", plot_type = "l")
 ```
@@ -392,7 +443,7 @@ plotEnrichment(enrichment, enrichment_both, enrichment_low_back, enrichment_low_
 
 ```{r fisher_pval, fig.height = 9, fig.width = 10}
 plotEnrichment(enrichment, enrichment_both, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
-               enrichment_count, enrichmentFISHER, enrichmentFISHER_both,
+               enrichment_count, enrichmentRev, enrichmentMix, enrichmentFISHER, enrichmentFISHER_both,
                random_domains = enrichmentRANDOM, 
                domains_known_mapped = domains_known_mapped, type = "pval", plot_type = "l")
 ```

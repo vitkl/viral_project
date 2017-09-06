@@ -44,58 +44,46 @@ I read InterProScan result and the InterPro_entry_types file. InterProScan outpu
 
 ```{r InterPro_entry_types}
 # read InterProScan result, download and add InterPro Entry Types information, extract from relevant columns and add names metadata and sequence length information
-InterProScan_result = readInterProGFF3("./processed_data_files/all_human_viral_protein_domains.gff3.gz")
+InterProScan_result = readInterProGFF3("./processed_data_files/all_human_viral_protein_domains.gff3.gz", processed = F)
 InterProScan_result = addInterProEntryTypes(InterProScan_result, "./data_files/entry.list")
-# create a subset that contains "Domain", "Active_site", "Binding_site", "Conserved_site", "PTM" signatures
-InterProScan_domains = SubsetByInterProEntryType(InterProScan_result)
+InterProScan_domains = SubsetByInterProEntryType(InterProScan_result, c("Domain", 
+    "Active_site", "Binding_site", "Conserved_site", "PTM", "Repeat"))
 ```
 
-## Remove redundancy in the identified domains (signatures of the same domain from different InterPro member databases)
+## Remove redundancy in the identified domains (signatures of the same domain from different InterPro member databases + domain families)
+
+In domain families: assign all domains to the top domain.
 
 ```{r collapse_by_IPR_ID}
-InterProScan_domains_list = split(InterProScan_domains, paste0(seqnames(InterProScan_domains),"|", InterProScan_domains$Dbxref))
-InterProScan_domains_nonred = GRanges()
+InterProTree = loadInterProTree(filename = "./data_files/interpro_ParentChildTreeFile.txt")
+# find all InterProIDs that have children InterProIDs
+InterProTree_level1 = getLevelXchildren(tree = InterProTree, level = 1) 
+has_children = InterProScan_domains$Dbxref %in% InterProTree_level1$allchildren
 
-for (i in 1:length(InterProScan_domains_list)) {
-    Nseq = length(InterProScan_domains_list[[i]])
-    reduced = reduce(InterProScan_domains_list[[i]], with.revmap=T)
-    metadata_orig = mcols(InterProScan_domains_list[[i]])
-    
-    metadata_new = metadata_orig[-which(colnames(metadata_orig) %in% c("status", "signature_desc", "md5", "ID", "type", "phase"))]
-    metadata_new$source = (as.character(metadata_new$source))
-    
-    mapping = character(Nseq)
-    for (ind in 1:length(reduced$revmap)) {
-        number = reduced$revmap[[ind]]
-        mapping[number] = ind
-    }
-    metadata_new_list = split(metadata_new, mapping)
-    new_metadata_new_list = SplitDataFrameList()
-    for (indic in 1:length(metadata_new_list)) {
-        temp_metadata = metadata_new_list[[indic]]
-        temp_metadata$source = paste0(temp_metadata$source, collapse="|")
-        temp_metadata$score = paste0(temp_metadata$score, collapse="|")
-        temp_metadata$Target = paste0(temp_metadata$Target, collapse="|")
-        temp_metadata$Name = paste0(temp_metadata$Name, collapse="|")
-        # convert CharacterList to character first 
-        temp_metadata$Ontology_term = sapply(temp_metadata$Ontology_term, paste0, collapse=",")
-        temp_metadata$Ontology_term = paste0(temp_metadata$Ontology_term, collapse="|")
-        new_metadata_new_list[[indic]] = unique(temp_metadata)
-    }
-    metadata_new = do.call("rbind", new_metadata_new_list)
-    mcols(reduced) = metadata_new
-    InterProScan_domains_nonred = c(InterProScan_domains_nonred, reduced)
-}
+# map top InterProIDs in the hierarchy when InterProIDs have have children InterProIDs
+InterProScan_domains$topInterProID = InterProScan_domains$Dbxref
+InterProScan_domains$topInterProID[has_children] = InterProTree_level1$level1[match(InterProScan_domains$Dbxref, InterProTree_level1$allchildren)][has_children]
 
-InterProScan_domains_nonred = unique(InterProScan_domains_nonred) 
+# collapse 
+InterProScan_domains_nonred = collapseByInterProID(InterProScan_features = InterProScan_domains, id_col = "topInterProID")
 ```
+
+We used to have `r length(unique(InterProScan_domains$Name))` domains and `r length(unique(paste0(InterProScan_domains$Name,seqnames(InterProScan_domains))))` protein-domain pairs.   
+After combining the signatures of the same domain from different InterPro member databases we have `r length(unique(InterProScan_domains$Dbxref))` domains and `r length(unique(paste0(InterProScan_domains$Dbxref,seqnames(InterProScan_domains))))` protein-domain pairs.   
+Finally, after considering only one domain per domain family we are left with `r length(unique(InterProScan_domains$topInterProID))` domains and `r length(unique(paste0(InterProScan_domains$topInterProID,seqnames(InterProScan_domains))))` protein-domain pairs.  
 
 ```{r}
 # save results
 export(InterProScan_domains_nonred, con = "./processed_data_files/InterProScan_domains_nonredundant.gff3", format = "gff3")
+gzip(filename = "./processed_data_files/InterProScan_domains_nonredundant.gff3", destname = "./processed_data_files/InterProScan_domains_nonredundant.gff3.gz", overwrite = T, remove = T)
+
+InterProScan_domains_nonred2 = readInterProGFF3("./processed_data_files/InterProScan_domains_nonredundant.gff3.gz", processed = T)
 
 # take protein-domain pair discarding range information
-protein_domain_pair = unique(data.table(IDs_protein = as.character(seqnames(InterProScan_domains_nonred)), IDs_domain = as.character(InterProScan_domains_nonred$Dbxref), domain_type = InterProScan_domains_nonred$ENTRY_TYPE))
+protein_domain_pair = unique(data.table(IDs_protein = as.character(seqnames(InterProScan_domains_nonred)),
+                                        IDs_domain = as.character(InterProScan_domains_nonred$topInterProID),
+                                        all_IDs_domain = as.character(InterProScan_domains_nonred$Dbxref),
+                                        domain_type = InterProScan_domains_nonred$ENTRY_TYPE))
 # save simplified table
 fwrite(protein_domain_pair, file = "./processed_data_files/protein_domain_pair", sep = "\t")
 ```
