@@ -29,6 +29,45 @@ suppressPackageStartupMessages({
     library(GGally)
     library(RColorBrewer)
 })
+```
+
+## use all the interacting partners of human proteins with significant domains to seach for motifs and their viral interactors to filter
+
+QSLIMfinder: 
+- seqin - all the interacting partners of human proteins with significant domains (including viral proteins); FASTA sequences
+- query - the viral interacting partners of human proteins with significant domains; names of the FASTA sequences in seqin
+- resdir - directory where to store all results
+- resfile - file where to write
+- dismask - mask disordered regions using IUPRED
+- consmask - relative conservation masking
+- probcut - FDR-corrected probability cutoff
+- qregion - Mask all but the region of the query from (and including) residue X to residue Y [0,-1] (useful for regions sufficient/necessary to interact)
+
+
+
+### prepare sets of protein sequences and instructions for SLIMFinder
+
+```{r}
+# load the domain analysis results
+load("./processed_data_files/what_we_find_VS_ELM_output_freq.RData")
+
+# load ppi data
+# human-viral
+all_viral_interaction = queryPSICQUICrlib(query = "species:10239",
+                format = "tab27",
+                database = "imex",
+                directory = "./data_files/")
+all_viral_interaction = cleanMITAB(all_viral_interaction)
+# pick proteins only
+all_viral_interaction$data = all_viral_interaction$data[interactor_IDs_databases_A == "uniprotkb" & interactor_IDs_databases_B == "uniprotkb", ]
+# filter only human-viral interactions
+all_viral_interaction$data = all_viral_interaction$data[Taxid_interactor_A == "9606" | Taxid_interactor_B == "9606",]
+all_viral_interaction$data = unique(all_viral_interaction$data)
+# human-human
+all_human_interaction = fullInteractome(taxid = "9606", database = "IntActFTP", format = "tab27",
+                                        clean = TRUE, protein_only = TRUE, directory = "./data_files/")
+# load FASTA
+all.fasta = readAAStringSet(filepath = "./data_files/all_human_viral_proteins.fasta", format = "fasta")
 
 SLIMFinder_dir = "./SLIMFinder/"
 if(!dir.exists(SLIMFinder_dir)) dir.create(SLIMFinder_dir)
@@ -41,19 +80,19 @@ fwrite(fread("./SLIMFinder/filelist.txt"), "./SLIMFinder/filelist.txt", sep = "\
 software_PATH="../software/"
 SLIM_PATH=$software_PATH"slimsuite/tools/"
 QSLIMFinder=$SLIM_PATH"qslimfinder.py"
-IUPRED_PATH=$software_PATH"iupred/iupred"
+IUPred_PATH=$software_PATH"iupred/iupred"
 BLAST_PATH=$software_PATH"ncbi_blast_2.6.0/bin/"
 
 res_dir="./SLIMFinder/QSLIMFinder/"
 res_path=$res_dir"res.csv"
 echo $QSLIMFinder
-echo $IUPRED_PATH
+echo $IUPred_PATH
 #python $QSLIMFinder 
 
 #QSLIMFinder
 while IFS=$'\t' read -r data query;
 do
- python $QSLIMFinder blast+path=$BLAST_PATH iupath=$IUPRED_PATH resdir=$res_dir resfile=$res_path seqin=$data query=$query dismask=T consmask=T cloudfix=F probcut=1
+ python $QSLIMFinder blast+path=$BLAST_PATH iupath=$IUPred_PATH resdir=$res_dir resfile=$res_path seqin=$data query=$query dismask=T consmask=T cloudfix=F probcut=1
 done < ./SLIMFinder/filelist.txt
 
 res_dir="./SLIMFinder/QSLIMFinder/"
@@ -62,7 +101,8 @@ SLIMFinder=$SLIM_PATH"slimfinder.py"
 #SLIMFinder
 while IFS=$'\t' read -r data query;
 do
- python $SLIMFinder blast+path=$BLAST_PATH iupath=$IUPRED_PATH resdir=$res_dir resfile=$res_path seqin=$data dismask=T cloudfix=F probcut=1
+ python $SLIMFinder blast+path=$BLAST_PATH iupath=$IUPred_PATH resdir=$res_dir resfile=$res_path seqin=$data dismask=T cloudfix=F probcut=1
 done < ./SLIMFinder/filelist.txt
 ```
+
 

@@ -102,14 +102,12 @@ The code below will run InterProScan version 5.25-64.0 over all sequences in all
 InterProScan works on Linux system only. /my_interproscan/interproscan-5.25-64.0/ should be located in dir1 "/dir1/dir2/viral_project"   
 
 ```{bash}
-# bsub rsync /nfs/research/petsalaki/users/vitalii /hps/nobackup/research/petsalaki/users/ -r -av --delete
-if [ -e ./processed_data_files/all_human_viral_protein_domains092017.gff3 ]
+if [ -e ./processed_data_files/all_human_viral_protein_domains092017.gff3.gz ]
 then
-../../my_interproscan/interproscan-5.25-64.0/interproscan.sh -i ./data_files/all_human_viral_proteins.fasta -f gff3 -iprlookup -goterms -b ./processed_data_files/all_human_viral_protein_domains092017
-# bsub rsync /hps/nobackup/research/petsalaki/users/vitalii /nfs/research/petsalaki/users/ -r -av
-gzip ./processed_data_files/all_human_viral_protein_domains092017.gff3
+echo "InterProScan has been run before: all_human_viral_protein_domains092017.gff3.gz file exists"
 else
-echo "InterProScan has been run before: all_human_viral_protein_domains092017.gff3 file exists"
+../../my_interproscan/interproscan-5.25-64.0/interproscan.sh -i ./data_files/all_human_viral_proteins.fasta -f gff3 -iprlookup -goterms -b ./processed_data_files/all_human_viral_protein_domains092017
+gzip ./processed_data_files/all_human_viral_protein_domains092017.gff3
 fi
 ```
 
