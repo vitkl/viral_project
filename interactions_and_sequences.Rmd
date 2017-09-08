@@ -34,18 +34,8 @@ suppressPackageStartupMessages({
 I download all protein-protein interactions from IntAct (IMEx databases) involving viral proteins using PSICQUIC service in MITAB2.7 format (https://psicquic.github.io/MiqlReference27.html). I clean the data in the table to make it more useble. Then, I filter and keep only human-viral interactions.
 
 ```{r PSICQUIC_viral_human}
-all_viral_interaction = queryPSICQUICrlib(query = "species:10239",
-                format = "tab27",
-                database = "imex",
-                directory = "./data_files/")
-
-
-# clean the data in the table to make it more useble
-all_viral_interaction = cleanMITAB(all_viral_interaction)
-
-# filter only human-viral interactions
-all_viral_interaction$data = all_viral_interaction$data[Taxid_interactor_A == "9606" | Taxid_interactor_B == "9606",]
-all_viral_interaction$data = unique(all_viral_interaction$data)
+all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
+                                        clean = TRUE, protein_only = TRUE, directory = "./data_files/")
 ```
 
 ## Searching for human-human PPI
@@ -53,7 +43,7 @@ all_viral_interaction$data = unique(all_viral_interaction$data)
 I download all human-human protein-protein interactions from IntAct (IMEx databases) using PSICQUIC service in MITAB2.5 format and clean the data.
 
 ```{r PSICQUIC_human_human}
-all_human_interaction = fullInteractome(taxid = "9606", database = "imex", format = "tab27",
+all_human_interaction = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
                                         clean = TRUE, protein_only = TRUE, directory = "./data_files/")
 
 # select proteins

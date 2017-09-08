@@ -40,43 +40,28 @@ Date: `r Sys.time()`
 
 ## Map domain information on the protein interaction network
 
-I read interaction data and clean this data to make it more useble. Then, I filter and keep only human-viral interactions.
+I read interaction data and clean this data to make it more useble. Then, I filter and keep only human-viral interactions. All done by the interSpeciesInteractome function.  
 
 ```{r human_viral}
 # load protein-domain mapping
 protein_domain_pair = fread(file = "./processed_data_files/protein_domain_pair", stringsAsFactors = F, sep = "\t")
 # load PPI data
-all_viral_interaction = queryPSICQUICrlib(query = "species:10239",
-                format = "tab27",
-                database = "imex",
-                directory = "./data_files/"
-                # , releaseORdate = "2017Jul12"
-                # ,just_list_releases = T,
-                )
-all_viral_interaction = cleanMITAB(all_viral_interaction)
-# pick proteins only
-all_viral_interaction$data = all_viral_interaction$data[interactor_IDs_databases_A == "uniprotkb" & interactor_IDs_databases_B == "uniprotkb", ]
-# filter only human-viral interactions
-all_viral_interaction$data = all_viral_interaction$data[Taxid_interactor_A == "9606" | Taxid_interactor_B == "9606",]
-all_viral_interaction$data = unique(all_viral_interaction$data)
+all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
+                                        clean = TRUE, protein_only = TRUE, directory = "./data_files/")
+all_within_viral_interaction = fullInteractome(taxid = 10239, database = "IntActFTP", format = "tab27",
+                                        clean = TRUE, protein_only = TRUE, directory = "./data_files/")
+all_within_viral_interaction = subsetMITABbyID(MITABdata = all_within_viral_interaction, ID_seed = unique(all_viral_interaction$data$IDs_interactor_B), within_seed = T, only_seed2nonseed = F)
 ```
+
+Viral proteins have `r length(unique(all_viral_interaction$data$pair_id))` known interacting pairs with human proteins while only `r length(unique(all_within_viral_interaction$data$pair_id))` with other viral proteins.  
 
 Both the network and the domain data contain more information than necessary for identifying domains likely to mediate interaction. Selecting only what's necessary: viral_protein_UniprotID - human_protein_UniprotID - human_domain_InterProID.  
 
-First, we need to rearrange interactions so that one column contains viral proteins and the other contains human proteins (in the database some interactions are stored viral-human order and some in human-viral order).   
-
-```{r arrange_interactions}
-all_viral_interaction_ab = all_viral_interaction$data[Taxid_interactor_A == "9606" & Taxid_interactor_B != "9606",
-                                                 .(IDs_interactor_human = IDs_interactor_A, 
-                                                   IDs_interactor_viral = IDs_interactor_B, 
-                                                   Taxid_interactor_human = Taxid_interactor_A, 
-                                                   Taxid_interactor_viral = Taxid_interactor_B)]
-all_viral_interaction_ba = all_viral_interaction$data[Taxid_interactor_A != "9606" & Taxid_interactor_B == "9606",
-                                                 .(IDs_interactor_human = IDs_interactor_B,
-                                                   IDs_interactor_viral = IDs_interactor_A,
-                                                   Taxid_interactor_human = Taxid_interactor_B,
-                                                   Taxid_interactor_viral = Taxid_interactor_A)]
-all_viral_interaction_simp = unique(rbind(all_viral_interaction_ab, all_viral_interaction_ba))
+```{r simplify_interactions}
+all_viral_interaction_simp = unique(all_viral_interaction$data[,.(IDs_interactor_human = IDs_interactor_A,
+                                                                  IDs_interactor_viral = IDs_interactor_B,
+                                                                  Taxid_interactor_human = Taxid_interactor_A,
+                                                                  Taxid_interactor_viral = Taxid_interactor_B)])
 ```
 
 Next, the frequency of each domain is calculated and simplified domain information (IDs_protein, IDs_domain, domain_type) is integrated with the simplified network data described above.  
