@@ -1,0 +1,159 @@
+---
+title: "Mapping domains to the E3 ubiquitin ligase - substrates protein interaction network"
+author: "Vitalii Kleshchevnikov"
+date: "29/06/2017"
+output: 
+  html_document: 
+    keep_md: yes
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+packages = c("data.table","downloader","R.utils","UniProt.ws", "PSICQUIC", "ggplot2", "rtracklayer", "Biostrings", "MItools", "GGally")
+if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    # specifying mirror is necessary for some Linux systems
+    install.packages(packages_to_install, dependencies = T, repos = "http://mirrors.ebi.ac.uk/CRAN/")
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    source("https://bioconductor.org/biocLite.R")
+    biocLite(packages_to_install)
+    devtools::install_github("vitkl/MItools")
+}
+
+suppressPackageStartupMessages({
+    library(data.table)
+    library(downloader)
+    library(R.utils)
+    library(UniProt.ws)
+    library(PSICQUIC)
+    library(ggplot2)
+    library(rtracklayer)
+    library(Biostrings)
+    library(MItools)
+    library(GGally)
+})
+```
+
+Date: `r Sys.time()`
+
+## Map domain information on the protein interaction network
+
+I read interaction data and clean this data to make it more useble. Then, I filter all human interactions for only interactions of E3 ligases and any other protein (but not E3 ligase). I identify E3 ligases by the protein name (uniprot query: name:e3+name:ligase+organism:9606, + means AND)
+
+```{r human_viral}
+# load protein-domain mapping
+protein_domain_pair = fread(file = "./processed_data_files/protein_domain_pair", stringsAsFactors = F, sep = "\t")
+# load PPI data
+all_human_interaction = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
+                                        clean = TRUE, protein_only = TRUE, directory = "./data_files/")
+
+E3ligases_url = "http://www.uniprot.org/uniprot/?query=name:e3+name:ligase+organism:9606&format=tab&columns=id"
+E3ligases = fread(E3ligases_url, stringsAsFactors = F)$Entry
+E3ligasesinteractions = subsetMITABbyID(all_human_interaction, ID_seed = E3ligases, within_seed = F, only_seed2nonseed = T)
+E3ligases_within_interactions = subsetMITABbyID(all_human_interaction, ID_seed = fread(E3ligases_url, stringsAsFactors = F)$Entry, within_seed = T, only_seed2nonseed = F)
+```
+
+E3 ligase proteins have `r length(unique(E3ligasesinteractions$data$pair_id))` known interacting pairs with human proteins while only `r length(unique(E3ligases_within_interactions$data$pair_id))` with other viral proteins.  
+
+Both the network and the domain data contain more information than necessary for identifying domains likely to mediate interaction. Selecting only what's necessary: viral_protein_UniprotID - human_protein_UniprotID - human_domain_InterProID.  
+
+```{r simplify_interactions}
+all_viral_interaction_simp = unique(all_viral_interaction$data[,.(IDs_interactor_human = IDs_interactor_A,
+                                                                  IDs_interactor_viral = IDs_interactor_B,
+                                                                  Taxid_interactor_human = Taxid_interactor_A,
+                                                                  Taxid_interactor_viral = Taxid_interactor_B)])
+```
+
+Next, the frequency of each domain is calculated and simplified domain information (IDs_protein, IDs_domain, domain_type) is integrated with the simplified network data described above.  
+
+```{r simplified interactions}
+protein_domain_pair_temp = copy(protein_domain_pair)[, IDs_interactor_human := IDs_protein][, IDs_protein := NULL][, IDs_domain_human := IDs_domain][, IDs_domain := NULL]
+
+# calculate total number of human proteins
+protein_domain_pair_temp[, N_prot_w_interactors := length(unique(IDs_interactor_human))]
+# calculate domain count and frequency
+protein_domain_pair_temp[, domain_count := length(unique(IDs_interactor_human)), by = IDs_domain_human]
+protein_domain_pair_temp[, domain_frequency := domain_count / N_prot_w_interactors]
+
+# calculate network descriptive stats
+# viral protein degree
+all_viral_interaction_simp[, IDs_interactor_viral_degree := length(unique(IDs_interactor_human)), by = IDs_interactor_viral]
+# human protein degree
+all_viral_interaction_simp[, IDs_interactor_human_degree := length(unique(IDs_interactor_viral)), by = IDs_interactor_human]
+
+# I keep all interactions even if a human protein has no known domain (all.x = F, all.y = T)
+viral_human_w_domains = merge(protein_domain_pair_temp, all_viral_interaction_simp, all.x = F, all.y = T, by = "IDs_interactor_human", allow.cartesian = T)
+
+# human domains per viral protein
+viral_human_w_domains[, IDs_domain_human_per_IDs_interactor_viral := length(unique(IDs_domain_human)), by = IDs_interactor_viral]
+# viral protein per human domain
+viral_human_w_domains[, IDs_interactor_viral_per_IDs_domain_human := length(unique(IDs_interactor_viral)), by = IDs_domain_human]
+
+# domain count but per viral protein human domain instances (how many proteins the domain is located in) per viral protein (ID) and human domain (ID)
+viral_human_w_domains[, domain_count_per_IDs_interactor_viral := length(unique(IDs_interactor_human)), by = .(IDs_interactor_viral, IDs_domain_human)]
+viral_human_w_domains[is.na(IDs_domain_human), domain_count_per_IDs_interactor_viral := 0]
+# domain frequency but per viral protein
+viral_human_w_domains[, domain_frequency_per_IDs_interactor_viral := domain_count_per_IDs_interactor_viral / IDs_interactor_viral_degree, by = IDs_interactor_viral]
+viral_human_w_domains[is.na(IDs_domain_human), domain_frequency_per_IDs_interactor_viral := 0]
+# fold enrichment
+viral_human_w_domains[, fold_enrichment := domain_frequency_per_IDs_interactor_viral / domain_frequency]
+viral_human_w_domains[is.na(IDs_domain_human), fold_enrichment := 0]
+
+
+# save resulting network
+fwrite(viral_human_w_domains, file = "./processed_data_files/viral_human_net_w_domains", sep = "\t")
+```
+
+## Summary of the network
+
+The plot below show the relationships (2D histogram), distribution density (on the diagonal) and pearson correlation for a number of parameters characterising human domains, viral proteins or it's interactions:
+
+1. domain_frequency is the number of human proteins with a particular domain divided by the total number of human proteins (the attribute of a human domain)
+2. IDs_interactor_viral_degree is the number of interactions each viral protein has (the attribute of a viral protein)
+3. IDs_interactor_human_degree is the number of interactions each human protein has (the attribute of a human protein)
+4. IDs_domain_human_per_IDs_interactor_viral is the number of domain types that are present in proteins which a particular viral protein interacts with (the attribute of a viral protein)
+
+```{r, fig.height=9, fig.width=13}
+# function to accomodate ggplot2::geom_bin2d in GGally::ggpairs, taken from http://ggobi.github.io/ggally/#custom_functions
+d2_bin <- function(data, mapping, ..., low = "#132B43", high = "#56B1F7") {
+    ggplot(data = data, mapping = mapping) +
+        geom_bin2d(...) +
+        scale_fill_gradient(low = low, high = high) +
+        scale_y_log10() + scale_x_log10() + annotation_logticks()
+}
+
+log10_density = function(data, mapping, ...){
+    ggplot(data = data, mapping = mapping) +
+        geom_density(...) +
+        scale_x_log10() + annotation_logticks()
+}
+
+d2_bin_plot = GGally::ggpairs(viral_human_w_domains[!is.na(IDs_domain_human),.(domain_frequency, 
+                                                                 IDs_interactor_viral_degree, 
+                                                                 IDs_interactor_human_degree, 
+                                                                 IDs_domain_human_per_IDs_interactor_viral, 
+                                                                 IDs_interactor_viral_per_IDs_domain_human,
+                                                                 domain_count_per_IDs_interactor_viral,
+                                                                 domain_frequency_per_IDs_interactor_viral,
+                                                                 fold_enrichment)], 
+                lower = list(continuous = d2_bin), 
+                diag = list(continuous = log10_density)) +
+    theme_light() +
+    theme(strip.text.y = element_text(angle = 0, size = 10),
+          strip.text.x = element_text(angle = 90, size = 10))
+d2_bin_plot
+```
+
+## R session information
+
+```{r}
+save(list = ls(), file="./processed_data_files/map_domains_to_human_viral_network_clust.RData")
+R.utils::gzip(filename = "./processed_data_files/map_domains_to_human_viral_network_clust.RData",
+              destname = "./processed_data_files/map_domains_to_human_viral_network_clust.RData.gz",
+              remove = T, overwrite = T)
+
+Sys.Date()
+sessionInfo()
+```
