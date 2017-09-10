@@ -127,268 +127,136 @@ $(document).ready(function () {
 <div id="seaching-for-viral-human-ppi" class="section level2">
 <h2>Seaching for viral-human PPI</h2>
 <p>I download all protein-protein interactions from IntAct (IMEx databases) involving viral proteins using PSICQUIC service in MITAB2.7 format (<a href="https://psicquic.github.io/MiqlReference27.html">https://psicquic.github.io/MiqlReference27.html</a>). I clean the data in the table to make it more useble. Then, I filter and keep only human-viral interactions.</p>
-<pre class="r"><code>if(!file.exists(&quot;./data_files/viral_interactions.txt&quot;)){
-    queryPSICQUIC(query = &quot;species:10239&quot;,
-                format = &quot;tab27&quot;,
-                database = &quot;imex&quot;,
-                file = &quot;./data_files/viral_interactions.txt&quot;)
-}
-
-all_viral_interaction = fread(&quot;./data_files/viral_interactions.txt&quot;, stringsAsFactors = F)
-
-# clean the data in the table to make it more useble
-all_viral_interaction = cleanMITAB(all_viral_interaction)
-
-# filter only human-viral interactions
-all_viral_interaction = all_viral_interaction[Taxid_interactor_A == &quot;9606&quot; | Taxid_interactor_B == &quot;9606&quot;,]
-all_viral_interaction = unique(all_viral_interaction)</code></pre>
+<pre class="r"><code>all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = &quot;IntActFTP&quot;, format = &quot;tab27&quot;,
+                                        clean = TRUE, protein_only = TRUE, directory = &quot;./data_files/&quot;)</code></pre>
+<pre><code>## ... looking for the date of the latest IntAct release ...</code></pre>
+<pre><code>## Warning in download.file(input, tt, method = method, mode = &quot;wb&quot;, quiet = !
+## showProgress): downloaded length 591 != reported length 0</code></pre>
+<pre><code>## ... looking for the date of the latest IntAct release ...</code></pre>
+<pre><code>## Warning in download.file(input, tt, method = method, mode = &quot;wb&quot;, quiet = !
+## showProgress): downloaded length 591 != reported length 0</code></pre>
+<pre><code>## ... dowloading from IntAct ftp ...</code></pre>
+<pre><code>## 
+Read 0.0% of 785947 rows
+Read 6.4% of 785947 rows
+Read 15.3% of 785947 rows
+Read 16.5% of 785947 rows
+Read 22.9% of 785947 rows
+Read 31.8% of 785947 rows
+Read 36.9% of 785947 rows
+Read 45.8% of 785947 rows
+Read 53.4% of 785947 rows
+Read 59.8% of 785947 rows
+Read 68.7% of 785947 rows
+Read 77.6% of 785947 rows
+Read 86.5% of 785947 rows
+Read 96.7% of 785947 rows
+Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:27</code></pre>
 </div>
 <div id="searching-for-human-human-ppi" class="section level2">
 <h2>Searching for human-human PPI</h2>
 <p>I download all human-human protein-protein interactions from IntAct (IMEx databases) using PSICQUIC service in MITAB2.5 format and clean the data.</p>
-<pre class="r"><code>all_human_interaction = fullInteractome(taxid = &quot;9606&quot;, database = &quot;imex&quot;, format = &quot;tab25&quot;,
+<pre class="r"><code>all_human_interaction = fullInteractome(taxid = 9606, database = &quot;IntActFTP&quot;, format = &quot;tab27&quot;,
                                         clean = TRUE, protein_only = TRUE, directory = &quot;./data_files/&quot;)</code></pre>
+<pre><code>## ... looking for the date of the latest IntAct release ...</code></pre>
 <pre><code>## Warning in download.file(input, tt, method = method, mode = &quot;wb&quot;, quiet = !
 ## showProgress): downloaded length 591 != reported length 0</code></pre>
-<pre><code>## found local copy of the data from the latest release ... reading into R</code></pre>
-<pre><code>##                           query
-##  1: taxidA:9606 AND taxidB:9606
-##  2: taxidA:9606 AND taxidB:9606
-##  3: taxidA:9606 AND taxidB:9606
-##  4: taxidA:9606 AND taxidB:9606
-##  5: taxidA:9606 AND taxidB:9606
-##  6: taxidA:9606 AND taxidB:9606
-##  7: taxidA:9606 AND taxidB:9606
-##  8: taxidA:9606 AND taxidB:9606
-##  9: taxidA:9606 AND taxidB:9606
-## 10: taxidA:9606 AND taxidB:9606
-## 11: taxidA:9606 AND taxidB:9606
-##                                                                            file
-##  1: ./data_files/2017Jul12_05.34/query_taxidA.9606.AND.taxidB.9606tab25imex.tsv
-##  2: ./data_files/2017Jul12_05.34/query_taxidA.9606.AND.taxidB.9606tab25imex.tsv
-##  3: ./data_files/2017Jul12_05.34/query_taxidA.9606.AND.taxidB.9606tab25imex.tsv
-##  4: ./data_files/2017Jul12_05.34/query_taxidA.9606.AND.taxidB.9606tab25imex.tsv
-##  5: ./data_files/2017Jul12_05.34/query_taxidA.9606.AND.taxidB.9606tab25imex.tsv
-##  6: ./data_files/2017Jul12_05.34/query_taxidA.9606.AND.taxidB.9606tab25imex.tsv
-##  7: ./data_files/2017Jul12_05.34/query_taxidA.9606.AND.taxidB.9606tab25imex.tsv
-##  8: ./data_files/2017Jul12_05.34/query_taxidA.9606.AND.taxidB.9606tab25imex.tsv
-##  9: ./data_files/2017Jul12_05.34/query_taxidA.9606.AND.taxidB.9606tab25imex.tsv
-## 10: ./data_files/2017Jul12_05.34/query_taxidA.9606.AND.taxidB.9606tab25imex.tsv
-## 11: ./data_files/2017Jul12_05.34/query_taxidA.9606.AND.taxidB.9606tab25imex.tsv
-##     format all.databases n.interactions.in.database database.not.active
-##  1:  tab25        IntAct                     249340                  NA
-##  2:  tab25          MINT                      32047                  NA
-##  3:  tab25       bhf-ucl                       2147                  NA
-##  4:  tab25         MPIDB                         11                  NA
-##  5:  tab25      MatrixDB                     &lt;html&gt;                  NA
-##  6:  tab25         HPIDb                        517                  NA
-##  7:  tab25      I2D-IMEx                        837                  NA
-##  8:  tab25 InnateDB-IMEx                        359                  NA
-##  9:  tab25        MolCon                        330                  NA
-## 10:  tab25       UniProt                       6745                  NA
-## 11:  tab25        MBInfo                        190                  NA
-## 
-Read 71.8% of 292513 rows
-Read 292513 rows and 15 (of 15) columns from 0.275 GB file in 00:00:03</code></pre>
+<pre><code>## ... looking for the date of the latest IntAct release ...</code></pre>
+<pre><code>## Warning in download.file(input, tt, method = method, mode = &quot;wb&quot;, quiet = !
+## showProgress): downloaded length 591 != reported length 0</code></pre>
+<pre><code>## ... loading local copy ...</code></pre>
+<pre><code>## 
+Read 0.0% of 785947 rows
+Read 8.9% of 785947 rows
+Read 17.8% of 785947 rows
+Read 28.0% of 785947 rows
+Read 29.3% of 785947 rows
+Read 38.2% of 785947 rows
+Read 47.1% of 785947 rows
+Read 56.0% of 785947 rows
+Read 66.2% of 785947 rows
+Read 75.1% of 785947 rows
+Read 85.2% of 785947 rows
+Read 96.7% of 785947 rows
+Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:21</code></pre>
 <pre class="r"><code># select proteins
-viral_proteins = unique(c(all_viral_interaction[Taxid_interactor_A != &quot;9606&quot;, IDs_interactor_A], all_viral_interaction[Taxid_interactor_B != &quot;9606&quot;, IDs_interactor_B]))
-human_viral_proteins = unique(c(all_viral_interaction[Taxid_interactor_A == &quot;9606&quot;, IDs_interactor_A], all_viral_interaction[Taxid_interactor_B == &quot;9606&quot;, IDs_interactor_B]))
-human_human_proteins = all_human_interaction[,unique(c(IDs_interactor_A,IDs_interactor_B))]
+viral_proteins = unique(c(all_viral_interaction$data[Taxid_interactor_A != &quot;9606&quot;, IDs_interactor_A], all_viral_interaction$data[Taxid_interactor_B != &quot;9606&quot;, IDs_interactor_B]))
+human_viral_proteins = unique(c(all_viral_interaction$data[Taxid_interactor_A == &quot;9606&quot;, IDs_interactor_A], all_viral_interaction$data[Taxid_interactor_B == &quot;9606&quot;, IDs_interactor_B]))
+human_human_proteins = all_human_interaction$data[,unique(c(IDs_interactor_A,IDs_interactor_B))]
 all_proteins = unique(c(viral_proteins, human_viral_proteins, human_human_proteins))
 all_proteins = all_proteins[order(all_proteins)]</code></pre>
-<p>There are 809 viral_proteins (including isoforms and postprocessed chains).<br />There are 4459 human_proteins involved in human-viral interactions (including isoforms and postprocessed chains).<br />There are 19078 human_proteins involved in human-human interactions (including isoforms and postprocessed chains).</p>
+<p>There are 887 viral_proteins (including isoforms and postprocessed chains).<br />There are 4538 human_proteins involved in human-viral interactions (including isoforms and postprocessed chains).<br />There are 19399 human_proteins involved in human-human interactions (including isoforms and postprocessed chains).</p>
 </div>
 <div id="finding-protein-sequences" class="section level2">
 <h2>Finding protein sequences</h2>
 <p>Interacting viral and human proteins belong to three categories:<br />- proteins identified by canonical UniProt identifier (P04637): no isoform exist or impossible to distinguish isoforms from the published result<br />- proteins identified to an isoform (P04637-1)<br />- proteins that are cleaved into the functional fragments from a precursor protein (P04591-PRO_0000261216)</p>
 <p>These categories require different approaches of retrieving sequences.<br />1. Retrieving sequences of proteins with canonical UniProt identifier is possible with R package for UniProt webservices or UniProt REST API. These proteins also may not require InterProScan to identify domains.<br />2. Isoform sequences are accessible using UniProt REST API: <a href="http://www.uniprot.org/uniprot/P04637-2.fasta">http://www.uniprot.org/uniprot/P04637-2.fasta</a>. 3. Post-processed chains are not straightforward to map as they are defined by the interval of the canonical UniProt sequence (<a href="http://www.uniprot.org/uniprot/P04591.fasta">http://www.uniprot.org/uniprot/P04591.fasta</a>). First, we need to retrieve post-processed chain position from Uniprot in gff format: <a href="http://www.uniprot.org/uniprot/?query=PRO_0000261216&amp;format=gff">http://www.uniprot.org/uniprot/?query=PRO_0000261216&amp;format=gff</a>. The search return all sequence features from a given protein, we select only post-processed chain we are interested in and then use position specified to subset the sequence.</p>
-<div id="retrieving-canonical-and-isoform-sequences" class="section level3">
-<h3>Retrieving canonical and isoform sequences</h3>
-<pre class="r"><code># Filtering sequence names by group
-canonical_all_proteins = all_proteins[-c(grep(&quot;-[[:digit:]]+&quot;, all_proteins, value = F),grep(&quot;-PRO_[[:digit:]]+$&quot;, all_proteins, value = F))]
-isoform_all_proteins = grep(&quot;-[[:digit:]]+&quot;, all_proteins, value = T)
-canonical_and_isoform = c(canonical_all_proteins, isoform_all_proteins)
-
-# dowloading FASTA for canonical_and_isoform sequences if file with this data doesn't exist or doesn't contain all sequences
-download_fasta(uniprot_ac = canonical_and_isoform, file_name = &quot;./data_files/canonical_and_isoform.fasta&quot;)</code></pre>
+<div id="retrieving-sequences" class="section level3">
+<h3>Retrieving sequences</h3>
+<pre class="r"><code>all_human_viral_proteins.fasta = downloadFastaMixed(uniprot_ac = all_proteins,
+                                                    file_name = &quot;./data_files/all_human_viral_proteins.fasta&quot;)</code></pre>
 <pre><code>## downloading fasta sequences for given uniprot_ac ...</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/AB047639.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/ENSG00000078900.fasta': HTTP status was '404 Not
-## Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/ENSG00000145386.fasta': HTTP status was '404 Not
-## Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/K02718.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/M11841.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): downloaded length 502 !=
-## reported length 0</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): downloaded length 1172 !=
-## reported length 0</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): downloaded length 630 !=
-## reported length 0</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): downloaded length 1480 !=
-## reported length 0</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): downloaded length 398 !=
-## reported length 0
+<pre><code>## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
+## protein, : downloaded length 502 != reported length 0</code></pre>
+<pre><code>## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
+## protein, : downloaded length 1172 != reported length 0</code></pre>
+<pre><code>## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
+## protein, : downloaded length 630 != reported length 0</code></pre>
+<pre><code>## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
+## protein, : downloaded length 1480 != reported length 0</code></pre>
+<pre><code>## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
+## protein, : downloaded length 398 != reported length 0
 
-## Warning in download.file(fp, filepath2[i]): downloaded length 398 !=
-## reported length 0</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/502.htm': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): downloaded length 762 !=
-## reported length 0</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): downloaded length 669 !=
-## reported length 0</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): downloaded length 1549 !=
-## reported length 0</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): downloaded length 322 !=
-## reported length 0</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): downloaded length 1048 !=
-## reported length 0</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): downloaded length 590 !=
-## reported length 0</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): downloaded length 884 !=
-## reported length 0</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/502.htm': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): downloaded length 1048 !=
-## reported length 0</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-10706140.fasta': HTTP status was '404 Not
-## Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-10815456.fasta': HTTP status was '404 Not
-## Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-11423213.fasta': HTTP status was '404 Not
-## Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-11721797.fasta': HTTP status was '404 Not
-## Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-11735745.fasta': HTTP status was '404 Not
-## Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-11735760.fasta': HTTP status was '404 Not
-## Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-11820565.fasta': HTTP status was '404 Not
-## Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-12582507.fasta': HTTP status was '404 Not
-## Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-12582800.fasta': HTTP status was '404 Not
-## Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-1267003.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-14405218.fasta': HTTP status was '404 Not
-## Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-1648030.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-1648054.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-1771288.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-1771356.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-2307713.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-2548851.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-2622317.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-2623792.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-4399559.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-6147672.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-6254349.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-6269288.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-6599589.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-6600906.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-6600912.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-6857440.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-6863782.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-7355238.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-7555615.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-7794107.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-867155.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-8827560.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-8870207.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-9028477.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-9086707.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-9640945.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-9641020.fasta': HTTP status was '404 Not Found'</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/EBI-9641614.fasta': HTTP status was '404 Not Found'</code></pre>
-<p>Some protein ids have been UniParc-ed. I will comment the code necessary to download the sequences instead of dealing with the problem as the problem is being generated by de-sync between UniProt and IntAct releases and is, therefore, temporary.</p>
-</div>
-<div id="retrieving-post-processed-chain-sequences" class="section level3">
-<h3>Retrieving post-processed chain sequences</h3>
-<pre class="r"><code># Filtering sequence names by group
-postproc_all_proteins = grep(&quot;-PRO_[[:digit:]]+$&quot;, all_proteins, value = T)
-postproc = gsub(&quot;^[[:alnum:]]+-&quot;,&quot;&quot;,postproc_all_proteins)
-
-# dowloading FASTA for post-processed sequences if file with this data doesn't exist or doesn't contain all sequences
-download_fasta_postproc(postproc_id = postproc, file_name = &quot;./data_files/postproc.fasta&quot;)</code></pre>
+## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
+## protein, : downloaded length 398 != reported length 0</code></pre>
+<pre><code>## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
+## protein, : downloaded length 762 != reported length 0</code></pre>
+<pre><code>## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
+## protein, : downloaded length 669 != reported length 0</code></pre>
+<pre><code>## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
+## protein, : downloaded length 1549 != reported length 0</code></pre>
+<pre><code>## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
+## protein, : downloaded length 322 != reported length 0</code></pre>
+<pre><code>## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
+## protein, : downloaded length 1048 != reported length 0</code></pre>
+<pre><code>## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
+## protein, : downloaded length 590 != reported length 0</code></pre>
+<pre><code>## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
+## protein, : downloaded length 884 != reported length 0</code></pre>
+<pre><code>## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
+## protein, : downloaded length 1048 != reported length 0</code></pre>
 <pre><code>## downloading fasta sequences for given post-processed chain IDs ...</code></pre>
-<pre><code>## Warning in download.file(fp, filepath2[i]): cannot open URL 'http://
-## www.uniprot.org/uniprot/.fasta': HTTP status was '404 Not Found'</code></pre>
-</div>
-<div id="combining-sequences" class="section level3">
-<h3>Combining sequences</h3>
-<pre class="r"><code>all_human_viral_proteins.fasta = append(readAAStringSet(&quot;./data_files/canonical_and_isoform.fasta&quot;), readAAStringSet(&quot;./data_files/postproc.fasta&quot;))
-writeXStringSet(all_human_viral_proteins.fasta,
-                file = &quot;./data_files/all_human_viral_proteins.fasta&quot;,
-                format=&quot;fasta&quot;)</code></pre>
-<p>20179 FASTA sequences total.</p>
+<pre><code>## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
+## protein, : cannot open URL 'http://www.uniprot.org/uniprot/NA.fasta': HTTP
+## status was '404 Not Found'</code></pre>
+<p>20588 FASTA sequences total.</p>
 </div>
 </div>
 <div id="running-interproscan-over-those-sequences" class="section level2">
 <h2>Running InterProScan over those sequences</h2>
 <p>Notes on the installation of the InterProScan: <a href="https://github.com/ebi-pf-team/interproscan/wiki/HowToDownload">https://github.com/ebi-pf-team/interproscan/wiki/HowToDownload</a>.<br />The code below will run InterProScan version 5.25-64.0 over all sequences in all_human_viral_proteins.fasta.<br />-i specifies the input file<br />-f specifies the output format<br />-iprlookup tells to look up InterProID for features (only specific member database ID is returned by default)<br />-goterms tells to look up GO terms associated with given InterProID<br />-b specifies output file (format suffix like .gff3 will be added automatically)</p>
 <p>InterProScan works on Linux system only. /my_interproscan/interproscan-5.25-64.0/ should be located in dir1 “/dir1/dir2/viral_project”</p>
-<pre class="bash"><code># bsub rsync /nfs/research/petsalaki/users/vitalii /hps/nobackup/research/petsalaki/users/ -r -av --delete
-../../my_interproscan/interproscan-5.25-64.0/interproscan.sh -i ./data_files/all_human_viral_proteins.fasta -f gff3 -iprlookup -goterms -b ./processed_data_files/all_human_viral_protein_domains
-# bsub rsync /hps/nobackup/research/petsalaki/users/vitalii /nfs/research/petsalaki/users/ -r -av</code></pre>
-<pre><code>## 20/07/2017 18:17:53:938 Welcome to InterProScan-5.25-64.0
-## 20/07/2017 18:18:04:416 Running InterProScan v5 in STANDALONE mode... on Linux
-## 20/07/2017 18:18:14:945 Loading file /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/all_human_viral_proteins.fasta
-## 20/07/2017 18:18:14:948 Running the following analyses:
+<pre class="bash"><code>if [ -e ./processed_data_files/all_human_viral_protein_domains092017.gff3.gz ]
+then
+echo &quot;InterProScan has been run before: all_human_viral_protein_domains092017.gff3.gz file exists&quot;
+else
+../../my_interproscan/interproscan-5.25-64.0/interproscan.sh -i ./data_files/all_human_viral_proteins.fasta -f gff3 -iprlookup -goterms -b ./processed_data_files/all_human_viral_protein_domains092017
+gzip ./processed_data_files/all_human_viral_protein_domains092017.gff3
+fi</code></pre>
+<pre><code>## 08/09/2017 18:23:10:318 Welcome to InterProScan-5.25-64.0
+## 08/09/2017 18:23:19:466 Running InterProScan v5 in STANDALONE mode... on Linux
+## 08/09/2017 18:23:30:101 Loading file /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/all_human_viral_proteins.fasta
+## 08/09/2017 18:23:30:105 Running the following analyses:
 ## [CDD-3.16,Coils-2.2.1,Gene3D-4.1.0,Hamap-201701.18,MobiDBLite-1.0,Pfam-31.0,PIRSF-3.02,PRINTS-42.0,ProDom-2006.1,ProSitePatterns-20.132,ProSiteProfiles-20.132,SFLD-2,SMART-7.1,SUPERFAMILY-1.75,TIGRFAM-15.0]
 ## Available matches will be retrieved from the pre-calculated match lookup service.
 ## 
 ## Matches for any sequences that are not represented in the lookup service will be calculated locally.
-## 20/07/2017 20:31:15:599 Uploaded/Stored 19926 unique sequences for analysis
-## 20/07/2017 20:41:36:888 25% completed
-## 20/07/2017 22:07:18:275 50% completed
-## 20/07/2017 23:39:38:382 75% completed
-## 21/07/2017 00:59:23:123 90% completed
-## 21/07/2017 03:27:13:265 99% completed
+## 08/09/2017 20:11:15:900 Uploaded/Stored 20320 unique sequences for analysis
+## 08/09/2017 20:19:28:869 25% completed
+## 08/09/2017 21:05:52:747 52% completed
+## 08/09/2017 21:54:02:558 75% completed
+## 09/09/2017 00:01:35:344 90% completed
+## 09/09/2017 02:26:46:122 99% completed
 ## Found 16 non unique identifier(s). These identifiers do have different sequences, within the FASTA protein sequence input file.
 ## InterProScan will make them unique by adding '_sequential number' in the order of their appearance (e.g. P11111 will be P11111_1 for the first protein sequence).
 ## Please find below a list of detected identifiers:
@@ -408,7 +276,7 @@ writeXStringSet(all_human_viral_proteins.fasta,
 ## P0DI81
 ## P0CAP1
 ## P0CAP2
-## 21/07/2017 08:09:37:955 100% done:  InterProScan analyses completed</code></pre>
+## 09/09/2017 06:42:18:734 100% done:  InterProScan analyses completed</code></pre>
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>## R version 3.4.1 (2017-06-30)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
@@ -431,38 +299,40 @@ writeXStringSet(all_human_viral_proteins.fasta,
 ## [8] datasets  base     
 ## 
 ## other attached packages:
-##  [1] MItools_0.1.1       Biostrings_2.44.1   XVector_0.16.0     
+##  [1] MItools_0.1.20      Biostrings_2.44.1   XVector_0.16.0     
 ##  [4] ggplot2_2.2.1       PSICQUIC_1.14.0     plyr_1.8.4         
-##  [7] httr_1.2.1          biomaRt_2.32.1      IRanges_2.10.2     
+##  [7] httr_1.3.1          biomaRt_2.32.1      IRanges_2.10.2     
 ## [10] S4Vectors_0.14.3    BiocGenerics_0.22.0 R.utils_2.5.0      
 ## [13] R.oo_1.21.0         R.methodsS3_1.7.1   downloader_0.4     
 ## [16] data.table_1.10.4   rmarkdown_1.6      
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] SummarizedExperiment_1.6.3 lattice_0.20-35           
-##  [3] colorspace_1.3-2           htmltools_0.3.6           
-##  [5] rtracklayer_1.36.3         yaml_2.1.14               
-##  [7] blob_1.1.0                 XML_3.98-1.9              
-##  [9] rlang_0.1.1                DBI_0.7                   
-## [11] BiocParallel_1.10.1        bit64_0.9-7               
-## [13] gsubfn_0.6-6               matrixStats_0.52.2        
-## [15] GenomeInfoDbData_0.99.0    stringr_1.2.0             
-## [17] zlibbioc_1.22.0            munsell_0.4.3             
-## [19] gtable_0.2.0               memoise_1.1.0             
-## [21] evaluate_0.10.1            Biobase_2.36.2            
-## [23] knitr_1.16                 GenomeInfoDb_1.12.2       
-## [25] AnnotationDbi_1.38.1       proto_1.0.0               
-## [27] Rcpp_0.12.12               backports_1.1.0           
-## [29] scales_0.4.1               DelayedArray_0.2.7        
-## [31] bit_1.1-12                 Rsamtools_1.28.0          
-## [33] digest_0.6.12              stringi_1.1.5             
-## [35] GenomicRanges_1.28.3       rprojroot_1.2             
-## [37] grid_3.4.1                 tools_3.4.1               
-## [39] bitops_1.0-6               magrittr_1.5              
-## [41] RCurl_1.95-4.8             lazyeval_0.2.0            
-## [43] tibble_1.3.3               RSQLite_2.0               
-## [45] Matrix_1.2-10              R6_2.2.2                  
-## [47] GenomicAlignments_1.12.1   compiler_3.4.1</code></pre>
+##  [1] SummarizedExperiment_1.6.3 qvalue_2.8.0              
+##  [3] reshape2_1.4.2             lattice_0.20-35           
+##  [5] splines_3.4.1              colorspace_1.3-2          
+##  [7] htmltools_0.3.6            rtracklayer_1.36.3        
+##  [9] yaml_2.1.14                blob_1.1.0                
+## [11] XML_3.98-1.9               rlang_0.1.2               
+## [13] DBI_0.7                    BiocParallel_1.10.1       
+## [15] bit64_0.9-7                gsubfn_0.6-6              
+## [17] matrixStats_0.52.2         GenomeInfoDbData_0.99.0   
+## [19] stringr_1.2.0              zlibbioc_1.22.0           
+## [21] munsell_0.4.3              gtable_0.2.0              
+## [23] memoise_1.1.0              evaluate_0.10.1           
+## [25] Biobase_2.36.2             knitr_1.17                
+## [27] GenomeInfoDb_1.12.2        curl_2.8.1                
+## [29] AnnotationDbi_1.38.1       proto_1.0.0               
+## [31] Rcpp_0.12.12               backports_1.1.0           
+## [33] scales_0.5.0               DelayedArray_0.2.7        
+## [35] bit_1.1-12                 Rsamtools_1.28.0          
+## [37] digest_0.6.12              stringi_1.1.5             
+## [39] GenomicRanges_1.28.3       rprojroot_1.2             
+## [41] grid_3.4.1                 tools_3.4.1               
+## [43] bitops_1.0-6               magrittr_1.5              
+## [45] RCurl_1.95-4.8             lazyeval_0.2.0            
+## [47] tibble_1.3.4               RSQLite_2.0               
+## [49] Matrix_1.2-11              R6_2.2.2                  
+## [51] GenomicAlignments_1.12.1   compiler_3.4.1</code></pre>
 </div>
 
 
