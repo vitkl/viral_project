@@ -49,8 +49,9 @@ QSLIMfinder:
 
 ```{r}
 # load the domain analysis results
-load("./processed_data_files/what_we_find_VS_ELM_output_freq.RData")
+load("./processed_data_files/what_we_find_VS_ELM_clust.RData")
 domain_res = res
+rm(list = ls()[ls() != "domain_res"])
 
 # load ppi data
 # human-human
@@ -61,6 +62,23 @@ all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, d
                                                 clean = TRUE, protein_only = TRUE, directory = "./data_files/")
 # load FASTA
 all.fasta = unique(readAAStringSet(filepath = "./data_files/all_human_viral_proteins.fasta", format = "fasta"))
+
+recodeFASTA = function(fasta, mapping = NULL, i = NULL){
+    if(is.null(mapping)){
+        old_names = names(fasta)
+        new_names = paste0("P",seq_along(old_names))
+        names(fasta) = new_names
+        names_mapping = data.table(old_names = old_names, new_names = new_names)
+        return(list(fasta = fasta, names_mapping = names_mapping))
+    } else {
+        if(class(fasta) == "interactionSubsetFASTA"){
+            if(!is.null(i)){
+                names(fasta$fasta_subset_list[[i]]) = mapping$old_names[match(names(fasta$fasta_subset_list[[i]]), mapping$new_names)]
+                return(fasta)
+            } else stop("i not provided")
+        } else stop("fasta is not interactionSubsetFASTA")
+    }
+}
 
 # choose pvalue cutoff:
 plot(domain_res)
@@ -75,8 +93,8 @@ subsetByIdANDcombine = function(interaction_set1, interaction_set2, seed_id){
     length_set1 = length(unique(from_set1$data$pair_id))
     length_set2 = length(unique(from_set2$data$pair_id))
     
-    if(length_set1 > 0) ids_set1 = unique(unlist(from_set1$data[,IDs_interactor_B])) else {ids_set1 = "NULL"; ids_all = ids_set2}
-    if(length_set2 > 0) ids_set2 = unique(unlist(from_set2$data[,IDs_interactor_B])) else {ids_set2 = "NULL"; ids_all = ids_set1}
+    if(length_set1 > 0) ids_set1 = unique(unlist(from_set1$data[,IDs_interactor_B])) else ids_set1 = "NULL"
+    if(length_set2 > 0) ids_set2 = unique(unlist(from_set2$data[,IDs_interactor_B])) else ids_set2 = "NULL"
     
     if(length_set1 > 0) {
         if(length_set2 > 0) ids_all = c(ids_set1, ids_set2) else ids_all = c(ids_set1)} else {
@@ -104,9 +122,17 @@ print.interaction_subset_from_2_sets = function(data){
     cat(paste0("\n object class (S3): ",class(data)))
 }
 
-subset = subsetByIdANDcombine(interaction_set1 = all_human_interaction, 
-                              interaction_set2 = all_viral_interaction, 
-                              seed_id = proteins_w_signif_domains[2])
+#subset = subsetByIdANDcombine(interaction_set1 = all_human_interaction, 
+#                              interaction_set2 = all_viral_interaction, 
+#                              seed_id = proteins_w_signif_domains[2])
+
+interactionSubsetMapID = function(subset, mapping) {
+    subset$ids_all_old = subset$ids_all
+    subset$ids_all = unique(mapping[old_names %in% subset$ids_all_old, new_names])
+    return(subset)
+}
+
+#subset = interactionSubsetMapID(subset, all.fasta$names_mapping)
 
 interactionSubsetFASTA = function(int_subset, fasta){
     if(class(int_subset) != "interaction_subset_from_2_sets") stop("Invalid input, int_subset should be the output of subsetByIdANDcombine function")
@@ -122,26 +148,116 @@ interactionSubsetFASTA = function(int_subset, fasta){
     return(res)
 }
 
-subset_fasta = interactionSubsetFASTA(int_subset = subset, fasta = all.fasta)
+#subset_fasta = interactionSubsetFASTA(int_subset = subset, fasta = all.fasta$fasta)
+#subset_fasta = recodeFASTA(subset_fasta, all.fasta$names_mapping, i = 1)
+# all.fasta["Q77M19"] for some reason this name doesn't work for subsetting
 
 mInteractionSubsetFASTA = function(interaction_set1, interaction_set2, seed_id_vect, fasta) {
+    
     seed_id_vect = seed_id_vect[seed_id_vect %in% names(fasta)]
     subset1 = subsetByIdANDcombine(interaction_set1 = interaction_set1, 
                                    interaction_set2 = interaction_set2, 
                                    seed_id = seed_id_vect[1])
-    subset1_fasta = interactionSubsetFASTA(int_subset = subset1, fasta = fasta)
+    fasta = recodeFASTA(fasta)
+    subset1 = interactionSubsetMapID(subset1, fasta$names_mapping)
+    subset1_fasta = interactionSubsetFASTA(int_subset = subset1, fasta = fasta$fasta)
+    subset1_fasta = recodeFASTA(subset1_fasta, fasta$names_mapping, i = 1)
     for (seed_id in seed_id_vect[2:length(seed_id_vect)]) {
         subset = subsetByIdANDcombine(interaction_set1 = interaction_set1, 
-                                       interaction_set2 = interaction_set2, 
-                                       seed_id = seed_id)
-        subset_fasta = interactionSubsetFASTA(int_subset = subset, fasta = fasta)
+                                      interaction_set2 = interaction_set2, 
+                                      seed_id = seed_id)
+        subset = interactionSubsetMapID(subset, fasta$names_mapping)
+        subset_fasta = interactionSubsetFASTA(int_subset = subset, fasta = fasta$fasta)
+        subset_fasta = recodeFASTA(subset_fasta, fasta$names_mapping, i = 1)
         subset1_fasta$fasta_subset_list = c(subset1_fasta$fasta_subset_list, subset_fasta$fasta_subset_list)
         subset1_fasta$interaction_subset = c(subset1_fasta$interaction_subset, subset_fasta$interaction_subset)
     }
-    
+    subset1_fasta$length = length(subset1_fasta$fasta_subset_list)
+    class(subset1_fasta) = "InteractionSubsetFASTA_list"
+    return(subset1_fasta)
 }
 
-AAStringSetList(all = all.fasta)[[1]]
+forSLIMFinder = mInteractionSubsetFASTA(interaction_set1 = all_human_interaction, 
+                        interaction_set2 = all_viral_interaction, 
+                        seed_id_vect = proteins_w_signif_domains,
+                        fasta = all.fasta)
+
+filterInteractionSubsetFASTA_list = function(interactionFASTA_list, length_set1_lim = 0, length_set2_lim = 0) {
+    select_both = sapply(1:interactionFASTA_list$length, function(i){
+    select_set1 = interactionFASTA_list$interaction_subset[[i]]$length_set1 >= length_set1_lim
+    select_set2 = interactionFASTA_list$interaction_subset[[i]]$length_set2 >= length_set2_lim
+    select_both = select_set1 & select_set2
+    return(select_both)
+})
+    interactionFASTA_list$fasta_subset_list = interactionFASTA_list$fasta_subset_list[select_both]
+    interactionFASTA_list$interaction_subset = interactionFASTA_list$interaction_subset[select_both]
+    interactionFASTA_list$length = length(interactionFASTA_list$fasta_subset_list)
+    return(interactionFASTA_list)
+}
+
+forSLIMFinder_Ready = filterInteractionSubsetFASTA_list(forSLIMFinder,  length_set1_lim = 3, length_set2_lim = 1)
+
+saveInteractionSubsetFASTA_list = function(interactionFASTA_list, dir = "./SLIMFinder/"){
+    input_dir = paste0(dir, "input/")
+    input_fasta_dir = paste0(input_dir, "fasta/")
+    input_query_dir = paste0(input_dir, "query/")
+    output_dir = paste0(dir, "output/")
+    
+    if(!dir.exists(input_dir)) dir.create(input_dir)
+    if(!dir.exists(input_fasta_dir)) dir.create(input_fasta_dir)
+    if(!dir.exists(input_query_dir)) dir.create(input_query_dir)
+    if(!dir.exists(output_dir)) dir.create(output_dir)
+    
+    file_list = data.table(fastafile = character(), queryfile = character(),
+             outputdir = character(), outputfile = character())
+    
+    for (i in 1:length(interactionFASTA_list$fasta_subset_list)) {
+        name = names(interactionFASTA_list$fasta_subset_list[i])
+        fastafile = paste0(input_fasta_dir, name,"fas")
+        queryfile = paste0(input_query_dir, name,"fas")
+        outputdir = paste0(output_dir, name, "/")
+        outputfile = paste0(outputdir, "main_result")
+        
+        temp_list = data.table(fastafile = fastafile, queryfile = queryfile,
+             outputdir = outputdir, outputfile = outputfile)
+        file_list = rbind(file_list, temp_list)
+        
+        writeXStringSet(interactionFASTA_list$fasta_subset_list[[i]],
+                  file = fastafile,
+                  format="fasta")
+        fwrite(list(interactionFASTA_list$interaction_subset[[i]]$ids_set2), queryfile)
+    }
+    return(file_list)
+}
+
+forSLIMFinder_file_list = saveInteractionSubsetFASTA_list(interactionFASTA_list = forSLIMFinder_Ready,
+                                dir = "./SLIMFinder/")
+
+runQSLIMFinder = function(file_list, 
+                          slimpath = "python ../software/slimsuite/tools/qslimfinder.py", 
+                          blast = "blast+path=../software/ncbi_blast_2.6.0/bin/", 
+                          iupred = "iupath=../software/iupred/iupred",
+                          options = "dismask=T consmask=F cloudfix=F probcut=0.1")
+    {
+    dirs = file_list[1,]
+    #Sys.setenv()
+    dirs_command = paste0("resdir=",dirs$outputdir," resfile=",dirs$outputfile," seqin=",dirs$fastafile," query=",dirs$queryfile," ")
+    command = paste(slimpath, blast, iupred, options, dirs_command)
+    system(command)
+}
+
+#runQSLIMFinder(file_list = forSLIMFinder_file_list)
+
+runQSLIMFinder = function(file_list, 
+                          slimpath = "python ../software/slimsuite/tools/qslimfinder.py", 
+                          blast = "blast+path=../software/ncbi_blast_2.6.0/bin/", 
+                          iupred = "iupath=../software/iupred/iupred",
+                          options = "dismask=T consmask=F cloudfix=F probcut=0.5")
+    {
+    dirs = file_list[1,]
+    runQSLIMFinder(file_list = dirs, slimpath = slimpath,
+                   blast = blast, iupred = iupred, options = options)
+}
 
 SLIMFinder_dir = "./SLIMFinder/"
 if(!dir.exists(SLIMFinder_dir)) dir.create(SLIMFinder_dir)
@@ -153,7 +269,7 @@ fwrite(fread("./SLIMFinder/filelist.txt"), "./SLIMFinder/filelist.txt", sep = "\
 
 ## Run QSLIMFinder 
 
-```{bash}
+```{bash, eval = F}
 software_PATH="../software/"
 SLIM_PATH=$software_PATH"slimsuite/tools/"
 QSLIMFinder=$SLIM_PATH"qslimfinder.py"

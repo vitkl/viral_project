@@ -27,13 +27,13 @@ shinyUI(pageWithSidebar(
         # plot heatmap
         tabsetPanel(
             tabPanel(title = "Our prediction vs ELM domains",
-                     plotOutput("enrich_plot", height = "800px")
+                     plotOutput("enrich_plot", height = "800px") ###################### modify plot size here ###########
             ),
             tabPanel(title = "Characteristics of top protein-domain pairs",
-                     plotOutput("bin2d_plot", height = "900px")
+                     plotOutput("bin2d_plot", height = "900px") ###################### modify plot size here ###########
             ),
             tabPanel(title = "Empirical pvalue plot",
-                     plotOutput("pval_plot", height = "600px")
+                     plotOutput("pval_plot", height = "600px") ###################### modify plot size here ###########
         )
     )
     

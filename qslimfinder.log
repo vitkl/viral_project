@@ -1878,3 +1878,378 @@
 #GAPX	00:19:11	PeptLen: 38; MaxLen: 40; Termini: True => 666 x 2 gap variants.
 #GAPX	00:19:14	PeptLen: 37; MaxLen: 40; Termini: True => 7,770 x 3 gap variants.
 #GAPX	00:39:42	PeptLen: 36; MaxLen: 40; Termini: True => 66,045 x 4 gap variants.
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep 11 17:23:33 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred dismask=T consmask=F cloudfix=F probcut=0.5 resdir=./SLIMFinder/output/interactors_of.A0FGR8./ resfile=./SLIMFinder/output/interactors_of.A0FGR8./main_result seqin=./SLIMFinder/input/fasta/interactors_of.A0FGR8.fas query=./SLIMFinder/input/query/interactors_of.A0FGR8.fas
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred dismask=T consmask=F cloudfix=F probcut=0.5 resdir=./SLIMFinder/output/interactors_of.A0FGR8./ resfile=./SLIMFinder/output/interactors_of.A0FGR8./main_result seqin=./SLIMFinder/input/fasta/interactors_of.A0FGR8.fas query=./SLIMFinder/input/query/interactors_of.A0FGR8.fas
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	26 sequences loaded from ./SLIMFinder/input/fasta/interactors_of.A0FGR8.fas (Format: fas).
+#UPC	00:00:00	No UPC file found.
+#FAS	00:00:00	26 Sequences output to ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.slimdb.     
+#DICT	00:00:00	Made "short" seqName dictionary: 26 seq; 26 keys.
+#DB 	00:00:00	../software/ncbi_blast_2.6.0/bin/makeblastdb -in "./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.slimdb" -out "./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.slimdb" -title "/Users/vitalii/Desktop/vitalii/viral_project/SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.slimdb" -parse_seqids -dbtype prot
+#SYS	00:00:00	../software/ncbi_blast_2.6.0/bin/blastp -query ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.slimdb -db ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.slimdb -out ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.self.blast -seg yes -comp_based_stats F -soft_masking true -evalue 1.000000e-04 -num_descriptions 26 -num_alignments 26
+#INDEX	00:00:00	Indexed "Search" on "Query": 26 unique; 0 missing entries
+#CLUST	00:00:00	18 clusters generated from 26 keys (maxdis=1.00)
+#DICT	00:00:00	Made "short" seqName dictionary: 26 seq; 26 keys.
+#MST	00:00:00	MST for 26 sequences = 21.029.
+#UP	00:00:00	interactors_of.A0FGR8: 26 Seq; 18 UPC; 21.029 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#MAT	00:00:00	interactors_of.A0FGR8 GABLAM Distance matrix out to ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.dis.tdt (text format).
+#QRY	00:00:00	Query Sequence = P0DOE9_UNK__P0DOE9 (139 AA).
+#QRY	00:00:00	Query Sequence = P03182_UNK__P03182 (191 AA).
+#QRY	00:00:00	Query Sequence = P03246_UNK__P03246 (176 AA).
+#QRY	00:00:00	Query Sequence = P06460_UNK__P06460 (91 AA).
+#QRY	00:00:00	Query Sequence = P06461_UNK__P06461 (72 AA).
+#QRY	00:00:00	Query Sequence = P06792_UNK__P06792 (73 AA).
+#QRY	00:00:00	Query Sequence = P06927_UNK__P06927 (83 AA).
+#QRY	00:00:00	Query Sequence = P0C739_UNK__P0C739 (60 AA).
+#QRY	00:00:00	Query Sequence = P03452_UNK__P03452 (565 AA).
+#QRY	00:00:00	Query Sequence = P03431_UNK__P03431 (757 AA).
+#QRY	00:00:00	Query Sequence = P03428_UNK__P03428 (759 AA).
+#QRY	00:00:00	Query Sequence = I6T1Z2_UNK__I6T1Z2 (237 AA).
+#QRY	00:00:00	Query Sequence = C5E519_UNK__C5E519 (97 AA).
+#QRY	00:00:00	Query Sequence = C5E526_UNK__C5E526 (757 AA).
+#QRY	00:00:00	Query Sequence = C5E527_UNK__C5E527 (759 AA).
+#QRY	00:00:00	Query Sequence = Q1K9H5_UNK__Q1K9H5 (757 AA).
+#QRY	00:00:00	Query Sequence = B4URF7_UNK__B4URF7 (759 AA).
+#QRY	00:00:00	17 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 17 focal sequences in 1 group(s)
+#MIN	00:00:00	AmbOcc 0.05 & 18 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 18 UP => MinOcc 3 UPC.
+#ERR	00:00:01	A0FGR9_UNK__A0FGR9: Sequence = 886 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying A0FGR9_UNK__A0FGR9 again...
+#ERR	00:00:01	A0FGR9_UNK__A0FGR9: Sequence = 886 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying A0FGR9_UNK__A0FGR9 again...
+#ERR	00:00:01	A0FGR9_UNK__A0FGR9: Sequence = 886 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(A0FGR9_UNK__A0FGR9). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for A0FGR9_UNK__A0FGR9
+#ERR	00:00:01	B4URF7_UNK__B4URF7: Sequence = 759 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying B4URF7_UNK__B4URF7 again...
+#ERR	00:00:01	B4URF7_UNK__B4URF7: Sequence = 759 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying B4URF7_UNK__B4URF7 again...
+#ERR	00:00:01	B4URF7_UNK__B4URF7: Sequence = 759 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(B4URF7_UNK__B4URF7). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for B4URF7_UNK__B4URF7
+#ERR	00:00:01	C5E519_UNK__C5E519: Sequence = 97 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying C5E519_UNK__C5E519 again...
+#ERR	00:00:01	C5E519_UNK__C5E519: Sequence = 97 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying C5E519_UNK__C5E519 again...
+#ERR	00:00:01	C5E519_UNK__C5E519: Sequence = 97 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(C5E519_UNK__C5E519). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for C5E519_UNK__C5E519
+#ERR	00:00:01	C5E526_UNK__C5E526: Sequence = 757 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying C5E526_UNK__C5E526 again...
+#ERR	00:00:01	C5E526_UNK__C5E526: Sequence = 757 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying C5E526_UNK__C5E526 again...
+#ERR	00:00:01	C5E526_UNK__C5E526: Sequence = 757 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(C5E526_UNK__C5E526). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for C5E526_UNK__C5E526
+#ERR	00:00:01	C5E527_UNK__C5E527: Sequence = 759 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying C5E527_UNK__C5E527 again...
+#ERR	00:00:01	C5E527_UNK__C5E527: Sequence = 759 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying C5E527_UNK__C5E527 again...
+#ERR	00:00:01	C5E527_UNK__C5E527: Sequence = 759 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(C5E527_UNK__C5E527). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for C5E527_UNK__C5E527
+#ERR	00:00:01	I6T1Z2_UNK__I6T1Z2: Sequence = 237 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying I6T1Z2_UNK__I6T1Z2 again...
+#ERR	00:00:01	I6T1Z2_UNK__I6T1Z2: Sequence = 237 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying I6T1Z2_UNK__I6T1Z2 again...
+#ERR	00:00:01	I6T1Z2_UNK__I6T1Z2: Sequence = 237 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(I6T1Z2_UNK__I6T1Z2). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for I6T1Z2_UNK__I6T1Z2
+#ERR	00:00:01	P02751_UNK__P02751: Sequence = 2386 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P02751_UNK__P02751 again...
+#ERR	00:00:01	P02751_UNK__P02751: Sequence = 2386 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P02751_UNK__P02751 again...
+#ERR	00:00:01	P02751_UNK__P02751: Sequence = 2386 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(P02751_UNK__P02751). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for P02751_UNK__P02751
+#ERR	00:00:01	P03182_UNK__P03182: Sequence = 191 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P03182_UNK__P03182 again...
+#ERR	00:00:01	P03182_UNK__P03182: Sequence = 191 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P03182_UNK__P03182 again...
+#ERR	00:00:01	P03182_UNK__P03182: Sequence = 191 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(P03182_UNK__P03182). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for P03182_UNK__P03182
+#ERR	00:00:01	P03246_UNK__P03246: Sequence = 176 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P03246_UNK__P03246 again...
+#ERR	00:00:01	P03246_UNK__P03246: Sequence = 176 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P03246_UNK__P03246 again...
+#ERR	00:00:01	P03246_UNK__P03246: Sequence = 176 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(P03246_UNK__P03246). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for P03246_UNK__P03246
+#ERR	00:00:01	P03428_UNK__P03428: Sequence = 759 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P03428_UNK__P03428 again...
+#ERR	00:00:01	P03428_UNK__P03428: Sequence = 759 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P03428_UNK__P03428 again...
+#ERR	00:00:01	P03428_UNK__P03428: Sequence = 759 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(P03428_UNK__P03428). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for P03428_UNK__P03428
+#ERR	00:00:01	P03431_UNK__P03431: Sequence = 757 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P03431_UNK__P03431 again...
+#ERR	00:00:01	P03431_UNK__P03431: Sequence = 757 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P03431_UNK__P03431 again...
+#ERR	00:00:01	P03431_UNK__P03431: Sequence = 757 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(P03431_UNK__P03431). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for P03431_UNK__P03431
+#ERR	00:00:01	P03452_UNK__P03452: Sequence = 565 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P03452_UNK__P03452 again...
+#ERR	00:00:01	P03452_UNK__P03452: Sequence = 565 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P03452_UNK__P03452 again...
+#ERR	00:00:01	P03452_UNK__P03452: Sequence = 565 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(P03452_UNK__P03452). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for P03452_UNK__P03452
+#ERR	00:00:01	P06460_UNK__P06460: Sequence = 91 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P06460_UNK__P06460 again...
+#ERR	00:00:01	P06460_UNK__P06460: Sequence = 91 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P06460_UNK__P06460 again...
+#ERR	00:00:01	P06460_UNK__P06460: Sequence = 91 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(P06460_UNK__P06460). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for P06460_UNK__P06460
+#ERR	00:00:01	P06461_UNK__P06461: Sequence = 72 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P06461_UNK__P06461 again...
+#ERR	00:00:01	P06461_UNK__P06461: Sequence = 72 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P06461_UNK__P06461 again...
+#ERR	00:00:01	P06461_UNK__P06461: Sequence = 72 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(P06461_UNK__P06461). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for P06461_UNK__P06461
+#ERR	00:00:01	P06792_UNK__P06792: Sequence = 73 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P06792_UNK__P06792 again...
+#ERR	00:00:01	P06792_UNK__P06792: Sequence = 73 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P06792_UNK__P06792 again...
+#ERR	00:00:01	P06792_UNK__P06792: Sequence = 73 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(P06792_UNK__P06792). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for P06792_UNK__P06792
+#ERR	00:00:01	P06927_UNK__P06927: Sequence = 83 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P06927_UNK__P06927 again...
+#ERR	00:00:01	P06927_UNK__P06927: Sequence = 83 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P06927_UNK__P06927 again...
+#ERR	00:00:01	P06927_UNK__P06927: Sequence = 83 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(P06927_UNK__P06927). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for P06927_UNK__P06927
+#ERR	00:00:01	P0C739_UNK__P0C739: Sequence = 60 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P0C739_UNK__P0C739 again...
+#ERR	00:00:01	P0C739_UNK__P0C739: Sequence = 60 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P0C739_UNK__P0C739 again...
+#ERR	00:00:01	P0C739_UNK__P0C739: Sequence = 60 aa but IUPred results stop at 0!
+#ERR	00:00:01	Error in Disorder.iuPred(P0C739_UNK__P0C739). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:01	PreMask Disorder prediction failed for P0C739_UNK__P0C739
+#ERR	00:00:01	P0DOE9_UNK__P0DOE9: Sequence = 139 aa but IUPred results stop at 0!
+#RETRY	00:00:01	Trying P0DOE9_UNK__P0DOE9 again...
+#ERR	00:00:02	P0DOE9_UNK__P0DOE9: Sequence = 139 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying P0DOE9_UNK__P0DOE9 again...
+#ERR	00:00:02	P0DOE9_UNK__P0DOE9: Sequence = 139 aa but IUPred results stop at 0!
+#ERR	00:00:02	Error in Disorder.iuPred(P0DOE9_UNK__P0DOE9). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:02	PreMask Disorder prediction failed for P0DOE9_UNK__P0DOE9
+#ERR	00:00:02	Q13286_UNK__Q13286: Sequence = 438 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q13286_UNK__Q13286 again...
+#ERR	00:00:02	Q13286_UNK__Q13286: Sequence = 438 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q13286_UNK__Q13286 again...
+#ERR	00:00:02	Q13286_UNK__Q13286: Sequence = 438 aa but IUPred results stop at 0!
+#ERR	00:00:02	Error in Disorder.iuPred(Q13286_UNK__Q13286). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:02	PreMask Disorder prediction failed for Q13286_UNK__Q13286
+#ERR	00:00:02	Q14653_UNK__Q14653: Sequence = 427 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q14653_UNK__Q14653 again...
+#ERR	00:00:02	Q14653_UNK__Q14653: Sequence = 427 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q14653_UNK__Q14653 again...
+#ERR	00:00:02	Q14653_UNK__Q14653: Sequence = 427 aa but IUPred results stop at 0!
+#ERR	00:00:02	Error in Disorder.iuPred(Q14653_UNK__Q14653). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:02	PreMask Disorder prediction failed for Q14653_UNK__Q14653
+#ERR	00:00:02	Q1K9H5_UNK__Q1K9H5: Sequence = 757 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q1K9H5_UNK__Q1K9H5 again...
+#ERR	00:00:02	Q1K9H5_UNK__Q1K9H5: Sequence = 757 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q1K9H5_UNK__Q1K9H5 again...
+#ERR	00:00:02	Q1K9H5_UNK__Q1K9H5: Sequence = 757 aa but IUPred results stop at 0!
+#ERR	00:00:02	Error in Disorder.iuPred(Q1K9H5_UNK__Q1K9H5). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:02	PreMask Disorder prediction failed for Q1K9H5_UNK__Q1K9H5
+#ERR	00:00:02	Q86X19_UNK__Q86X19: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q86X19_UNK__Q86X19 again...
+#ERR	00:00:02	Q86X19_UNK__Q86X19: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q86X19_UNK__Q86X19 again...
+#ERR	00:00:02	Q86X19_UNK__Q86X19: Sequence = 198 aa but IUPred results stop at 0!
+#ERR	00:00:02	Error in Disorder.iuPred(Q86X19_UNK__Q86X19). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:02	PreMask Disorder prediction failed for Q86X19_UNK__Q86X19
+#ERR	00:00:02	Q8IWL3_UNK__Q8IWL3: Sequence = 235 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q8IWL3_UNK__Q8IWL3 again...
+#ERR	00:00:02	Q8IWL3_UNK__Q8IWL3: Sequence = 235 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q8IWL3_UNK__Q8IWL3 again...
+#ERR	00:00:02	Q8IWL3_UNK__Q8IWL3: Sequence = 235 aa but IUPred results stop at 0!
+#ERR	00:00:02	Error in Disorder.iuPred(Q8IWL3_UNK__Q8IWL3). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:02	PreMask Disorder prediction failed for Q8IWL3_UNK__Q8IWL3
+#ERR	00:00:02	Q8TD08_UNK__Q8TD08: Sequence = 544 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q8TD08_UNK__Q8TD08 again...
+#ERR	00:00:02	Q8TD08_UNK__Q8TD08: Sequence = 544 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q8TD08_UNK__Q8TD08 again...
+#ERR	00:00:02	Q8TD08_UNK__Q8TD08: Sequence = 544 aa but IUPred results stop at 0!
+#ERR	00:00:02	Error in Disorder.iuPred(Q8TD08_UNK__Q8TD08). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:02	PreMask Disorder prediction failed for Q8TD08_UNK__Q8TD08
+#ERR	00:00:02	Q96RR4_UNK__Q96RR4: Sequence = 588 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q96RR4_UNK__Q96RR4 again...
+#ERR	00:00:02	Q96RR4_UNK__Q96RR4: Sequence = 588 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q96RR4_UNK__Q96RR4 again...
+#ERR	00:00:02	Q96RR4_UNK__Q96RR4: Sequence = 588 aa but IUPred results stop at 0!
+#ERR	00:00:02	Error in Disorder.iuPred(Q96RR4_UNK__Q96RR4). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:02	PreMask Disorder prediction failed for Q96RR4_UNK__Q96RR4
+#ERR	00:00:02	Q9BSJ8_UNK__Q9BSJ8: Sequence = 1104 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q9BSJ8_UNK__Q9BSJ8 again...
+#ERR	00:00:02	Q9BSJ8_UNK__Q9BSJ8: Sequence = 1104 aa but IUPred results stop at 0!
+#RETRY	00:00:02	Trying Q9BSJ8_UNK__Q9BSJ8 again...
+#ERR	00:00:02	Q9BSJ8_UNK__Q9BSJ8: Sequence = 1104 aa but IUPred results stop at 0!
+#ERR	00:00:02	Error in Disorder.iuPred(Q9BSJ8_UNK__Q9BSJ8). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:02	PreMask Disorder prediction failed for Q9BSJ8_UNK__Q9BSJ8
+#MASK	00:00:02	Masked A0FGR9_UNK__A0FGR9 "low complexity" regions. (11 X added.)
+#MASK	00:00:02	Masked C5E526_UNK__C5E526 "low complexity" regions. (3 X added.)
+#MASK	00:00:02	Masked P02751_UNK__P02751 "low complexity" regions. (10 X added.)
+#MASK	00:00:02	Masked P03246_UNK__P03246 "low complexity" regions. (6 X added.)
+#MASK	00:00:02	Masked P03431_UNK__P03431 "low complexity" regions. (3 X added.)
+#MASK	00:00:02	Masked P03452_UNK__P03452 "low complexity" regions. (6 X added.)
+#MASK	00:00:02	Masked P06460_UNK__P06460 "low complexity" regions. (9 X added.)
+#MASK	00:00:02	Masked P06792_UNK__P06792 "low complexity" regions. (3 X added.)
+#MASK	00:00:02	Masked P06927_UNK__P06927 "low complexity" regions. (6 X added.)
+#MASK	00:00:02	Masked P0C739_UNK__P0C739 "low complexity" regions. (7 X added.)
+#MASK	00:00:02	Masked Q13286_UNK__Q13286 "low complexity" regions. (4 X added.)
+#MASK	00:00:02	Masked Q14653_UNK__Q14653 "low complexity" regions. (3 X added.)
+#MASK	00:00:02	Masked Q1K9H5_UNK__Q1K9H5 "low complexity" regions. (3 X added.)
+#MASK	00:00:02	Masked Q86X19_UNK__Q86X19 "low complexity" regions. (8 X added.)
+#MASK	00:00:02	Masked Q8TD08_UNK__Q8TD08 "low complexity" regions. (3 X added.)
+#MASK	00:00:02	Masked Q96RR4_UNK__Q96RR4 "low complexity" regions. (6 X added.)
+#MASK	00:00:02	Masked Q9BSJ8_UNK__Q9BSJ8 "low complexity" regions. (12 X added.)
+#MASK	00:00:02	MetMask: 26 N-terminal Ms masked
+#MASK	00:00:02	Masked P03182_UNK__P03182 position-specific AAs. (1 X added.)
+#MASK	00:00:02	interactors_of.A0FGR8: Masking of input sequences complete.
+#SPACE	00:00:02	Motif Space, 2 positions: 1,200 motifs
+#SPACE	00:00:02	Motif Space, 3 positions: 72,000 motifs
+#SPACE	00:00:02	Motif Space, 4 positions: 4,320,000 motifs
+#SPACE	00:00:02	Motif Space, 5 positions: 259,200,000 motifs
+#DIM	00:00:02	Read dimers from 26 seq: 1,257 dimers -> 1,226 Query dimers.
+#DIM	00:00:02	Reducing dimers: 1,218 >= 2 of 18 UPC 
+#SPACE	00:00:02	Query Motif Space, 2 positions: 1,200 motifs -> 1,226 Query motifs
+#SLIM	00:00:02	Selecting 2aa SLiMs: 1,218 >= 2 of 18 UPC -> 1,201 of 1,226 query motifs
+#AMB	00:00:02	Adding Wildcard ambiguity: 100.0% (0 amb motifs)
+#AMB	00:00:02	Adding Degeneracy ambiguity: 100.0% (0 amb motifs)
+#SLIM	00:00:37	Extending 3aa SLiMs >= 2 of 18 UPC: 20,312 SLiMs
+#SPACE	00:00:58	Exact Query Motif Space, 3 positions: 72,000 motifs -> 22,953 Query motifs
+#AMB	00:01:07	Adding Wildcard ambiguity: 100.0% (5,830 amb motifs)
+#AMB	00:01:39	Adding Degeneracy ambiguity: 100.0% (9,356 amb motifs)
+#SLIM	00:03:04	Extending 4aa SLiMs >= 2 of 18 UPC: 12,441 SLiMs
+#SPACE	00:03:56	Exact Query Motif Space, 4 positions: 4,320,000 motifs -> 92,212 Query motifs
+#AMB	00:03:57	Adding Wildcard ambiguity: 100.0% (1,522 amb motifs)
+#AMB	00:04:02	Adding Degeneracy ambiguity: 100.0% (2,485 amb motifs)
+#SLIM	00:04:44	Extending 5aa SLiMs >= 2 of 18 UPC: 2,508 SLiMs
+#SPACE	00:08:09	Exact Query Motif Space, 5 positions: 259,200,000 motifs -> 285,106 Query motifs
+#AMB	00:08:10	Adding Wildcard ambiguity: 100.0% (23 amb motifs)
+#AMB	00:08:14	Adding Degeneracy ambiguity: 100.0% (21 amb motifs)
+#SLIM	00:08:18	55,716 SLiMs >= 2 of 18 UPC
+#SAVE	00:08:30	QSLiMFinder Intermediate saved as ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.Ql5w2o2a3.FreqDisComp-5-8.pickle (Python pickle).
+#GZIP	00:08:32	./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.Ql5w2o2a3.FreqDisComp-5-8.pickle zipped.
+#SLIM	00:08:35	Filtering 55,716 SLiMs: 23,475 retained.
+#PROB	00:08:41	Calculating [QSig] SLiM Probabilities (Sig<=0.50) complete: 3 ranked SLiMs.
+#COMB	00:08:41	Combined Occurrence Attributes complete.
+#CLOUD	00:08:41	Making "Motif Clouds" for 3 Sig Motifs: 3 Clouds
+#SLIM	00:08:41	Cloud 1 ([ST]R..FS) SLiMMaker: R..FS
+#FREQ	00:08:41	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	00:08:41	Cloud 2 ([IL].N.V..P) SLiMMaker: N.V..P
+#FREQ	00:08:41	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	00:08:41	Cloud 3 (A.R[GS]..S..[IV]) SLiMMaker: A.R...S
+#FREQ	00:08:41	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#RANK	00:08:41	Rank calculations complete
+#CLOUD	00:08:41	Motif cloud data output to ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.Ql5w2o2a3.2017-09-11.cloud.txt for 3 clouds.
+#FAS	00:08:41	26 Sequences output to ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.Ql5w2o2a3.2017-09-11.masked.fas.     
+#FAS	00:08:41	78 Sequences output to ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.Ql5w2o2a3.2017-09-11.mapping.fas.     
+#ALN	00:08:41	Constructing motif alignments: 3 motifs & 10 seqs.: 100.0%.
+#FAS	00:08:41	11 Sequences output to ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.Ql5w2o2a3.2017-09-11.motifaln.fas.     
+#ALN	00:08:41	Constructing motif alignments: 3 motifs & 10 seqs.: 100.0%.
+#FAS	00:08:41	11 Sequences output to ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.Ql5w2o2a3.2017-09-11.maskaln.fas.     
+#OCC	00:08:41	Occurrence data output for 15 motif occurrences.
+#RES	00:08:41	QSLiMFinder results output to ./SLIMFinder/output/interactors_of.A0FGR8./main_result and ./SLIMFinder/output/interactors_of.A0FGR8.occ./main_result.
+#RES	00:08:41	Additional dataset results output to ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8*
+#WARN	00:08:41	1 warning messages: check log for details.
+#WARN	00:08:41	79 error messages! Check log for details.
+#LOG	00:08:41	QSLiMFinder V2.1.1 End: Mon Sep 11 17:32:15 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep 11 18:49:56 2017
+#DIR	00:00:00	Run from directory: /Users/vitalii/Desktop/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred dismask=T consmask=F cloudfix=F probcut=0.5 resdir=./SLIMFinder/output/interactors_of.A0FGR8./ resfile=./SLIMFinder/output/interactors_of.A0FGR8./main_result seqin=./SLIMFinder/input/fasta/interactors_of.A0FGR8.fas query=./SLIMFinder/input/query/interactors_of.A0FGR8.fas
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=../software/ncbi_blast_2.6.0/bin/ iupath=../software/iupred/iupred dismask=T consmask=F cloudfix=F probcut=0.5 resdir=./SLIMFinder/output/interactors_of.A0FGR8./ resfile=./SLIMFinder/output/interactors_of.A0FGR8./main_result seqin=./SLIMFinder/input/fasta/interactors_of.A0FGR8.fas query=./SLIMFinder/input/query/interactors_of.A0FGR8.fas
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	26 sequences loaded from ./SLIMFinder/input/fasta/interactors_of.A0FGR8.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 26 seq; 26 keys.
+#UPC	00:00:00	#interactors_of.A0FGR8# 26 Seq; 18 UPC; 21.029 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	interactors_of.A0FGR8: 26 Seq; 18 UPC; 21.029 MST
+#QRY	00:00:00	Query Sequence = P0DOE9_UNK__P0DOE9 (139 AA).
+#QRY	00:00:00	Query Sequence = P03182_UNK__P03182 (191 AA).
+#QRY	00:00:00	Query Sequence = P03246_UNK__P03246 (176 AA).
+#QRY	00:00:00	Query Sequence = P06460_UNK__P06460 (91 AA).
+#QRY	00:00:00	Query Sequence = P06461_UNK__P06461 (72 AA).
+#QRY	00:00:00	Query Sequence = P06792_UNK__P06792 (73 AA).
+#QRY	00:00:00	Query Sequence = P06927_UNK__P06927 (83 AA).
+#QRY	00:00:00	Query Sequence = P0C739_UNK__P0C739 (60 AA).
+#QRY	00:00:00	Query Sequence = P03452_UNK__P03452 (565 AA).
+#QRY	00:00:00	Query Sequence = P03431_UNK__P03431 (757 AA).
+#QRY	00:00:00	Query Sequence = P03428_UNK__P03428 (759 AA).
+#QRY	00:00:00	Query Sequence = I6T1Z2_UNK__I6T1Z2 (237 AA).
+#QRY	00:00:00	Query Sequence = C5E519_UNK__C5E519 (97 AA).
+#QRY	00:00:00	Query Sequence = C5E526_UNK__C5E526 (757 AA).
+#QRY	00:00:00	Query Sequence = C5E527_UNK__C5E527 (759 AA).
+#QRY	00:00:00	Query Sequence = Q1K9H5_UNK__Q1K9H5 (757 AA).
+#QRY	00:00:00	Query Sequence = B4URF7_UNK__B4URF7 (759 AA).
+#QRY	00:00:00	17 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 17 focal sequences in 1 group(s)
+#MIN	00:00:00	AmbOcc 0.05 & 18 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 18 UP => MinOcc 3 UPC.
+#GUNZIP	00:00:00	Pickle ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.Ql5w2o2a3.FreqDisComp-5-8.pickle.gz unzipped.
+#LOAD	00:00:03	QSLiMFinder Intermediate loaded: ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.Ql5w2o2a3.FreqDisComp-5-8.pickle.
+#GZIP	00:00:04	QSLiMFinder Pickle ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.Ql5w2o2a3.FreqDisComp-5-8.pickle (re)zipped.
+#QRY	00:00:04	Query Sequence = P0DOE9_UNK__P0DOE9 (139 AA).
+#QRY	00:00:04	Query Sequence = P03182_UNK__P03182 (191 AA).
+#QRY	00:00:04	Query Sequence = P03246_UNK__P03246 (176 AA).
+#QRY	00:00:04	Query Sequence = P06460_UNK__P06460 (91 AA).
+#QRY	00:00:04	Query Sequence = P06461_UNK__P06461 (72 AA).
+#QRY	00:00:04	Query Sequence = P06792_UNK__P06792 (73 AA).
+#QRY	00:00:04	Query Sequence = P06927_UNK__P06927 (83 AA).
+#QRY	00:00:04	Query Sequence = P0C739_UNK__P0C739 (60 AA).
+#QRY	00:00:04	Query Sequence = P03452_UNK__P03452 (565 AA).
+#QRY	00:00:04	Query Sequence = P03431_UNK__P03431 (757 AA).
+#QRY	00:00:04	Query Sequence = P03428_UNK__P03428 (759 AA).
+#QRY	00:00:04	Query Sequence = I6T1Z2_UNK__I6T1Z2 (237 AA).
+#QRY	00:00:04	Query Sequence = C5E519_UNK__C5E519 (97 AA).
+#QRY	00:00:04	Query Sequence = C5E526_UNK__C5E526 (757 AA).
+#QRY	00:00:04	Query Sequence = C5E527_UNK__C5E527 (759 AA).
+#QRY	00:00:04	Query Sequence = Q1K9H5_UNK__Q1K9H5 (757 AA).
+#QRY	00:00:04	Query Sequence = B4URF7_UNK__B4URF7 (759 AA).
+#QRY	00:00:04	17 sequences mapped to focal group "Query"
+#FOCUS	00:00:04	Mapped 17 focal sequences in 1 group(s)
+#SPACE	00:00:04	Motif Space, 2 positions: 1,226 motifs
+#SPACE	00:00:04	Motif Space, 3 positions: 22,953 motifs
+#SPACE	00:00:04	Motif Space, 4 positions: 92,212 motifs
+#SPACE	00:00:04	Motif Space, 5 positions: 285,106 motifs
+#SLIM	00:00:06	Filtering 55,716 SLiMs: 23,475 retained.
+#PROB	00:00:11	Calculating [QSig] SLiM Probabilities (Sig<=0.50) complete: 3 ranked SLiMs.
+#COMB	00:00:11	Combined Occurrence Attributes complete.
+#CLOUD	00:00:11	Making "Motif Clouds" for 3 Sig Motifs: 3 Clouds
+#SLIM	00:00:11	Cloud 1 ([ST]R..FS) SLiMMaker: R..FS
+#FREQ	00:00:11	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	00:00:11	Cloud 2 ([IL].N.V..P) SLiMMaker: N.V..P
+#FREQ	00:00:11	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	00:00:11	Cloud 3 (A.R[GS]..S..[IV]) SLiMMaker: A.R...S
+#FREQ	00:00:11	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#RANK	00:00:11	Rank calculations complete
+#CLOUD	00:00:11	Motif cloud data output to ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.Ql5w2o2a3.2017-09-11.cloud.txt for 3 clouds.
+#FAS	00:00:11	26 Sequences output to ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.Ql5w2o2a3.2017-09-11.masked.fas.     
+#FAS	00:00:11	78 Sequences output to ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.Ql5w2o2a3.2017-09-11.mapping.fas.     
+#ALN	00:00:11	Constructing motif alignments: 3 motifs & 10 seqs.: 100.0%.
+#FAS	00:00:11	11 Sequences output to ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.Ql5w2o2a3.2017-09-11.motifaln.fas.     
+#ALN	00:00:11	Constructing motif alignments: 3 motifs & 10 seqs.: 100.0%.
+#FAS	00:00:11	11 Sequences output to ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8.Ql5w2o2a3.2017-09-11.maskaln.fas.     
+#OCC	00:00:11	Occurrence data output for 15 motif occurrences.
+#RES	00:00:11	QSLiMFinder results output to ./SLIMFinder/output/interactors_of.A0FGR8./main_result and ./SLIMFinder/output/interactors_of.A0FGR8.occ./main_result.
+#RES	00:00:11	Additional dataset results output to ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8*
+#WARN	00:00:12	1 warning messages: check log for details.
+#LOG	00:00:12	QSLiMFinder V2.1.1 End: Mon Sep 11 18:50:08 2017

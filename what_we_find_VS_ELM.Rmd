@@ -69,12 +69,6 @@ res = permuteFrequency(data, select_nodes = NULL)
 proc.time() - time
 plot(res, main = "frequency: all proteins and domains")
 
-# permute BOTH IDs_interactor_viral ~ IDs_interactor_human AND IDs_interactor_human ~ IDs_domain_human
-time = proc.time()
-res_both = permuteFrequency(data, select_nodes = NULL, also_permuteYZ = T)
-proc.time() - time
-plot(res_both, main = "frequency: all proteins and domains")
-
 # frequency: no low background count domains
 res_low_back = permuteFrequency(data, select_nodes = IDs_domain_human ~ domain_count >= 3)
 #res_low_back_alt = permuteFrequency(data[domain_count >= 3,])
@@ -125,7 +119,7 @@ save(list = ls(), file="./processed_data_files/what_we_find_VS_ELM_clust.RData")
 
 ```{r calculate_pvals_FisherTest}
 # Fisher test: set up standard parameters
-permuteFisherTest = function(data, select_nodes = NULL, also_permuteYZ = F){
+permuteFisherTestPval = function(data, select_nodes = NULL, also_permuteYZ = F){
     resFISHER = permutationPval(interactions2permute = IDs_interactor_viral ~ IDs_interactor_human, # first set of interacting pairs (XY) that are to be permuted
                                 associations2test = IDs_interactor_viral ~ IDs_domain_human, # set of interacting pairs to be tested (XZ), YZ interactions are assumed
                                 node_attr = list(IDs_interactor_viral ~ IDs_interactor_viral_degree, # attribute of X
@@ -154,17 +148,48 @@ matrix(c("domain_count_per_IDs_interactor_viral[1]",
          "N_prot_w_interactors[1] - domain_count[1]"),2,2)
 # permute IDs_interactor_viral ~ IDs_interactor_human
 time = proc.time()
-resFISHER = permuteFisherTest(data, select_nodes = NULL)
+resFISHERpval = permuteFisherTest(data, select_nodes = NULL)
 proc.time() - time
-plot(resFISHER, main = "Fisher test P-value: all proteins and domains")
+plot(resFISHERpval, main = "Fisher test P-value: all proteins and domains")
 
-# permute BOTH IDs_interactor_viral ~ IDs_interactor_human AND IDs_interactor_human ~ IDs_domain_human
+
+# Fisher test: set up standard parameters
+permuteFisherTestOdds = function(data, select_nodes = NULL, also_permuteYZ = F){
+    resFISHER = permutationPval(interactions2permute = IDs_interactor_viral ~ IDs_interactor_human, # first set of interacting pairs (XY) that are to be permuted
+                                associations2test = IDs_interactor_viral ~ IDs_domain_human, # set of interacting pairs to be tested (XZ), YZ interactions are assumed
+                                node_attr = list(IDs_interactor_viral ~ IDs_interactor_viral_degree, # attribute of X
+                                                 IDs_domain_human ~ domain_count + N_prot_w_interactors, # attributes of Z
+                                                 IDs_interactor_viral + IDs_domain_human ~ domain_count_per_IDs_interactor_viral), # attribute of both X and Z
+                                data = data, # data.table containing data
+                                statistic = IDs_interactor_viral + IDs_domain_human ~ fisher.test(
+                                    matrix(c(domain_count_per_IDs_interactor_viral[1], 
+                                             IDs_interactor_viral_degree[1] - domain_count_per_IDs_interactor_viral[1],
+                                             domain_count[1], 
+                                             N_prot_w_interactors[1] - domain_count[1]),
+                                           2,2), 
+                                    alternative = "greater", conf.int = F)$estimate, # formula to calculate statisic by evaluating right-hand-side expression for each X and Z pair, right-hand-side expression is what is normally put in j in data.table DT[i, j, by], left-hand-side expression contains column names of X and Z which are used in by in data.table
+                                select_nodes = select_nodes, # select a subset of the data, only nodes 
+                                N = N_permut, # number of permutations
+                                cores = cores_to_use, seed = 1, also_permuteYZ = also_permuteYZ)
+    # permutationPval returns the number of cases when permuted statitic is higher than the observed statistic (right tail of the distribution), in this case we are interested in the reverse - the lower tail, when p-values from permuted distribution that are lower than the observed p-value
+    resFISHER$data_with_pval[, p.value := 1 - p.value]
+    return(resFISHER)
+}
+
+# permute IDs_interactor_viral ~ IDs_interactor_human: odds ratio
 time = proc.time()
-resFISHER_both = permuteFisherTest(data, select_nodes = NULL, also_permuteYZ = T)
+resFISHERodds = permuteFisherTestOdds(data, select_nodes = NULL)
 proc.time() - time
-plot(resFISHER_both, main = "Fisher test P-value: all proteins and domains \npermute BOTH IDs_interactor_viral ~ IDs_interactor_human AND IDs_interactor_human ~ IDs_domain_human")
+plot(resFISHERodds, main = "Fisher test P-value: all proteins and domains")
 
-save(resFISHER, file="./processed_data_files/what_we_find_VS_ELM_output_FISHER.RData")
+# permute IDs_interactor_viral ~ IDs_interactor_human: odds ratio, remove all small values
+time = proc.time()
+resFISHERoddsBig = permuteFisherTestOdds(data, select_nodes = list(IDs_domain_human ~ domain_count >= 15,
+                                                              IDs_interactor_viral ~ IDs_interactor_viral_degree >= 15))
+proc.time() - time
+plot(resFISHERoddsBig, main = "Fisher test P-value: all proteins and domains")
+
+save(resFISHERodds, file="./processed_data_files/what_we_find_VS_ELM_output_FISHER.RData")
 ```
 
 ```{r calculate_pvals_freq_rev}
@@ -199,12 +224,10 @@ save(mix, file="./processed_data_files/what_we_find_VS_ELM_output_freq_mix.RData
 
 ## Viral protein degree and the background domain count of top-scoring proteins
 
-```{r plot_DegreeVScount, fig.height = 12, fig.width = 12}
+```{r plot_DegreeVScount, fig.height = 12, fig.width = 12, eval=FALSE}
 # frequency
 PermutResult2D(res = res, N = 250) +
     ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: frequency of a domain among interacting partners of a viral protein (viral-domain)")
-PermutResult2D(res = res_both, N = 250) +
-    ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: frequency of a domain among interacting partners of a viral protein \n permute BOTH IDs_interactor_viral ~ IDs_interactor_human AND IDs_interactor_human ~ IDs_domain_human")
 PermutResult2D(res = res_low_back, N = 250) +
     ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: frequency of a domain among interacting partners of a viral protein \n no low background count domains")
 PermutResult2D(res = res_low_deg, N = 250) +
@@ -225,8 +248,6 @@ PermutResult2D(res = mix, N = 250) +
 # Fisher test p-value
 PermutResult2D(res = resFISHER, N = 250) + 
     ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: Fisher test p-value")
-PermutResult2D(res = resFISHER_both, N = 250) + 
-    ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: Fisher test p-value \n permute BOTH IDs_interactor_viral ~ IDs_interactor_human AND IDs_interactor_human ~ IDs_domain_human")
 ```
 
 ## Map domains known to interact with linear motifs from ELM to the domains we found
@@ -275,7 +296,6 @@ return(enrichment)
 Ns = seq(25, 500, 25)
 # frequency
 enrichment = runningTestEnrichment(res, name = "domain frequency among interactors of a viral protein")
-enrichment_both = runningTestEnrichment(res_both, name = "domain frequency among interactors of a viral protein, permute both")
 enrichment_low_back = runningTestEnrichment(res_low_back, name = "domain frequency: no low background")
 enrichment_low_deg = runningTestEnrichment(res_low_deg, name = "domain frequency: no degree of 1")
 enrichment_low_deg_back = runningTestEnrichment(res_low_deg_back, name = "domain frequency: no degree of 1 AND no low background")
@@ -288,8 +308,10 @@ enrichmentMix = runningTestEnrichment(mix, name = "mix of viral protein -> domai
 enrichment_count = runningTestEnrichment(res_count, name = "domain count among interactors of a viral protein")
 
 # Fisher test pval
-enrichmentFISHER = runningTestEnrichment(resFISHER, name = "Fisher test pval: domain overrepresentation over the background")
-enrichmentFISHER_both = runningTestEnrichment(resFISHER_both, name = "Fisher test pval: domain overrepresentation over the background, permute both")
+enrichmentFISHERodds = runningTestEnrichment(resFISHERodds, name = "Fisher test odds ratio: domain overrepresentation over the background")
+enrichmentFISHERpval = runningTestEnrichment(resFISHERpval, name = "Fisher test pval: domain overrepresentation over the background")
+enrichmentFISHERoddsBig = runningTestEnrichment(resFISHERoddsBig, name = "Fisher test odds ratio: domain overrepresentation over the background \n(both background count and degree >= 15)")
+
 
 random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25)){
     set.seed(seed)
@@ -334,8 +356,8 @@ save(list = ls(), file="./processed_data_files/what_we_find_VS_ELM_clust.RData")
 ## As we include more proteins, the number of known domains we find increases and then levels off (probably because some of the known domains do not interact with viral proteins).
 
 ```{r domains_found, fig.height = 9, fig.width = 10}
-plotEnrichment(enrichment, enrichment_both, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
-               enrichment_count, enrichmentRev, enrichmentMix, enrichmentFISHER, enrichmentFISHER_both,
+plotEnrichment(enrichment, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
+               enrichment_count, enrichmentRev, enrichmentMix, enrichmentFISHERodds, enrichmentFISHERpval, enrichmentFISHERoddsBig,
                random_domains = enrichmentRANDOM, 
                domains_known_mapped = domains_known_mapped, type = "count", plot_type = "l")
 ```
@@ -343,8 +365,8 @@ plotEnrichment(enrichment, enrichment_both, enrichment_low_back, enrichment_low_
 ## As we include more proteins, the Fisher test odds ratio decreases (we add more stuff that is not known). Odds ratio measures how much more likely are we to find a domain using our procedure if it’s a known domain as compared to if it’s not a known domain.
 
 ```{r fisher_odds_ratio, fig.height = 9, fig.width = 10}
-plotEnrichment(enrichment, enrichment_both, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
-               enrichment_count, enrichmentRev, enrichmentMix, enrichmentFISHER, enrichmentFISHER_both,
+plotEnrichment(enrichment, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
+               enrichment_count, enrichmentRev, enrichmentMix, enrichmentFISHERodds, enrichmentFISHERpval, enrichmentFISHERoddsBig,
                random_domains = enrichmentRANDOM, 
                domains_known_mapped = domains_known_mapped, type = "odds_ratio", plot_type = "l")
 ```
@@ -352,8 +374,8 @@ plotEnrichment(enrichment, enrichment_both, enrichment_low_back, enrichment_low_
 ## corresponding P-values from the Fisher test 
 
 ```{r fisher_pval, fig.height = 9, fig.width = 10}
-plotEnrichment(enrichment, enrichment_both, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
-               enrichment_count, enrichmentRev, enrichmentMix, enrichmentFISHER, enrichmentFISHER_both,
+plotEnrichment(enrichment, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
+               enrichment_count, enrichmentRev, enrichmentMix, enrichmentFISHERodds, enrichmentFISHERpval, enrichmentFISHERoddsBig,
                random_domains = enrichmentRANDOM, 
                domains_known_mapped = domains_known_mapped, type = "pval", plot_type = "l")
 ```
@@ -391,10 +413,10 @@ DT::datatable(restop100$data_with_pval[N_viral_per_human_w_domain >= 10,])
 ## R session information
 
 ```{r}
-save(list = ls(), file="./processed_data_files/what_we_find_VS_ELM_clust.RData")
-R.utils::gzip(filename = "./processed_data_files/what_we_find_VS_ELM_clust.RData",
-              destname = "./processed_data_files/what_we_find_VS_ELM_clust.RData.gz",
-              remove = T, overwrite = T)
+save(list = ls(), file="./processed_data_files/what_we_find_VS_ELM_clust11092017.RData")
+#R.utils::gzip(filename = "./processed_data_files/what_we_find_VS_ELM_clust11092017.RData",
+#              destname = "./processed_data_files/what_we_find_VS_ELM_clust11092017.RData.gz",
+#              remove = T, overwrite = T)
 Sys.Date()
 sessionInfo()
 ```
