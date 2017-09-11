@@ -58,14 +58,89 @@ all_human_interaction = fullInteractome(taxid = 9606, database = "IntActFTP", fo
                                         clean = TRUE, protein_only = TRUE, directory = "./data_files/")
 # human-viral
 all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
-                                        clean = TRUE, protein_only = TRUE, directory = "./data_files/")
+                                                clean = TRUE, protein_only = TRUE, directory = "./data_files/")
 # load FASTA
-all.fasta = readAAStringSet(filepath = "./data_files/all_human_viral_proteins.fasta", format = "fasta")
+all.fasta = unique(readAAStringSet(filepath = "./data_files/all_human_viral_proteins.fasta", format = "fasta"))
 
-subsetMITABbyID(all_human_interaction, ID_seed,
-                within_seed = F, only_seed2nonseed = T)
-subsetMITABbyID(all_viral_interaction, ID_seed,
-                within_seed = F, only_seed2nonseed = T)
+# choose pvalue cutoff:
+plot(domain_res)
+proteins_w_signif_domains = unique(domain_res$data_with_pval[p.value < 0.4, IDs_interactor_human])
+
+subsetByIdANDcombine = function(interaction_set1, interaction_set2, seed_id){
+    if(length(seed_id) != 1) warning("WARNING: multiple ids may not be meaningful")
+    from_set1 = subsetMITABbyID(interaction_set1, ID_seed = seed_id,
+                                within_seed = F, only_seed2nonseed = T)
+    from_set2 = subsetMITABbyID(interaction_set2, ID_seed = seed_id,
+                                within_seed = F, only_seed2nonseed = T)
+    length_set1 = length(unique(from_set1$data$pair_id))
+    length_set2 = length(unique(from_set2$data$pair_id))
+    
+    if(length_set1 > 0) ids_set1 = unique(unlist(from_set1$data[,IDs_interactor_B])) else {ids_set1 = "NULL"; ids_all = ids_set2}
+    if(length_set2 > 0) ids_set2 = unique(unlist(from_set2$data[,IDs_interactor_B])) else {ids_set2 = "NULL"; ids_all = ids_set1}
+    
+    if(length_set1 > 0) {
+        if(length_set2 > 0) ids_all = c(ids_set1, ids_set2) else ids_all = c(ids_set1)} else {
+            if(length_set2 > 0) ids_all = c(ids_set2) else stop(paste0("seed_id (",seed_id,") has no interactions is both interaction_set1 and interaction_set2"))
+        }
+    
+    combined = rbind(from_set1$data, from_set2$data)
+    res = list(name = seed_id,combined_MITAB = combined, ids_all = ids_all,
+               ids_set1 = ids_set1, ids_set2 = ids_set2,
+               length_set1 = length_set1, length_set2 = length_set2,
+               description = paste0("Interacting partners of seed_id (",seed_id,") from interaction_set1 (", match.call()[["interaction_set1"]],") and interaction_set2 (", match.call()[["interaction_set2"]],")."))
+    class(res) = "interaction_subset_from_2_sets"
+    return(res)
+}
+
+print.interaction_subset_from_2_sets = function(data){
+    cat("\n\n")
+    cat(data$description)
+    cat("\n\n This format is useful for preparing data for QSLIMFinder where one set is the search set and the other set is the query set. \n\n")
+    cat(paste0("set 1 identifiers (length ",data$length_set1,"): \n"))
+    print(data$ids_set1)
+    cat(paste0("set 2 identifiers (length ",data$length_set2,"): \n"))
+    print(data$ids_set2)
+    cat("\n data in MITAB format is at $combined_MITAB (data.table)")
+    cat(paste0("\n object class (S3): ",class(data)))
+}
+
+subset = subsetByIdANDcombine(interaction_set1 = all_human_interaction, 
+                              interaction_set2 = all_viral_interaction, 
+                              seed_id = proteins_w_signif_domains[2])
+
+interactionSubsetFASTA = function(int_subset, fasta){
+    if(class(int_subset) != "interaction_subset_from_2_sets") stop("Invalid input, int_subset should be the output of subsetByIdANDcombine function")
+    if(class(fasta) != "AAStringSet") stop(" fasta should be of class AAStringSet (Biostrings) ")
+    match(int_subset$ids_all,names(fasta))
+    fasta_subset = fasta[int_subset$ids_all]
+    fasta_subset_list = AAStringSetList(fasta_subset)
+    names(fasta_subset_list) = paste0("interactors_of.",int_subset$name,".")
+    int_subset_list = list(int_subset)
+    names(int_subset_list) = paste0("interactors_of.",int_subset$name,".")
+    res = list(fasta_subset_list = fasta_subset_list, interaction_subset = int_subset_list)
+    class(res) = "interactionSubsetFASTA"
+    return(res)
+}
+
+subset_fasta = interactionSubsetFASTA(int_subset = subset, fasta = all.fasta)
+
+mInteractionSubsetFASTA = function(interaction_set1, interaction_set2, seed_id_vect, fasta) {
+    seed_id_vect = seed_id_vect[seed_id_vect %in% names(fasta)]
+    subset1 = subsetByIdANDcombine(interaction_set1 = interaction_set1, 
+                                   interaction_set2 = interaction_set2, 
+                                   seed_id = seed_id_vect[1])
+    subset1_fasta = interactionSubsetFASTA(int_subset = subset1, fasta = fasta)
+    for (seed_id in seed_id_vect[2:length(seed_id_vect)]) {
+        subset = subsetByIdANDcombine(interaction_set1 = interaction_set1, 
+                                       interaction_set2 = interaction_set2, 
+                                       seed_id = seed_id)
+        subset_fasta = interactionSubsetFASTA(int_subset = subset, fasta = fasta)
+        subset1_fasta$fasta_subset_list = c(subset1_fasta$fasta_subset_list, subset_fasta$fasta_subset_list)
+        subset1_fasta$interaction_subset = c(subset1_fasta$interaction_subset, subset_fasta$interaction_subset)
+    }
+    
+}
+
 AAStringSetList(all = all.fasta)[[1]]
 
 SLIMFinder_dir = "./SLIMFinder/"
@@ -94,7 +169,7 @@ echo $IUPred_PATH
 #QSLIMFinder
 while IFS=$'\t' read -r data query;
 do
- python $QSLIMFinder blast+path=$BLAST_PATH iupath=$IUPred_PATH resdir=$res_dir resfile=$res_path seqin=$data query=$query dismask=T consmask=T cloudfix=F probcut=1
+python $QSLIMFinder blast+path=$BLAST_PATH iupath=$IUPred_PATH resdir=$res_dir resfile=$res_path seqin=$data query=$query dismask=T consmask=T cloudfix=F probcut=1
 done < ./SLIMFinder/filelist.txt
 
 res_dir="./SLIMFinder/QSLIMFinder/"
@@ -103,7 +178,7 @@ SLIMFinder=$SLIM_PATH"slimfinder.py"
 #SLIMFinder
 while IFS=$'\t' read -r data query;
 do
- python $SLIMFinder blast+path=$BLAST_PATH iupath=$IUPred_PATH resdir=$res_dir resfile=$res_path seqin=$data dismask=T cloudfix=F probcut=1
+python $SLIMFinder blast+path=$BLAST_PATH iupath=$IUPred_PATH resdir=$res_dir resfile=$res_path seqin=$data dismask=T cloudfix=F probcut=1
 done < ./SLIMFinder/filelist.txt
 ```
 

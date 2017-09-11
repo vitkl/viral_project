@@ -77,7 +77,7 @@ Finally, after considering only one domain per domain family we are left with `r
 export(InterProScan_domains_nonred, con = "./processed_data_files/InterProScan_domains_nonredundant.gff3", format = "gff3")
 gzip(filename = "./processed_data_files/InterProScan_domains_nonredundant.gff3", destname = "./processed_data_files/InterProScan_domains_nonredundant.gff3.gz", overwrite = T, remove = T)
 
-InterProScan_domains_nonred2 = readInterProGFF3("./processed_data_files/InterProScan_domains_nonredundant.gff3.gz", processed = T)
+#InterProScan_domains_nonred2 = readInterProGFF3("./processed_data_files/InterProScan_domains_nonredundant.gff3.gz", processed = T)
 
 # take protein-domain pair discarding range information
 protein_domain_pair = unique(data.table(IDs_protein = as.character(seqnames(InterProScan_domains_nonred)),
