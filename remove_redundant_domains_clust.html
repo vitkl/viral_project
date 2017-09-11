@@ -125,133 +125,49 @@ $(document).ready(function () {
 <div id="TOC">
 <ul>
 <li><a href="#read-interproscan-result-and-filter-for-domain-active_site-binding_site-conserved_site-ptm-signatures">Read InterProScan result and filter for “Domain”, “Active_site”, “Binding_site”, “Conserved_site”, “PTM” signatures</a></li>
-<li><a href="#remove-redundancy-in-the-identified-domains-signatures-of-the-same-domain-from-different-interpro-member-databases">Remove redundancy in the identified domains (signatures of the same domain from different InterPro member databases)</a></li>
+<li><a href="#remove-redundancy-in-the-identified-domains-signatures-of-the-same-domain-from-different-interpro-member-databases-domain-families">Remove redundancy in the identified domains (signatures of the same domain from different InterPro member databases + domain families)</a></li>
 <li><a href="#r-session-information">R session information</a></li>
 </ul>
 </div>
 
-<p>Date: 2017-09-03 19:55:05</p>
+<p>Date: 2017-09-10 21:14:23</p>
 <div id="read-interproscan-result-and-filter-for-domain-active_site-binding_site-conserved_site-ptm-signatures" class="section level2">
 <h2>Read InterProScan result and filter for “Domain”, “Active_site”, “Binding_site”, “Conserved_site”, “PTM” signatures</h2>
 <p>I read InterProScan result and the InterPro_entry_types file. InterProScan output format description: <a href="https://github.com/ebi-pf-team/interproscan/wiki/OutputFormats">https://github.com/ebi-pf-team/interproscan/wiki/OutputFormats</a></p>
 <pre class="r"><code># read InterProScan result, download and add InterPro Entry Types information, extract from relevant columns and add names metadata and sequence length information
-InterProScan_result = readInterProGFF3(&quot;./processed_data_files/all_human_viral_protein_domains.gff3.gz&quot;)
+InterProScan_result = readInterProGFF3(&quot;./processed_data_files/all_human_viral_protein_domains092017.gff3.gz&quot;, processed = F)
 InterProScan_result = addInterProEntryTypes(InterProScan_result, &quot;./data_files/entry.list&quot;)
-# create a subset that contains &quot;Domain&quot;, &quot;Active_site&quot;, &quot;Binding_site&quot;, &quot;Conserved_site&quot;, &quot;PTM&quot; signatures
-InterProScan_domains = SubsetByInterProEntryType(InterProScan_result)</code></pre>
+InterProScan_domains = SubsetByInterProEntryType(InterProScan_result, c(&quot;Domain&quot;, 
+    &quot;Active_site&quot;, &quot;Binding_site&quot;, &quot;Conserved_site&quot;, &quot;PTM&quot;, &quot;Repeat&quot;))</code></pre>
 </div>
-<div id="remove-redundancy-in-the-identified-domains-signatures-of-the-same-domain-from-different-interpro-member-databases" class="section level2">
-<h2>Remove redundancy in the identified domains (signatures of the same domain from different InterPro member databases)</h2>
-<pre class="r"><code>InterProScan_domains_list = split(InterProScan_domains, paste0(seqnames(InterProScan_domains),&quot;|&quot;, InterProScan_domains$Dbxref))
-InterProScan_domains_nonred = GRanges()
+<div id="remove-redundancy-in-the-identified-domains-signatures-of-the-same-domain-from-different-interpro-member-databases-domain-families" class="section level2">
+<h2>Remove redundancy in the identified domains (signatures of the same domain from different InterPro member databases + domain families)</h2>
+<p>In domain families: assign all domains to the top domain.</p>
+<pre class="r"><code>InterProTree = loadInterProTree(filename = &quot;./data_files/interpro_ParentChildTreeFile.txt&quot;)
+# find all InterProIDs that have children InterProIDs
+InterProTree_level1 = getLevelXchildren(tree = InterProTree, level = 1) 
+has_children = InterProScan_domains$Dbxref %in% InterProTree_level1$allchildren
 
-for (i in 1:length(InterProScan_domains_list)) {
-    Nseq = length(InterProScan_domains_list[[i]])
-    reduced = reduce(InterProScan_domains_list[[i]], with.revmap=T)
-    metadata_orig = mcols(InterProScan_domains_list[[i]])
-    
-    metadata_new = metadata_orig[-which(colnames(metadata_orig) %in% c(&quot;status&quot;, &quot;signature_desc&quot;, &quot;md5&quot;, &quot;ID&quot;, &quot;type&quot;, &quot;phase&quot;))]
-    metadata_new$source = (as.character(metadata_new$source))
-    
-    mapping = character(Nseq)
-    for (ind in 1:length(reduced$revmap)) {
-        number = reduced$revmap[[ind]]
-        mapping[number] = ind
-    }
-    metadata_new_list = split(metadata_new, mapping)
-    new_metadata_new_list = SplitDataFrameList()
-    for (indic in 1:length(metadata_new_list)) {
-        temp_metadata = metadata_new_list[[indic]]
-        temp_metadata$source = paste0(temp_metadata$source, collapse=&quot;|&quot;)
-        temp_metadata$score = paste0(temp_metadata$score, collapse=&quot;|&quot;)
-        temp_metadata$Target = paste0(temp_metadata$Target, collapse=&quot;|&quot;)
-        temp_metadata$Name = paste0(temp_metadata$Name, collapse=&quot;|&quot;)
-        # convert CharacterList to character first 
-        temp_metadata$Ontology_term = sapply(temp_metadata$Ontology_term, paste0, collapse=&quot;,&quot;)
-        temp_metadata$Ontology_term = paste0(temp_metadata$Ontology_term, collapse=&quot;|&quot;)
-        new_metadata_new_list[[indic]] = unique(temp_metadata)
-    }
-    metadata_new = do.call(&quot;rbind&quot;, new_metadata_new_list)
-    mcols(reduced) = metadata_new
-    InterProScan_domains_nonred = c(InterProScan_domains_nonred, reduced)
-}
+# map top InterProIDs in the hierarchy when InterProIDs have have children InterProIDs
+InterProScan_domains$topInterProID = InterProScan_domains$Dbxref
+InterProScan_domains$topInterProID[has_children] = InterProTree_level1$level1[match(InterProScan_domains$Dbxref, InterProTree_level1$allchildren)][has_children]
 
-InterProScan_domains_nonred = unique(InterProScan_domains_nonred) </code></pre>
+# collapse 
+InterProScan_domains_nonred = collapseByInterProID(InterProScan_features = InterProScan_domains, id_col = &quot;topInterProID&quot;)</code></pre>
+<p>We used to have 8210 domains and 100698 protein-domain pairs.<br />After combining the signatures of the same domain from different InterPro member databases we have 5496 domains and 56279 protein-domain pairs.<br />Finally, after considering only one domain per domain family we are left with 4152 domains and 42786 protein-domain pairs.</p>
 <pre class="r"><code># save results
 export(InterProScan_domains_nonred, con = &quot;./processed_data_files/InterProScan_domains_nonredundant.gff3&quot;, format = &quot;gff3&quot;)
+gzip(filename = &quot;./processed_data_files/InterProScan_domains_nonredundant.gff3&quot;, destname = &quot;./processed_data_files/InterProScan_domains_nonredundant.gff3.gz&quot;, overwrite = T, remove = T)
+
+#InterProScan_domains_nonred2 = readInterProGFF3(&quot;./processed_data_files/InterProScan_domains_nonredundant.gff3.gz&quot;, processed = T)
 
 # take protein-domain pair discarding range information
-protein_domain_pair = unique(data.table(IDs_protein = as.character(seqnames(InterProScan_domains_nonred)), IDs_domain = as.character(InterProScan_domains_nonred$Dbxref), domain_type = InterProScan_domains_nonred$ENTRY_TYPE))
+protein_domain_pair = unique(data.table(IDs_protein = as.character(seqnames(InterProScan_domains_nonred)),
+                                        IDs_domain = as.character(InterProScan_domains_nonred$topInterProID),
+                                        all_IDs_domain = as.character(InterProScan_domains_nonred$Dbxref),
+                                        domain_type = InterProScan_domains_nonred$ENTRY_TYPE))
 # save simplified table
 fwrite(protein_domain_pair, file = &quot;./processed_data_files/protein_domain_pair&quot;, sep = &quot;\t&quot;)</code></pre>
-<pre class="r"><code>positionalDistance = function(InterProScan_domains, maxgap = 100){
-    # generate Granges which contain feature start
-    domain_start = resize(InterProScan_domains, width = 1, fix=&quot;start&quot;, use.names=TRUE)
-    # generate Granges which contain feature end
-    domain_end = resize(InterProScan_domains, width = 1, fix=&quot;end&quot;, use.names=TRUE)
-    
-    # find features with overlapping start (including feature with itself)
-    overlap_start = findOverlaps(query = domain_start, maxgap = maxgap)
-    # find features with overlapping end (including feature with itself)
-    overlap_end = findOverlaps(query = domain_end, maxgap = maxgap)
-    
-    # remove overlapping start of feature with itself
-    overlap_start = overlap_start[(queryHits(overlap_start) != subjectHits(overlap_start))]
-    # remove overlapping end of feature with itself
-    overlap_end = overlap_end[(queryHits(overlap_end) != subjectHits(overlap_end))]
-    
-    # find features in which both the start and the end overlap
-    overlap_start_n_end = intersect(overlap_start, overlap_end)
-    
-    # calculate the distance between positions of overlapping start features
-    overlap_both_start_dist = distance(domain_start[queryHits(overlap_start_n_end)], domain_start[subjectHits(overlap_start_n_end)])
-    # calculate the distance between positions of overlapping end features
-    overlap_both_end_dist = distance(domain_end[queryHits(overlap_start_n_end)], domain_end[subjectHits(overlap_start_n_end)])
-    
-    # sum these distances
-    overlap_total_dist = overlap_both_start_dist + overlap_both_end_dist
-    
-    # map distances to domains
-    
-}
-# generate Granges which contain feature start
-domain_start = resize(InterProScan_domains, width = 1, fix=&quot;start&quot;, use.names=TRUE)
-# generate Granges which contain feature end
-domain_end = resize(InterProScan_domains, width = 1, fix=&quot;end&quot;, use.names=TRUE)
-
-# find features with overlapping start (including feature with itself)
-overlap_start = findOverlaps(query = domain_start, maxgap = 100)
-# find features with overlapping end (including feature with itself)
-overlap_end = findOverlaps(query = domain_end, maxgap = 100)
-
-# remove overlapping start of feature with itself
-overlap_start = overlap_start[(queryHits(overlap_start) != subjectHits(overlap_start))]
-# remove overlapping end of feature with itself
-overlap_end = overlap_end[(queryHits(overlap_end) != subjectHits(overlap_end))]
-
-# find features in which both the start and the end overlap
-overlap_start_n_end = intersect(overlap_start, overlap_end)
-
-# calculate the distance between positions of overlapping start features
-overlap_both_start_dist = distance(domain_start[queryHits(overlap_start_n_end)], domain_start[subjectHits(overlap_start_n_end)])
-hist(overlap_both_start_dist, breaks = seq(0,100,1))
-# calculate the distance between positions of overlapping end features
-overlap_both_end_dist = distance(domain_end[queryHits(overlap_start_n_end)], domain_end[subjectHits(overlap_start_n_end)])
-hist(overlap_both_end_dist, breaks = seq(0,100,1))
-
-# sum these distances
-overlap_total_dist = overlap_both_start_dist + overlap_both_end_dist
-overlap_total_dist = data.table(overlap_total_dist = overlap_total_dist,
-                                queryHits = InterProScan_domains[queryHits(overlap_start_n_end)]$Dbxref,
-                                subjectHits = InterProScan_domains[subjectHits(overlap_start_n_end)]$Dbxref)
-hist(overlap_total_dist, breaks = seq(0,200,1))
-abline(v=10)
-
-# select distance difference cutoff
-overlap_start_n_end = overlap_start_n_end[overlap_total_dist &lt; 10]
-# generate non-redundant domain annotatations by keeping only the first domain signature among overlapping signatures
-overlap_start_n_end_nonred = overlap_start_n_end[queryHits(overlap_start_n_end) &lt; subjectHits(overlap_start_n_end)]
-InterProScan_domains_nonred = InterProScan_domains[unique(queryHits(overlap_start_n_end_nonred))]</code></pre>
 </div>
 <div id="r-session-information" class="section level2">
 <h2>R session information</h2>
@@ -261,7 +177,7 @@ R.utils::gzip(filename = &quot;./processed_data_files/remove_redundant_domains_c
               remove = T, overwrite = T)
 
 Sys.Date()</code></pre>
-<pre><code>## [1] &quot;2017-09-03&quot;</code></pre>
+<pre><code>## [1] &quot;2017-09-11&quot;</code></pre>
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>## R version 3.4.1 (2017-06-30)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
@@ -284,7 +200,7 @@ Sys.Date()</code></pre>
 ## [8] datasets  base     
 ## 
 ## other attached packages:
-##  [1] GGally_1.3.2         MItools_0.1.15       Biostrings_2.44.1   
+##  [1] GGally_1.3.2         MItools_0.1.20       Biostrings_2.44.1   
 ##  [4] XVector_0.16.0       rtracklayer_1.36.3   GenomicRanges_1.28.3
 ##  [7] GenomeInfoDb_1.12.2  ggplot2_2.2.1        PSICQUIC_1.14.0     
 ## [10] plyr_1.8.4           httr_1.3.1           biomaRt_2.32.1      
