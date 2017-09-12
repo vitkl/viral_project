@@ -28,6 +28,7 @@ suppressPackageStartupMessages({
     library(ggplot2)
     library(GGally)
     library(RColorBrewer)
+    library(scales)
 })
 ```
 
@@ -45,9 +46,9 @@ QSLIMfinder:
 
 
 
-### prepare sets of protein sequences and instructions for SLIMFinder
+### Load PPI data and show degree distribution
 
-```{r}
+```{r load, fig.width=8, fig.height=8}
 # load the domain analysis results
 load("./processed_data_files/what_we_find_VS_ELM_clust.RData")
 domain_res = res
@@ -60,6 +61,94 @@ all_human_interaction = fullInteractome(taxid = 9606, database = "IntActFTP", fo
 # human-viral
 all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
                                                 clean = TRUE, protein_only = TRUE, directory = "./data_files/")
+# viral-viral
+all_within_viral_interaction = fullInteractome(taxid = 10239, database = "IntActFTP", format = "tab27",
+                                        clean = TRUE, protein_only = TRUE, directory = "./data_files/")
+
+extractProteins = function(cleanMITAB, taxid = NULL, not = F) {
+    if(!grepl("clean_MItab",class(cleanMITAB))) stop("cleanMITAB is not of class clean_MItab27 or related clean_MItab class")
+    if(is.null(taxid)){
+        res = cleanMITAB$data[, unique(c(IDs_interactor_A, IDs_interactor_B))]
+    } else {
+        if(not){
+            res = cleanMITAB$data[!Taxid_interactor_A %in% taxid, unique(IDs_interactor_A)]
+            res = c(res, cleanMITAB$data[!Taxid_interactor_B %in% taxid, unique(IDs_interactor_B)])
+            res = unique(res)
+        } else {
+            res = cleanMITAB$data[Taxid_interactor_A %in% taxid, unique(IDs_interactor_A)]
+            res = c(res, cleanMITAB$data[Taxid_interactor_B %in% taxid, unique(IDs_interactor_B)])
+            res = unique(res)
+        }
+    }
+}
+
+NuniqueInteractions = function(cleanMITAB){
+    if(!grepl("clean_MItab",class(cleanMITAB))) stop("cleanMITAB is not of class clean_MItab27 or related clean_MItab class")
+    length(unique(cleanMITAB$data$pair_id))
+}
+NuniqueInteractors = function(cleanMITAB, taxid = NULL, not = NULL){
+    if(!grepl("clean_MItab",class(cleanMITAB))) stop("cleanMITAB is not of class clean_MItab27 or related clean_MItab class")
+    
+    if(is.null(taxid)){
+        return(length(cleanMITAB$data[,unique(c(IDs_interactor_A, IDs_interactor_B))]))
+    } else {
+        proteins = extractProteins(cleanMITAB, taxid = taxid, not = not)
+        return(length(proteins))
+    }
+}
+
+human_viral_proteins = extractProteins(all_viral_interaction, taxid = 9606, not = F)
+human_human_proteins = extractProteins(all_human_interaction)
+viral_proteins = extractProteins(all_viral_interaction, taxid = 9606, not = T)
+
+human_human_degree = edgelist2degree(all_human_interaction$data)
+human_human_degree_legend = paste0("full human-human: \n", NuniqueInteractions(all_human_interaction)," interacting pairs, ", NuniqueInteractors(all_human_interaction)," human proteins")
+human_human_degree[, legend := human_human_degree_legend]
+
+inViral_human_interaction = subsetMITABbyID(MITABdata = all_human_interaction,
+                                            ID_seed = human_viral_proteins, within_seed = T)
+inViral_human_human_degree = edgelist2degree(inViral_human_interaction$data)[ID %in% human_viral_proteins]
+inViral_human_human_degree_legend = paste0("viral-interacting proteins, human-human: \n", NuniqueInteractions(inViral_human_interaction)," interacting pairs, ", NuniqueInteractors(inViral_human_interaction)," human proteins")
+inViral_human_human_degree[, legend := inViral_human_human_degree_legend]
+
+inViral_human_viral_degree = edgelist2degree(all_viral_interaction$data)[ID %in% human_viral_proteins]
+inViral_human_viral_degree_legend = paste0("human-viral: \n", NuniqueInteractions(all_viral_interaction)," interacting pairs, ", NuniqueInteractors(all_viral_interaction, taxid = 9606, not = F)," human proteins")
+inViral_human_viral_degree[, legend := inViral_human_viral_degree_legend]
+
+inViral_viral_human_degree = edgelist2degree(all_viral_interaction$data)[ID %in% viral_proteins]
+inViral_viral_human_degree_legend = paste0("viral-human: \n", NuniqueInteractions(all_viral_interaction)," interacting pairs, ", NuniqueInteractors(all_viral_interaction, taxid = 9606, not = T)," viral proteins")
+inViral_viral_human_degree[, legend := inViral_viral_human_degree_legend]
+
+inViral_viral_viral_degree = edgelist2degree(all_within_viral_interaction$data)[ID %in% viral_proteins]
+inViral_viral_viral_degree_legend = paste0("viral-viral (human host) \n", NuniqueInteractions(all_within_viral_interaction)," interacting pairs, ", NuniqueInteractors(all_within_viral_interaction)," viral proteins")
+inViral_viral_viral_degree[, legend := inViral_viral_viral_degree_legend]
+
+degree_distributions = rbind(human_human_degree, inViral_human_human_degree, inViral_human_viral_degree, inViral_viral_human_degree, inViral_viral_viral_degree)
+degree_distributions[, legend := factor(legend, 
+                                        levels = c(human_human_degree_legend, 
+                                                   inViral_human_human_degree_legend, inViral_human_viral_degree_legend,
+                                                   inViral_viral_human_degree_legend, inViral_viral_viral_degree_legend))]
+degree_distributions[, medianN := as.integer(median(N)), by = legend]
+degree_distributions[, medianN_lab := paste0("median: ",signif(medianN,1), " interacting partners")]
+
+ggplot(degree_distributions, aes(x = N, fill = legend, color = legend)) + geom_density() + facet_grid(legend ~ .) + theme_light() +
+theme(strip.text.y = element_text(size = 16,angle = 0),
+      panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
+              panel.background = element_rect(fill = '#FFFFFF', colour = 'grey'),
+              legend.position = "none",
+      axis.title = element_text(size = 16),
+      axis.text.x = element_text(size = 12)) +
+        scale_x_log10(breaks = c(1, 10, 100, 1000),
+                labels = c(1, 10, 100, 1000)) +
+    xlab("N interacting partners per protein")+
+    geom_vline(aes(xintercept = medianN, color = legend)) + 
+    geom_text(aes(x = medianN*9.5,label = medianN_lab, y = 2), color = "black", size = 6.5)+
+    annotation_logticks(sides = "b", color = "#444444")
+```
+
+### prepare sets of protein sequences and instructions for SLIMFinder
+
+```{r prepare_FASTA_for_QSLIMFinder}
 # load FASTA
 all.fasta = unique(readAAStringSet(filepath = "./data_files/all_human_viral_proteins.fasta", format = "fasta"))
 
@@ -178,17 +267,17 @@ mInteractionSubsetFASTA = function(interaction_set1, interaction_set2, seed_id_v
 }
 
 forSLIMFinder = mInteractionSubsetFASTA(interaction_set1 = all_human_interaction, 
-                        interaction_set2 = all_viral_interaction, 
-                        seed_id_vect = proteins_w_signif_domains,
-                        fasta = all.fasta)
+                                        interaction_set2 = all_viral_interaction, 
+                                        seed_id_vect = proteins_w_signif_domains,
+                                        fasta = all.fasta)
 
 filterInteractionSubsetFASTA_list = function(interactionFASTA_list, length_set1_lim = 0, length_set2_lim = 0) {
     select_both = sapply(1:interactionFASTA_list$length, function(i){
-    select_set1 = interactionFASTA_list$interaction_subset[[i]]$length_set1 >= length_set1_lim
-    select_set2 = interactionFASTA_list$interaction_subset[[i]]$length_set2 >= length_set2_lim
-    select_both = select_set1 & select_set2
-    return(select_both)
-})
+        select_set1 = interactionFASTA_list$interaction_subset[[i]]$length_set1 >= length_set1_lim
+        select_set2 = interactionFASTA_list$interaction_subset[[i]]$length_set2 >= length_set2_lim
+        select_both = select_set1 & select_set2
+        return(select_both)
+    })
     interactionFASTA_list$fasta_subset_list = interactionFASTA_list$fasta_subset_list[select_both]
     interactionFASTA_list$interaction_subset = interactionFASTA_list$interaction_subset[select_both]
     interactionFASTA_list$length = length(interactionFASTA_list$fasta_subset_list)
@@ -209,7 +298,7 @@ saveInteractionSubsetFASTA_list = function(interactionFASTA_list, dir = "./SLIMF
     if(!dir.exists(output_dir)) dir.create(output_dir)
     
     file_list = data.table(fastafile = character(), queryfile = character(),
-             outputdir = character(), outputfile = character())
+                           outputdir = character(), outputfile = character())
     
     for (i in 1:length(interactionFASTA_list$fasta_subset_list)) {
         name = names(interactionFASTA_list$fasta_subset_list[i])
@@ -219,26 +308,26 @@ saveInteractionSubsetFASTA_list = function(interactionFASTA_list, dir = "./SLIMF
         outputfile = paste0(outputdir, "main_result")
         
         temp_list = data.table(fastafile = fastafile, queryfile = queryfile,
-             outputdir = outputdir, outputfile = outputfile)
+                               outputdir = outputdir, outputfile = outputfile)
         file_list = rbind(file_list, temp_list)
         
         writeXStringSet(interactionFASTA_list$fasta_subset_list[[i]],
-                  file = fastafile,
-                  format="fasta")
+                        file = fastafile,
+                        format="fasta")
         fwrite(list(interactionFASTA_list$interaction_subset[[i]]$ids_set2), queryfile)
     }
     return(file_list)
 }
 
 forSLIMFinder_file_list = saveInteractionSubsetFASTA_list(interactionFASTA_list = forSLIMFinder_Ready,
-                                dir = "./SLIMFinder/")
+                                                          dir = "./SLIMFinder/")
 
 runQSLIMFinder = function(file_list, 
                           slimpath = "python ../software/slimsuite/tools/qslimfinder.py", 
                           blast = "blast+path=../software/ncbi_blast_2.6.0/bin/", 
                           iupred = "iupath=../software/iupred/iupred",
                           options = "dismask=T consmask=F cloudfix=F probcut=0.1")
-    {
+{
     dirs = file_list[1,]
     #Sys.setenv()
     dirs_command = paste0("resdir=",dirs$outputdir," resfile=",dirs$outputfile," seqin=",dirs$fastafile," query=",dirs$queryfile," ")
@@ -253,7 +342,7 @@ runQSLIMFinder = function(file_list,
                           blast = "blast+path=../software/ncbi_blast_2.6.0/bin/", 
                           iupred = "iupath=../software/iupred/iupred",
                           options = "dismask=T consmask=F cloudfix=F probcut=0.5")
-    {
+{
     dirs = file_list[1,]
     runQSLIMFinder(file_list = dirs, slimpath = slimpath,
                    blast = blast, iupred = iupred, options = options)

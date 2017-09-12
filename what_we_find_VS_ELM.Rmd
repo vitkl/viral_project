@@ -148,7 +148,7 @@ matrix(c("domain_count_per_IDs_interactor_viral[1]",
          "N_prot_w_interactors[1] - domain_count[1]"),2,2)
 # permute IDs_interactor_viral ~ IDs_interactor_human
 time = proc.time()
-resFISHERpval = permuteFisherTest(data, select_nodes = NULL)
+resFISHERpval = permuteFisherTestPval(data, select_nodes = NULL)
 proc.time() - time
 plot(resFISHERpval, main = "Fisher test P-value: all proteins and domains")
 
