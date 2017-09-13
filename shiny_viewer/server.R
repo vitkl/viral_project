@@ -55,11 +55,11 @@ shinyServer(function(input, output, session) {
         
         if(is.null(input$enrich_plot_args)) plot_args = NULL else {
             plot_args = input$enrich_plot_args
-            plot_args = unlist(strsplit(plot_args, "|"))
+            plot_args = unlist(strsplit(plot_args, "\\|"))
             }
         if(is.null(input$enrich_legend_args)) legend_args = NULL else {
             legend_args = input$enrich_legend_args
-            legend_args = unlist(strsplit(legend_args, "|"))
+            legend_args = unlist(strsplit(legend_args, "\\|"))
             }
         
         plotEnrichment(runningTestEnrichmentlist = results2plot,
