@@ -61,12 +61,13 @@ shinyServer(function(input, output, session) {
             legend_args = input$enrich_legend_args
             legend_args = unlist(strsplit(legend_args, "\\|"))
             }
-        
+        par(mar = c(6,7,4,4))
         plotEnrichment(runningTestEnrichmentlist = results2plot,
                        random_domains = enrichmentRANDOM, 
                        domains_known_mapped = domains_known_mapped,
                        type = input$enrich_plot_type, plot_type = "l",
                        plot_args = plot_args, legend_args = legend_args
                        )
+        # cex.lab = 2 cex = 2
     })
 })
