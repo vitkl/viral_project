@@ -13,6 +13,8 @@ shinyUI(pageWithSidebar(
                     choices = "enrichment", selected = "enrichment", multiple = T),
         radioButtons(inputId = "enrich_plot_type", label = "Our prediction vs ELM domains: plot type",
                      choices = list(pval = "pval", odds_ratio = "odds_ratio", count = "count"), selected = "count"),
+        textInput(inputId = "enrich_plot_args", label = "Our prediction vs ELM domains: plot args (like \"cex = 1.5\", separated by pipes)", value = NULL),
+        textInput(inputId = "enrich_legend_args", label = "Our prediction vs ELM domains: legend args (like \"cex = 1.5\", separated by pipes)", value = NULL),
         radioButtons(inputId = "bin2d_pval_plot_set", label = "Characteristics of top protein-domain pairs and pvalue distribution: which results to look at?",
                      choices = "unavailable"),
         textInput(inputId = "bin2d_plotname", label = "Characteristics of top protein-domain pairs: plot name", value = ""),

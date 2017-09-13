@@ -44,13 +44,29 @@ shinyServer(function(input, output, session) {
     
     output$enrich_plot <- renderPlot({
         load(input$path)
+        #which_function = sapply(ls(), function(x) class(eval(parse(text = x)))) == "function"
+        #rm(list = names(which_function)[which_function])
         rm(plotEnrichment)
+        
         results2plot = list()
         for (i in 1:(length(input$enrich_plot_set))) {
             results2plot = c(results2plot, list(eval(parse(text = input$enrich_plot_set[i]))))
         }
-        plotEnrichment(list = results2plot,
+        
+        if(is.null(input$enrich_plot_args)) plot_args = NULL else {
+            plot_args = input$enrich_plot_args
+            plot_args = unlist(strsplit(plot_args, "|"))
+            }
+        if(is.null(input$enrich_legend_args)) legend_args = NULL else {
+            legend_args = input$enrich_legend_args
+            legend_args = unlist(strsplit(legend_args, "|"))
+            }
+        
+        plotEnrichment(runningTestEnrichmentlist = results2plot,
                        random_domains = enrichmentRANDOM, 
-                       domains_known_mapped = domains_known_mapped, type = input$enrich_plot_type, plot_type = "l")
+                       domains_known_mapped = domains_known_mapped,
+                       type = input$enrich_plot_type, plot_type = "l",
+                       plot_args = plot_args, legend_args = legend_args
+                       )
     })
 })
