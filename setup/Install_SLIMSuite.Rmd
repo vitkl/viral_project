@@ -11,7 +11,7 @@ library(downloader)
 library(R.utils)
 ```
 
-## Install SLIMSuite
+## Install SLIMSuite on Mac
 
 Details on how to install the slim and new versions of the software can be found here:   http://slimsuite.blogspot.co.uk/2013/08/availability-installation-and-setup.html  
 
@@ -45,6 +45,72 @@ system("mv ../../software/ncbi-blast-2.6.0+ ../../software/ncbi_blast_2.6.0")
 
 # Install IUPRED
 
-Go to :
+Go to : http://iupred.enzim.hu/
 Unzip the emailed file.
 Compile IUPRED
+
+# Install SLIMSuite on linux cluster
+
+```{r install}
+setwd("/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/setup/")
+url = "https://github.com/slimsuite/SLiMSuite/releases/download/v1.2.0/slimsuite.2016-09-12.tgz"
+direct = "../../software/cluster/"
+if(!dir.exists(direct)) dir.create(direct)
+filename = "slimsuite.2016-09-12.tgz"
+filepath = paste0(direct, filename)
+if(!file.exists(filepath)) download(url, filepath)
+untar(filepath, exdir = direct,list=F)
+```
+
+# Install BLAST+ on linux cluster
+
+```{r blast}
+setwd("/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/setup/")
+blast_path = paste0(direct, "ncbi-blast-2.6.0+-x64-linux.tar.gz")
+if(!file.exists(blast_path)) download("ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.6.0+-x64-linux.tar.gz",
+         blast_path)
+untar(blast_path, exdir = direct, list=F)
+system("mv ../../software/cluster/ncbi-blast-2.6.0+ ../../software/cluster/ncbi_blast_2.6.0")
+
+```
+
+# Install IUPRED on linux cluster
+
+Go to : http://iupred.enzim.hu/
+Unzip the emailed file.
+Compile IUPRED
+
+# test on cluster
+
+```{r cluster_test}
+setwd("/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/setup/")
+```
+
+```{bash cluster_test}
+cd /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/
+software_PATH="../software/cluster/"
+SLIM_PATH=$software_PATH"slimsuite/tools/"
+QSLIMFinder=$SLIM_PATH"qslimfinder.py"
+IUPred_PATH=$software_PATH"iupred/iupred"
+BLAST_PATH=$software_PATH"ncbi_blast_2.6.0/bin/"
+
+res_dir="./SLIMFinder/QSLIMFinder/"
+res_path=$res_dir"res.csv"
+echo $QSLIMFinder
+echo $IUPred_PATH
+#python $QSLIMFinder 
+
+#QSLIMFinder
+while IFS=$'\t' read -r data query;
+do
+python $QSLIMFinder blast+path=$BLAST_PATH iupath=$IUPred_PATH resdir=$res_dir resfile=$res_path seqin=$data query=$query dismask=T consmask=T cloudfix=F probcut=0.5
+done < ./SLIMFinder/filelist.txt
+
+# QSLIMFinder as a bjob
+res_dir="./SLIMFinder/QSLIMFinder/bjob"
+res_path=$res_dir"bjob_res.csv"
+while IFS=$'\t' read -r data query;
+do
+bsub -n 1 -q research-rh7 -M 16000 -R "rusage[mem=16000]" python $QSLIMFinder blast+path=$BLAST_PATH iupath=$IUPred_PATH resdir=$res_dir resfile=$res_path seqin=$data query=$query dismask=T consmask=T cloudfix=F probcut=0.5
+done < ./SLIMFinder/filelist.txt
+```
