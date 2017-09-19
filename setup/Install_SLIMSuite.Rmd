@@ -91,8 +91,10 @@ cd /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/
 software_PATH="../software/cluster/"
 SLIM_PATH=$software_PATH"slimsuite/tools/"
 QSLIMFinder=$SLIM_PATH"qslimfinder.py"
-IUPred_PATH=$software_PATH"iupred/iupred"
 BLAST_PATH=$software_PATH"ncbi_blast_2.6.0/bin/"
+
+# To set an environment variable everytime, use the export command in the .bashrc file (or the appropriate initialization file for your shell).
+export IUPred_PATH=$software_PATH"iupred/iupred"
 
 res_dir="./SLIMFinder/QSLIMFinder/"
 res_path=$res_dir"res.csv"
@@ -107,10 +109,10 @@ python $QSLIMFinder blast+path=$BLAST_PATH iupath=$IUPred_PATH resdir=$res_dir r
 done < ./SLIMFinder/filelist.txt
 
 # QSLIMFinder as a bjob
-res_dir="./SLIMFinder/QSLIMFinder/bjob"
-res_path=$res_dir"bjob_res.csv"
+res_dir="./SLIMFinder/QSLIMFinder/bjob2"
+res_path=$res_dir"bjob_res2.csv"
 while IFS=$'\t' read -r data query;
 do
-bsub -n 1 -q research-rh7 -M 16000 -R "rusage[mem=16000]" python $QSLIMFinder blast+path=$BLAST_PATH iupath=$IUPred_PATH resdir=$res_dir resfile=$res_path seqin=$data query=$query dismask=T consmask=T cloudfix=F probcut=0.5
+bsub -n 1 -q research-rh7 -M 200 -R "rusage[mem=200]" python $QSLIMFinder blast+path=$BLAST_PATH iupath=$IUPred_PATH resdir=$res_dir resfile=$res_path seqin=$data query=$query dismask=T consmask=T cloudfix=F probcut=0.5
 done < ./SLIMFinder/filelist.txt
 ```
