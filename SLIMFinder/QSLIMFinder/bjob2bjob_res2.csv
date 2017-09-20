@@ -1,0 +1,2 @@
+Dataset,RunID,Masking,Build,Chance,RunTime,SeqNum,UPNum,AANum,MotNum,Rank,Sig,Pattern,IC,Occ,Support,UP,ExpUP,Prob,Cloud,CloudSeq,CloudUP
+example,2017-09-19,FreqConsDisComp-5-8,Ql5w2o2a3,QSig,00:01:26,7,4,3717,0,0,0.5,-,,,,,,,,,

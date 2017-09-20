@@ -2253,3 +2253,1199 @@
 #RES	00:00:11	Additional dataset results output to ./SLIMFinder/output/interactors_of.A0FGR8./interactors_of.A0FGR8*
 #WARN	00:00:12	1 warning messages: check log for details.
 #LOG	00:00:12	QSLiMFinder V2.1.1 End: Mon Sep 11 18:50:08 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep 18 14:17:42 2017
+#DIR	00:00:00	Run from directory: /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/cluster/ncbi_blast_2.6.0/bin/ iupath=../software/cluster/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T consmask=T cloudfix=F probcut=1
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=../software/cluster/ncbi_blast_2.6.0/bin/ iupath=../software/cluster/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/ resfile=./SLIMFinder/QSLIMFinder/res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T consmask=T cloudfix=F probcut=1
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	Loading UPC from "./SLIMFinder/QSLIMFinder/example.upc".
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#UPC	00:00:00	#example# 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#UP	00:00:00	example: 7 Seq; 4 UPC; 5.223 MST
+#QRY	00:00:00	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:00	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:00	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:00	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:00	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:00	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:00	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#ERR	00:00:00	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing; again...
+#ERR	00:00:00	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing; again...
+#ERR	00:00:00	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for DYIN_DROME__Q24246
+#ERR	00:00:00	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying SWA_DROME__P40688 RecName: Full=Protein swallow; again...
+#ERR	00:00:00	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying SWA_DROME__P40688 RecName: Full=Protein swallow; again...
+#ERR	00:00:00	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(SWA_DROME__P40688 RecName: Full=Protein swallow;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for SWA_DROME__P40688
+#ERR	00:00:00	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow; again...
+#ERR	00:00:00	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow; again...
+#ERR	00:00:00	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for SWA_DROPS__Q9U9I5
+#ERR	00:00:00	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1; again...
+#ERR	00:00:00	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1; again...
+#ERR	00:00:00	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for DC1I1_MOUSE__O88485
+#ERR	00:00:00	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69; again...
+#ERR	00:00:00	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69; again...
+#ERR	00:00:00	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for ZMY11_HUMAN__Q15326
+#ERR	00:00:00	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2; again...
+#ERR	00:00:00	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2; again...
+#ERR	00:00:00	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for DC1I2_HUMAN__Q13409
+#ERR	00:00:00	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death; again...
+#ERR	00:00:00	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:00	Trying B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death; again...
+#ERR	00:00:00	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#ERR	00:00:00	Error in Disorder.iuPred(B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:00	PreMask Disorder prediction failed for B2L11_HUMAN__O43521
+#ALN	00:00:00	No alignment file found for DYIN_DROME__Q24246.
+#ALN	00:00:00	No alignment file found for SWA_DROME__P40688.
+#ALN	00:00:00	No alignment file found for SWA_DROPS__Q9U9I5.
+#ALN	00:00:00	No alignment file found for DC1I1_MOUSE__O88485.
+#ALN	00:00:00	No alignment file found for ZMY11_HUMAN__Q15326.
+#ALN	00:00:00	No alignment file found for DC1I2_HUMAN__Q13409.
+#ALN	00:00:00	No alignment file found for B2L11_HUMAN__O43521.
+#REL	00:00:00	0 aa masked using relative conservation
+#MASK	00:00:00	Masked DYIN_DROME__Q24246 "low complexity" regions. (6 X added.)
+#MASK	00:00:00	Masked SWA_DROME__P40688 "low complexity" regions. (16 X added.)
+#MASK	00:00:00	Masked SWA_DROPS__Q9U9I5 "low complexity" regions. (6 X added.)
+#MASK	00:00:00	Masked DC1I1_MOUSE__O88485 "low complexity" regions. (8 X added.)
+#MASK	00:00:00	Masked ZMY11_HUMAN__Q15326 "low complexity" regions. (6 X added.)
+#MASK	00:00:00	Masked DC1I2_HUMAN__Q13409 "low complexity" regions. (3 X added.)
+#MASK	00:00:00	Masked B2L11_HUMAN__O43521 "low complexity" regions. (4 X added.)
+#MASK	00:00:00	MetMask: 7 N-terminal Ms masked
+#MASK	00:00:00	Masked B2L11_HUMAN__O43521 position-specific AAs. (1 X added.)
+#MASK	00:00:00	example: Masking of input sequences complete.
+#SPACE	00:00:00	Motif Space, 2 positions: 1,200 motifs
+#SPACE	00:00:00	Motif Space, 3 positions: 72,000 motifs
+#SPACE	00:00:00	Motif Space, 4 positions: 4,320,000 motifs
+#SPACE	00:00:00	Motif Space, 5 positions: 259,200,000 motifs
+#DIM	00:00:00	Read dimers from 7 seq: 1,192 dimers -> 849 Query dimers.
+#DIM	00:00:00	Reducing dimers: 1,036 >= 2 of 4 UPC 
+#SPACE	00:00:00	Query Motif Space, 2 positions: 1,200 motifs -> 849 Query motifs
+#SLIM	00:00:00	Selecting 2aa SLiMs: 1,036 >= 2 of 4 UPC -> 800 of 849 query motifs
+#AMB	00:00:00	Adding Wildcard ambiguity: 100.0% (0 amb motifs)
+#AMB	00:00:00	Adding Degeneracy ambiguity: 100.0% (0 amb motifs)
+#SLIM	00:00:11	Extending 3aa SLiMs >= 2 of 4 UPC: 3,600 SLiMs
+#SPACE	00:00:12	Exact Query Motif Space, 3 positions: 72,000 motifs -> 5,435 Query motifs
+#AMB	00:00:13	Adding Wildcard ambiguity: 100.0% (480 amb motifs)
+#AMB	00:00:13	Adding Degeneracy ambiguity: 100.0% (903 amb motifs)
+#SLIM	00:00:28	Extending 4aa SLiMs >= 2 of 4 UPC: 1,029 SLiMs
+#SPACE	00:00:35	Exact Query Motif Space, 4 positions: 4,320,000 motifs -> 17,220 Query motifs
+#AMB	00:00:35	Adding Wildcard ambiguity: 100.0% (8 amb motifs)
+#AMB	00:00:36	Adding Degeneracy ambiguity: 100.0% (9 amb motifs)
+#SLIM	00:00:40	Extending 5aa SLiMs >= 2 of 4 UPC: 222 SLiMs
+#SPACE	00:01:08	Exact Query Motif Space, 5 positions: 259,200,000 motifs -> 51,372 Query motifs
+#AMB	00:01:08	Adding Wildcard ambiguity: 100.0% (0 amb motifs)
+#AMB	00:01:08	Adding Degeneracy ambiguity: 100.0% (0 amb motifs)
+#SLIM	00:01:08	7,287 SLiMs >= 2 of 4 UPC
+#SAVE	00:01:08	QSLiMFinder Intermediate saved as ./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqConsDisComp-5-8.pickle (Python pickle).
+#GZIP	00:01:08	./SLIMFinder/QSLIMFinder/example.Ql5w2o2a3.FreqConsDisComp-5-8.pickle zipped.
+#SLIM	00:01:09	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:01:10	Calculating [QSig] SLiM Probabilities (Sig<=1.00) complete: 1,000 ranked SLiMs.
+#COMB	00:01:12	Combined Occurrence Attributes complete.
+#CLOUD	00:23:09	Making "Motif Clouds" for 1000 Sig Motifs: 133 Clouds
+#WARN	00:23:11	Multiple motif offsets for K..QT.S vs T.[ST].[GS]
+#WARN	00:23:11	Multiple motif offsets for K..QT.S vs T.[ST].S
+#WARN	00:23:11	Multiple motif offsets for K..QT.S vs T.{0,1}T.{0,1}T.{0,2}G
+#WARN	00:23:11	Multiple motif offsets for K..QT.S vs T.{0,1}T.{0,1}T
+#WARN	00:23:19	Multiple motif offsets for T.T.[GS] vs T.[ST].[GS]
+#WARN	00:23:19	Multiple motif offsets for T.T.[GS] vs T.{0,1}T.{0,1}T.{0,2}G
+#WARN	00:23:19	Multiple motif offsets for T.T.[GS] vs T.[ST]T
+#WARN	00:23:19	Multiple motif offsets for T.T.[GS] vs T.{0,1}T.{0,1}T
+#WARN	00:23:25	Multiple motif offsets for T.[ST].[GS] vs QT.S
+#WARN	00:23:25	Multiple motif offsets for T.[ST].[GS] vs T.[ST].S
+#WARN	00:23:25	Multiple motif offsets for T.[ST].[GS] vs T.{0,1}T.{0,1}T.{0,2}G
+#WARN	00:23:25	Multiple motif offsets for T.[ST].[GS] vs [ST].T[ST]..[GS]
+#WARN	00:23:25	Multiple motif offsets for T.[ST].[GS] vs T.[ST]T
+#WARN	00:23:25	Multiple motif offsets for T.[ST].[GS] vs T.{0,1}T.{0,1}T
+#WARN	00:23:25	Multiple motif offsets for T.[ST].[GS] vs [ST].ST
+#WARN	00:23:27	Multiple motif offsets for QT.S vs T.[ST].S
+#WARN	00:23:27	Multiple motif offsets for QT.S vs T.{0,1}T.{0,1}T.{0,2}G
+#WARN	00:23:27	Multiple motif offsets for QT.S vs T.{0,1}T.{0,1}T
+#WARN	00:23:31	Multiple motif offsets for [ST].TP vs S.{0,1}T.T
+#WARN	00:23:31	Multiple motif offsets for [ST].TP vs S.{0,1}T..P
+#WARN	00:23:35	Multiple motif offsets for T.[ST].S vs T.{0,1}T.{0,1}T.{0,2}G
+#WARN	00:23:35	Multiple motif offsets for T.[ST].S vs T.[ST]T
+#WARN	00:23:35	Multiple motif offsets for T.[ST].S vs T.{0,1}T.{0,1}T
+#WARN	00:23:36	Multiple motif offsets for [ST]T.T vs [ST].T[ST]..[GS]
+#WARN	00:23:36	Multiple motif offsets for [ST]T.T vs T.[ST]T
+#WARN	00:23:36	Multiple motif offsets for [ST]T.T vs [ST].ST
+#WARN	00:23:36	Multiple motif offsets for T.{0,1}T.{0,1}T.{0,2}G vs [ST].T[ST]..[GS]
+#WARN	00:23:36	Multiple motif offsets for T.{0,1}T.{0,1}T.{0,2}G vs T.[ST]T
+#WARN	00:23:36	Multiple motif offsets for T.{0,1}T.{0,1}T.{0,2}G vs T.{0,1}T.{0,1}T
+#WARN	00:23:36	Multiple motif offsets for T.{0,1}T.{0,1}T.{0,2}G vs [ST].ST
+#WARN	00:23:39	Multiple motif offsets for [ST].T[ST]..[GS] vs T.{0,1}T.{0,1}T
+#WARN	00:23:39	Multiple motif offsets for [ST].T[ST]..[GS] vs S..[ST][ST]
+#WARN	00:23:40	Multiple motif offsets for [GS]T.[ST] vs [ST].ST
+#WARN	00:23:41	Multiple motif offsets for T.[ST]T vs T.{0,1}T.{0,1}T
+#WARN	00:23:42	Multiple motif offsets for T.{0,1}T.{0,1}T vs [ST].ST
+#WARN	00:23:43	Multiple motif offsets for S..[ST].T vs S.{0,1}T.T
+#WARN	00:23:43	Multiple motif offsets for S..[ST].T vs [LV][GS].[GS]..[ST]
+#WARN	00:23:43	Multiple motif offsets for S..[ST].T vs S.[AS]..[ST]
+#WARN	00:23:53	Multiple motif offsets for [ST]..[ST]..[GS] vs S..[ST][ST]
+#WARN	00:23:53	Multiple motif offsets for [ST]..[ST]..[GS] vs TS..[ST]
+#WARN	00:23:53	Multiple motif offsets for [ST]..[ST]..[GS] vs TS..S
+#WARN	00:23:53	Multiple motif offsets for [ST]..[ST]..[GS] vs [ST]S..[ST]
+#WARN	00:23:53	Multiple motif offsets for [ST]..[ST]..[GS] vs [ST][GS]..S
+#WARN	00:23:53	Multiple motif offsets for [ST]..[ST]..[GS] vs [ST][AS]..S
+#WARN	00:23:53	Multiple motif offsets for [ST]..[ST]..[GS] vs TS..[GS]
+#WARN	00:23:53	Multiple motif offsets for [ST]..[ST]..[GS] vs [ST][AS]..[GS]
+#WARN	00:23:53	Multiple motif offsets for [ST]..[ST]..[GS] vs [GS]..[GS]S
+#WARN	00:23:53	Multiple motif offsets for [ST]..[ST]..[GS] vs SD.S
+#WARN	00:23:53	Multiple motif offsets for [ST]..[ST]..[GS] vs S[DE].[AS]
+#WARN	00:23:53	Multiple motif offsets for [ST]..[ST]..[GS] vs [AGS]..[GS]S
+#WARN	00:23:58	Multiple motif offsets for [ST].[AG]..[GS] vs [GS][GS].[AG]
+#WARN	00:24:08	Multiple motif offsets for S..[ST][ST] vs [GS]..[ST]..[AS]
+#WARN	00:24:08	Multiple motif offsets for S..[ST][ST] vs [ST]S..[ST]
+#WARN	00:24:08	Multiple motif offsets for S..[ST][ST] vs [ST][GS]..S
+#WARN	00:24:08	Multiple motif offsets for S..[ST][ST] vs [ST][AS]..S
+#WARN	00:24:08	Multiple motif offsets for S..[ST][ST] vs S..[AGS]..[AS]
+#WARN	00:24:08	Multiple motif offsets for S..[ST][ST] vs [ST][AS]..[GS]
+#WARN	00:24:08	Multiple motif offsets for S..[ST][ST] vs [GS]S..[GS]
+#WARN	00:24:08	Multiple motif offsets for S..[ST][ST] vs [GS][GS]..[GS]
+#WARN	00:24:10	Multiple motif offsets for [GS]..[ST]..[AS] vs TS..[ST]
+#WARN	00:24:10	Multiple motif offsets for [GS]..[ST]..[AS] vs TS..S
+#WARN	00:24:10	Multiple motif offsets for [GS]..[ST]..[AS] vs [ST]S..[ST]
+#WARN	00:24:10	Multiple motif offsets for [GS]..[ST]..[AS] vs [ST][GS]..S
+#WARN	00:24:10	Multiple motif offsets for [GS]..[ST]..[AS] vs [ST][AS]..S
+#WARN	00:24:10	Multiple motif offsets for [GS]..[ST]..[AS] vs TS..[GS]
+#WARN	00:24:10	Multiple motif offsets for [GS]..[ST]..[AS] vs S..[AGS]..[AS]
+#WARN	00:24:10	Multiple motif offsets for [GS]..[ST]..[AS] vs [ST][AS]..[GS]
+#WARN	00:24:11	Multiple motif offsets for [GS]..[ST]..[AS] vs [GS]..[AGS]D
+#WARN	00:24:11	Multiple motif offsets for [GS]..[ST]..[AS] vs [GS]..[GS]S
+#WARN	00:24:11	Multiple motif offsets for [GS]..[ST]..[AS] vs SD.S
+#WARN	00:24:11	Multiple motif offsets for [GS]..[ST]..[AS] vs S[DE].[AS]
+#WARN	00:24:11	Multiple motif offsets for [GS]..[ST]..[AS] vs [AGS]..[GS]S
+#WARN	00:24:11	Multiple motif offsets for [GS]..[ST]..[AS] vs [ST][AG].[AS]
+#WARN	00:24:19	Multiple motif offsets for TS..[ST] vs S..[AGS]..[AS]
+#WARN	00:24:19	Multiple motif offsets for TS..[ST] vs [GS]..S[DE].[AS]
+#WARN	00:24:20	Multiple motif offsets for TS..S vs S..[AGS]..[AS]
+#WARN	00:24:20	Multiple motif offsets for TS..S vs [GS]..S[DE].[AS]
+#WARN	00:24:21	Multiple motif offsets for [ST]S..[ST] vs S..[AGS]..[AS]
+#WARN	00:24:21	Multiple motif offsets for [ST]S..[ST] vs [GS]..S[DE].[AS]
+#WARN	00:24:21	Multiple motif offsets for [ST]S..[ST] vs [GS]..[GS]S
+#WARN	00:24:21	Multiple motif offsets for [ST]S..[ST] vs [AGS]..[GS]S
+#WARN	00:24:21	Multiple motif offsets for [ST]S..[ST] vs S[AS].[AGS]
+#WARN	00:24:22	Multiple motif offsets for [ST][GS]..S vs S..[AGS]..[AS]
+#WARN	00:24:22	Multiple motif offsets for [ST][GS]..S vs [GS]..S[DE].[AS]
+#WARN	00:24:22	Multiple motif offsets for [ST][GS]..S vs [GS]..[GS]S
+#WARN	00:24:22	Multiple motif offsets for [ST][GS]..S vs [AGS]..[GS]S
+#WARN	00:24:23	Multiple motif offsets for [ST][GS]..S vs S[AS].[AGS]
+#WARN	00:24:24	Multiple motif offsets for [ST][AS]..S vs [AS].[ST]S
+#WARN	00:24:24	Multiple motif offsets for [ST][AS]..S vs [AGS].[ST]S
+#WARN	00:24:24	Multiple motif offsets for [ST][AS]..S vs S..[AGS]..[AS]
+#WARN	00:24:24	Multiple motif offsets for [ST][AS]..S vs [GS]..S[DE].[AS]
+#WARN	00:24:24	Multiple motif offsets for [ST][AS]..S vs [GS]..[GS]S
+#WARN	00:24:24	Multiple motif offsets for [ST][AS]..S vs [AGS]..[GS]S
+#WARN	00:24:24	Multiple motif offsets for [ST][AS]..S vs [ST][AG].[AS]
+#WARN	00:24:24	Multiple motif offsets for [ST][AS]..S vs S[AS].[AGS]
+#WARN	00:24:24	Multiple motif offsets for [ST][AS]..S vs SA.[AS]
+#WARN	00:24:26	Multiple motif offsets for [AS].[ST]S vs [ST][AS]..[GS]
+#WARN	00:24:26	Multiple motif offsets for [AS].[ST]S vs [ST][AG].[AS]
+#WARN	00:24:26	Multiple motif offsets for [AS].[ST]S vs S[AS].[AGS]
+#WARN	00:24:26	Multiple motif offsets for [AS].[ST]S vs SA.[AS]
+#WARN	00:24:27	Multiple motif offsets for TS..[GS] vs S..[AGS]..[AS]
+#WARN	00:24:27	Multiple motif offsets for TS..[GS] vs [GS]..S[DE].[AS]
+#WARN	00:24:29	Multiple motif offsets for [AGS].[ST]S vs [ST][AS]..[GS]
+#WARN	00:24:29	Multiple motif offsets for [AGS].[ST]S vs [ST][AG].[AS]
+#WARN	00:24:29	Multiple motif offsets for [AGS].[ST]S vs S[AS].[AGS]
+#WARN	00:24:29	Multiple motif offsets for [AGS].[ST]S vs SA.[AS]
+#WARN	00:24:31	Multiple motif offsets for S..[AGS]..[AS] vs [ST][AS]..[GS]
+#WARN	00:24:31	Multiple motif offsets for S..[AGS]..[AS] vs [GS]..S[DE].[AS]
+#WARN	00:24:31	Multiple motif offsets for S..[AGS]..[AS] vs [GS]..[GS]S
+#WARN	00:24:31	Multiple motif offsets for S..[AGS]..[AS] vs SD.S
+#WARN	00:24:31	Multiple motif offsets for S..[AGS]..[AS] vs S[DE].[AS]
+#WARN	00:24:31	Multiple motif offsets for S..[AGS]..[AS] vs [AGS]..[GS]S
+#WARN	00:24:31	Multiple motif offsets for S..[AGS]..[AS] vs [ST]..[AGS]..A
+#WARN	00:24:31	Multiple motif offsets for S..[AGS]..[AS] vs [GS]..[GS]..A
+#WARN	00:24:31	Multiple motif offsets for S..[AGS]..[AS] vs [AS]..[AG].[ILM]
+#WARN	00:24:32	Multiple motif offsets for [ST][AS]..[GS] vs [GS]..S[DE].[AS]
+#WARN	00:24:32	Multiple motif offsets for [ST][AS]..[GS] vs [GS]..[GS]S
+#WARN	00:24:32	Multiple motif offsets for [ST][AS]..[GS] vs [AGS]..[GS]S
+#WARN	00:24:32	Multiple motif offsets for [ST][AS]..[GS] vs A.[ST]S
+#WARN	00:24:32	Multiple motif offsets for [ST][AS]..[GS] vs [ST][AG].[AS]
+#WARN	00:24:32	Multiple motif offsets for [ST][AS]..[GS] vs S[AS].[AGS]
+#WARN	00:24:32	Multiple motif offsets for [ST][AS]..[GS] vs SA.[AS]
+#WARN	00:24:34	Multiple motif offsets for G..[AGS]G vs [GS][GS].[AG]
+#WARN	00:24:36	Multiple motif offsets for G..[GS][GS] vs [GS]S..[GS]
+#WARN	00:24:36	Multiple motif offsets for G..[GS][GS] vs [GS][GS]..[GS]
+#WARN	00:24:36	Multiple motif offsets for G..[GS][GS] vs GS..G
+#WARN	00:24:36	Multiple motif offsets for G..[GS][GS] vs [AG]S..[AG]
+#WARN	00:24:38	Multiple motif offsets for [LV][GS].[GS]..[ST] vs [LV][GS]..T
+#WARN	00:24:39	Multiple motif offsets for S.[AS]..[ST] vs [AS][IV][ST][ST]
+#WARN	00:24:47	Multiple motif offsets for SLQ vs S.{0,1}LQ
+#WARN	00:24:49	Multiple motif offsets for [GS]..S[DE].[AS] vs [GS]..[AGS]D
+#WARN	00:24:49	Multiple motif offsets for [GS]..S[DE].[AS] vs SD.S
+#WARN	00:24:49	Multiple motif offsets for [GS]..S[DE].[AS] vs S[DE].[AS]
+#WARN	00:24:50	Multiple motif offsets for [GS]..S[DE].[AS] vs G.{0,1}DS
+#WARN	00:24:50	Multiple motif offsets for [GS]..S[DE].[AS] vs [AS][DE]..D
+#WARN	00:24:50	Multiple motif offsets for [GS]..S[DE].[AS] vs [DE].[AS]D
+#WARN	00:24:50	Multiple motif offsets for [GS]..S[DE].[AS] vs S[DE]..D
+#WARN	00:24:50	Multiple motif offsets for [GS]..[AGS]D vs SD.S
+#WARN	00:24:50	Multiple motif offsets for [GS]..[AGS]D vs S[DE].[AS]
+#WARN	00:24:52	Multiple motif offsets for [GS]..[GS]S vs [GS][GS].[AG]
+#WARN	00:24:52	Multiple motif offsets for [GS]..[GS]S vs [GS]S..[GS]
+#WARN	00:24:52	Multiple motif offsets for [GS]..[GS]S vs [GS][GS]..[GS]
+#WARN	00:24:52	Multiple motif offsets for [GS]..[GS]S vs [AGS]S.[AG]
+#WARN	00:24:52	Multiple motif offsets for [GS]..[GS]S vs GS..G
+#WARN	00:24:52	Multiple motif offsets for [GS]..[GS]S vs [AG]S..[AG]
+#WARN	00:24:53	Multiple motif offsets for SD.S vs [GS]..[ST][DE]
+#WARN	00:24:53	Multiple motif offsets for SD.S vs S..[ST]D
+#WARN	00:24:53	Multiple motif offsets for SD.S vs [GS]..[GS][DE]
+#WARN	00:24:54	Multiple motif offsets for SD.S vs [DE].[AS]D
+#WARN	00:24:54	Multiple motif offsets for S[DE].[AS] vs [GS]..[ST][DE]
+#WARN	00:24:54	Multiple motif offsets for S[DE].[AS] vs S..[ST]D
+#WARN	00:24:54	Multiple motif offsets for S[DE].[AS] vs [GS]..[GS][DE]
+#WARN	00:24:54	Multiple motif offsets for S[DE].[AS] vs [GS]..[ST]E
+#WARN	00:24:54	Multiple motif offsets for S[DE].[AS] vs [DE].[AS]D
+#WARN	00:24:54	Multiple motif offsets for S[DE].[AS] vs D.{0,1}S.{0,1}E
+#WARN	00:24:55	Multiple motif offsets for [AGS]..[GS]S vs [GS][GS].[AG]
+#WARN	00:24:56	Multiple motif offsets for [AGS]..[GS]S vs [GS]S..[GS]
+#WARN	00:24:56	Multiple motif offsets for [AGS]..[GS]S vs [GS][GS]..[GS]
+#WARN	00:24:56	Multiple motif offsets for [AGS]..[GS]S vs [AGS]S.[AG]
+#WARN	00:24:56	Multiple motif offsets for [AGS]..[GS]S vs GS..G
+#WARN	00:24:56	Multiple motif offsets for [AGS]..[GS]S vs [AG]S..[AG]
+#WARN	00:24:57	Multiple motif offsets for [GS]..[ST][DE] vs G.{0,1}DS
+#WARN	00:24:58	Multiple motif offsets for [GS]..[ST][DE] vs [AS][DE]..D
+#WARN	00:24:58	Multiple motif offsets for [GS]..[ST][DE] vs S[DE]..D
+#WARN	00:25:01	Multiple motif offsets for [GS]..[GS][DE] vs G.{0,1}DS
+#WARN	00:25:01	Multiple motif offsets for [GS]..[GS][DE] vs [AS][DE]..D
+#WARN	00:25:01	Multiple motif offsets for [GS]..[GS][DE] vs S[DE]..D
+#WARN	00:25:04	Multiple motif offsets for [ST]..[AGS]..A vs [GS]..[GS]..A
+#WARN	00:25:04	Multiple motif offsets for [ST]..[AGS]..A vs [GS]..[AG][ST]
+#WARN	00:25:04	Multiple motif offsets for [ST]..[AGS]..A vs [AS]..[AG].[ILM]
+#WARN	00:25:04	Multiple motif offsets for [ST]..[AGS]..A vs S..A[ST]
+#WARN	00:25:04	Multiple motif offsets for [ST]..[AGS]..A vs [ST]..AS
+#WARN	00:25:18	Multiple motif offsets for [GS][GS].[AG] vs [GS]S..[GS]
+#WARN	00:25:18	Multiple motif offsets for [GS][GS].[AG] vs [GS][GS]..[GS]
+#WARN	00:25:19	Multiple motif offsets for [GS][GS].[AG] vs [GS]..[AG][ST]
+#WARN	00:25:19	Multiple motif offsets for [GS][GS].[AG] vs GS..G
+#WARN	00:25:19	Multiple motif offsets for [GS][GS].[AG] vs [AG]S..[AG]
+#WARN	00:25:19	Multiple motif offsets for [GS][GS].[AG] vs G.G.[GS]
+#WARN	00:25:21	Multiple motif offsets for [AS][FIV].[ST] vs V.{0,1}S.{0,1}S
+#WARN	00:25:28	Multiple motif offsets for S..[FLV][AS] vs [IL][GS]..[FV]
+#WARN	00:25:28	Multiple motif offsets for S..[FLV][AS] vs LS..[FV]
+#WARN	00:25:40	Multiple motif offsets for [AS][IV][ST][ST] vs S.{0,1}V.{0,1}S
+#WARN	00:25:40	Multiple motif offsets for [AS][IV][ST][ST] vs [LV][GS]..T
+#WARN	00:25:53	Multiple motif offsets for [GS]S..[GS] vs [GS]..[AG][ST]
+#WARN	00:25:53	Multiple motif offsets for [GS]S..[GS] vs S[AS].[AGS]
+#WARN	00:25:58	Multiple motif offsets for [GS][GS]..[GS] vs [GS]..[AG][ST]
+#WARN	00:25:58	Multiple motif offsets for [GS][GS]..[GS] vs S[AS].[AGS]
+#WARN	00:26:02	Multiple motif offsets for D[ST][DE].[AS] vs G.{0,1}DS
+#WARN	00:26:02	Multiple motif offsets for D[ST][DE].[AS] vs D.{0,1}S.{1,2}A
+#WARN	00:26:08	Multiple motif offsets for [GS]..[ST]E vs G.{0,1}DS
+#WARN	00:26:09	Multiple motif offsets for G.{0,1}DS vs [AGS]D[GS]
+#WARN	00:26:09	Multiple motif offsets for G.{0,1}DS vs [AG]DS
+#WARN	00:26:10	Multiple motif offsets for [AG].S..A vs [ST][AG].[AS]
+#WARN	00:26:10	Multiple motif offsets for [AG].S..A vs S[AS].[AGS]
+#WARN	00:26:10	Multiple motif offsets for [AG].S..A vs SA.[AS]
+#WARN	00:26:13	Multiple motif offsets for [ST][AG].[AS] vs A.{0,1}S..A
+#WARN	00:26:26	Multiple motif offsets for [AS]..S[IMV] vs [AS][LMV]..[LM]
+#WARN	00:26:30	Multiple motif offsets for [AGS]S.[AG] vs [GS]..[AG][ST]
+#WARN	00:26:31	Multiple motif offsets for [GS]..[AG][ST] vs GS..G
+#WARN	00:26:31	Multiple motif offsets for [GS]..[AG][ST] vs [AG]S..[AG]
+#WARN	00:26:36	Multiple motif offsets for S[AS].[AGS] vs A.{0,1}S..A
+#WARN	00:26:38	Multiple motif offsets for SA.[AS] vs A.{0,1}S..A
+#WARN	00:26:54	Multiple motif offsets for G.G.[ST] vs [AG].[GS][DE]
+#WARN	00:27:01	Multiple motif offsets for [AG]S..[AG] vs [ST]..AS
+#WARN	00:27:28	Multiple motif offsets for [DE].[AS]D vs D.{0,1}S.{0,1}E
+#WARN	00:27:28	Multiple motif offsets for D.[DE].[AS] vs D.{0,1}S.{1,2}A
+#WARN	00:27:32	Multiple motif offsets for [AG].[GS][DE] vs [AGS]D[GS]
+#WARN	00:27:32	Multiple motif offsets for [AG].[GS][DE] vs G.G.[GS]
+#WARN	00:27:32	Multiple motif offsets for [AG].[GS][DE] vs [AG]DS
+#WARN	00:27:32	Multiple motif offsets for [AG].[GS][DE] vs G.G.S
+#WARN	00:27:53	Multiple motif offsets for P..R.P vs R.P..R
+#WARN	00:27:59	Multiple motif offsets for S.A[IV] vs S.[AS]..I
+#WARN	00:28:14	Multiple motif offsets for G.G.[GS] vs [DE][AG].[GS]
+#WARN	00:28:18	Multiple motif offsets for [DE]EF vs E.{0,1}EF
+#WARN	00:28:34	Multiple motif offsets for [DE][HK].[KR] vs K.{0,1}K.K
+#WARN	00:28:41	Multiple motif offsets for E..[DE][LM] vs EL.{0,1}E
+#WARN	00:28:41	Multiple motif offsets for E..[DE][LM] vs EL.E.Q
+#WARN	00:28:41	Multiple motif offsets for E..[DE][LM] vs EL.E
+#WARN	00:28:44	Multiple motif offsets for [DE]..[DE][LM] vs EL.{0,1}E
+#WARN	00:28:44	Multiple motif offsets for [DE]..[DE][LM] vs EL.E.Q
+#WARN	00:28:44	Multiple motif offsets for [DE]..[DE][LM] vs EL.E
+#WARN	00:28:51	Multiple motif offsets for R[KR].K vs RR..[HK]
+#WARN	00:29:10	Multiple motif offsets for [DE][AG].[GS] vs E.[DE][GS]
+#WARN	00:29:15	Multiple motif offsets for [ST][DE].[DE] vs [DE].[DE].E
+#WARN	00:29:31	Multiple motif offsets for A[LMV]..[MV] vs [LV].[AGS][LM]
+#WARN	00:29:31	Multiple motif offsets for A[LMV]..[MV] vs [LV].[AGS]M
+#WARN	00:29:31	Multiple motif offsets for A[LMV]..[MV] vs [LV].[AGS][IM]
+#WARN	00:29:32	Multiple motif offsets for [AS][LMV]..[LM] vs [LV].[AGS][LM]
+#WARN	00:29:32	Multiple motif offsets for [AS][LMV]..[LM] vs [LV].[AGS]M
+#WARN	00:29:32	Multiple motif offsets for [AS][LMV]..[LM] vs [LV].[AGS][IM]
+#WARN	00:29:55	Multiple motif offsets for [FL].[LV].R vs L.{0,1}R.{0,1}F
+#WARN	00:29:57	Multiple motif offsets for [IL].[DE]E vs E[DE]E
+#WARN	00:29:59	Multiple motif offsets for SE.{0,1}Q vs E.[AS][DE]
+#WARN	00:29:59	Multiple motif offsets for [DE].[DE].E vs [LV]..E.[DE]
+#WARN	00:29:59	Multiple motif offsets for [DE].[DE].E vs [ILV]..E.[DE]
+#WARN	00:29:59	Multiple motif offsets for [DE].[DE].E vs E.{0,1}D.{0,2}E
+#WARN	00:30:00	Multiple motif offsets for [DE].[DE].E vs L..E.E
+#WARN	00:30:00	Multiple motif offsets for [DE].[DE].E vs [FL]..[DE].[DE]
+#WARN	00:30:00	Multiple motif offsets for [DE].[DE].E vs E[DE]E
+#WARN	00:30:00	Multiple motif offsets for [DE].[DE].E vs E.E..D
+#WARN	00:30:00	Multiple motif offsets for [DE].[DE].E vs E.{0,1}E..D
+#WARN	00:30:00	Multiple motif offsets for [DE].[DE].E vs D..D.{0,1}E
+#WARN	00:30:00	Multiple motif offsets for [DE].[DE].E vs E.{0,1}EA
+#WARN	00:30:01	Multiple motif offsets for R[DE].E vs [HR]..E.[DE]
+#WARN	00:30:07	Multiple motif offsets for D..[DE]E vs E[DE]E
+#WARN	00:30:19	Multiple motif offsets for [LV]..[LMV].S vs [LV].[AGS][IM]
+#WARN	00:30:20	Multiple motif offsets for [FL]..[DE].[DE] vs [FW][DE].[DE]
+#WARN	00:30:21	Multiple motif offsets for G.{0,2}SK vs G.{0,2}S.{0,2}G
+#WARN	00:30:37	Multiple motif offsets for E[DE]E vs E[DE].A
+#WARN	00:30:37	Multiple motif offsets for E[DE]E vs M.{0,1}EE
+#WARN	00:30:37	Multiple motif offsets for E[DE]E vs E[DE]..V
+#WARN	00:30:43	Multiple motif offsets for [ILM]..L.[LV] vs [LM].[IL]L
+#WARN	00:30:46	Multiple motif offsets for DE.{0,1}L vs D..E.{0,1}L
+#WARN	00:30:58	Multiple motif offsets for RR..[HK] vs RR.[KR]
+#WARN	00:30:58	Multiple motif offsets for RR.[KR] vs [HR]..[HR].K
+#WARN	00:31:11	Multiple motif offsets for [LM].[IL]L vs [IM]..[LM].[FLV]
+#WARN	00:31:11	Multiple motif offsets for [LM].[IL]L vs [LM]L..[IL]
+#WARN	00:31:13	Multiple motif offsets for E[DE].A vs E.{0,1}EA
+#WARN	00:31:26	Multiple motif offsets for F..[HR]..R vs [FH]..[FHY]..R
+#WARN	00:31:27	Multiple motif offsets for [FH]..[FHY]..R vs [FH]..[HR]S
+#WARN	00:31:33	Multiple motif offsets for [FV]..[HR]L vs R[FL]..[HK]
+#ALN	00:31:33	Unaligned peptides: aligning with PeptCluster
+#AAPROP	00:31:33	Reading AA Properties from aaprop.txt... ...I L V C A G M F Y W H K R E Q D N S T P ...Hydrophobic ...Polar ...Small ...Proline ...Positive ...Negative ...Charged ...Tiny ...Aliphatic ...Aromatic ...Done!
+#GAPX	00:31:34	PeptLen: 39; MaxLen: 40; Termini: True => 37 x 1 gap variants.
+#GAPX	00:31:34	PeptLen: 38; MaxLen: 40; Termini: True => 666 x 2 gap variants.
+#GAPX	00:31:39	PeptLen: 37; MaxLen: 40; Termini: True => 7,770 x 3 gap variants.
+#GAPX	01:01:41	PeptLen: 36; MaxLen: 40; Termini: True => 66,045 x 4 gap variants.
+#ERR	01:02:27	<peptcluster.PeptCluster object at 0x26e9290>.peptAlign error: <type 'KeyboardInterrupt'> (listCombos line 3262)   
+#ERR	01:02:27	Problem during <slimmaker.SLiMMaker object at 0x2bc9550> setup.: <type 'KeyboardInterrupt'> (listCombos line 3262)   
+#SLIM	01:02:31	Cloud 1 (K.TQT|TQT|K..QT.S|K.TQ|TQ.{0,1}T|S..K..Q|K.T.{0,1}T|[KR].T.T|T.T.[GS]|K.T.{0,2}Q|TQ.P|K.T.T|K..QT|TK..Q|T.[ST].[GS]|QT.S|[KR][AS]..T|[KR].[ST]..P|K..Q..S|T.{0,1}Q.{1,2}S|[ST].TP|K.T..[DE]|K..Q[ST]|T.[ST].S|[ST]T.T|T.{0,1}T.{0,1}T.{0,2}G|[ST].T[ST]..[GS]|[GS]T.[ST]|T.[ST]T|T.{0,1}T.{0,1}T|S..[ST].T|S.{0,1}T.T|[ST]..P.A|Q.P.A|[ST]..T..[GS]|S.{0,1}Q.{0,1}T|T..T.{0,2}G|Q.[ST]..[GS]|T..P.{0,2}S|[ST]..[ST]..[GS]|PK.T|[KR][ST]..[ST]|T.T.G|T.T.{0,1}G|[ST].[AG]..[GS]|[ST]..[FIV][GS]|KRT|T.{0,2}P.A|YTK|TK.{0,1}K|KK.{0,1}Q|TT..G|[ST].ST|L..[GS]..T|S..[ST][ST]|[GS]..T..S|KS.{0,2}T|[GS]..[ST]..[AS]|[AS]..P..L|R.S..P|[ST]..PS|S.{0,1}T..P|[ST]PL|TP.{0,2}S|NQS|[IL]K..Q|TS..[ST]|TS..S|[ST]S..[ST]|[ST][GS]..S|[ST][AS]..S|[AS].[ST]S|TS..[GS]|[AGS].[ST]S|S..[AGS]..[AS]|[ST][AS]..[GS]|G..[AGS]G|G..[GS][GS]|[AG]..S.Q|[LV][GS].[GS]..[ST]|S.[AS]..[ST]|P.AS|[ST].A..[AS]|[AS].[AS]P|AP.{0,1}A|AP.[AS]|[AGS].[AS]P|[AS][IV].P|SLQ|S.{0,1}LQ|[GS]..S[DE].[AS]|[GS]..[AGS]D|[GS]..[GS]S|SD.S|S[DE].[AS]|[AGS]..[GS]S|[GS]..[ST][DE]|S..[ST]D|[GS]..[GS][DE]|T..S.A|[ST]..[AGS]..A|T..S.{1,2}A|R[ST]P|R..[LV]S|[ST].A..S|A.[ST]S|S.A.{0,1}I|A[IV].S|S[HK]A|A.[LM]S|S.A..S|S.{0,1}A.{1,2}S|R[ST].A|[GS][GS].[AG]|[AS][FIV].[ST]|S..[FL]S|S..[FLM]S|S.[DE]F|SD.[FV]|[AS].[DE][FH]|S.D.S|S..[FLV][AS]|[FH][AS].D|[AS].[DE][FL]|S.P.[GS]|S.{0,1}D.{0,1}F|[ST].D.S|S.D.[ST]|G.{0,1}P.{0,1}L|TK.[FL]|K.{0,1}KK|E.K[KR]|[AS][IV][ST][ST]|S.{0,1}V.{0,1}S|L.{0,1}PG|PG..T|P..L..[GS]|[IL]..G..[ST]|[LV].P[AG]|D.S[GS]|D.S[ST]|[DE].SS|S[ST]..[DE]|S[GS]..[DE]|[GS]S..[GS]|S[AS]..V|SS..[IV]|[GS][GS]..[DE]|[GS][GS]..[GS]|[LV][GS]..T|K[GS][ST]|N.{0,1}K.{1,2}K|D[ST][DE].[AS]|G..S..A|[GS].D[ST]|DS..A|D[ST]..[AS]|[GS]..[GS]..A|[GS]..[ST]E|G.{0,1}DS|G..S.{0,1}E|[AG].S..A|[DE][GS]..[AG]|[ST][AG].[AS]|[GS].DS|P.[GS]L|P[LV].[IV]|[KR].PL|S.{0,1}P.{0,2}L|D.{1,2}RS|N.[GS].E|N.SV|N.S.E|QS.{0,1}V|[HR].QS|T.{0,1}D.S|TS.{0,2}T|[AS]..S..[FM]|[AS]..S[IMV]|[AS]..S..[FLM]|[AS]..S[ILV]|[AGS]S.[AG]|[GS]..[AG][ST]|[AS]..[ST]..[FL]|S..S..[LM]|S[AS].[AGS]|H..SA|SA.[AS]|SA.{1,2}S|[HY]..SA|[AS]..S..F|AV.{0,1}S|SA..S|S.[LV].[AGS]|S[AS]V|[GS].[LV].[GS]|SA.{0,2}V|A.TS|[IV][ST]S|[LV][ST]S|[IL]S..[AS]|A[IV][ST]|[LV][AS]..[AS]|S[KR].G|G.G.[ST]|[AG]..[AS][KR]|N[AG]..[AS]|S..G.{1,2}A|[AS]..[AG].[ILM]|GS..G|AG.{0,1}I|A[GS]I|[AG]S..[AG]|[AG][ST][KR]|S.Q..[IL]|[IL]..G..S|S.{0,1}Q.{0,2}P|V[AS].S|E.[LV]..S|E.[LV]S|LS.{0,1}A|LS.A|S.AR|S.A.{0,1}P|A..[AS]R|A..A.{0,2}R|A.{0,1}PA|A.[ST]P|AP.{1,2}S|AP..[ST]|G.{0,1}AP|R..[AG]P|V..A[IL]|LS[LV]|[GS]L..E|E..S[LV]|S..Q.{0,1}K|[DE]..S..Q|[AS].[LM]Q|G.D.E|G.{0,1}D.{0,1}E|G.[DE].[DE]|E.{0,1}A.{0,1}D|[AS][DE]..D|[DE].[AS]D|D.[DE].[AS]|[AG]..E.A|D.{0,1}S.{0,1}E|[AG].[GS][DE]|[AG].SE|S[DE]..D|S[FM]..D|G.{0,1}G.G|[GS]..[AG]D|[GS].E.[DE]|[ST]D.K|[AGS]D[GS]|[AS][DE].[HK]|[HK][GS]S|S..G.[IL]|[LMV].S[DE]|GS.{0,2}G|A..[AG]..R|A..G.{0,2}R|LS[AS].[AG]|LS..[AGS]|SA.A|L[AS]..[AS]|LS.{1,2}A|S.{0,2}A.{1,2}A|P..R.P|R.P..R|SP.[FH]|LS[AS]|LSA|[KR].SKA|SKA|KA.[IL]|S.A.{1,2}I|S.A[IV]|[ST].[AS].[IL]|V.{0,1}S.{0,1}S|AV.{0,2}S|R.[GS][KR]|S.[AS]..I|R..K[AS]|[KR].SK|[AG][GS]K|[AS].L.[IL]|LS.{0,1}N|[AGS].[IL].[IL]|[KR]LS|[HK]..[AS].[MV]|[HK]..S.V|A.{1,2}S.{0,1}R|[DE]R..A|H[GS][AS]|[LV]SS|G.G.[GS]|H[GS]S|SF.{1,2}D|[HR]S..[FL]|HS..[FL]|[DE]EF|[IV]..S..[FW]|[IL][GS]..[FV]|[IV]..[AS]..[FL]|L.{0,1}S..F|[IL][GS]..F|[IL]..[ST]..F|S.[DE]..[ST]|LS..[FV]|[IV]..S..[FH]|[AS].E[FLV]|S.E[FV]|S[FLV][DE]|[IV]..[AS]..[FLV]|[IL]..[GS]..[FW]|[IV]..S..[FL]|S.[DE].L|[GS]DE|SDE|[GS]D.[FL]|A.D.{1,2}R|[DE][HK].[KR]|[AS].[DE]..[HR]|D.S.{0,2}T|K.[IV]A|K.V[AS]|S[IL].V|[IL].V[AG]|[AS][IV]..A|DE[FL]|E..[DE][LM]|[AGS]..L..[IL]|[DE]L..K|[DE]..[DE][LM]|EL[LV]|E.{0,1}A..L|S.[DE]..L|Q..D.S|D.{0,1}S.{1,2}A|[AS][FV]D|G.P..N|[AG].PA|K[KR].T|R[KR].K|[KR].KK|[DE].[HK].R|[KR]R..[DE]|[IL]..[DE]..[HR]|E[ILV].[KR]|E..K.{0,1}A|E.K.{1,2}Q|[IL][KR][KR]|E.K.{0,1}R|E[DE]..R|[KR].E..R|[DE][IL]K|[LV].[ST]..D|[DE][IV].[ST]|[DE][FV].[AS]|S.{0,1}V.{0,2}E|[FL]P[AG]|P..L.{0,2}G|PA.[FV]|V..[AG].[FY]|[IV]..AL|[MV]..[AS]L|D..GR|D..[ST]..[DE]|[DE]..GR|[DE][AG].[GS]|[DE]..[GS]..[LV]|D[GS]S|D..T..P|[LV].[GS]..[DE]|[LV].[AS]..[DE]|[ST][DE].[DE]|S.[MV].E|S[GS][FY]|[GS]..E[IV]|[AG]..D[GS]|[AG]..DS|V.{0,1}N.{0,1}M|[FL]..DT|DS.{0,1}E.{0,1}A|[AG]DS|D.E.{1,2}A|D.[DE].S|G.{0,1}D.{0,2}E|G.G.S|G.{0,1}S.{1,2}G|A.{0,1}S..A|D[AS].L|S..A[ST]|P..[LV]..C|P.G.{0,1}L|[AG]..[HK]..L|E..D.{1,2}R|D.{0,2}R.{1,2}R|H.Q.{1,2}A|[DE]..[HK].Q|A[LMV]..[MV]|[AS][LMV]..[LM]|[ST][LV]N|[ST]..AS|[ST]..L.L|S.{1,2}SS|S.{0,2}AS|S.{0,2}SS|[LV].S..D|R.I.S|L.{0,1}V.{0,1}T|[FY]L[ST]|E..SS|[LV].[AGS][LM]|L.V[AG]|[FV].T.S|A..S..E|[FLV].[ST].[ST]|A..A.[MV]|[AS]..A.[MV]|E..A..[AS]|E.N[AS]|A.S.{0,1}E|S.{0,2}Q.{0,1}P|[IL].[MV]..S|[IL].[MV]..[GS]|[IL].[LMV]..[ST]|E.{0,1}L.Q|E[LV]L|YL[ST]|A.P.N|A..P.[DE]|[AS]P.[FI]|P[FL].[ST]|R.L.P|V..R..[AG]|R.L[GS]|R.[LV]..A|R.V..A|V.[KR]A|RA[IL]|V.{0,1}R.{0,1}A|L.L.{1,2}R|[FL].[LV].R|L.L.R|L.L.{1,2}V|[IL].DE|[IL].[DE]E|[GS]L.V|E..S.{1,2}Q|E.{0,1}L.{0,1}SE|SE.{0,1}Q|L.[DE]..S|[DE].[DE].E|[GS]R..E|R[DE].E|GDE|[ILV][GS].E|P[AG].E|E.[DE][GS]|G.[DE]..E|E..D[ILM]|[KR]..E.A|R..E.A|[HR]..E.[AS]|E.[AS][DE]|E..D.[FY]|[FL].[DE]..D|E.A[LM]|D..[DE]E|[AG][DE][MV]|[KR]..S[DE]|[AS][FV].D|E.{0,1}F..D|[FH]..DE|[FL]..DE|[LV]S.E|[LV]..E.[DE]|[ILV]..E.[DE]|E.D.{0,2}G|E.{0,1}D.{0,2}E|S.{0,1}E.{0,2}D|K.{0,1}D.K|D.K.{1,2}E|[IL]..[DE].K|L.{1,2}DT|[FL].[ST].[ST]|HS[AS]|[DE]..E.L.S|L..[LM].S|[AS]E..R|[ILV].SE|L..E.E|[LV]..[LMV].S|E.L.S|[FL]..[DE].[DE]|QL.{0,1}S|G.{0,2}SK|G.{0,2}S.{0,2}G|L.{0,1}A..H|[LV].A..[HK]|R..[IV].R|R..V.{0,1}R|[KR]..[ILV].R|S.[LV][FH]|[KR]Q.K|[DE].KA|A[IV]A|[LV].[AGS]M|V.[ST][IM]|[LV].[AGS][IM]|[DE]..R..R|R..[KR].[IV]|R.GR|R.[AG][HR]|E..R..R|R..R[FV]|R.{0,1}E.{1,2}R|[GS]K..S|L.[IL][HK]|E..L..N|LS..V|SEN|R.LS|[AS]EN|[IL][AS]..[LV]|A.{1,2}A.{0,2}R|[FV].[DE]R|DEF|[DE]F.D|EF.{1,2}D|E.[FV]V|E.{0,1}EF|E.[FH][LV]|E[DE]E|R..[GS]..[FV]|[AS]..[LM].[HR]|A..S.D|[GS].E..[ST]|E[LV]..L|[LV]D.L|LD.{1,2}L|LD.{0,1}L|A..[ILV]..[IL]|D.[FL]..[HY]|EA.[DE]|K.RR|[DE][KR]..R|K[DE]..K|EK.{1,2}R|K.{0,1}K.K|K..S.{0,2}D|[ILM]..L.[LV]|[IV].[FV].G|SL.V|L.V.{1,2}S|[IL]..A[LV]|P.[DE].L|D.{0,1}E..D|DE.{0,1}L|[AS].DE|D.L.{0,2}Q|EL.{0,1}E|EL.E.Q|E..D.R|E.E..D|EL.E|E..[DE].[KR]|E.{0,1}E..D|E[IL]..[LM]|R..E..[DE]|E..E.{0,1}L|[HR].L..[IL]|L..[IL]G|[HKR].L..[FIL]|L..K.[AG]|L.[KR]K|EL..[KR]|ELQ|D.[LV].L|LE[IL]|D..E.{0,1}L|[DE]..E..Q|D.[LV].[LM]|L[DE]L|[FIL][FV]..[KR]|[AS]..[HR].L|[AS]..[HR].[IL]|S..R.[IL]|A..P..N|P[AS].N|A[GS].P|PA.{1,2}R|K..[ST][DE]|K..T.{1,2}K|[KR].ET|RR..[HK]|RR.[KR]|[KR][KR]..D|E.[FH].R|L..[IL]..E|E.[DE]R|LR.E|E.ER|K.{0,1}A..E|[HK].L.S|P.[DE]V|[DE]..[AS].[HY]|[FI]P..E|L.{0,2}G..T|P..[FL][AG]|A.[FI]..[MV]|F[AG].[FH]|[LV].[FL]..[FY]|I.R.{0,1}L|[FI].R.L|I.R.L|[IL].R.[FL]|[IV].[KR].[ILV]|M..S.{0,1}L|EE..[GS]|E[AG].[GS]|E[AG]..L|EP.G|S.{1,2}N..D|[GS].NE|K[IL].S|A..E.{0,1}E|[LV]..[LM].E|[ST].[FM].E|S..E..[AG]|DG.[IV]|[LV].N[LM]|[FI]..[DE]T|L..D.{0,1}E|D..E.{0,2}A|G.{1,2}G.{0,1}G|P.G.L|P.{0,1}G..T|A..H.{1,2}L|E.{0,2}D..R|E..D..R|F.{0,1}D.{0,2}R|[AS]..N[LM]|T..L.{1,2}L|[LM].[IL]L|R.I.{1,2}R|F.T.{0,1}S|[FY].[ST].[AS]|F.T.{0,2}S|P..[LM][ST]|[FV]PT|SAS|[AG]E..[AS]|E.{0,2}R..R|E[DE].A|S.{1,2}Q.{0,2}L|L[HR][LV]|E..Q[KR]|[DE]VL|EV.{0,2}L|A.P.{0,2}D|[LV]..R.L|Y.R.[LV]|Y.R.{0,1}L|R.L.E|R.[LV].R|[HR]..[LV]..A|V..A.[AS]|L.{0,1}E..Q|L..LR|[LV][LV]R|L.{0,1}R.{0,1}F|L.{1,2}L.V|L..LR.E|L..LR.{0,1}E|LR.{0,1}E.{0,2}E|L..L..E|LRE|E.{1,2}S..Q|E..E.Q|[DE]..E.L|N..[GS]E|L.E.Q|L.{0,1}D..S|[FW][DE].[DE]|[HR]..E.[DE]|D..D.{0,1}E|E.{0,1}EA|R.{1,2}L.E|S.[HR]..E|[IV]..EA|P..EI|DG.{0,1}V|DG[LV]|E.A..[HR]|[KR]..E..[IM]|E.{0,1}A..R|[GS].H..E|H..E.[ST]|H..E.{1,2}S|F.{0,1}D.{1,2}D|[FM].[DE].A|[FM]E[DE]|K.{1,2}T.{0,1}K|G.VL|[GS].[LV][FL]|[LV].V.D|E.[FV].[AG]|LDE|[HK]..DE|S.{1,2}E.{0,1}D|S.{0,2}E.{0,1}D|DRK|[LV].E.L|E..E.{1,2}L|R..[LV]..[LMV]|I..E.{0,1}N|SE..Q|[IV].S.N|G.{1,2}SE|V.[AG]..[HK]|R..V[KR]|R..V..[MV]|LR..V|R..VR|R[FL].V|V.[ST]I|[DE]R..R|E.DR|[HR]..[HR].K|RV[FIV]|R.[IL].R|R..R.I|[FLV]..R..R|F..[HR]..R|R..H.[ST]|R.{0,1}R..H|[AG]K..[AS]|E..L.{1,2}N|[DE]..E..L|EN.Q|[IV]A..[IL]|R.{1,2}E..I|[FH]..[FHY]..R|F..[FY]..R|[FW]..[FY]..[HR]|[LV][IL].[HR]|[FI]..[FL]..R|[IV][IV]E|N.[FV].[DE]|E..[FI].D|M.{0,1}EE|E[DE]..V|[AS].[AS]..R|E[IL]..L|[LV]D..[FL]|D.[LV]..[HK]|EA..[HR]|[HR]..[HK].[KR]R|[HR]..[HK]..R|I..L.{0,1}V|[IM]..[LM].[FLV]|[LV].[FL].G|P.{0,1}E.L|P.D.{0,2}E|[LV]..E..E|[HR].[ILV]..[LM]|[LM]L..[IL]|V.E.{0,1}L|E..Q..[IV]|E..Q.[FL]|F..[HR].S|[AS]..H.[LM]|N[HR].[IL]|T.{0,2}KK|R..H.{1,2}T|L..L.{1,2}E|[HR]..L.S|[ST]P..[FL]|FG.{0,1}H|[FV]G.[HY]|[IL].[LV]..[HY]|[LV]..[HY].[LV]|S.NE|G.{0,1}N.{0,1}E|D..V..[KR]|L.{0,1}N.{0,1}N|D.{1,2}E..A|H.{0,2}P.{1,2}V|H.{1,2}L.S|F.K.{1,2}N|A..N.Q|I.{0,2}A.{0,2}L|[FL].T..S|[FV].T..[AS]|T.{0,2}D.S|E..A.{0,2}Q|E.{1,2}DR|R.{1,2}V.R|A.{1,2}H.{0,2}P|V[LM]..[DE]|N.[DE][LV]|N..Y.R|A..N..[GS]|R.{1,2}AE|K[DE].L|[LM].E..[IM]|S.{0,2}T.{0,2}D|V.E.L|V.E..[DE]|[FV].E.[LV]|E..Q.[IL]|G.{1,2}D.{1,2}E.{0,1}A|G.{1,2}DS|G.{1,2}S..A|G.{0,2}D.{0,2}E|[HR]..[HY]..R|K.R.[IV]|R[LV][FH]|[FV]..[HR]L|E.{1,2}L.{0,1}SE|[GS].H..R|[FH]..[HR]S|[FM]..[HY]L|I..L..[KR]|[IL]..[LM].[FY]|E..Q.{1,2}I|F..[HY].S|H..L.{0,1}S|R..[LV].S|[FL][GS]H|[KR].[DE]..[IV]|A..N.{0,2}G|[AG]..N..[LV]|[AS]..N..[AG]|R.{0,2}E.{1,2}A|E..Q.{0,1}Q|G.{1,2}G.{0,1}S|G.{1,2}G.{0,2}S|R[FL]..[HK]|R[FH]..[HR]|LV.[ST]|N..V..S|[FV]N..[LV]|[LV].N..A|R.{1,2}I.{1,2}R|[FH]N..[IL]) SLiMMaker: 
+#FREQ	01:02:31	SLiMMaker Unable to make a SLiM with these settings and peptides
+#SLIM	01:02:31	Cloud 2 (T.[KR]..A) SLiMMaker: T....A
+#FREQ	01:02:31	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:31	Cloud 3 (V.I.D) SLiMMaker: V.I.D
+#FREQ	01:02:31	SLiMMaker SLiM matches 3 of 3 sequences (100.0%).
+#SLIM	01:02:31	Cloud 4 (L.{0,1}R..V) SLiMMaker: L
+#FREQ	01:02:31	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	01:02:31	Cloud 5 (LR.{1,2}G|LR.G) SLiMMaker: LR
+#FREQ	01:02:31	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	01:02:31	Cloud 6 (P.[AG].[HK]) SLiMMaker: P
+#FREQ	01:02:31	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:31	Cloud 7 (Q..GT) SLiMMaker: Q..GT
+#FREQ	01:02:31	SLiMMaker SLiM matches 3 of 3 sequences (100.0%).
+#SLIM	01:02:31	Cloud 8 (Y.[AS].[KR]) SLiMMaker: Y
+#FREQ	01:02:31	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	01:02:31	Cloud 9 (S.{1,2}D..T|S.{1,2}D.{0,2}T) SLiMMaker: S
+#FREQ	01:02:31	SLiMMaker SLiM matches 11 of 11 sequences (100.0%).
+#SLIM	01:02:31	Cloud 10 (V.{1,2}N.{1,2}Q) SLiMMaker: V
+#FREQ	01:02:31	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:31	Cloud 11 (S.C..K) SLiMMaker: S.C..K
+#FREQ	01:02:31	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:31	Cloud 12 (Q..N..V) SLiMMaker: Q..N..V
+#FREQ	01:02:31	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:31	Cloud 13 (V..N..Q|VA.{0,1}N) SLiMMaker: VA
+#FREQ	01:02:31	SLiMMaker SLiM matches 4 of 5 sequences (80.0%).
+#SLIM	01:02:31	Cloud 14 (N.E..H) SLiMMaker: N.E..H
+#FREQ	01:02:31	SLiMMaker SLiM matches 3 of 3 sequences (100.0%).
+#SLIM	01:02:31	Cloud 15 (H.{0,2}SA) SLiMMaker: H
+#FREQ	01:02:31	SLiMMaker SLiM matches 7 of 7 sequences (100.0%).
+#SLIM	01:02:31	Cloud 16 (N.D.{1,2}Y) SLiMMaker: N.D
+#FREQ	01:02:31	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:31	Cloud 17 (V.{0,2}G.Y) SLiMMaker: V
+#FREQ	01:02:31	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:31	Cloud 18 (QA.N) SLiMMaker: QA.N
+#FREQ	01:02:31	SLiMMaker SLiM matches 3 of 3 sequences (100.0%).
+#SLIM	01:02:31	Cloud 19 (D..PA) SLiMMaker: D..PA
+#FREQ	01:02:31	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:31	Cloud 20 ([LM]..[DE]K) SLiMMaker: K
+#FREQ	01:02:31	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:31	Cloud 21 (E.{0,2}GR) SLiMMaker: E
+#FREQ	01:02:31	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:31	Cloud 22 (G.{1,2}N..V|G.{0,2}N..V) SLiMMaker: G
+#FREQ	01:02:31	SLiMMaker SLiM matches 8 of 8 sequences (100.0%).
+#SLIM	01:02:31	Cloud 23 (D..[IV].V) SLiMMaker: D....V
+#FREQ	01:02:31	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:31	Cloud 24 (K.[FI].D|K.{0,1}I.{1,2}D|K.[IV].[DE]) SLiMMaker: K
+#FREQ	01:02:31	SLiMMaker SLiM matches 7 of 7 sequences (100.0%).
+#SLIM	01:02:31	Cloud 25 (RQ.{0,2}A) SLiMMaker: RQ
+#FREQ	01:02:31	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:31	Cloud 26 (E.L..T|L..[ST].Q|L..T[LV]) SLiMMaker: L..T
+#FREQ	01:02:31	SLiMMaker SLiM matches 7 of 9 sequences (77.8%).
+#SLIM	01:02:31	Cloud 27 (ETL) SLiMMaker: ETL
+#FREQ	01:02:31	SLiMMaker SLiM matches 3 of 3 sequences (100.0%).
+#SLIM	01:02:31	Cloud 28 ([HY]N..E) SLiMMaker: N..E
+#FREQ	01:02:31	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#ALN	01:02:31	Unaligned peptides: aligning with PeptCluster
+#AAPROP	01:02:31	Reading AA Properties from aaprop.txt... ...I L V C A G M F Y W H K R E Q D N S T P ...Hydrophobic ...Polar ...Small ...Proline ...Positive ...Negative ...Charged ...Tiny ...Aliphatic ...Aromatic ...Done!
+#GAPX	01:02:31	PeptLen: 8; MaxLen: 9; Termini: True => 6 x 1 gap variants.
+#GAPX	01:02:31	PeptLen: 7; MaxLen: 9; Termini: True => 15 x 2 gap variants.
+#GAPX	01:02:31	PeptLen: 6; MaxLen: 9; Termini: True => 20 x 3 gap variants.
+#VAR	01:02:31	7 peptides: 6 singletons; 1 with possible variants.
+#PDIS	01:02:31	id distances: 20 => 0 variants.
+#VAR	01:02:31	7 peptides tidied: 7 singletons; 0 with variants.
+#SLIM	01:02:31	Cloud 29 (N.{0,2}Q.{0,1}S.{1,2}E|N.{0,2}Q..E) SLiMMaker: N
+#FREQ	01:02:31	SLiMMaker SLiM matches 7 of 7 sequences (100.0%).
+#SLIM	01:02:31	Cloud 30 (D.A..L) SLiMMaker: D.A..L
+#FREQ	01:02:31	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:31	Cloud 31 (PA..P) SLiMMaker: PA..P
+#FREQ	01:02:31	SLiMMaker SLiM matches 3 of 3 sequences (100.0%).
+#SLIM	01:02:31	Cloud 32 (PE..[FI]|V.{0,2}AL) SLiMMaker: 
+#FREQ	01:02:31	SLiMMaker Unable to make a SLiM with these settings and peptides
+#SLIM	01:02:31	Cloud 33 (F.{0,2}F..R) SLiMMaker: F
+#FREQ	01:02:31	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 34 (N.{0,1}Q..V) SLiMMaker: N
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 35 (Q.{1,2}VN) SLiMMaker: Q
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 36 (D.{1,2}L..H) SLiMMaker: D...L
+#FREQ	01:02:32	SLiMMaker SLiM matches 3 of 4 sequences (75.0%).
+#SLIM	01:02:32	Cloud 37 (N..[LV]..T) SLiMMaker: N.....T
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 38 (I.[AS]..K) SLiMMaker: I....K
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 39 (A.{0,2}S.Q) SLiMMaker: A
+#FREQ	01:02:32	SLiMMaker SLiM matches 7 of 7 sequences (100.0%).
+#SLIM	01:02:32	Cloud 40 (QPS) SLiMMaker: QPS
+#FREQ	01:02:32	SLiMMaker SLiM matches 3 of 3 sequences (100.0%).
+#SLIM	01:02:32	Cloud 41 (I.{1,2}S.N) SLiMMaker: I
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 42 (V.{0,2}T..P) SLiMMaker: V...P
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 5 sequences (80.0%).
+#SLIM	01:02:32	Cloud 43 (L.{1,2}N.V) SLiMMaker: L
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 44 (A.T.[LV]) SLiMMaker: A.T
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 45 (P.{0,2}G..T) SLiMMaker: P
+#FREQ	01:02:32	SLiMMaker SLiM matches 8 of 8 sequences (100.0%).
+#SLIM	01:02:32	Cloud 46 (N.{0,2}G.{0,2}D|N.{1,2}G.{0,1}E) SLiMMaker: N
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 47 ([FV]..[HR]H|[FIV]..[HR][HR]) SLiMMaker: [HR]
+#FREQ	01:02:32	SLiMMaker SLiM matches 7 of 7 sequences (100.0%).
+#SLIM	01:02:32	Cloud 48 (S.{0,1}C.{0,2}S) SLiMMaker: S..S
+#FREQ	01:02:32	SLiMMaker SLiM matches 3 of 4 sequences (75.0%).
+#SLIM	01:02:32	Cloud 49 (P.E.{1,2}V|E.{1,2}V..S) SLiMMaker: E..[SV]
+#FREQ	01:02:32	SLiMMaker SLiM matches 9 of 10 sequences (90.0%).
+#SLIM	01:02:32	Cloud 50 (R.{0,1}F.{1,2}H) SLiMMaker: R...H
+#FREQ	01:02:32	SLiMMaker SLiM matches 3 of 3 sequences (100.0%).
+#SLIM	01:02:32	Cloud 51 (KL[AG]) SLiMMaker: KL
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 52 (K..A.{0,1}D) SLiMMaker: K..A
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 53 (P.{0,2}E.{0,2}I) SLiMMaker: P...I
+#FREQ	01:02:32	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	01:02:32	Cloud 54 ([FW].[HK]S) SLiMMaker: S
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 55 (K..[AG][FI]) SLiMMaker: K
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 56 (F.{1,2}R..R) SLiMMaker: F
+#FREQ	01:02:32	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	01:02:32	Cloud 57 (Y.{0,2}E..L) SLiMMaker: Y
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 58 (G.{1,2}E.A|G.{0,2}EV) SLiMMaker: G
+#FREQ	01:02:32	SLiMMaker SLiM matches 13 of 13 sequences (100.0%).
+#SLIM	01:02:32	Cloud 59 (L.{0,1}V..K) SLiMMaker: L
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 60 (QP.[DE]) SLiMMaker: QP
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 61 (R.{0,2}S.A) SLiMMaker: R
+#FREQ	01:02:32	SLiMMaker SLiM matches 7 of 7 sequences (100.0%).
+#SLIM	01:02:32	Cloud 62 (A.{1,2}N..L) SLiMMaker: A
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 63 (K..N[DE]) SLiMMaker: K..N
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 64 (R..[LV]N) SLiMMaker: R...N
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 65 (G.{0,2}L.{1,2}C) SLiMMaker: G
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 66 (NN..[AS]) SLiMMaker: NN
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 67 (K..[FV].E|K..[FV].[DE]) SLiMMaker: K..V.[DE]
+#FREQ	01:02:32	SLiMMaker SLiM matches 6 of 8 sequences (75.0%).
+#SLIM	01:02:32	Cloud 68 (F.[GS][HK]) SLiMMaker: F
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 69 ([GS].G[FI]) SLiMMaker: G
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 70 ([ST]..Q..P) SLiMMaker: Q..P
+#FREQ	01:02:32	SLiMMaker SLiM matches 7 of 7 sequences (100.0%).
+#ALN	01:02:32	Unaligned peptides: aligning with PeptCluster
+#AAPROP	01:02:32	Reading AA Properties from aaprop.txt... ...I L V C A G M F Y W H K R E Q D N S T P ...Hydrophobic ...Polar ...Small ...Proline ...Positive ...Negative ...Charged ...Tiny ...Aliphatic ...Aromatic ...Done!
+#GAPX	01:02:32	PeptLen: 8; MaxLen: 9; Termini: True => 6 x 1 gap variants.
+#VAR	01:02:32	8 peptides: 7 singletons; 1 with possible variants.
+#PDIS	01:02:32	id distances: 6 => 2 variants.
+#PDIS	01:02:32	id distances: 2 => 2 variants.
+#PDIS	01:02:32	prop distances: 2 => 0 variants.
+#VAR	01:02:32	8 peptides tidied: 8 singletons; 0 with variants.
+#SLIM	01:02:32	Cloud 71 (Q..E.{0,1}P|[KR]..Q..E) SLiMMaker: Q.{1,2}E
+#FREQ	01:02:32	SLiMMaker SLiM matches 8 of 8 sequences (100.0%).
+#SLIM	01:02:32	Cloud 72 (V.{1,2}R.{0,2}L) SLiMMaker: V.[ER][RT].L
+#FREQ	01:02:32	SLiMMaker SLiM matches 6 of 10 sequences (60.0%).
+#SLIM	01:02:32	Cloud 73 (I.{0,2}TS) SLiMMaker: I.S
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 74 (L.{1,2}HS) SLiMMaker: L
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 75 (F.{1,2}H.{1,2}S) SLiMMaker: F....S
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 76 (AQ..[KR]) SLiMMaker: AQ
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 77 ([ST]..PP|[AS]..PP) SLiMMaker: PP
+#FREQ	01:02:32	SLiMMaker SLiM matches 8 of 8 sequences (100.0%).
+#SLIM	01:02:32	Cloud 78 (LRS) SLiMMaker: LRS
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 79 (R.{0,2}V.{0,2}N) SLiMMaker: R...N
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 80 (A.{1,2}P.E) SLiMMaker: A
+#FREQ	01:02:32	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	01:02:32	Cloud 81 (N.[LV][IV]) SLiMMaker: N
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 82 (T.{1,2}EL) SLiMMaker: T
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 83 (L.{1,2}L.{1,2}Y) SLiMMaker: L....Y
+#FREQ	01:02:32	SLiMMaker SLiM matches 3 of 3 sequences (100.0%).
+#SLIM	01:02:32	Cloud 84 (N.{1,2}V.{1,2}V) SLiMMaker: N
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 85 ([FH].R.S) SLiMMaker: R.S
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 86 (T.{0,2}PL) SLiMMaker: TP.[PS]
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 9 sequences (55.6%).
+#SLIM	01:02:32	Cloud 87 (A.{0,2}E.{1,2}D) SLiMMaker: A..E
+#FREQ	01:02:32	SLiMMaker SLiM matches 7 of 9 sequences (77.8%).
+#SLIM	01:02:32	Cloud 88 (A.{0,2}P.{1,2}L) SLiMMaker: A..[LP]
+#FREQ	01:02:32	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	01:02:32	Cloud 89 (E.{1,2}Q.Q) SLiMMaker: E.Q
+#FREQ	01:02:32	SLiMMaker SLiM matches 3 of 4 sequences (75.0%).
+#SLIM	01:02:32	Cloud 90 (V.{0,2}M.{1,2}E) SLiMMaker: V
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 91 (V.{0,2}A.A) SLiMMaker: VA.A
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 5 sequences (80.0%).
+#SLIM	01:02:32	Cloud 92 (S.{1,2}K.T) SLiMMaker: S
+#FREQ	01:02:32	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	01:02:32	Cloud 93 (D.{0,2}TD) SLiMMaker: D...[DS]
+#FREQ	01:02:32	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	01:02:32	Cloud 94 ([LV][LM]..N) SLiMMaker: N
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 95 (P.{1,2}L..E) SLiMMaker: P....E
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 5 sequences (80.0%).
+#SLIM	01:02:32	Cloud 96 (K.{1,2}V.E) SLiMMaker: K
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 97 (E.{0,2}IK) SLiMMaker: E
+#FREQ	01:02:32	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	01:02:32	Cloud 98 (K.{1,2}DE) SLiMMaker: K...E
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 5 sequences (80.0%).
+#SLIM	01:02:32	Cloud 99 (A[AG]..[HK]) SLiMMaker: A
+#FREQ	01:02:32	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	01:02:32	Cloud 100 (T.{1,2}N.{0,1}Q) SLiMMaker: T...Q
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 101 ([AS].N..R) SLiMMaker: N..R
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 102 (G.{0,2}L.{0,2}P) SLiMMaker: G.[LP]
+#FREQ	01:02:32	SLiMMaker SLiM matches 8 of 9 sequences (88.9%).
+#SLIM	01:02:32	Cloud 103 (E.{1,2}F.{1,2}D) SLiMMaker: E....D
+#FREQ	01:02:32	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	01:02:32	Cloud 104 (D[KR]..E) SLiMMaker: D...E
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 105 ([AG].N..[LV]) SLiMMaker: N
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 106 (M.{0,2}L.{1,2}L) SLiMMaker: M....[GL]
+#FREQ	01:02:32	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	01:02:32	Cloud 107 (Y.{1,2}S.{0,1}A) SLiMMaker: Y...A
+#FREQ	01:02:32	SLiMMaker SLiM matches 3 of 3 sequences (100.0%).
+#SLIM	01:02:32	Cloud 108 (KK.{0,2}N) SLiMMaker: KK
+#FREQ	01:02:32	SLiMMaker SLiM matches 3 of 3 sequences (100.0%).
+#SLIM	01:02:32	Cloud 109 (I.{0,2}E.E) SLiMMaker: I..E
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 110 (N.{1,2}LS) SLiMMaker: N
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 111 ([LV]..Q..[HK]) SLiMMaker: Q
+#FREQ	01:02:32	SLiMMaker SLiM matches 7 of 7 sequences (100.0%).
+#SLIM	01:02:32	Cloud 112 (K.{0,2}L.A) SLiMMaker: K
+#FREQ	01:02:32	SLiMMaker SLiM matches 6 of 6 sequences (100.0%).
+#SLIM	01:02:32	Cloud 113 (L..[HY]..[AS]) SLiMMaker: L
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 114 (E.{0,2}N.D) SLiMMaker: E
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 115 (T.[HK][DE]) SLiMMaker: T
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 116 (K.{0,2}K..A) SLiMMaker: K
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 117 (L..Q.{0,2}Q) SLiMMaker: L..Q
+#FREQ	01:02:32	SLiMMaker SLiM matches 3 of 3 sequences (100.0%).
+#SLIM	01:02:32	Cloud 118 (E.P.{0,2}P) SLiMMaker: E.P
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 119 (A.{1,2}N.{1,2}Q) SLiMMaker: A....Q
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 120 (K.{0,2}D..K) SLiMMaker: K
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 121 (S.P..[ST]) SLiMMaker: S.P
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#ALN	01:02:32	Unaligned peptides: aligning with PeptCluster
+#AAPROP	01:02:32	Reading AA Properties from aaprop.txt... ...I L V C A G M F Y W H K R E Q D N S T P ...Hydrophobic ...Polar ...Small ...Proline ...Positive ...Negative ...Charged ...Tiny ...Aliphatic ...Aromatic ...Done!
+#GAPX	01:02:32	PeptLen: 5; MaxLen: 6; Termini: True => 3 x 1 gap variants.
+#GAPX	01:02:32	PeptLen: 4; MaxLen: 6; Termini: True => 3 x 2 gap variants.
+#VAR	01:02:32	7 peptides: 6 singletons; 1 with possible variants.
+#PDIS	01:02:32	id distances: 3 => 3 variants.
+#PDIS	01:02:32	prop distances: 3 => 0 variants.
+#VAR	01:02:32	7 peptides tidied: 7 singletons; 0 with variants.
+#SLIM	01:02:32	Cloud 122 (S.{0,2}D.{0,1}E) SLiMMaker: S
+#FREQ	01:02:32	SLiMMaker SLiM matches 7 of 7 sequences (100.0%).
+#SLIM	01:02:32	Cloud 123 (P.{0,1}L.{1,2}G) SLiMMaker: P
+#FREQ	01:02:32	SLiMMaker SLiM matches 7 of 7 sequences (100.0%).
+#SLIM	01:02:32	Cloud 124 (D.[LM].[ST]) SLiMMaker: D.[LM].[ST]
+#FREQ	01:02:32	SLiMMaker SLiM matches 7 of 7 sequences (100.0%).
+#SLIM	01:02:32	Cloud 125 (G.{0,2}Q.{1,2}G) SLiMMaker: G
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 126 ([LV][KR].T) SLiMMaker: T
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 127 (A.{1,2}E.{0,2}R) SLiMMaker: A...R
+#FREQ	01:02:32	SLiMMaker SLiM matches 6 of 7 sequences (85.7%).
+#SLIM	01:02:32	Cloud 128 (S.{1,2}V.{0,1}G) SLiMMaker: S...G
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 129 ([DE]..[HR][AS]) SLiMMaker: 
+#FREQ	01:02:32	SLiMMaker Unable to make a SLiM with these settings and peptides
+#SLIM	01:02:32	Cloud 130 (K.{0,2}E.A) SLiMMaker: K
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#SLIM	01:02:32	Cloud 131 (P.{1,2}P.{0,2}F) SLiMMaker: P
+#FREQ	01:02:32	SLiMMaker SLiM matches 7 of 7 sequences (100.0%).
+#SLIM	01:02:32	Cloud 132 ([AG].N.[AS]) SLiMMaker: N
+#FREQ	01:02:32	SLiMMaker SLiM matches 5 of 5 sequences (100.0%).
+#SLIM	01:02:32	Cloud 133 (I.{0,2}G.{1,2}S) SLiMMaker: I
+#FREQ	01:02:32	SLiMMaker SLiM matches 4 of 4 sequences (100.0%).
+#RANK	01:02:32	Rank calculations complete
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Mon Sep 18 15:24:11 2017
+#DIR	00:00:00	Run from directory: /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/cluster/ncbi_blast_2.6.0/bin/ iupath=../software/cluster/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/bjob resfile=./SLIMFinder/QSLIMFinder/bjobbjob_res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T consmask=T cloudfix=F probcut=0.5
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=../software/cluster/ncbi_blast_2.6.0/bin/ iupath=../software/cluster/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/bjob resfile=./SLIMFinder/QSLIMFinder/bjobbjob_res.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T consmask=T cloudfix=F probcut=0.5
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	No UPC file found.
+#FAS	00:00:00	7 Sequences output to ./SLIMFinder/QSLIMFinder/bjob/example.slimdb.     
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#DB 	00:00:00	../software/cluster/ncbi_blast_2.6.0/bin/makeblastdb -in "./SLIMFinder/QSLIMFinder/bjob/example.slimdb" -out "./SLIMFinder/QSLIMFinder/bjob/example.slimdb" -title "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/SLIMFinder/QSLIMFinder/bjob/example.slimdb" -parse_seqids -dbtype prot
+#SYS	00:00:07	../software/cluster/ncbi_blast_2.6.0/bin/blastp -query ./SLIMFinder/QSLIMFinder/bjob/example.slimdb -db ./SLIMFinder/QSLIMFinder/bjob/example.slimdb -out ./SLIMFinder/QSLIMFinder/bjob/example.self.blast -seg yes -comp_based_stats F -soft_masking true -evalue 1.000000e-04 -num_descriptions 7 -num_alignments 7
+#INDEX	00:00:18	Indexed "Search" on "Query": 7 unique; 0 missing entries
+#CLUST	00:00:18	4 clusters generated from 7 keys (maxdis=1.00)
+#DICT	00:00:18	Made "short" seqName dictionary: 7 seq; 7 keys.
+#MST	00:00:18	MST for 7 sequences = 5.223.
+#UP	00:00:18	example: 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#MAT	00:00:18	example GABLAM Distance matrix out to ./SLIMFinder/QSLIMFinder/bjob/example.dis.tdt (text format).
+#QRY	00:00:18	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:18	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:18	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:18	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:18	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:18	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:18	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#ERR	00:00:18	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#RETRY	00:00:18	Trying DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing; again...
+#ERR	00:00:18	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#RETRY	00:00:18	Trying DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing; again...
+#ERR	00:00:18	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for DYIN_DROME__Q24246
+#ERR	00:00:19	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying SWA_DROME__P40688 RecName: Full=Protein swallow; again...
+#ERR	00:00:19	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying SWA_DROME__P40688 RecName: Full=Protein swallow; again...
+#ERR	00:00:19	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(SWA_DROME__P40688 RecName: Full=Protein swallow;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for SWA_DROME__P40688
+#ERR	00:00:19	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow; again...
+#ERR	00:00:19	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow; again...
+#ERR	00:00:19	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for SWA_DROPS__Q9U9I5
+#ERR	00:00:19	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1; again...
+#ERR	00:00:19	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1; again...
+#ERR	00:00:19	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for DC1I1_MOUSE__O88485
+#ERR	00:00:19	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69; again...
+#ERR	00:00:19	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69; again...
+#ERR	00:00:19	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for ZMY11_HUMAN__Q15326
+#ERR	00:00:19	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2; again...
+#ERR	00:00:19	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2; again...
+#ERR	00:00:19	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for DC1I2_HUMAN__Q13409
+#ERR	00:00:19	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death; again...
+#ERR	00:00:19	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death; again...
+#ERR	00:00:19	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for B2L11_HUMAN__O43521
+#ALN	00:00:19	No alignment file found for DYIN_DROME__Q24246.
+#ALN	00:00:19	No alignment file found for SWA_DROME__P40688.
+#ALN	00:00:19	No alignment file found for SWA_DROPS__Q9U9I5.
+#ALN	00:00:19	No alignment file found for DC1I1_MOUSE__O88485.
+#ALN	00:00:19	No alignment file found for ZMY11_HUMAN__Q15326.
+#ALN	00:00:19	No alignment file found for DC1I2_HUMAN__Q13409.
+#ALN	00:00:19	No alignment file found for B2L11_HUMAN__O43521.
+#REL	00:00:19	0 aa masked using relative conservation
+#MASK	00:00:19	Masked DYIN_DROME__Q24246 "low complexity" regions. (6 X added.)
+#MASK	00:00:19	Masked SWA_DROME__P40688 "low complexity" regions. (16 X added.)
+#MASK	00:00:19	Masked SWA_DROPS__Q9U9I5 "low complexity" regions. (6 X added.)
+#MASK	00:00:19	Masked DC1I1_MOUSE__O88485 "low complexity" regions. (8 X added.)
+#MASK	00:00:19	Masked ZMY11_HUMAN__Q15326 "low complexity" regions. (6 X added.)
+#MASK	00:00:19	Masked DC1I2_HUMAN__Q13409 "low complexity" regions. (3 X added.)
+#MASK	00:00:19	Masked B2L11_HUMAN__O43521 "low complexity" regions. (4 X added.)
+#MASK	00:00:19	MetMask: 7 N-terminal Ms masked
+#MASK	00:00:19	Masked B2L11_HUMAN__O43521 position-specific AAs. (1 X added.)
+#MASK	00:00:19	example: Masking of input sequences complete.
+#SPACE	00:00:19	Motif Space, 2 positions: 1,200 motifs
+#SPACE	00:00:19	Motif Space, 3 positions: 72,000 motifs
+#SPACE	00:00:19	Motif Space, 4 positions: 4,320,000 motifs
+#SPACE	00:00:19	Motif Space, 5 positions: 259,200,000 motifs
+#DIM	00:00:19	Read dimers from 7 seq: 1,192 dimers -> 849 Query dimers.
+#DIM	00:00:19	Reducing dimers: 1,036 >= 2 of 4 UPC 
+#SPACE	00:00:19	Query Motif Space, 2 positions: 1,200 motifs -> 849 Query motifs
+#SLIM	00:00:19	Selecting 2aa SLiMs: 1,036 >= 2 of 4 UPC -> 800 of 849 query motifs
+#AMB	00:00:19	Adding Wildcard ambiguity: 100.0% (0 amb motifs)
+#AMB	00:00:19	Adding Degeneracy ambiguity: 100.0% (0 amb motifs)
+#SLIM	00:00:29	Extending 3aa SLiMs >= 2 of 4 UPC: 3,600 SLiMs
+#SPACE	00:00:31	Exact Query Motif Space, 3 positions: 72,000 motifs -> 5,435 Query motifs
+#AMB	00:00:31	Adding Wildcard ambiguity: 100.0% (480 amb motifs)
+#AMB	00:00:32	Adding Degeneracy ambiguity: 100.0% (903 amb motifs)
+#SLIM	00:00:46	Extending 4aa SLiMs >= 2 of 4 UPC: 1,029 SLiMs
+#SPACE	00:00:53	Exact Query Motif Space, 4 positions: 4,320,000 motifs -> 17,220 Query motifs
+#AMB	00:00:53	Adding Wildcard ambiguity: 100.0% (8 amb motifs)
+#AMB	00:00:53	Adding Degeneracy ambiguity: 100.0% (9 amb motifs)
+#SLIM	00:00:57	Extending 5aa SLiMs >= 2 of 4 UPC: 222 SLiMs
+#SPACE	00:01:24	Exact Query Motif Space, 5 positions: 259,200,000 motifs -> 51,372 Query motifs
+#AMB	00:01:24	Adding Wildcard ambiguity: 100.0% (0 amb motifs)
+#AMB	00:01:24	Adding Degeneracy ambiguity: 100.0% (0 amb motifs)
+#SLIM	00:01:24	7,287 SLiMs >= 2 of 4 UPC
+#SAVE	00:01:25	QSLiMFinder Intermediate saved as ./SLIMFinder/QSLIMFinder/bjob/example.Ql5w2o2a3.FreqConsDisComp-5-8.pickle (Python pickle).
+#GZIP	00:01:25	./SLIMFinder/QSLIMFinder/bjob/example.Ql5w2o2a3.FreqConsDisComp-5-8.pickle zipped.
+#SLIM	00:01:25	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:01:25	Calculating [QSig] SLiM Probabilities (Sig<=0.50) complete: 0 ranked SLiMs.
+#COMB	00:01:25	Combined Occurrence Attributes complete.
+#CLOUD	00:01:25	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:01:25	7 Sequences output to ./SLIMFinder/QSLIMFinder/bjob/example.Ql5w2o2a3.2017-09-18.masked.fas.     
+#EXTRA	00:01:25	No SLiMs for additional outputs
+#RES	00:01:25	QSLiMFinder results output to ./SLIMFinder/QSLIMFinder/bjobbjob_res.csv and ./SLIMFinder/QSLIMFinder/bjobbjob_res.occ.csv.
+#RES	00:01:25	Additional dataset results output to ./SLIMFinder/QSLIMFinder/bjob/example*
+#WARN	00:01:25	1 warning messages: check log for details.
+#WARN	00:01:25	21 error messages! Check log for details.
+#LOG	00:01:25	QSLiMFinder V2.1.1 End: Mon Sep 18 15:25:37 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Tue Sep 19 14:41:28 2017
+#DIR	00:00:00	Run from directory: /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/cluster/ncbi_blast_2.6.0/bin/ iupath=../software/cluster/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/bjob2 resfile=./SLIMFinder/QSLIMFinder/bjob2bjob_res2.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T consmask=T cloudfix=F probcut=0.5
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=../software/cluster/ncbi_blast_2.6.0/bin/ iupath=../software/cluster/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/bjob2 resfile=./SLIMFinder/QSLIMFinder/bjob2bjob_res2.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T consmask=T cloudfix=F probcut=0.5
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	No UPC file found.
+#FAS	00:00:00	7 Sequences output to ./SLIMFinder/QSLIMFinder/bjob2/example.slimdb.     
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#DB 	00:00:00	../software/cluster/ncbi_blast_2.6.0/bin/makeblastdb -in "./SLIMFinder/QSLIMFinder/bjob2/example.slimdb" -out "./SLIMFinder/QSLIMFinder/bjob2/example.slimdb" -title "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/SLIMFinder/QSLIMFinder/bjob2/example.slimdb" -parse_seqids -dbtype prot
+#SYS	00:00:07	../software/cluster/ncbi_blast_2.6.0/bin/blastp -query ./SLIMFinder/QSLIMFinder/bjob2/example.slimdb -db ./SLIMFinder/QSLIMFinder/bjob2/example.slimdb -out ./SLIMFinder/QSLIMFinder/bjob2/example.self.blast -seg yes -comp_based_stats F -soft_masking true -evalue 1.000000e-04 -num_descriptions 7 -num_alignments 7
+#INDEX	00:00:19	Indexed "Search" on "Query": 7 unique; 0 missing entries
+#CLUST	00:00:19	4 clusters generated from 7 keys (maxdis=1.00)
+#DICT	00:00:19	Made "short" seqName dictionary: 7 seq; 7 keys.
+#MST	00:00:19	MST for 7 sequences = 5.223.
+#UP	00:00:19	example: 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#MAT	00:00:19	example GABLAM Distance matrix out to ./SLIMFinder/QSLIMFinder/bjob2/example.dis.tdt (text format).
+#QRY	00:00:19	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:19	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:19	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:19	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:19	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:19	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:19	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#ERR	00:00:19	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing; again...
+#ERR	00:00:19	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing; again...
+#ERR	00:00:19	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for DYIN_DROME__Q24246
+#ERR	00:00:19	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying SWA_DROME__P40688 RecName: Full=Protein swallow; again...
+#ERR	00:00:19	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying SWA_DROME__P40688 RecName: Full=Protein swallow; again...
+#ERR	00:00:19	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(SWA_DROME__P40688 RecName: Full=Protein swallow;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for SWA_DROME__P40688
+#ERR	00:00:19	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow; again...
+#ERR	00:00:19	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow; again...
+#ERR	00:00:19	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for SWA_DROPS__Q9U9I5
+#ERR	00:00:19	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1; again...
+#ERR	00:00:19	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1; again...
+#ERR	00:00:19	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for DC1I1_MOUSE__O88485
+#ERR	00:00:19	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69; again...
+#ERR	00:00:19	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69; again...
+#ERR	00:00:19	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for ZMY11_HUMAN__Q15326
+#ERR	00:00:19	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2; again...
+#ERR	00:00:19	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2; again...
+#ERR	00:00:19	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for DC1I2_HUMAN__Q13409
+#ERR	00:00:19	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death; again...
+#ERR	00:00:19	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death; again...
+#ERR	00:00:19	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for B2L11_HUMAN__O43521
+#ALN	00:00:19	No alignment file found for DYIN_DROME__Q24246.
+#ALN	00:00:19	No alignment file found for SWA_DROME__P40688.
+#ALN	00:00:19	No alignment file found for SWA_DROPS__Q9U9I5.
+#ALN	00:00:19	No alignment file found for DC1I1_MOUSE__O88485.
+#ALN	00:00:19	No alignment file found for ZMY11_HUMAN__Q15326.
+#ALN	00:00:19	No alignment file found for DC1I2_HUMAN__Q13409.
+#ALN	00:00:19	No alignment file found for B2L11_HUMAN__O43521.
+#REL	00:00:19	0 aa masked using relative conservation
+#MASK	00:00:19	Masked DYIN_DROME__Q24246 "low complexity" regions. (6 X added.)
+#MASK	00:00:19	Masked SWA_DROME__P40688 "low complexity" regions. (16 X added.)
+#MASK	00:00:19	Masked SWA_DROPS__Q9U9I5 "low complexity" regions. (6 X added.)
+#MASK	00:00:19	Masked DC1I1_MOUSE__O88485 "low complexity" regions. (8 X added.)
+#MASK	00:00:19	Masked ZMY11_HUMAN__Q15326 "low complexity" regions. (6 X added.)
+#MASK	00:00:19	Masked DC1I2_HUMAN__Q13409 "low complexity" regions. (3 X added.)
+#MASK	00:00:19	Masked B2L11_HUMAN__O43521 "low complexity" regions. (4 X added.)
+#MASK	00:00:19	MetMask: 7 N-terminal Ms masked
+#MASK	00:00:19	Masked B2L11_HUMAN__O43521 position-specific AAs. (1 X added.)
+#MASK	00:00:19	example: Masking of input sequences complete.
+#SPACE	00:00:19	Motif Space, 2 positions: 1,200 motifs
+#SPACE	00:00:19	Motif Space, 3 positions: 72,000 motifs
+#SPACE	00:00:19	Motif Space, 4 positions: 4,320,000 motifs
+#SPACE	00:00:19	Motif Space, 5 positions: 259,200,000 motifs
+#DIM	00:00:19	Read dimers from 7 seq: 1,192 dimers -> 849 Query dimers.
+#DIM	00:00:19	Reducing dimers: 1,036 >= 2 of 4 UPC 
+#SPACE	00:00:19	Query Motif Space, 2 positions: 1,200 motifs -> 849 Query motifs
+#SLIM	00:00:19	Selecting 2aa SLiMs: 1,036 >= 2 of 4 UPC -> 800 of 849 query motifs
+#AMB	00:00:19	Adding Wildcard ambiguity: 100.0% (0 amb motifs)
+#AMB	00:00:19	Adding Degeneracy ambiguity: 100.0% (0 amb motifs)
+#SLIM	00:00:30	Extending 3aa SLiMs >= 2 of 4 UPC: 3,600 SLiMs
+#SPACE	00:00:31	Exact Query Motif Space, 3 positions: 72,000 motifs -> 5,435 Query motifs
+#AMB	00:00:32	Adding Wildcard ambiguity: 100.0% (480 amb motifs)
+#AMB	00:00:32	Adding Degeneracy ambiguity: 100.0% (903 amb motifs)
+#SLIM	00:00:46	Extending 4aa SLiMs >= 2 of 4 UPC: 1,029 SLiMs
+#SPACE	00:00:53	Exact Query Motif Space, 4 positions: 4,320,000 motifs -> 17,220 Query motifs
+#AMB	00:00:53	Adding Wildcard ambiguity: 100.0% (8 amb motifs)
+#AMB	00:00:54	Adding Degeneracy ambiguity: 100.0% (9 amb motifs)
+#SLIM	00:00:58	Extending 5aa SLiMs >= 2 of 4 UPC: 222 SLiMs
+#SPACE	00:01:24	Exact Query Motif Space, 5 positions: 259,200,000 motifs -> 51,372 Query motifs
+#AMB	00:01:24	Adding Wildcard ambiguity: 100.0% (0 amb motifs)
+#AMB	00:01:24	Adding Degeneracy ambiguity: 100.0% (0 amb motifs)
+#SLIM	00:01:24	7,287 SLiMs >= 2 of 4 UPC
+#SAVE	00:01:24	QSLiMFinder Intermediate saved as ./SLIMFinder/QSLIMFinder/bjob2/example.Ql5w2o2a3.FreqConsDisComp-5-8.pickle (Python pickle).
+#GZIP	00:01:25	./SLIMFinder/QSLIMFinder/bjob2/example.Ql5w2o2a3.FreqConsDisComp-5-8.pickle zipped.
+#SLIM	00:01:25	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:01:25	Calculating [QSig] SLiM Probabilities (Sig<=0.50) complete: 0 ranked SLiMs.
+#COMB	00:01:25	Combined Occurrence Attributes complete.
+#CLOUD	00:01:25	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:01:25	7 Sequences output to ./SLIMFinder/QSLIMFinder/bjob2/example.Ql5w2o2a3.2017-09-19.masked.fas.     
+#EXTRA	00:01:25	No SLiMs for additional outputs
+#RES	00:01:25	QSLiMFinder results output to ./SLIMFinder/QSLIMFinder/bjob2bjob_res2.csv and ./SLIMFinder/QSLIMFinder/bjob2bjob_res2.occ.csv.
+#RES	00:01:25	Additional dataset results output to ./SLIMFinder/QSLIMFinder/bjob2/example*
+#WARN	00:01:25	1 warning messages: check log for details.
+#WARN	00:01:25	21 error messages! Check log for details.
+#LOG	00:01:25	QSLiMFinder V2.1.1 End: Tue Sep 19 14:42:54 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Tue Sep 19 16:03:03 2017
+#DIR	00:00:00	Run from directory: /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/cluster/ncbi_blast_2.6.0/bin/ iupath=../software/cluster/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/bjob3 resfile=./SLIMFinder/QSLIMFinder/bjob3bjob_res3.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T consmask=T cloudfix=F probcut=0.5
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=../software/cluster/ncbi_blast_2.6.0/bin/ iupath=../software/cluster/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/bjob3 resfile=./SLIMFinder/QSLIMFinder/bjob3bjob_res3.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T consmask=T cloudfix=F probcut=0.5
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:00	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:00	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:00	No UPC file found.
+#FAS	00:00:00	7 Sequences output to ./SLIMFinder/QSLIMFinder/bjob3/example.slimdb.     
+#DICT	00:00:00	Made "short" seqName dictionary: 7 seq; 7 keys.
+#DB 	00:00:00	../software/cluster/ncbi_blast_2.6.0/bin/makeblastdb -in "./SLIMFinder/QSLIMFinder/bjob3/example.slimdb" -out "./SLIMFinder/QSLIMFinder/bjob3/example.slimdb" -title "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/SLIMFinder/QSLIMFinder/bjob3/example.slimdb" -parse_seqids -dbtype prot
+#SYS	00:00:08	../software/cluster/ncbi_blast_2.6.0/bin/blastp -query ./SLIMFinder/QSLIMFinder/bjob3/example.slimdb -db ./SLIMFinder/QSLIMFinder/bjob3/example.slimdb -out ./SLIMFinder/QSLIMFinder/bjob3/example.self.blast -seg yes -comp_based_stats F -soft_masking true -evalue 1.000000e-04 -num_descriptions 7 -num_alignments 7
+#INDEX	00:00:19	Indexed "Search" on "Query": 7 unique; 0 missing entries
+#CLUST	00:00:19	4 clusters generated from 7 keys (maxdis=1.00)
+#DICT	00:00:19	Made "short" seqName dictionary: 7 seq; 7 keys.
+#MST	00:00:19	MST for 7 sequences = 5.223.
+#UP	00:00:19	example: 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#MAT	00:00:19	example GABLAM Distance matrix out to ./SLIMFinder/QSLIMFinder/bjob3/example.dis.tdt (text format).
+#QRY	00:00:19	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:19	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:19	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:19	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:19	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:19	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:19	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#ERR	00:00:19	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing; again...
+#ERR	00:00:19	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing; again...
+#ERR	00:00:19	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for DYIN_DROME__Q24246
+#ERR	00:00:19	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying SWA_DROME__P40688 RecName: Full=Protein swallow; again...
+#ERR	00:00:19	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying SWA_DROME__P40688 RecName: Full=Protein swallow; again...
+#ERR	00:00:19	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(SWA_DROME__P40688 RecName: Full=Protein swallow;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for SWA_DROME__P40688
+#ERR	00:00:19	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow; again...
+#ERR	00:00:19	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow; again...
+#ERR	00:00:19	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for SWA_DROPS__Q9U9I5
+#ERR	00:00:19	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1; again...
+#ERR	00:00:19	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1; again...
+#ERR	00:00:19	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for DC1I1_MOUSE__O88485
+#ERR	00:00:19	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69; again...
+#ERR	00:00:19	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69; again...
+#ERR	00:00:19	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for ZMY11_HUMAN__Q15326
+#ERR	00:00:19	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2; again...
+#ERR	00:00:19	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2; again...
+#ERR	00:00:19	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for DC1I2_HUMAN__Q13409
+#ERR	00:00:19	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death; again...
+#ERR	00:00:19	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:19	Trying B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death; again...
+#ERR	00:00:19	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#ERR	00:00:19	Error in Disorder.iuPred(B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:19	PreMask Disorder prediction failed for B2L11_HUMAN__O43521
+#ALN	00:00:19	No alignment file found for DYIN_DROME__Q24246.
+#ALN	00:00:19	No alignment file found for SWA_DROME__P40688.
+#ALN	00:00:19	No alignment file found for SWA_DROPS__Q9U9I5.
+#ALN	00:00:19	No alignment file found for DC1I1_MOUSE__O88485.
+#ALN	00:00:19	No alignment file found for ZMY11_HUMAN__Q15326.
+#ALN	00:00:19	No alignment file found for DC1I2_HUMAN__Q13409.
+#ALN	00:00:19	No alignment file found for B2L11_HUMAN__O43521.
+#REL	00:00:19	0 aa masked using relative conservation
+#MASK	00:00:19	Masked DYIN_DROME__Q24246 "low complexity" regions. (6 X added.)
+#MASK	00:00:19	Masked SWA_DROME__P40688 "low complexity" regions. (16 X added.)
+#MASK	00:00:19	Masked SWA_DROPS__Q9U9I5 "low complexity" regions. (6 X added.)
+#MASK	00:00:19	Masked DC1I1_MOUSE__O88485 "low complexity" regions. (8 X added.)
+#MASK	00:00:19	Masked ZMY11_HUMAN__Q15326 "low complexity" regions. (6 X added.)
+#MASK	00:00:19	Masked DC1I2_HUMAN__Q13409 "low complexity" regions. (3 X added.)
+#MASK	00:00:19	Masked B2L11_HUMAN__O43521 "low complexity" regions. (4 X added.)
+#MASK	00:00:19	MetMask: 7 N-terminal Ms masked
+#MASK	00:00:19	Masked B2L11_HUMAN__O43521 position-specific AAs. (1 X added.)
+#MASK	00:00:19	example: Masking of input sequences complete.
+#SPACE	00:00:19	Motif Space, 2 positions: 1,200 motifs
+#SPACE	00:00:19	Motif Space, 3 positions: 72,000 motifs
+#SPACE	00:00:19	Motif Space, 4 positions: 4,320,000 motifs
+#SPACE	00:00:19	Motif Space, 5 positions: 259,200,000 motifs
+#DIM	00:00:20	Read dimers from 7 seq: 1,192 dimers -> 849 Query dimers.
+#DIM	00:00:20	Reducing dimers: 1,036 >= 2 of 4 UPC 
+#SPACE	00:00:20	Query Motif Space, 2 positions: 1,200 motifs -> 849 Query motifs
+#SLIM	00:00:20	Selecting 2aa SLiMs: 1,036 >= 2 of 4 UPC -> 800 of 849 query motifs
+#AMB	00:00:20	Adding Wildcard ambiguity: 100.0% (0 amb motifs)
+#AMB	00:00:20	Adding Degeneracy ambiguity: 100.0% (0 amb motifs)
+#SLIM	00:00:29	Extending 3aa SLiMs >= 2 of 4 UPC: 3,600 SLiMs
+#SPACE	00:00:30	Exact Query Motif Space, 3 positions: 72,000 motifs -> 5,435 Query motifs
+#AMB	00:00:31	Adding Wildcard ambiguity: 100.0% (480 amb motifs)
+#AMB	00:00:31	Adding Degeneracy ambiguity: 100.0% (903 amb motifs)
+#SLIM	00:00:44	Extending 4aa SLiMs >= 2 of 4 UPC: 1,029 SLiMs
+#SPACE	00:00:50	Exact Query Motif Space, 4 positions: 4,320,000 motifs -> 17,220 Query motifs
+#AMB	00:00:50	Adding Wildcard ambiguity: 100.0% (8 amb motifs)
+#AMB	00:00:51	Adding Degeneracy ambiguity: 100.0% (9 amb motifs)
+#SLIM	00:00:54	Extending 5aa SLiMs >= 2 of 4 UPC: 222 SLiMs
+#SPACE	00:01:18	Exact Query Motif Space, 5 positions: 259,200,000 motifs -> 51,372 Query motifs
+#AMB	00:01:18	Adding Wildcard ambiguity: 100.0% (0 amb motifs)
+#AMB	00:01:18	Adding Degeneracy ambiguity: 100.0% (0 amb motifs)
+#SLIM	00:01:18	7,287 SLiMs >= 2 of 4 UPC
+#SAVE	00:01:19	QSLiMFinder Intermediate saved as ./SLIMFinder/QSLIMFinder/bjob3/example.Ql5w2o2a3.FreqConsDisComp-5-8.pickle (Python pickle).
+#GZIP	00:01:19	./SLIMFinder/QSLIMFinder/bjob3/example.Ql5w2o2a3.FreqConsDisComp-5-8.pickle zipped.
+#SLIM	00:01:19	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:01:19	Calculating [QSig] SLiM Probabilities (Sig<=0.50) complete: 0 ranked SLiMs.
+#COMB	00:01:19	Combined Occurrence Attributes complete.
+#CLOUD	00:01:19	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:01:19	7 Sequences output to ./SLIMFinder/QSLIMFinder/bjob3/example.Ql5w2o2a3.2017-09-19.masked.fas.     
+#EXTRA	00:01:19	No SLiMs for additional outputs
+#RES	00:01:19	QSLiMFinder results output to ./SLIMFinder/QSLIMFinder/bjob3bjob_res3.csv and ./SLIMFinder/QSLIMFinder/bjob3bjob_res3.occ.csv.
+#RES	00:01:19	Additional dataset results output to ./SLIMFinder/QSLIMFinder/bjob3/example*
+#WARN	00:01:19	1 warning messages: check log for details.
+#WARN	00:01:19	21 error messages! Check log for details.
+#LOG	00:01:19	QSLiMFinder V2.1.1 End: Tue Sep 19 16:04:23 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for QSLiMFinder V2.1.1: Tue Sep 19 18:07:43 2017
+#DIR	00:00:00	Run from directory: /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: blast+path=../software/cluster/ncbi_blast_2.6.0/bin/ iupath=../software/cluster/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/bjob4 resfile=./SLIMFinder/QSLIMFinder/bjob4bjob_res4.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T consmask=T cloudfix=F probcut=0.5
+#CMD	00:00:00	Full Command List: log=qslimfinder.log blast+path=../software/cluster/ncbi_blast_2.6.0/bin/ iupath=../software/cluster/iupred/iupred resdir=./SLIMFinder/QSLIMFinder/bjob4 resfile=./SLIMFinder/QSLIMFinder/bjob4bjob_res4.csv seqin=./SLIMFinder/example.fas query=./SLIMFinder/example_query.fas dismask=T consmask=T cloudfix=F probcut=0.5
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#ALPH	00:00:00	Alphabet: A C D E F G H I K L M N P Q R S T V W Y
+#WARN	00:00:01	NOTE: cloudfix=F. Be wary of ambiguity over-predictions.
+#SEQ	00:00:01	7 sequences loaded from ./SLIMFinder/example.fas (Format: fas).
+#UPC	00:00:01	No UPC file found.
+#FAS	00:00:01	7 Sequences output to ./SLIMFinder/QSLIMFinder/bjob4/example.slimdb.     
+#DICT	00:00:01	Made "short" seqName dictionary: 7 seq; 7 keys.
+#DB 	00:00:01	../software/cluster/ncbi_blast_2.6.0/bin/makeblastdb -in "./SLIMFinder/QSLIMFinder/bjob4/example.slimdb" -out "./SLIMFinder/QSLIMFinder/bjob4/example.slimdb" -title "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/SLIMFinder/QSLIMFinder/bjob4/example.slimdb" -parse_seqids -dbtype prot
+#SYS	00:00:09	../software/cluster/ncbi_blast_2.6.0/bin/blastp -query ./SLIMFinder/QSLIMFinder/bjob4/example.slimdb -db ./SLIMFinder/QSLIMFinder/bjob4/example.slimdb -out ./SLIMFinder/QSLIMFinder/bjob4/example.self.blast -seg yes -comp_based_stats F -soft_masking true -evalue 1.000000e-04 -num_descriptions 7 -num_alignments 7
+#INDEX	00:00:21	Indexed "Search" on "Query": 7 unique; 0 missing entries
+#CLUST	00:00:21	4 clusters generated from 7 keys (maxdis=1.00)
+#DICT	00:00:21	Made "short" seqName dictionary: 7 seq; 7 keys.
+#MST	00:00:21	MST for 7 sequences = 5.223.
+#UP	00:00:21	example: 7 Seq; 4 UPC; 5.223 MST; blaste=1.00e-04, blastcf=F, blastf=T
+#MAT	00:00:21	example GABLAM Distance matrix out to ./SLIMFinder/QSLIMFinder/bjob4/example.dis.tdt (text format).
+#QRY	00:00:21	Query Sequence = DYIN_DROME__Q24246 (663 AA).
+#QRY	00:00:21	1 sequences mapped to focal group "Query"
+#FOCUS	00:00:21	Mapped 1 focal sequences in 1 group(s)
+#QUPC	00:00:21	DC1I1_MOUSE__O88485 is found in same UPC as Query
+#QUPC	00:00:21	DC1I2_HUMAN__Q13409 is found in same UPC as Query
+#MIN	00:00:21	AmbOcc 0.05 & 4 UP => AmbOcc 2 UPC.
+#MIN	00:00:21	MinOcc 0.05 & 4 UP => MinOcc 3 UPC.
+#ERR	00:00:21	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#RETRY	00:00:21	Trying DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing; again...
+#ERR	00:00:21	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#RETRY	00:00:21	Trying DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing; again...
+#ERR	00:00:21	DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;: Sequence = 663 aa but IUPred results stop at 0!
+#ERR	00:00:22	Error in Disorder.iuPred(DYIN_DROME__Q24246 RecName: Full=Cytoplasmic dynein 1 intermediate chain; Short=DH IC; AltName: Full=Dynein intermediate chain, cytosolic; AltName: Full=Protein short wing;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:22	PreMask Disorder prediction failed for DYIN_DROME__Q24246
+#ERR	00:00:23	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#RETRY	00:00:23	Trying SWA_DROME__P40688 RecName: Full=Protein swallow; again...
+#ERR	00:00:23	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#RETRY	00:00:23	Trying SWA_DROME__P40688 RecName: Full=Protein swallow; again...
+#ERR	00:00:23	SWA_DROME__P40688 RecName: Full=Protein swallow;: Sequence = 548 aa but IUPred results stop at 0!
+#ERR	00:00:23	Error in Disorder.iuPred(SWA_DROME__P40688 RecName: Full=Protein swallow;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:23	PreMask Disorder prediction failed for SWA_DROME__P40688
+#ERR	00:00:23	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#RETRY	00:00:23	Trying SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow; again...
+#ERR	00:00:23	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#RETRY	00:00:23	Trying SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow; again...
+#ERR	00:00:23	SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;: Sequence = 537 aa but IUPred results stop at 0!
+#ERR	00:00:23	Error in Disorder.iuPred(SWA_DROPS__Q9U9I5 RecName: Full=Protein swallow;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:23	PreMask Disorder prediction failed for SWA_DROPS__Q9U9I5
+#ERR	00:00:23	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#RETRY	00:00:23	Trying DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1; again...
+#ERR	00:00:23	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#RETRY	00:00:23	Trying DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1; again...
+#ERR	00:00:23	DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;: Sequence = 628 aa but IUPred results stop at 0!
+#ERR	00:00:23	Error in Disorder.iuPred(DC1I1_MOUSE__O88485 RecName: Full=Cytoplasmic dynein 1 intermediate chain 1; AltName: Full=Cytoplasmic dynein intermediate chain 1; AltName: Full=Dynein intermediate chain 1, cytosolic; Short=DH IC-1;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:23	PreMask Disorder prediction failed for DC1I1_MOUSE__O88485
+#ERR	00:00:23	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#RETRY	00:00:23	Trying ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69; again...
+#ERR	00:00:23	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#RETRY	00:00:23	Trying ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69; again...
+#ERR	00:00:23	ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;: Sequence = 562 aa but IUPred results stop at 0!
+#ERR	00:00:23	Error in Disorder.iuPred(ZMY11_HUMAN__Q15326 RecName: Full=Zinc finger MYND domain-containing protein 11; AltName: Full=Adenovirus 5 E1A-binding protein; AltName: Full=Protein BS69;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:23	PreMask Disorder prediction failed for ZMY11_HUMAN__Q15326
+#ERR	00:00:23	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#RETRY	00:00:23	Trying DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2; again...
+#ERR	00:00:23	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#RETRY	00:00:23	Trying DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2; again...
+#ERR	00:00:23	DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;: Sequence = 638 aa but IUPred results stop at 0!
+#ERR	00:00:23	Error in Disorder.iuPred(DC1I2_HUMAN__Q13409 RecName: Full=Cytoplasmic dynein 1 intermediate chain 2; AltName: Full=Cytoplasmic dynein intermediate chain 2; AltName: Full=Dynein intermediate chain 2, cytosolic; Short=DH IC-2;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:23	PreMask Disorder prediction failed for DC1I2_HUMAN__Q13409
+#ERR	00:00:23	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:23	Trying B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death; again...
+#ERR	00:00:23	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#RETRY	00:00:23	Trying B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death; again...
+#ERR	00:00:23	B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;: Sequence = 198 aa but IUPred results stop at 0!
+#ERR	00:00:23	Error in Disorder.iuPred(B2L11_HUMAN__O43521 RecName: Full=Bcl-2-like protein 11; Short=Bcl2-L-11; AltName: Full=Bcl2-interacting mediator of cell death;). Disorder prediction failed. Check (setenv?) IUPred_PATH environment variable.: <type 'ValueError'> (iuPred line 292)   
+#ERR	00:00:23	PreMask Disorder prediction failed for B2L11_HUMAN__O43521
+#ALN	00:00:23	No alignment file found for DYIN_DROME__Q24246.
+#ALN	00:00:23	No alignment file found for SWA_DROME__P40688.
+#ALN	00:00:23	No alignment file found for SWA_DROPS__Q9U9I5.
+#ALN	00:00:23	No alignment file found for DC1I1_MOUSE__O88485.
+#ALN	00:00:23	No alignment file found for ZMY11_HUMAN__Q15326.
+#ALN	00:00:23	No alignment file found for DC1I2_HUMAN__Q13409.
+#ALN	00:00:23	No alignment file found for B2L11_HUMAN__O43521.
+#REL	00:00:23	0 aa masked using relative conservation
+#MASK	00:00:23	Masked DYIN_DROME__Q24246 "low complexity" regions. (6 X added.)
+#MASK	00:00:23	Masked SWA_DROME__P40688 "low complexity" regions. (16 X added.)
+#MASK	00:00:23	Masked SWA_DROPS__Q9U9I5 "low complexity" regions. (6 X added.)
+#MASK	00:00:23	Masked DC1I1_MOUSE__O88485 "low complexity" regions. (8 X added.)
+#MASK	00:00:23	Masked ZMY11_HUMAN__Q15326 "low complexity" regions. (6 X added.)
+#MASK	00:00:23	Masked DC1I2_HUMAN__Q13409 "low complexity" regions. (3 X added.)
+#MASK	00:00:23	Masked B2L11_HUMAN__O43521 "low complexity" regions. (4 X added.)
+#MASK	00:00:23	MetMask: 7 N-terminal Ms masked
+#MASK	00:00:23	Masked B2L11_HUMAN__O43521 position-specific AAs. (1 X added.)
+#MASK	00:00:23	example: Masking of input sequences complete.
+#SPACE	00:00:23	Motif Space, 2 positions: 1,200 motifs
+#SPACE	00:00:23	Motif Space, 3 positions: 72,000 motifs
+#SPACE	00:00:23	Motif Space, 4 positions: 4,320,000 motifs
+#SPACE	00:00:23	Motif Space, 5 positions: 259,200,000 motifs
+#DIM	00:00:23	Read dimers from 7 seq: 1,192 dimers -> 849 Query dimers.
+#DIM	00:00:23	Reducing dimers: 1,036 >= 2 of 4 UPC 
+#SPACE	00:00:23	Query Motif Space, 2 positions: 1,200 motifs -> 849 Query motifs
+#SLIM	00:00:23	Selecting 2aa SLiMs: 1,036 >= 2 of 4 UPC -> 800 of 849 query motifs
+#AMB	00:00:23	Adding Wildcard ambiguity: 100.0% (0 amb motifs)
+#AMB	00:00:23	Adding Degeneracy ambiguity: 100.0% (0 amb motifs)
+#SLIM	00:00:33	Extending 3aa SLiMs >= 2 of 4 UPC: 3,600 SLiMs
+#SPACE	00:00:34	Exact Query Motif Space, 3 positions: 72,000 motifs -> 5,435 Query motifs
+#AMB	00:00:35	Adding Wildcard ambiguity: 100.0% (480 amb motifs)
+#AMB	00:00:35	Adding Degeneracy ambiguity: 100.0% (903 amb motifs)
+#SLIM	00:00:49	Extending 4aa SLiMs >= 2 of 4 UPC: 1,029 SLiMs
+#SPACE	00:00:55	Exact Query Motif Space, 4 positions: 4,320,000 motifs -> 17,220 Query motifs
+#AMB	00:00:55	Adding Wildcard ambiguity: 100.0% (8 amb motifs)
+#AMB	00:00:56	Adding Degeneracy ambiguity: 100.0% (9 amb motifs)
+#SLIM	00:00:59	Extending 5aa SLiMs >= 2 of 4 UPC: 222 SLiMs
+#SPACE	00:01:24	Exact Query Motif Space, 5 positions: 259,200,000 motifs -> 51,372 Query motifs
+#AMB	00:01:24	Adding Wildcard ambiguity: 100.0% (0 amb motifs)
+#AMB	00:01:24	Adding Degeneracy ambiguity: 100.0% (0 amb motifs)
+#SLIM	00:01:24	7,287 SLiMs >= 2 of 4 UPC
+#SAVE	00:01:25	QSLiMFinder Intermediate saved as ./SLIMFinder/QSLIMFinder/bjob4/example.Ql5w2o2a3.FreqConsDisComp-5-8.pickle (Python pickle).
+#GZIP	00:01:25	./SLIMFinder/QSLIMFinder/bjob4/example.Ql5w2o2a3.FreqConsDisComp-5-8.pickle zipped.
+#SLIM	00:01:25	Filtering 7,287 SLiMs: 1,514 retained.
+#PROB	00:01:26	Calculating [QSig] SLiM Probabilities (Sig<=0.50) complete: 0 ranked SLiMs.
+#COMB	00:01:26	Combined Occurrence Attributes complete.
+#CLOUD	00:01:26	Making "Motif Clouds" for 0 Sig Motifs: 0 Clouds
+#FAS	00:01:26	7 Sequences output to ./SLIMFinder/QSLIMFinder/bjob4/example.Ql5w2o2a3.2017-09-19.masked.fas.     
+#EXTRA	00:01:26	No SLiMs for additional outputs
+#RES	00:01:26	QSLiMFinder results output to ./SLIMFinder/QSLIMFinder/bjob4bjob_res4.csv and ./SLIMFinder/QSLIMFinder/bjob4bjob_res4.occ.csv.
+#RES	00:01:26	Additional dataset results output to ./SLIMFinder/QSLIMFinder/bjob4/example*
+#WARN	00:01:26	1 warning messages: check log for details.
+#WARN	00:01:26	21 error messages! Check log for details.
+#LOG	00:01:26	QSLiMFinder V2.1.1 End: Tue Sep 19 18:09:09 2017
