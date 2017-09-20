@@ -23,7 +23,7 @@ shinyServer(function(input, output, session) {
         enrich_plot_set_choices = enrich_plot_set_choices[which_matrix]
         updateSelectInput(session, inputId = "enrich_plot_set", 
                           choices = enrich_plot_set_choices,
-                          selected = enrich_plot_set_choices)
+                          selected = c("enrichment", "enrichment_justfreq", "enrichmentFISHER_justodds", "enrichmentFISHER_justpval"))
         
         which_EmpiricalPval = sapply(ls(), function(x) class(eval(parse(text = x)))) == "XYZinteration_XZEmpiricalPval"
         for_2d_bin = names(which_EmpiricalPval)[which_EmpiricalPval]
@@ -71,3 +71,5 @@ shinyServer(function(input, output, session) {
         # cex.lab = 2 cex = 2
     })
 })
+
+

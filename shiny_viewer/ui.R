@@ -13,8 +13,8 @@ shinyUI(pageWithSidebar(
                     choices = "enrichment", selected = "enrichment", multiple = T),
         radioButtons(inputId = "enrich_plot_type", label = "Our prediction vs ELM domains: plot type",
                      choices = list(pval = "pval", odds_ratio = "odds_ratio", count = "count"), selected = "count"),
-        textInput(inputId = "enrich_plot_args", label = "Our prediction vs ELM domains: plot args (like \"cex = 1.5\", separated by pipes)", value = NULL),
-        textInput(inputId = "enrich_legend_args", label = "Our prediction vs ELM domains: legend args (like \"cex = 1.5\", separated by pipes)", value = NULL),
+        textInput(inputId = "enrich_plot_args", label = "Our prediction vs ELM domains: plot args (like \"cex = 1.5\", separated by pipes)", value = "cex.lab = 2|cex.axis = 1.5"),
+        textInput(inputId = "enrich_legend_args", label = "Our prediction vs ELM domains: legend args (like \"cex = 1.5\", separated by pipes)", value = "cex = 2"),
         radioButtons(inputId = "bin2d_pval_plot_set", label = "Characteristics of top protein-domain pairs and pvalue distribution: which results to look at?",
                      choices = "unavailable"),
         textInput(inputId = "bin2d_plotname", label = "Characteristics of top protein-domain pairs: plot name", value = ""),
@@ -29,7 +29,7 @@ shinyUI(pageWithSidebar(
         # plot heatmap
         tabsetPanel(
             tabPanel(title = "Our prediction vs ELM domains",
-                     plotOutput("enrich_plot", height = "800px") ###################### modify plot size here ###########
+                     plotOutput("enrich_plot", height = "1000px") ###################### modify plot size here ###########
             ),
             tabPanel(title = "Characteristics of top protein-domain pairs",
                      plotOutput("bin2d_plot", height = "900px") ###################### modify plot size here ###########

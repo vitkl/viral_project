@@ -269,13 +269,14 @@ domains_not_mapped = unique(domains_known[!(domains_known %in% InterPro2memberDB
 I did Fisher test to evaluate if the domains that we find are enriched in domains known to interact with linear motifs (from ELM). I have picked some number of viral protein - human domain associations from the top (by p-value). Then I counted how many known domains we have found and did Fisher test. I decided to compare two statistic choices (frequency of a domain among interacting partners of a viral protein or Fisher test p-value) on how many of the known domains we tend to find. Finally, I was choosing different cutoffs (different number of top p-value pairs). 
 
 ```{r overrepresentation_test}
-testEnrichment = function(N, res, domains_known_mapped, random = F, name = ""){
+testEnrichment = function(N, res, rank_by = "p.value", domains_known_mapped, random = F, name = ""){
     if(random) {
-        res$data_pval = unique(res$data_with_pval[,.(IDs_interactor_viral, IDs_domain_human, p.value, domain_type, domain_count, IDs_interactor_viral_degree)])
+        res$data_pval = unique(res$data_with_pval[,c("IDs_interactor_viral", "IDs_domain_human", rank_by, "domain_type", "domain_count", "IDs_interactor_viral_degree"), with = F])
         domains_found = res$data_pval[sample(1:nrow(res$data_with_pval), N), unique(IDs_domain_human)]
     } else {
-        res$data_pval = unique(res$data_with_pval[,.(IDs_interactor_viral, IDs_domain_human, p.value, domain_type, domain_count, IDs_interactor_viral_degree)])
-        domains_found = res$data_pval[order(p.value, decreasing = F)[1:N], unique(IDs_domain_human)]
+        res$data_pval = unique(res$data_with_pval[,c("IDs_interactor_viral", "IDs_domain_human", rank_by, "domain_type", "domain_count", "IDs_interactor_viral_degree"), with = F])
+        ind = order(unlist(res$data_pval[, c(rank_by), with = F]), decreasing = F)[1:N] 
+        domains_found = res$data_pval[ind, unique(IDs_domain_human)]
     }
     
     alldomains = res$data_with_pval[, unique(IDs_domain_human)]
@@ -287,30 +288,36 @@ testEnrichment = function(N, res, domains_known_mapped, random = F, name = ""){
     
     return(c(pval = test$p.value, odds_ratio = as.vector(test$estimate), count = table_res["TRUE", "TRUE"], name = name))
 }
-runningTestEnrichment = function(res, name){
-    enrichment = sapply(Ns, testEnrichment, res, domains_known_mapped, name = name)
+runningTestEnrichment = function(res, name, rank_by = "p.value"){
+    enrichment = sapply(Ns, testEnrichment, res = res, 
+                        domains_known_mapped = domains_known_mapped, 
+                        name = name, rank_by = rank_by)
 colnames(enrichment) = Ns
 return(enrichment)
 }
 
 Ns = seq(25, 500, 25)
 # frequency
-enrichment = runningTestEnrichment(res, name = "domain frequency among interactors of a viral protein")
-enrichment_low_back = runningTestEnrichment(res_low_back, name = "domain frequency: no low background")
-enrichment_low_deg = runningTestEnrichment(res_low_deg, name = "domain frequency: no degree of 1")
-enrichment_low_deg_back = runningTestEnrichment(res_low_deg_back, name = "domain frequency: no degree of 1 AND no low background")
+enrichment = runningTestEnrichment(res, name = "domain frequency among interactors of a viral protein, empirical pval")
+enrichment_justfreq = runningTestEnrichment(res, rank_by = "observed_statistic", name = "domain frequency among interactors of a viral protein, frequency")
+enrichment_low_back = runningTestEnrichment(res_low_back, name = "domain frequency: no low background, empirical pval")
+enrichment_low_deg = runningTestEnrichment(res_low_deg, name = "domain frequency: no degree of 1, empirical pval")
+enrichment_low_deg_back = runningTestEnrichment(res_low_deg_back, name = "domain frequency: no degree of 1 AND no low background, empirical pval")
 
 # reverse frequency and mix
-enrichmentRev = runningTestEnrichment(resRev, name = "viral protein frequency among proteins with a domain")
-enrichmentMix = runningTestEnrichment(mix, name = "mix of viral protein -> domain and domain -> viral protein")
+enrichmentRev = runningTestEnrichment(resRev, name = "viral protein frequency among proteins with a domain, empirical pval")
+enrichmentMix = runningTestEnrichment(mix, name = "mix of viral protein -> domain and domain -> viral protein, empirical pval")
 
 # count
-enrichment_count = runningTestEnrichment(res_count, name = "domain count among interactors of a viral protein")
+enrichment_count = runningTestEnrichment(res_count, name = "domain count among interactors of a viral protein, empirical pval")
 
 # Fisher test pval
-enrichmentFISHERodds = runningTestEnrichment(resFISHERodds, name = "Fisher test odds ratio: domain overrepresentation over the background")
-enrichmentFISHERpval = runningTestEnrichment(resFISHERpval, name = "Fisher test pval: domain overrepresentation over the background")
-enrichmentFISHERoddsBig = runningTestEnrichment(resFISHERoddsBig, name = "Fisher test odds ratio: domain overrepresentation over the background \n(background count and degree >= 15)")
+enrichmentFISHERodds = runningTestEnrichment(resFISHERodds, name = "Fisher test odds ratio: domain overrepresentation over the background, empirical pval")
+enrichmentFISHERpval = runningTestEnrichment(resFISHERpval, name = "Fisher test pval: domain overrepresentation over the background, empirical pval")
+enrichmentFISHER_justodds = runningTestEnrichment(resFISHERodds, rank_by = "observed_statistic", name = "Fisher test odds ratio: domain overrepresentation over the background")
+enrichmentFISHERpval = runningTestEnrichment(resFISHERpval, name = "Fisher test pval: domain overrepresentation over the background, empirical pval")
+enrichmentFISHER_justpval = runningTestEnrichment(resFISHERpval, rank_by = "observed_statistic", name = "Fisher test pval: domain overrepresentation over the background")
+enrichmentFISHERoddsBig = runningTestEnrichment(resFISHERoddsBig, name = "Fisher test odds ratio: domain overrepresentation over the background \n(background count and degree >= 15), empirical pval")
 
 
 random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25)){
@@ -320,7 +327,7 @@ random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25)){
     quantile_names = c("97.5% quantile", "75% quantile", "median", "25% quantile", "2.5% quantile")
     
     pval_temp = replicate(N, {
-        enrichmentRANDOM = sapply(Ns, testEnrichment, res, domains_known_mapped, random = T, name = "N random proteins")[1,]
+        enrichmentRANDOM = sapply(Ns, testEnrichment, res = res, domains_known_mapped = domains_known_mapped, random = T, name = "N random proteins")[1,]
         names(enrichmentRANDOM) = Ns
         as.numeric(enrichmentRANDOM)
     })
@@ -329,7 +336,7 @@ random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25)){
     colnames(pval) = Ns
     
     odds_ratio_temp = replicate(N, {
-        enrichmentRANDOM = sapply(Ns, testEnrichment, res, domains_known_mapped, random = T, name = "N random proteins")[2,]
+        enrichmentRANDOM = sapply(Ns, testEnrichment, res = res, domains_known_mapped = domains_known_mapped, random = T, name = "N random proteins")[2,]
         names(enrichmentRANDOM) = Ns
         as.numeric(enrichmentRANDOM)
     })
@@ -338,7 +345,7 @@ random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25)){
     colnames(odds_ratio) = Ns
     
     count_temp = replicate(N, {
-        enrichmentRANDOM = sapply(Ns, testEnrichment, res, domains_known_mapped, random = T, name = "N random proteins")[3,]
+        enrichmentRANDOM = sapply(Ns, testEnrichment, res = res, domains_known_mapped = domains_known_mapped, random = T, name = "N random proteins")[3,]
         names(enrichmentRANDOM) = Ns
         as.numeric(enrichmentRANDOM)
     })
@@ -356,8 +363,10 @@ save(list = ls(), file="./processed_data_files/what_we_find_VS_ELM_clust.RData")
 ## As we include more proteins, the number of known domains we find increases and then levels off (probably because some of the known domains do not interact with viral proteins).
 
 ```{r domains_found, fig.height = 9, fig.width = 10}
-plotEnrichment(enrichment, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
-               enrichment_count, enrichmentRev, enrichmentMix, enrichmentFISHERodds, enrichmentFISHERpval, enrichmentFISHERoddsBig,
+plotEnrichment(enrichment, enrichment_justfreq, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
+               enrichment_count, enrichmentRev, enrichmentMix,
+               enrichmentFISHERodds, enrichmentFISHER_justodds,
+               enrichmentFISHERpval, enrichmentFISHER_justpval, enrichmentFISHERoddsBig,
                random_domains = enrichmentRANDOM, 
                domains_known_mapped = domains_known_mapped, type = "count", plot_type = "l")
 ```
@@ -365,8 +374,10 @@ plotEnrichment(enrichment, enrichment_low_back, enrichment_low_deg, enrichment_l
 ## As we include more proteins, the Fisher test odds ratio decreases (we add more stuff that is not known). Odds ratio measures how much more likely are we to find a domain using our procedure if it’s a known domain as compared to if it’s not a known domain.
 
 ```{r fisher_odds_ratio, fig.height = 9, fig.width = 10}
-plotEnrichment(enrichment, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
-               enrichment_count, enrichmentRev, enrichmentMix, enrichmentFISHERodds, enrichmentFISHERpval, enrichmentFISHERoddsBig,
+plotEnrichment(enrichment, enrichment_justfreq, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
+               enrichment_count, enrichmentRev, enrichmentMix,
+               enrichmentFISHERodds, enrichmentFISHER_justodds,
+               enrichmentFISHERpval, enrichmentFISHER_justpval, enrichmentFISHERoddsBig,
                random_domains = enrichmentRANDOM, 
                domains_known_mapped = domains_known_mapped, type = "odds_ratio", plot_type = "l")
 ```
@@ -374,8 +385,10 @@ plotEnrichment(enrichment, enrichment_low_back, enrichment_low_deg, enrichment_l
 ## corresponding P-values from the Fisher test 
 
 ```{r fisher_pval, fig.height = 9, fig.width = 10}
-plotEnrichment(enrichment, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
-               enrichment_count, enrichmentRev, enrichmentMix, enrichmentFISHERodds, enrichmentFISHERpval, enrichmentFISHERoddsBig,
+plotEnrichment(enrichment, enrichment_justfreq, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
+               enrichment_count, enrichmentRev, enrichmentMix,
+               enrichmentFISHERodds, enrichmentFISHER_justodds,
+               enrichmentFISHERpval, enrichmentFISHER_justpval, enrichmentFISHERoddsBig,
                random_domains = enrichmentRANDOM, 
                domains_known_mapped = domains_known_mapped, type = "pval", plot_type = "l")
 ```
