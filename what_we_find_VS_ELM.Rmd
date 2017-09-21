@@ -144,8 +144,9 @@ permuteFisherTestPval = function(data, select_nodes = NULL, also_permuteYZ = F, 
 # contingency matrix:
 matrix(c("domain_count_per_IDs_interactor_viral[1]", 
          "IDs_interactor_viral_degree[1] - domain_count_per_IDs_interactor_viral[1]",
-         "domain_count[1]", 
-         "N_prot_w_interactors[1] - domain_count[1]"),2,2)
+         "domain_count[1] - domain_count_per_IDs_interactor_viral[1]", 
+         "N_prot_w_interactors[1] - domain_count[1] - IDs_interactor_viral_degree[1] + domain_count_per_IDs_interactor_viral[1]"),
+       2,2)
 # permute IDs_interactor_viral ~ IDs_interactor_human
 time = proc.time()
 resFISHERpval = permuteFisherTestPval(data, select_nodes = NULL)
@@ -201,12 +202,15 @@ justFisherdata[, resFISHERodds_not_missing := not_missing][, not_missing := NULL
 
 resJustFISHER = permuteFisherTestPval(justFisherdata, select_nodes = NULL, N = 1)
 
-resJustFISHER[, p.value := observed_statistic]
-resJustFISHER[, observed_statistic := odds_ratio]
-resJustFISHER[, fdr_pval := p.adjust(p.value, method = "fdr")]
-resJustFISHER005 = resJustFISHER[fdr_pval < 0.05,]
-resJustFISHER01 = resJustFISHER[fdr_pval < 0.1,]
-resJustFISHER001 = resJustFISHER[fdr_pval < 0.01,]
+resJustFISHER$data_with_pval[, p.value := observed_statistic]
+resJustFISHER$data_with_pval[, observed_statistic := odds_ratio]
+resJustFISHER$data_with_pval[, fdr_pval := p.adjust(p.value, method = "fdr")]
+resJustFISHER005 = resJustFISHER
+resJustFISHER005$data_with_pval = resJustFISHER$data_with_pval[fdr_pval < 0.05,]
+resJustFISHER01 = resJustFISHER
+resJustFISHER01$data_with_pval = resJustFISHER$data_with_pval[fdr_pval < 0.1,]
+resJustFISHER001 = resJustFISHER
+resJustFISHER001$data_with_pval = resJustFISHER$data_with_pval[fdr_pval < 0.01,]
 ```
 
 ```{r calculate_pvals_freq_rev}
