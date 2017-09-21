@@ -15,9 +15,14 @@ shinyUI(pageWithSidebar(
                      choices = list(pval = "pval", odds_ratio = "odds_ratio", count = "count"), selected = "count"),
         textInput(inputId = "enrich_plot_args", label = "Our prediction vs ELM domains: plot args (like \"cex = 1.5\", separated by pipes)", value = "cex.lab = 2|cex.axis = 1.5"),
         textInput(inputId = "enrich_legend_args", label = "Our prediction vs ELM domains: legend args (like \"cex = 1.5\", separated by pipes)", value = "cex = 2"),
+        numericInput(inputId = "leg_pos_x", label = "legend x position", value = 100, min = 0, max = 2000),
+        checkboxInput(inputId = "show_known_domains", label = "Show known domains (when plotting count)?", value = FALSE),
         radioButtons(inputId = "bin2d_pval_plot_set", label = "Characteristics of top protein-domain pairs and pvalue distribution: which results to look at?",
                      choices = "unavailable"),
         textInput(inputId = "bin2d_plotname", label = "Characteristics of top protein-domain pairs: plot name", value = ""),
+        selectInput(inputId = "bin2d_plot_rankby", label = "Characteristics of top protein-domain pairs: rank by column",
+                    choices = "p.value", selected = "p.value", multiple = F),
+        textInput(inputId = "bin2d_plot_filter", label = "Characteristics of top protein-domain pairs: filter criteria", value = "p.adjust(p.value, method = \"fdr\") < 0.05"),
         sliderInput(inputId = "N_pairs", label = "Characteristics of top protein-domain pairs: how many top pairs to choose",
                     min = 10, max = 5000, step = 10,
                     value = 250),
@@ -32,7 +37,7 @@ shinyUI(pageWithSidebar(
                      plotOutput("enrich_plot", height = "1000px") ###################### modify plot size here ###########
             ),
             tabPanel(title = "Characteristics of top protein-domain pairs",
-                     plotOutput("bin2d_plot", height = "900px") ###################### modify plot size here ###########
+                     plotOutput("bin2d_plot", height = "1200px") ###################### modify plot size here ###########
             ),
             tabPanel(title = "Empirical pvalue plot",
                      plotOutput("pval_plot", height = "600px") ###################### modify plot size here ###########

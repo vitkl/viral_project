@@ -27,18 +27,34 @@ shinyServer(function(input, output, session) {
         
         which_EmpiricalPval = sapply(ls(), function(x) class(eval(parse(text = x)))) == "XYZinteration_XZEmpiricalPval"
         for_2d_bin = names(which_EmpiricalPval)[which_EmpiricalPval]
-        updateRadioButtons(session, inputId = "bin2d_pval_plot_set", choices = for_2d_bin,
-                           selected = for_2d_bin[1])
+        if(input$bin2d_pval_plot_set == "unavailable"){
+            updateRadioButtons(session, inputId = "bin2d_pval_plot_set", choices = for_2d_bin,
+                               selected = for_2d_bin[1])
+        }
+
+        to_choose_rankby = isolate({input$bin2d_pval_plot_set %in% ls()})
+        if(to_choose_rankby){
+            choicesLISTrankby = colnames(eval(parse(text = input$bin2d_pval_plot_set))$data_with_pval)
+            choicesLISTrankby = choicesLISTrankby[sapply(eval(parse(text = input$bin2d_pval_plot_set))$data_with_pval, class) == "numeric"]
+            if(!"choicesLISTrankby" %in% ls()) choicesLISTrankby = "p.value"
+            updateSelectInput(session, inputId = "bin2d_plot_rankby", 
+                              choices = choicesLISTrankby,
+                              selected = c("p.value"))
+        }
     })
     
     
     
     output$bin2d_plot <- renderPlot({
-        PermutResult2D(res = eval(parse(text = input$bin2d_pval_plot_set)), N = input$N_pairs) +
+        load(input$path)
+        PermutResult2D(res = eval(parse(text = input$bin2d_pval_plot_set)),
+                       N = input$N_pairs, rank_by = input$bin2d_plot_rankby,
+                       filter = input$bin2d_plot_filter) +
             ggtitle(input$bin2d_plotname)
     })
     
     output$pval_plot <- renderPlot({
+        load(input$path)
         plot(eval(parse(text = input$bin2d_pval_plot_set)), main = input$pval_plotname)
     })
     
@@ -46,7 +62,7 @@ shinyServer(function(input, output, session) {
         load(input$path)
         #which_function = sapply(ls(), function(x) class(eval(parse(text = x)))) == "function"
         #rm(list = names(which_function)[which_function])
-        rm(plotEnrichment)
+        #rm(plotEnrichment)
         
         results2plot = list()
         for (i in 1:(length(input$enrich_plot_set))) {
@@ -66,8 +82,9 @@ shinyServer(function(input, output, session) {
                        random_domains = enrichmentRANDOM, 
                        domains_known_mapped = domains_known_mapped,
                        type = input$enrich_plot_type, plot_type = "l",
-                       plot_args = plot_args, legend_args = legend_args
-                       )
+                       plot_args = plot_args, legend_args = legend_args,
+                       leg_pos_x = input$leg_pos_x,
+                       show_known_domains = as.logical(input$show_known_domains))
         # cex.lab = 2 cex = 2
     })
 })
