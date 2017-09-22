@@ -39,7 +39,7 @@ if(detectCores() <= 4) cores_to_use = detectCores() - 1
 if(detectCores() > 4) cores_to_use = 31
 
 # how many permutations?
-N_permut = 30000
+N_permut = 3
 ```
 
 # How many of the domains identified using our approach are in the ELM database (as compared to the population of all domains we tested)?
@@ -193,7 +193,7 @@ plot(resFISHERoddsBig, main = "Fisher test odds ratio: removed small (>= 15)\ndo
 save(resFISHERodds, file="./processed_data_files/what_we_find_VS_ELM_output_FISHER.RData")
 
 # Just FisherTest result (no permutation)
-justFisherdata = resFISHERodds$data_with_pval
+justFisherdata = copy(resFISHERodds$data_with_pval)
 justFisherdata[, resFISHERodds_p.value := p.value][, p.value := NULL]
 justFisherdata[, odds_ratio := observed_statistic][, observed_statistic := NULL]
 justFisherdata[, resFISHERodds_YmissingZ_perX := YmissingZ_perX][, YmissingZ_perX := NULL]
@@ -205,11 +205,11 @@ resJustFISHER = permuteFisherTestPval(justFisherdata, select_nodes = NULL, N = 1
 resJustFISHER$data_with_pval[, p.value := observed_statistic]
 resJustFISHER$data_with_pval[, observed_statistic := odds_ratio]
 resJustFISHER$data_with_pval[, fdr_pval := p.adjust(p.value, method = "fdr")]
-resJustFISHER005 = resJustFISHER
+resJustFISHER005 = copy(resJustFISHER)
 resJustFISHER005$data_with_pval = resJustFISHER$data_with_pval[fdr_pval < 0.05,]
-resJustFISHER01 = resJustFISHER
+resJustFISHER01 = copy(resJustFISHER)
 resJustFISHER01$data_with_pval = resJustFISHER$data_with_pval[fdr_pval < 0.1,]
-resJustFISHER001 = resJustFISHER
+resJustFISHER001 = copy(resJustFISHER)
 resJustFISHER001$data_with_pval = resJustFISHER$data_with_pval[fdr_pval < 0.01,]
 ```
 
