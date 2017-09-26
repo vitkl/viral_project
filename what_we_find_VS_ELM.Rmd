@@ -39,7 +39,7 @@ if(detectCores() <= 4) cores_to_use = detectCores() - 1
 if(detectCores() > 4) cores_to_use = 31
 
 # how many permutations?
-N_permut = 3
+N_permut = 30000
 ```
 
 # How many of the domains identified using our approach are in the ELM database (as compared to the population of all domains we tested)?
@@ -204,13 +204,64 @@ resJustFISHER = permuteFisherTestPval(justFisherdata, select_nodes = NULL, N = 1
 
 resJustFISHER$data_with_pval[, p.value := observed_statistic]
 resJustFISHER$data_with_pval[, observed_statistic := odds_ratio]
-resJustFISHER$data_with_pval[, fdr_pval := p.adjust(p.value, method = "fdr")]
+
+my.p.adjust = function(res, adj_by = "p.value", ...) {
+    if(class(res) != "XYZinteration_XZEmpiricalPval") stop("res should be the output of permutationPval()")
+    if("fdr_pval" %in% colnames(res$data_with_pval)) stop("p value has already been fdr-corrected")
+    columns = adj_by
+    adj_by = formula(paste0("~",adj_by))[[2]]
+    nodes = c(res$nodes$nodeX, res$nodes$nodeZ)
+    columns = c(nodes, columns)
+    temp = unique(res$data_with_pval[, c(columns), with = F])
+    temp[, fdr_pval := p.adjust(eval(adj_by), ...)]
+    res$data_with_pval = res$data_with_pval[temp, on = c(columns)]
+    res
+}
+resJustFISHER = my.p.adjust(resJustFISHER, method = "fdr")
 resJustFISHER005 = copy(resJustFISHER)
 resJustFISHER005$data_with_pval = resJustFISHER$data_with_pval[fdr_pval < 0.05,]
 resJustFISHER01 = copy(resJustFISHER)
 resJustFISHER01$data_with_pval = resJustFISHER$data_with_pval[fdr_pval < 0.1,]
 resJustFISHER001 = copy(resJustFISHER)
 resJustFISHER001$data_with_pval = resJustFISHER$data_with_pval[fdr_pval < 0.01,]
+
+# Fisher test gives the probability of the domain being enriched over the background P(D)
+# If we do just the Fisher test we see that the top-scoring domains (overwhelming majority) are those seen at count 1, we need to account for the probability of seeing different counts while looking at viral proteins individually
+# Permutations give the probability of seeing specific domain counts P(count)
+# P(cound|D) are the frequencies of each count as is while looking at viral proteins individually
+# We want to find P(D|count) = (P(count|D) * P(D)) / P(count)
+# P.D_count. = P.count_D. * P.D. / P.count.
+bayes = function(resJustFISHER, res_count, P.D. = "p.value", P.count. = "p.value", degree = "IDs_interactor_viral_degree", count = "domain_count_per_IDs_interactor_viral"){
+    if(identical(c(resJustFISHER$nodes$nodeX, resJustFISHER$nodes$nodeZ),
+                 c(res_count$nodes$nodeX, res_count$nodes$nodeZ))) {
+        nodes = c(res_count$nodes$nodeX, res_count$nodes$nodeZ)
+    } else stop("resJustFISHER and res_count contain data for different nodes")
+    count_data = unique(res_count$data_with_pval[, c(nodes, P.count., degree, count,"observed_statistic"), with = F])
+    count_data[, domains_per_prot := .N, by = .(eval(formula(paste0("~",res_count$nodes$nodeX))[[2]]))]
+    count_data[, P.count_D. := .N / domains_per_prot, 
+                   by = .(eval(formula("~observed_statistic")[[2]]),
+                                          eval(formula(paste0("~",res_count$nodes$nodeX))[[2]]))]
+    # count_data[, P.count_D. := eval(formula(paste0("~",count))[[2]]) / eval(formula(paste0("~",degree))[[2]])]
+    count_data[, P.count. := p.value]
+    count_data[, c("p.value", "observed_statistic", "domains_per_prot") := NULL]
+    
+    just_fisher = copy(resJustFISHER)
+    just_fisher$data_with_pval = just_fisher$data_with_pval[count_data, on = nodes]
+    just_fisher$data_with_pval[, P.D. := eval(formula(paste0("~",P.D.))[[2]])]
+    
+    just_fisher$data_with_pval[, P.D. := 1 - P.D.]
+    just_fisher$data_with_pval[, P.count_D. := P.count_D.]
+    just_fisher$data_with_pval[, P.count. := 1 - P.count.]
+    just_fisher$data_with_pval[, P.D_count. := P.count_D. * P.D. / P.count.]
+    
+    just_fisher$data_with_pval[, p.value := 1 - P.D_count.]
+    
+    just_fisher
+}
+
+resBayes = bayes(resJustFISHER, res_count)
+plot(resJustFISHER, IDs_interactor_viral + IDs_domain_human ~ fdr_pval)
+plot(resBayes, IDs_interactor_viral + IDs_domain_human ~ P.count_D.)
 ```
 
 ```{r calculate_pvals_freq_rev}
@@ -345,6 +396,9 @@ enrichmentresJustFISHER005 = runningTestEnrichment(resJustFISHER005, rank_by = "
 enrichmentresJustFISHER01 = runningTestEnrichment(resJustFISHER01, rank_by = "observed_statistic", name = "odds ratio: domain overrepresentation over the background, filtered by Fisher test pval 0.1", decreasing = T)
 enrichmentresJustFISHER001 = runningTestEnrichment(resJustFISHER001, rank_by = "observed_statistic", name = "odds ratio: domain overrepresentation over the background, filtered by Fisher test pval 0.01", decreasing = T)
 
+# Bayes
+enrichmentBayes = runningTestEnrichment(resBayes, name = "Bayesian approach: integrating count and domain probabilities P(D|count) = (P(count|D) * P(D)) / P(count)")
+
 
 random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25)){
     set.seed(seed)
@@ -389,7 +443,7 @@ save(list = ls(), file="./processed_data_files/what_we_find_VS_ELM_clust.RData")
 ## As we include more proteins, the number of known domains we find increases and then levels off (probably because some of the known domains do not interact with viral proteins).
 
 ```{r domains_found, fig.height = 9, fig.width = 10}
-plotEnrichment(enrichment, enrichment_justfreq, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
+plotEnrichment(enrichment, enrichmentBayes, enrichment_justfreq, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
                enrichment_count, enrichmentRev, enrichmentMix,
                enrichmentFISHERodds, enrichmentFISHER_justodds,
                enrichmentFISHERpval, enrichmentFISHER_justpval, enrichmentFISHERoddsBig,
