@@ -264,6 +264,39 @@ plot(resJustFISHER, IDs_interactor_viral + IDs_domain_human ~ fdr_pval)
 plot(resBayes, IDs_interactor_viral + IDs_domain_human ~ P.count_D.)
 ```
 
+```{r bayes2}
+bayes2 = function(resJustFISHER, res_count, P.D. = "p.value", P.count. = "p.value", degree = "IDs_interactor_viral_degree", count = "domain_count_per_IDs_interactor_viral"){
+    if(identical(c(resJustFISHER$nodes$nodeX, resJustFISHER$nodes$nodeZ),
+                 c(res_count$nodes$nodeX, res_count$nodes$nodeZ))) {
+        nodes = c(res_count$nodes$nodeX, res_count$nodes$nodeZ)
+    } else stop("resJustFISHER and res_count contain data for different nodes")
+    count_data = unique(res_count$data_with_pval[, c(nodes, P.count., degree, count,"observed_statistic"), with = F])
+    count_data[, domains_per_prot := .N, by = .(eval(formula(paste0("~",res_count$nodes$nodeZ))[[2]]))]
+    count_data[, P.count_D. := .N / domains_per_prot, 
+                   by = .(eval(formula("~observed_statistic")[[2]]),
+                                          eval(formula(paste0("~",res_count$nodes$nodeZ))[[2]]))]
+    # count_data[, P.count_D. := eval(formula(paste0("~",count))[[2]]) / eval(formula(paste0("~",degree))[[2]])]
+    count_data[, P.count. := p.value]
+    count_data[, c("p.value", "observed_statistic", "domains_per_prot") := NULL]
+    
+    just_fisher = copy(resJustFISHER)
+    just_fisher$data_with_pval = just_fisher$data_with_pval[count_data, on = nodes]
+    just_fisher$data_with_pval[, P.D. := eval(formula(paste0("~",P.D.))[[2]])]
+    
+    just_fisher$data_with_pval[, P.D. := 1 - P.D.]
+    just_fisher$data_with_pval[, P.count_D. := P.count_D.]
+    just_fisher$data_with_pval[, P.count. := 1 - P.count.]
+    just_fisher$data_with_pval[, P.D_count. := P.count_D. * P.D. / P.count.]
+    
+    just_fisher$data_with_pval[, p.value := 1 - P.D_count.]
+    
+    just_fisher
+}
+
+resBayes2 = bayes2(resJustFISHER, res_count)
+plot(resBayes2, IDs_interactor_viral + IDs_domain_human ~ P.count_D.)
+```
+
 ```{r calculate_pvals_freq_rev}
 # frequency function: set up standard parameters
 permuteFrequencyRev = function(data, select_nodes = NULL, also_permuteYZ = F){
@@ -400,6 +433,7 @@ enrichmentresJustFISHER001 = runningTestEnrichment(resJustFISHER001, rank_by = "
 
 # Bayes
 enrichmentBayes = runningTestEnrichment(resBayes, name = "Bayesian approach: integrating count and domain probabilities P(D|count) = (P(count|D) * P(D)) / P(count)")
+enrichmentBayes2 = runningTestEnrichment(resBayes2, name = "Bayesian approach 2: integrating count and domain probabilities P(D|count) = (P(count|D) * P(D)) / P(count)")
 
 
 random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25)){
