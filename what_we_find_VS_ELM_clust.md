@@ -46,7 +46,7 @@ proc.time() - time
 
 ```
 ##     user   system  elapsed 
-##   11.851    1.527 5113.930
+##   11.931    1.704 4215.334
 ```
 
 ```r
@@ -116,7 +116,7 @@ proc.time() - time
 
 ```
 ##     user   system  elapsed 
-##    7.882    2.747 4453.605
+##    8.040    2.299 2450.669
 ```
 
 ```r
@@ -132,7 +132,7 @@ save(list = ls(), file="./processed_data_files/what_we_find_VS_ELM_clust.RData")
 
 ```r
 # Fisher test: set up standard parameters
-permuteFisherTestPval = function(data, select_nodes = NULL, also_permuteYZ = F){
+permuteFisherTestPval = function(data, select_nodes = NULL, also_permuteYZ = F, N = N_permut){
     resFISHER = permutationPval(interactions2permute = IDs_interactor_viral ~ IDs_interactor_human, # first set of interacting pairs (XY) that are to be permuted
                                 associations2test = IDs_interactor_viral ~ IDs_domain_human, # set of interacting pairs to be tested (XZ), YZ interactions are assumed
                                 node_attr = list(IDs_interactor_viral ~ IDs_interactor_viral_degree, # attribute of X
@@ -142,12 +142,12 @@ permuteFisherTestPval = function(data, select_nodes = NULL, also_permuteYZ = F){
                                 statistic = IDs_interactor_viral + IDs_domain_human ~ fisher.test(
                                     matrix(c(domain_count_per_IDs_interactor_viral[1], 
                                              IDs_interactor_viral_degree[1] - domain_count_per_IDs_interactor_viral[1],
-                                             domain_count[1], 
-                                             N_prot_w_interactors[1] - domain_count[1]),
+                                             domain_count[1] - domain_count_per_IDs_interactor_viral[1], 
+                                             N_prot_w_interactors[1] - domain_count[1] - IDs_interactor_viral_degree[1] + domain_count_per_IDs_interactor_viral[1]),
                                            2,2), 
                                     alternative = "greater", conf.int = F)$p.value, # formula to calculate statisic by evaluating right-hand-side expression for each X and Z pair, right-hand-side expression is what is normally put in j in data.table DT[i, j, by], left-hand-side expression contains column names of X and Z which are used in by in data.table
                                 select_nodes = select_nodes, # select a subset of the data, only nodes 
-                                N = N_permut, # number of permutations
+                                N = N, # number of permutations
                                 cores = cores_to_use, seed = 1, also_permuteYZ = also_permuteYZ)
     # permutationPval returns the number of cases when permuted statitic is higher than the observed statistic (right tail of the distribution), in this case we are interested in the reverse - the lower tail, when p-values from permuted distribution that are lower than the observed p-value
     resFISHER$data_with_pval[, p.value := 1 - p.value]
@@ -157,17 +157,18 @@ permuteFisherTestPval = function(data, select_nodes = NULL, also_permuteYZ = F){
 # contingency matrix:
 matrix(c("domain_count_per_IDs_interactor_viral[1]", 
          "IDs_interactor_viral_degree[1] - domain_count_per_IDs_interactor_viral[1]",
-         "domain_count[1]", 
-         "N_prot_w_interactors[1] - domain_count[1]"),2,2)
+         "domain_count[1] - domain_count_per_IDs_interactor_viral[1]", 
+         "N_prot_w_interactors[1] - domain_count[1] - IDs_interactor_viral_degree[1] + domain_count_per_IDs_interactor_viral[1]"),
+       2,2)
 ```
 
 ```
 ##      [,1]                                                                       
 ## [1,] "domain_count_per_IDs_interactor_viral[1]"                                 
 ## [2,] "IDs_interactor_viral_degree[1] - domain_count_per_IDs_interactor_viral[1]"
-##      [,2]                                       
-## [1,] "domain_count[1]"                          
-## [2,] "N_prot_w_interactors[1] - domain_count[1]"
+##      [,2]                                                                                                                   
+## [1,] "domain_count[1] - domain_count_per_IDs_interactor_viral[1]"                                                           
+## [2,] "N_prot_w_interactors[1] - domain_count[1] - IDs_interactor_viral_degree[1] + domain_count_per_IDs_interactor_viral[1]"
 ```
 
 ```r
@@ -179,7 +180,7 @@ proc.time() - time
 
 ```
 ##     user   system  elapsed 
-##   16.757    2.580 3193.062
+##   17.527    2.288 3176.940
 ```
 
 ```r
@@ -200,8 +201,8 @@ permuteFisherTestOdds = function(data, select_nodes = NULL, also_permuteYZ = F){
                                 statistic = IDs_interactor_viral + IDs_domain_human ~ fisher.test(
                                     matrix(c(domain_count_per_IDs_interactor_viral[1], 
                                              IDs_interactor_viral_degree[1] - domain_count_per_IDs_interactor_viral[1],
-                                             domain_count[1], 
-                                             N_prot_w_interactors[1] - domain_count[1]),
+                                             domain_count[1] - domain_count_per_IDs_interactor_viral[1], 
+                                             N_prot_w_interactors[1] - domain_count[1] - IDs_interactor_viral_degree[1] + domain_count_per_IDs_interactor_viral[1]),
                                            2,2), 
                                     alternative = "greater", conf.int = F)$estimate, # formula to calculate statisic by evaluating right-hand-side expression for each X and Z pair, right-hand-side expression is what is normally put in j in data.table DT[i, j, by], left-hand-side expression contains column names of X and Z which are used in by in data.table
                                 select_nodes = select_nodes, # select a subset of the data, only nodes 
@@ -220,7 +221,7 @@ proc.time() - time
 
 ```
 ##     user   system  elapsed 
-##   15.079    2.877 2995.983
+##   17.305    2.588 2978.267
 ```
 
 ```r
@@ -233,13 +234,13 @@ plot(resFISHERodds, main = "Fisher test odds ratio: all proteins and domains")
 # permute IDs_interactor_viral ~ IDs_interactor_human: odds ratio, remove all small values
 time = proc.time()
 resFISHERoddsBig = permuteFisherTestOdds(data, select_nodes = list(IDs_domain_human ~ domain_count >= 15,
-                                                              IDs_interactor_viral ~ IDs_interactor_viral_degree >= 15))
+                                                                   IDs_interactor_viral ~ IDs_interactor_viral_degree >= 15))
 proc.time() - time
 ```
 
 ```
 ##     user   system  elapsed 
-##    8.822    2.382 2320.280
+##    9.276    2.140 2304.369
 ```
 
 ```r
@@ -250,7 +251,85 @@ plot(resFISHERoddsBig, main = "Fisher test odds ratio: removed small (>= 15)\ndo
 
 ```r
 save(resFISHERodds, file="./processed_data_files/what_we_find_VS_ELM_output_FISHER.RData")
+
+# Just FisherTest result (no permutation)
+justFisherdata = copy(resFISHERodds$data_with_pval)
+justFisherdata[, resFISHERodds_p.value := p.value][, p.value := NULL]
+justFisherdata[, odds_ratio := observed_statistic][, observed_statistic := NULL]
+justFisherdata[, resFISHERodds_YmissingZ_perX := YmissingZ_perX][, YmissingZ_perX := NULL]
+justFisherdata[, resFISHERodds_higher_counts := higher_counts][, higher_counts := NULL]
+justFisherdata[, resFISHERodds_not_missing := not_missing][, not_missing := NULL]
+
+resJustFISHER = permuteFisherTestPval(justFisherdata, select_nodes = NULL, N = 1)
+
+resJustFISHER$data_with_pval[, p.value := observed_statistic]
+resJustFISHER$data_with_pval[, observed_statistic := odds_ratio]
+
+my.p.adjust = function(res, adj_by = "p.value", ...) {
+    if(class(res) != "XYZinteration_XZEmpiricalPval") stop("res should be the output of permutationPval()")
+    if("fdr_pval" %in% colnames(res$data_with_pval)) stop("p value has already been fdr-corrected")
+    columns = adj_by
+    adj_by = formula(paste0("~",adj_by))[[2]]
+    nodes = c(res$nodes$nodeX, res$nodes$nodeZ)
+    columns = c(nodes, columns)
+    temp = unique(res$data_with_pval[, c(columns), with = F])
+    temp[, fdr_pval := p.adjust(eval(adj_by), ...)]
+    res$data_with_pval = res$data_with_pval[temp, on = c(columns)]
+    res
+}
+resJustFISHER = my.p.adjust(resJustFISHER, method = "fdr")
+resJustFISHER005 = copy(resJustFISHER)
+resJustFISHER005$data_with_pval = resJustFISHER$data_with_pval[fdr_pval < 0.05,]
+resJustFISHER01 = copy(resJustFISHER)
+resJustFISHER01$data_with_pval = resJustFISHER$data_with_pval[fdr_pval < 0.1,]
+resJustFISHER001 = copy(resJustFISHER)
+resJustFISHER001$data_with_pval = resJustFISHER$data_with_pval[fdr_pval < 0.01,]
+
+# Fisher test gives the probability of the domain being enriched over the background P(D)
+# If we do just the Fisher test we see that the top-scoring domains (overwhelming majority) are those seen at count 1, we need to account for the probability of seeing different counts while looking at viral proteins individually
+# Permutations give the probability of seeing specific domain counts P(count)
+# P(cound|D) are the frequencies of each count as is while looking at viral proteins individually
+# We want to find P(D|count) = (P(count|D) * P(D)) / P(count)
+# P.D_count. = P.count_D. * P.D. / P.count.
+bayes = function(resJustFISHER, res_count, P.D. = "p.value", P.count. = "p.value", degree = "IDs_interactor_viral_degree", count = "domain_count_per_IDs_interactor_viral"){
+    if(identical(c(resJustFISHER$nodes$nodeX, resJustFISHER$nodes$nodeZ),
+                 c(res_count$nodes$nodeX, res_count$nodes$nodeZ))) {
+        nodes = c(res_count$nodes$nodeX, res_count$nodes$nodeZ)
+    } else stop("resJustFISHER and res_count contain data for different nodes")
+    count_data = unique(res_count$data_with_pval[, c(nodes, P.count., degree, count,"observed_statistic"), with = F])
+    count_data[, domains_per_prot := .N, by = .(eval(formula(paste0("~",res_count$nodes$nodeX))[[2]]))]
+    count_data[, P.count_D. := .N / domains_per_prot, 
+                   by = .(eval(formula("~observed_statistic")[[2]]),
+                                          eval(formula(paste0("~",res_count$nodes$nodeX))[[2]]))]
+    # count_data[, P.count_D. := eval(formula(paste0("~",count))[[2]]) / eval(formula(paste0("~",degree))[[2]])]
+    count_data[, P.count. := p.value]
+    count_data[, c("p.value", "observed_statistic", "domains_per_prot") := NULL]
+    
+    just_fisher = copy(resJustFISHER)
+    just_fisher$data_with_pval = just_fisher$data_with_pval[count_data, on = nodes]
+    just_fisher$data_with_pval[, P.D. := eval(formula(paste0("~",P.D.))[[2]])]
+    
+    just_fisher$data_with_pval[, P.D. := 1 - P.D.]
+    just_fisher$data_with_pval[, P.count_D. := P.count_D.]
+    just_fisher$data_with_pval[, P.count. := 1 - P.count.]
+    just_fisher$data_with_pval[, P.D_count. := P.count_D. * P.D. / P.count.]
+    
+    just_fisher$data_with_pval[, p.value := 1 - P.D_count.]
+    
+    just_fisher
+}
+
+resBayes = bayes(resJustFISHER, res_count)
+plot(resJustFISHER, IDs_interactor_viral + IDs_domain_human ~ fdr_pval)
 ```
+
+![](/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/what_we_find_VS_ELM_clust_files/figure-html/calculate_pvals_FisherTest-4.png)<!-- -->
+
+```r
+plot(resBayes, IDs_interactor_viral + IDs_domain_human ~ P.count_D.)
+```
+
+![](/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/what_we_find_VS_ELM_clust_files/figure-html/calculate_pvals_FisherTest-5.png)<!-- -->
 
 
 ```r
@@ -277,7 +356,7 @@ proc.time() - time
 
 ```
 ##     user   system  elapsed 
-##    7.933    2.725 2176.559
+##    9.274    2.337 1729.791
 ```
 
 ```r
@@ -350,13 +429,14 @@ I did Fisher test to evaluate if the domains that we find are enriched in domain
 
 
 ```r
-testEnrichment = function(N, res, domains_known_mapped, random = F, name = ""){
+testEnrichment = function(N, res, rank_by = "p.value", domains_known_mapped, random = F, name = "", decreasing = F){
     if(random) {
-        res$data_pval = unique(res$data_with_pval[,.(IDs_interactor_viral, IDs_domain_human, p.value, domain_type, domain_count, IDs_interactor_viral_degree)])
+        res$data_pval = unique(res$data_with_pval[,c("IDs_interactor_viral", "IDs_domain_human", rank_by, "domain_type", "domain_count", "IDs_interactor_viral_degree"), with = F])
         domains_found = res$data_pval[sample(1:nrow(res$data_with_pval), N), unique(IDs_domain_human)]
     } else {
-        res$data_pval = unique(res$data_with_pval[,.(IDs_interactor_viral, IDs_domain_human, p.value, domain_type, domain_count, IDs_interactor_viral_degree)])
-        domains_found = res$data_pval[order(p.value, decreasing = F)[1:N], unique(IDs_domain_human)]
+        res$data_pval = unique(res$data_with_pval[,c("IDs_interactor_viral", "IDs_domain_human", rank_by, "domain_type", "domain_count", "IDs_interactor_viral_degree"), with = F])
+        ind = order(unlist(res$data_pval[, c(rank_by), with = F]), decreasing = decreasing)[1:N] 
+        domains_found = res$data_pval[ind, unique(IDs_domain_human)]
     }
     
     alldomains = res$data_with_pval[, unique(IDs_domain_human)]
@@ -368,30 +448,44 @@ testEnrichment = function(N, res, domains_known_mapped, random = F, name = ""){
     
     return(c(pval = test$p.value, odds_ratio = as.vector(test$estimate), count = table_res["TRUE", "TRUE"], name = name))
 }
-runningTestEnrichment = function(res, name){
-    enrichment = sapply(Ns, testEnrichment, res, domains_known_mapped, name = name)
-colnames(enrichment) = Ns
-return(enrichment)
+runningTestEnrichment = function(res, name, rank_by = "p.value", decreasing = F){
+    enrichment = sapply(Ns, testEnrichment, res = res, 
+                        domains_known_mapped = domains_known_mapped, 
+                        name = name, rank_by = rank_by, decreasing = decreasing)
+    colnames(enrichment) = Ns
+    return(enrichment)
 }
 
 Ns = seq(25, 500, 25)
 # frequency
-enrichment = runningTestEnrichment(res, name = "domain frequency among interactors of a viral protein")
-enrichment_low_back = runningTestEnrichment(res_low_back, name = "domain frequency: no low background")
-enrichment_low_deg = runningTestEnrichment(res_low_deg, name = "domain frequency: no degree of 1")
-enrichment_low_deg_back = runningTestEnrichment(res_low_deg_back, name = "domain frequency: no degree of 1 AND no low background")
+enrichment = runningTestEnrichment(res, name = "domain frequency among interactors of a viral protein, empirical pval")
+enrichment_justfreq = runningTestEnrichment(res, rank_by = "observed_statistic", name = "domain frequency among interactors of a viral protein, frequency")
+enrichment_low_back = runningTestEnrichment(res_low_back, name = "domain frequency: no low background, empirical pval")
+enrichment_low_deg = runningTestEnrichment(res_low_deg, name = "domain frequency: no degree of 1, empirical pval")
+enrichment_low_deg_back = runningTestEnrichment(res_low_deg_back, name = "domain frequency: no degree of 1 AND no low background, empirical pval")
 
 # reverse frequency and mix
-enrichmentRev = runningTestEnrichment(resRev, name = "viral protein frequency among proteins with a domain")
-enrichmentMix = runningTestEnrichment(mix, name = "mix of viral protein -> domain and domain -> viral protein")
+enrichmentRev = runningTestEnrichment(resRev, name = "viral protein frequency among proteins with a domain, empirical pval")
+enrichmentMix = runningTestEnrichment(mix, name = "mix of viral protein -> domain and domain -> viral protein, empirical pval")
 
 # count
-enrichment_count = runningTestEnrichment(res_count, name = "domain count among interactors of a viral protein")
+enrichment_count = runningTestEnrichment(res_count, name = "domain count among interactors of a viral protein, empirical pval")
 
 # Fisher test pval
-enrichmentFISHERodds = runningTestEnrichment(resFISHERodds, name = "Fisher test odds ratio: domain overrepresentation over the background")
-enrichmentFISHERpval = runningTestEnrichment(resFISHERpval, name = "Fisher test pval: domain overrepresentation over the background")
-enrichmentFISHERoddsBig = runningTestEnrichment(resFISHERoddsBig, name = "Fisher test odds ratio: domain overrepresentation over the background \n(background count and degree >= 15)")
+enrichmentFISHERodds = runningTestEnrichment(resFISHERodds, name = "Fisher test odds ratio: domain overrepresentation over the background, empirical pval")
+enrichmentFISHERpval = runningTestEnrichment(resFISHERpval, name = "Fisher test pval: domain overrepresentation over the background, empirical pval")
+enrichmentFISHER_justodds = runningTestEnrichment(resFISHERodds, rank_by = "observed_statistic", name = "odds ratio: domain overrepresentation over the background, decreasing rank", decreasing = T)
+enrichmentFISHER_justoddsIncreasing = runningTestEnrichment(resFISHERodds, rank_by = "observed_statistic", name = "odds ratio: domain overrepresentation over the background, increasing rank", decreasing = F)
+enrichmentFISHERpval = runningTestEnrichment(resFISHERpval, name = "Fisher test pval: domain overrepresentation over the background, empirical pval")
+enrichmentFISHER_justpval = runningTestEnrichment(resFISHERpval, rank_by = "observed_statistic", name = "Fisher test pval: domain overrepresentation over the background")
+enrichmentFISHERoddsBig = runningTestEnrichment(resFISHERoddsBig, name = "Fisher test odds ratio: domain overrepresentation over the background \n(background count and degree >= 15), empirical pval")
+
+enrichmentresJustFISHER005 = runningTestEnrichment(resJustFISHER005, rank_by = "observed_statistic", name = "odds ratio: domain overrepresentation over the background, filtered by Fisher test pval 0.05", decreasing = T)
+enrichmentresJustFISHER01 = runningTestEnrichment(resJustFISHER01, rank_by = "observed_statistic", name = "odds ratio: domain overrepresentation over the background, filtered by Fisher test pval 0.1", decreasing = T)
+enrichmentresJustFISHER001 = runningTestEnrichment(resJustFISHER001, rank_by = "observed_statistic", name = "odds ratio: domain overrepresentation over the background, filtered by Fisher test pval 0.01", decreasing = T)
+
+# Bayes
+enrichmentBayes = runningTestEnrichment(resBayes, name = "Bayesian approach: integrating count and domain probabilities P(D|count) = (P(count|D) * P(D)) / P(count)")
 
 
 random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25)){
@@ -401,7 +495,7 @@ random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25)){
     quantile_names = c("97.5% quantile", "75% quantile", "median", "25% quantile", "2.5% quantile")
     
     pval_temp = replicate(N, {
-        enrichmentRANDOM = sapply(Ns, testEnrichment, res, domains_known_mapped, random = T, name = "N random proteins")[1,]
+        enrichmentRANDOM = sapply(Ns, testEnrichment, res = res, domains_known_mapped = domains_known_mapped, random = T, name = "N random proteins")[1,]
         names(enrichmentRANDOM) = Ns
         as.numeric(enrichmentRANDOM)
     })
@@ -410,7 +504,7 @@ random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25)){
     colnames(pval) = Ns
     
     odds_ratio_temp = replicate(N, {
-        enrichmentRANDOM = sapply(Ns, testEnrichment, res, domains_known_mapped, random = T, name = "N random proteins")[2,]
+        enrichmentRANDOM = sapply(Ns, testEnrichment, res = res, domains_known_mapped = domains_known_mapped, random = T, name = "N random proteins")[2,]
         names(enrichmentRANDOM) = Ns
         as.numeric(enrichmentRANDOM)
     })
@@ -419,7 +513,7 @@ random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25)){
     colnames(odds_ratio) = Ns
     
     count_temp = replicate(N, {
-        enrichmentRANDOM = sapply(Ns, testEnrichment, res, domains_known_mapped, random = T, name = "N random proteins")[3,]
+        enrichmentRANDOM = sapply(Ns, testEnrichment, res = res, domains_known_mapped = domains_known_mapped, random = T, name = "N random proteins")[3,]
         names(enrichmentRANDOM) = Ns
         as.numeric(enrichmentRANDOM)
     })
@@ -438,8 +532,10 @@ save(list = ls(), file="./processed_data_files/what_we_find_VS_ELM_clust.RData")
 
 
 ```r
-plotEnrichment(enrichment, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
-               enrichment_count, enrichmentRev, enrichmentMix, enrichmentFISHERodds, enrichmentFISHERpval, enrichmentFISHERoddsBig,
+plotEnrichment(enrichment, enrichmentBayes, enrichment_justfreq, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
+               enrichment_count, enrichmentRev, enrichmentMix,
+               enrichmentFISHERodds, enrichmentFISHER_justodds,
+               enrichmentFISHERpval, enrichmentFISHER_justpval, enrichmentFISHERoddsBig,
                random_domains = enrichmentRANDOM, 
                domains_known_mapped = domains_known_mapped, type = "count", plot_type = "l")
 ```
@@ -450,8 +546,10 @@ plotEnrichment(enrichment, enrichment_low_back, enrichment_low_deg, enrichment_l
 
 
 ```r
-plotEnrichment(enrichment, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
-               enrichment_count, enrichmentRev, enrichmentMix, enrichmentFISHERodds, enrichmentFISHERpval, enrichmentFISHERoddsBig,
+plotEnrichment(enrichment, enrichment_justfreq, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
+               enrichment_count, enrichmentRev, enrichmentMix,
+               enrichmentFISHERodds, enrichmentFISHER_justodds,
+               enrichmentFISHERpval, enrichmentFISHER_justpval, enrichmentFISHERoddsBig,
                random_domains = enrichmentRANDOM, 
                domains_known_mapped = domains_known_mapped, type = "odds_ratio", plot_type = "l")
 ```
@@ -462,8 +560,10 @@ plotEnrichment(enrichment, enrichment_low_back, enrichment_low_deg, enrichment_l
 
 
 ```r
-plotEnrichment(enrichment, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
-               enrichment_count, enrichmentRev, enrichmentMix, enrichmentFISHERodds, enrichmentFISHERpval, enrichmentFISHERoddsBig,
+plotEnrichment(enrichment, enrichment_justfreq, enrichment_low_back, enrichment_low_deg, enrichment_low_deg_back,
+               enrichment_count, enrichmentRev, enrichmentMix,
+               enrichmentFISHERodds, enrichmentFISHER_justodds,
+               enrichmentFISHERpval, enrichmentFISHER_justpval, enrichmentFISHERoddsBig,
                random_domains = enrichmentRANDOM, 
                domains_known_mapped = domains_known_mapped, type = "pval", plot_type = "l")
 ```
@@ -553,7 +653,7 @@ Sys.Date()
 ```
 
 ```
-## [1] "2017-09-18"
+## [1] "2017-09-27"
 ```
 
 ```r

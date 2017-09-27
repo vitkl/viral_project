@@ -358,7 +358,9 @@ testEnrichment = function(N, res, rank_by = "p.value", domains_known_mapped, ran
     
     test = fisher.test(table(known, found), alternative = "greater", conf.int = T)
     
-    return(c(pval = test$p.value, odds_ratio = as.vector(test$estimate), count = table_res["TRUE", "TRUE"], name = name))
+    return(c(pval = test$p.value, odds_ratio = as.vector(test$estimate),
+             count = table_res["TRUE", "TRUE"], total_count = length(alldomains),
+             name = name))
 }
 runningTestEnrichment = function(res, name, rank_by = "p.value", decreasing = F){
     enrichment = sapply(Ns, testEnrichment, res = res, 
