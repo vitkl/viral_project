@@ -78,13 +78,16 @@ shinyServer(function(input, output, session) {
             legend_args = unlist(strsplit(legend_args, "\\|"))
             }
         par(mar = c(6,7,4,4))
+        print(as.logical(input$show_total_domains))
         plotEnrichment(runningTestEnrichmentlist = results2plot,
                        random_domains = enrichmentRANDOM, 
                        domains_known_mapped = domains_known_mapped,
                        type = input$enrich_plot_type, plot_type = "l",
                        plot_args = plot_args, legend_args = legend_args,
                        leg_pos_x = input$leg_pos_x,
-                       show_known_domains = as.logical(input$show_known_domains))
+                       show_known_domains = as.logical(input$show_known_domains),
+                       plot_total_domains_found = as.logical(input$show_total_domains)
+                       )
         # cex.lab = 2 cex = 2
     })
 })

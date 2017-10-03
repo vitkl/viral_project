@@ -39,7 +39,7 @@ if(detectCores() <= 4) cores_to_use = detectCores() - 1
 if(detectCores() > 4) cores_to_use = 31
 
 # how many permutations?
-N_permut = 30000
+N_permut = 50000
 ```
 
 # How many of the domains identified using our approach are in the ELM database (as compared to the population of all domains we tested)?
@@ -271,11 +271,11 @@ bayes2 = function(resJustFISHER, res_count, P.D. = "p.value", P.count. = "p.valu
         nodes = c(res_count$nodes$nodeX, res_count$nodes$nodeZ)
     } else stop("resJustFISHER and res_count contain data for different nodes")
     count_data = unique(res_count$data_with_pval[, c(nodes, P.count., degree, count,"observed_statistic"), with = F])
-    count_data[, domains_per_prot := .N, by = .(eval(formula(paste0("~",res_count$nodes$nodeZ))[[2]]))]
-    count_data[, P.count_D. := .N / domains_per_prot, 
-                   by = .(eval(formula("~observed_statistic")[[2]]),
-                                          eval(formula(paste0("~",res_count$nodes$nodeZ))[[2]]))]
-    # count_data[, P.count_D. := eval(formula(paste0("~",count))[[2]]) / eval(formula(paste0("~",degree))[[2]])]
+    count_data[, prots_per_domain := .N, by = .(eval(formula(paste0("~",res_count$nodes$nodeZ))[[2]]))]
+    #count_data[, P.count_D. := .N / prots_per_domain, 
+    #               by = .(eval(formula("~observed_statistic")[[2]]),
+    #                                      eval(formula(paste0("~",res_count$nodes$nodeZ))[[2]]))]
+    count_data[, P.count_D. := p.value]
     count_data[, P.count. := p.value]
     count_data[, c("p.value", "observed_statistic", "domains_per_prot") := NULL]
     
@@ -294,7 +294,7 @@ bayes2 = function(resJustFISHER, res_count, P.D. = "p.value", P.count. = "p.valu
 }
 
 resBayes2 = bayes2(resJustFISHER, res_count)
-plot(resBayes2, IDs_interactor_viral + IDs_domain_human ~ P.count_D.)
+plot(resBayes2, IDs_interactor_viral + IDs_domain_human ~ p.value)
 ```
 
 ```{r calculate_pvals_freq_rev}
@@ -392,7 +392,7 @@ testEnrichment = function(N, res, rank_by = "p.value", domains_known_mapped, ran
     test = fisher.test(table(known, found), alternative = "greater", conf.int = T)
     
     return(c(pval = test$p.value, odds_ratio = as.vector(test$estimate),
-             count = table_res["TRUE", "TRUE"], total_count = length(alldomains),
+             count = table_res["TRUE", "TRUE"], total_count = sum(as.logical(found)),
              name = name))
 }
 runningTestEnrichment = function(res, name, rank_by = "p.value", decreasing = F){
@@ -542,7 +542,8 @@ DT::datatable(restop100$data_with_pval[N_viral_per_human_w_domain >= 10,])
 ## R session information
 
 ```{r}
-save(list = ls(), file="./processed_data_files/what_we_find_VS_ELM_clust11092017.RData")
+filename = paste0("./processed_data_files/what_we_find_VS_ELM_clust",gsub("-","",Sys.Date()),".RData")
+save(list = ls(), file=filename)
 #R.utils::gzip(filename = "./processed_data_files/what_we_find_VS_ELM_clust11092017.RData",
 #              destname = "./processed_data_files/what_we_find_VS_ELM_clust11092017.RData.gz",
 #              remove = T, overwrite = T)

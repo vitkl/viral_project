@@ -8,7 +8,7 @@ shinyUI(pageWithSidebar(
     
     # Sidebar with a slider input for number of observations
     sidebarPanel(
-        textInput(inputId = "path", label = "path to *.RData file containing the results", value = "../processed_data_files/what_we_find_VS_ELM_clust.RData"),
+        textInput(inputId = "path", label = "path to *.RData file containing the results", value = "../processed_data_files/what_we_find_VS_ELM_clust11092017.RData"),
         selectInput(inputId = "enrich_plot_set", label = "Our prediction vs ELM domains: which results to compare?",
                     choices = "enrichment", selected = "enrichment", multiple = T),
         radioButtons(inputId = "enrich_plot_type", label = "Our prediction vs ELM domains: plot type",
@@ -17,6 +17,7 @@ shinyUI(pageWithSidebar(
         textInput(inputId = "enrich_legend_args", label = "Our prediction vs ELM domains: legend args (like \"cex = 1.5\", separated by pipes)", value = "cex = 2"),
         numericInput(inputId = "leg_pos_x", label = "legend x position", value = 100, min = 0, max = 2000),
         checkboxInput(inputId = "show_known_domains", label = "Show known domains (when plotting count)?", value = FALSE),
+        checkboxInput(inputId = "show_total_domains", label = "Show total domains found (when plotting count)?", value = FALSE),
         radioButtons(inputId = "bin2d_pval_plot_set", label = "Characteristics of top protein-domain pairs and pvalue distribution: which results to look at?",
                      choices = "unavailable"),
         textInput(inputId = "bin2d_plotname", label = "Characteristics of top protein-domain pairs: plot name", value = ""),
