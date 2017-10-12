@@ -184,7 +184,7 @@ runCompariMotif3 = function(input_file = "./SLIMFinder/result/motifs.txt",
                             dbpath = "./data_files/",
                             dburl = "http://elm.eu.org/elms/elms_index.tsv",
                             parameters = "unmatched=T motific=T", 
-                            out_file = "./SLIMFinder/comparimotif.tdt",
+                            out_file = "./SLIMFinder/result/comparimotif.tdt",
                             LSF_project_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/",
                             run = F){
     elm_filename = paste0(dbpath, Sys.Date(), "elms_index.tsv")
@@ -197,5 +197,6 @@ runCompariMotif3 = function(input_file = "./SLIMFinder/result/motifs.txt",
     if(run) system(command, wait = F)
     return(command)
 }
-runCompariMotif3(run = T)
+runCompariMotif3(slimpath = "../software/cluster/slimsuite/tools/",
+                 run = T)
 ```
