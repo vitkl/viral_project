@@ -153,7 +153,7 @@ all_commands = mQSLIMFinderCommand(file_list = forSLIMFinder_file_list,
 
 ```{r run}
 #if(tryCatch({system("bjobs", intern = T)}, error = function(e) e)$message != "error in running command") onLSF = T else onLSF = F
-runQSLIMFinder(commands = all_commands, onLSF = onLSF)
+runQSLIMFinder(commands = all_commands, onLSF = T)
 ```
 
 ## Read results
