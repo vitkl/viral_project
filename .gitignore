@@ -1,7 +1,8 @@
 /interproscan-5.24-63.0/
-/papers/
 /drafts/
 /data_files/
 /large_processed_data_files/
 .Rproj.user
 .Rhistory
+.RData
+/.RData/

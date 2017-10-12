@@ -1,0 +1,94 @@
+---
+title: 'Degree distribution in the human-human, human-viral and viral-viral network'
+author: "Vitalii Kleshchevnikov"
+date: "04/09/2017"
+output: 
+  html_document: 
+    keep_md: yes
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+packages = c("MItools", "rtracklayer", "ggplot2", "GGally", "RColorBrewer", "R.utils", "ontologyIndex")
+if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    # specifying mirror is necessary for some Linux systems
+    install.packages(packages_to_install, dependencies = T, repos = "http://mirrors.ebi.ac.uk/CRAN/")
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    source("https://bioconductor.org/biocLite.R")
+    biocLite(packages_to_install)
+    devtools::install_github("vitkl/MItools")
+}
+
+suppressPackageStartupMessages({
+    library(MItools)
+    library(rtracklayer)
+    library(ggplot2)
+    library(GGally)
+    library(RColorBrewer)
+    library(scales)
+    library(ontologyIndex)
+})
+```
+
+### Load PPI data and show degree distribution
+
+```{r load, fig.width=11, fig.height=8}
+# Load data.
+HumanViralPPI = loadHumanViralPPI(directory = "./data_files/")
+
+plotHumanViralDegree = function(degree_distributions, y_text = 2, median_text_size = 5.5){
+    ggplot(degree_distributions, aes(x = N, fill = legend, color = legend)) + geom_density() + facet_grid(legend ~ data_name) + theme_light() +
+        theme(strip.text.y = element_text(size = 18,angle = 0),
+              strip.text.x = element_text(size = 18,angle = 0),
+              panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
+              panel.background = element_rect(fill = '#FFFFFF', colour = 'grey'),
+              legend.position = "none",
+              axis.title = element_text(size = 18),
+              axis.text.x = element_text(size = 14)) +
+        scale_x_log10(breaks = c(1, 10, 100, 1000),
+                      labels = c(1, 10, 100, 1000)) +
+        xlab("N interacting partners per protein")+
+        geom_vline(aes(xintercept = medianN, color = legend)) + 
+        geom_text(aes(x = medianN*9.5,label = medianN_lab, y = y_text), color = "black", size = median_text_size)+
+        annotation_logticks(sides = "b", color = "#444444")
+}
+
+degree_distributions_all = humanViralDegree(data = HumanViralPPI,
+  directory = "./data_files/", data_name = "Full IntAct")
+plotHumanViralDegree(degree_distributions_all)
+```
+
+#### Degree distribution based on all data, two-hybrid or affinity purification - mass spectrometry
+
+```{r, degree_all_data, fig.width=16, fig.height=10}
+degree_distributions_two = humanViralDegree(data = HumanViralPPI,
+  directory = "./data_files/", Interaction_detection_methods = "MI:0018",
+  data_name = "two-hybrid data")
+degree_distributionsAPMS = humanViralDegree(data = HumanViralPPI,
+  directory = "./data_files/", Interaction_detection_methods = "MI:0004",
+  Identification_method = "MI:0433", PMIDs = NULL, inverse_filter = F,
+  data_name = "AP-MS data")
+degree_distributions = rbind(degree_distributions_all,degree_distributions_two,degree_distributionsAPMS)
+degree_distributions[, legend := gsub(":.+$","",legend)]
+p1 = plotHumanViralDegree(degree_distributions, y_text = 3)
+p1
+```
+
+#### Degree distribution within human network based on specific datasets (Vidal's and Mann's)
+
+```{r, degree_Vidal_data, fig.width=21, fig.height=8}
+degree_distributionsVidal = humanViralDegree(data = HumanViralPPI,
+  directory = "./data_files/", PMIDs = c("25416956", "unassigned1304"),
+  data_name = "Vidal's data \npublished and unpublished")
+degree_distributionsMann = humanViralDegree(data = HumanViralPPI,
+  directory = "./data_files/", PMIDs = "26496610",
+  data_name = "Mann's \n2015 paper")
+degree_distributions = rbind(degree_distributions,degree_distributionsVidal,degree_distributionsMann)
+degree_distributions[, legend := gsub(":.+$","",legend)]
+degree_distributions = degree_distributions[legend %in% c("full human-human", "viral-interacting proteins, human-human"),]
+p4 = plotHumanViralDegree(degree_distributions, y_text = 1, median_text_size = 7)
+p4
+```

@@ -26,4 +26,20 @@ export PATH
 make && make install
 
 
-./configure --prefix=/nfs/research2/thornton/veronika/R/ --enable-R-shlib 
+./configure --prefix=/nfs/research2/thornton/veronika/R/ --enable-R-shlib
+
+# https://blogs.msdn.microsoft.com/gpalem/2013/02/06/building-zeromq-package-for-r-rzmq-from-source/
+# configure zeromq
+./configure --prefix=/ebi/research/thornton/veronika/zeromq-4.2.2/ --exec-prefix=/nfs/research2/thornton/veronika/zeromq-4.2.2/
+
+# install rzmq
+export PKG_CONFIG_PATH=/ebi/research/thornton/veronika/zeromq-4.2.2/src/
+LD_LIBRARY_PATH=/ebi/research/thornton/veronika/zeromq-4.2.2/lib/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
+
+install.packages("rzmq", configure.vars = "INCLUDE_DIR=/ebi/research/thornton/veronika/zeromq-4.2.2/include LIB_DIR=/ebi/research/thornton/veronika/zeromq-4.2.2/lib/")
+
+# load rzmq
+LD_LIBRARY_PATH=/ebi/research/thornton/veronika/zeromq-4.2.2/lib/:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH
+library(rzmq)
