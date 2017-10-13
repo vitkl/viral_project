@@ -68,7 +68,7 @@ rm(list = ls()[!ls() %in% c("domain_res", "all_human_interaction", "all_viral_in
 
 # choose pvalue cutoff:
 plot(domain_res)
-proteins_w_signif_domains = unique(domain_res$data_with_pval[order(p.value, decreasing = F)[1:300], IDs_interactor_human])
+proteins_w_signif_domains = unique(domain_res$data_with_pval[order(p.value, decreasing = F)[1:100], IDs_interactor_human])
 ```
 
 ### prepare sets of protein sequences and instructions for SLIMFinder
@@ -152,7 +152,7 @@ all_commands = mQSLIMFinderCommand(file_list = forSLIMFinder_file_list,
 
 ```{r run}
 #if(tryCatch({system("bjobs", intern = T)}, error = function(e) e)$message != "error in running command") onLSF = T else onLSF = F
-runQSLIMFinder(commands = all_commands, onLSF = T)
+runQSLIMFinder(commands = all_commands, file_list = forSLIMFinder_file_list, onLSF = T)
 ```
 
 ## Read results
