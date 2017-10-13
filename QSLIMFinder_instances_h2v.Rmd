@@ -62,7 +62,7 @@ all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, d
 ## load results ofwhich domains are likely to mediate interaction
 ```{r load_results}
 # load the domain analysis results
-load("./processed_data_files/what_we_find_VS_ELM_clust.RData")
+load("./processed_data_files/what_we_find_VS_ELM_clust11092017.RData")
 domain_res = res
 rm(list = ls()[!ls() %in% c("domain_res", "all_human_interaction", "all_viral_interaction")])
 
@@ -81,7 +81,6 @@ all.fasta = readAAStringSet(filepath = "./data_files/all_human_viral_proteins.fa
 all_human_interaction = removeInteractionNoFASTA(all_human_interaction, all.fasta)
 all_viral_interaction = removeInteractionNoFASTA(all_viral_interaction, all.fasta)
 
-# all.fasta["Q77M19"] for some reason this name doesn't work for subsetting, that's why I need recodeFASTA()
 #all_viral_interaction$data = all_viral_interaction$data[IDs_interactor_A == "O60503",]
 #forSLIMFinder = listInteractionSubsetFASTA(interaction_set1 = all_human_interaction, 
 #                                           interaction_set2 = all_viral_interaction, 
@@ -199,4 +198,11 @@ runCompariMotif3 = function(input_file = "./SLIMFinder/result/motifs.txt",
 }
 runCompariMotif3(slimpath = "../software/cluster/slimsuite/tools/",
                  run = T)
+```
+
+```{r}
+filename = paste0("./processed_data_files/QSLIMFinder_instances_h2v_clust",gsub("-","",Sys.Date()),".RData")
+save(list = ls(), file=filename)
+Sys.Date()
+sessionInfo()
 ```
