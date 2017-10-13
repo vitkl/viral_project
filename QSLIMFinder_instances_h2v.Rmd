@@ -68,7 +68,7 @@ rm(list = ls()[!ls() %in% c("domain_res", "all_human_interaction", "all_viral_in
 
 # choose pvalue cutoff:
 plot(domain_res)
-proteins_w_signif_domains = unique(domain_res$data_with_pval[order(p.value, decreasing = F)[1:100], IDs_interactor_human])
+proteins_w_signif_domains = unique(domain_res$data_with_pval[order(p.value, decreasing = F)[1:50], IDs_interactor_human])
 ```
 
 ### prepare sets of protein sequences and instructions for SLIMFinder
@@ -171,6 +171,7 @@ writePatternList = function(QSLIMFinder_main_result, filename = "./motifs.txt") 
     fwrite(motifs, filename, sep = "\t")
 }
 
+if(!dir.exists("./SLIMFinder/result/")) dir.create("./SLIMFinder/result/")
 QSLIMFinder_main_result = readQSLIMFinderMain(file_list = forSLIMFinder_file_list)
 writePatternList(QSLIMFinder_main_result, filename = "./SLIMFinder/result/motifs.txt")
 ```
