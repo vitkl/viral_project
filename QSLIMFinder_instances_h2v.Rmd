@@ -68,7 +68,7 @@ rm(list = ls()[!ls() %in% c("domain_res", "all_human_interaction", "all_viral_in
 
 # choose pvalue cutoff:
 plot(domain_res)
-proteins_w_signif_domains = unique(domain_res$data_with_pval[order(p.value, decreasing = F)[1:50], IDs_interactor_human])
+proteins_w_signif_domains = unique(domain_res$data_with_pval[p.value < 0.5, IDs_interactor_human])
 ```
 
 ### prepare sets of protein sequences and instructions for SLIMFinder
@@ -94,7 +94,7 @@ forSLIMFinder = listInteractionSubsetFASTA(interaction_set1 = all_human_interact
                                            fasta = all.fasta,
                                            single_interact_from_set2 = T, set1_only = T)
 
-forSLIMFinder_Ready = filterInteractionSubsetFASTA_list(forSLIMFinder,  length_set1_min = 3, length_set2_min = 1)
+forSLIMFinder_Ready = filterInteractionSubsetFASTA_list(forSLIMFinder,  length_set1_min = 2, length_set2_min = 1)
 # how many viral-human pairs in which viral proteins interact with human protein (with relevant domain) but are not associated with the domain
 sum(!domainProteinPairMatch(forSLIMFinder_Ready, domain_res, remove = F))
 # how many viral-human pairs in which viral proteins interact with human protein (with relevant domain) and are associated with the domain
