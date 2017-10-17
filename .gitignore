@@ -6,3 +6,5 @@
 .Rhistory
 .RData
 /.RData/
+/SLIMFinder/log_dir/
+/SLIMFinder/output/

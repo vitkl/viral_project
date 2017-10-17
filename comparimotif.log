@@ -1,0 +1,465 @@
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:01	Activity Log for CompariMotif V3.13.0: Sun Oct 15 09:07:08 2017
+#DIR	00:00:01	Run from directory: /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project
+#ARG	00:00:01	Commandline arguments: motifs=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/motifs.txt searchdb=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/2017-10-15elms_index.tsv unmatched=T motific=T resfile=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/comparimotif.tdt
+#CMD	00:00:02	Full Command List: log=comparimotif.log ambcut=0 backups=F motifs=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/motifs.txt searchdb=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/2017-10-15elms_index.tsv unmatched=T motific=T resfile=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/comparimotif.tdt
+#VIO	00:00:02	Verbosity: 1; Interactivity: 0.
+#MOT	00:00:04	2 motifs read from /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/motifs.txt (32 lines): 2 retained.
+#SPLIT	00:00:07	Input motif "CLV_NRD_NRD_1" - (.RK)|(RR[^KR]) - split into 2 variants
+#SPLIT	00:00:07	2 of 2 CLV_NRD_NRD_1 variants added (not filtered)
+#SPLIT	00:00:07	Input motif "DEG_COP1_1" - [STDE]{1,3}.{0,2}[TSDE].{2,3}VP[STDE]G{0,1}[FLIMVYPA] - split into 6 variants
+#SPLIT	00:00:08	6 of 6 DEG_COP1_1 variants added (not filtered)
+#SPLIT	00:00:08	Input motif "DEG_CRL4_CDT2_1" - [NQ]{0,1}..[ILMV][ST][DEN][FY][FY].{2,3}[KR]{2,3}[^DE] - split into 4 variants
+#SPLIT	00:00:08	4 of 4 DEG_CRL4_CDT2_1 variants added (not filtered)
+#SPLIT	00:00:12	Input motif "DEG_CRL4_CDT2_2" - [NQ]{0,1}..[ILMV]T[DEN][HMFY][FMY].{2,3}[KR]{2,3}[^DE] - split into 4 variants
+#SPLIT	00:00:13	4 of 4 DEG_CRL4_CDT2_2 variants added (not filtered)
+#SPLIT	00:00:13	Input motif "DEG_MDM2_SWIB_1" - F[^P]{3}W[^P]{2,3}[VIL] - split into 2 variants
+#SPLIT	00:00:13	2 of 2 DEG_MDM2_SWIB_1 variants added (not filtered)
+#SPLIT	00:00:14	Input motif "DEG_Nend_Nbox_1" - ^M{0,1}[FYLIW][^P] - split into 2 variants
+#SPLIT	00:00:14	2 of 2 DEG_Nend_Nbox_1 variants added (not filtered)
+#SPLIT	00:00:15	Input motif "DEG_Nend_UBRbox_1" - ^M{0,1}[RK][^P]. - split into 2 variants
+#SPLIT	00:00:15	2 of 2 DEG_Nend_UBRbox_1 variants added (not filtered)
+#SPLIT	00:00:15	Input motif "DEG_Nend_UBRbox_2" - ^M{0,1}([ED]). - split into 2 variants
+#SPLIT	00:00:15	2 of 2 DEG_Nend_UBRbox_2 variants added (not filtered)
+#SPLIT	00:00:15	Input motif "DEG_Nend_UBRbox_3" - ^M{0,1}([NQ]). - split into 2 variants
+#SPLIT	00:00:16	2 of 2 DEG_Nend_UBRbox_3 variants added (not filtered)
+#SPLIT	00:00:16	Input motif "DEG_Nend_UBRbox_4" - ^M{0,1}(C). - split into 2 variants
+#SPLIT	00:00:16	2 of 2 DEG_Nend_UBRbox_4 variants added (not filtered)
+#SPLIT	00:00:17	Input motif "DOC_MAPK_DCC_7" - [RK].{2,4}[LIVP]P.[LIV].[LIVMF]|[RK].{2,4}[LIVP].P[LIV].[LIVMF] - split into 2 variants
+#SPLIT	00:00:17	2 of 2 DOC_MAPK_DCC_7 variants added (not filtered)
+#SPLIT	00:00:17	Input motif "DOC_MAPK_HePTP_8" - ([LIV][^P][^P][RK]....[LIVMP].[LIV].[LIVMF])|([LIV][^P][^P][RK][RK]G.{4,7}[LIVMP].[LIV].[LIVMF]) - split into 2 variants
+#SPLIT	00:00:17	2 of 2 DOC_MAPK_HePTP_8 variants added (not filtered)
+#SPLIT	00:00:18	Input motif "DOC_MAPK_gen_1" - [KR]{0,2}[KR].{0,2}[KR].{2,4}[ILVM].[ILVF] - split into 3 variants
+#SPLIT	00:00:19	3 of 3 DOC_MAPK_gen_1 variants added (not filtered)
+#SPLIT	00:00:19	Input motif "DOC_PP1_MyPhoNE_1" - R[^P][DEQ]Q[VIL]([RK][^P]|[^P][RK])[YW] - split into 2 variants
+#SPLIT	00:00:20	2 of 2 DOC_PP1_MyPhoNE_1 variants added (not filtered)
+#SPLIT	00:00:20	Input motif "DOC_PP2A_B56_1" - ([LMFYWIC]..I.E)|(L..[IVLWC].E). - split into 2 variants
+#SPLIT	00:00:21	2 of 2 DOC_PP2A_B56_1 variants added (not filtered)
+#SPLIT	00:00:21	Input motif "DOC_WD40_RPTOR_TOS_1" - F[EDQS][MILV][ED][MILV]((.{0,1}[ED])|($)) - split into 2 variants
+#SPLIT	00:00:21	2 of 2 DOC_WD40_RPTOR_TOS_1 variants added (not filtered)
+#REJECT	00:00:22	Formatting problem with LIG_14-3-3_CanoR_1 sequence R[^DE]{0,2}[^DEPG]([ST])(([FWYLMV].)|([^PRIKGN]P)|([^PRIKGN].{2,4}[VILMFWYP])): Rejected.
+#SPLIT	00:00:22	Input motif "LIG_14-3-3_CterR_2" - R[^DE]{0,2}[^DEPG]([ST])[^P]{0,1}$ - split into 6 variants
+#SPLIT	00:00:22	6 of 6 LIG_14-3-3_CterR_2 variants added (not filtered)
+#SPLIT	00:00:23	Input motif "LIG_Actin_WH2_1" - R..[ILVMF][ILMVF][^P][^P][ILVM].{4,7}L(([KR].)|(NK))[VATI] - split into 2 variants
+#SPLIT	00:00:23	2 of 2 LIG_Actin_WH2_1 variants added (not filtered)
+#SPLIT	00:00:24	Input motif "LIG_Actin_WH2_2" - [^R]..((.[ILMVF])|([ILMVF].))[^P][^P][ILVM].{4,7}L(([KR].)|(NK))[VATIGS] - split into 4 variants
+#SPLIT	00:00:24	4 of 4 LIG_Actin_WH2_2 variants added (not filtered)
+#SPLIT	00:00:25	Input motif "LIG_BIR_III_1" - ^M{0,1}A.P. - split into 2 variants
+#SPLIT	00:00:25	2 of 2 LIG_BIR_III_1 variants added (not filtered)
+#SPLIT	00:00:25	Input motif "LIG_BIR_III_3" - ^M{0,1}A.[AP]. - split into 2 variants
+#SPLIT	00:00:25	2 of 2 LIG_BIR_III_3 variants added (not filtered)
+#SPLIT	00:00:25	Input motif "LIG_BIR_II_1" - ^M{0,1}[AS]... - split into 2 variants
+#SPLIT	00:00:26	2 of 2 LIG_BIR_II_1 variants added (not filtered)
+#SPLIT	00:00:26	Input motif "LIG_CaMK_CASK_1" - ((SP)|([ED].{0,1}))[IV]W[IVL].R - split into 2 variants
+#SPLIT	00:00:26	2 of 2 LIG_CaMK_CASK_1 variants added (not filtered)
+#SPLIT	00:00:26	Input motif "LIG_CaM_IQ_9" - [ACLIVTM][^P][^P][ILVMFCT]Q[^P][^P][^P][RK][^P]{4,5}[RKQ][^P][^P] - split into 2 variants
+#SPLIT	00:00:27	2 of 2 LIG_CaM_IQ_9 variants added (not filtered)
+#SPLIT	00:00:27	Input motif "LIG_CtBP_PxDLS_1" - (P[LVIPME][DENS][LM][VASTRG])|(G[LVIPME][DENS][LM][VASTRG]((K)|(.[KR]))) - split into 3 variants
+#SPLIT	00:00:27	3 of 3 LIG_CtBP_PxDLS_1 variants added (not filtered)
+#SPLIT	00:00:28	Input motif "LIG_EF_ALG2_ABM_1" - P[PG]{0,1}YP.{1,6}Y[QS]{0,1}P - split into 4 variants
+#SPLIT	00:00:28	4 of 4 LIG_EF_ALG2_ABM_1 variants added (not filtered)
+#SPLIT	00:00:29	Input motif "LIG_EVH1_1" - ([FYWL]P.PP)|([FYWL]PP[ALIVTFY]P) - split into 2 variants
+#SPLIT	00:00:29	2 of 2 LIG_EVH1_1 variants added (not filtered)
+#SPLIT	00:00:30	Input motif "LIG_FZD_DVL_PDZ" - W.[VIL].[ST].KA{0,1}T...W - split into 2 variants
+#SPLIT	00:00:30	2 of 2 LIG_FZD_DVL_PDZ variants added (not filtered)
+#SPLIT	00:00:31	Input motif "LIG_GSK3_LRP6_1" - (([CP]PP)|(PP[TP]))[ST]P[^P][TS]{0,1} - split into 4 variants
+#SPLIT	00:00:31	4 of 4 LIG_GSK3_LRP6_1 variants added (not filtered)
+#SPLIT	00:00:31	Input motif "LIG_LRP6_Inhibitor_1" - ([VILA]..N.I[RK])|([VILA].PN.IG.{0,6}[RK]) - split into 2 variants
+#SPLIT	00:00:32	2 of 2 LIG_LRP6_Inhibitor_1 variants added (not filtered)
+#SPLIT	00:00:32	Input motif "LIG_PAM2_1" - ..[LFP][NS][PIVTAFL].A..(([FY].[PYLF])|(W..)). - split into 2 variants
+#SPLIT	00:00:32	2 of 2 LIG_PAM2_1 variants added (not filtered)
+#SPLIT	00:00:32	Input motif "LIG_PAM2_2" - ((WPP)|([FL][PV][APQ]))EF.PG.PWKG. - split into 2 variants
+#SPLIT	00:00:33	2 of 2 LIG_PAM2_2 variants added (not filtered)
+#SPLIT	00:00:33	Input motif "LIG_PCNA_PIPBox_1" - ((^.{0,3})|(Q)).[^FHWY][ILM][^P][^FHILVWYP][HFM][FMY].. - split into 2 variants
+#SPLIT	00:00:33	2 of 2 LIG_PCNA_PIPBox_1 variants added (not filtered)
+#SPLIT	00:00:34	Input motif "LIG_PTB_Apo_2" - (.[^P].NP.[FY].)|(.[ILVMFY].N..[FY].) - split into 2 variants
+#SPLIT	00:00:34	2 of 2 LIG_PTB_Apo_2 variants added (not filtered)
+#SPLIT	00:00:34	Input motif "LIG_PTB_Phospho_1" - (.[^P].NP.(Y))|(.[ILVMFY].N..(Y)) - split into 2 variants
+#SPLIT	00:00:35	2 of 2 LIG_PTB_Phospho_1 variants added (not filtered)
+#SPLIT	00:00:35	Input motif "LIG_Rb_LxCxE_1" - ([DEST]|^).{0,4}[LI].C.E.{1,4}[FLMIVAWPHY].{0,8}([DEST]|$) - split into 4 variants
+#SPLIT	00:00:35	4 of 4 LIG_Rb_LxCxE_1 variants added (not filtered)
+#SPLIT	00:00:36	Too many variants (60) for motif split: redefine LIG_SUMO_SIM_anti_2!
+#REJECT	00:00:36	Formatting problem with LIG_SUMO_SIM_anti_2 sequence [DEST]{1,10}.{0,1}[VIL][DESTVILMA][VIL][VILM].[DEST]{0,5}: Rejected.
+#SPLIT	00:00:36	Too many variants (60) for motif split: redefine LIG_SUMO_SIM_par_1!
+#REJECT	00:00:37	Formatting problem with LIG_SUMO_SIM_par_1 sequence [DEST]{0,5}.[VILPTM][VIL][DESTVILMA][VIL].{0,1}[DEST]{1,10}: Rejected.
+#SPLIT	00:00:37	Input motif "LIG_SxIP_EBH_1" - ([KR][^ED]{0,5}[ST].IP[^ED]{5,5})|([^ED]{5,5}[ST].IP[^ED]{0,5}[KR]) - split into 12 variants
+#SPLIT	00:00:38	12 of 12 LIG_SxIP_EBH_1 variants added (not filtered)
+#FORMAT	00:00:38	Motif LIG_TYR_ITAM contains wildcard spacer > 9 residues: REJECTED.
+#REJECT	00:00:39	Rejected LIG_TYR_ITAM: Max wildcard length (9) exceeded.
+#REJECT	00:00:39	Formatting problem with LIG_TYR_ITAM sequence [DEN]..(Y)..[LI].{6,12}(Y)..[LI]: Rejected.
+#SPLIT	00:00:39	Input motif "LIG_ULM_U2AF65_1" - [KR]{1,4}[KR].[KR]W. - split into 4 variants
+#SPLIT	00:00:39	4 of 4 LIG_ULM_U2AF65_1 variants added (not filtered)
+#SPLIT	00:00:40	Input motif "MOD_GlcNHglycan" - [ED]{0,3}.(S)[GA]. - split into 4 variants
+#SPLIT	00:00:40	4 of 4 MOD_GlcNHglycan variants added (not filtered)
+#SPLIT	00:00:40	Input motif "MOD_NMyristoyl" - ^M{0,1}(G)[^EDRKHPFYW]..[STAGCN][^P] - split into 2 variants
+#SPLIT	00:00:40	2 of 2 MOD_NMyristoyl variants added (not filtered)
+#SPLIT	00:00:41	Input motif "MOD_Plk_1" - .[DNE][^PG][ST](([FYILMVW]..)|([^PEDGKN][FWYLIVM]).) - split into 2 variants
+#SPLIT	00:00:41	2 of 2 MOD_Plk_1 variants added (not filtered)
+#SPLIT	00:00:41	Input motif "MOD_Plk_2-3" - [DE]..([ST])[EDILMVFWY](([DE].)|(.[DE])) - split into 2 variants
+#SPLIT	00:00:42	2 of 2 MOD_Plk_2-3 variants added (not filtered)
+#SPLIT	00:00:42	Input motif "MOD_SPalmitoyl_4" - ^M{0,1}G(C)..S[AKS] - split into 2 variants
+#SPLIT	00:00:43	2 of 2 MOD_SPalmitoyl_4 variants added (not filtered)
+#SPLIT	00:00:43	Input motif "TRG_ER_diArg_1" - ([LIVMFYWPR]R[^YFWDE]{0,1}R)|(R[^YFWDE]{0,1}R[LIVMFYWPR]) - split into 4 variants
+#SPLIT	00:00:43	4 of 4 TRG_ER_diArg_1 variants added (not filtered)
+#SPLIT	00:00:44	Input motif "TRG_NES_CRM1_1" - ([DEQ].{0,1}[LIM].{2,3}[LIVMF][^P]{2,3}[LMVF].[LMIV].{0,3}[DE])|([DE].{0,1}[LIM].{2,3}[LIVMF][^P]{2,3}[LMVF].[LMIV].{0,3}[DEQ]) - split into 4 variants
+#SPLIT	00:00:44	4 of 4 TRG_NES_CRM1_1 variants added (not filtered)
+#SPLIT	00:00:44	Input motif "TRG_NLS_Bipartite_1" - [KR][KR].{7,15}[^DE]((K[RK])|(RK))(([^DE][KR])|([KR][^DE]))[^DE] - split into 4 variants
+#FORMAT	00:00:45	Motif TRG_NLS_Bipartite_1_a contains wildcard spacer > 9 residues: REJECTED.
+#REJECT	00:00:45	Rejected TRG_NLS_Bipartite_1_a: Max wildcard length (9) exceeded.
+#REJECT	00:00:45	Formatting problem with TRG_NLS_Bipartite_1_a sequence [KR][KR].{7,15}[^DE]K[RK][KR][^DE][^DE]: Rejected.
+#FORMAT	00:00:46	Motif TRG_NLS_Bipartite_1_b contains wildcard spacer > 9 residues: REJECTED.
+#REJECT	00:00:46	Rejected TRG_NLS_Bipartite_1_b: Max wildcard length (9) exceeded.
+#REJECT	00:00:46	Formatting problem with TRG_NLS_Bipartite_1_b sequence [KR][KR].{7,15}[^DE]K[RK][^DE][KR][^DE]: Rejected.
+#FORMAT	00:00:46	Motif TRG_NLS_Bipartite_1_c contains wildcard spacer > 9 residues: REJECTED.
+#REJECT	00:00:47	Rejected TRG_NLS_Bipartite_1_c: Max wildcard length (9) exceeded.
+#REJECT	00:00:47	Formatting problem with TRG_NLS_Bipartite_1_c sequence [KR][KR].{7,15}[^DE]RK[KR][^DE][^DE]: Rejected.
+#FORMAT	00:00:47	Motif TRG_NLS_Bipartite_1_d contains wildcard spacer > 9 residues: REJECTED.
+#REJECT	00:00:48	Rejected TRG_NLS_Bipartite_1_d: Max wildcard length (9) exceeded.
+#REJECT	00:00:48	Formatting problem with TRG_NLS_Bipartite_1_d sequence [KR][KR].{7,15}[^DE]RK[^DE][KR][^DE]: Rejected.
+#SPLIT	00:00:48	0 of 4 TRG_NLS_Bipartite_1 variants added (not filtered)
+#REM	00:00:49	Removed 0 TRG_NLS_Bipartite_1 variants: other variants filtered.
+#SPLIT	00:00:49	Input motif "TRG_NLS_MonoCore_2" - [^DE]((K[RK])|(RK))[KRP][KR][^DE] - split into 2 variants
+#SPLIT	00:00:49	2 of 2 TRG_NLS_MonoCore_2 variants added (not filtered)
+#SPLIT	00:00:49	Input motif "TRG_NLS_MonoExtC_3" - [^DE]((K[RK])|(RK))(([^DE][KR])|([KR][^DE]))(([PKR])|([^DE][DE])) - split into 8 variants
+#SPLIT	00:00:49	8 of 8 TRG_NLS_MonoExtC_3 variants added (not filtered)
+#SPLIT	00:00:50	Input motif "TRG_NLS_MonoExtN_4" - (([PKR].{0,1}[^DE])|([PKR]))((K[RK])|(RK))(([^DE][KR])|([KR][^DE]))[^DE] - split into 8 variants
+#SPLIT	00:00:50	8 of 8 TRG_NLS_MonoExtN_4 variants added (not filtered)
+#SPLIT	00:00:51	Input motif "TRG_PTS1" - (.[SAPTC][KRH][LMFI]$)|([KRH][SAPTC][NTS][LMFI]$) - split into 2 variants
+#SPLIT	00:00:51	2 of 2 TRG_PTS1 variants added (not filtered)
+#FORMAT	00:00:52	Motif TRG_PTS2 contains wildcard spacer > 9 residues: REJECTED.
+#REJECT	00:00:52	Rejected TRG_PTS2: Max wildcard length (9) exceeded.
+#REJECT	00:00:53	Formatting problem with TRG_PTS2 sequence ^.{1,40}R[^P][^P][^P][LIV][^P][^P][HQ][LIF]: Rejected.
+#MOT	00:00:53	267 motifs read from /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/2017-10-15elms_index.tsv (268 lines): 362 retained.
+#OUT	00:00:54	362 motifs output to /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/2017-10-15elms_index.split.motifs in SLiMSuite format.
+#COMP	00:01:01	Comparing MotifFile & SearchDB: 724 comparisons made.
+#COMP	00:01:02	17 motif matches output to /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/comparimotif.compare.tdt. Rank by "Score" column.
+#COMP	00:01:02	0 input motifs unmatched.
+#NON	00:01:04	0 unmatched motifs output to /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/comparimotif.unmatched.txt.
+#XGMML	00:01:05	Output of XGMML file /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/comparimotif.compare.xgmml for Cytoscape complete.
+#LOG	00:01:05	CompariMotif V:3.13.0 End: Sun Oct 15 09:08:13 2017
+#~~#	#~+~~+~#	#~~#
+#LOG	00:00:00	Activity Log for CompariMotif V3.13.0: Mon Oct 16 02:04:11 2017
+#DIR	00:00:00	Run from directory: /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project
+#ARG	00:00:00	Commandline arguments: motifs=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/motifs.txt searchdb=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/2017-10-16elms_index.tsv unmatched=T motific=T resfile=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/comparimotif.tdt
+#CMD	00:00:00	Full Command List: log=comparimotif.log ambcut=0 backups=F motifs=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/motifs.txt searchdb=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/2017-10-16elms_index.tsv unmatched=T motific=T resfile=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/comparimotif.tdt
+#VIO	00:00:00	Verbosity: 1; Interactivity: 0.
+#REM	00:00:01	Motif interactors_of.O15439.P06460<#< ("<") has no discernable positions
+#REM	00:00:01	Motif interactors_of.O15439.P06792<#< ("<") has no discernable positions
+#REM	00:00:01	Motif interactors_of.O15439.P06927<#< ("<") has no discernable positions
+#REM	00:00:01	Motif interactors_of.O15444.P24766<#< ("<") has no discernable positions
+#REM	00:00:01	Motif interactors_of.O15444.P34015<#< ("<") has no discernable positions
+#REM	00:00:02	Motif interactors_of.O43291.P69616<#< ("<") has no discernable positions
+#REM	00:00:02	Motif interactors_of.O60486.P08563-PRO_0000041302<#< ("<") has no discernable positions
+#REM	00:00:03	Motif interactors_of.O94983.Q91B85<#< ("<") has no discernable positions
+#REM	00:00:03	Motif interactors_of.O94983.Q9E7P0<#< ("<") has no discernable positions
+#REM	00:00:03	Motif interactors_of.P01106.P03070>#> (">") has no discernable positions
+#REM	00:00:03	Motif interactors_of.P05412.P03129>#> (">") has no discernable positions
+#REM	00:00:03	Motif interactors_of.P05412.P0C746>#> (">") has no discernable positions
+#REM	00:00:03	Motif interactors_of.P05412.Q9DGW5>#> (">") has no discernable positions
+#REM	00:00:03	Motif interactors_of.P08246.P0C1C6<#< ("<") has no discernable positions
+#REM	00:00:04	Motif interactors_of.P22309.Q9WMX2-PRO_0000037550<#< ("<") has no discernable positions
+#REM	00:00:04	Motif interactors_of.P22310.Q9WMX2-PRO_0000037550<#< ("<") has no discernable positions
+#REM	00:00:04	Motif interactors_of.P22692.P03220<#< ("<") has no discernable positions
+#REM	00:00:05	Motif interactors_of.P30464.P04578<#< ("<") has no discernable positions
+#REM	00:00:05	Motif interactors_of.P30484.P04578<#< ("<") has no discernable positions
+#REM	00:00:05	Motif interactors_of.P30510.P04578<#< ("<") has no discernable positions
+#REM	00:00:06	Motif interactors_of.P51523.P03118<#< ("<") has no discernable positions
+#REM	00:00:06	Motif interactors_of.P51523.P06422<#< ("<") has no discernable positions
+#REM	00:00:06	Motif interactors_of.P51523.P06921<#< ("<") has no discernable positions
+#REM	00:00:06	Motif interactors_of.P51523.P36780<#< ("<") has no discernable positions
+#REM	00:00:07	Motif interactors_of.Q14332.P06792<#< ("<") has no discernable positions
+#REM	00:00:07	Motif interactors_of.Q14332.P06927<#< ("<") has no discernable positions
+#REM	00:00:07	Motif interactors_of.Q15485.Q9WMX2-PRO_0000037550<#< ("<") has no discernable positions
+#REM	00:00:08	Motif interactors_of.Q16587.B4URF7<#< ("<") has no discernable positions
+#REM	00:00:08	Motif interactors_of.Q16587.H9XIJ5<#< ("<") has no discernable positions
+#REM	00:00:08	Motif interactors_of.Q29960.P04578<#< ("<") has no discernable positions
+#REM	00:00:08	Motif interactors_of.Q5JSL3.Q69117<#< ("<") has no discernable positions
+#REM	00:00:08	Motif interactors_of.Q68CP9.Q88489<#< ("<") has no discernable positions
+#REM	00:00:08	Motif interactors_of.Q68CP9.Q91B85<#< ("<") has no discernable positions
+#REM	00:00:09	Motif interactors_of.Q68CP9.Q91NH1<#< ("<") has no discernable positions
+#REM	00:00:09	Motif interactors_of.Q6UB98.Q9WMX2-PRO_0000037548<#< ("<") has no discernable positions
+#REM	00:00:09	Motif interactors_of.Q6XUX3.P03427<#< ("<") has no discernable positions
+#REM	00:00:09	Motif interactors_of.Q6ZU65.D0UZU1<#< ("<") has no discernable positions
+#REM	00:00:09	Motif interactors_of.Q7L0J3.Q77M19<#< ("<") has no discernable positions
+#REM	00:00:09	Motif interactors_of.Q7L622.P36778<#< ("<") has no discernable positions
+#REM	00:00:10	Motif interactors_of.Q8IWT6.P06461<#< ("<") has no discernable positions
+#REM	00:00:10	Motif interactors_of.Q8IWT6.P69901<#< ("<") has no discernable positions
+#REM	00:00:10	Motif interactors_of.Q8IZ26.P03427<#< ("<") has no discernable positions
+#REM	00:00:10	Motif interactors_of.Q8N567.O92597<#< ("<") has no discernable positions
+#REM	00:00:10	Motif interactors_of.Q8N883.P03410<#< ("<") has no discernable positions
+#REM	00:00:11	Motif interactors_of.Q8N883.P14079<#< ("<") has no discernable positions
+#REM	00:00:11	Motif interactors_of.Q8NEZ2.P29991-PRO_0000037946<#< ("<") has no discernable positions
+#REM	00:00:11	Motif interactors_of.Q8TAS6.P0C762<#< ("<") has no discernable positions
+#REM	00:00:11	Motif interactors_of.Q8TB52.P03427<#< ("<") has no discernable positions
+#REM	00:00:11	Motif interactors_of.Q8TBM8.P06461<#< ("<") has no discernable positions
+#REM	00:00:12	Motif interactors_of.Q8TBX8.D0UZU1<#< ("<") has no discernable positions
+#REM	00:00:12	Motif interactors_of.Q92782.Q9WMX2-PRO_0000037548<#< ("<") has no discernable positions
+#REM	00:00:12	Motif interactors_of.Q95604.P04578<#< ("<") has no discernable positions
+#REM	00:00:12	Motif interactors_of.Q96AM1.P06460<#< ("<") has no discernable positions
+#REM	00:00:12	Motif interactors_of.Q96AM1.P06792<#< ("<") has no discernable positions
+#REM	00:00:13	Motif interactors_of.Q96AM1.P06927<#< ("<") has no discernable positions
+#REM	00:00:13	Motif interactors_of.Q96AM1.P0C739<#< ("<") has no discernable positions
+#REM	00:00:13	Motif interactors_of.Q96AX2.P03427<#< ("<") has no discernable positions
+#REM	00:00:14	Motif interactors_of.Q96DH6.Q99IB8-PRO_0000045592<#< ("<") has no discernable positions
+#REM	00:00:14	Motif interactors_of.Q96GW7.Q9WMX2-PRO_0000037548<#< ("<") has no discernable positions
+#REM	00:00:14	Motif interactors_of.Q96JJ3.Q99IB8-PRO_0000045599<#< ("<") has no discernable positions
+#REM	00:00:14	Motif interactors_of.Q96JP5.P04608<#< ("<") has no discernable positions
+#REM	00:00:15	Motif interactors_of.Q96LT9.P06429<#< ("<") has no discernable positions
+#REM	00:00:15	Motif interactors_of.Q96M69.P03427<#< ("<") has no discernable positions
+#REM	00:00:15	Motif interactors_of.Q96NY8.Q786F2<#< ("<") has no discernable positions
+#REM	00:00:15	Motif interactors_of.Q96PE1.P06792<#< ("<") has no discernable positions
+#REM	00:00:16	Motif interactors_of.Q96RI1-2.O41949<#< ("<") has no discernable positions
+#REM	00:00:16	Motif interactors_of.Q96RQ1.P04578<#< ("<") has no discernable positions
+#REM	00:00:16	Motif interactors_of.Q96T23.P03118<#< ("<") has no discernable positions
+#REM	00:00:16	Motif interactors_of.Q96T23.P03120<#< ("<") has no discernable positions
+#REM	00:00:17	Motif interactors_of.Q96T23.P04015<#< ("<") has no discernable positions
+#REM	00:00:17	Motif interactors_of.Q96T23.P06422<#< ("<") has no discernable positions
+#REM	00:00:17	Motif interactors_of.Q96T23.P06423<#< ("<") has no discernable positions
+#REM	00:00:18	Motif interactors_of.Q96T23.P06790<#< ("<") has no discernable positions
+#REM	00:00:18	Motif interactors_of.Q96T23.P06921<#< ("<") has no discernable positions
+#REM	00:00:19	Motif interactors_of.Q96T23.P24830<#< ("<") has no discernable positions
+#REM	00:00:19	Motif interactors_of.Q96T23.P36778<#< ("<") has no discernable positions
+#REM	00:00:19	Motif interactors_of.Q96T23.P36780<#< ("<") has no discernable positions
+#REM	00:00:19	Motif interactors_of.Q96T23.Q77UU1<#< ("<") has no discernable positions
+#REM	00:00:20	Motif interactors_of.Q99435.Q9WMX2-PRO_0000037548<#< ("<") has no discernable positions
+#REM	00:00:20	Motif interactors_of.Q99675.P0C739<#< ("<") has no discernable positions
+#REM	00:00:20	Motif interactors_of.Q99715.P29991-PRO_0000037946<#< ("<") has no discernable positions
+#REM	00:00:20	Motif interactors_of.Q99986.P27958-PRO_0000037566<#< ("<") has no discernable positions
+#REM	00:00:21	Motif interactors_of.Q9BTY7.Q9Q2G4<#< ("<") has no discernable positions
+#REM	00:00:21	Motif interactors_of.Q9BV36.Q88489<#< ("<") has no discernable positions
+#REM	00:00:22	Motif interactors_of.Q9BV36.Q91B85<#< ("<") has no discernable positions
+#REM	00:00:22	Motif interactors_of.Q9BV36.Q91NH1<#< ("<") has no discernable positions
+#REM	00:00:22	Motif interactors_of.Q9C037.P03468<#< ("<") has no discernable positions
+#REM	00:00:23	Motif interactors_of.Q9C0H6.Q98143<#< ("<") has no discernable positions
+#REM	00:00:23	Motif interactors_of.Q9H0C2.Q9WPI5<#< ("<") has no discernable positions
+#REM	00:00:23	Motif interactors_of.Q9H0H3.P06788<#< ("<") has no discernable positions
+#REM	00:00:24	Motif interactors_of.Q9H0U3.P04578-PRO_0000038427<#< ("<") has no discernable positions
+#REM	00:00:24	Motif interactors_of.Q9H2K8.O40939<#< ("<") has no discernable positions
+#REM	00:00:24	Motif interactors_of.Q9H2X3.Q03463-PRO_0000278734<#< ("<") has no discernable positions
+#REM	00:00:25	Motif interactors_of.Q9H3Q1.P03433<#< ("<") has no discernable positions
+#REM	00:00:25	Motif interactors_of.Q9H694.Q2MG95<#< ("<") has no discernable positions
+#REM	00:00:25	Motif interactors_of.Q9H7Z7.P0DOE9<#< ("<") has no discernable positions
+#REM	00:00:25	Motif interactors_of.Q9HCB6.Q9WMX2-PRO_0000037548<#< ("<") has no discernable positions
+#REM	00:00:26	Motif interactors_of.Q9HCS5.P27958-PRO_0000037566<#< ("<") has no discernable positions
+#REM	00:00:26	Motif interactors_of.Q9HCU4.Q9WMX2-PRO_0000037548<#< ("<") has no discernable positions
+#REM	00:00:27	Motif interactors_of.Q9NP58.P69901<#< ("<") has no discernable positions
+#REM	00:00:27	Motif interactors_of.Q9NPG3.D0UZU1<#< ("<") has no discernable positions
+#REM	00:00:27	Motif interactors_of.Q9NR31.Q99IB8-PRO_0000045597<#< ("<") has no discernable positions
+#REM	00:00:27	Motif interactors_of.Q9NR55.Q9DGW5<#< ("<") has no discernable positions
+#REM	00:00:28	Motif interactors_of.Q9NRD1.P04578-PRO_0000038428<#< ("<") has no discernable positions
+#REM	00:00:28	Motif interactors_of.Q9NRF9.Q9Q2G4<#< ("<") has no discernable positions
+#REM	00:00:28	Motif interactors_of.Q9NRK6.P12520<#< ("<") has no discernable positions
+#REM	00:00:28	Motif interactors_of.Q9NRY4.P03129<#< ("<") has no discernable positions
+#REM	00:00:29	Motif interactors_of.Q9NS15.Q91B85<#< ("<") has no discernable positions
+#REM	00:00:29	Motif interactors_of.Q9NS37.P0C746<#< ("<") has no discernable positions
+#REM	00:00:29	Motif interactors_of.Q9NSY0.P03427<#< ("<") has no discernable positions
+#REM	00:00:29	Motif interactors_of.Q9NX20.P03466<#< ("<") has no discernable positions
+#REM	00:00:30	Motif interactors_of.Q9NX74.O92551<#< ("<") has no discernable positions
+#REM	00:00:30	Motif interactors_of.Q9NX74.P03496<#< ("<") has no discernable positions
+#REM	00:00:30	Motif interactors_of.Q9NX74.Q0A2H0<#< ("<") has no discernable positions
+#REM	00:00:30	Motif interactors_of.Q9NX74.Q20MH3<#< ("<") has no discernable positions
+#REM	00:00:31	Motif interactors_of.Q9NX74.Q2PJP0<#< ("<") has no discernable positions
+#REM	00:00:31	Motif interactors_of.Q9NX74.Q3SBS4<#< ("<") has no discernable positions
+#REM	00:00:31	Motif interactors_of.Q9NX74.Q6DP93<#< ("<") has no discernable positions
+#REM	00:00:31	Motif interactors_of.Q9NXR1.P03182<#< ("<") has no discernable positions
+#REM	00:00:32	Motif interactors_of.Q9NXZ2.P03427<#< ("<") has no discernable positions
+#REM	00:00:32	Motif interactors_of.Q9NY15.Q9WMX2-PRO_0000037548<#< ("<") has no discernable positions
+#REM	00:00:33	Motif interactors_of.Q9NYI0.B4URF7<#< ("<") has no discernable positions
+#REM	00:00:33	Motif interactors_of.Q9NYI0.C5E527<#< ("<") has no discernable positions
+#REM	00:00:33	Motif interactors_of.Q9NYI0.P03428<#< ("<") has no discernable positions
+#REM	00:00:33	Motif interactors_of.Q9NYL2.P0CK56<#< ("<") has no discernable positions
+#REM	00:00:34	Motif interactors_of.Q9NZC9.B2BUF1<#< ("<") has no discernable positions
+#REM	00:00:34	Motif interactors_of.Q9NZL9.O40945<#< ("<") has no discernable positions
+#REM	00:00:34	Motif interactors_of.Q9NZV5.P06927<#< ("<") has no discernable positions
+#REM	00:00:34	Motif interactors_of.Q9P0V9.Q9WMX2-PRO_0000037548<#< ("<") has no discernable positions
+#REM	00:00:35	Motif interactors_of.Q9P2J8.P03427<#< ("<") has no discernable positions
+#REM	00:00:35	Motif interactors_of.Q9P2N5.O92597<#< ("<") has no discernable positions
+#REM	00:00:35	Motif interactors_of.Q9UBS3.P06461<#< ("<") has no discernable positions
+#REM	00:00:35	Motif interactors_of.Q9UDV7.C5E524<#< ("<") has no discernable positions
+#REM	00:00:35	Motif interactors_of.Q9UHF7.Q9Q2G4<#< ("<") has no discernable positions
+#REM	00:00:35	Motif interactors_of.Q9UHW5.Q98140<#< ("<") has no discernable positions
+#REM	00:00:35	Motif interactors_of.Q9UIA0.P03508<#< ("<") has no discernable positions
+#REM	00:00:35	Motif interactors_of.Q9UJJ9.P03182<#< ("<") has no discernable positions
+#REM	00:00:36	Motif interactors_of.Q9UL63.Q98143<#< ("<") has no discernable positions
+#REM	00:00:36	Motif interactors_of.Q9ULD4.P03427<#< ("<") has no discernable positions
+#REM	00:00:36	Motif interactors_of.Q9UM11.P03118<#< ("<") has no discernable positions
+#REM	00:00:36	Motif interactors_of.Q9UM11.P06422<#< ("<") has no discernable positions
+#REM	00:00:36	Motif interactors_of.Q9UM11.P06921<#< ("<") has no discernable positions
+#REM	00:00:36	Motif interactors_of.Q9UM11.P36778<#< ("<") has no discernable positions
+#REM	00:00:36	Motif interactors_of.Q9UM11.P36780<#< ("<") has no discernable positions
+#REM	00:00:36	Motif interactors_of.Q9UM47.P0CK56<#< ("<") has no discernable positions
+#REM	00:00:37	Motif interactors_of.Q9UNK9.B4URF7<#< ("<") has no discernable positions
+#REM	00:00:37	Motif interactors_of.Q9UPN3.B4URF7<#< ("<") has no discernable positions
+#REM	00:00:37	Motif interactors_of.Q9UPU7.Q9WMX2-PRO_0000037548<#< ("<") has no discernable positions
+#REM	00:00:38	Motif interactors_of.Q9UPY6.O40939<#< ("<") has no discernable positions
+#REM	00:00:38	Motif interactors_of.Q9Y219.Q9WMX2-PRO_0000037548<#< ("<") has no discernable positions
+#REM	00:00:38	Motif interactors_of.Q9Y240.P03427<#< ("<") has no discernable positions
+#REM	00:00:39	Motif interactors_of.Q9Y258.P24766<#< ("<") has no discernable positions
+#REM	00:00:39	Motif interactors_of.Q9Y272.P06428<#< ("<") has no discernable positions
+#REM	00:00:39	Motif interactors_of.Q9Y2J2.D0UZU1<#< ("<") has no discernable positions
+#REM	00:00:39	Motif interactors_of.Q9Y2K2.P06428<#< ("<") has no discernable positions
+#REM	00:00:40	Motif interactors_of.Q9Y2R5.I6TAH8<#< ("<") has no discernable positions
+#REM	00:00:40	Motif interactors_of.Q9Y2R5.P03466<#< ("<") has no discernable positions
+#REM	00:00:40	Motif interactors_of.Q9Y2R5.Q1K9H2<#< ("<") has no discernable positions
+#REM	00:00:40	Motif interactors_of.Q9Y2U8.P03182<#< ("<") has no discernable positions
+#REM	00:00:41	Motif interactors_of.Q9Y2X0.P0DOE9<#< ("<") has no discernable positions
+#REM	00:00:41	Motif interactors_of.Q9Y3D8.Q99IB8-PRO_0000045597<#< ("<") has no discernable positions
+#REM	00:00:42	Motif interactors_of.Q9Y3L5.Q99IB8-PRO_0000045599<#< ("<") has no discernable positions
+#REM	00:00:42	Motif interactors_of.Q9Y3S1.P68466<#< ("<") has no discernable positions
+#REM	00:00:42	Motif interactors_of.Q9Y463.P03255-2<#< ("<") has no discernable positions
+#REM	00:00:43	Motif interactors_of.Q9Y463.P03255<#< ("<") has no discernable positions
+#REM	00:00:43	Motif interactors_of.Q9Y4B6-3.P05928<#< ("<") has no discernable positions
+#REM	00:00:43	Motif interactors_of.Q9Y4B6-3.P19508<#< ("<") has no discernable positions
+#REM	00:00:43	Motif interactors_of.Q9Y4H2.C5E524<#< ("<") has no discernable positions
+#REM	00:00:43	Motif interactors_of.Q9Y4I1.Q05322<#< ("<") has no discernable positions
+#REM	00:00:43	Motif interactors_of.Q9Y561.P0CK58<#< ("<") has no discernable positions
+#REM	00:00:44	Motif interactors_of.Q9Y5B0.P03427<#< ("<") has no discernable positions
+#REM	00:00:44	Motif interactors_of.Q9Y5J9.P04578-PRO_0000038428<#< ("<") has no discernable positions
+#REM	00:00:44	Motif interactors_of.Q9Y5K6.P03427<#< ("<") has no discernable positions
+#REM	00:00:44	Motif interactors_of.Q9Y5P8.P27958-PRO_0000037566<#< ("<") has no discernable positions
+#REM	00:00:44	Motif interactors_of.Q9Y5Q3.P0C746<#< ("<") has no discernable positions
+#REM	00:00:44	Motif interactors_of.Q9Y5Q9.Q77M19<#< ("<") has no discernable positions
+#REM	00:00:45	Motif interactors_of.Q9Y639.P03246<#< ("<") has no discernable positions
+#REM	00:00:45	Motif interactors_of.Q9Y680.P27958-PRO_0000037566<#< ("<") has no discernable positions
+#REM	00:00:45	Motif interactors_of.Q9Y6I3.P0CK58<#< ("<") has no discernable positions
+#REM	00:00:45	Motif interactors_of.Q9Y6K1.Q9QR71<#< ("<") has no discernable positions
+#REM	00:00:46	Motif interactors_of.Q9Y6K8.P03427<#< ("<") has no discernable positions
+#REM	00:00:46	Motif interactors_of.Q9Y6N7.P03182<#< ("<") has no discernable positions
+#REM	00:00:46	Motif interactors_of.Q9Y6N9.P06430<#< ("<") has no discernable positions
+#REM	00:00:46	Motif interactors_of.Q9Y6N9.P06464<#< ("<") has no discernable positions
+#REM	00:00:46	Motif interactors_of.Q9Y6R0.P06464<#< ("<") has no discernable positions
+#REM	00:00:46	Motif interactors_of.Q9Y6V7.P04591<#< ("<") has no discernable positions
+#REM	00:00:47	Motif interactors_of.Q9Y6X8.P06428<#< ("<") has no discernable positions
+#MOT	00:00:47	1065 motifs read from /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/motifs.txt (4426 lines): 878 retained.
+#SPLIT	00:00:48	Input motif "CLV_NRD_NRD_1" - (.RK)|(RR[^KR]) - split into 2 variants
+#SPLIT	00:00:48	2 of 2 CLV_NRD_NRD_1 variants added (not filtered)
+#SPLIT	00:00:49	Input motif "DEG_COP1_1" - [STDE]{1,3}.{0,2}[TSDE].{2,3}VP[STDE]G{0,1}[FLIMVYPA] - split into 6 variants
+#SPLIT	00:00:49	6 of 6 DEG_COP1_1 variants added (not filtered)
+#SPLIT	00:00:49	Input motif "DEG_CRL4_CDT2_1" - [NQ]{0,1}..[ILMV][ST][DEN][FY][FY].{2,3}[KR]{2,3}[^DE] - split into 4 variants
+#SPLIT	00:00:49	4 of 4 DEG_CRL4_CDT2_1 variants added (not filtered)
+#SPLIT	00:00:50	Input motif "DEG_CRL4_CDT2_2" - [NQ]{0,1}..[ILMV]T[DEN][HMFY][FMY].{2,3}[KR]{2,3}[^DE] - split into 4 variants
+#SPLIT	00:00:50	4 of 4 DEG_CRL4_CDT2_2 variants added (not filtered)
+#SPLIT	00:00:50	Input motif "DEG_MDM2_SWIB_1" - F[^P]{3}W[^P]{2,3}[VIL] - split into 2 variants
+#SPLIT	00:00:50	2 of 2 DEG_MDM2_SWIB_1 variants added (not filtered)
+#SPLIT	00:00:50	Input motif "DEG_Nend_Nbox_1" - ^M{0,1}[FYLIW][^P] - split into 2 variants
+#SPLIT	00:00:50	2 of 2 DEG_Nend_Nbox_1 variants added (not filtered)
+#SPLIT	00:00:51	Input motif "DEG_Nend_UBRbox_1" - ^M{0,1}[RK][^P]. - split into 2 variants
+#SPLIT	00:00:51	2 of 2 DEG_Nend_UBRbox_1 variants added (not filtered)
+#SPLIT	00:00:51	Input motif "DEG_Nend_UBRbox_2" - ^M{0,1}([ED]). - split into 2 variants
+#SPLIT	00:00:51	2 of 2 DEG_Nend_UBRbox_2 variants added (not filtered)
+#SPLIT	00:00:51	Input motif "DEG_Nend_UBRbox_3" - ^M{0,1}([NQ]). - split into 2 variants
+#SPLIT	00:00:51	2 of 2 DEG_Nend_UBRbox_3 variants added (not filtered)
+#SPLIT	00:00:51	Input motif "DEG_Nend_UBRbox_4" - ^M{0,1}(C). - split into 2 variants
+#SPLIT	00:00:51	2 of 2 DEG_Nend_UBRbox_4 variants added (not filtered)
+#SPLIT	00:00:51	Input motif "DOC_MAPK_DCC_7" - [RK].{2,4}[LIVP]P.[LIV].[LIVMF]|[RK].{2,4}[LIVP].P[LIV].[LIVMF] - split into 2 variants
+#SPLIT	00:00:51	2 of 2 DOC_MAPK_DCC_7 variants added (not filtered)
+#SPLIT	00:00:52	Input motif "DOC_MAPK_HePTP_8" - ([LIV][^P][^P][RK]....[LIVMP].[LIV].[LIVMF])|([LIV][^P][^P][RK][RK]G.{4,7}[LIVMP].[LIV].[LIVMF]) - split into 2 variants
+#SPLIT	00:00:52	2 of 2 DOC_MAPK_HePTP_8 variants added (not filtered)
+#SPLIT	00:00:52	Input motif "DOC_MAPK_gen_1" - [KR]{0,2}[KR].{0,2}[KR].{2,4}[ILVM].[ILVF] - split into 3 variants
+#SPLIT	00:00:52	3 of 3 DOC_MAPK_gen_1 variants added (not filtered)
+#SPLIT	00:00:53	Input motif "DOC_PP1_MyPhoNE_1" - R[^P][DEQ]Q[VIL]([RK][^P]|[^P][RK])[YW] - split into 2 variants
+#SPLIT	00:00:53	2 of 2 DOC_PP1_MyPhoNE_1 variants added (not filtered)
+#SPLIT	00:00:53	Input motif "DOC_PP2A_B56_1" - ([LMFYWIC]..I.E)|(L..[IVLWC].E). - split into 2 variants
+#SPLIT	00:00:54	2 of 2 DOC_PP2A_B56_1 variants added (not filtered)
+#SPLIT	00:00:54	Input motif "DOC_WD40_RPTOR_TOS_1" - F[EDQS][MILV][ED][MILV]((.{0,1}[ED])|($)) - split into 2 variants
+#SPLIT	00:00:54	2 of 2 DOC_WD40_RPTOR_TOS_1 variants added (not filtered)
+#REJECT	00:00:54	Formatting problem with LIG_14-3-3_CanoR_1 sequence R[^DE]{0,2}[^DEPG]([ST])(([FWYLMV].)|([^PRIKGN]P)|([^PRIKGN].{2,4}[VILMFWYP])): Rejected.
+#SPLIT	00:00:54	Input motif "LIG_14-3-3_CterR_2" - R[^DE]{0,2}[^DEPG]([ST])[^P]{0,1}$ - split into 6 variants
+#SPLIT	00:00:55	6 of 6 LIG_14-3-3_CterR_2 variants added (not filtered)
+#SPLIT	00:00:55	Input motif "LIG_Actin_WH2_1" - R..[ILVMF][ILMVF][^P][^P][ILVM].{4,7}L(([KR].)|(NK))[VATI] - split into 2 variants
+#SPLIT	00:00:55	2 of 2 LIG_Actin_WH2_1 variants added (not filtered)
+#SPLIT	00:00:55	Input motif "LIG_Actin_WH2_2" - [^R]..((.[ILMVF])|([ILMVF].))[^P][^P][ILVM].{4,7}L(([KR].)|(NK))[VATIGS] - split into 4 variants
+#SPLIT	00:00:55	4 of 4 LIG_Actin_WH2_2 variants added (not filtered)
+#SPLIT	00:00:55	Input motif "LIG_BIR_III_1" - ^M{0,1}A.P. - split into 2 variants
+#SPLIT	00:00:55	2 of 2 LIG_BIR_III_1 variants added (not filtered)
+#SPLIT	00:00:56	Input motif "LIG_BIR_III_3" - ^M{0,1}A.[AP]. - split into 2 variants
+#SPLIT	00:00:56	2 of 2 LIG_BIR_III_3 variants added (not filtered)
+#SPLIT	00:00:56	Input motif "LIG_BIR_II_1" - ^M{0,1}[AS]... - split into 2 variants
+#SPLIT	00:00:56	2 of 2 LIG_BIR_II_1 variants added (not filtered)
+#SPLIT	00:00:57	Input motif "LIG_CaMK_CASK_1" - ((SP)|([ED].{0,1}))[IV]W[IVL].R - split into 2 variants
+#SPLIT	00:00:57	2 of 2 LIG_CaMK_CASK_1 variants added (not filtered)
+#SPLIT	00:00:57	Input motif "LIG_CaM_IQ_9" - [ACLIVTM][^P][^P][ILVMFCT]Q[^P][^P][^P][RK][^P]{4,5}[RKQ][^P][^P] - split into 2 variants
+#SPLIT	00:00:57	2 of 2 LIG_CaM_IQ_9 variants added (not filtered)
+#SPLIT	00:00:58	Input motif "LIG_CtBP_PxDLS_1" - (P[LVIPME][DENS][LM][VASTRG])|(G[LVIPME][DENS][LM][VASTRG]((K)|(.[KR]))) - split into 3 variants
+#SPLIT	00:00:58	3 of 3 LIG_CtBP_PxDLS_1 variants added (not filtered)
+#SPLIT	00:00:58	Input motif "LIG_EF_ALG2_ABM_1" - P[PG]{0,1}YP.{1,6}Y[QS]{0,1}P - split into 4 variants
+#SPLIT	00:00:58	4 of 4 LIG_EF_ALG2_ABM_1 variants added (not filtered)
+#SPLIT	00:00:59	Input motif "LIG_EVH1_1" - ([FYWL]P.PP)|([FYWL]PP[ALIVTFY]P) - split into 2 variants
+#SPLIT	00:00:59	2 of 2 LIG_EVH1_1 variants added (not filtered)
+#SPLIT	00:00:59	Input motif "LIG_FZD_DVL_PDZ" - W.[VIL].[ST].KA{0,1}T...W - split into 2 variants
+#SPLIT	00:00:59	2 of 2 LIG_FZD_DVL_PDZ variants added (not filtered)
+#SPLIT	00:00:59	Input motif "LIG_GSK3_LRP6_1" - (([CP]PP)|(PP[TP]))[ST]P[^P][TS]{0,1} - split into 4 variants
+#SPLIT	00:00:59	4 of 4 LIG_GSK3_LRP6_1 variants added (not filtered)
+#SPLIT	00:00:59	Input motif "LIG_LRP6_Inhibitor_1" - ([VILA]..N.I[RK])|([VILA].PN.IG.{0,6}[RK]) - split into 2 variants
+#SPLIT	00:01:00	2 of 2 LIG_LRP6_Inhibitor_1 variants added (not filtered)
+#SPLIT	00:01:00	Input motif "LIG_PAM2_1" - ..[LFP][NS][PIVTAFL].A..(([FY].[PYLF])|(W..)). - split into 2 variants
+#SPLIT	00:01:00	2 of 2 LIG_PAM2_1 variants added (not filtered)
+#SPLIT	00:01:00	Input motif "LIG_PAM2_2" - ((WPP)|([FL][PV][APQ]))EF.PG.PWKG. - split into 2 variants
+#SPLIT	00:01:00	2 of 2 LIG_PAM2_2 variants added (not filtered)
+#SPLIT	00:01:00	Input motif "LIG_PCNA_PIPBox_1" - ((^.{0,3})|(Q)).[^FHWY][ILM][^P][^FHILVWYP][HFM][FMY].. - split into 2 variants
+#SPLIT	00:01:00	2 of 2 LIG_PCNA_PIPBox_1 variants added (not filtered)
+#SPLIT	00:01:01	Input motif "LIG_PTB_Apo_2" - (.[^P].NP.[FY].)|(.[ILVMFY].N..[FY].) - split into 2 variants
+#SPLIT	00:01:01	2 of 2 LIG_PTB_Apo_2 variants added (not filtered)
+#SPLIT	00:01:01	Input motif "LIG_PTB_Phospho_1" - (.[^P].NP.(Y))|(.[ILVMFY].N..(Y)) - split into 2 variants
+#SPLIT	00:01:01	2 of 2 LIG_PTB_Phospho_1 variants added (not filtered)
+#SPLIT	00:01:02	Input motif "LIG_Rb_LxCxE_1" - ([DEST]|^).{0,4}[LI].C.E.{1,4}[FLMIVAWPHY].{0,8}([DEST]|$) - split into 4 variants
+#SPLIT	00:01:02	4 of 4 LIG_Rb_LxCxE_1 variants added (not filtered)
+#SPLIT	00:01:02	Too many variants (60) for motif split: redefine LIG_SUMO_SIM_anti_2!
+#REJECT	00:01:02	Formatting problem with LIG_SUMO_SIM_anti_2 sequence [DEST]{1,10}.{0,1}[VIL][DESTVILMA][VIL][VILM].[DEST]{0,5}: Rejected.
+#SPLIT	00:01:02	Too many variants (60) for motif split: redefine LIG_SUMO_SIM_par_1!
+#REJECT	00:01:02	Formatting problem with LIG_SUMO_SIM_par_1 sequence [DEST]{0,5}.[VILPTM][VIL][DESTVILMA][VIL].{0,1}[DEST]{1,10}: Rejected.
+#SPLIT	00:01:02	Input motif "LIG_SxIP_EBH_1" - ([KR][^ED]{0,5}[ST].IP[^ED]{5,5})|([^ED]{5,5}[ST].IP[^ED]{0,5}[KR]) - split into 12 variants
+#SPLIT	00:01:02	12 of 12 LIG_SxIP_EBH_1 variants added (not filtered)
+#FORMAT	00:01:02	Motif LIG_TYR_ITAM contains wildcard spacer > 9 residues: REJECTED.
+#REJECT	00:01:03	Rejected LIG_TYR_ITAM: Max wildcard length (9) exceeded.
+#REJECT	00:01:03	Formatting problem with LIG_TYR_ITAM sequence [DEN]..(Y)..[LI].{6,12}(Y)..[LI]: Rejected.
+#SPLIT	00:01:03	Input motif "LIG_ULM_U2AF65_1" - [KR]{1,4}[KR].[KR]W. - split into 4 variants
+#SPLIT	00:01:03	4 of 4 LIG_ULM_U2AF65_1 variants added (not filtered)
+#SPLIT	00:01:03	Input motif "MOD_GlcNHglycan" - [ED]{0,3}.(S)[GA]. - split into 4 variants
+#SPLIT	00:01:03	4 of 4 MOD_GlcNHglycan variants added (not filtered)
+#SPLIT	00:01:03	Input motif "MOD_NMyristoyl" - ^M{0,1}(G)[^EDRKHPFYW]..[STAGCN][^P] - split into 2 variants
+#SPLIT	00:01:03	2 of 2 MOD_NMyristoyl variants added (not filtered)
+#SPLIT	00:01:03	Input motif "MOD_Plk_1" - .[DNE][^PG][ST](([FYILMVW]..)|([^PEDGKN][FWYLIVM]).) - split into 2 variants
+#SPLIT	00:01:03	2 of 2 MOD_Plk_1 variants added (not filtered)
+#SPLIT	00:01:04	Input motif "MOD_Plk_2-3" - [DE]..([ST])[EDILMVFWY](([DE].)|(.[DE])) - split into 2 variants
+#SPLIT	00:01:04	2 of 2 MOD_Plk_2-3 variants added (not filtered)
+#SPLIT	00:01:04	Input motif "MOD_SPalmitoyl_4" - ^M{0,1}G(C)..S[AKS] - split into 2 variants
+#SPLIT	00:01:04	2 of 2 MOD_SPalmitoyl_4 variants added (not filtered)
+#SPLIT	00:01:05	Input motif "TRG_ER_diArg_1" - ([LIVMFYWPR]R[^YFWDE]{0,1}R)|(R[^YFWDE]{0,1}R[LIVMFYWPR]) - split into 4 variants
+#SPLIT	00:01:05	4 of 4 TRG_ER_diArg_1 variants added (not filtered)
+#SPLIT	00:01:05	Input motif "TRG_NES_CRM1_1" - ([DEQ].{0,1}[LIM].{2,3}[LIVMF][^P]{2,3}[LMVF].[LMIV].{0,3}[DE])|([DE].{0,1}[LIM].{2,3}[LIVMF][^P]{2,3}[LMVF].[LMIV].{0,3}[DEQ]) - split into 4 variants
+#SPLIT	00:01:05	4 of 4 TRG_NES_CRM1_1 variants added (not filtered)
+#SPLIT	00:01:06	Input motif "TRG_NLS_Bipartite_1" - [KR][KR].{7,15}[^DE]((K[RK])|(RK))(([^DE][KR])|([KR][^DE]))[^DE] - split into 4 variants
+#FORMAT	00:01:06	Motif TRG_NLS_Bipartite_1_a contains wildcard spacer > 9 residues: REJECTED.
+#REJECT	00:01:06	Rejected TRG_NLS_Bipartite_1_a: Max wildcard length (9) exceeded.
+#REJECT	00:01:06	Formatting problem with TRG_NLS_Bipartite_1_a sequence [KR][KR].{7,15}[^DE]K[RK][KR][^DE][^DE]: Rejected.
+#FORMAT	00:01:06	Motif TRG_NLS_Bipartite_1_b contains wildcard spacer > 9 residues: REJECTED.
+#REJECT	00:01:06	Rejected TRG_NLS_Bipartite_1_b: Max wildcard length (9) exceeded.
+#REJECT	00:01:06	Formatting problem with TRG_NLS_Bipartite_1_b sequence [KR][KR].{7,15}[^DE]K[RK][^DE][KR][^DE]: Rejected.
+#FORMAT	00:01:06	Motif TRG_NLS_Bipartite_1_c contains wildcard spacer > 9 residues: REJECTED.
+#REJECT	00:01:07	Rejected TRG_NLS_Bipartite_1_c: Max wildcard length (9) exceeded.
+#REJECT	00:01:07	Formatting problem with TRG_NLS_Bipartite_1_c sequence [KR][KR].{7,15}[^DE]RK[KR][^DE][^DE]: Rejected.
+#FORMAT	00:01:07	Motif TRG_NLS_Bipartite_1_d contains wildcard spacer > 9 residues: REJECTED.
+#REJECT	00:01:07	Rejected TRG_NLS_Bipartite_1_d: Max wildcard length (9) exceeded.
+#REJECT	00:01:07	Formatting problem with TRG_NLS_Bipartite_1_d sequence [KR][KR].{7,15}[^DE]RK[^DE][KR][^DE]: Rejected.
+#SPLIT	00:01:07	0 of 4 TRG_NLS_Bipartite_1 variants added (not filtered)
+#REM	00:01:07	Removed 0 TRG_NLS_Bipartite_1 variants: other variants filtered.
+#SPLIT	00:01:07	Input motif "TRG_NLS_MonoCore_2" - [^DE]((K[RK])|(RK))[KRP][KR][^DE] - split into 2 variants
+#SPLIT	00:01:07	2 of 2 TRG_NLS_MonoCore_2 variants added (not filtered)
+#SPLIT	00:01:07	Input motif "TRG_NLS_MonoExtC_3" - [^DE]((K[RK])|(RK))(([^DE][KR])|([KR][^DE]))(([PKR])|([^DE][DE])) - split into 8 variants
+#SPLIT	00:01:07	8 of 8 TRG_NLS_MonoExtC_3 variants added (not filtered)
+#SPLIT	00:01:07	Input motif "TRG_NLS_MonoExtN_4" - (([PKR].{0,1}[^DE])|([PKR]))((K[RK])|(RK))(([^DE][KR])|([KR][^DE]))[^DE] - split into 8 variants
+#SPLIT	00:01:08	8 of 8 TRG_NLS_MonoExtN_4 variants added (not filtered)
+#SPLIT	00:01:08	Input motif "TRG_PTS1" - (.[SAPTC][KRH][LMFI]$)|([KRH][SAPTC][NTS][LMFI]$) - split into 2 variants
+#SPLIT	00:01:08	2 of 2 TRG_PTS1 variants added (not filtered)
+#FORMAT	00:01:08	Motif TRG_PTS2 contains wildcard spacer > 9 residues: REJECTED.
+#REJECT	00:01:08	Rejected TRG_PTS2: Max wildcard length (9) exceeded.
+#REJECT	00:01:08	Formatting problem with TRG_PTS2 sequence ^.{1,40}R[^P][^P][^P][LIV][^P][^P][HQ][LIF]: Rejected.
+#MOT	00:01:08	267 motifs read from /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/2017-10-16elms_index.tsv (268 lines): 362 retained.
+#OUT	00:01:09	362 motifs output to /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/2017-10-16elms_index.split.motifs in SLiMSuite format.
+#COMP	00:36:02	Comparing MotifFile & SearchDB: 317,836 comparisons made.
+#COMP	00:36:02	7,971 motif matches output to /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/comparimotif.compare.tdt. Rank by "Score" column.
+#COMP	00:36:02	19 input motifs unmatched.
+#NON	00:36:03	19 unmatched motifs output to /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/comparimotif.unmatched.txt.
+#XGMML	00:36:05	Output of XGMML file /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/comparimotif.compare.xgmml for Cytoscape complete.
+#LOG	00:36:05	CompariMotif V:3.13.0 End: Mon Oct 16 02:40:17 2017

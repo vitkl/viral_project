@@ -92,7 +92,7 @@ forSLIMFinder = listInteractionSubsetFASTA(interaction_set1 = all_human_interact
                                            interaction_set2 = all_viral_interaction, 
                                            seed_id_vect = proteins_w_signif_domains,
                                            fasta = all.fasta,
-                                           single_interact_from_set2 = T, set1_only = T)
+                                           single_interact_from_set2 = T, set1_only = F)
 
 forSLIMFinder_Ready = filterInteractionSubsetFASTA_list(forSLIMFinder,  length_set1_min = 2, length_set2_min = 1)
 # how many viral-human pairs in which viral proteins interact with human protein (with relevant domain) but are not associated with the domain
@@ -202,6 +202,12 @@ runCompariMotif3(slimpath = "../software/cluster/slimsuite/tools/",
 ```
 
 ```{r}
+tar("./SLIMFinder/input.gz","./SLIMFinder/input/", compression='gzip')
+#tar("./SLIMFinder/log_dir.gz","./SLIMFinder/log_dir/", compression='gzip')
+#tar("./SLIMFinder/output.gz","./SLIMFinder/output", compression='gzip')
+unlink("./SLIMFinder/input/")
+#unlink("./SLIMFinder/log_dir/")
+#unlink("./SLIMFinder/output/")
 filename = paste0("./processed_data_files/QSLIMFinder_instances_h2v_clust",gsub("-","",Sys.Date()),".RData")
 save(list = ls(), file=filename)
 Sys.Date()
