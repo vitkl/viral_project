@@ -8,3 +8,6 @@
 /.RData/
 /SLIMFinder/log_dir/
 /SLIMFinder/output/
+/SLIMFinder_Vidal/log_dir/
+/SLIMFinder_Vidal/output/
+qslimfinder.log
