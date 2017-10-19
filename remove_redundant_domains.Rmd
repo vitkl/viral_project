@@ -46,26 +46,27 @@ I read InterProScan result and the InterPro_entry_types file. InterProScan outpu
 # read InterProScan result, download and add InterPro Entry Types information, extract from relevant columns and add names metadata and sequence length information
 InterProScan_result = readInterProGFF3("./processed_data_files/all_human_viral_protein_domains092017.gff3.gz", processed = F)
 InterProScan_result = addInterProEntryTypes(InterProScan_result, "./data_files/entry.list")
-InterProScan_domains = SubsetByInterProEntryType(InterProScan_result, c("Domain", 
-    "Active_site", "Binding_site", "Conserved_site", "PTM", "Repeat"))
+InterProScan_domains = SubsetByInterProEntryType(InterProScan_result, c("Domain"))
 ```
 
-## Remove redundancy in the identified domains (signatures of the same domain from different InterPro member databases + domain families)
+## Remove redundancy in the identified domains
 
-In domain families: assign all domains to the top domain.
+Signatures of the same domain from different InterPro member databases.  
 
 ```{r collapse_by_IPR_ID}
-InterProTree = loadInterProTree(filename = "./data_files/interpro_ParentChildTreeFile.txt")
+#### collapse domains by family (not only by single InterProID removing multiple the databases), In domain families: assign all domains to the top domain.
+#InterProTree = loadInterProTree(filename = "./data_files/interpro_ParentChildTreeFile.txt")
 # find all InterProIDs that have children InterProIDs
-InterProTree_level1 = getLevelXchildren(tree = InterProTree, level = 1) 
-has_children = InterProScan_domains$Dbxref %in% InterProTree_level1$allchildren
+#InterProTree_level1 = getLevelXchildren(tree = InterProTree, level = 1) 
+#has_children = InterProScan_domains$Dbxref %in% InterProTree_level1$allchildren
 
 # map top InterProIDs in the hierarchy when InterProIDs have have children InterProIDs
-InterProScan_domains$topInterProID = InterProScan_domains$Dbxref
-InterProScan_domains$topInterProID[has_children] = InterProTree_level1$level1[match(InterProScan_domains$Dbxref, InterProTree_level1$allchildren)][has_children]
+#InterProScan_domains$topInterProID = InterProScan_domains$Dbxref
+#InterProScan_domains$topInterProID[has_children] = InterProTree_level1$level1[match(InterProScan_domains$Dbxref, #InterProTree_level1$allchildren)][has_children]
+#### 
 
-# collapse 
-InterProScan_domains_nonred = collapseByInterProID(InterProScan_features = InterProScan_domains, id_col = "topInterProID")
+# collapse on InterProID contained in Dbxref column
+InterProScan_domains_nonred = collapseByInterProID(InterProScan_features = InterProScan_domains, id_col = "Dbxref")
 ```
 
 We used to have `r length(unique(InterProScan_domains$Name))` domains and `r length(unique(paste0(InterProScan_domains$Name,seqnames(InterProScan_domains))))` protein-domain pairs.   

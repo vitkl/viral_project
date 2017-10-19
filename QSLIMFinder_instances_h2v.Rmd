@@ -62,7 +62,7 @@ all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, d
 ## load results ofwhich domains are likely to mediate interaction
 ```{r load_results}
 # load the domain analysis results
-load("./processed_data_files/what_we_find_VS_ELM_clust11092017.RData")
+load("./processed_data_files/what_we_find_VS_ELM_clust20171019.RData")
 domain_res = res
 rm(list = ls()[!ls() %in% c("domain_res", "all_human_interaction", "all_viral_interaction")])
 
