@@ -1,0 +1,125 @@
+---
+title: "Explore_motifs"
+author: "Vitalii Kleshchevnikov"
+date: "18/10/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+if(!"MItools" %in% installed.packages()){
+  devtools::install_github("vitkl/MItools")
+}
+suppressPackageStartupMessages({
+  library(MItools)
+})
+```
+
+## Main result
+
+```{r}
+main_result_Vidal = fread("./SLIMFinder_Vidal/result/main_result.txt")
+main_result_Vidal = main_result_Vidal[!is.na(IC)]
+main_result = fread("./SLIMFinder/result/main_result.txt")
+main_result = main_result[!is.na(IC)]
+```
+
+## Unmatched motifs
+
+```{r}
+unmatched_Vidal = fread("./SLIMFinder_Vidal/result/comparimotif.unmatched.txt", sep = "\t", header = F)$V1
+unmatched_Vidal = unique(unmatched_Vidal)
+unmatched = fread("./SLIMFinder/result/comparimotif.unmatched.txt", sep = "\t", header = F)$V1
+unmatched = unique(unmatched)
+
+main_result_Vidal[Pattern %in% unmatched_Vidal,]
+```
+
+## Vidal vs all
+
+```{r}
+unmatched_Vidal[unmatched_Vidal %in% unmatched]
+```
+
+## Matched motifs
+
+```{r}
+matched_Vidal = fread("./SLIMFinder_Vidal/result/comparimotif.compare.tdt")
+length(unique(matched_Vidal$Motif1))
+
+matched_Vidal[Motif2 %in% "...[PV]..P"]
+main_result_Vidal[Pattern %in% matched_Vidal[Motif2 %in% "...[PV]..P"]$Motif1,]
+
+hist(main_result_Vidal$IC)
+main_result_Vidal[order(IC*(CloudUP/UPNum), decreasing = T)[1:30],]
+matched_Vidal[Motif1 %in% "RET.V$"][order(MatchIC, decreasing = T)[1:5]] # The C-terminal class 1 PDZ-binding motif 
+matched_Vidal[Motif1 %in% "G.{0,1}KRKR"][order(MatchIC, decreasing = T)[1:5]] #NLS 
+matched_Vidal[Motif1 %in% "S..GV.E.{0,1}S"][order(Score, decreasing = T)[1:5]] # A destruction motif interacts with the COP1 WD 40 domain for target ubiquitination and degradation
+matched_Vidal[Motif1 %in% "G..ST.G..I"][order(Score, decreasing = T)[1:5]]
+matched_Vidal[Motif1 %in% "V.ESM..E"][order(Score, decreasing = T)[1:5]] # Ser/Thr residue phosphorylated by Plk4
+matched_Vidal[Motif1 %in% "E.VPV"][order(Score, decreasing = T)[1:5]]
+matched_Vidal[Motif1 %in% "R..Q.S..G"][order(Score, decreasing = T)[1:5]] # Docking motif that binds to the catalytic subunit of Protein Phosphatase 1 (PP1c) and is generally located N-terminal to an RVxF motif
+matched_Vidal[Motif1 %in% "S..GV.E"][order(Score, decreasing = T)[1:5]]
+
+unique(main_result_Vidal[p.adjust(Sig, method = "fdr") < 0.05,]$Pattern)
+######
+matched = fread("./SLIMFinder/result/comparimotif.compare.tdt")
+length(unique(matched$Motif1))
+
+hist(main_result$IC)
+main_result[order(IC*(CloudUP/UPNum), decreasing = T)[1:20],]
+```
+
+## Domains and occurence
+
+```{r}
+# load the domain analysis results
+load("./processed_data_files/what_we_find_VS_ELM_clust11092017.RData")
+domain_res = res
+rm(list = ls()[!ls() %in% c("domain_res", "unmatched", "unmatched_Vidal", "main_result_Vidal", "main_result")])
+
+main_result_Vidal[Pattern %in% "S..GGA.R",]
+
+unique(domain_res$data_with_pval[IDs_interactor_viral %in% "Q77M19" &
+                                     p.value < 0.5,
+                                 IDs_interactor_human])
+unique(domain_res$data_with_pval[IDs_interactor_viral %in% "Q77M19" &
+                                     p.value < 0.5 &
+                                     IDs_interactor_human %in% c("P11021", "Q71U36", "Q9BQE3")])
+unique(domain_res$data_with_pval[IDs_interactor_viral %in% "Q77M19" & p.value < 0.01, IDs_domain_human])
+unique(domain_res$data_with_pval[IDs_interactor_viral %in% "Q77M19" &
+                                     p.value < 0.5 &
+                                     IDs_interactor_human %in% c("P11021", "Q71U36", "Q9BQE3"), IDs_domain_human])
+# Q9BQE3 = tubulin c, http://www.uniprot.org/uniprot/Q9BQE3
+# Q71U36 = tubulin a, http://www.uniprot.org/uniprot/Q71U36
+# P11021 = 78 kDa glucose-regulated protein, HSPA5, http://www.uniprot.org/uniprot/P11021
+################
+
+main_result_Vidal[Pattern %in% "WN.N",]
+
+unique(domain_res$data_with_pval[IDs_interactor_viral %in% c("C5E526", "Q1K9H5", "P03431") &
+                                     p.value < 0.5,
+                                 IDs_interactor_human])
+unique(domain_res$data_with_pval[IDs_interactor_viral %in% c("C5E526", "Q1K9H5", "P03431") &
+                                     p.value < 1 &
+                                     IDs_interactor_human %in% c("P13674", "P18583", "P61962") &
+                                     domain_type == "Domain"])
+
+main_result_Vidal[grepl("P18583", main_result_Vidal$Dataset)] # WD-40 domain proteins
+main_result_Vidal[grepl("P61962", main_result_Vidal$Dataset)] # WD-40 domain proteins
+
+################
+
+main_result_Vidal[Pattern %in% "IH..G",]
+
+unique(domain_res$data_with_pval[IDs_interactor_viral %in% c("C5E526", "Q1K9H5", "P03431") &
+                                     p.value < 0.5,
+                                 IDs_interactor_human])
+unique(domain_res$data_with_pval[IDs_interactor_viral %in% c("C5E526", "Q1K9H5", "P03431") &
+                                     p.value < 1 &
+                                     IDs_interactor_human %in% c("P13674", "P18583", "P61962") &
+                                     domain_type == "Domain"])
+
+main_result_Vidal[grepl("P18583", main_result_Vidal$Dataset)] 
+main_result_Vidal[grepl("P61962", main_result_Vidal$Dataset)] 
+```

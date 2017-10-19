@@ -68,7 +68,7 @@ rm(list = ls()[!ls() %in% c("domain_res", "all_human_interaction", "all_viral_in
 
 # choose pvalue cutoff:
 plot(domain_res)
-proteins_w_signif_domains = unique(domain_res$data_with_pval[p.value < 0.5, IDs_interactor_human])
+proteins_w_signif_domains = unique(domain_res$data_with_pval[p.value <= 1, IDs_interactor_human])
 ```
 
 ### prepare sets of protein sequences and instructions for SLIMFinder
@@ -158,54 +158,30 @@ runQSLIMFinder(commands = all_commands, file_list = forSLIMFinder_file_list, onL
 ## Read results
 
 ```{r read}
-readQSLIMFinderMain = function(file_list = "forSLIMFinder_file_list"){
-    main_result = lapply(file_list$outputfile, function(file) {
-        #fread("./SLIMFinder/output/interactors_of.O60506_P03496./main_result", stringsAsFactors = F)
-        if(file.exists(file)) fread(file, stringsAsFactors = F)
-    })
-    Reduce(rbind, main_result)
-}
-writePatternList = function(QSLIMFinder_main_result, filename = "./motifs.txt") {
-    motifs = unique(QSLIMFinder_main_result[,.(Dataset,Pattern)])
-    motifs[, Name := paste0(Dataset,Pattern)][,Dataset:=NULL]
-    fwrite(motifs, filename, sep = "\t")
-}
-
 if(!dir.exists("./SLIMFinder/result/")) dir.create("./SLIMFinder/result/")
 QSLIMFinder_main_result = readQSLIMFinderMain(file_list = forSLIMFinder_file_list)
+QSLIMFinder_occurence = readQSLIMFinderOccurence(file_list = forSLIMFinder_file_list)
+fwrite(QSLIMFinder_main_result, "./SLIMFinder/result/main_result.txt", sep = "\t")
+fwrite(QSLIMFinder_occurence, "./SLIMFinder/result/occurence.txt", sep = "\t")
 writePatternList(QSLIMFinder_main_result, filename = "./SLIMFinder/result/motifs.txt")
 ```
 
 ## Compare motifs to ELM
 
 ```{r comparimotif}
-runCompariMotif3 = function(input_file = "./SLIMFinder/result/motifs.txt",
-                            slimpath = "../software/slimsuite/tools/",
-                            dbpath = "./data_files/",
-                            dburl = "http://elm.eu.org/elms/elms_index.tsv",
-                            parameters = "unmatched=T motific=T", 
-                            out_file = "./SLIMFinder/result/comparimotif.tdt",
-                            LSF_project_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/",
-                            run = F){
-    elm_filename = paste0(dbpath, Sys.Date(), "elms_index.tsv")
-    if(!file.exists(elm_filename)) download.file(dburl, elm_filename)
-    comparimotif_call = paste0("python ", LSF_project_path, slimpath, "comparimotif_V3.py")
-    input_res = paste0("motifs=", LSF_project_path, input_file)
-    input_database = paste0("searchdb=", LSF_project_path, elm_filename) 
-    out_file = paste0("resfile=", LSF_project_path, out_file)
-    command = paste(comparimotif_call, input_res, input_database, parameters, out_file)
-    if(run) system(command, wait = F)
-    return(command)
-}
 runCompariMotif3(slimpath = "../software/cluster/slimsuite/tools/",
-                 run = T)
+                 run = T, with = "db",
+                 out_file = "./SLIMFinder/result/comparimotif.tdt")
+runCompariMotif3(slimpath = "../software/cluster/slimsuite/tools/",
+                 run = T, with = "self",
+                 out_file = "./SLIMFinder/result/comparimotif_with_self.tdt")
 ```
 
 ```{r}
 tar("./SLIMFinder/input.gz","./SLIMFinder/input/", compression='gzip')
 #tar("./SLIMFinder/log_dir.gz","./SLIMFinder/log_dir/", compression='gzip')
 #tar("./SLIMFinder/output.gz","./SLIMFinder/output", compression='gzip')
-unlink("./SLIMFinder/input/")
+unlink("./SLIMFinder/input/", recursive = T)
 #unlink("./SLIMFinder/log_dir/")
 #unlink("./SLIMFinder/output/")
 filename = paste0("./processed_data_files/QSLIMFinder_instances_h2v_clust",gsub("-","",Sys.Date()),".RData")

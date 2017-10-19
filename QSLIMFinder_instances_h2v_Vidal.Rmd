@@ -70,7 +70,7 @@ rm(list = ls()[!ls() %in% c("domain_res", "all_human_interaction", "all_viral_in
 
 # choose pvalue cutoff:
 plot(domain_res)
-proteins_w_signif_domains = unique(domain_res$data_with_pval[p.value < 0.5, IDs_interactor_human])
+proteins_w_signif_domains = unique(domain_res$data_with_pval[p.value <= 1, IDs_interactor_human])
 ```
 
 ### prepare sets of protein sequences and instructions for SLIMFinder
@@ -161,30 +161,6 @@ runQSLIMFinder(commands = all_commands, file_list = forSLIMFinder_file_list, onL
 ## Read results
 
 ```{r read}
-readQSLIMFinderMain = function(file_list = "forSLIMFinder_file_list"){
-    main_result = lapply(file_list$outputfile, function(file) {
-        #fread("./SLIMFinder_Vidal/output/interactors_of.O60506_P03496./main_result", stringsAsFactors = F)
-        if(file.exists(file)) fread(file, stringsAsFactors = F)
-    })
-    Reduce(rbind, main_result)
-}
-readQSLIMFinderOccurence = function(file_list = "forSLIMFinder_file_list"){
-    Occurence_list = lapply(file_list$outputdir, function(dir) {
-        #fread("./SLIMFinder_Vidal/output/interactors_of.O60506_P03496./main_result", stringsAsFactors = F)
-        if(dir.exists(dir)){
-                 all_files = list.files(dir)
-        occurence_file = grep(".occ.csv", all_files, value = T)
-        if(length(occurence_file) == 1) fread(paste0(dir,occurence_file), stringsAsFactors = F)   
-        }
-    })
-    Reduce(rbind, Occurence_list)
-}
-writePatternList = function(QSLIMFinder_main_result, filename = "./motifs.txt") {
-    motifs = unique(QSLIMFinder_main_result[,.(Dataset,Pattern)])
-    motifs[, Name := paste0(Dataset,Pattern)][,Dataset:=NULL]
-    fwrite(motifs, filename, sep = "\t")
-}
-
 if(!dir.exists("./SLIMFinder_Vidal/result/")) dir.create("./SLIMFinder_Vidal/result/")
 QSLIMFinder_main_result = readQSLIMFinderMain(file_list = forSLIMFinder_file_list)
 QSLIMFinder_occurence = readQSLIMFinderOccurence(file_list = forSLIMFinder_file_list)
@@ -196,26 +172,12 @@ writePatternList(QSLIMFinder_main_result, filename = "./SLIMFinder_Vidal/result/
 ## Compare motifs to ELM
 
 ```{r comparimotif}
-runCompariMotif3 = function(input_file = "./SLIMFinder_Vidal/result/motifs.txt",
-                            slimpath = "../software/slimsuite/tools/",
-                            dbpath = "./data_files/",
-                            dburl = "http://elm.eu.org/elms/elms_index.tsv",
-                            parameters = "unmatched=T motific=T", 
-                            out_file = "./SLIMFinder_Vidal/result/comparimotif.tdt",
-                            LSF_project_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/",
-                            run = F){
-    elm_filename = paste0(dbpath, Sys.Date(), "elms_index.tsv")
-    if(!file.exists(elm_filename)) download.file(dburl, elm_filename)
-    comparimotif_call = paste0("python ", LSF_project_path, slimpath, "comparimotif_V3.py")
-    input_res = paste0("motifs=", LSF_project_path, input_file)
-    input_database = paste0("searchdb=", LSF_project_path, elm_filename) 
-    out_file = paste0("resfile=", LSF_project_path, out_file)
-    command = paste(comparimotif_call, input_res, input_database, parameters, out_file)
-    if(run) system(command, wait = F)
-    return(command)
-}
 runCompariMotif3(slimpath = "../software/cluster/slimsuite/tools/",
-                 run = T)
+                 run = T, with = "db",
+                 out_file = "./SLIMFinder_Vidal/result/comparimotif.tdt")
+runCompariMotif3(slimpath = "../software/cluster/slimsuite/tools/",
+                 run = T, with = "self",
+                 out_file = "./SLIMFinder_Vidal/result/comparimotif_with_self.tdt")
 ```
 
 ```{r}
