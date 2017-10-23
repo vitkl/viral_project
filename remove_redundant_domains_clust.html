@@ -125,36 +125,37 @@ $(document).ready(function () {
 <div id="TOC">
 <ul>
 <li><a href="#read-interproscan-result-and-filter-for-domain-active_site-binding_site-conserved_site-ptm-signatures">Read InterProScan result and filter for “Domain”, “Active_site”, “Binding_site”, “Conserved_site”, “PTM” signatures</a></li>
-<li><a href="#remove-redundancy-in-the-identified-domains-signatures-of-the-same-domain-from-different-interpro-member-databases-domain-families">Remove redundancy in the identified domains (signatures of the same domain from different InterPro member databases + domain families)</a></li>
+<li><a href="#remove-redundancy-in-the-identified-domains">Remove redundancy in the identified domains</a></li>
 <li><a href="#r-session-information">R session information</a></li>
 </ul>
 </div>
 
-<p>Date: 2017-09-10 21:14:23</p>
+<p>Date: 2017-10-22 16:53:39</p>
 <div id="read-interproscan-result-and-filter-for-domain-active_site-binding_site-conserved_site-ptm-signatures" class="section level2">
 <h2>Read InterProScan result and filter for “Domain”, “Active_site”, “Binding_site”, “Conserved_site”, “PTM” signatures</h2>
 <p>I read InterProScan result and the InterPro_entry_types file. InterProScan output format description: <a href="https://github.com/ebi-pf-team/interproscan/wiki/OutputFormats">https://github.com/ebi-pf-team/interproscan/wiki/OutputFormats</a></p>
 <pre class="r"><code># read InterProScan result, download and add InterPro Entry Types information, extract from relevant columns and add names metadata and sequence length information
-InterProScan_result = readInterProGFF3(&quot;./processed_data_files/all_human_viral_protein_domains092017.gff3.gz&quot;, processed = F)
+InterProScan_result = readInterProGFF3(&quot;./processed_data_files/all_human_viral_protein_domains102017.gff3.gz&quot;, processed = F)
 InterProScan_result = addInterProEntryTypes(InterProScan_result, &quot;./data_files/entry.list&quot;)
-InterProScan_domains = SubsetByInterProEntryType(InterProScan_result, c(&quot;Domain&quot;, 
-    &quot;Active_site&quot;, &quot;Binding_site&quot;, &quot;Conserved_site&quot;, &quot;PTM&quot;, &quot;Repeat&quot;))</code></pre>
+InterProScan_domains = SubsetByInterProEntryType(InterProScan_result, c(&quot;Domain&quot;))</code></pre>
 </div>
-<div id="remove-redundancy-in-the-identified-domains-signatures-of-the-same-domain-from-different-interpro-member-databases-domain-families" class="section level2">
-<h2>Remove redundancy in the identified domains (signatures of the same domain from different InterPro member databases + domain families)</h2>
-<p>In domain families: assign all domains to the top domain.</p>
-<pre class="r"><code>InterProTree = loadInterProTree(filename = &quot;./data_files/interpro_ParentChildTreeFile.txt&quot;)
+<div id="remove-redundancy-in-the-identified-domains" class="section level2">
+<h2>Remove redundancy in the identified domains</h2>
+<p>Signatures of the same domain from different InterPro member databases.</p>
+<pre class="r"><code>#### collapse domains by family (not only by single InterProID removing multiple the databases), In domain families: assign all domains to the top domain.
+#InterProTree = loadInterProTree(filename = &quot;./data_files/interpro_ParentChildTreeFile.txt&quot;)
 # find all InterProIDs that have children InterProIDs
-InterProTree_level1 = getLevelXchildren(tree = InterProTree, level = 1) 
-has_children = InterProScan_domains$Dbxref %in% InterProTree_level1$allchildren
+#InterProTree_level1 = getLevelXchildren(tree = InterProTree, level = 1) 
+#has_children = InterProScan_domains$Dbxref %in% InterProTree_level1$allchildren
 
 # map top InterProIDs in the hierarchy when InterProIDs have have children InterProIDs
-InterProScan_domains$topInterProID = InterProScan_domains$Dbxref
-InterProScan_domains$topInterProID[has_children] = InterProTree_level1$level1[match(InterProScan_domains$Dbxref, InterProTree_level1$allchildren)][has_children]
-
-# collapse 
-InterProScan_domains_nonred = collapseByInterProID(InterProScan_features = InterProScan_domains, id_col = &quot;topInterProID&quot;)</code></pre>
-<p>We used to have 8210 domains and 100698 protein-domain pairs.<br />After combining the signatures of the same domain from different InterPro member databases we have 5496 domains and 56279 protein-domain pairs.<br />Finally, after considering only one domain per domain family we are left with 4152 domains and 42786 protein-domain pairs.</p>
+#InterProScan_domains$topInterProID = InterProScan_domains$Dbxref
+#InterProScan_domains$topInterProID[has_children] = InterProTree_level1$level1[match(InterProScan_domains$Dbxref, #InterProTree_level1$allchildren)][has_children]
+#### 
+InterProScan_domains = unique(InterProScan_domains)
+# collapse on InterProID contained in Dbxref column
+InterProScan_domains_nonred = collapseByInterProID(InterProScan_features = InterProScan_domains, id_col = &quot;Dbxref&quot;)</code></pre>
+<p>We used to have 7221 domains and 86143 protein-domain pairs.<br />After combining the signatures of the same domain from different InterPro member databases we have 4761 domains and 47348 protein-domain pairs.<br />Finally, after considering only one domain per domain family we are left with 0 domains and 15940 protein-domain pairs.</p>
 <pre class="r"><code># save results
 export(InterProScan_domains_nonred, con = &quot;./processed_data_files/InterProScan_domains_nonredundant.gff3&quot;, format = &quot;gff3&quot;)
 gzip(filename = &quot;./processed_data_files/InterProScan_domains_nonredundant.gff3&quot;, destname = &quot;./processed_data_files/InterProScan_domains_nonredundant.gff3.gz&quot;, overwrite = T, remove = T)
@@ -163,8 +164,8 @@ gzip(filename = &quot;./processed_data_files/InterProScan_domains_nonredundant.g
 
 # take protein-domain pair discarding range information
 protein_domain_pair = unique(data.table(IDs_protein = as.character(seqnames(InterProScan_domains_nonred)),
-                                        IDs_domain = as.character(InterProScan_domains_nonred$topInterProID),
-                                        all_IDs_domain = as.character(InterProScan_domains_nonred$Dbxref),
+                                        IDs_domain = as.character(InterProScan_domains_nonred$Dbxref),
+                                        all_IDs_domain = as.character(InterProScan_domains_nonred$Name),
                                         domain_type = InterProScan_domains_nonred$ENTRY_TYPE))
 # save simplified table
 fwrite(protein_domain_pair, file = &quot;./processed_data_files/protein_domain_pair&quot;, sep = &quot;\t&quot;)</code></pre>
@@ -177,7 +178,7 @@ R.utils::gzip(filename = &quot;./processed_data_files/remove_redundant_domains_c
               remove = T, overwrite = T)
 
 Sys.Date()</code></pre>
-<pre><code>## [1] &quot;2017-09-11&quot;</code></pre>
+<pre><code>## [1] &quot;2017-10-22&quot;</code></pre>
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>## R version 3.4.1 (2017-06-30)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
@@ -200,14 +201,14 @@ Sys.Date()</code></pre>
 ## [8] datasets  base     
 ## 
 ## other attached packages:
-##  [1] GGally_1.3.2         MItools_0.1.20       Biostrings_2.44.1   
+##  [1] GGally_1.3.2         MItools_0.1.27       Biostrings_2.44.1   
 ##  [4] XVector_0.16.0       rtracklayer_1.36.3   GenomicRanges_1.28.3
 ##  [7] GenomeInfoDb_1.12.2  ggplot2_2.2.1        PSICQUIC_1.14.0     
 ## [10] plyr_1.8.4           httr_1.3.1           biomaRt_2.32.1      
 ## [13] IRanges_2.10.2       S4Vectors_0.14.3     UniProt.ws_2.16.0   
 ## [16] BiocGenerics_0.22.0  RCurl_1.95-4.8       bitops_1.0-6        
 ## [19] RSQLite_2.0          R.utils_2.5.0        R.oo_1.21.0         
-## [22] R.methodsS3_1.7.1    downloader_0.4       data.table_1.10.4   
+## [22] R.methodsS3_1.7.1    downloader_0.4       data.table_1.10.4-2 
 ## [25] rmarkdown_1.6       
 ## 
 ## loaded via a namespace (and not attached):
@@ -227,14 +228,15 @@ Sys.Date()</code></pre>
 ## [27] GenomeInfoDbData_0.99.0    matrixStats_0.52.2        
 ## [29] XML_3.98-1.9               reshape_0.8.7             
 ## [31] GenomicAlignments_1.12.1   grid_3.4.1                
-## [33] gtable_0.2.0               DBI_0.7                   
-## [35] magrittr_1.5               scales_0.5.0              
-## [37] stringi_1.1.5              reshape2_1.4.2            
-## [39] RColorBrewer_1.1-2         tools_3.4.1               
-## [41] bit64_0.9-7                Biobase_2.36.2            
-## [43] yaml_2.1.14                AnnotationDbi_1.38.1      
-## [45] colorspace_1.3-2           memoise_1.1.0             
-## [47] knitr_1.17</code></pre>
+## [33] ontologyIndex_2.4          jsonlite_1.5              
+## [35] gtable_0.2.0               DBI_0.7                   
+## [37] magrittr_1.5               scales_0.5.0              
+## [39] stringi_1.1.5              reshape2_1.4.2            
+## [41] RColorBrewer_1.1-2         tools_3.4.1               
+## [43] bit64_0.9-7                Biobase_2.36.2            
+## [45] yaml_2.1.14                AnnotationDbi_1.38.1      
+## [47] colorspace_1.3-2           memoise_1.1.0             
+## [49] knitr_1.17</code></pre>
 </div>
 
 

@@ -4,7 +4,7 @@ Vitalii Kleshchevnikov
 
 
 
-Date: 2017-09-11 00:13:23
+Date: 2017-10-22 19:42:19
 
 ## Map domain information on the protein interaction network
 
@@ -50,14 +50,14 @@ Read 20.4% of 785947 rows
 Read 22.9% of 785947 rows
 Read 31.8% of 785947 rows
 Read 39.4% of 785947 rows
-Read 44.5% of 785947 rows
-Read 53.4% of 785947 rows
-Read 62.3% of 785947 rows
+Read 47.1% of 785947 rows
+Read 54.7% of 785947 rows
+Read 63.6% of 785947 rows
 Read 71.3% of 785947 rows
-Read 77.6% of 785947 rows
-Read 86.5% of 785947 rows
-Read 96.7% of 785947 rows
-Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:30
+Read 80.2% of 785947 rows
+Read 90.3% of 785947 rows
+Read 99.2% of 785947 rows
+Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:25
 ```
 
 ```r
@@ -90,25 +90,20 @@ all_within_viral_interaction = fullInteractome(taxid = 10239, database = "IntAct
 ```
 ## 
 Read 0.0% of 785947 rows
-Read 6.4% of 785947 rows
-Read 12.7% of 785947 rows
-Read 17.8% of 785947 rows
-Read 22.9% of 785947 rows
-Read 28.0% of 785947 rows
-Read 33.1% of 785947 rows
-Read 38.2% of 785947 rows
-Read 43.3% of 785947 rows
+Read 8.9% of 785947 rows
+Read 16.5% of 785947 rows
+Read 20.4% of 785947 rows
+Read 21.6% of 785947 rows
+Read 30.5% of 785947 rows
+Read 39.4% of 785947 rows
 Read 48.3% of 785947 rows
 Read 49.6% of 785947 rows
-Read 54.7% of 785947 rows
-Read 59.8% of 785947 rows
+Read 57.3% of 785947 rows
 Read 66.2% of 785947 rows
-Read 71.3% of 785947 rows
-Read 76.3% of 785947 rows
+Read 73.8% of 785947 rows
 Read 82.7% of 785947 rows
-Read 89.1% of 785947 rows
-Read 95.4% of 785947 rows
-Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:34
+Read 94.2% of 785947 rows
+Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:20
 ```
 
 ```r
@@ -224,7 +219,7 @@ Sys.Date()
 ```
 
 ```
-## [1] "2017-09-11"
+## [1] "2017-10-22"
 ```
 
 ```r
@@ -253,14 +248,14 @@ sessionInfo()
 ## [8] datasets  base     
 ## 
 ## other attached packages:
-##  [1] GGally_1.3.2         MItools_0.1.20       Biostrings_2.44.1   
+##  [1] GGally_1.3.2         MItools_0.1.27       Biostrings_2.44.1   
 ##  [4] XVector_0.16.0       rtracklayer_1.36.3   GenomicRanges_1.28.3
 ##  [7] GenomeInfoDb_1.12.2  ggplot2_2.2.1        PSICQUIC_1.14.0     
 ## [10] plyr_1.8.4           httr_1.3.1           biomaRt_2.32.1      
 ## [13] IRanges_2.10.2       S4Vectors_0.14.3     UniProt.ws_2.16.0   
 ## [16] BiocGenerics_0.22.0  RCurl_1.95-4.8       bitops_1.0-6        
 ## [19] RSQLite_2.0          R.utils_2.5.0        R.oo_1.21.0         
-## [22] R.methodsS3_1.7.1    downloader_0.4       data.table_1.10.4   
+## [22] R.methodsS3_1.7.1    downloader_0.4       data.table_1.10.4-2 
 ## [25] rmarkdown_1.6       
 ## 
 ## loaded via a namespace (and not attached):
@@ -281,12 +276,13 @@ sessionInfo()
 ## [29] GenomeInfoDbData_0.99.0    matrixStats_0.52.2        
 ## [31] XML_3.98-1.9               reshape_0.8.7             
 ## [33] GenomicAlignments_1.12.1   grid_3.4.1                
-## [35] gtable_0.2.0               DBI_0.7                   
-## [37] magrittr_1.5               scales_0.5.0              
-## [39] stringi_1.1.5              reshape2_1.4.2            
-## [41] RColorBrewer_1.1-2         tools_3.4.1               
-## [43] bit64_0.9-7                Biobase_2.36.2            
-## [45] yaml_2.1.14                AnnotationDbi_1.38.1      
-## [47] colorspace_1.3-2           memoise_1.1.0             
-## [49] knitr_1.17
+## [35] ontologyIndex_2.4          jsonlite_1.5              
+## [37] gtable_0.2.0               DBI_0.7                   
+## [39] magrittr_1.5               scales_0.5.0              
+## [41] stringi_1.1.5              reshape2_1.4.2            
+## [43] RColorBrewer_1.1-2         tools_3.4.1               
+## [45] bit64_0.9-7                Biobase_2.36.2            
+## [47] yaml_2.1.14                AnnotationDbi_1.38.1      
+## [49] colorspace_1.3-2           memoise_1.1.0             
+## [51] knitr_1.17
 ```

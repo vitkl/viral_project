@@ -135,7 +135,7 @@ $(document).ready(function () {
 <pre><code>## ... looking for the date of the latest IntAct release ...</code></pre>
 <pre><code>## Warning in download.file(input, tt, method = method, mode = &quot;wb&quot;, quiet = !
 ## showProgress): downloaded length 591 != reported length 0</code></pre>
-<pre><code>## ... dowloading from IntAct ftp ...</code></pre>
+<pre><code>## ... loading local copy ...</code></pre>
 <pre><code>## 
 Read 0.0% of 785947 rows
 Read 6.4% of 785947 rows
@@ -144,14 +144,14 @@ Read 16.5% of 785947 rows
 Read 22.9% of 785947 rows
 Read 31.8% of 785947 rows
 Read 36.9% of 785947 rows
-Read 45.8% of 785947 rows
-Read 53.4% of 785947 rows
+Read 44.5% of 785947 rows
+Read 52.2% of 785947 rows
 Read 59.8% of 785947 rows
 Read 68.7% of 785947 rows
 Read 77.6% of 785947 rows
 Read 86.5% of 785947 rows
 Read 96.7% of 785947 rows
-Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:27</code></pre>
+Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:26</code></pre>
 </div>
 <div id="searching-for-human-human-ppi" class="section level2">
 <h2>Searching for human-human PPI</h2>
@@ -169,16 +169,17 @@ Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:27</code></p
 Read 0.0% of 785947 rows
 Read 8.9% of 785947 rows
 Read 17.8% of 785947 rows
-Read 28.0% of 785947 rows
-Read 29.3% of 785947 rows
-Read 38.2% of 785947 rows
-Read 47.1% of 785947 rows
-Read 56.0% of 785947 rows
-Read 66.2% of 785947 rows
-Read 75.1% of 785947 rows
-Read 85.2% of 785947 rows
-Read 96.7% of 785947 rows
-Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:21</code></pre>
+Read 26.7% of 785947 rows
+Read 35.6% of 785947 rows
+Read 44.5% of 785947 rows
+Read 53.4% of 785947 rows
+Read 62.3% of 785947 rows
+Read 71.3% of 785947 rows
+Read 72.5% of 785947 rows
+Read 82.7% of 785947 rows
+Read 94.2% of 785947 rows
+Read 95.4% of 785947 rows
+Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:20</code></pre>
 <pre class="r"><code># select proteins
 viral_proteins = unique(c(all_viral_interaction$data[Taxid_interactor_A != &quot;9606&quot;, IDs_interactor_A], all_viral_interaction$data[Taxid_interactor_B != &quot;9606&quot;, IDs_interactor_B]))
 human_viral_proteins = unique(c(all_viral_interaction$data[Taxid_interactor_A == &quot;9606&quot;, IDs_interactor_A], all_viral_interaction$data[Taxid_interactor_B == &quot;9606&quot;, IDs_interactor_B]))
@@ -229,54 +230,51 @@ all_proteins = all_proteins[order(all_proteins)]</code></pre>
 <pre><code>## Warning in download.file(paste0(&quot;http://www.uniprot.org/uniprot/&quot;,
 ## protein, : cannot open URL 'http://www.uniprot.org/uniprot/NA.fasta': HTTP
 ## status was '404 Not Found'</code></pre>
-<p>20588 FASTA sequences total.</p>
+<p>20589 FASTA sequences total.</p>
 </div>
 </div>
 <div id="running-interproscan-over-those-sequences" class="section level2">
 <h2>Running InterProScan over those sequences</h2>
 <p>Notes on the installation of the InterProScan: <a href="https://github.com/ebi-pf-team/interproscan/wiki/HowToDownload">https://github.com/ebi-pf-team/interproscan/wiki/HowToDownload</a>.<br />The code below will run InterProScan version 5.25-64.0 over all sequences in all_human_viral_proteins.fasta.<br />-i specifies the input file<br />-f specifies the output format<br />-iprlookup tells to look up InterProID for features (only specific member database ID is returned by default)<br />-goterms tells to look up GO terms associated with given InterProID<br />-b specifies output file (format suffix like .gff3 will be added automatically)</p>
 <p>InterProScan works on Linux system only. /my_interproscan/interproscan-5.25-64.0/ should be located in dir1 “/dir1/dir2/viral_project”</p>
-<pre class="bash"><code>if [ -e ./processed_data_files/all_human_viral_protein_domains092017.gff3.gz ]
+<pre class="bash"><code>if [ -e ./processed_data_files/all_human_viral_protein_domains102017.gff3.gz ]
 then
-echo &quot;InterProScan has been run before: all_human_viral_protein_domains092017.gff3.gz file exists&quot;
+echo &quot;InterProScan has been run before: all_human_viral_protein_domains102017.gff3.gz file exists&quot;
 else
-../../my_interproscan/interproscan-5.25-64.0/interproscan.sh -i ./data_files/all_human_viral_proteins.fasta -f gff3 -iprlookup -goterms -b ./processed_data_files/all_human_viral_protein_domains092017
-gzip ./processed_data_files/all_human_viral_protein_domains092017.gff3
+../../my_interproscan/interproscan-5.25-64.0/interproscan.sh -i ./data_files/all_human_viral_proteins.fasta -f gff3 -iprlookup -goterms -b ./processed_data_files/all_human_viral_protein_domains102017
+gzip ./processed_data_files/all_human_viral_protein_domains102017.gff3
 fi</code></pre>
-<pre><code>## 08/09/2017 18:23:10:318 Welcome to InterProScan-5.25-64.0
-## 08/09/2017 18:23:19:466 Running InterProScan v5 in STANDALONE mode... on Linux
-## 08/09/2017 18:23:30:101 Loading file /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/all_human_viral_proteins.fasta
-## 08/09/2017 18:23:30:105 Running the following analyses:
+<pre><code>## 20/10/2017 11:47:05:288 Welcome to InterProScan-5.25-64.0
+## 20/10/2017 11:47:14:785 Running InterProScan v5 in STANDALONE mode... on Linux
+## 20/10/2017 11:47:26:112 Loading file /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/all_human_viral_proteins.fasta
+## 20/10/2017 11:47:26:115 Running the following analyses:
 ## [CDD-3.16,Coils-2.2.1,Gene3D-4.1.0,Hamap-201701.18,MobiDBLite-1.0,Pfam-31.0,PIRSF-3.02,PRINTS-42.0,ProDom-2006.1,ProSitePatterns-20.132,ProSiteProfiles-20.132,SFLD-2,SMART-7.1,SUPERFAMILY-1.75,TIGRFAM-15.0]
 ## Available matches will be retrieved from the pre-calculated match lookup service.
 ## 
 ## Matches for any sequences that are not represented in the lookup service will be calculated locally.
-## 08/09/2017 20:11:15:900 Uploaded/Stored 20320 unique sequences for analysis
-## 08/09/2017 20:19:28:869 25% completed
-## 08/09/2017 21:05:52:747 52% completed
-## 08/09/2017 21:54:02:558 75% completed
-## 09/09/2017 00:01:35:344 90% completed
-## 09/09/2017 02:26:46:122 99% completed
-## Found 16 non unique identifier(s). These identifiers do have different sequences, within the FASTA protein sequence input file.
-## InterProScan will make them unique by adding '_sequential number' in the order of their appearance (e.g. P11111 will be P11111_1 for the first protein sequence).
-## Please find below a list of detected identifiers:
-## P86790
-## P0CG12
-## P0CG13
-## P0CG47
-## P0CG48
-## P0DMV8
-## P62987
-## P0DMV9
-## P0DMU9
-## P62979
-## P0DML3
-## P0DML2
-## P0DMM9
-## P0DI81
-## P0CAP1
-## P0CAP2
-## 09/09/2017 06:42:18:734 100% done:  InterProScan analyses completed</code></pre>
+## 2017-10-20 11:47:27,590 [amqEmbeddedWorkerJmsContainer-30] [uk.ac.ebi.interpro.scan.business.sequence.BerkeleyPrecalculatedProteinLookup:350] WARN - 
+## 
+## The version of InterProScan you are using is 5.25-64.0
+## The version of the lookup service you are using is 5.26-65.0
+## As the data in these versions is not the same, you cannot use this match lookup service.
+## InterProScan will now run locally
+## If you would like to use the match lookup service, you have the following options:
+## i) Download the newest version of InterProScan5 from our FTP site by following the instructions on:
+##    https://www.ebi.ac.uk/interpro/interproscan.html
+## ii) Download the match lookup service for your version of InterProScan from our FTP site and install it locally.
+##     You will then need to edit the following property in your configuration file to point to your local installation:
+##     precalculated.match.lookup.service.url=
+## 
+## In the meantime, the analysis will continue to run locally.
+## 
+## 
+## 20/10/2017 11:47:40:796 Uploaded/Stored 20319 unique sequences for analysis
+## 20/10/2017 13:08:40:038 25% completed
+## 20/10/2017 13:38:59:140 50% completed
+## 20/10/2017 14:36:28:587 75% completed
+## 20/10/2017 18:51:50:484 90% completed
+## 21/10/2017 00:34:20:796 99% completed
+## 21/10/2017 04:58:14:825 100% done:  InterProScan analyses completed</code></pre>
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>## R version 3.4.1 (2017-06-30)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
@@ -299,40 +297,43 @@ fi</code></pre>
 ## [8] datasets  base     
 ## 
 ## other attached packages:
-##  [1] MItools_0.1.20      Biostrings_2.44.1   XVector_0.16.0     
+##  [1] MItools_0.1.27      Biostrings_2.44.1   XVector_0.16.0     
 ##  [4] ggplot2_2.2.1       PSICQUIC_1.14.0     plyr_1.8.4         
 ##  [7] httr_1.3.1          biomaRt_2.32.1      IRanges_2.10.2     
 ## [10] S4Vectors_0.14.3    BiocGenerics_0.22.0 R.utils_2.5.0      
 ## [13] R.oo_1.21.0         R.methodsS3_1.7.1   downloader_0.4     
-## [16] data.table_1.10.4   rmarkdown_1.6      
+## [16] data.table_1.10.4-2 rmarkdown_1.6      
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] SummarizedExperiment_1.6.3 qvalue_2.8.0              
-##  [3] reshape2_1.4.2             lattice_0.20-35           
-##  [5] splines_3.4.1              colorspace_1.3-2          
-##  [7] htmltools_0.3.6            rtracklayer_1.36.3        
-##  [9] yaml_2.1.14                blob_1.1.0                
-## [11] XML_3.98-1.9               rlang_0.1.2               
-## [13] DBI_0.7                    BiocParallel_1.10.1       
-## [15] bit64_0.9-7                gsubfn_0.6-6              
-## [17] matrixStats_0.52.2         GenomeInfoDbData_0.99.0   
-## [19] stringr_1.2.0              zlibbioc_1.22.0           
-## [21] munsell_0.4.3              gtable_0.2.0              
-## [23] memoise_1.1.0              evaluate_0.10.1           
-## [25] Biobase_2.36.2             knitr_1.17                
-## [27] GenomeInfoDb_1.12.2        curl_2.8.1                
-## [29] AnnotationDbi_1.38.1       proto_1.0.0               
-## [31] Rcpp_0.12.12               backports_1.1.0           
-## [33] scales_0.5.0               DelayedArray_0.2.7        
-## [35] bit_1.1-12                 Rsamtools_1.28.0          
-## [37] digest_0.6.12              stringi_1.1.5             
-## [39] GenomicRanges_1.28.3       rprojroot_1.2             
-## [41] grid_3.4.1                 tools_3.4.1               
-## [43] bitops_1.0-6               magrittr_1.5              
-## [45] RCurl_1.95-4.8             lazyeval_0.2.0            
-## [47] tibble_1.3.4               RSQLite_2.0               
-## [49] Matrix_1.2-11              R6_2.2.2                  
-## [51] GenomicAlignments_1.12.1   compiler_3.4.1</code></pre>
+##  [1] Rcpp_0.12.12               lattice_0.20-35           
+##  [3] Rsamtools_1.28.0           rprojroot_1.2             
+##  [5] digest_0.6.12              R6_2.2.2                  
+##  [7] GenomeInfoDb_1.12.2        backports_1.1.0           
+##  [9] RSQLite_2.0                evaluate_0.10.1           
+## [11] zlibbioc_1.22.0            rlang_0.1.2               
+## [13] curl_2.8.1                 lazyeval_0.2.0            
+## [15] blob_1.1.0                 Matrix_1.2-11             
+## [17] qvalue_2.8.0               gsubfn_0.6-6              
+## [19] proto_1.0.0                splines_3.4.1             
+## [21] BiocParallel_1.10.1        stringr_1.2.0             
+## [23] RCurl_1.95-4.8             bit_1.1-12                
+## [25] munsell_0.4.3              DelayedArray_0.2.7        
+## [27] compiler_3.4.1             rtracklayer_1.36.3        
+## [29] htmltools_0.3.6            SummarizedExperiment_1.6.3
+## [31] tibble_1.3.4               GenomeInfoDbData_0.99.0   
+## [33] matrixStats_0.52.2         XML_3.98-1.9              
+## [35] reshape_0.8.7              GenomicAlignments_1.12.1  
+## [37] bitops_1.0-6               grid_3.4.1                
+## [39] ontologyIndex_2.4          jsonlite_1.5              
+## [41] GGally_1.3.2               gtable_0.2.0              
+## [43] DBI_0.7                    magrittr_1.5              
+## [45] scales_0.5.0               stringi_1.1.5             
+## [47] reshape2_1.4.2             RColorBrewer_1.1-2        
+## [49] tools_3.4.1                bit64_0.9-7               
+## [51] Biobase_2.36.2             yaml_2.1.14               
+## [53] AnnotationDbi_1.38.1       colorspace_1.3-2          
+## [55] GenomicRanges_1.28.3       memoise_1.1.0             
+## [57] knitr_1.17</code></pre>
 </div>
 
 

@@ -44,7 +44,7 @@ I read InterProScan result and the InterPro_entry_types file. InterProScan outpu
 
 ```{r InterPro_entry_types}
 # read InterProScan result, download and add InterPro Entry Types information, extract from relevant columns and add names metadata and sequence length information
-InterProScan_result = readInterProGFF3("./processed_data_files/all_human_viral_protein_domains092017.gff3.gz", processed = F)
+InterProScan_result = readInterProGFF3("./processed_data_files/all_human_viral_protein_domains102017.gff3.gz", processed = F)
 InterProScan_result = addInterProEntryTypes(InterProScan_result, "./data_files/entry.list")
 InterProScan_domains = SubsetByInterProEntryType(InterProScan_result, c("Domain"))
 ```
@@ -64,7 +64,7 @@ Signatures of the same domain from different InterPro member databases.
 #InterProScan_domains$topInterProID = InterProScan_domains$Dbxref
 #InterProScan_domains$topInterProID[has_children] = InterProTree_level1$level1[match(InterProScan_domains$Dbxref, #InterProTree_level1$allchildren)][has_children]
 #### 
-
+InterProScan_domains = unique(InterProScan_domains)
 # collapse on InterProID contained in Dbxref column
 InterProScan_domains_nonred = collapseByInterProID(InterProScan_features = InterProScan_domains, id_col = "Dbxref")
 ```
@@ -82,8 +82,8 @@ gzip(filename = "./processed_data_files/InterProScan_domains_nonredundant.gff3",
 
 # take protein-domain pair discarding range information
 protein_domain_pair = unique(data.table(IDs_protein = as.character(seqnames(InterProScan_domains_nonred)),
-                                        IDs_domain = as.character(InterProScan_domains_nonred$topInterProID),
-                                        all_IDs_domain = as.character(InterProScan_domains_nonred$Dbxref),
+                                        IDs_domain = as.character(InterProScan_domains_nonred$Dbxref),
+                                        all_IDs_domain = as.character(InterProScan_domains_nonred$Name),
                                         domain_type = InterProScan_domains_nonred$ENTRY_TYPE))
 # save simplified table
 fwrite(protein_domain_pair, file = "./processed_data_files/protein_domain_pair", sep = "\t")

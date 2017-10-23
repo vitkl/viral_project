@@ -92,12 +92,12 @@ The code below will run InterProScan version 5.25-64.0 over all sequences in all
 InterProScan works on Linux system only. /my_interproscan/interproscan-5.25-64.0/ should be located in dir1 "/dir1/dir2/viral_project"   
 
 ```{bash}
-if [ -e ./processed_data_files/all_human_viral_protein_domains092017.gff3.gz ]
+if [ -e ./processed_data_files/all_human_viral_protein_domains102017.gff3.gz ]
 then
-echo "InterProScan has been run before: all_human_viral_protein_domains092017.gff3.gz file exists"
+echo "InterProScan has been run before: all_human_viral_protein_domains102017.gff3.gz file exists"
 else
-../../my_interproscan/interproscan-5.25-64.0/interproscan.sh -i ./data_files/all_human_viral_proteins.fasta -f gff3 -iprlookup -goterms -b ./processed_data_files/all_human_viral_protein_domains092017
-gzip ./processed_data_files/all_human_viral_protein_domains092017.gff3
+../../my_interproscan/interproscan-5.25-64.0/interproscan.sh -i ./data_files/all_human_viral_proteins.fasta -f gff3 -iprlookup -goterms -b ./processed_data_files/all_human_viral_protein_domains102017
+gzip ./processed_data_files/all_human_viral_protein_domains102017.gff3
 fi
 ```
 

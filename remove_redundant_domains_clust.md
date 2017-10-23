@@ -4,7 +4,7 @@ Vitalii Kleshchevnikov
 
 
 
-Date: 2017-09-10 21:14:23
+Date: 2017-10-22 16:53:39
 
 ## Read InterProScan result and filter for "Domain", "Active_site", "Binding_site", "Conserved_site", "PTM" signatures
 
@@ -13,34 +13,35 @@ I read InterProScan result and the InterPro_entry_types file. InterProScan outpu
 
 ```r
 # read InterProScan result, download and add InterPro Entry Types information, extract from relevant columns and add names metadata and sequence length information
-InterProScan_result = readInterProGFF3("./processed_data_files/all_human_viral_protein_domains092017.gff3.gz", processed = F)
+InterProScan_result = readInterProGFF3("./processed_data_files/all_human_viral_protein_domains102017.gff3.gz", processed = F)
 InterProScan_result = addInterProEntryTypes(InterProScan_result, "./data_files/entry.list")
-InterProScan_domains = SubsetByInterProEntryType(InterProScan_result, c("Domain", 
-    "Active_site", "Binding_site", "Conserved_site", "PTM", "Repeat"))
+InterProScan_domains = SubsetByInterProEntryType(InterProScan_result, c("Domain"))
 ```
 
-## Remove redundancy in the identified domains (signatures of the same domain from different InterPro member databases + domain families)
+## Remove redundancy in the identified domains
 
-In domain families: assign all domains to the top domain.
+Signatures of the same domain from different InterPro member databases.  
 
 
 ```r
-InterProTree = loadInterProTree(filename = "./data_files/interpro_ParentChildTreeFile.txt")
+#### collapse domains by family (not only by single InterProID removing multiple the databases), In domain families: assign all domains to the top domain.
+#InterProTree = loadInterProTree(filename = "./data_files/interpro_ParentChildTreeFile.txt")
 # find all InterProIDs that have children InterProIDs
-InterProTree_level1 = getLevelXchildren(tree = InterProTree, level = 1) 
-has_children = InterProScan_domains$Dbxref %in% InterProTree_level1$allchildren
+#InterProTree_level1 = getLevelXchildren(tree = InterProTree, level = 1) 
+#has_children = InterProScan_domains$Dbxref %in% InterProTree_level1$allchildren
 
 # map top InterProIDs in the hierarchy when InterProIDs have have children InterProIDs
-InterProScan_domains$topInterProID = InterProScan_domains$Dbxref
-InterProScan_domains$topInterProID[has_children] = InterProTree_level1$level1[match(InterProScan_domains$Dbxref, InterProTree_level1$allchildren)][has_children]
-
-# collapse 
-InterProScan_domains_nonred = collapseByInterProID(InterProScan_features = InterProScan_domains, id_col = "topInterProID")
+#InterProScan_domains$topInterProID = InterProScan_domains$Dbxref
+#InterProScan_domains$topInterProID[has_children] = InterProTree_level1$level1[match(InterProScan_domains$Dbxref, #InterProTree_level1$allchildren)][has_children]
+#### 
+InterProScan_domains = unique(InterProScan_domains)
+# collapse on InterProID contained in Dbxref column
+InterProScan_domains_nonred = collapseByInterProID(InterProScan_features = InterProScan_domains, id_col = "Dbxref")
 ```
 
-We used to have 8210 domains and 100698 protein-domain pairs.   
-After combining the signatures of the same domain from different InterPro member databases we have 5496 domains and 56279 protein-domain pairs.   
-Finally, after considering only one domain per domain family we are left with 4152 domains and 42786 protein-domain pairs.  
+We used to have 7221 domains and 86143 protein-domain pairs.   
+After combining the signatures of the same domain from different InterPro member databases we have 4761 domains and 47348 protein-domain pairs.   
+Finally, after considering only one domain per domain family we are left with 0 domains and 15940 protein-domain pairs.  
 
 
 ```r
@@ -52,8 +53,8 @@ gzip(filename = "./processed_data_files/InterProScan_domains_nonredundant.gff3",
 
 # take protein-domain pair discarding range information
 protein_domain_pair = unique(data.table(IDs_protein = as.character(seqnames(InterProScan_domains_nonred)),
-                                        IDs_domain = as.character(InterProScan_domains_nonred$topInterProID),
-                                        all_IDs_domain = as.character(InterProScan_domains_nonred$Dbxref),
+                                        IDs_domain = as.character(InterProScan_domains_nonred$Dbxref),
+                                        all_IDs_domain = as.character(InterProScan_domains_nonred$Name),
                                         domain_type = InterProScan_domains_nonred$ENTRY_TYPE))
 # save simplified table
 fwrite(protein_domain_pair, file = "./processed_data_files/protein_domain_pair", sep = "\t")
@@ -72,7 +73,7 @@ Sys.Date()
 ```
 
 ```
-## [1] "2017-09-11"
+## [1] "2017-10-22"
 ```
 
 ```r
@@ -101,14 +102,14 @@ sessionInfo()
 ## [8] datasets  base     
 ## 
 ## other attached packages:
-##  [1] GGally_1.3.2         MItools_0.1.20       Biostrings_2.44.1   
+##  [1] GGally_1.3.2         MItools_0.1.27       Biostrings_2.44.1   
 ##  [4] XVector_0.16.0       rtracklayer_1.36.3   GenomicRanges_1.28.3
 ##  [7] GenomeInfoDb_1.12.2  ggplot2_2.2.1        PSICQUIC_1.14.0     
 ## [10] plyr_1.8.4           httr_1.3.1           biomaRt_2.32.1      
 ## [13] IRanges_2.10.2       S4Vectors_0.14.3     UniProt.ws_2.16.0   
 ## [16] BiocGenerics_0.22.0  RCurl_1.95-4.8       bitops_1.0-6        
 ## [19] RSQLite_2.0          R.utils_2.5.0        R.oo_1.21.0         
-## [22] R.methodsS3_1.7.1    downloader_0.4       data.table_1.10.4   
+## [22] R.methodsS3_1.7.1    downloader_0.4       data.table_1.10.4-2 
 ## [25] rmarkdown_1.6       
 ## 
 ## loaded via a namespace (and not attached):
@@ -128,12 +129,13 @@ sessionInfo()
 ## [27] GenomeInfoDbData_0.99.0    matrixStats_0.52.2        
 ## [29] XML_3.98-1.9               reshape_0.8.7             
 ## [31] GenomicAlignments_1.12.1   grid_3.4.1                
-## [33] gtable_0.2.0               DBI_0.7                   
-## [35] magrittr_1.5               scales_0.5.0              
-## [37] stringi_1.1.5              reshape2_1.4.2            
-## [39] RColorBrewer_1.1-2         tools_3.4.1               
-## [41] bit64_0.9-7                Biobase_2.36.2            
-## [43] yaml_2.1.14                AnnotationDbi_1.38.1      
-## [45] colorspace_1.3-2           memoise_1.1.0             
-## [47] knitr_1.17
+## [33] ontologyIndex_2.4          jsonlite_1.5              
+## [35] gtable_0.2.0               DBI_0.7                   
+## [37] magrittr_1.5               scales_0.5.0              
+## [39] stringi_1.1.5              reshape2_1.4.2            
+## [41] RColorBrewer_1.1-2         tools_3.4.1               
+## [43] bit64_0.9-7                Biobase_2.36.2            
+## [45] yaml_2.1.14                AnnotationDbi_1.38.1      
+## [47] colorspace_1.3-2           memoise_1.1.0             
+## [49] knitr_1.17
 ```
