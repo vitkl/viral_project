@@ -19,7 +19,13 @@ suppressPackageStartupMessages({
 
 ```{r}
 main_result_Vidal = fread("./SLIMFinder_Vidal/result/main_result.txt")
+length(unique(main_result_Vidal$Dataset))
+length(unique(main_result_Vidal[!is.na(IC),Dataset]))
 main_result_Vidal = main_result_Vidal[!is.na(IC)]
+main_result_Vidal005 = main_result_Vidal[p.adjust(Sig, method = "fdr") < 0.05]
+length(unique(main_result_Vidal005$Dataset))
+length(unique(main_result_Vidal005$Pattern))
+
 main_result = fread("./SLIMFinder/result/main_result.txt")
 main_result = main_result[!is.na(IC)]
 ```
@@ -70,7 +76,7 @@ hist(main_result$IC)
 main_result[order(IC*(CloudUP/UPNum), decreasing = T)[1:20],]
 ```
 
-## Domains and occurence
+## Domains
 
 ```{r}
 # load the domain analysis results
@@ -122,4 +128,45 @@ unique(domain_res$data_with_pval[IDs_interactor_viral %in% c("C5E526", "Q1K9H5",
 
 main_result_Vidal[grepl("P18583", main_result_Vidal$Dataset)] 
 main_result_Vidal[grepl("P61962", main_result_Vidal$Dataset)] 
+```
+
+## occurence
+
+```{r}
+occurence_vidal = fread("./SLIMFinder_Vidal/result/occurence.txt", sep = "\t", header = T)
+occurence_vidal = unique(occurence_vidal)
+length(unique(occurence_vidal$Pattern))
+length(unique(paste0(occurence_vidal$Seq, occurence_vidal$Pattern)))
+length(unique(paste0(occurence_vidal$Seq)))
+table(unique(paste0(occurence_vidal$Seq, occurence_vidal$Pattern)))
+
+occurence_vidal005 = occurence_vidal[Dataset %in% main_result_Vidal005$Dataset & Pattern %in% main_result_Vidal005$Pattern]
+length(unique(occurence_vidal005$Pattern))
+length(unique(paste0(occurence_vidal005$Seq, occurence_vidal005$Pattern)))
+length(unique(paste0(occurence_vidal005$Seq)))
+
+matched_Vidal[Motif1 %in% unique(occurence_vidal005$Pattern), sort(table(Desc2))]
+```
+
+## Clustering
+
+```{r}
+library(igraph)
+matched005 = matched_Vidal[Motif1 %in% unique(occurence_vidal005$Pattern) & NormIC > 0.75]
+matched005_graph = graph_from_edgelist(as.matrix(unique(matched005[,.(Motif1, Name2)])))
+E(matched005_graph)$weight = unique(matched005[,.(Motif1, Name2, NormIC)])$NormIC
+plot(matched005_graph)
+
+#only works for undirected graphs, which this example is fine since symetric
+fc = fastgreedy.community(as.undirected(matched005_graph), weights = E(matched005_graph)$weight)
+
+#make colors for different communities
+V(matched005_graph)$color = membership(fc)
+V(matched005_graph)$shape = ifelse(V(matched005_graph)$name %in% matched005$Motif1, "square", "circle")
+V(matched005_graph)$label.cex = sqrt(sqrt(degree(matched005_graph) / max(degree(matched005_graph))))
+V(matched005_graph)$label.color = ifelse(V(matched005_graph)$name %in% matched005$Motif1, "darkblue", "black")
+E(matched005_graph)$arrow.size = 0
+l = layout_with_fr(matched005_graph, weights = E(matched005_graph)$weight)
+l = norm_coords(l, ymin=-0.4, ymax=0.4, xmin=-0.8, xmax=0.8)
+plot(matched005_graph, rescale=FALSE, vertex.size = 5, layout = l*1.4) #vertex.label.cex = 0.7
 ```
