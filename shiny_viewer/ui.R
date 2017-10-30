@@ -8,7 +8,7 @@ shinyUI(pageWithSidebar(
     
     # Sidebar with a slider input for number of observations
     sidebarPanel(
-        textInput(inputId = "path", label = "path to *.RData file containing the results", value = "../processed_data_files/what_we_find_VS_ELM_clust11092017.RData"),
+        textInput(inputId = "path", label = "path to *.RData file containing the results", value = "../processed_data_files/what_we_find_VS_ELM_clust20171019.RData"),
         selectInput(inputId = "enrich_plot_set", label = "Our prediction vs ELM domains: which results to compare?",
                     choices = "enrichment", selected = "enrichment", multiple = T),
         radioButtons(inputId = "enrich_plot_type", label = "Our prediction vs ELM domains: plot type",

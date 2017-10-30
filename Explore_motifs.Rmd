@@ -8,25 +8,30 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 if(!"MItools" %in% installed.packages()){
-  devtools::install_github("vitkl/MItools")
+    devtools::install_github("vitkl/MItools")
 }
 suppressPackageStartupMessages({
-  library(MItools)
+    library(MItools)
+    library(rtracklayer)
 })
 ```
 
 ## Main result
 
 ```{r}
+main_result_Mann = fread("./SLIMFinder_Mann/result/main_result.txt")
+main_result_Mann = unique(main_result_Mann[!is.na(IC)][, c("RunID", "RunTime") := NULL])
 main_result_Vidal = fread("./SLIMFinder_Vidal/result/main_result.txt")
-main_result_Vidal = main_result_Vidal[!is.na(IC)]
+main_result_Vidal = unique(main_result_Vidal[!is.na(IC)][, c("RunID", "RunTime") := NULL])
 main_result = fread("./SLIMFinder/result/main_result.txt")
-main_result = main_result[!is.na(IC)]
+main_result = unique(main_result[!is.na(IC)][, c("RunID", "RunTime") := NULL])
 ```
 
 ## Unmatched motifs
 
 ```{r}
+unmatched_Mann = fread("./SLIMFinder_Mann/result/comparimotif.unmatched.txt", sep = "\t", header = F)$V1
+unmatched_Mann = unique(unmatched_Mann)
 unmatched_Vidal = fread("./SLIMFinder_Vidal/result/comparimotif.unmatched.txt", sep = "\t", header = F)$V1
 unmatched_Vidal = unique(unmatched_Vidal)
 unmatched = fread("./SLIMFinder/result/comparimotif.unmatched.txt", sep = "\t", header = F)$V1
@@ -70,7 +75,7 @@ hist(main_result$IC)
 main_result[order(IC*(CloudUP/UPNum), decreasing = T)[1:20],]
 ```
 
-## Domains and occurence
+## Domains
 
 ```{r}
 # load the domain analysis results
@@ -122,4 +127,63 @@ unique(domain_res$data_with_pval[IDs_interactor_viral %in% c("C5E526", "Q1K9H5",
 
 main_result_Vidal[grepl("P18583", main_result_Vidal$Dataset)] 
 main_result_Vidal[grepl("P61962", main_result_Vidal$Dataset)] 
+```
+
+## Occurence
+
+```{r}
+occurence_Vidal = fread("./SLIMFinder_Vidal/result/occurence.txt")
+occurence_Vidal[, UNIPROT := gsub("_UNK__.+$","",Seq)]
+# filter for significant
+occurence_Vidal = occurence_Vidal[Pattern %in% main_result_Vidal[p.adjust(Sig, method = "fdr") < 0.05, Pattern]]
+occurence_Vidal_human = unique(occurence_Vidal[!UNIPROT %in% res_count$data_with_pval$IDs_interactor_viral, UNIPROT])
+occurence_Vidal_viral = unique(occurence_Vidal[UNIPROT %in% res_count$data_with_pval$IDs_interactor_viral, UNIPROT])
+```
+
+### ELM Instances
+
+```{r}
+download.file("http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=", "./data_files/instances9606.gff")
+download.file("http://elm.eu.org/instances.gff?q=all&taxon=irus&instance_logic=", "./data_files/instances10239.gff")
+instances_human = import.gff("./data_files/instances9606.gff")
+instances_viral = import.gff("./data_files/instances10239.gff")
+sum(unique(occurence_Vidal_human) %in% c(seqnames(instances_human)))
+length(unique(occurence_Vidal_human))
+length(unique(c(seqnames(instances_human))))
+
+sum(unique(occurence_Vidal_viral) %in% c(seqnames(instances_viral)))
+length(unique(occurence_Vidal_viral))
+length(unique(c(seqnames(instances_viral))))
+```
+
+## Regions necessary to interact
+
+```{r}
+# load ppi data
+# human-human
+all_human_interaction = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
+                                        clean = TRUE, protein_only = TRUE,
+                                        directory = "./data_files/")
+# human-viral
+all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
+                                                clean = TRUE, protein_only = TRUE, 
+                                                directory = "./data_files/")
+
+all_human_interaction_withMotifs = subsetMITABbyID(all_human_interaction, ID_seed = occurence_Vidal_human)
+all_viral_interaction_withMotifs = subsetMITABbyID(all_viral_interaction, ID_seed = occurence_Vidal_viral)
+
+#human
+withMotifsANDbinding_region = rbind(unique(all_human_interaction_withMotifs$data[,.(IDs_interactor_A, binding_region_A_type)]),
+unique(all_human_interaction_withMotifs$data[,.(IDs_interactor_A = IDs_interactor_B, binding_region_A_type = binding_region_B_type)]))
+withMotifsANDbinding_region = withMotifsANDbinding_region[IDs_interactor_A %in% occurence_Vidal_human,]
+
+withMotifsANDbinding_region[, table(binding_region_A_type)]
+withMotifsANDbinding_region[binding_region_A_type == "sufficient_binding_region", length(unique(IDs_interactor_A))]
+
+#viral
+withMotifsANDbinding_region = unique(all_viral_interaction_withMotifs$data[,.(IDs_interactor_A = IDs_interactor_B, binding_region_A_type = binding_region_B_type)])
+withMotifsANDbinding_region = withMotifsANDbinding_region[IDs_interactor_A %in% occurence_Vidal_viral,]
+
+withMotifsANDbinding_region[, table(binding_region_A_type)]
+withMotifsANDbinding_region[binding_region_A_type == "sufficient_binding_region", length(unique(IDs_interactor_A))]
 ```

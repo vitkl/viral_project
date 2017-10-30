@@ -172,12 +172,16 @@ writePatternList(QSLIMFinder_main_result, filename = "./SLIMFinder_Mann/result/m
 ## Compare motifs to ELM
 
 ```{r comparimotif}
-runCompariMotif3(slimpath = "../software/cluster/slimsuite/tools/",
+runCompariMotif3(input_file = "./SLIMFinder_Mann/result/motifs.txt",
+                 slimpath = "../software/cluster/slimsuite/tools/",
                  run = T, with = "db",
                  out_file = "./SLIMFinder_Mann/result/comparimotif.tdt")
-runCompariMotif3(slimpath = "../software/cluster/slimsuite/tools/",
+runCompariMotif3(input_file = "./SLIMFinder_Mann/result/motifs.txt",
+                 slimpath = "../software/cluster/slimsuite/tools/",
                  run = T, with = "self",
                  out_file = "./SLIMFinder_Mann/result/comparimotif_with_self.tdt")
+R.utils::gzip("./SLIMFinder_Mann/result/comparimotif_with_self.compare.tdt", "./SLIMFinder_Mann/result/comparimotif_with_self.compare.tdt.gz")
+R.utils::gzip("./SLIMFinder_Mann/result/comparimotif_with_self.compare.xgmml", "./SLIMFinder_Mann/result/comparimotif_with_self.compare.xgmml.gz")
 ```
 
 ```{r}
