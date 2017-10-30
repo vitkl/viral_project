@@ -106,7 +106,7 @@ forSLIMFinder_Ready$length
 
 #filter
 domain_filt = domain_res
-domain_filt$data_with_pval = domain_filt$data_with_pval[p.value < 0.4,]
+domain_filt$data_with_pval = domain_filt$data_with_pval[p.value <= 1,]
 forSLIMFinder_Ready = domainProteinPairMatch(forSLIMFinder_Ready, domain_filt, remove = T)
 
 ### sanity check
@@ -153,7 +153,7 @@ all_commands = mQSLIMFinderCommand(file_list = forSLIMFinder_file_list,
 
 ## Run QSLIMFinder
 
-```{r run}
+```{r run, eval=TRUE}
 #if(tryCatch({system("bjobs", intern = T)}, error = function(e) e)$message != "error in running command") onLSF = T else onLSF = F
 runQSLIMFinder(commands = all_commands, file_list = forSLIMFinder_file_list, onLSF = T)
 ```
@@ -162,8 +162,8 @@ runQSLIMFinder(commands = all_commands, file_list = forSLIMFinder_file_list, onL
 
 ```{r read}
 if(!dir.exists("./SLIMFinder_Vidal/result/")) dir.create("./SLIMFinder_Vidal/result/")
-QSLIMFinder_main_result = readQSLIMFinderMain(file_list = forSLIMFinder_file_list)
-QSLIMFinder_occurence = readQSLIMFinderOccurence(file_list = forSLIMFinder_file_list)
+QSLIMFinder_main_result = readQSLIMFinderMain(outputfile = forSLIMFinder_file_list$outputfile)
+QSLIMFinder_occurence = readQSLIMFinderOccurence(outputdir = forSLIMFinder_file_list$outputdir)
 fwrite(QSLIMFinder_main_result, "./SLIMFinder_Vidal/result/main_result.txt", sep = "\t")
 fwrite(QSLIMFinder_occurence, "./SLIMFinder_Vidal/result/occurence.txt", sep = "\t")
 writePatternList(QSLIMFinder_main_result, filename = "./SLIMFinder_Vidal/result/motifs.txt")

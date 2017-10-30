@@ -289,8 +289,8 @@ runningTestEnrichment = function(res, name, rank_by = "p.value", decreasing = F)
 
 Ns = seq(25, 500, 25)
 # count
-enrichment = runningTestEnrichment(res, name = "domain frequency among interactors of a viral protein, empirical pval")
-enrichment_justfreq = runningTestEnrichment(res, rank_by = "observed_statistic", name = "domain count among interactors of a viral protein, frequency")
+enrichment = runningTestEnrichment(res_count, name = "domain frequency among interactors of a viral protein, empirical pval")
+enrichment_justfreq = runningTestEnrichment(res_count, rank_by = "observed_statistic", name = "domain count among interactors of a viral protein, frequency")
 
 # Fisher test pval
 enrichmentresJustFISHER = runningTestEnrichment(resJustFISHER, rank_by = "p.value", name = "Fisher test pval: domain overrepresentation over the background")

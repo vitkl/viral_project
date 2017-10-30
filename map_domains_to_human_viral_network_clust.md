@@ -4,7 +4,7 @@ Vitalii Kleshchevnikov
 
 
 
-Date: 2017-10-22 19:42:19
+Date: 2017-10-23 13:23:11
 
 ## Map domain information on the protein interaction network
 
@@ -52,12 +52,13 @@ Read 31.8% of 785947 rows
 Read 39.4% of 785947 rows
 Read 47.1% of 785947 rows
 Read 54.7% of 785947 rows
-Read 63.6% of 785947 rows
+Read 62.3% of 785947 rows
+Read 70.0% of 785947 rows
 Read 71.3% of 785947 rows
 Read 80.2% of 785947 rows
-Read 90.3% of 785947 rows
-Read 99.2% of 785947 rows
-Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:25
+Read 89.1% of 785947 rows
+Read 98.0% of 785947 rows
+Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:27
 ```
 
 ```r
@@ -91,8 +92,7 @@ all_within_viral_interaction = fullInteractome(taxid = 10239, database = "IntAct
 ## 
 Read 0.0% of 785947 rows
 Read 8.9% of 785947 rows
-Read 16.5% of 785947 rows
-Read 20.4% of 785947 rows
+Read 17.8% of 785947 rows
 Read 21.6% of 785947 rows
 Read 30.5% of 785947 rows
 Read 39.4% of 785947 rows
@@ -100,10 +100,10 @@ Read 48.3% of 785947 rows
 Read 49.6% of 785947 rows
 Read 57.3% of 785947 rows
 Read 66.2% of 785947 rows
-Read 73.8% of 785947 rows
-Read 82.7% of 785947 rows
+Read 75.1% of 785947 rows
+Read 84.0% of 785947 rows
 Read 94.2% of 785947 rows
-Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:20
+Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:21
 ```
 
 ```r
@@ -219,7 +219,7 @@ Sys.Date()
 ```
 
 ```
-## [1] "2017-10-22"
+## [1] "2017-10-23"
 ```
 
 ```r
@@ -259,12 +259,12 @@ sessionInfo()
 ## [25] rmarkdown_1.6       
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.12               lattice_0.20-35           
+##  [1] Rcpp_0.12.13               lattice_0.20-35           
 ##  [3] Rsamtools_1.28.0           rprojroot_1.2             
 ##  [5] digest_0.6.12              R6_2.2.2                  
-##  [7] backports_1.1.0            evaluate_0.10.1           
+##  [7] backports_1.1.1            evaluate_0.10.1           
 ##  [9] zlibbioc_1.22.0            rlang_0.1.2               
-## [11] curl_2.8.1                 lazyeval_0.2.0            
+## [11] curl_3.0                   lazyeval_0.2.0            
 ## [13] blob_1.1.0                 Matrix_1.2-11             
 ## [15] qvalue_2.8.0               gsubfn_0.6-6              
 ## [17] labeling_0.3               proto_1.0.0               

@@ -69,6 +69,7 @@ rm(list = ls()[!ls() %in% c("domain_res", "all_human_interaction", "all_viral_in
 # choose pvalue cutoff:
 plot(domain_res)
 proteins_w_signif_domains = unique(domain_res$data_with_pval[p.value <= 1, IDs_interactor_human])
+#proteins_w_signif_domains = extractInteractors(all_viral_interaction, taxid = 9606, inverse_filter = T)
 ```
 
 ### prepare sets of protein sequences and instructions for SLIMFinder
@@ -104,7 +105,7 @@ forSLIMFinder_Ready$length
 
 #filter
 domain_filt = domain_res
-domain_filt$data_with_pval = domain_filt$data_with_pval[p.value < 0.4,]
+domain_filt$data_with_pval = domain_filt$data_with_pval[p.value <= 1,]
 forSLIMFinder_Ready = domainProteinPairMatch(forSLIMFinder_Ready, domain_filt, remove = T)
 
 ### sanity check
@@ -150,7 +151,7 @@ all_commands = mQSLIMFinderCommand(file_list = forSLIMFinder_file_list,
 
 ## Run QSLIMFinder
 
-```{r run}
+```{r run, eval = FALSE}
 #if(tryCatch({system("bjobs", intern = T)}, error = function(e) e)$message != "error in running command") onLSF = T else onLSF = F
 runQSLIMFinder(commands = all_commands, file_list = forSLIMFinder_file_list, onLSF = T)
 ```
@@ -159,9 +160,10 @@ runQSLIMFinder(commands = all_commands, file_list = forSLIMFinder_file_list, onL
 
 ```{r read}
 if(!dir.exists("./SLIMFinder/result/")) dir.create("./SLIMFinder/result/")
-QSLIMFinder_main_result = readQSLIMFinderMain(file_list = forSLIMFinder_file_list)
-QSLIMFinder_occurence = readQSLIMFinderOccurence(file_list = forSLIMFinder_file_list)
+QSLIMFinder_main_result = readQSLIMFinderMain(outputfile = forSLIMFinder_file_list$outputfile)
+QSLIMFinder_occurence = readQSLIMFinderOccurence(outputdir = forSLIMFinder_file_list$outputdir)
 fwrite(QSLIMFinder_main_result, "./SLIMFinder/result/main_result.txt", sep = "\t")
+
 fwrite(QSLIMFinder_occurence, "./SLIMFinder/result/occurence.txt", sep = "\t")
 writePatternList(QSLIMFinder_main_result, filename = "./SLIMFinder/result/motifs.txt")
 ```

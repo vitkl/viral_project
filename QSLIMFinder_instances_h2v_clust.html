@@ -158,19 +158,22 @@ all_human_interaction = fullInteractome(taxid = 9606, database = &quot;IntActFTP
 <pre><code>## 
 Read 0.0% of 785947 rows
 Read 6.4% of 785947 rows
-Read 15.3% of 785947 rows
+Read 14.0% of 785947 rows
 Read 16.5% of 785947 rows
+Read 21.6% of 785947 rows
 Read 22.9% of 785947 rows
-Read 31.8% of 785947 rows
+Read 30.5% of 785947 rows
 Read 36.9% of 785947 rows
 Read 44.5% of 785947 rows
 Read 52.2% of 785947 rows
+Read 58.5% of 785947 rows
 Read 59.8% of 785947 rows
 Read 67.4% of 785947 rows
 Read 75.1% of 785947 rows
-Read 84.0% of 785947 rows
-Read 92.9% of 785947 rows
-Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:28</code></pre>
+Read 82.7% of 785947 rows
+Read 91.6% of 785947 rows
+Read 99.2% of 785947 rows
+Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:29</code></pre>
 <pre class="r"><code># human-viral
 all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = &quot;IntActFTP&quot;, format = &quot;tab27&quot;,
                                                 clean = TRUE, protein_only = TRUE, 
@@ -185,29 +188,32 @@ all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, d
 <pre><code>## 
 Read 0.0% of 785947 rows
 Read 7.6% of 785947 rows
-Read 16.5% of 785947 rows
-Read 24.2% of 785947 rows
-Read 31.8% of 785947 rows
-Read 39.4% of 785947 rows
-Read 48.3% of 785947 rows
-Read 56.0% of 785947 rows
-Read 64.9% of 785947 rows
-Read 72.5% of 785947 rows
+Read 15.3% of 785947 rows
+Read 22.9% of 785947 rows
+Read 30.5% of 785947 rows
+Read 38.2% of 785947 rows
+Read 44.5% of 785947 rows
+Read 52.2% of 785947 rows
+Read 59.8% of 785947 rows
+Read 67.4% of 785947 rows
+Read 75.1% of 785947 rows
 Read 81.4% of 785947 rows
-Read 91.6% of 785947 rows
-Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:20</code></pre>
+Read 90.3% of 785947 rows
+Read 98.0% of 785947 rows
+Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:21</code></pre>
 </div>
 <div id="load-results-ofwhich-domains-are-likely-to-mediate-interaction" class="section level2">
 <h2>load results ofwhich domains are likely to mediate interaction</h2>
 <pre class="r"><code># load the domain analysis results
-load(&quot;./processed_data_files/what_we_find_VS_ELM_clust11092017.RData&quot;)
-domain_res = res
+load(&quot;./processed_data_files/what_we_find_VS_ELM_clust20171019.RData&quot;)
+domain_res = res_count
 rm(list = ls()[!ls() %in% c(&quot;domain_res&quot;, &quot;all_human_interaction&quot;, &quot;all_viral_interaction&quot;)])
 
 # choose pvalue cutoff:
 plot(domain_res)</code></pre>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
-<pre class="r"><code>proteins_w_signif_domains = unique(domain_res$data_with_pval[p.value &lt; 0.5, IDs_interactor_human])</code></pre>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<pre class="r"><code>proteins_w_signif_domains = unique(domain_res$data_with_pval[p.value &lt;= 1, IDs_interactor_human])
+#proteins_w_signif_domains = extractInteractors(all_viral_interaction, taxid = 9606, inverse_filter = T)</code></pre>
 <div id="prepare-sets-of-protein-sequences-and-instructions-for-slimfinder" class="section level3">
 <h3>prepare sets of protein sequences and instructions for SLIMFinder</h3>
 <pre class="r"><code># load FASTA
@@ -236,13 +242,13 @@ sum(!domainProteinPairMatch(forSLIMFinder_Ready, domain_res, remove = F))</code>
 <pre><code>## [1] 0</code></pre>
 <pre class="r"><code># how many viral-human pairs in which viral proteins interact with human protein (with relevant domain) and are associated with the domain
 sum(domainProteinPairMatch(forSLIMFinder_Ready, domain_res, remove = F))</code></pre>
-<pre><code>## [1] 9529</code></pre>
+<pre><code>## [1] 11859</code></pre>
 <pre class="r"><code># total
 forSLIMFinder_Ready$length</code></pre>
-<pre><code>## [1] 9529</code></pre>
+<pre><code>## [1] 11859</code></pre>
 <pre class="r"><code>#filter
 domain_filt = domain_res
-domain_filt$data_with_pval = domain_filt$data_with_pval[p.value &lt; 0.4,]
+domain_filt$data_with_pval = domain_filt$data_with_pval[p.value &lt;= 1,]
 forSLIMFinder_Ready = domainProteinPairMatch(forSLIMFinder_Ready, domain_filt, remove = T)
 
 ### sanity check
@@ -289,54 +295,37 @@ QSLIMFinderCommand(file_list = forSLIMFinder_file_list)</code></pre>
 <h2>Run QSLIMFinder</h2>
 <pre class="r"><code>#if(tryCatch({system(&quot;bjobs&quot;, intern = T)}, error = function(e) e)$message != &quot;error in running command&quot;) onLSF = T else onLSF = F
 runQSLIMFinder(commands = all_commands, file_list = forSLIMFinder_file_list, onLSF = T)</code></pre>
-<pre><code>## character(0)</code></pre>
 </div>
 <div id="read-results" class="section level2">
 <h2>Read results</h2>
-<pre class="r"><code>readQSLIMFinderMain = function(file_list = &quot;forSLIMFinder_file_list&quot;){
-    main_result = lapply(file_list$outputfile, function(file) {
-        #fread(&quot;./SLIMFinder/output/interactors_of.O60506_P03496./main_result&quot;, stringsAsFactors = F)
-        if(file.exists(file)) fread(file, stringsAsFactors = F)
-    })
-    Reduce(rbind, main_result)
-}
-writePatternList = function(QSLIMFinder_main_result, filename = &quot;./motifs.txt&quot;) {
-    motifs = unique(QSLIMFinder_main_result[,.(Dataset,Pattern)])
-    motifs[, Name := paste0(Dataset,Pattern)][,Dataset:=NULL]
-    fwrite(motifs, filename, sep = &quot;\t&quot;)
-}
+<pre class="r"><code>if(!dir.exists(&quot;./SLIMFinder/result/&quot;)) dir.create(&quot;./SLIMFinder/result/&quot;)
+QSLIMFinder_main_result = readQSLIMFinderMain(outputfile = forSLIMFinder_file_list$outputfile)
+QSLIMFinder_occurence = readQSLIMFinderOccurence(outputdir = forSLIMFinder_file_list$outputdir)
+fwrite(QSLIMFinder_main_result, &quot;./SLIMFinder/result/main_result.txt&quot;, sep = &quot;\t&quot;)
 
-if(!dir.exists(&quot;./SLIMFinder/result/&quot;)) dir.create(&quot;./SLIMFinder/result/&quot;)
-QSLIMFinder_main_result = readQSLIMFinderMain(file_list = forSLIMFinder_file_list)
+fwrite(QSLIMFinder_occurence, &quot;./SLIMFinder/result/occurence.txt&quot;, sep = &quot;\t&quot;)
 writePatternList(QSLIMFinder_main_result, filename = &quot;./SLIMFinder/result/motifs.txt&quot;)</code></pre>
 </div>
 <div id="compare-motifs-to-elm" class="section level2">
 <h2>Compare motifs to ELM</h2>
-<pre class="r"><code>runCompariMotif3 = function(input_file = &quot;./SLIMFinder/result/motifs.txt&quot;,
-                            slimpath = &quot;../software/slimsuite/tools/&quot;,
-                            dbpath = &quot;./data_files/&quot;,
-                            dburl = &quot;http://elm.eu.org/elms/elms_index.tsv&quot;,
-                            parameters = &quot;unmatched=T motific=T&quot;, 
-                            out_file = &quot;./SLIMFinder/result/comparimotif.tdt&quot;,
-                            LSF_project_path = &quot;/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/&quot;,
-                            run = F){
-    elm_filename = paste0(dbpath, Sys.Date(), &quot;elms_index.tsv&quot;)
-    if(!file.exists(elm_filename)) download.file(dburl, elm_filename)
-    comparimotif_call = paste0(&quot;python &quot;, LSF_project_path, slimpath, &quot;comparimotif_V3.py&quot;)
-    input_res = paste0(&quot;motifs=&quot;, LSF_project_path, input_file)
-    input_database = paste0(&quot;searchdb=&quot;, LSF_project_path, elm_filename) 
-    out_file = paste0(&quot;resfile=&quot;, LSF_project_path, out_file)
-    command = paste(comparimotif_call, input_res, input_database, parameters, out_file)
-    if(run) system(command, wait = F)
-    return(command)
-}
-runCompariMotif3(slimpath = &quot;../software/cluster/slimsuite/tools/&quot;,
-                 run = T)</code></pre>
-<pre><code>## [1] &quot;python /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/../software/cluster/slimsuite/tools/comparimotif_V3.py motifs=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/motifs.txt searchdb=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/2017-10-16elms_index.tsv unmatched=T motific=T resfile=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/comparimotif.tdt&quot;</code></pre>
-<pre class="r"><code>filename = paste0(&quot;./processed_data_files/QSLIMFinder_instances_h2v_clust&quot;,gsub(&quot;-&quot;,&quot;&quot;,Sys.Date()),&quot;.RData&quot;)
+<pre class="r"><code>runCompariMotif3(slimpath = &quot;../software/cluster/slimsuite/tools/&quot;,
+                 run = T, with = &quot;db&quot;,
+                 out_file = &quot;./SLIMFinder/result/comparimotif.tdt&quot;)</code></pre>
+<pre><code>## [1] &quot;python /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/../software/cluster/slimsuite/tools/comparimotif_V3.py motifs=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/motifs.txt searchdb=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project//hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/2017-10-26elms_index.tsv unmatched=T motific=T resfile=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/comparimotif.tdt&quot;</code></pre>
+<pre class="r"><code>runCompariMotif3(slimpath = &quot;../software/cluster/slimsuite/tools/&quot;,
+                 run = T, with = &quot;self&quot;,
+                 out_file = &quot;./SLIMFinder/result/comparimotif_with_self.tdt&quot;)</code></pre>
+<pre><code>## [1] &quot;python /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/../software/cluster/slimsuite/tools/comparimotif_V3.py motifs=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/motifs.txt  unmatched=T motific=T resfile=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/comparimotif_with_self.tdt&quot;</code></pre>
+<pre class="r"><code>tar(&quot;./SLIMFinder/input.gz&quot;,&quot;./SLIMFinder/input/&quot;, compression='gzip')
+#tar(&quot;./SLIMFinder/log_dir.gz&quot;,&quot;./SLIMFinder/log_dir/&quot;, compression='gzip')
+#tar(&quot;./SLIMFinder/output.gz&quot;,&quot;./SLIMFinder/output&quot;, compression='gzip')
+unlink(&quot;./SLIMFinder/input/&quot;, recursive = T)
+#unlink(&quot;./SLIMFinder/log_dir/&quot;)
+#unlink(&quot;./SLIMFinder/output/&quot;)
+filename = paste0(&quot;./processed_data_files/QSLIMFinder_instances_h2v_clust&quot;,gsub(&quot;-&quot;,&quot;&quot;,Sys.Date()),&quot;.RData&quot;)
 save(list = ls(), file=filename)
 Sys.Date()</code></pre>
-<pre><code>## [1] &quot;2017-10-16&quot;</code></pre>
+<pre><code>## [1] &quot;2017-10-26&quot;</code></pre>
 <pre class="r"><code>sessionInfo()</code></pre>
 <pre><code>## R version 3.4.1 (2017-06-30)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
@@ -361,20 +350,20 @@ Sys.Date()</code></pre>
 ## other attached packages:
 ##  [1] ontologyIndex_2.4    scales_0.5.0         RColorBrewer_1.1-2  
 ##  [4] GGally_1.3.2         ggplot2_2.2.1        rtracklayer_1.36.3  
-##  [7] GenomicRanges_1.28.3 GenomeInfoDb_1.12.2  MItools_0.1.27      
+##  [7] GenomicRanges_1.28.3 GenomeInfoDb_1.12.2  MItools_0.1.29      
 ## [10] Biostrings_2.44.1    XVector_0.16.0       data.table_1.10.4-2 
 ## [13] PSICQUIC_1.14.0      plyr_1.8.4           httr_1.3.1          
 ## [16] biomaRt_2.32.1       IRanges_2.10.2       S4Vectors_0.14.3    
 ## [19] BiocGenerics_0.22.0  rmarkdown_1.6       
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.12               lattice_0.20-35           
+##  [1] Rcpp_0.12.13               lattice_0.20-35           
 ##  [3] Rsamtools_1.28.0           rprojroot_1.2             
 ##  [5] digest_0.6.12              R6_2.2.2                  
-##  [7] backports_1.1.0            RSQLite_2.0               
+##  [7] backports_1.1.1            RSQLite_2.0               
 ##  [9] evaluate_0.10.1            zlibbioc_1.22.0           
 ## [11] rlang_0.1.2                lazyeval_0.2.0            
-## [13] curl_2.8.1                 blob_1.1.0                
+## [13] curl_3.0                   blob_1.1.0                
 ## [15] R.utils_2.5.0              R.oo_1.21.0               
 ## [17] Matrix_1.2-11              qvalue_2.8.0              
 ## [19] gsubfn_0.6-6               proto_1.0.0               

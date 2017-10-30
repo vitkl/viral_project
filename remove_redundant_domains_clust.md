@@ -4,7 +4,7 @@ Vitalii Kleshchevnikov
 
 
 
-Date: 2017-10-22 16:53:39
+Date: 2017-10-23 10:29:23
 
 ## Read InterProScan result and filter for "Domain", "Active_site", "Binding_site", "Conserved_site", "PTM" signatures
 
@@ -73,7 +73,7 @@ Sys.Date()
 ```
 
 ```
-## [1] "2017-10-22"
+## [1] "2017-10-23"
 ```
 
 ```r
@@ -113,10 +113,10 @@ sessionInfo()
 ## [25] rmarkdown_1.6       
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.12               lattice_0.20-35           
+##  [1] Rcpp_0.12.13               lattice_0.20-35           
 ##  [3] Rsamtools_1.28.0           rprojroot_1.2             
 ##  [5] digest_0.6.12              R6_2.2.2                  
-##  [7] backports_1.1.0            evaluate_0.10.1           
+##  [7] backports_1.1.1            evaluate_0.10.1           
 ##  [9] zlibbioc_1.22.0            rlang_0.1.2               
 ## [11] lazyeval_0.2.0             blob_1.1.0                
 ## [13] Matrix_1.2-11              qvalue_2.8.0              

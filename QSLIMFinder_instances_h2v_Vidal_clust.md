@@ -56,16 +56,16 @@ Read 6.4% of 785947 rows
 Read 15.3% of 785947 rows
 Read 17.8% of 785947 rows
 Read 22.9% of 785947 rows
-Read 30.5% of 785947 rows
+Read 31.8% of 785947 rows
 Read 36.9% of 785947 rows
-Read 44.5% of 785947 rows
-Read 52.2% of 785947 rows
+Read 45.8% of 785947 rows
+Read 54.7% of 785947 rows
 Read 59.8% of 785947 rows
-Read 67.4% of 785947 rows
-Read 75.1% of 785947 rows
-Read 84.0% of 785947 rows
-Read 94.2% of 785947 rows
-Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:26
+Read 68.7% of 785947 rows
+Read 77.6% of 785947 rows
+Read 87.8% of 785947 rows
+Read 98.0% of 785947 rows
+Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:24
 ```
 
 ```r
@@ -102,30 +102,29 @@ all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, d
 ```
 ## 
 Read 0.0% of 785947 rows
-Read 8.9% of 785947 rows
-Read 16.5% of 785947 rows
-Read 24.2% of 785947 rows
-Read 33.1% of 785947 rows
-Read 40.7% of 785947 rows
-Read 49.6% of 785947 rows
-Read 57.3% of 785947 rows
-Read 66.2% of 785947 rows
-Read 73.8% of 785947 rows
-Read 82.7% of 785947 rows
-Read 92.9% of 785947 rows
+Read 10.2% of 785947 rows
+Read 17.8% of 785947 rows
+Read 26.7% of 785947 rows
+Read 35.6% of 785947 rows
+Read 44.5% of 785947 rows
+Read 53.4% of 785947 rows
+Read 62.3% of 785947 rows
+Read 71.3% of 785947 rows
+Read 80.2% of 785947 rows
+Read 90.3% of 785947 rows
 Read 96.7% of 785947 rows
-Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:19
+Read 785947 rows and 42 (of 42) columns from 2.940 GB file in 00:00:17
 ## 
-Read 16.6% of 180679 rows
-Read 180679 rows and 11 (of 11) columns from 0.029 GB file in 00:00:03
+Read 93.1% of 182538 rows
+Read 182538 rows and 11 (of 11) columns from 0.029 GB file in 00:00:03
 ```
 
 ## load results of which domains are likely to mediate interaction
 
 ```r
 # load the domain analysis results
-load("./processed_data_files/what_we_find_VS_ELM_clust11092017.RData")
-domain_res = res
+load("./processed_data_files/what_we_find_VS_ELM_clust20171019.RData")
+domain_res = res_count
 rm(list = ls()[!ls() %in% c("domain_res", "all_human_interaction", "all_viral_interaction")])
 
 # choose pvalue cutoff:
@@ -135,7 +134,7 @@ plot(domain_res)
 ![](/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/QSLIMFinder_instances_h2v_Vidal_clust_files/figure-html/load_results-1.png)<!-- -->
 
 ```r
-proteins_w_signif_domains = unique(domain_res$data_with_pval[p.value < 0.5, IDs_interactor_human])
+proteins_w_signif_domains = unique(domain_res$data_with_pval[p.value <= 1, IDs_interactor_human])
 ```
 
 ### prepare sets of protein sequences and instructions for SLIMFinder
@@ -177,7 +176,7 @@ sum(domainProteinPairMatch(forSLIMFinder_Ready, domain_res, remove = F))
 ```
 
 ```
-## [1] 8550
+## [1] 10299
 ```
 
 ```r
@@ -186,13 +185,13 @@ forSLIMFinder_Ready$length
 ```
 
 ```
-## [1] 8550
+## [1] 10299
 ```
 
 ```r
 #filter
 domain_filt = domain_res
-domain_filt$data_with_pval = domain_filt$data_with_pval[p.value < 0.4,]
+domain_filt$data_with_pval = domain_filt$data_with_pval[p.value <= 1,]
 forSLIMFinder_Ready = domainProteinPairMatch(forSLIMFinder_Ready, domain_filt, remove = T)
 
 ### sanity check
@@ -273,33 +272,9 @@ runQSLIMFinder(commands = all_commands, file_list = forSLIMFinder_file_list, onL
 
 
 ```r
-readQSLIMFinderMain = function(file_list = "forSLIMFinder_file_list"){
-    main_result = lapply(file_list$outputfile, function(file) {
-        #fread("./SLIMFinder_Vidal/output/interactors_of.O60506_P03496./main_result", stringsAsFactors = F)
-        if(file.exists(file)) fread(file, stringsAsFactors = F)
-    })
-    Reduce(rbind, main_result)
-}
-readQSLIMFinderOccurence = function(file_list = "forSLIMFinder_file_list"){
-    Occurence_list = lapply(file_list$outputdir, function(dir) {
-        #fread("./SLIMFinder_Vidal/output/interactors_of.O60506_P03496./main_result", stringsAsFactors = F)
-        if(dir.exists(dir)){
-                 all_files = list.files(dir)
-        occurence_file = grep(".occ.csv", all_files, value = T)
-        if(length(occurence_file) == 1) fread(paste0(dir,occurence_file), stringsAsFactors = F)   
-        }
-    })
-    Reduce(rbind, Occurence_list)
-}
-writePatternList = function(QSLIMFinder_main_result, filename = "./motifs.txt") {
-    motifs = unique(QSLIMFinder_main_result[,.(Dataset,Pattern)])
-    motifs[, Name := paste0(Dataset,Pattern)][,Dataset:=NULL]
-    fwrite(motifs, filename, sep = "\t")
-}
-
 if(!dir.exists("./SLIMFinder_Vidal/result/")) dir.create("./SLIMFinder_Vidal/result/")
-QSLIMFinder_main_result = readQSLIMFinderMain(file_list = forSLIMFinder_file_list)
-QSLIMFinder_occurence = readQSLIMFinderOccurence(file_list = forSLIMFinder_file_list)
+QSLIMFinder_main_result = readQSLIMFinderMain(outputfile = forSLIMFinder_file_list$outputfile)
+QSLIMFinder_occurence = readQSLIMFinderOccurence(outputdir = forSLIMFinder_file_list$outputdir)
 fwrite(QSLIMFinder_main_result, "./SLIMFinder_Vidal/result/main_result.txt", sep = "\t")
 fwrite(QSLIMFinder_occurence, "./SLIMFinder_Vidal/result/occurence.txt", sep = "\t")
 writePatternList(QSLIMFinder_main_result, filename = "./SLIMFinder_Vidal/result/motifs.txt")
@@ -309,30 +284,23 @@ writePatternList(QSLIMFinder_main_result, filename = "./SLIMFinder_Vidal/result/
 
 
 ```r
-runCompariMotif3 = function(input_file = "./SLIMFinder_Vidal/result/motifs.txt",
-                            slimpath = "../software/slimsuite/tools/",
-                            dbpath = "./data_files/",
-                            dburl = "http://elm.eu.org/elms/elms_index.tsv",
-                            parameters = "unmatched=T motific=T", 
-                            out_file = "./SLIMFinder_Vidal/result/comparimotif.tdt",
-                            LSF_project_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/",
-                            run = F){
-    elm_filename = paste0(dbpath, Sys.Date(), "elms_index.tsv")
-    if(!file.exists(elm_filename)) download.file(dburl, elm_filename)
-    comparimotif_call = paste0("python ", LSF_project_path, slimpath, "comparimotif_V3.py")
-    input_res = paste0("motifs=", LSF_project_path, input_file)
-    input_database = paste0("searchdb=", LSF_project_path, elm_filename) 
-    out_file = paste0("resfile=", LSF_project_path, out_file)
-    command = paste(comparimotif_call, input_res, input_database, parameters, out_file)
-    if(run) system(command, wait = F)
-    return(command)
-}
 runCompariMotif3(slimpath = "../software/cluster/slimsuite/tools/",
-                 run = T)
+                 run = T, with = "db",
+                 out_file = "./SLIMFinder_Vidal/result/comparimotif.tdt")
 ```
 
 ```
-## [1] "python /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/../software/cluster/slimsuite/tools/comparimotif_V3.py motifs=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder_Vidal/result/motifs.txt searchdb=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/2017-10-17elms_index.tsv unmatched=T motific=T resfile=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder_Vidal/result/comparimotif.tdt"
+## [1] "python /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/../software/cluster/slimsuite/tools/comparimotif_V3.py motifs=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/motifs.txt searchdb=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project//hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./data_files/2017-10-28elms_index.tsv unmatched=T motific=T resfile=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder_Vidal/result/comparimotif.tdt"
+```
+
+```r
+runCompariMotif3(slimpath = "../software/cluster/slimsuite/tools/",
+                 run = T, with = "self",
+                 out_file = "./SLIMFinder_Vidal/result/comparimotif_with_self.tdt")
+```
+
+```
+## [1] "python /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/../software/cluster/slimsuite/tools/comparimotif_V3.py motifs=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder/result/motifs.txt  unmatched=T motific=T resfile=/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/./SLIMFinder_Vidal/result/comparimotif_with_self.tdt"
 ```
 
 
@@ -349,7 +317,7 @@ Sys.Date()
 ```
 
 ```
-## [1] "2017-10-17"
+## [1] "2017-10-28"
 ```
 
 ```r
@@ -380,20 +348,20 @@ sessionInfo()
 ## other attached packages:
 ##  [1] ontologyIndex_2.4    scales_0.5.0         RColorBrewer_1.1-2  
 ##  [4] GGally_1.3.2         ggplot2_2.2.1        rtracklayer_1.36.3  
-##  [7] GenomicRanges_1.28.3 GenomeInfoDb_1.12.2  MItools_0.1.27      
-## [10] Biostrings_2.44.1    XVector_0.16.0       data.table_1.10.4-2 
+##  [7] GenomicRanges_1.28.3 GenomeInfoDb_1.12.2  MItools_0.1.29      
+## [10] Biostrings_2.44.1    XVector_0.16.0       data.table_1.10.4-3 
 ## [13] PSICQUIC_1.14.0      plyr_1.8.4           httr_1.3.1          
 ## [16] biomaRt_2.32.1       IRanges_2.10.2       S4Vectors_0.14.3    
 ## [19] BiocGenerics_0.22.0  rmarkdown_1.6       
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] Rcpp_0.12.12               lattice_0.20-35           
+##  [1] Rcpp_0.12.13               lattice_0.20-35           
 ##  [3] Rsamtools_1.28.0           rprojroot_1.2             
 ##  [5] digest_0.6.12              R6_2.2.2                  
-##  [7] backports_1.1.0            RSQLite_2.0               
+##  [7] backports_1.1.1            RSQLite_2.0               
 ##  [9] evaluate_0.10.1            zlibbioc_1.22.0           
 ## [11] rlang_0.1.2                lazyeval_0.2.0            
-## [13] curl_2.8.1                 blob_1.1.0                
+## [13] curl_3.0                   blob_1.1.0                
 ## [15] R.utils_2.5.0              R.oo_1.21.0               
 ## [17] Matrix_1.2-11              qvalue_2.8.0              
 ## [19] gsubfn_0.6-6               proto_1.0.0               
