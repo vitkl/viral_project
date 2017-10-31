@@ -3,9 +3,9 @@ title: "Identify if the domains we have identified tend to bind linear motifs (t
 author: "Vitalii Kleshchevnikov"
 date: "17/08/2017"
 output: 
-  html_document: 
-    keep_md: yes
-    toc: yes
+html_document: 
+keep_md: yes
+toc: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -168,8 +168,8 @@ bayes = function(resJustFISHER, res_count, P.D. = "p.value", P.count. = "p.value
     count_data = unique(res_count$data_with_pval[, c(nodes, P.count., degree, count,"observed_statistic"), with = F])
     count_data[, domains_per_prot := .N, by = .(eval(formula(paste0("~",res_count$nodes$nodeX))[[2]]))]
     count_data[, P.count_D. := .N / domains_per_prot, 
-                   by = .(eval(formula("~observed_statistic")[[2]]),
-                                          eval(formula(paste0("~",res_count$nodes$nodeX))[[2]]))]
+               by = .(eval(formula("~observed_statistic")[[2]]),
+                      eval(formula(paste0("~",res_count$nodes$nodeX))[[2]]))]
     # count_data[, P.count_D. := eval(formula(paste0("~",count))[[2]]) / eval(formula(paste0("~",degree))[[2]])]
     count_data[, P.count. := p.value]
     count_data[, c("p.value", "observed_statistic", "domains_per_prot") := NULL]
@@ -226,7 +226,7 @@ resBayes2 = bayes2(resJustFISHER, res_count)
 plot(resBayes2, IDs_interactor_viral + IDs_domain_human ~ p.value)
 ```
 
-```{r bayes2}
+```{r bayes3}
 # Permutations give the probability of seeing any domain specific number of times P(count)
 # P(cound|D) are the frequencies of each count as is while looking at viral proteins individually
 # We want to find P(D|count) = (P(count|D) * P(D)) / P(count)
@@ -255,6 +255,35 @@ bayes3 = function(res_count){
 
 resBayes3 = bayes3(res_count)
 plot(resBayes3)
+
+Pmultiply =  function(res_count, resJustFISHER, invert = F){
+    if(identical(c(resJustFISHER$nodes$nodeX, resJustFISHER$nodes$nodeZ),
+                 c(res_count$nodes$nodeX, res_count$nodes$nodeZ))) {
+        nodes = c(res_count$nodes$nodeX, res_count$nodes$nodeZ)
+    } else stop("resJustFISHER and res_count contain data for different nodes")
+    res_mult = copy(res_count)
+    fisher = unique(resJustFISHER$data_with_pval[,c(nodes, "p.value"), with = F])
+    if(invert){
+        fisher[, p.value := 1 - p.value]
+        res_mult$data_with_pval[, p.value := 1 - p.value]
+    }
+    res_mult$data_with_pval = res_mult$data_with_pval[fisher, on = nodes]
+    res_mult$data_with_pval[, p.value := p.value * i.p.value][, i.p.value := NULL]
+    if(invert) res_mult$data_with_pval[, p.value := 1 - p.value]
+    return(res_mult)
+}
+resPmult = Pmultiply(res_count, resJustFISHER)
+plot(resPmult)
+resPmultInv = Pmultiply(res_count, resJustFISHER, invert = T)
+plot(resPmultInv)
+```
+
+```{r sequential_filter}
+step1 = unique(res_count$data_with_pval[, c(res_count$nodes$nodeX, res_count$nodes$nodeZ, "p.value"), with = F])
+step1 = step1[p.adjust(p.value, "fdr") < 0.05]
+step1 = step1[, Emp.p.value := p.value]
+sequential_filter = copy(resJustFISHER)
+sequential_filter$data_with_pval = sequential_filter$data_with_pval[step1, on = eval(c(res_count$nodes$nodeX, res_count$nodes$nodeZ)), nomatch = 0]
 ```
 
 ## Viral protein degree and the background domain count of top-scoring proteins
@@ -325,6 +354,8 @@ enrichment_justfreq = runningTestEnrichment(res_count, rank_by = "observed_stati
 
 # Fisher test pval
 enrichmentresJustFISHER = runningTestEnrichment(resJustFISHER, rank_by = "p.value", name = "Fisher test pval: domain overrepresentation over the background")
+enrichmentressequential_filter = runningTestEnrichment(sequential_filter, rank_by = "p.value", name = "Sequential filter: domain frequency among interactors of a viral protein (empirical pval) =>\ndomain overrepresentation over the background")
+
 enrichmentresJustFISHER005 = runningTestEnrichment(resJustFISHER005, rank_by = "observed_statistic", name = "odds ratio: domain overrepresentation over the background, filtered by Fisher test pval 0.05", decreasing = T)
 enrichmentresJustFISHER01 = runningTestEnrichment(resJustFISHER01, rank_by = "observed_statistic", name = "odds ratio: domain overrepresentation over the background, filtered by Fisher test pval 0.1", decreasing = T)
 enrichmentresJustFISHER001 = runningTestEnrichment(resJustFISHER001, rank_by = "observed_statistic", name = "odds ratio: domain overrepresentation over the background, filtered by Fisher test pval 0.01", decreasing = T)
@@ -334,7 +365,9 @@ enrichmentBayes = runningTestEnrichment(resBayes, name = "Bayesian approach: int
 enrichmentBayes2 = runningTestEnrichment(resBayes2, name = "Bayesian approach 2: integrating count and domain probabilities P(D|count) = (P(count|D) * P(D)) / P(count)")
 enrichmentBayes3 = runningTestEnrichment(resBayes3, name = "Bayesian approach 3: (P(count|D):what_are_usual_counts * P(D):background) / P(count):perm")
 
-
+# Multipliying count and Fisher test probabilities
+enrichmentPmult = runningTestEnrichment(resPmult, name = "Multipliying count empirical p-value and Fisher test probability")
+enrichmentPmultInv = runningTestEnrichment(resPmultInv, name = "Multipliying (inverted, p = 1 - p) count empirical p-value and Fisher test probability")
 
 random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25), res){
     set.seed(seed)
