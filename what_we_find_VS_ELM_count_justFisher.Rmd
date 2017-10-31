@@ -226,6 +226,37 @@ resBayes2 = bayes2(resJustFISHER, res_count)
 plot(resBayes2, IDs_interactor_viral + IDs_domain_human ~ p.value)
 ```
 
+```{r bayes2}
+# Permutations give the probability of seeing any domain specific number of times P(count)
+# P(cound|D) are the frequencies of each count as is while looking at viral proteins individually
+# We want to find P(D|count) = (P(count|D) * P(D)) / P(count)
+# P.D_count. = P.count_D. * P.D. / P.count.
+bayes3 = function(res_count){
+    res_bayes = copy(res_count)
+    nodes = c(res_bayes$nodes$nodeX, res_bayes$nodes$nodeZ)
+    res = unique(res_bayes$data_with_pval[, c(nodes, "observed_statistic", "p.value", "domain_frequency"), with = F])
+    res_3 = res[, c(nodes, "observed_statistic"), with = F]
+    res_3 = res[res_3, on = nodes[2], allow.cartesian=TRUE]
+    res_3[, P.count_D. := mean(observed_statistic < i.observed_statistic), by = eval(nodes)]
+    res_3 = unique(res_3[,c(nodes, "observed_statistic", "p.value", "domain_frequency", "P.count_D."), with =F])
+    res_3[, P.count. := 1 - p.value]
+    res_3[, P.D. := 1 - domain_frequency]
+    
+    res_3[, P.D_count. := P.count_D. *  P.D. / P.count.]
+    
+    res_bayes$data_with_pval = res_bayes$data_with_pval[res_3, on = c(nodes, "observed_statistic", "p.value", "domain_frequency")]
+    res_bayes$data_with_pval[, p.value := 1- P.D_count.]
+    #hist(res_bayes$data_with_pval[, P.D_count.])
+    #hist(res_bayes$data_with_pval[, P.count_D.])
+    #hist(res_bayes$data_with_pval[, P.D.])
+    #hist(res_bayes$data_with_pval[, P.count.])
+    res_bayes
+}
+
+resBayes3 = bayes3(res_count)
+plot(resBayes3)
+```
+
 ## Viral protein degree and the background domain count of top-scoring proteins
 
 ```{r plot_DegreeVScount, fig.height = 12, fig.width = 12, eval=FALSE}
@@ -301,6 +332,8 @@ enrichmentresJustFISHER001 = runningTestEnrichment(resJustFISHER001, rank_by = "
 # Bayes
 enrichmentBayes = runningTestEnrichment(resBayes, name = "Bayesian approach: integrating count and domain probabilities P(D|count) = (P(count|D) * P(D)) / P(count)")
 enrichmentBayes2 = runningTestEnrichment(resBayes2, name = "Bayesian approach 2: integrating count and domain probabilities P(D|count) = (P(count|D) * P(D)) / P(count)")
+enrichmentBayes3 = runningTestEnrichment(resBayes3, name = "Bayesian approach 3: (P(count|D):what_are_usual_counts * P(D):background) / P(count):perm")
+
 
 
 random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25), res){
