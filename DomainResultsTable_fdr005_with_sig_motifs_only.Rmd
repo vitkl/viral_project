@@ -1,0 +1,176 @@
+---
+title: "DomainResultsTable: viral protein - human domain pairs"
+author: "Vitalii Kleshchevnikov"
+date: "17/08/2017"
+output: 
+html_document: 
+keep_md: yes
+toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+packages = c("MItools", "rtracklayer", "ggplot2", "GGally", "RColorBrewer", "R.utils")
+if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    # specifying mirror is necessary for some Linux systems
+    install.packages(packages_to_install, dependencies = T, repos = "http://mirrors.ebi.ac.uk/CRAN/")
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    source("https://bioconductor.org/biocLite.R")
+    biocLite(packages_to_install)
+    devtools::install_github("vitkl/MItools")
+}
+
+suppressPackageStartupMessages({
+    library(MItools)
+    library(rtracklayer)
+    library(ggplot2)
+    library(GGally)
+    library(RColorBrewer)
+    library(DT)
+})
+
+XYZ.p.adjust = function(res, adj_by = "p.value", ...) {
+    if(class(res) != "XYZinteration_XZEmpiricalPval") stop("res should be the output of permutationPval()")
+    #if("fdr_pval" %in% colnames(res$data_with_pval)) stop("p value has already been fdr-corrected")
+    columns = adj_by
+    adj_by = formula(paste0("~",adj_by))[[2]]
+    nodes = c(res$nodes$nodeX, res$nodes$nodeZ)
+    columns = c(nodes, columns)
+    temp = unique(res$data_with_pval[, c(columns), with = F])
+    temp[, fdr_pval := p.adjust(eval(adj_by), ...)]
+    res$data_with_pval = res$data_with_pval[temp, on = c(columns)]
+    res
+}
+
+printTable = function(input, doman_viral_pairs = F, motifs = F, destfile, fdr_pval_thresh = 0.05, only_with_motifs = F, fdr_motifs = 1, occurence_QSLIMFinder = NA, comparimotif_wdb = NA, print_table = T){
+    res = copy(input)
+    
+    res = XYZ.p.adjust(res, method = "fdr")
+    res$data_with_pval = res$data_with_pval[fdr_pval < fdr_pval_thresh]
+    
+    res$data_with_pval[, human_domain_url := paste0("<a href='https://www.ebi.ac.uk/interpro/entry/",IDs_domain_human,"'>",IDs_domain_human,"</a>")]
+    res$data_with_pval[, human_interactor_url := paste0("<a href='http://www.uniprot.org/uniprot/",IDs_interactor_human,"'>",IDs_interactor_human,"</a>")]
+    res$data_with_pval[, viral_interactor_url := paste0("<a href='http://www.uniprot.org/uniprot/",IDs_interactor_viral,"'>",IDs_interactor_viral,"</a>")]
+    
+    entry.list = unique(getInterProEntryTypes("./data_files/entry.list")[,.(IDs_domain_human = ENTRY_AC, domain_name = ENTRY_NAME)])
+    res$data_with_pval = entry.list[res$data_with_pval, on = "IDs_domain_human", allow.cartesian=TRUE]
+    
+    if(motifs){
+        occurence_QSLIMFinder[, IDs_interactor_viral := gsub("_UNK__.+$","",Seq)]
+        occurence_QSLIMFinder = unique(occurence_QSLIMFinder[,.(IDs_interactor_viral, 
+                                                                viral_Motif_Pattern = Pattern,
+                                                                viral_Motif_pval = Sig,
+                                                                viral_Motif_Match = Match)])
+        occurence_QSLIMFinder = occurence_QSLIMFinder[p.adjust(viral_Motif_pval, "fdr") < fdr_motifs]
+        
+        comparimotif_wdb = unique(comparimotif_wdb[,.(Motif1, Motif2, Name2, NormIC)])
+        comparimotif_wdb = comparimotif_wdb[!grepl("CLV",Name2) & !grepl("TRG",Name2)]
+        comparimotif_wdb[, Name2 := gsub("_[[:alpha:]]{1}$","",Name2)]
+        comparimotif_wdb[, Motif2 := paste0(Motif2[1], collapse = "|"), by = .(Motif1, Name2)]
+        comparimotif_wdb[, NormIC := mean(NormIC), by = .(Motif1, Name2)]
+        comparimotif_wdb = unique(comparimotif_wdb)
+        comparimotif_wdb[, motif_mapping := paste0(Name2,"(normIC:",NormIC,")", collapse = "; "), by = Motif1]
+        comparimotif_wdb[, motif..............................................pattern_mapping := paste0(Name2,":",Motif2,"", collapse = "; "), by = Motif1]
+        comparimotif_wdb = unique(comparimotif_wdb[,.(viral_Motif_Pattern = Motif1, motif_mapping, motif..............................................pattern_mapping)])
+        
+        occurence_QSLIMFinder = comparimotif_wdb[occurence_QSLIMFinder, on = "viral_Motif_Pattern"]
+        
+        res$data_with_pval = occurence_QSLIMFinder[res$data_with_pval, on = "IDs_interactor_viral", allow.cartesian=TRUE]
+        res$data_with_pval = res$data_with_pval[, .(human_domain = IDs_domain_human,
+                                                    domain_name = domain_name,
+                                                    viral_interactor = IDs_interactor_viral,
+                                                    human_interactor = IDs_interactor_human,
+                                                    p.value, fdr_pval, observed_statistic,
+                                                    human_domain_url, human_interactor_url, viral_interactor_url,
+                                                    domain_count_per_viral_interactor = domain_count_per_IDs_interactor_viral,
+                                                    viral_interactor_degree = IDs_interactor_viral_degree, 
+                                                    total_domain_count = domain_count,
+                                                    human_interactor_degree = IDs_interactor_human_degree,
+                                                    total_background_proteins = N_prot_w_interactors,
+                                                    viral_Motif_Pattern, viral_Motif_pval, viral_Motif_Match,
+                                                    motif_mapping, motif..............................................pattern_mapping)]
+        if(only_with_motifs) res$data_with_pval = res$data_with_pval[!is.na(viral_Motif_Pattern)]
+    } else {
+        res$data_with_pval = res$data_with_pval[, .(human_domain = IDs_domain_human,
+                                                    domain_name = domain_name,
+                                                    viral_interactor = IDs_interactor_viral,
+                                                    human_interactor = IDs_interactor_human,
+                                                    p.value, fdr_pval, observed_statistic,
+                                                    human_domain_url, human_interactor_url, viral_interactor_url,
+                                                    domain_count_per_viral_interactor = domain_count_per_IDs_interactor_viral,
+                                                    viral_interactor_degree = IDs_interactor_viral_degree, 
+                                                    total_domain_count = domain_count,
+                                                    human_interactor_degree = IDs_interactor_human_degree,
+                                                    total_background_proteins = N_prot_w_interactors)]
+    }
+    
+    res$data_with_pval = unique(res$data_with_pval)
+    
+    if(doman_viral_pairs){
+        res$data_with_pval[, c("human_interactor", "human_interactor_degree", "human_interactor_url") := NULL]
+        res$data_with_pval = unique(res$data_with_pval)
+    }
+    
+    fwrite(res$data_with_pval[order(p.value, decreasing = F)], destfile, sep = "\t")
+    if(print_table) DT::datatable(res$data_with_pval[order(p.value, decreasing = F)], escape = FALSE)
+    return(res$data_with_pval[order(p.value, decreasing = F)])
+}
+```
+
+# Load results
+
+```{r load}
+name = "./processed_data_files/DomainResultsTable_Vidal20171019.RData"
+if(!file.exists(name)){
+    load("./processed_data_files/what_we_find_VS_ELM_clust20171019.RData")
+    occurence_QSLIMFinder = fread("./SLIMFinder_Vidal/result/occurence.txt")
+    comparimotif_wdb = fread("./SLIMFinder_Vidal/result/comparimotif.compare.tdt")
+    rm(list = ls()[!ls() %in% c("printTable","XYZ.p.adjust","res_count", "sequential_filter", "name", "occurence_QSLIMFinder", "comparimotif_wdb")])
+    save.image(file = name)
+} else {
+    load(name)
+}
+doman_viral_pairs = T # if false - add human proteins containing domains
+motifs = T # based on Vidal's data
+```
+
+## Empirical p-value for seing a domain a number of times
+### What is the chance of randomly seeing any domain the observed number of times among all proteins that interact with a specific viral protein
+
+### Only significant domains with significant motifs
+
+```{r sigdomain_sigmotif}
+fdr_motifs = 0.2
+fdr_pval_thresh = 0.2
+X = printTable(res_count, doman_viral_pairs = doman_viral_pairs, motifs = motifs, destfile = "./results/domains_fdr_corrected_only_with_significant_motifs_empirical_p_value.tsv",
+               only_with_motifs = T, fdr_motifs = fdr_motifs, fdr_pval_thresh = fdr_pval_thresh,
+               occurence_QSLIMFinder = occurence_QSLIMFinder,
+               comparimotif_wdb = comparimotif_wdb, print_table = F)
+```
+
+### Domains (FDR p-value < `r fdr_pval_thresh`, a corresponding viral protein contains motif (FDR p-value < `r fdr_motifs`))
+
+```{r}
+table(X$domain_name)
+```
+
+### Motifs
+
+```{r}
+table(X$viral_Motif_Pattern)
+```
+
+### Show data after removing NLS and Histone-binding
+
+```{r}
+X2 = X[!domain_name %in% c("Armadillo-like helical", "Armadillo-type fold", "Importin-alpha, importin-beta-binding domain", "Importin-beta, N-terminal domain", "P-loop containing nucleoside triphosphate hydrolase", "RNA recognition motif domain") & !grepl("Histone", domain_name)]
+DT::datatable(X2, escape = FALSE)
+```
+
+### "P-loop containing nucleoside triphosphate hydrolase" AND "RNA recognition motif domain"
+
+```{r}
+X3 = X[domain_name %in% c("P-loop containing nucleoside triphosphate hydrolase", "RNA recognition motif domain")]
+DT::datatable(X3, escape = FALSE)
+```

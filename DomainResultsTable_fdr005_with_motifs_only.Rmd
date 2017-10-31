@@ -1,0 +1,156 @@
+---
+title: "DomainResultsTable: viral protein - human domain pairs"
+author: "Vitalii Kleshchevnikov"
+date: "17/08/2017"
+output: 
+html_document: 
+keep_md: yes
+toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+packages = c("MItools", "rtracklayer", "ggplot2", "GGally", "RColorBrewer", "R.utils")
+if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    # specifying mirror is necessary for some Linux systems
+    install.packages(packages_to_install, dependencies = T, repos = "http://mirrors.ebi.ac.uk/CRAN/")
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    source("https://bioconductor.org/biocLite.R")
+    biocLite(packages_to_install)
+    devtools::install_github("vitkl/MItools")
+}
+
+suppressPackageStartupMessages({
+    library(MItools)
+    library(rtracklayer)
+    library(ggplot2)
+    library(GGally)
+    library(RColorBrewer)
+    library(DT)
+})
+
+XYZ.p.adjust = function(res, adj_by = "p.value", ...) {
+    if(class(res) != "XYZinteration_XZEmpiricalPval") stop("res should be the output of permutationPval()")
+    #if("fdr_pval" %in% colnames(res$data_with_pval)) stop("p value has already been fdr-corrected")
+    columns = adj_by
+    adj_by = formula(paste0("~",adj_by))[[2]]
+    nodes = c(res$nodes$nodeX, res$nodes$nodeZ)
+    columns = c(nodes, columns)
+    temp = unique(res$data_with_pval[, c(columns), with = F])
+    temp[, fdr_pval := p.adjust(eval(adj_by), ...)]
+    res$data_with_pval = res$data_with_pval[temp, on = c(columns)]
+    res
+}
+
+printTable = function(res, doman_viral_pairs = F, motifs = F, destfile, fdr_pval_thresh = 0.05, only_with_motifs = F, fdr_motifs = 1){
+    
+    
+    res = XYZ.p.adjust(res, method = "fdr")
+    res$data_with_pval = res$data_with_pval[fdr_pval < fdr_pval_thresh]
+    
+    res$data_with_pval[, human_domain_url := paste0("<a href='https://www.ebi.ac.uk/interpro/entry/",IDs_domain_human,"'>",IDs_domain_human,"</a>")]
+    res$data_with_pval[, human_interactor_url := paste0("<a href='http://www.uniprot.org/uniprot/",IDs_interactor_human,"'>",IDs_interactor_human,"</a>")]
+    res$data_with_pval[, viral_interactor_url := paste0("<a href='http://www.uniprot.org/uniprot/",IDs_interactor_viral,"'>",IDs_interactor_viral,"</a>")]
+    
+    entry.list = unique(getInterProEntryTypes("./data_files/entry.list")[,.(IDs_domain_human = ENTRY_AC, domain_name = ENTRY_NAME)])
+    res$data_with_pval = entry.list[res$data_with_pval, on = "IDs_domain_human", allow.cartesian=TRUE]
+    
+    if(motifs){
+        occurence_Vidal = fread("./SLIMFinder_Vidal/result/occurence.txt")
+        occurence_Vidal[, IDs_interactor_viral := gsub("_UNK__.+$","",Seq)]
+        occurence_Vidal = unique(occurence_Vidal[,.(IDs_interactor_viral, 
+                                                    viral_Motif_Pattern = Pattern,
+                                                    viral_Motif_pval = Sig,
+                                                    viral_Motif_Match = Match)])
+        occurence_Vidal = occurence_Vidal[p.adjust(viral_Motif_pval, "fdr") < fdr_motifs]
+        res$data_with_pval = occurence_Vidal[res$data_with_pval, on = "IDs_interactor_viral", allow.cartesian=TRUE]
+        res$data_with_pval = res$data_with_pval[, .(human_domain = IDs_domain_human,
+                                                    domain_name = domain_name,
+                                                    viral_interactor = IDs_interactor_viral,
+                                                    human_interactor = IDs_interactor_human,
+                                                    p.value, fdr_pval, observed_statistic,
+                                                    human_domain_url, human_interactor_url, viral_interactor_url,
+                                                    domain_count_per_viral_interactor = domain_count_per_IDs_interactor_viral,
+                                                    viral_interactor_degree = IDs_interactor_viral_degree, 
+                                                    total_domain_count = domain_count,
+                                                    human_interactor_degree = IDs_interactor_human_degree,
+                                                    total_background_proteins = N_prot_w_interactors,
+                                                    viral_Motif_Pattern, viral_Motif_pval, viral_Motif_Match)]
+        if(only_with_motifs) res$data_with_pval = res$data_with_pval[!is.na(viral_Motif_Pattern)]
+    } else {
+        res$data_with_pval = res$data_with_pval[, .(human_domain = IDs_domain_human,
+                                                    domain_name = domain_name,
+                                                    viral_interactor = IDs_interactor_viral,
+                                                    human_interactor = IDs_interactor_human,
+                                                    p.value, fdr_pval, observed_statistic,
+                                                    human_domain_url, human_interactor_url, viral_interactor_url,
+                                                    domain_count_per_viral_interactor = domain_count_per_IDs_interactor_viral,
+                                                    viral_interactor_degree = IDs_interactor_viral_degree, 
+                                                    total_domain_count = domain_count,
+                                                    human_interactor_degree = IDs_interactor_human_degree,
+                                                    total_background_proteins = N_prot_w_interactors)]
+    }
+    
+    res$data_with_pval = unique(res$data_with_pval)
+    
+    if(doman_viral_pairs){
+        res$data_with_pval[, c("human_interactor", "human_interactor_degree", "human_interactor_url") := NULL]
+        res$data_with_pval = unique(res$data_with_pval)
+    }
+    
+    fwrite(res$data_with_pval[order(p.value, decreasing = F)], destfile, sep = "\t")
+    DT::datatable(res$data_with_pval[order(p.value, decreasing = F)], escape = FALSE)
+}
+```
+
+# Load results
+
+```{r load}
+load("./processed_data_files/what_we_find_VS_ELM_clust20171019.RData")
+rm(list = ls()[!ls() %in% c("printTable","XYZ.p.adjust","res_count", "sequential_filter")])
+doman_viral_pairs = T # if false - add human proteins containing domains
+motifs = T # based on Vidal's data
+```
+
+## Empirical p-value for seing a domain a number of times
+### What is the chance of randomly seeing any domain the observed number of times among all proteins that interact with a specific viral protein
+
+### Only significant domains with significant motifs
+
+```{r sigdomain_sigmotif}
+printTable(res_count, doman_viral_pairs = doman_viral_pairs, motifs = motifs, destfile = "./results/domains_fdr_corrected_only_with_significant_motifs_empirical_p_value.tsv", only_with_motifs = T, fdr_motifs = 0.05)
+```
+
+### Only significant domains with motifs
+
+```{r sigdomain_motif}
+printTable(res_count, doman_viral_pairs = doman_viral_pairs, motifs = motifs, destfile = "./results/domains_fdr_corrected_only_with_motifs_empirical_p_value.tsv", only_with_motifs = T)
+```
+
+### 2-step filtering, ranking by Fisher test p-value
+
+```{r sequential_filter}
+printTable(sequential_filter, doman_viral_pairs = doman_viral_pairs, motifs = motifs, destfile = "./results/domains_fdr_corrected_only_with_motifs_sequential_filter.tsv", only_with_motifs = T)
+plot(sequential_filter, IDs_interactor_viral + IDs_domain_human ~ p.value, xlab = "Fisher's Exact Test pvalue", breaks = seq(-0.01, 
+                                                                                                                             1.01, 0.01))
+PermutResult2D(res = sequential_filter, N = 500, value.cols = c("p.value", "Emp.p.value")) +
+    ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: count of a domain among interacting partners of a viral protein")
+```
+
+## How all these methods perform at finding ELM domains?
+
+### The absolute numbers
+
+![](./images/benchmarkDomains_absolute_numbers.png)
+
+#### compared the total number of domains found / the total in ELM
+![](./images/benchmarkDomains_absolute_numbers_all.png)
+
+### The enrichment in ELM domains over the background
+
+![](./images/benchmarkDomains_overrepresentation.png)
+
+### P-value for the enrichment in ELM domains over the background
+
+![](./images/benchmarkDomains_pvalue.png)
