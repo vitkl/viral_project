@@ -52,7 +52,7 @@ motifs = T # based on Vidal's data
 ```{r sigdomain_sigmotif}
 fdr_motifs = 0.2
 fdr_pval_thresh = 0.2
-X = printMotifDomainTable(res_count, doman_viral_pairs = doman_viral_pairs, motifs = motifs, destfile = "./results/domains_fdr_corrected_only_with_significant_motifs_empirical_p_value.tsv",
+X = printMotifDomainTable(res_count, doman_viral_pairs = doman_viral_pairs, motifs = motifs, destfile = "./domains_fdr_corrected_only_with_significant_motifs_empirical_p_value.tsv",
                only_with_motifs = T, fdr_motifs = fdr_motifs, fdr_pval_thresh = fdr_pval_thresh,
                occurence_QSLIMFinder = occurence_QSLIMFinder,
                comparimotif_wdb = comparimotif_wdb, print_table = F)
