@@ -5,6 +5,7 @@ library(ggplot2)
 library(GGally)
 library(RColorBrewer)
 library(R.utils)
+library(ROCR)
 
 # Define server logic required to simulate gene expression and plot heatmap
 shinyServer(function(input, output, session) {
@@ -30,6 +31,11 @@ shinyServer(function(input, output, session) {
         if(input$bin2d_pval_plot_set == "unavailable"){
             updateRadioButtons(session, inputId = "bin2d_pval_plot_set", choices = for_2d_bin,
                                selected = for_2d_bin[1])
+        }
+        if(input$ROCR_plot_set[1] == "unavailable"){
+            updateSelectInput(session, inputId = "ROCR_plot_set", 
+                              choices = for_2d_bin,
+                              selected = c("res_count", "resJustFISHER"))
         }
 
         to_choose_rankby = isolate({input$bin2d_pval_plot_set %in% ls()})
@@ -90,6 +96,54 @@ shinyServer(function(input, output, session) {
                        )
         # cex.lab = 2 cex = 2
     })
+    output$ROCR <- renderPlot({
+        load(input$path)
+        res_list = eval(parse(text = paste0("list(",paste0(input$ROCR_plot_set, collapse = ","),")")))
+        predictor = lapply(res_list, function(XYZint){
+            XYZint_table = unique(XYZint$data_with_pval[,c(XYZint$nodes$nodeX, XYZint$nodes$nodeZ, "p.value"), with = F])
+            XYZint_table[, p.value := 1 - p.value]
+            
+            #XYZint_table = unique(XYZint$data_with_pval[,c(XYZint$nodes$nodeZ, "p.value"), with = F])
+            #XYZint_table[, p.value := 1 - min(p.value), by = eval(XYZint$nodes$nodeZ)]
+            #XYZint_table = unique(XYZint_table)
+            
+            #XYZint_table = XYZint_table[order(p.value, decreasing = F)[1:input$N_pairs]]
+            XYZint_table$p.value
+        })
+        names(predictor) = input$ROCR_plot_set
+        truth = lapply(res_list, function(XYZint){
+            XYZint_table = unique(XYZint$data_with_pval[,c(XYZint$nodes$nodeX, XYZint$nodes$nodeZ, "p.value"), with = F])
+            XYZint_table[, p.value := 1 - p.value]
+            
+            #XYZint_table = unique(XYZint$data_with_pval[,c(XYZint$nodes$nodeZ, "p.value"), with = F])
+            #XYZint_table[, p.value := 1 - min(p.value), by = eval(XYZint$nodes$nodeZ)]
+            #XYZint_table = unique(XYZint_table)
+            
+            #XYZint_table = XYZint_table[order(p.value, decreasing = F)[1:input$N_pairs]]
+            eval(parse(text = paste0("XYZint_table[",XYZint$nodes$nodeZ," %in% domains_known_mapped, truth := 1]")))
+            eval(parse(text = paste0("XYZint_table[!",XYZint$nodes$nodeZ," %in% domains_known_mapped, truth := 0]")))
+            XYZint_table$truth
+        })
+        names(truth) = input$ROCR_plot_set
+
+        pred <- ROCR::prediction(predictor, truth)
+        perf <- ROCR::performance(pred, "tpr", "fpr")
+        auc.perf = ROCR::performance(pred, measure = "auc")
+        
+        if(is.null(input$enrich_plot_args)) plot_args = NULL else {
+            plot_args = input$enrich_plot_args
+            plot_args = unlist(strsplit(plot_args, "\\|"))
+        }
+        par(mar = c(6,7,4,4))
+        color = colorRampPalette(brewer.pal(7, "Dark2"))(length(input$ROCR_plot_set))
+        eval(parse(text = paste0("plot(perf, colorize=T, lwd = 4,",paste0(plot_args, collapse = ","),")")))
+        abline(a=0, b= 1)
+        if(is.null(input$enrich_legend_args)) legend_args = NULL else {
+            legend_args = input$enrich_legend_args
+            legend_args = unlist(strsplit(legend_args, "\\|"))
+        }
+        eval(parse(text = paste0("text(x = 0.5, y = auc.perf@y.values, col = \"black\", labels = paste0(names(pred@predictions),\", AUC: \",signif(as.numeric(auc.perf@y.values), 3)),",paste0(legend_args, collapse = ","),")")))
+        })
 })
 
 

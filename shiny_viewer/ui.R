@@ -11,6 +11,8 @@ shinyUI(pageWithSidebar(
         textInput(inputId = "path", label = "path to *.RData file containing the results", value = "../processed_data_files/what_we_find_VS_ELM_clust20171019.RData"),
         selectInput(inputId = "enrich_plot_set", label = "Our prediction vs ELM domains: which results to compare?",
                     choices = "enrichment", selected = "enrichment", multiple = T),
+        selectInput(inputId = "ROCR_plot_set", label = "ROCR: Our prediction vs ELM domains: which results to compare?",
+                    choices = "unavailable", selected = "unavailable", multiple = T),
         radioButtons(inputId = "enrich_plot_type", label = "Our prediction vs ELM domains: plot type",
                      choices = list(pval = "pval", odds_ratio = "odds_ratio", count = "count"), selected = "count"),
         textInput(inputId = "enrich_plot_args", label = "Our prediction vs ELM domains: plot args (like \"cex = 1.5\", separated by pipes)", value = "cex.lab = 2|cex.axis = 1.5"),
@@ -36,6 +38,9 @@ shinyUI(pageWithSidebar(
         tabsetPanel(
             tabPanel(title = "Our prediction vs ELM domains",
                      plotOutput("enrich_plot", height = "1000px") ###################### modify plot size here ###########
+            ),
+            tabPanel(title = "ROCR: Our prediction vs ELM domains",
+                     plotOutput("ROCR", height = "1000px") ###################### modify plot size here ###########
             ),
             tabPanel(title = "Characteristics of top protein-domain pairs",
                      plotOutput("bin2d_plot", height = "1200px") ###################### modify plot size here ###########
