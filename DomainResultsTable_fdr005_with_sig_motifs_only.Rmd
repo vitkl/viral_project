@@ -61,13 +61,13 @@ X = printMotifDomainTable(res_count, doman_viral_pairs = doman_viral_pairs, moti
 ### Domains (FDR p-value < `r fdr_pval_thresh`, a corresponding viral protein contains motif (FDR p-value < `r fdr_motifs`))
 
 ```{r}
-table(X$domain_name)
+X[, .(NviralProt = data.table::uniqueN(viral_interactor)), by = domain_name]
 ```
 
 ### Motifs
 
 ```{r}
-table(X$viral_Motif_Pattern)
+X[, .(NviralProt = data.table::uniqueN(viral_interactor)), by = viral_Motif_Pattern]
 ```
 
 ### Show data after removing NLS-binding and Histone domains
