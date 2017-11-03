@@ -47,8 +47,6 @@ motifs = T # based on Vidal's data
 ## Empirical p-value for seing a domain a number of times
 ### What is the chance of randomly seeing any domain the observed number of times among all proteins that interact with a specific viral protein
 
-### Only significant domains with significant motifs
-
 ```{r sigdomain_sigmotif}
 fdr_motifs = 1
 fdr_pval_thresh = 1
@@ -56,34 +54,6 @@ X = printMotifDomainTable(res_count, doman_viral_pairs = doman_viral_pairs, moti
                only_with_motifs = T, fdr_motifs = fdr_motifs, fdr_pval_thresh = fdr_pval_thresh,
                occurence_QSLIMFinder = occurence_QSLIMFinder,
                comparimotif_wdb = comparimotif_wdb, print_table = F)
-```
-
-### Domains (FDR p-value < `r fdr_pval_thresh`, a corresponding viral protein contains motif (FDR p-value < `r fdr_motifs`))
-
-```{r}
-X[, .(NviralProt = data.table::uniqueN(viral_interactor)), by = domain_name]
-```
-
-### Motifs
-
-```{r}
-X[, .(NviralProt = data.table::uniqueN(viral_interactor)), by = viral_Motif_Pattern]
-```
-
-### Show data after removing NLS-binding and Histone domains
-
-NormIC (normalised information content) is the motif similarity metric.
-
-```{r}
-X2 = X[!domain_name %in% c("Armadillo-like helical", "Armadillo-type fold", "Importin-alpha, importin-beta-binding domain", "Importin-beta, N-terminal domain", "P-loop containing nucleoside triphosphate hydrolase", "RNA recognition motif domain") & !grepl("Histone", domain_name)]
-DT::datatable(X2, escape = FALSE)
-```
-
-### "P-loop containing nucleoside triphosphate hydrolase" AND "RNA recognition motif domain"
-
-```{r}
-X3 = X[domain_name %in% c("P-loop containing nucleoside triphosphate hydrolase", "RNA recognition motif domain")]
-DT::datatable(X3, escape = FALSE)
 ```
 
 ## Which motifs don't match ELM
