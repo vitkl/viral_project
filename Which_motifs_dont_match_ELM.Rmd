@@ -34,8 +34,9 @@ name = "./DomainResultsTable_Vidal20171019.RData"
 if(!file.exists(name)){
     load("./processed_data_files/what_we_find_VS_ELM_clust20171019.RData")
     occurence_QSLIMFinder = fread("./SLIMFinder_Vidal/result/occurence.txt")
+    patterns_QSLIMFinder = fread("./SLIMFinder_Vidal/result/main_result.txt")
     comparimotif_wdb = fread("./SLIMFinder_Vidal/result/comparimotif.compare.tdt")
-    rm(list = ls()[!ls() %in% c("printTable","XYZ.p.adjust","res_count", "sequential_filter", "name", "occurence_QSLIMFinder", "comparimotif_wdb")])
+    rm(list = ls()[!ls() %in% c("printTable","XYZ.p.adjust","res_count", "sequential_filter", "name", "occurence_QSLIMFinder", "comparimotif_wdb", "patterns_QSLIMFinder")])
     save.image(file = name)
 } else {
     load(name)
@@ -53,11 +54,15 @@ fdr_pval_thresh = 1
 X = printMotifDomainTable(res_count, doman_viral_pairs = doman_viral_pairs, motifs = motifs, destfile = "./domains_fdr_corrected_only_with_significant_motifs_empirical_p_value.tsv",
                only_with_motifs = T, fdr_motifs = fdr_motifs, fdr_pval_thresh = fdr_pval_thresh,
                occurence_QSLIMFinder = occurence_QSLIMFinder,
-               comparimotif_wdb = comparimotif_wdb, print_table = F)
+               comparimotif_wdb = comparimotif_wdb,
+               patterns_QSLIMFinder = patterns_QSLIMFinder, print_table = F)
 ```
 
 ## Which motifs don't match ELM
 
 ```{r}
-DT::datatable(X[is.na(motif_mapping)], escape = FALSE)
+X4 = X[is.na(motif_mapping)]
+X4[, .(NviralProt = data.table::uniqueN(viral_interactor)), by = domain_name]
+X4[, .(NviralProt = data.table::uniqueN(viral_interactor)), by = Motif_Pattern]
+DT::datatable(X4, escape = FALSE)
 ```

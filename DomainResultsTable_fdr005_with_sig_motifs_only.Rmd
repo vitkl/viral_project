@@ -50,12 +50,13 @@ motifs = T # based on Vidal's data
 ### Only significant domains with significant motifs
 
 ```{r sigdomain_sigmotif}
-fdr_motifs = 1
-fdr_pval_thresh = 1
+fdr_motifs = 0.3
+fdr_pval_thresh = 0.3
 X = printMotifDomainTable(res_count, doman_viral_pairs = doman_viral_pairs, motifs = motifs, destfile = "./domains_fdr_corrected_only_with_significant_motifs_empirical_p_value.tsv",
                only_with_motifs = T, fdr_motifs = fdr_motifs, fdr_pval_thresh = fdr_pval_thresh,
                occurence_QSLIMFinder = occurence_QSLIMFinder,
-               comparimotif_wdb = comparimotif_wdb, print_table = F)
+               comparimotif_wdb = comparimotif_wdb,
+               patterns_QSLIMFinder = patterns_QSLIMFinder, print_table = F)
 ```
 
 ### Domains (FDR p-value < `r fdr_pval_thresh`, a corresponding viral protein contains motif (FDR p-value < `r fdr_motifs`))
@@ -67,7 +68,7 @@ X[, .(NviralProt = data.table::uniqueN(viral_interactor)), by = domain_name]
 ### Motifs
 
 ```{r}
-X[, .(NviralProt = data.table::uniqueN(viral_interactor)), by = viral_Motif_Pattern]
+X[, .(NviralProt = data.table::uniqueN(viral_interactor)), by = Motif_Pattern]
 ```
 
 ### Show data after removing NLS-binding and Histone domains
@@ -89,5 +90,8 @@ DT::datatable(X3, escape = FALSE)
 ## Which motifs don't match ELM
 
 ```{r}
-DT::datatable(X[is.na(motif_mapping)], escape = FALSE)
+X4 = X[is.na(motif_mapping)]
+X4[, .(NviralProt = data.table::uniqueN(viral_interactor)), by = domain_name]
+X4[, .(NviralProt = data.table::uniqueN(viral_interactor)), by = Motif_Pattern]
+DT::datatable(X4, escape = FALSE)
 ```
