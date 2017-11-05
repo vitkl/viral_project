@@ -36,7 +36,8 @@ if(!file.exists(name)){
     occurence_QSLIMFinder = fread("./SLIMFinder_Vidal/result/occurence.txt")
     patterns_QSLIMFinder = fread("./SLIMFinder_Vidal/result/main_result.txt")
     comparimotif_wdb = fread("./SLIMFinder_Vidal/result/comparimotif.compare.tdt")
-    rm(list = ls()[!ls() %in% c("XYZ.p.adjust","res_count", "sequential_filter", "name", "occurence_QSLIMFinder", "comparimotif_wdb", "patterns_QSLIMFinder")])
+    entry.list = getInterProEntryTypes("./entry.list")
+    rm(list = ls()[!ls() %in% c("XYZ.p.adjust","res_count", "sequential_filter", "name", "occurence_QSLIMFinder", "comparimotif_wdb", "patterns_QSLIMFinder", "entry.list")])
     save.image(file = name)
 } else {
     load(name)
@@ -57,7 +58,7 @@ X = printMotifDomainTable(res_count, doman_viral_pairs = doman_viral_pairs, moti
                only_with_motifs = T, fdr_motifs = fdr_motifs, fdr_pval_thresh = fdr_pval_thresh,
                occurence_QSLIMFinder = occurence_QSLIMFinder,
                comparimotif_wdb = comparimotif_wdb,
-               patterns_QSLIMFinder = patterns_QSLIMFinder, print_table = F)
+               patterns_QSLIMFinder = patterns_QSLIMFinder, print_table = F, entry.list = entry.list)
 ```
 
 ## Counts of domains that are likely to mediate interaction with a viral protein that has an instance of a potentially new motif
