@@ -1,0 +1,110 @@
+---
+title: "Benchmarking motifs"
+author: "Vitalii Kleshchevnikov"
+date: "18/10/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+if(!"MItools" %in% installed.packages()){
+    devtools::install_github("vitkl/MItools")
+}
+suppressPackageStartupMessages({
+    library(MItools)
+    library(rtracklayer)
+})
+```
+
+### Load domain enrichment results, PPI data, and data used for QSLIMfinder
+
+```{r}
+load("./processed_data_files/what_we_find_VS_ELM_clust20171019.RData")
+rm(list = ls()[!ls() %in% c("res_count")])
+
+load("./processed_data_files/QSLIMFinder_instances_h2v_Vidal_clust20171028.RData")
+rm(list = ls()[!ls() %in% c("res_count", "res_count_orig", "all_human_interaction", "all_viral_interaction", "forSLIMFinder_Ready")])
+```
+
+### Load QSLIMFinder results and ELM data
+
+```{r}
+occurence = SLIMFinderOcc2GRanges(occurence_file = "./SLIMFinder_Vidal/result/occurence.txt",
+                                  main_file = "./SLIMFinder_Vidal/result/main_result.txt",
+                                  one_from_cloud = T)
+instances9606 = ELMdb2GRanges(dbfile = "../viral_project/data_files/instances9606.gff",
+                              dburl = "http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=")
+instances10239 = ELMdb2GRanges(dbfile = "../viral_project/data_files/instances10239.gff",
+                               dburl = "http://elm.eu.org/instances.gff?q=all&taxon=irus&instance_logic=")
+```
+
+### Filter ELM instances located in proteins that we use to search for motifs and select motif types of interest
+
+```{r}
+searched9606 = GRangesINinteractionSubsetFASTA(grange = instances9606, interactionSubsetFASTA = forSLIMFinder_Ready)
+instances9606 = instances9606[searched9606$granges_in_sequencesSearched]
+instances9606 = filterBYmotifType(instances9606, motif_types = c("DOC", "MOD", "LIG", "DEG", "CLV", "TRG"))
+seqlevels(instances9606) <- seqlevelsInUse(instances9606)
+seqlengths(instances9606) = searched9606$seqlengths[names(seqlengths(instances9606))]
+
+
+searched10239 = GRangesINinteractionSubsetFASTA(grange = instances10239, interactionSubsetFASTA = forSLIMFinder_Ready)
+instances10239 = instances10239[searched10239$granges_in_sequencesSearched]
+instances10239 = filterBYmotifType(instances10239, motif_types = c("DOC", "MOD", "LIG", "DEG", "CLV", "TRG"))
+seqlevels(instances10239) <- seqlevelsInUse(instances10239)
+seqlengths(instances10239) = searched10239$seqlengths[names(seqlengths(instances10239))]
+```
+
+### Generate random negative sets
+
+```{r}
+set.seed(2)
+random_instances9606 = randomGRanges(instances9606, N = 100, replace = T, within1sequence = T)
+random_instances10239 = randomGRanges(instances10239, N = 100, replace = T, within1sequence = T)
+```
+
+### Combine positive and negative datasets
+
+```{r}
+combined_instances9606 = lapply(random_instances9606, function(random_instance, instances9606){
+    c(instances9606, random_instance)
+},instances9606)
+combined_instances10239 = lapply(random_instances10239, function(random_instance, instances10239){
+    c(instances10239, random_instance)
+},instances10239)
+```
+
+### Find overlaps with predicted motifs and plot ROC
+
+```{r}
+res = findOverlapsBench(occuring = occurence, benchmarking = combined_instances9606[[1]], predictor_col = "Sig",
+                        labels_col = "for_benchmarking", normalise = T, maxgap=0, minoverlap=2)
+
+pred = ROCR::prediction(res$for_ROC$predictions, res$for_ROC$labels)
+perf = ROCR::performance(pred, "tpr", "fpr")
+
+auc.perf = ROCR::performance(pred, measure = "auc")
+
+plot(perf, colorize=T, lwd = 4)
+text(x = 0.5, y = auc.perf@y.values, col = "black", labels = paste0(names(pred@predictions)," AUC: ",signif(as.numeric(auc.perf@y.values), 3)))
+```
+### Repeat with multiple negative sets
+
+```{r}
+predictions = lapply(combined_instances9606, function(inst){
+    findOverlapsBench(occuring = occurence, benchmarking = inst, predictor_col = "Sig",
+                      labels_col = "for_benchmarking", normalise = T, maxgap=0, minoverlap=2)$for_ROC$predictions
+})
+labels = lapply(combined_instances9606, function(inst){
+    findOverlapsBench(occuring = occurence, benchmarking = inst, predictor_col = "Sig",
+                      labels_col = "for_benchmarking", normalise = T, maxgap=0, minoverlap=2)$for_ROC$labels
+})
+
+pred = ROCR::prediction(predictions, labels)
+perf = ROCR::performance(pred, "tpr", "fpr")
+
+auc.perf = ROCR::performance(pred, measure = "auc")
+
+plot(perf, colorize=T, lwd = 4)
+text(x = 0.5, y = auc.perf@y.values, col = "black", labels = paste0(names(pred@predictions)," AUC: ",signif(as.numeric(auc.perf@y.values), 3)))
+```
