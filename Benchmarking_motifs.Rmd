@@ -8,7 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 if(!"MItools" %in% installed.packages()){
-    devtools::install_github("vitkl/MItools")
+    devtools::install_github("vitkl/MItools", dependencies = T)
 }
 suppressPackageStartupMessages({
     library(MItools)
@@ -22,7 +22,7 @@ suppressPackageStartupMessages({
 load("./processed_data_files/what_we_find_VS_ELM_clust20171019.RData")
 rm(list = ls()[!ls() %in% c("res_count")])
 
-load("./processed_data_files/QSLIMFinder_instances_h2v_Vidal_clust20171028.RData")
+load("./processed_data_files/QSLIMFinder_instances_h2v_Vidal_clust201710.RData")
 rm(list = ls()[!ls() %in% c("res_count", "res_count_orig", "all_human_interaction", "all_viral_interaction", "forSLIMFinder_Ready")])
 ```
 
@@ -32,9 +32,9 @@ rm(list = ls()[!ls() %in% c("res_count", "res_count_orig", "all_human_interactio
 occurence = SLIMFinderOcc2GRanges(occurence_file = "./SLIMFinder_Vidal/result/occurence.txt",
                                   main_file = "./SLIMFinder_Vidal/result/main_result.txt",
                                   one_from_cloud = T)
-instances9606 = ELMdb2GRanges(dbfile = "../viral_project/data_files/instances9606.gff",
+instances9606 = ELMdb2GRanges(dbfile = "./data_files/instances9606.gff",
                               dburl = "http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=")
-instances10239 = ELMdb2GRanges(dbfile = "../viral_project/data_files/instances10239.gff",
+instances10239 = ELMdb2GRanges(dbfile = "./data_files/instances10239.gff",
                                dburl = "http://elm.eu.org/instances.gff?q=all&taxon=irus&instance_logic=")
 ```
 
@@ -42,14 +42,13 @@ instances10239 = ELMdb2GRanges(dbfile = "../viral_project/data_files/instances10
 
 ```{r}
 searched9606 = GRangesINinteractionSubsetFASTA(grange = instances9606, interactionSubsetFASTA = forSLIMFinder_Ready)
-instances9606 = instances9606[searched9606$granges_in_sequencesSearched]
+instances9606 = instances9606[searched9606$granges_in_sequences_Searched]
 instances9606 = filterBYmotifType(instances9606, motif_types = c("DOC", "MOD", "LIG", "DEG", "CLV", "TRG"))
 seqlevels(instances9606) <- seqlevelsInUse(instances9606)
 seqlengths(instances9606) = searched9606$seqlengths[names(seqlengths(instances9606))]
 
-
-searched10239 = GRangesINinteractionSubsetFASTA(grange = instances10239, interactionSubsetFASTA = forSLIMFinder_Ready)
-instances10239 = instances10239[searched10239$granges_in_sequencesSearched]
+searched10239 = GRangesINinteractionSubsetFASTA(grange = instances10239, interactionSubsetFASTA = forSLIMFinder_Ready, query_only = T)
+instances10239 = instances10239[searched10239$granges_in_sequences_Searched]
 instances10239 = filterBYmotifType(instances10239, motif_types = c("DOC", "MOD", "LIG", "DEG", "CLV", "TRG"))
 seqlevels(instances10239) <- seqlevelsInUse(instances10239)
 seqlengths(instances10239) = searched10239$seqlengths[names(seqlengths(instances10239))]
@@ -88,16 +87,18 @@ auc.perf = ROCR::performance(pred, measure = "auc")
 plot(perf, colorize=T, lwd = 4)
 text(x = 0.5, y = auc.perf@y.values, col = "black", labels = paste0(names(pred@predictions)," AUC: ",signif(as.numeric(auc.perf@y.values), 3)))
 ```
-### Repeat with multiple negative sets
+### Repeat with multiple negative sets for human proteins
 
 ```{r}
-predictions = lapply(combined_instances9606, function(inst){
-    findOverlapsBench(occuring = occurence, benchmarking = inst, predictor_col = "Sig",
-                      labels_col = "for_benchmarking", normalise = T, maxgap=0, minoverlap=2)$for_ROC$predictions
-})
-labels = lapply(combined_instances9606, function(inst){
-    findOverlapsBench(occuring = occurence, benchmarking = inst, predictor_col = "Sig",
-                      labels_col = "for_benchmarking", normalise = T, maxgap=0, minoverlap=2)$for_ROC$labels
+suppressWarnings({
+    predictions = lapply(combined_instances9606, function(inst){
+        findOverlapsBench(occuring = occurence, benchmarking = inst, predictor_col = "Sig",
+                          labels_col = "for_benchmarking", normalise = T, maxgap=0, minoverlap=2)$for_ROC$predictions
+    })
+    labels = lapply(combined_instances9606, function(inst){
+        findOverlapsBench(occuring = occurence, benchmarking = inst, predictor_col = "Sig",
+                          labels_col = "for_benchmarking", normalise = T, maxgap=0, minoverlap=2)$for_ROC$labels
+    })
 })
 
 pred = ROCR::prediction(predictions, labels)
@@ -106,5 +107,90 @@ perf = ROCR::performance(pred, "tpr", "fpr")
 auc.perf = ROCR::performance(pred, measure = "auc")
 
 plot(perf, colorize=T, lwd = 4)
-text(x = 0.5, y = auc.perf@y.values, col = "black", labels = paste0(names(pred@predictions)," AUC: ",signif(as.numeric(auc.perf@y.values), 3)))
+text(x = 0.5, y = median(as.numeric(auc.perf@y.values)), col = "black", labels = paste0(names(pred@predictions)," AUC: ",signif(median(as.numeric(auc.perf@y.values)), 3)))
+abline(0,1)
+```
+
+### Repeat with multiple negative sets for viral proteins
+
+```{r}
+suppressWarnings({
+    predictions = lapply(combined_instances10239, function(inst){
+        findOverlapsBench(occuring = occurence, benchmarking = inst, predictor_col = "Sig",
+                          labels_col = "for_benchmarking", normalise = T, maxgap=0, minoverlap=2)$for_ROC$predictions
+    })
+    labels = lapply(combined_instances10239, function(inst){
+        findOverlapsBench(occuring = occurence, benchmarking = inst, predictor_col = "Sig",
+                          labels_col = "for_benchmarking", normalise = T, maxgap=0, minoverlap=2)$for_ROC$labels
+    })
+})
+
+overlapping_GRanges = findOverlapsBench(occuring = occurence, benchmarking = combined_instances10239[[1]], predictor_col = "Sig",
+                                        labels_col = "for_benchmarking", normalise = T, maxgap=0, minoverlap=2)$overlapping_GRanges
+
+unique(overlapping_GRanges[overlapping_GRanges$for_benchmarking == 1,]$Pattern)
+motif_protein_table = as.data.table(cbind(mcols(overlapping_GRanges[overlapping_GRanges$for_benchmarking == 1,])[, c("ID", "Pattern")], UNIPROT = seqnames(overlapping_GRanges[overlapping_GRanges$for_benchmarking == 1,])))
+
+# number of proteins with motif
+motif_protein_table[, uniqueN(UNIPROT), by = .(ID, Pattern)]
+# total number of instances
+unique(overlapping_GRanges)
+
+pred = ROCR::prediction(predictions, labels)
+perf = ROCR::performance(pred, "tpr", "fpr")
+
+auc.perf = ROCR::performance(pred, measure = "auc")
+
+plot(perf, colorize=T, lwd = 4) # col = "grey",
+text(x = 0.5, y = median(as.numeric(auc.perf@y.values)), col = "black", labels = paste0(names(pred@predictions),"Median AUC: ",signif(median(as.numeric(auc.perf@y.values)), 3)))
+abline(0,1)
+```
+
+# All analysis in one step
+
+```{r}
+res = benchmarkMotifs(occurence_file = "./SLIMFinder_Vidal/result/occurence.txt",
+            main_file = "./SLIMFinder_Vidal/result/main_result.txt",
+            domain_res = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
+            motif_setup = "./processed_data_files/QSLIMFinder_instances_h2v_Vidal_clust201710.RData",
+            domain_results_obj = "res_count", motif_input_obj = "forSLIMFinder_Ready",
+            one_from_cloud = T, type = "QSLIMFinder",
+            dbfile_main = "./data_files/instances9606.gff",
+            dburl_main = "http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=",
+            dbfile_query = "./data_files/instances10239.gff",
+            dburl_query = "http://elm.eu.org/instances.gff?q=all&taxon=irus&instance_logic=",
+            query_res_query_only = T, motif_types = c("DOC", "MOD", "LIG", "DEG", "CLV", "TRG"),
+            all_res_excl_query = T,
+            seed = 21, N = 100, replace = T, within1sequence = T,
+            predictor_col = "Sig", normalise = T, minoverlap = 2, maxgap = 0)
+
+benchmarkMotifsROC(res = res, main = "human network (Vidal's only) searched (QSLIMFinder) \nfor motifs present in viral proteins", colorize=T, lwd = 4)
+
+colors = RColorBrewer::brewer.pal(2, "Dark2")
+benchmarkMotifsROC(res = res, main = "human network (Vidal's only) searched (QSLIMFinder) \nfor motifs present in viral proteins", col_query = colors[1], col_all = colors[2], lwd = 4, legend_args = "x = 0.5 | y = 0.4 | y.intersp = 1.5 | box.col = \"white\"") #, avg = "vertical", spread.estimate = "stddev")
+
+# number of proteins with motif
+res$N_query_prot_with_known_instances
+# total number of instances
+res$N_query_known_instances
+
+res_list = mBenchmarkMotifs(datasets = c("", "Vidal", "Mann"), 
+            descriptions = c("human network (full IntAct) searched (QSLIMFinder) \nfor motifs present in viral proteins",
+                             "human network (Vidal's only) searched (QSLIMFinder) \nfor motifs present in viral proteins",
+                             "human network (Mann's only) searched (QSLIMFinder) \nfor motifs present in viral proteins"),
+            dir = "./",
+            domain_res = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
+            domain_results_obj = "res_count", motif_input_obj = "forSLIMFinder_Ready",
+            one_from_cloud = T, type = "QSLIMFinder",
+            dbfile_main = "./data_files/instances9606.gff",
+            dburl_main = "http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=",
+            dbfile_query = "./data_files/instances10239.gff",
+            dburl_query = "http://elm.eu.org/instances.gff?q=all&taxon=irus&instance_logic=",
+            query_res_query_only = T, motif_types = c("DOC", "MOD", "LIG", "DEG", "CLV", "TRG"),
+            all_res_excl_query = T,
+            seed = 21, N = 100, replace = T, within1sequence = T,
+            predictor_col = "Sig", normalise = T, minoverlap = 2, maxgap = 0, motif_setup_month = "201710")
+
+colors = RColorBrewer::brewer.pal(2, "Dark2")
+mBenchmarkMotifsROC(res_list, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.5 | y = 0.4 | y.intersp = 1.5 | box.col = \"white\"")
 ```

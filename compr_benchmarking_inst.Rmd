@@ -1,0 +1,119 @@
+---
+title: "Comprehensive benchmarking of motif instances (all types)"
+author: "Vitalii Kleshchevnikov"
+date: "18/10/2017"
+output: 
+  html_document: 
+    keep_md: yes
+    toc: yes
+---
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = FALSE, fig.width = 10, fig.height = 10, warning = FALSE, message = FALSE)
+
+packages = c("MItools", "RColorBrewer", "devtools")
+if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    # specifying mirror is necessary for some Linux systems
+    install.packages(packages_to_install, dependencies = T, repos = "http://mirrors.ebi.ac.uk/CRAN/")
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    source("https://bioconductor.org/biocLite.R")
+    biocLite(packages_to_install)
+    devtools::install_github("vitkl/MItools", dependencies = T)
+}
+suppressPackageStartupMessages({
+    library(MItools)
+})
+
+colors = RColorBrewer::brewer.pal(2, "Dark2")
+N_negative_sets = 200
+motif_types = c("DOC", "MOD", "LIG", "DEG", "CLV", "TRG")
+```
+
+## human network searched for motifs present in viral proteins
+
+All interaction of viral proteins present in IntAct are used for analysis. All viral proteins are used as a query (QSLIMFinder identifies motifs only if they are present in a query sequence).
+
+```{r, viral}
+res_list_viral = mBenchmarkMotifs(datasets = c("", "Vidal", "Mann"), 
+            descriptions = c("human network (full IntAct) searched \nfor motifs present in viral proteins",
+                             "human network (Vidal's data only) searched \nfor motifs present in viral proteins",
+                             "human network (Mann's data only) searched \nfor motifs present in viral proteins"),
+            dir = "./",
+            domain_res = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
+            domain_results_obj = "res_count", motif_input_obj = "forSLIMFinder_Ready",
+            one_from_cloud = T, type = "QSLIMFinder",
+            dbfile_main = "./data_files/instances9606.gff",
+            dburl_main = "http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=",
+            dbfile_query = "./data_files/instances10239.gff",
+            dburl_query = "http://elm.eu.org/instances.gff?q=all&taxon=irus&instance_logic=",
+            query_res_query_only = T, motif_types = motif_types,
+            all_res_excl_query = T,
+            seed = 21, N = N_negative_sets, replace = T, within1sequence = T,
+            predictor_col = "Sig", normalise = T, minoverlap = 2, maxgap = 0, motif_setup_month = "201710")
+
+mBenchmarkMotifsROC(res_list_viral, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.5 | y = 0.4 | y.intersp = 1.5 | box.col = \"white\"")
+```
+
+## human network searched for motifs present in kinases
+
+All interaction of kinases present in IntAct are used and sequences of these proteins are used as a query except for withinVidal, withinMann datasets.  
+
+```{r, kinase}
+res_list_kinases = mBenchmarkMotifs(datasets = c("", "Vidal", "Mann", "withinVidal", "withinMann"), 
+            descriptions = c("human network (full IntAct) searched \nfor motifs present in kinases",
+                             "human network (Vidal's data only) searched \nfor motifs present in kinases",
+                             "human network (Mann's data only) searched \nfor motifs present in kinases",
+                             "human network (within Vidal's data only) searched \nfor motifs present in kinases",
+                             "human network (within Mann's data only) searched \nfor motifs present in kinases"),
+            dir = "../kinase_project/",
+            domain_res = "../kinase_project/processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
+            domain_results_obj = "res_count", motif_input_obj = "forSLIMFinder_Ready",
+            one_from_cloud = T, type = "QSLIMFinder",
+            dbfile_main = "../kinase_project/data_files/instances9606.gff",
+            dburl_main = "http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=",
+            dbfile_query = "../kinase_project/data_files/instances9606.gff",
+            dburl_query = "http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=",
+            query_res_query_only = T, motif_types = motif_types,
+            all_res_excl_query = T,
+            seed = 21, N = N_negative_sets, replace = T, within1sequence = T,
+            predictor_col = "Sig", normalise = T, minoverlap = 2, maxgap = 0, motif_setup_month = "201710")
+
+mBenchmarkMotifsROC(res_list_kinases, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.5 | y = 0.4 | y.intersp = 1.5 | box.col = \"white\"")
+```
+
+## human network searched for motifs present in zinc-finger proteins
+
+All interaction of zinc-finger proteins present in IntAct are used and sequences of these proteins are used as a query except for withinVidal, withinMann datasets.  
+
+```{r, znf}
+res_list_kinases = mBenchmarkMotifs(datasets = c("", "Vidal", "Mann", "withinVidal", "withinMann"), 
+            descriptions = c("human network (full IntAct) searched \nfor motifs present in zinc-finger proteins",
+                             "human network (Vidal's data only) searched \nfor motifs present in zinc-finger proteins",
+                             "human network (Mann's data only) searched \nfor motifs present in zinc-finger proteins",
+                             "human network (within Vidal's data only) searched \nfor motifs present in zinc-finger proteins",
+                             "human network (within Mann's data only) searched \nfor motifs present in zinc-finger proteins"),
+            dir = "../zinkfinger_project/",
+            domain_res = "../zinkfinger_project/processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
+            domain_results_obj = "res_count", motif_input_obj = "forSLIMFinder_Ready",
+            one_from_cloud = T, type = "QSLIMFinder",
+            dbfile_main = "../zinkfinger_project/data_files/instances9606.gff",
+            dburl_main = "http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=",
+            dbfile_query = "../zinkfinger_project/data_files/instances9606.gff",
+            dburl_query = "http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=",
+            query_res_query_only = T, motif_types = motif_types,
+            all_res_excl_query = T,
+            seed = 21, N = N_negative_sets, replace = T, within1sequence = T,
+            predictor_col = "Sig", normalise = T, minoverlap = 2, maxgap = 0, motif_setup_month = "201711")
+
+mBenchmarkMotifsROC(res_list_kinases, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.5 | y = 0.4 | y.intersp = 1.5 | box.col = \"white\"")
+```
+
+```{r, exit}
+Sys.Date. = Sys.Date()
+Sys.Date.
+session_info. = devtools::session_info()
+session_info.
+filename = paste0("./processed_data_files/compr_benchmarking_inst",format(Sys.Date(), "%Y%m"),".RData")
+save(list = ls(), file=filename)
+```

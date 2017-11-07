@@ -19,7 +19,7 @@ if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
     packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
     source("https://bioconductor.org/biocLite.R")
     biocLite(packages_to_install)
-    devtools::install_github("vitkl/MItools")
+    devtools::install_github("vitkl/MItools", dependencies = T)
 }
 
 suppressPackageStartupMessages({
@@ -190,7 +190,7 @@ tar("./SLIMFinder/input.gz","./SLIMFinder/input/", compression='gzip')
 unlink("./SLIMFinder/input/", recursive = T)
 #unlink("./SLIMFinder/log_dir/")
 #unlink("./SLIMFinder/output/")
-filename = paste0("./processed_data_files/QSLIMFinder_instances_h2v_clust",gsub("-","",Sys.Date()),".RData")
+filename = paste0("./processed_data_files/QSLIMFinder_instances_h2v_clust",format(Sys.Date(), "%Y%m"),".RData")
 save(list = ls(), file=filename)
 Sys.Date()
 sessionInfo()
