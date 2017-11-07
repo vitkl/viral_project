@@ -27,7 +27,7 @@ suppressPackageStartupMessages({
 
 colors = RColorBrewer::brewer.pal(2, "Dark2")
 N_negative_sets = 200
-motif_types = c("DOC", "MOD", "LIG", "DEG", "CLV", "TRG")
+motif_types = c("MOD", "LIG")
 ```
 
 ## human network searched for motifs present in viral proteins
@@ -52,7 +52,9 @@ res_list_viral = mBenchmarkMotifs(datasets = c("", "Vidal", "Mann"),
             seed = 21, N = N_negative_sets, replace = T, within1sequence = T,
             predictor_col = "Sig", normalise = T, minoverlap = 2, maxgap = 0, motif_setup_month = "201710")
 
-mBenchmarkMotifsROC(res_list_viral, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.5 | y = 0.4 | y.intersp = 1.5 | box.col = \"white\"")
+par(mar = c(6,7,4,4))
+mBenchmarkMotifsROC(res_list_viral, data_type = "all", col_query = colors[1], col_all = colors[2], lwd = 1, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1))
+mBenchmarkMotifsROC(res_list_viral, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1))
 ```
 
 ## human network searched for motifs present in kinases
@@ -87,7 +89,7 @@ mBenchmarkMotifsROC(res_list_kinases, data_type = "both", col_query = colors[1],
 All interaction of zinc-finger proteins present in IntAct are used and sequences of these proteins are used as a query except for withinVidal, withinMann datasets.  
 
 ```{r, znf}
-res_list_kinases = mBenchmarkMotifs(datasets = c("", "Vidal", "Mann", "withinVidal", "withinMann"), 
+res_list_znf = mBenchmarkMotifs(datasets = c("", "Vidal", "Mann", "withinVidal", "withinMann"), 
             descriptions = c("human network (full IntAct) searched \nfor motifs present in zinc-finger proteins",
                              "human network (Vidal's data only) searched \nfor motifs present in zinc-finger proteins",
                              "human network (Mann's data only) searched \nfor motifs present in zinc-finger proteins",

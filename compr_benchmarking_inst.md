@@ -36,7 +36,7 @@ colors = RColorBrewer::brewer.pal(2, "Dark2")
 
 ```r
 N_negative_sets = 200
-motif_types = c("DOC", "MOD", "LIG", "DEG", "CLV", "TRG")
+motif_types = c("MOD", "LIG")
 ```
 
 ## human network searched for motifs present in viral proteins
