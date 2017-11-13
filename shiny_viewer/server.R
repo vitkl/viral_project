@@ -136,7 +136,7 @@ shinyServer(function(input, output, session) {
         }
         par(mar = c(6,7,4,4))
         color = colorRampPalette(brewer.pal(7, "Dark2"))(length(input$ROCR_plot_set))
-        eval(parse(text = paste0("plot(perf, colorize=T, lwd = 4,",paste0(plot_args, collapse = ","),")")))
+        eval(parse(text = paste0("plot(perf, colorize=F, lwd = 10,",paste0(plot_args, collapse = ","),")")))
         abline(a=0, b= 1)
         if(is.null(input$enrich_legend_args)) legend_args = NULL else {
             legend_args = input$enrich_legend_args

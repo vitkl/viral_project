@@ -51,6 +51,14 @@ all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, d
 all_within_viral_interaction = fullInteractome(taxid = 10239, database = "IntActFTP", format = "tab27",
                                         clean = TRUE, protein_only = TRUE, directory = "./data_files/")
 all_within_viral_interaction = subsetMITABbyID(MITABdata = all_within_viral_interaction, ID_seed = unique(all_viral_interaction$data$IDs_interactor_B), within_seed = T, only_seed2nonseed = F)
+
+# N domains
+protein_domain_pair[IDs_protein %in% unique(all_viral_interaction$data$IDs_interactor_A), uniqueN(IDs_domain)]
+# Pfam domains 
+protein_domain_pair[IDs_protein %in% unique(all_viral_interaction$data$IDs_interactor_A) & grepl("PF",all_IDs_domain), uniqueN(IDs_domain)]
+qplot(protein_domain_pair[IDs_protein %in% unique(all_viral_interaction$data$IDs_interactor_A)][, .(N = uniqueN(IDs_domain)), by = IDs_protein]$N, main = "number of domains per protein", xlab = "number of domains per protein", geom = "histogram") + scale_x_log10() + theme_light()
+
+qplot(protein_domain_pair[IDs_protein %in% unique(all_viral_interaction$data$IDs_interactor_A)][, .(N = .N), by = IDs_domain]$N, main = "domain occurence", xlab = "number of proteins per domain", geom = "histogram") + scale_x_log10() + theme_light()
 ```
 
 Viral proteins have `r length(unique(all_viral_interaction$data$pair_id))` known interacting pairs with human proteins while only `r length(unique(all_within_viral_interaction$data$pair_id))` with other viral proteins.  

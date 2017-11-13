@@ -27,7 +27,7 @@ suppressPackageStartupMessages({
 
 colors = RColorBrewer::brewer.pal(2, "Dark2")
 N_negative_sets = 200
-motif_types = c("MOD", "LIG")
+motif_types = c("DOC", "DEG", "CLV", "TRG")
 ```
 
 ## human network searched for motifs present in viral proteins

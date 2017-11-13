@@ -57,6 +57,12 @@ all_human_interaction = fullInteractome(taxid = 9606, database = "IntActFTP", fo
 all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
                                                 clean = TRUE, protein_only = TRUE, 
                                                 directory = "./data_files/")
+dataset_name = "SLIMFinder" # refer to MItools::mBenchmarkMotifs
+SLIMFinder_dir = paste0("./",dataset_name,"/")
+LSF_project_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/"
+analysis_type = "qslimfinder" # or "slimfinder"
+options = "dismask=T consmask=F cloudfix=T probcut=0.3 iuchdir=T maxseq=500"
+software_path = "../software/cluster/" # "../software/"
 ```
 
 ## load results ofwhich domains are likely to mediate interaction
@@ -82,13 +88,6 @@ all.fasta = readAAStringSet(filepath = "./data_files/all_human_viral_proteins.fa
 all_human_interaction = removeInteractionNoFASTA(all_human_interaction, all.fasta)
 all_viral_interaction = removeInteractionNoFASTA(all_viral_interaction, all.fasta)
 
-#all_viral_interaction$data = all_viral_interaction$data[IDs_interactor_A == "O60503",]
-#forSLIMFinder = listInteractionSubsetFASTA(interaction_set1 = all_human_interaction, 
-#                                           interaction_set2 = all_viral_interaction, 
-#                                           seed_id_vect = "O60503",
-#                                           fasta = all.fasta,
-#                                           single_interact_from_set2 = T, set1_only = T)
-
 forSLIMFinder = listInteractionSubsetFASTA(interaction_set1 = all_human_interaction, 
                                            interaction_set2 = all_viral_interaction, 
                                            seed_id_vect = proteins_w_signif_domains,
@@ -107,46 +106,27 @@ forSLIMFinder_Ready$length
 domain_filt = domain_res
 domain_filt$data_with_pval = domain_filt$data_with_pval[p.value <= 1,]
 forSLIMFinder_Ready = domainProteinPairMatch(forSLIMFinder_Ready, domain_filt, remove = T)
-
-### sanity check
-obs = unique(domain_filt$data_with_pval[, .(IDs_interactor_human, IDs_interactor_viral)])
-setkey(obs)
-
-res = tstrsplit(gsub("interactors_of\\.|\\.","", names(forSLIMFinder_Ready$fasta_subset_list)), ":")
-res = data.table(idA = res[[1]], idB = res[[2]])
-res_unkeyed = copy(res)
-res = unique(res[complete.cases(res),])
-setkey(res)
-
-mean(paste0(res$idA, res$idB) %in% paste0(obs$IDs_interactor_human, obs$IDs_interactor_viral))
-
-query_in_FASTA = sapply(1:length(forSLIMFinder_Ready$fasta_subset_list), function(i, forSLIMFinder){
-    res = tstrsplit(gsub("interactors_of\\.|\\.","", names(forSLIMFinder$fasta_subset_list)), ":")
-    res[[2]][i] %in% names(forSLIMFinder$fasta_subset_list[[i]])
-}, forSLIMFinder_Ready)
-mean(query_in_FASTA)
-### sanity check end
 ```
 
 ## Generate bash commands to run QSLIMFinder
 
 ```{r save}
-SLIMFinder_dir = "./SLIMFinder/"
 if(!dir.exists(SLIMFinder_dir)) dir.create(SLIMFinder_dir)
 
 forSLIMFinder_file_list = writeInteractionSubsetFASTA_list(interactionFASTA_list = forSLIMFinder_Ready,
-                                                           dir = "./SLIMFinder/")
+                                                           dir = SLIMFinder_dir, analysis_type = analysis_type)
 
-QSLIMFinderCommand(file_list = forSLIMFinder_file_list)
+QSLIMFinderCommand(file_list = forSLIMFinder_file_list, analysis_type = analysis_type)
 
 all_commands = mQSLIMFinderCommand(file_list = forSLIMFinder_file_list, 
-                                   slimpath = "../software/cluster/slimsuite/tools/qslimfinder.py", 
-                                   blast = "../software/cluster/ncbi_blast_2.6.0/bin/", 
-                                   iupred = "../software/cluster/iupred/iupred",
-                                   options = "dismask=T consmask=F cloudfix=T probcut=0.3 iuchdir=T",
+                                   slimpath = paste0(software_path, "slimsuite/tools/"), 
+                                   blast = paste0(software_path, "ncbi_blast_2.6.0/bin/"), 
+                                   iupred = paste0(software_path, "iupred/iupred"),
+                                   options = options,
                                    LSF_cluster_mode = T,
-                                   LSF_project_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/",
-                                   LSF_cluster_par = "bsub -n 1 -q research-rh7 -M 100 -R \"rusage[mem=100]\"")
+                                   LSF_project_path = LSF_project_path,
+                                   LSF_cluster_par = "bsub -n 1 -q research-rh7 -M 100 -R \"rusage[mem=100]\"",
+                                   analysis_type = analysis_type)
 ```
 
 ## Run QSLIMFinder
@@ -159,38 +139,39 @@ runQSLIMFinder(commands = all_commands, file_list = forSLIMFinder_file_list, onL
 ## Read results
 
 ```{r read}
-if(!dir.exists("./SLIMFinder/result/")) dir.create("./SLIMFinder/result/")
+resultdir = paste0(SLIMFinder_dir, "result/")
+if(!dir.exists(resultdir)) dir.create(resultdir)
 QSLIMFinder_main_result = readQSLIMFinderMain(outputfile = forSLIMFinder_file_list$outputfile)
 QSLIMFinder_occurence = readQSLIMFinderOccurence(outputdir = forSLIMFinder_file_list$outputdir)
-fwrite(QSLIMFinder_main_result, "./SLIMFinder/result/main_result.txt", sep = "\t")
+fwrite(QSLIMFinder_main_result, paste0(resultdir, "main_result.txt"), sep = "\t")
 
-fwrite(QSLIMFinder_occurence, "./SLIMFinder/result/occurence.txt", sep = "\t")
-writePatternList(QSLIMFinder_main_result, filename = "./SLIMFinder/result/motifs.txt")
+fwrite(QSLIMFinder_occurence, paste0(resultdir, "occurence.txt"), sep = "\t")
+writePatternList(QSLIMFinder_main_result, filename = paste0(resultdir, "motifs.txt"))
 ```
 
 ## Compare motifs to ELM
 
 ```{r comparimotif}
-runCompariMotif3(input_file = "./SLIMFinder/result/motifs.txt",
-                 slimpath = "../software/cluster/slimsuite/tools/",
+runCompariMotif3(input_file = paste0(resultdir, "motifs.txt"),
+                 slimpath = paste0(software_path, "slimsuite/tools/"),
                  run = T, with = "db",
-                 out_file = "./SLIMFinder/result/comparimotif.tdt")
-runCompariMotif3(input_file = "./SLIMFinder/result/motifs.txt",
-                 slimpath = "../software/cluster/slimsuite/tools/",
+                 out_file = paste0(resultdir, "comparimotif.tdt"))
+runCompariMotif3(input_file = paste0(resultdir, "motifs.txt"),
+                 slimpath = paste0(software_path, "slimsuite/tools/"),
                  run = T, with = "self",
-                 out_file = "./SLIMFinder/result/comparimotif_with_self.tdt")
-R.utils::gzip("./SLIMFinder/result/comparimotif_with_self.compare.tdt", "./SLIMFinder/result/comparimotif_with_self.compare.tdt.gz")
-R.utils::gzip("./SLIMFinder/result/comparimotif_with_self.compare.xgmml", "./SLIMFinder/result/comparimotif_with_self.compare.xgmml.gz")
+                 out_file = paste0(resultdir, "comparimotif_with_self.tdt"))
+R.utils::gzip(paste0(resultdir, "comparimotif_with_self.compare.tdt"), paste0(resultdir, "comparimotif_with_self.compare.tdt.gz"))
+R.utils::gzip(paste0(resultdir, "comparimotif_with_self.compare.xgmml"), paste0(resultdir, "comparimotif_with_self.compare.xgmml.gz"))
 ```
 
 ```{r}
-tar("./SLIMFinder/input.gz","./SLIMFinder/input/", compression='gzip')
-#tar("./SLIMFinder/log_dir.gz","./SLIMFinder/log_dir/", compression='gzip')
-#tar("./SLIMFinder/output.gz","./SLIMFinder/output", compression='gzip')
-unlink("./SLIMFinder/input/", recursive = T)
-#unlink("./SLIMFinder/log_dir/")
-#unlink("./SLIMFinder/output/")
-filename = paste0("./processed_data_files/QSLIMFinder_instances_h2v_clust",format(Sys.Date(), "%Y%m"),".RData")
+tar(paste0(SLIMFinder_dir, "input.gz"),paste0(SLIMFinder_dir, "input/"), compression='gzip')
+#tar(paste0(SLIMFinder_dir, "log_dir.gz"),paste0(SLIMFinder_dir, "log_dir/"), compression='gzip')
+#tar(paste0(SLIMFinder_dir, "output.gz"),paste0(SLIMFinder_dir, "output"), compression='gzip')
+unlink(paste0(SLIMFinder_dir, "input/"), recursive = T)
+#unlink(paste0(SLIMFinder_dir, "log_dir/"))
+#unlink(paste0(SLIMFinder_dir, "output/"))
+filename = paste0("./processed_data_files/QSLIMFinder_instances_h2v_",dataset_name,"_clust",format(Sys.Date(), "%Y%m"),".RData")
 save(list = ls(), file=filename)
 Sys.Date()
 sessionInfo()

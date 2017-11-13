@@ -138,6 +138,52 @@ PermutResult2D(res = sequential_filter, N = 500, value.cols = c("p.value", "Emp.
     ggtitle("2D-bin plots of 250 top-scoring viral protein - human domain pairs, \n statistic: count of a domain among interacting partners of a viral protein")
 ```
 
+
+```{r}
+ggplot(res_count$data_with_pval, aes(IDs_interactor_viral_degree, domain_count))+ geom_raster(aes(fill = p.value), hjust=0.5,vjust=0.5, interpolate=FALSE)
+unique(res_count$data_with_pval[,.(IDs_interactor_viral, IDs_domain_human, IDs_interactor_viral_degree, domain_count, p.value, observed_statistic, higher_counts, not_missing)])[(IDs_interactor_viral_degree > 8 & IDs_interactor_viral_degree < 10) & (domain_count > 400 & domain_count < 2020)]
+
+unique_pairs = unique(res_count$data_with_pval[,.(IDs_interactor_viral, IDs_domain_human, IDs_interactor_viral_degree, domain_count, p.value, observed_statistic, higher_counts, not_missing)])
+ecdf(unique_pairs$IDs_interactor_viral_degree)
+
+ecdfProb = function(res, feature = "IDs_interactor_viral", attr = "IDs_interactor_viral_degree"){
+    data = unique(res$data_with_pval[, c(feature, attr), with = F])
+    function(new_num) {
+        #predict(loess(
+           1 - ecdf(unlist(data[, c(attr), with = F]))(new_num) #(unlist(data[,c(attr), with = F])) ~ unlist(data[,c(attr), with = F])), new_num)
+    }
+}
+
+P06827 = res_count$data_with_pval[(IDs_interactor_viral == "P06827")]
+
+observed_statistic = unique(res_count$data_with_pval[,.(IDs_interactor_viral, IDs_domain_human, observed_statistic)])
+observed_statistic = observed_statistic$observed_statistic[!is.na(observed_statistic$observed_statistic)]
+m_pl = displ$new(observed_statistic)
+est = estimate_xmin(m_pl)
+m_pl$setXmin(est)
+
+m_ln = dislnorm$new(observed_statistic)
+est = estimate_xmin(m_ln)
+
+plot(m_pl)
+lines(m_pl, col=2)
+lines(m_ln, col=3)
+
+library(zipfR)
+ZM = lnre("zm", alpha = 1/4, B = 0.7)
+hist(as.numeric(rlnre(ZM, 10000)), breaks = seq(0,35,1))
+hist(observed_statistic, breaks = seq(0,35,1))
+
+(ecdfProb(res_count, "IDs_interactor_viral", "IDs_interactor_viral_degree")(9) * ecdfProb(res_count, "IDs_interactor_human", "IDs_interactor_human_degree")(P06827$IDs_interactor_human_degree[1]))^3
+        (ecdfProb(res_count, "IDs_domain_human", "domain_count")(P06827$domain_count) * ecdfProb(res_count, "IDs_interactor_human", "IDs_interactor_human_degree")(P06827$IDs_interactor_human_degree))^P06827$observed_statistic
+pbinom(33, 220, prob = 0.317095879, lower.tail = T)
+pbinom(21, 220, prob = 0.317095879, lower.tail = T)
+plot(p.value ~ observed_statistic, res_count$data_with_pval[IDs_interactor_viral_degree == 220])
+par(mfrow = c(2,1))
+plot(p.value ~ observed_statistic, res_count$data_with_pval[IDs_interactor_viral_degree > 8 & IDs_interactor_viral_degree < 16], type = "l")
+lines(p.value ~ observed_statistic, res_count$data_with_pval[IDs_interactor_viral_degree > 128 & IDs_interactor_viral_degree < 256])
+```
+
 ## How all these methods perform at finding ELM domains?
 
 ### The absolute numbers
