@@ -99,8 +99,13 @@ shinyServer(function(input, output, session) {
     output$ROCR <- renderPlot({
         load(input$path)
         res_list = eval(parse(text = paste0("list(",paste0(input$ROCR_plot_set, collapse = ","),")")))
+        
         predictor = lapply(res_list, function(XYZint){
-            XYZint_table = unique(XYZint$data_with_pval[,c(XYZint$nodes$nodeX, XYZint$nodes$nodeZ, "p.value"), with = F])
+            #filter table by user-specified criteria (such as domain count)
+            if(is.null(input$ROCR_filter)) XYZint_table = XYZint$data_with_pval else {
+                eval(parse(text = paste0("XYZint_table = unique(XYZint$data_with_pval[",input$ROCR_filter,"])")))
+            }
+            XYZint_table = unique(XYZint_table[,c(XYZint$nodes$nodeX, XYZint$nodes$nodeZ, "p.value"), with = F])
             XYZint_table[, p.value := 1 - p.value]
             
             #XYZint_table = unique(XYZint$data_with_pval[,c(XYZint$nodes$nodeZ, "p.value"), with = F])
@@ -112,7 +117,11 @@ shinyServer(function(input, output, session) {
         })
         names(predictor) = input$ROCR_plot_set
         truth = lapply(res_list, function(XYZint){
-            XYZint_table = unique(XYZint$data_with_pval[,c(XYZint$nodes$nodeX, XYZint$nodes$nodeZ, "p.value"), with = F])
+            #filter table by user-specified criteria (such as domain count)
+            if(is.null(input$ROCR_filter)) XYZint_table = XYZint$data_with_pval else {
+                eval(parse(text = paste0("XYZint_table = unique(XYZint$data_with_pval[",input$ROCR_filter,"])")))
+            }
+            XYZint_table = unique(XYZint_table[,c(XYZint$nodes$nodeX, XYZint$nodes$nodeZ, "p.value"), with = F])
             XYZint_table[, p.value := 1 - p.value]
             
             #XYZint_table = unique(XYZint$data_with_pval[,c(XYZint$nodes$nodeZ, "p.value"), with = F])

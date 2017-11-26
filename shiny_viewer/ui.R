@@ -13,6 +13,7 @@ shinyUI(pageWithSidebar(
                     choices = "enrichment", selected = "enrichment", multiple = T),
         selectInput(inputId = "ROCR_plot_set", label = "ROCR: Our prediction vs ELM domains: which results to compare?",
                     choices = "unavailable", selected = "unavailable", multiple = T),
+        textInput(inputId = "ROCR_filter", label = "ROCR: Our prediction vs ELM domains: filter by args (like \"domain_count_per_IDs_interactor_viral > 0 & domain_count > 0 & IDs_interactor_viral_degree > 0 & IDs_interactor_human_degree > 0\")", value = "domain_count_per_IDs_interactor_viral > 0 & domain_count > 0 & IDs_interactor_viral_degree > 0 & IDs_interactor_human_degree > 0"),
         radioButtons(inputId = "enrich_plot_type", label = "Our prediction vs ELM domains: plot type",
                      choices = list(pval = "pval", odds_ratio = "odds_ratio", count = "count"), selected = "count"),
         textInput(inputId = "enrich_plot_args", label = "Our prediction vs ELM domains: plot args (like \"cex = 1.5\", separated by pipes)", value = "cex.lab = 2|cex.axis = 1.5"),
