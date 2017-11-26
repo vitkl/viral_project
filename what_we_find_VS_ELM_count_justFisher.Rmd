@@ -95,6 +95,7 @@ permuteFisherTestOdds = function(data, select_nodes = NULL, also_permuteYZ = F, 
 
 # permute IDs_interactor_viral ~ IDs_interactor_human: odds ratio
 resFISHERodds = permuteFisherTestOdds(data, select_nodes = NULL, N = 1)
+resFISHERodds_no1 = permuteFisherTestOdds(data, select_nodes = IDs_interactor_viral + IDs_domain_human ~ domain_count_per_IDs_interactor_viral > 1, N = 1)
 
 # Just FisherTest result (no permutation)
 justFisherdata = copy(resFISHERodds$data_with_pval)
@@ -103,6 +104,13 @@ justFisherdata[, odds_ratio := observed_statistic][, observed_statistic := NULL]
 justFisherdata[, resFISHERodds_YmissingZ_perX := YmissingZ_perX][, YmissingZ_perX := NULL]
 justFisherdata[, resFISHERodds_higher_counts := higher_counts][, higher_counts := NULL]
 justFisherdata[, resFISHERodds_not_missing := not_missing][, not_missing := NULL]
+
+justFisherdata_no1 = copy(resFISHERodds_no1$data_with_pval)
+justFisherdata_no1[, resFISHERodds_p.value := p.value][, p.value := NULL]
+justFisherdata_no1[, odds_ratio := observed_statistic][, observed_statistic := NULL]
+justFisherdata_no1[, resFISHERodds_YmissingZ_perX := YmissingZ_perX][, YmissingZ_perX := NULL]
+justFisherdata_no1[, resFISHERodds_higher_counts := higher_counts][, higher_counts := NULL]
+justFisherdata_no1[, resFISHERodds_not_missing := not_missing][, not_missing := NULL]
 
 # Fisher test: set up standard parameters
 permuteFisherTestPval = function(data, select_nodes = NULL, also_permuteYZ = F, N = N_permut){
@@ -128,9 +136,13 @@ permuteFisherTestPval = function(data, select_nodes = NULL, also_permuteYZ = F, 
 }
 
 resJustFISHER = permuteFisherTestPval(justFisherdata, select_nodes = NULL, N = 1)
+resJustFISHER_no1 = permuteFisherTestPval(justFisherdata_no1, select_nodes = IDs_interactor_viral + IDs_domain_human ~ domain_count_per_IDs_interactor_viral > 1, N = 1)
 
 resJustFISHER$data_with_pval[, p.value := observed_statistic]
 resJustFISHER$data_with_pval[, observed_statistic := odds_ratio]
+
+resJustFISHER_no1$data_with_pval[, p.value := observed_statistic]
+resJustFISHER_no1$data_with_pval[, observed_statistic := odds_ratio]
 
 my.p.adjust = function(res, adj_by = "p.value", ...) {
     if(class(res) != "XYZinteration_XZEmpiricalPval") stop("res should be the output of permutationPval()")
@@ -145,6 +157,8 @@ my.p.adjust = function(res, adj_by = "p.value", ...) {
     res
 }
 resJustFISHER = my.p.adjust(resJustFISHER, method = "fdr")
+resJustFISHER_no1 = my.p.adjust(resJustFISHER_no1, method = "fdr")
+
 resJustFISHER005 = copy(resJustFISHER)
 resJustFISHER005$data_with_pval = resJustFISHER$data_with_pval[fdr_pval < 0.05,]
 resJustFISHER01 = copy(resJustFISHER)
@@ -355,6 +369,7 @@ enrichment_justfreq = runningTestEnrichment(res_count, rank_by = "observed_stati
 # Fisher test pval
 enrichmentresJustFISHER = runningTestEnrichment(resJustFISHER, rank_by = "p.value", name = "Fisher test pval: domain overrepresentation over the background")
 enrichmentressequential_filter = runningTestEnrichment(sequential_filter, rank_by = "p.value", name = "Sequential filter: domain frequency among interactors of a viral protein (empirical pval) =>\ndomain overrepresentation over the background")
+enrichmentresJustFISHER_no1 = runningTestEnrichment(resJustFISHER_no1, rank_by = "p.value", name = "Fisher test pval: domain overrepresentation over the background, domain count 1 removed")
 
 enrichmentresJustFISHER005 = runningTestEnrichment(resJustFISHER005, rank_by = "observed_statistic", name = "odds ratio: domain overrepresentation over the background, filtered by Fisher test pval 0.05", decreasing = T)
 enrichmentresJustFISHER01 = runningTestEnrichment(resJustFISHER01, rank_by = "observed_statistic", name = "odds ratio: domain overrepresentation over the background, filtered by Fisher test pval 0.1", decreasing = T)
