@@ -1,0 +1,171 @@
+---
+title: "ELM motif properties"
+author: "Vitalii Kleshchevnikov"
+date: "26/11/2017"
+output: 
+  html_document: 
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.width = 6, fig.height = 6, warning = FALSE, message = FALSE)
+
+packages = c("MItools", "devtools", "stringr", "GGally")
+if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    # specifying mirror is necessary for some Linux systems
+    install.packages(packages_to_install, dependencies = T, repos = "http://mirrors.ebi.ac.uk/CRAN/")
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    source("https://bioconductor.org/biocLite.R")
+    biocLite(packages_to_install)
+    devtools::install_github("vitkl/MItools", dependencies = T)
+}
+suppressPackageStartupMessages({
+    library(MItools)
+})
+```
+
+## Introduction
+
+The aim of this report is to describe the properties of known short linear motifs represented as regular expressions (from ELM database):   
+- the length of the motif (25th quantile, median, 75th quantile of the widths of each instance)  
+- the number of strictly defined residues (for example, I[IL]..F has 2)  
+- the number of ambiguos  (for example, I[IL]..F has 1)  
+- the number of undefined residues (wildcards, for example, I[IL]..F has 2)  
+
+This report can help to choose search parameters for SLIMFinder/QSLIMFinder:  
+
+minwild=X : Minimum number of consecutive wildcard positions to allow [0]  
+maxwild=X : Maximum number of consecutive wildcard positions to allow [2]  
+slimlen=X : Maximum length of SLiMs to return (no. non-wildcard positions) [5]  
+minocc=X : Minimum number of unrelated occurrences for returned SLiMs. (Proportion of UP if < 1) [0.05]  
+absmin=X : Used if minocc<1 to define absolute min. UP occ [3]  
+alphahelix=T/F : Special i, i+3/4, i+7 motif discovery [False]  
+
+## Download ELM classes and instances 
+
+```{r download}
+instances_human = ELMdb2GRanges(dbfile = "./data_files/instances9606.gff",
+                                dburl = "http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=",
+                                tsvurl = "http://elm.eu.org/instances.tsv?q=None&taxon=Homo%20sapiens&instance_logic=",
+                                tsvfile = "./data_files/instances9606.tsv")
+viral_instances = ELMdb2GRanges(dbfile = "./data_files/instances10239.gff",
+                                dburl = "http://elm.eu.org/instances.gff?q=all&taxon=irus&instance_logic=",
+                                tsvurl = "http://elm.eu.org/instances.tsv?q=all&taxon=irus&instance_logic=",
+                                tsvfile = "./data_files/instances10239.tsv")
+instances = c(instances_human, viral_instances) # c(instances_human) or c(viral_instances)
+
+elm_filename = paste0("./data_files/", Sys.Date(), "elms_index.tsv")
+if(!file.exists(elm_filename)) download.file("http://elm.eu.org/elms/elms_index.tsv", elm_filename)
+classes = as.data.table(read.delim(elm_filename, stringsAsFactors = F, skip = 5))
+```
+
+## Average motif length
+
+```{r length, fig.width = 6, fig.height = 6}
+instances_list = split(instances, instances$ID)
+instances_width = lapply(instances_list, function(motif_instances) width(motif_instances))
+
+instances_width_quantile = sapply(instances_width, function(width) quantile(width, probs = c(0.25, 0.5, 0.75)))
+par(mfrow = c(2,2))
+hist(instances_width_quantile["75%",], main = "75%", xlab = "N residues", breaks = seq(-0.01, max(instances_width_quantile["75%",]) + 1, 1))
+hist(instances_width_quantile["50%",], main = "50%", xlab = "N residues", breaks = seq(-0.01, max(instances_width_quantile["50%",]) + 1, 1))
+hist(instances_width_quantile["25%",], main = "25%", xlab = "N residues", breaks = seq(-0.01, max(instances_width_quantile["25%",]) + 1, 1))
+```
+
+## The number of undefined residues (wildcards)
+
+```{r defined, fig.width = 8, fig.height = 4}
+if(!file.exists("./data_files/2017-11-26elms_index.split.motifs")){
+    runCompariMotif3(input_file = elm_filename,
+                     slimpath = "../software/slimsuite/tools/",
+                     run = T, with = "self",
+                     out_file = "./data_files/comparimotif_ELM_with_self.tdt",
+                     LSF_project_path = "")
+}
+ELM_with_self = as.data.table(read.delim("./data_files/2017-11-26elms_index.split.motifs", stringsAsFactors = F, header = F))
+ELM_with_self$V1 = gsub("#.*$","",ELM_with_self$V1)
+ELM_with_self$name = tstrsplit(ELM_with_self$V1, "  ")[[1]]
+ELM_with_self$name = gsub("_[[:lower:]]$", "", ELM_with_self$name)
+# select only motif classes present in human
+ELM_with_self = ELM_with_self[name %in% names(instances_width_quantile["50%",])]
+ELM_with_self$pattern = tstrsplit(ELM_with_self$V1, "  ")[[2]]
+
+ELM_with_self$variable_length = stringr::str_extract_all(ELM_with_self$pattern, "\\.\\{[[:digit:]]\\,[[:digit:]]\\}")
+
+ELM_with_self$wildcards_min = sapply(ELM_with_self$variable_length, function(variant){
+    min = unlist(gsub("\\.\\{","",stringr::str_extract_all(variant, "\\.\\{[[:digit:]]")))
+    sum(as.numeric(min))
+})
+ELM_with_self[, wildcards_min := wildcards_min + (stringr::str_count(ELM_with_self$pattern, "\\.") - stringr::str_count(ELM_with_self$pattern, "\\.\\{[[:digit:]]\\,[[:digit:]]\\}"))]
+
+ELM_with_self$wildcards_max = sapply(ELM_with_self$variable_length, function(variant){
+    min = unlist(gsub("\\,|\\}","",stringr::str_extract_all(variant, "\\,[[:digit:]]\\}")))
+    sum(as.numeric(min))
+})
+ELM_with_self[, wildcards_max := wildcards_max + (stringr::str_count(ELM_with_self$pattern, "\\.") - stringr::str_count(ELM_with_self$pattern, "\\.\\{[[:digit:]]\\,[[:digit:]]\\}"))]
+par(mfrow = c(1,2))
+hist(ELM_with_self$wildcards_min, main = "min N wildcards per motif class", xlab = "N residues", breaks = seq(-0.01, max(ELM_with_self$wildcards_min) + 1, 1))
+hist(ELM_with_self$wildcards_max, main = "max N wildcards", xlab = "N residues", breaks = seq(-0.01, max(ELM_with_self$wildcards_max) + 1, 1))
+```
+
+## The number of consecutive undefined residues (wildcards)
+
+```{r, fig.width = 8, fig.height = 4}
+par(mfrow = c(1,2))
+hist(stringr::str_count(ELM_with_self$pattern, "\\.\\."), main = "N of 2 consecutive wildcards per motif class", xlab = "N residues", breaks = seq(-0.01, max(ELM_with_self$wildcards_min) + 1, 1))
+hist(stringr::str_count(ELM_with_self$pattern, "\\.\\.\\."), main = "N of 3 consecutive wildcards", xlab = "N residues", breaks = seq(-0.01, max(ELM_with_self$wildcards_max) + 1, 1))
+```
+
+## The number of ambiguosly defined residues
+
+```{r ambiguosly, fig.width = 5, fig.height = 4}
+ELM_with_self[, pattern_no_wild := gsub("\\.\\{[[:digit:]]\\,[[:digit:]]\\}","",pattern)]
+ELM_with_self[, pattern_no_wild := gsub("\\.","",pattern_no_wild)]
+ELM_with_self[, N_ambiguos := stringr::str_count(pattern_no_wild, "\\[")]
+par(mfrow = c(1,1))
+hist(ELM_with_self$N_ambiguos, main = "ambiguosly defined residues", xlab = "N residues", breaks = seq(-0.01, max(ELM_with_self$N_ambiguos) + 1, 1))
+```
+
+## The number of strictly defined residues
+
+```{r strictly, fig.width = 5, fig.height = 4}
+ELM_with_self[, pattern_no_wild_no_ambig := gsub("\\[[[:alpha:]]+\\]","",pattern_no_wild)]
+ELM_with_self[, pattern_no_wild_no_ambig := gsub("\\[\\^[[:alpha:]]+\\]","",pattern_no_wild_no_ambig)]
+ELM_with_self[, pattern_no_wild_no_ambig := gsub("\\$","",pattern_no_wild_no_ambig)]
+ELM_with_self[, pattern_no_wild_no_ambig := gsub("\\^","",pattern_no_wild_no_ambig)]
+ELM_with_self[, pattern_no_wild_no_ambig := gsub("\\(\\)","",pattern_no_wild_no_ambig)]
+ELM_with_self[, N_strict := stringr::str_count(pattern_no_wild_no_ambig, "[[:alpha:]]")]
+par(mfrow = c(1,1))
+hist(ELM_with_self$N_strict, main = "strictly defined residues", xlab = "N residues", breaks = seq(-0.01, max(ELM_with_self$N_strict) + 1, 1))
+```
+
+## The total number of defined residues
+
+```{r total, fig.width = 5, fig.height = 4}
+ELM_with_self[, N_total := N_strict + N_ambiguos]
+par(mfrow = c(1,1))
+hist(ELM_with_self$N_total, main = "defined residues (strict and ambiguos)", xlab = "N residues", breaks = seq(-0.01, max(ELM_with_self$N_total) + 1, 1))
+```
+
+## Defined residues vs undefined residues
+
+```{r def_undef, fig.height=11, fig.width=11}
+matched_names = match(ELM_with_self$name, names(instances_width_quantile["50%",]))
+ELM_with_self$median_length = instances_width_quantile["50%", names(instances_width_quantile["50%",])[matched_names]]
+
+d2_bin <- function(data, mapping, ..., low = "#132B43", high = "#56B1F7") {
+    ggplot2::ggplot(data = data, mapping = mapping) +
+        ggplot2::geom_bin2d(...) +
+        ggplot2::scale_fill_gradient(low = low, high = high)
+}
+geom_histogram = function(data, mapping, ...){
+    ggplot2::ggplot(data = data, mapping = mapping) +
+        ggplot2::geom_histogram(...)
+}
+GGally::ggpairs(ELM_with_self[,.(N_total, N_strict, N_ambiguos, median_length, wildcards_min, wildcards_max)], 
+                lower = list(continuous = d2_bin), diag = list(continuous = geom_histogram)) +
+    ggplot2::theme_light() +
+    ggplot2::theme(strip.text.y = ggplot2::element_text(angle = 0, size = 10),
+          strip.text.x = ggplot2::element_text(angle = 90, size = 10))
+```
