@@ -1,0 +1,109 @@
+---
+title: "Motif_search_strategies"
+author: "Vitalii Kleshchevnikov"
+date: "29/11/2017"
+output: 
+  html_document: 
+    keep_md: yes
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+packages = c("MItools", "rtracklayer", "R.utils", "ontologyIndex")
+if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    # specifying mirror is necessary for some Linux systems
+    install.packages(packages_to_install, dependencies = T, repos = "http://mirrors.ebi.ac.uk/CRAN/")
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    source("https://bioconductor.org/biocLite.R")
+    biocLite(packages_to_install)
+    devtools::install_github("vitkl/MItools", dependencies = T)
+}
+
+suppressPackageStartupMessages({
+    library(MItools)
+    library(rtracklayer)
+})
+```
+
+# Introduction
+
+## Strategies
+
+1. Optimal search settings (3*2):  
+ - slimlen= 5,8,10 : Maximum length of SLiMs to return (no. non-wildcard positions)  
+ - maxwild= 2,3 : Maximum number of consecutive wildcard positions to allow  
+ 
+2. Comparing interaction datasets (4):  
+ - Full IntAct  
+ - BioPlex  
+ - Vidal  
+ - randomised BioPlex (keeping the degree and the number of interactions intact)  
+ 
+3. Domain-centered vs protein-centered datasets (2)  
+
+4. QSLIMFinder vs SLIMFinder (2)  
+
+Total: 3 \* 2 \* 4 \* 2 \* 2 = 96 conditions
+
+## load PPI data
+
+```{r load_data}
+# load ppi data
+IntAct = loadIntActFTP(dir = "./data_files/IntActRelease_2017Nov13/")
+# human-viral
+all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
+                                                clean = TRUE, protein_only = TRUE,
+                                                MITABdata = IntAct, directory = "./data_files/")
+# human-human
+all_human_interaction = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
+                                        clean = TRUE, protein_only = TRUE,
+                                        MITABdata = IntAct, directory = "./data_files/")
+```
+
+## Set standard options
+
+```{r std_options}
+# set standard options
+myPPInetwork2SLIMFinder = function(dataset_name = "SLIMFinder", slimlen = 5, maxwild = 2,
+                                   interaction_main_set = all_human_interaction,
+                                   center_domains = F, analysis_type = "qslimfinder"){
+    PPInetwork2SLIMFinder(dataset_name = dataset_name,
+                      interaction_main_set = interaction_main_set,
+                      interaction_query_set = all_viral_interaction,
+                      analysis_type = analysis_type,
+                      options = paste0("dismask=T consmask=F cloudfix=T probcut=0.3 minwild=0 maxwild=",maxwild," slimlen=",slimlen," alphahelix=F maxseq=1500 savespace=1 iuchdir=T"),
+                      path2domain_enrich = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
+                      domain_enrich_object = "res_count",
+                      center_domains = center_domains,
+                      fasta_path = "./data_files/all_human_viral_proteins.fasta",
+                      main_set_only = F,
+                      domain_pvalue_cutoff = 0.05,
+                      SLIMFinder_dir = paste0("./",dataset_name,"/"),
+                      LSF_project_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/",
+                      software_path = "../software/cluster/",
+                      length_set1_min = 4, # selected based on benchmarking: minimal set size that returns motifs with Sig < 0.05
+                      length_set2_min = 1,
+                      write_log = T,
+                      N_seq = 200)
+}
+```
+
+## Define parameters
+```{r params}
+analysis_type = data.table(analysis_type = c("qslimfinder", "slimfinder"))
+datasets = data.table(datasets = c("Full_IntAct", "BioPlex", "Vidal", "randomised_BioPlex"))
+domain_centered = data.table(domain_centered = c(F, T))
+slimlen = data.table(slimlen = c(5, 8, 10))
+slimlen = data.table(maxwild = c(2, 3))
+
+vec2fac = function(..., list = NULL){
+    if(is.null(list)) list = list(...)
+    for(list)
+    
+}
+
+dataset_names = paste(analysis_type, datasets, domain_centered, slimlen, maxwild, sep = ".")
+```

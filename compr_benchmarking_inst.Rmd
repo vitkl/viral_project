@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r setup, include=TRUE}
-knitr::opts_chunk$set(echo = FALSE, fig.width = 10, fig.height = 10, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = FALSE, fig.width = 12, fig.height = 8, warning = FALSE, message = FALSE)
 
 packages = c("MItools", "RColorBrewer", "devtools")
 if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
@@ -26,20 +26,30 @@ suppressPackageStartupMessages({
 })
 
 colors = RColorBrewer::brewer.pal(2, "Dark2")
+
 N_negative_sets = 200
-motif_types = c("DOC", "DEG", "CLV", "TRG")
+motif_types = c("MOD", "LIG") # "MOD", "LIG" / "DOC", "DEG", "CLV", "TRG"
+neg_set = c("all_proteins") # "all_instances", "all_proteins", "random"
+query_predictor_col = "Sig" # "Sig" or "p.value" or "domain_motif_pval"
+filter_by_domain_data = NULL # "p.value < 0.05" or "fdr_pval < 0.05 & domain_count_per_IDs_interactor_viral > 1" or NULL
+#ROC:
+measure1 = "tpr" # "tpr" or "prec"
+measure2 = "fpr" # "fpr" or "rec"
 ```
 
 ## human network searched for motifs present in viral proteins
 
 All interaction of viral proteins present in IntAct are used for analysis. All viral proteins are used as a query (QSLIMFinder identifies motifs only if they are present in a query sequence).
 
+### without domain information
+
 ```{r, viral}
 res_list_viral = mBenchmarkMotifs(datasets = c("", "Vidal", "Mann"), 
             descriptions = c("human network (full IntAct) searched \nfor motifs present in viral proteins",
                              "human network (Vidal's data only) searched \nfor motifs present in viral proteins",
                              "human network (Mann's data only) searched \nfor motifs present in viral proteins"),
-            dir = "./",
+            dir = "./", 
+            merge_domain_data = F, neg_set = neg_set,
             domain_res = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
             domain_results_obj = "res_count", motif_input_obj = "forSLIMFinder_Ready",
             one_from_cloud = T, type = "QSLIMFinder",
@@ -50,11 +60,51 @@ res_list_viral = mBenchmarkMotifs(datasets = c("", "Vidal", "Mann"),
             query_res_query_only = T, motif_types = motif_types,
             all_res_excl_query = T,
             seed = 21, N = N_negative_sets, replace = T, within1sequence = T,
-            predictor_col = "Sig", normalise = T, minoverlap = 2, maxgap = 0, motif_setup_month = "201710")
+            query_predictor_col = "Sig", all_predictor_col = "Sig", normalise = T,
+            minoverlap = 2, maxgap = 0, motif_setup_month = "201710",
+            count_ranges_by = list(by = "IDs_domain_human", name = "motif_occ_per_domain",
+                                   normalise_by = "domain_count", normalised_name = "normalised_motif_occ_per_domain"),
+            filter_by_domain_data = filter_by_domain_data)
 
 par(mar = c(6,7,4,4))
-mBenchmarkMotifsROC(res_list_viral, data_type = "all", col_query = colors[1], col_all = colors[2], lwd = 1, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1))
-mBenchmarkMotifsROC(res_list_viral, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1))
+# mBenchmarkMotifsROC(res_list_viral, data_type = "query", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1), measure1 = measure1, measure2 = measure2)
+mBenchmarkMotifsROC(res_list_viral, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1), measure1 = measure1, measure2 = measure2)
+```
+
+What is the minimal set size that returns motif with Sig < 0.05?  
+`r min(res_list_viral$Mann$occurence$SeqNum[res_list_viral$Mann$occurence$Sig_not_normalised < 0.1])`  
+
+### with domain information
+
+Looks like proteins with many domains tend to interact with known motifs.
+
+```{r, viral_w_domains}
+res_list_viral_w_domains = mBenchmarkMotifs(datasets = c("", "Vidal", "Mann"), 
+            descriptions = c("human network (full IntAct) searched \nfor motifs present in viral proteins",
+                             "human network (Vidal's data only) searched \nfor motifs present in viral proteins",
+                             "human network (Mann's data only) searched \nfor motifs present in viral proteins"),
+            dir = "./", 
+            merge_domain_data = T, neg_set = neg_set,
+            domain_res = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
+            domain_results_obj = "res_count", motif_input_obj = "forSLIMFinder_Ready",
+            one_from_cloud = T, type = "QSLIMFinder",
+            dbfile_main = "./data_files/instances9606.gff",
+            dburl_main = "http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=",
+            dbfile_query = "./data_files/instances10239.gff",
+            dburl_query = "http://elm.eu.org/instances.gff?q=all&taxon=irus&instance_logic=",
+            query_res_query_only = T, motif_types = motif_types,
+            all_res_excl_query = T,
+            seed = 21, N = N_negative_sets, replace = T, within1sequence = T,
+            query_predictor_col = query_predictor_col, all_predictor_col = "Sig", normalise = T,
+            minoverlap = 2, maxgap = 0, motif_setup_month = "201710",
+            count_ranges_by = list(by = "IDs_domain_human", name = "motif_occ_per_domain",
+                                   normalise_by = "domain_count", normalised_name = "normalised_motif_occ_per_domain"),
+            filter_by_domain_data = filter_by_domain_data)
+
+par(mar = c(6,7,4,4))
+# mBenchmarkMotifsROC(res_list_viral_w_domains, data_type = "query", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1), measure1 = measure1, measure2 = measure2)
+mBenchmarkMotifsROC(res_list_viral_w_domains, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1), measure1 = measure1, measure2 = measure2)
+queryOCCByMCOL(res_list_viral_w_domains$full_Intact, keytype = "IDs_domain_human", key = "IPR032440")
 ```
 
 ## human network searched for motifs present in kinases
@@ -62,13 +112,14 @@ mBenchmarkMotifsROC(res_list_viral, data_type = "both", col_query = colors[1], c
 All interaction of kinases present in IntAct are used and sequences of these proteins are used as a query except for withinVidal, withinMann datasets.  
 
 ```{r, kinase}
-res_list_kinases = mBenchmarkMotifs(datasets = c("", "Vidal", "Mann", "withinVidal", "withinMann"), 
+res_list_kinases = mBenchmarkMotifs(datasets = c("", "Vidal", "Mann", "withinVidal", "withinMann"), #c("", "Vidal", "Mann", "withinVidal", "withinMann")
             descriptions = c("human network (full IntAct) searched \nfor motifs present in kinases",
                              "human network (Vidal's data only) searched \nfor motifs present in kinases",
                              "human network (Mann's data only) searched \nfor motifs present in kinases",
                              "human network (within Vidal's data only) searched \nfor motifs present in kinases",
                              "human network (within Mann's data only) searched \nfor motifs present in kinases"),
             dir = "../kinase_project/",
+            merge_domain_data = T, neg_set = neg_set,
             domain_res = "../kinase_project/processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
             domain_results_obj = "res_count", motif_input_obj = "forSLIMFinder_Ready",
             one_from_cloud = T, type = "QSLIMFinder",
@@ -79,9 +130,13 @@ res_list_kinases = mBenchmarkMotifs(datasets = c("", "Vidal", "Mann", "withinVid
             query_res_query_only = T, motif_types = motif_types,
             all_res_excl_query = T,
             seed = 21, N = N_negative_sets, replace = T, within1sequence = T,
-            predictor_col = "Sig", normalise = T, minoverlap = 2, maxgap = 0, motif_setup_month = "201710")
+            query_predictor_col = query_predictor_col, all_predictor_col = "Sig", normalise = T,
+            minoverlap = 2, maxgap = 0, motif_setup_month = "201710",
+            count_ranges_by = list(by = "IDs_domain_human", name = "motif_occ_per_domain",
+                                   normalise_by = "domain_count", normalised_name = "normalised_motif_occ_per_domain"),
+            filter_by_domain_data = filter_by_domain_data)
 
-mBenchmarkMotifsROC(res_list_kinases, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.5 | y = 0.4 | y.intersp = 1.5 | box.col = \"white\"")
+mBenchmarkMotifsROC(res_list_kinases, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.5 | y = 0.4 | y.intersp = 1.5 | box.col = \"white\"", measure1 = measure1, measure2 = measure2)
 ```
 
 ## human network searched for motifs present in zinc-finger proteins
@@ -96,6 +151,7 @@ res_list_znf = mBenchmarkMotifs(datasets = c("", "Vidal", "Mann", "withinVidal",
                              "human network (within Vidal's data only) searched \nfor motifs present in zinc-finger proteins",
                              "human network (within Mann's data only) searched \nfor motifs present in zinc-finger proteins"),
             dir = "../zinkfinger_project/",
+            merge_domain_data = T, neg_set = neg_set,
             domain_res = "../zinkfinger_project/processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
             domain_results_obj = "res_count", motif_input_obj = "forSLIMFinder_Ready",
             one_from_cloud = T, type = "QSLIMFinder",
@@ -106,9 +162,13 @@ res_list_znf = mBenchmarkMotifs(datasets = c("", "Vidal", "Mann", "withinVidal",
             query_res_query_only = T, motif_types = motif_types,
             all_res_excl_query = T,
             seed = 21, N = N_negative_sets, replace = T, within1sequence = T,
-            predictor_col = "Sig", normalise = T, minoverlap = 2, maxgap = 0, motif_setup_month = "201711")
+            query_predictor_col = query_predictor_col, all_predictor_col = "Sig", normalise = T,
+            minoverlap = 2, maxgap = 0, motif_setup_month = "201711",
+            count_ranges_by = list(by = "IDs_domain_human", name = "motif_occ_per_domain",
+                                   normalise_by = "domain_count", normalised_name = "normalised_motif_occ_per_domain"),
+            filter_by_domain_data = filter_by_domain_data)
 
-mBenchmarkMotifsROC(res_list_kinases, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.5 | y = 0.4 | y.intersp = 1.5 | box.col = \"white\"")
+mBenchmarkMotifsROC(res_list_znf, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.5 | y = 0.4 | y.intersp = 1.5 | box.col = \"white\"", measure1 = measure1, measure2 = measure2)
 ```
 
 ```{r, exit}
@@ -116,6 +176,10 @@ Sys.Date. = Sys.Date()
 Sys.Date.
 session_info. = devtools::session_info()
 session_info.
-filename = paste0("./processed_data_files/compr_benchmarking_inst",format(Sys.Date(), "%Y%m"),".RData")
+filter_by_domain_data_print = gsub(" ","",filter_by_domain_data)
+filter_by_domain_data_print = gsub("<*","",filter_by_domain_data_print)
+filter_by_domain_data_print = gsub("<*","",filter_by_domain_data_print)
+filter_by_domain_data_print = gsub("=*","",filter_by_domain_data_print)
+filename = paste0("./processed_data_files/compr_benchmarking_inst",format(Sys.Date(), "%Y%m"),"_",paste0(motif_types,collapse = "_"),"_",neg_set,"_",query_predictor_col,"_", filter_by_domain_data_print,"_type_", measure1, measure2,".RData")
 save(list = ls(), file=filename)
 ```
