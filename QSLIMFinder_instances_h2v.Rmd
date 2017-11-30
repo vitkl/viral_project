@@ -11,7 +11,7 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-packages = c("MItools", "rtracklayer", "ggplot2", "GGally", "RColorBrewer", "R.utils", "ontologyIndex")
+packages = c("MItools", "rtracklayer", "R.utils", "ontologyIndex")
 if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
     packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
     # specifying mirror is necessary for some Linux systems
@@ -25,11 +25,6 @@ if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
 suppressPackageStartupMessages({
     library(MItools)
     library(rtracklayer)
-    library(ggplot2)
-    library(GGally)
-    library(RColorBrewer)
-    library(scales)
-    library(ontologyIndex)
 })
 ```
 
@@ -49,28 +44,31 @@ QSLIMfinder options:
 
 ```{r load_data}
 # load ppi data
+IntAct = loadIntActFTP(dir = "./data_files/IntActRelease_2017Nov13/")
 # human-human
 all_human_interaction = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
                                         clean = TRUE, protein_only = TRUE,
-                                        directory = "./data_files/")
+                                        MITABdata = IntAct, directory = "./data_files/")
 # human-viral
 all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
-                                                clean = TRUE, protein_only = TRUE, 
-                                                directory = "./data_files/")
+                                                clean = TRUE, protein_only = TRUE,
+                                                MITABdata = IntAct, directory = "./data_files/")
+
 dataset_name = "SLIMFinder" # refer to MItools::mBenchmarkMotifs
 SLIMFinder_dir = paste0("./",dataset_name,"/")
 LSF_project_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/"
 analysis_type = "qslimfinder" # or "slimfinder"
-options = "dismask=T consmask=F cloudfix=T probcut=0.3 iuchdir=T maxseq=500"
+options = "dismask=T consmask=F cloudfix=T probcut=0.3 iuchdir=T maxseq=1500"
 software_path = "../software/cluster/" # "../software/"
+write_log = T
 ```
 
-## load results ofwhich domains are likely to mediate interaction
+## load results of which domains are likely to mediate interaction
 ```{r load_results}
 # load the domain analysis results
 load("./processed_data_files/what_we_find_VS_ELM_clust20171019.RData")
 domain_res = res_count
-rm(list = ls()[!ls() %in% c("domain_res", "all_human_interaction", "all_viral_interaction")])
+rm(list = ls()[!ls() %in% c("domain_res", "all_human_interaction", "all_viral_interaction", "dataset_name", "SLIMFinder_dir", "LSF_project_path", "analysis_type", "options", "software_path", "write_log")])
 
 # choose pvalue cutoff:
 plot(domain_res)
@@ -126,7 +124,13 @@ all_commands = mQSLIMFinderCommand(file_list = forSLIMFinder_file_list,
                                    LSF_cluster_mode = T,
                                    LSF_project_path = LSF_project_path,
                                    LSF_cluster_par = "bsub -n 1 -q research-rh7 -M 100 -R \"rusage[mem=100]\"",
-                                   analysis_type = analysis_type)
+                                   analysis_type = analysis_type,
+                                   write_log = write_log)
+all_commands = groupQSLIMFinderCommand(commands = all_commands,
+                                       InteractionSubsetFASTA_list = forSLIMFinder_Ready,
+                                       sh_dir = "/sh_dir/",
+                                       LSF_project_path = LSF_project_path,
+                                       dataset_name = dataset_name, N_seq = 200, write_log = write_log)
 ```
 
 ## Run QSLIMFinder
