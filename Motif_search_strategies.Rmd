@@ -58,9 +58,21 @@ all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, d
                                                 clean = TRUE, protein_only = TRUE,
                                                 MITABdata = IntAct, directory = "./data_files/")
 # human-human
-all_human_interaction = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
-                                        clean = TRUE, protein_only = TRUE,
-                                        MITABdata = IntAct, directory = "./data_files/")
+Full_IntAct = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
+                              clean = TRUE, protein_only = TRUE,
+                              MITABdata = IntAct, directory = "./data_files/")
+BioPlex = loadBioplex(dir = "./data_files/",
+                      url = "http://bioplex.hms.harvard.edu/data/BioPlex_2.3_interactionList.tsv")
+Vidal = subsetMITABbyPMIDs(MITABdata = Full_IntAct,
+                           PMIDs = c("25416956", "unassigned1304"))
+
+randomised_BioPlex = copy(BioPlex)
+randomised_BioPlex$data$Publication_Identifiers = NA
+randomised_BioPlex$data$Confidence_values = NA
+randomised_BioPlex$data = unique(randomised_BioPlex$data)
+set.seed(1)
+randomised_BioPlex$data$IDs_interactor_B = randomised_BioPlex$data$IDs_interactor_B[sample.int(length(randomised_BioPlex$data$IDs_interactor_B))]
+randomised_BioPlex$data$pair_id = paste0(randomised_BioPlex$data$IDs_interactor_A, "|", randomised_BioPlex$data$IDs_interactor_B)
 ```
 
 ## Set standard options
@@ -68,42 +80,48 @@ all_human_interaction = fullInteractome(taxid = 9606, database = "IntActFTP", fo
 ```{r std_options}
 # set standard options
 myPPInetwork2SLIMFinder = function(dataset_name = "SLIMFinder", slimlen = 5, maxwild = 2,
-                                   interaction_main_set = all_human_interaction,
+                                   interaction_main_set = Full_IntAct,
                                    center_domains = F, analysis_type = "qslimfinder"){
     PPInetwork2SLIMFinder(dataset_name = dataset_name,
-                      interaction_main_set = interaction_main_set,
-                      interaction_query_set = all_viral_interaction,
-                      analysis_type = analysis_type,
-                      options = paste0("dismask=T consmask=F cloudfix=T probcut=0.3 minwild=0 maxwild=",maxwild," slimlen=",slimlen," alphahelix=F maxseq=1500 savespace=1 iuchdir=T"),
-                      path2domain_enrich = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
-                      domain_enrich_object = "res_count",
-                      center_domains = center_domains,
-                      fasta_path = "./data_files/all_human_viral_proteins.fasta",
-                      main_set_only = F,
-                      domain_pvalue_cutoff = 0.05,
-                      SLIMFinder_dir = paste0("./",dataset_name,"/"),
-                      LSF_project_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/",
-                      software_path = "../software/cluster/",
-                      length_set1_min = 4, # selected based on benchmarking: minimal set size that returns motifs with Sig < 0.05
-                      length_set2_min = 1,
-                      write_log = T,
-                      N_seq = 200)
+                          interaction_main_set = interaction_main_set,
+                          interaction_query_set = all_viral_interaction,
+                          analysis_type = analysis_type,
+                          options = paste0("dismask=T consmask=F cloudfix=T probcut=0.3 minwild=0 maxwild=",maxwild," slimlen=",slimlen," alphahelix=F maxseq=1500 savespace=1 iuchdir=T"),
+                          path2domain_enrich = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
+                          domain_enrich_object = "res_count",
+                          center_domains = center_domains,
+                          fasta_path = "./data_files/all_human_viral_proteins.fasta",
+                          main_set_only = F,
+                          domain_pvalue_cutoff = 0.05,
+                          SLIMFinder_dir = paste0("./",dataset_name,"/"),
+                          LSF_project_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/",
+                          software_path = "../software/cluster/",
+                          length_set1_min = 4, # selected based on benchmarking: minimal set size that returns motifs with Sig < 0.05
+                          length_set2_min = 1,
+                          write_log = T,
+                          N_seq = 200)
 }
 ```
 
 ## Define parameters
 ```{r params}
-analysis_type = data.table(analysis_type = c("qslimfinder", "slimfinder"))
-datasets = data.table(datasets = c("Full_IntAct", "BioPlex", "Vidal", "randomised_BioPlex"))
-domain_centered = data.table(domain_centered = c(F, T))
-slimlen = data.table(slimlen = c(5, 8, 10))
-slimlen = data.table(maxwild = c(2, 3))
+analysis_type = c("qslimfinder", "slimfinder")
+datasets = c("Full_IntAct", "BioPlex", "Vidal", "randomised_BioPlex")
+domain_centered = c(F, T)
+slimlen = c(5, 8, 10)
+maxwild = c(2, 3)
 
-vec2fac = function(..., list = NULL){
-    if(is.null(list)) list = list(...)
-    for(list)
-    
+dataset_names = data.table(analysis_type = character(), datasets = character(),
+                           domain_centered = logical(), dataset_names = character(), 
+                           slimlen = integer(), maxwild = integer())
+for(a in analysis_type){
+    for(d in datasets){
+        for(c in domain_centered){
+            dataset_names_temp = data.table(analysis_type = a, datasets = d,
+                           domain_centered = c, dataset_names = paste(a,d,c, sep = "."), 
+                           slimlen = 5, maxwild = 3)
+            dataset_names = rbind(dataset_names, dataset_names_temp)
+        }
+    }
 }
-
-dataset_names = paste(analysis_type, datasets, domain_centered, slimlen, maxwild, sep = ".")
 ```
