@@ -42,11 +42,14 @@ suppressPackageStartupMessages({
  - Vidal  
  - randomised BioPlex (keeping the degree and the number of interactions intact)  
  
-3. Domain-centered vs protein-centered datasets (2)  
+3. Domain-centered vs protein-centered strategy (2)  
 
 4. QSLIMFinder vs SLIMFinder (2)  
 
-Total: 3 \* 2 \* 4 \* 2 \* 2 = 96 conditions
+Total: 3 \* 2 \* 4 \* 2 \* 2 = 96 conditions  
+
+This is not feasible, so I will first compare interaction datasets, domain- vs protein- centered strategy and QSLIMFinder vs SLIMFinder (16 conditions).  
+I will then test multiple motif settings on a selected dataset (different run of the pipeline, 6 conditions).  
 
 ## load PPI data
 
@@ -92,7 +95,7 @@ myPPInetwork2SLIMFinder = function(dataset_name = "SLIMFinder", slimlen = 5, max
                           center_domains = center_domains,
                           fasta_path = "./data_files/all_human_viral_proteins.fasta",
                           main_set_only = F,
-                          domain_pvalue_cutoff = 0.05,
+                          domain_pvalue_cutoff = 0.05, # 0.05 for test run, 1 for full run
                           SLIMFinder_dir = paste0("./",dataset_name,"/"),
                           LSF_project_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/",
                           software_path = "../software/cluster/",
@@ -104,12 +107,13 @@ myPPInetwork2SLIMFinder = function(dataset_name = "SLIMFinder", slimlen = 5, max
 ```
 
 ## Define parameters
+
 ```{r params}
 analysis_type = c("qslimfinder", "slimfinder")
 datasets = c("Full_IntAct", "BioPlex", "Vidal", "randomised_BioPlex")
 domain_centered = c(F, T)
-slimlen = c(5, 8, 10)
-maxwild = c(2, 3)
+#slimlen = c(5, 8, 10)
+#maxwild = c(2, 3)
 
 dataset_names = data.table(analysis_type = character(), datasets = character(),
                            domain_centered = logical(), dataset_names = character(), 
@@ -119,9 +123,24 @@ for(a in analysis_type){
         for(c in domain_centered){
             dataset_names_temp = data.table(analysis_type = a, datasets = d,
                            domain_centered = c, dataset_names = paste(a,d,c, sep = "."), 
-                           slimlen = 5, maxwild = 3)
+                           slimlen = 5, maxwild = 2)
             dataset_names = rbind(dataset_names, dataset_names_temp)
         }
     }
 }
+```
+
+## Perform motif search
+
+```{r search}
+R_data = character()
+for(i in nrow(dataset_names)){
+    R_data_temp = myPPInetwork2SLIMFinder(dataset_name = dataset_names$dataset_names[i], slimlen = dataset_names$slimlen[i], maxwild = dataset_names$maxwild[i],
+                                   interaction_main_set = eval(parse(text = dataset_names$datasets[i])),
+                                   center_domains = dataset_names$domain_centered[i], analysis_type = dataset_names$analysis_type[i])
+    R_data = c(R_data, R_data_temp)
+}
+
+# paths to RData files containing all objects created by all runs of this pipeline
+print(R_data)
 ```

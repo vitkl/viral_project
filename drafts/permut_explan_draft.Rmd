@@ -1,0 +1,22 @@
+---
+title: "Explain permutations"
+author: "Vitalii Kleshchevnikov"
+date: "03/07/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(RColorBrewer)
+```
+
+```{r}
+domains = c("red", "blue", "red", "magenta", "blue", "green", "blue", "red", "black")
+human_proteins = rep(brewer.pal(2, "Set3"), c(4,5))
+{
+plot(rep(1,9), 9:1, col = domains, pch=19, cex=5, ylim=c(0,10), xlim =c(1,10))
+for(i in 1:9){
+    segments(x0 = 1.5, y0 = i, x1 = 4.5, y1 = i, col = human_proteins[i], lwd=20)
+}
+}
+```
