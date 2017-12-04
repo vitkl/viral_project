@@ -26,7 +26,7 @@ rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitali
 
 
 # bsub -n 1 -q research-rh7 -M 8000 -R "rusage[mem=8000]" -o /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/SLIMFinder/QSLIMFinder_instances_h2v.log Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/what_we_find_VS_ELM.R
-# bsub -n 1 -q research-rh7 -M 8000 -R "rusage[mem=8000]" -o /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/SLIMFinder_Vidal/QSLIMFinder_instances_h2v.log Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/what_we_find_VS_ELM.R
+# bsub -n 1 -q research-rh7 -M 8000 -R "rusage[mem=8000]" Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/what_we_find_VS_ELM.R
 # bsub -n 32 -q research-rh7 -M 64000 -R "rusage[mem=64000]" Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/what_we_find_VS_ELM.R
 
 #bsub -n 16 -q research-rh7 -M 16000 -R "rusage[mem=16000]" -Is $SHELL

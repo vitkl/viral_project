@@ -95,7 +95,7 @@ myPPInetwork2SLIMFinder = function(dataset_name = "SLIMFinder", slimlen = 5, max
                           center_domains = center_domains,
                           fasta_path = "./data_files/all_human_viral_proteins.fasta",
                           main_set_only = F,
-                          domain_pvalue_cutoff = 0.05, # 0.05 for test run, 1 for full run
+                          domain_pvalue_cutoff = 0.000005, # 0.000005 for test run, 1 for full run
                           SLIMFinder_dir = paste0("./",dataset_name,"/"),
                           LSF_project_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/",
                           software_path = "../software/cluster/",
@@ -134,7 +134,7 @@ for(a in analysis_type){
 
 ```{r search}
 R_data = character()
-for(i in nrow(dataset_names)){
+for(i in 1:nrow(dataset_names)){
     R_data_temp = myPPInetwork2SLIMFinder(dataset_name = dataset_names$dataset_names[i], slimlen = dataset_names$slimlen[i], maxwild = dataset_names$maxwild[i],
                                    interaction_main_set = eval(parse(text = dataset_names$datasets[i])),
                                    center_domains = dataset_names$domain_centered[i], analysis_type = dataset_names$analysis_type[i])
