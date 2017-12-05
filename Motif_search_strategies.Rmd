@@ -61,6 +61,12 @@ IntAct = loadIntActFTP(dir = "./data_files/IntActRelease_2017Nov13/")
 all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
                                                 clean = TRUE, protein_only = TRUE,
                                                 MITABdata = IntAct, directory = "./data_files/")
+# need to simplify isoform and post-processed chain IDs for human proteins
+all_viral_interaction_BioPlex = copy(all_viral_interaction)
+all_viral_interaction_BioPlex$data$IDs_interactor_A = gsub("-[[:digit:]]+$","",all_viral_interaction_BioPlex$data$IDs_interactor_A)
+all_viral_interaction_BioPlex$data$pair_id = paste0(all_viral_interaction_BioPlex$data$IDs_interactor_A, "|", all_viral_interaction_BioPlex$data$IDs_interactor_B)
+all_viral_interaction_BioPlex$data = unique(all_viral_interaction_BioPlex$data)
+
 # human-human
 Full_IntAct = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
                               clean = TRUE, protein_only = TRUE,
@@ -86,7 +92,7 @@ seed_list = c("O00264","O00264-PRO_0000038428","O00469","O14545","O14979","O1503
 
 # set standard options
 myPPInetwork2SLIMFinder = function(dataset_name = "SLIMFinder", slimlen = 5, maxwild = 2,
-                                   interaction_main_set = Full_IntAct,
+                                   interaction_main_set = Full_IntAct, interaction_query_set = all_viral_interaction,
                                    center_domains = F, analysis_type = "qslimfinder"){
     PPInetwork2SLIMFinder(dataset_name = dataset_name,
                           interaction_main_set = interaction_main_set,
@@ -134,6 +140,8 @@ for(a in analysis_type){
         }
     }
 }
+dataset_names[grepl("BioPlex",datasets), query_dataset := "all_viral_interaction_BioPlex"]
+dataset_names[!grepl("BioPlex",datasets), query_dataset := "all_viral_interaction"]
 ```
 
 ## Perform motif search
@@ -146,11 +154,12 @@ cl <- makeCluster(cores)
 # get library support needed to run the code
 clusterEvalQ(cl, {library(MItools); library(rtracklayer)})
 # put objects in place that might be needed for the code
-clusterExport(cl, c("dataset_names", datasets ,"myPPInetwork2SLIMFinder"), envir=environment())
+clusterExport(cl, c("dataset_names", dataset_names$datasets, dataset_names$query_dataset, "myPPInetwork2SLIMFinder"), envir=environment())
 
 R_data = parSapply(cl = cl, X = 1:nrow(dataset_names), FUN = function(i){
     myPPInetwork2SLIMFinder(dataset_name = dataset_names$dataset_names[i], slimlen = dataset_names$slimlen[i], maxwild = dataset_names$maxwild[i],
                             interaction_main_set = eval(parse(text = dataset_names$datasets[i])),
+                            interaction_query_set = eval(parse(text = dataset_names$query_dataset[i])),
                             center_domains = dataset_names$domain_centered[i], analysis_type = dataset_names$analysis_type[i])
 }, simplify = TRUE, USE.NAMES = TRUE)
 
