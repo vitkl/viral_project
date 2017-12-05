@@ -154,7 +154,8 @@ cl <- makeCluster(cores)
 # get library support needed to run the code
 clusterEvalQ(cl, {library(MItools); library(rtracklayer)})
 # put objects in place that might be needed for the code
-clusterExport(cl, c("dataset_names", dataset_names$datasets, dataset_names$query_dataset, "myPPInetwork2SLIMFinder"), envir=environment())
+clusterExport(cl, c("dataset_names", unique(dataset_names$datasets),
+                    unique(dataset_names$query_dataset), "seed_list", "myPPInetwork2SLIMFinder"), envir=environment())
 
 R_data = parSapply(cl = cl, X = 1:nrow(dataset_names), FUN = function(i){
     myPPInetwork2SLIMFinder(dataset_name = dataset_names$dataset_names[i], slimlen = dataset_names$slimlen[i], maxwild = dataset_names$maxwild[i],
