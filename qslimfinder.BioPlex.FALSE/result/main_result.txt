@@ -1,0 +1,949 @@
+Dataset	RunID	Masking	Build	Chance	RunTime	SeqNum	UPNum	AANum	MotNum	Rank	Sig	Pattern	IC	Occ	Support	UP	ExpUP	Prob	Cloud	CloudSeq	CloudUP
+interactors_of.O00264.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:01	20	17	1480	0	0	0.3	-									
+interactors_of.O00264.P04578	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:15:34	20	17	1480	1	1	0.17	S.L.E	3	7	7	6	0.48	8.17e-05	1	7	6
+interactors_of.O00264.P04578-PRO_0000038428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:14:09	20	17	1480	1	1	0.25	T..P..R	3	5	5	4	0.17	0.000647	1	5	4
+interactors_of.O00264.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:53	20	17	1480	0	0	0.3	-									
+interactors_of.O00264.P03182	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:48	20	17	1480	1	1	0.021	S.L.E	3	7	7	6	0.56	0.000166	1	7	6
+interactors_of.O00264.P03246	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:19	20	17	1480	0	0	0.3	-									
+interactors_of.O00264.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:42	20	17	1480	0	0	0.3	-									
+interactors_of.O00264.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:40	20	17	1480	0	0	0.3	-									
+interactors_of.O00264.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:07	20	17	1480	0	0	0.3	-									
+interactors_of.O00264.P0CK49	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:10	20	17	1480	1	1	0.079	S.L.E	3	7	7	6	0.49	9.28e-05	1	7	6
+interactors_of.O00264.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:40	20	17	1480	0	0	0.3	-									
+interactors_of.O00264.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:40	20	17	1480	0	0	0.3	-									
+interactors_of.O00264.P0CK58	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:55	20	17	1480	0	0	0.3	-									
+interactors_of.O00264.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:40	20	17	1480	0	0	0.3	-									
+interactors_of.O00264.Q2MG95	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:01	20	17	1480	1	1	0.29	T..P..R	3	5	5	4	0.2	0.000959	1	5	4
+interactors_of.O00264.Q9WMX2-PRO_0000037547	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:39	20	17	1480	0	0	0.3	-									
+interactors_of.O00264.P03485	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:47	20	17	1480	1	1	0.13	S.L.E	3	7	7	6	0.53	0.000133	1	7	6
+interactors_of.O00264.P06821	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:42	20	17	1480	1	1	0.047	S.L.E	3	7	7	6	0.52	0.000115	1	7	6
+interactors_of.O00264.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:30	20	17	1480	1	1	0.05	S.L.E	3	7	7	6	0.52	0.000115	1	7	6
+interactors_of.O00264.Q05322	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:35	20	17	1480	1	1	0.066	S.L.E	3	7	7	6	0.55	0.000148	1	7	6
+interactors_of.O14545.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:20	15	14	4608	0	0	0.3	-									
+interactors_of.O14545.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:53	15	14	4608	0	0	0.3	-									
+interactors_of.O14545.P06428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:23	15	14	4608	0	0	0.3	-									
+interactors_of.O14545.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:31	15	14	4608	0	0	0.3	-									
+interactors_of.O14545.P30119	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:37	15	14	4608	0	0	0.3	-									
+interactors_of.O14545.Q2MG95	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:29	15	14	4608	0	0	0.3	-									
+interactors_of.O14545.Q9E7P0	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:43	15	14	4608	0	0	0.3	-									
+interactors_of.O14545.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:26	15	14	4608	0	0	0.3	-									
+interactors_of.O14979.Q6QDQ4	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:00	7	4	1490	0	0	0.3	-									
+interactors_of.O14979.P03496	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:49	7	4	1490	2	1	0.007	G..ST.G..I	5	6	6	3	0.001	7e-07	1	6	3
+interactors_of.O14979.P03496	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:49	7	4	1490	2	2	0.24	ST.G..I	4	6	6	3	0.015	7.69e-05	1	6	3
+interactors_of.O14979.O56264	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:35	7	4	1490	2	1	0.006	G..ST.G..I	5	6	6	3	0.001	7e-07	1	6	3
+interactors_of.O14979.O56264	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:35	7	4	1490	2	2	0.22	ST.G..I	4	6	6	3	0.015	7.69e-05	1	6	3
+interactors_of.O14979.D1LN35	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:31	7	4	1490	2	1	0.006	G..ST.G..I	5	6	6	3	0.001	7e-07	1	6	3
+interactors_of.O14979.D1LN35	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:31	7	4	1490	2	2	0.21	ST.G..I	4	6	6	3	0.015	7.69e-05	1	6	3
+interactors_of.O14979.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:22	7	4	1490	3	1	0.003	G..ST.G..I	5	6	6	3	0.000691	1.59e-07	1	6	3
+interactors_of.O14979.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:22	7	4	1490	3	2	0.17	ST.G..I	4	6	6	3	0.01	3.37e-05	1	6	3
+interactors_of.O14979.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:22	7	4	1490	3	3	0.19	G..S..G..I	4	6	6	3	0.011	3.75e-05	1	6	3
+interactors_of.O14979.P03466	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:11	7	4	1490	1	1	0.011	G..ST.G..I	5	6	6	3	0.001	4.72e-07	1	6	3
+interactors_of.O14979.C5E522	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:10	7	4	1490	1	1	0.011	G..ST.G..I	5	6	6	3	0.001	4.72e-07	1	6	3
+interactors_of.O15031.P03225	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:22	22	21	1711	0	0	0.3	-									
+interactors_of.O15031.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:53	22	21	1711	1	1	0.11	E.VP	3	4	4	4	0.4	0.007	1	4	4
+interactors_of.O15031.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:13	22	21	1711	0	0	0.3	-									
+interactors_of.O15031.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:12	22	21	1711	0	0	0.3	-									
+interactors_of.O15031.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:45	22	21	1711	0	0	0.3	-									
+interactors_of.O15031.P0CK58	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:34	22	21	1711	0	0	0.3	-									
+interactors_of.O15031.P13285	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:34	22	21	1711	0	0	0.3	-									
+interactors_of.O15031.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:08	22	21	1711	1	1	0.021	S..DN.D	4	3	3	3	0.015	0.000109	1	3	3
+interactors_of.O15031.Q8AZJ3	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:20	22	21	1711	0	0	0.3	-									
+interactors_of.O15269.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:51	19	13	3250	0	0	0.3	-									
+interactors_of.O15269.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:33	19	13	3250	3	1	0.11	P.RN	3	8	8	5	0.23	6e-05	1	8	5
+interactors_of.O15269.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:33	19	13	3250	3	2	0.2	IP.RN	4	6	6	3	0.009	4e-05	1	8	5
+interactors_of.O15269.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:33	19	13	3250	3	3	0.29	GSS	3	7	7	6	0.6	0.00018	2	7	6
+interactors_of.O15269.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:39	19	13	3250	0	0	0.3	-									
+interactors_of.O15269.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:35	19	13	3250	0	0	0.3	-									
+interactors_of.O15269.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:19	19	13	3250	1	1	0.19	GSS	3	7	7	6	0.82	0.000774	1	7	6
+interactors_of.O15269.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:53	19	13	3250	0	0	0.3	-									
+interactors_of.O15269.P13285	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:00	19	13	3250	2	1	0.043	P.RN	3	8	8	5	0.22	5.06e-05	1	8	5
+interactors_of.O15269.P13285	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:00	19	13	3250	2	2	0.25	GSS	3	7	7	6	0.68	0.000322	2	7	6
+interactors_of.O15269.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:28	19	13	3250	0	0	0.3	-									
+interactors_of.O15269.Q2MG95	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:15	19	13	3250	0	0	0.3	-									
+interactors_of.O15269.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:48	19	13	3250	2	1	0.08	P.RN	3	8	8	5	0.18	2.49e-05	1	8	5
+interactors_of.O15269.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:48	19	13	3250	2	2	0.19	IP.RN	4	6	6	3	0.007	2.22e-05	1	8	5
+interactors_of.O15269.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:18	19	13	3250	2	1	0.1	P.RN	3	8	8	5	0.2	3.75e-05	1	8	5
+interactors_of.O15269.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:18	19	13	3250	2	2	0.23	IP.RN	4	6	6	3	0.008	3.15e-05	1	8	5
+interactors_of.O15269.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:33	19	13	3250	0	0	0.3	-									
+interactors_of.O15269.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:10:08	19	13	3250	3	1	0.074	S..G[LV]..S	3.77	7	7	4	0.08	6.22e-05	1	12	7
+interactors_of.O15269.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:10:08	19	13	3250	3	2	0.1	[ST].E.V	2.77	11	11	6	0.63	0.000238	1	12	7
+interactors_of.O15269.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:10:08	19	13	3250	3	3	0.26	S..GV.E	4	4	4	3	0.023	0.000248	1	12	7
+interactors_of.O15269.C5E524	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:10:12	19	13	3250	1	1	0.26	R..Q.S..G	4	6	6	3	0.02	0.000189	1	6	3
+interactors_of.O15269.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:41	19	13	3250	2	1	0.075	P.RN	3	8	8	5	0.18	2.49e-05	1	8	5
+interactors_of.O15269.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:41	19	13	3250	2	2	0.18	IP.RN	4	6	6	3	0.007	2.22e-05	1	8	5
+interactors_of.O15269.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:35	19	13	3250	4	1	0.032	P.RN	3	8	8	5	0.25	8.56e-05	1	8	5
+interactors_of.O15269.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:35	19	13	3250	4	2	0.062	S..G[LV]..S	3.77	7	7	4	0.08	6.22e-05	2	12	7
+interactors_of.O15269.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:35	19	13	3250	4	3	0.087	[ST].E.V	2.77	11	11	6	0.63	0.000238	2	12	7
+interactors_of.O15269.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:35	19	13	3250	4	4	0.22	S..GV.E	4	4	4	3	0.023	0.000248	2	12	7
+interactors_of.O15269.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:06	19	13	3250	2	1	0.078	P.RN	3	8	8	5	0.18	2.49e-05	1	8	5
+interactors_of.O15269.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:06	19	13	3250	2	2	0.19	IP.RN	4	6	6	3	0.007	2.22e-05	1	8	5
+interactors_of.O15269.B4URF7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:39	19	13	3250	2	1	0.11	P.RN	3	8	8	5	0.2	3.75e-05	1	8	5
+interactors_of.O15269.B4URF7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:39	19	13	3250	2	2	0.25	IP.RN	4	6	6	3	0.008	3.15e-05	1	8	5
+interactors_of.O15269.Q05322	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:35	19	13	3250	1	1	0.3	GSS	3	7	7	6	0.82	0.00077	1	7	6
+interactors_of.O15270.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:23	11	10	519	0	0	0.3	-									
+interactors_of.O15270.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:01	11	10	519	0	0	0.3	-									
+interactors_of.O15270.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:59	11	10	519	0	0	0.3	-									
+interactors_of.O15270.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:49	11	10	519	0	0	0.3	-									
+interactors_of.O15270.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:49	11	10	519	0	0	0.3	-									
+interactors_of.O15270.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:52	11	10	519	0	0	0.3	-									
+interactors_of.O15270.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:09	11	10	519	0	0	0.3	-									
+interactors_of.O43149.D2XQB9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:29	23	23	4494	0	0	0.3	-									
+interactors_of.O43294.Q9WMX2-PRO_0000037548	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:11	9	9	1177	0	0	0.3	-									
+interactors_of.O43294.P03220	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:00	9	9	1177	0	0	0.3	-									
+interactors_of.O43294.P03225	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:12	9	9	1177	0	0	0.3	-									
+interactors_of.O43294.P0CK49	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:01	9	9	1177	0	0	0.3	-									
+interactors_of.O43294.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:21	9	9	1177	0	0	0.3	-									
+interactors_of.O43294.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:15	9	9	1177	1	1	0.3	QV..L	3	4	4	4	0.19	0.000641	1	4	4
+interactors_of.O43294.P30119	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:25	9	9	1177	0	0	0.3	-									
+interactors_of.O43294.Q2MG95	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:55	9	9	1177	0	0	0.3	-									
+interactors_of.O43294.Q69117	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:27	9	9	1177	0	0	0.3	-									
+interactors_of.O60518.Q76353	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:03	36	34	6842	6	1	3.92e-05	E.[IM].KE	3.77	7	7	7	0.17	1.59e-08	1	11	11
+interactors_of.O60518.Q76353	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:03	36	34	6842	6	2	0.018	V.ESM..E	5	3	3	3	0.002	2.66e-06	1	11	11
+interactors_of.O60518.Q76353	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:03	36	34	6842	6	3	0.035	K.Q.{1,2}E.{1,2}K	4	7	7	7	0.54	1.45e-05	2	7	7
+interactors_of.O60518.Q76353	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:03	36	34	6842	6	4	0.16	S[LM].[HK][DE]	3.31	6	6	6	0.44	6.98e-05	1	11	11
+interactors_of.O60518.Q76353	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:03	36	34	6842	6	5	0.23	KAQ.E..K	5	3	3	3	0.009	3.85e-05	2	7	7
+interactors_of.O60518.Q76353	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:03	36	34	6842	6	6	0.28	ES[LM]..E	3.77	5	5	5	0.26	0.000133	1	11	11
+interactors_of.O60518.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:54	36	34	6842	0	0	0.3	-									
+interactors_of.O60518.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:12:16	36	34	6842	4	1	0.007	V.ESM..E	5	3	3	3	0.002	2.42e-06	1	7	7
+interactors_of.O60518.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:12:16	36	34	6842	4	2	0.12	ES[LM]..E	3.77	5	5	5	0.26	0.000123	1	7	7
+interactors_of.O60518.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:12:16	36	34	6842	4	3	0.23	[GS]V..S[FM]	3.54	4	4	4	0.12	0.000255	1	7	7
+interactors_of.O60518.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:12:16	36	34	6842	4	4	0.28	V..SM..E	4	3	3	3	0.026	0.000321	1	7	7
+interactors_of.O60518.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:11:59	36	34	6842	2	1	0.000108	E.[IM].KE	3.77	7	7	7	0.16	1.14e-08	1	8	8
+interactors_of.O60518.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:11:59	36	34	6842	2	2	0.061	V.ESM..E	5	3	3	3	0.002	2.33e-06	1	8	8
+interactors_of.O75477.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:59	9	7	559	0	0	0.3	-									
+interactors_of.O75477.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:51	9	7	559	0	0	0.3	-									
+interactors_of.O75477.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:11	9	7	559	0	0	0.3	-									
+interactors_of.O75477.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:55	9	7	559	0	0	0.3	-									
+interactors_of.O75477.P03185	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:14	9	7	559	0	0	0.3	-									
+interactors_of.O75477.Q99IB8-PRO_0000045596	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:38	9	7	559	0	0	0.3	-									
+interactors_of.O95639.P03495	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:53	10	1	2265	0	0	0.3	<									
+interactors_of.O95639.P03496	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:31	10	1	2265	0	0	0.3	<									
+interactors_of.O95639.Q20MH3	2017-12-09	FreqDisComp-5-8	Ql5w2o0a3	QSig	00:00:24	10	1	2265	0	0	0.3	!									
+interactors_of.O95639.Q0A2H0	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:25	10	1	2265	0	0	0.3	<									
+interactors_of.O95639.Q2PJP0	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:21	10	1	2265	0	0	0.3	<									
+interactors_of.O95639.Q6DP93	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:21	10	1	2265	0	0	0.3	<									
+interactors_of.O95639.Q3SBS4	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:21	10	1	2265	0	0	0.3	<									
+interactors_of.O95639.C5E524	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:20	10	1	2265	0	0	0.3	<									
+interactors_of.O95639.Q194T2	2017-12-09	FreqDisComp-5-8	Ql5w2o0a3	QSig	00:00:10	10	1	2265	0	0	0.3	!									
+interactors_of.O95639.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:37	10	1	2265	0	0	0.3	<									
+interactors_of.O95639.A5A5U1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:41	10	1	2265	0	0	0.3	<									
+interactors_of.P00403.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:38	10	7	1781	2	1	0.13	IP.RN	4	4	4	3	0.008	2.51e-05	1	4	3
+interactors_of.P00403.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:38	10	7	1781	2	2	0.2	R..Q.S..G	4	4	4	3	0.01	3.95e-05	2	4	3
+interactors_of.P00403.P03182	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:46	10	7	1781	0	0	0.3	-									
+interactors_of.P00403.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:41	10	7	1781	1	1	0.22	EVV	3	4	4	3	0.2	0.016	1	4	3
+interactors_of.P00403.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:49	10	7	1781	0	0	0.3	-									
+interactors_of.P00403.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:47	10	7	1781	0	0	0.3	-									
+interactors_of.P00403.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:08	10	7	1781	0	0	0.3	-									
+interactors_of.P00403.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:17	10	7	1781	1	1	0.12	IP.RN	4	4	4	3	0.006	1.29e-05	1	4	3
+interactors_of.P00403.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:12	10	7	1781	1	1	0.16	IP.RN	4	4	4	3	0.007	2.06e-05	1	4	3
+interactors_of.P00403.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:42	10	7	1781	1	1	0.19	R..Q.S..G	4	4	4	3	0.013	7.4e-05	1	4	3
+interactors_of.P00403.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:42	10	7	1781	1	1	0.12	IP.RN	4	4	4	3	0.006	1.29e-05	1	4	3
+interactors_of.P01892.P04578	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:24	6	6	1716	1	1	0.18	E..N.S.N	4	3	3	3	0.009	3.06e-05	1	3	3
+interactors_of.P01892.P06821	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:56	6	6	1716	0	0	0.3	-									
+interactors_of.P01892.P12499	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:30	6	6	1716	0	0	0.3	-									
+interactors_of.P01892.P0C6I6	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:58	6	6	1716	0	0	0.3	-									
+interactors_of.P01892.P18139	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:51	6	6	1716	0	0	0.3	-									
+interactors_of.P01892.Q6DPU2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:39	6	6	1716	0	0	0.3	-									
+interactors_of.P02795.O41952	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:35	8	5	2144	1	1	0.063	V.ARI	4	3	3	3	0.008	2.26e-05	1	3	3
+interactors_of.P02795.A5Z256	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:41	8	5	2144	2	1	0.2	V.P.E.G	4	3	3	3	0.008	2.67e-05	1	3	3
+interactors_of.P02795.A5Z256	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:41	8	5	2144	2	2	0.2	V.ARI	4	3	3	3	0.009	2.78e-05	2	3	3
+interactors_of.P02795.H9XIJ5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:36	8	5	2144	0	0	0.3	-									
+interactors_of.P02795.Q67020	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:12	8	5	2144	0	0	0.3	-									
+interactors_of.P02795.B4URF7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:26	8	5	2144	2	1	0.059	V.ARI	4	3	3	3	0.004	6.66e-06	1	3	3
+interactors_of.P02795.B4URF7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:26	8	5	2144	2	2	0.12	V.P.E.G	4	3	3	3	0.006	1.42e-05	2	3	3
+interactors_of.P02795.P24830	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:26	8	5	2144	0	0	0.3	-									
+interactors_of.P02795.P36780	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:39	8	5	2144	2	1	0.082	V.P.E.G	4	3	3	3	0.006	1.42e-05	1	3	3
+interactors_of.P02795.P36780	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:39	8	5	2144	2	2	0.16	T.SS	3	6	6	5	0.39	8.6e-05	2	6	5
+interactors_of.P05023.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:47	15	12	828	0	0	0.3	-									
+interactors_of.P05023.Q01220	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:33	15	12	828	0	0	0.3	-									
+interactors_of.P05023.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:43	15	12	828	0	0	0.3	-									
+interactors_of.P05023.P03182	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:11	15	12	828	0	0	0.3	-									
+interactors_of.P05023.P03246	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:11	15	12	828	0	0	0.3	-									
+interactors_of.P05023.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:52	15	12	828	0	0	0.3	-									
+interactors_of.P05023.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:51	15	12	828	0	0	0.3	-									
+interactors_of.P05023.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:51	15	12	828	0	0	0.3	-									
+interactors_of.P05023.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:25	15	12	828	0	0	0.3	-									
+interactors_of.P05023.P0CK49	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:46	15	12	828	0	0	0.3	-									
+interactors_of.P05023.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:33	15	12	828	0	0	0.3	-									
+interactors_of.P05023.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:18	15	12	828	0	0	0.3	-									
+interactors_of.P05023.Q9WMX2-PRO_0000037547	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:09:46	15	12	828	0	0	0.3	-									
+interactors_of.P05023.Q99IB8-PRO_0000045596	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:31	15	12	828	0	0	0.3	-									
+interactors_of.P05023.Q05322	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:55	15	12	828	0	0	0.3	-									
+interactors_of.P06576.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:09:07	38	28	4436	0	0	0.3	-									
+interactors_of.P06576.P03496	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:10:51	38	28	4436	0	0	0.3	-									
+interactors_of.P06576.P05919	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:50	38	28	4436	0	0	0.3	-									
+interactors_of.P06576.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:30	38	28	4436	0	0	0.3	-									
+interactors_of.P06576.Q99IB8-PRO_0000045596	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:00	38	28	4436	1	1	0.17	E..D.S.LS	5	3	3	3	0.009	3.5e-05	1	3	3
+interactors_of.P06703.P03246	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:18	7	7	989	0	0	0.3	-									
+interactors_of.P06703.P0CK49	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:58	7	7	989	0	0	0.3	-									
+interactors_of.P06703.Q2MG95	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:57	7	7	989	1	1	0.14	TR..K	3	4	4	4	0.17	0.00043	1	4	4
+interactors_of.P08195.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:52	21	15	3124	0	0	0.3	-									
+interactors_of.P08195.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:48	21	15	3124	3	1	0.015	R..Q.S..G	4	5	5	4	0.027	2.7e-06	1	7	6
+interactors_of.P08195.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:48	21	15	3124	3	2	0.015	G..ST.G..I	5	3	3	3	0.001	9.62e-07	2	3	3
+interactors_of.P08195.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:48	21	15	3124	3	3	0.035	Q.S..G	3	7	7	6	0.36	1.92e-05	1	7	6
+interactors_of.P08195.P03182	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:12	21	15	3124	1	1	0.074	STL	3	6	6	6	0.76	0.000612	1	6	6
+interactors_of.P08195.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:56	21	15	3124	0	0	0.3	-									
+interactors_of.P08195.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:35	21	15	3124	0	0	0.3	-									
+interactors_of.P08195.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:27	21	15	3124	0	0	0.3	-									
+interactors_of.P08195.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:44	21	15	3124	0	0	0.3	-									
+interactors_of.P08195.P0CK49	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:56	21	15	3124	0	0	0.3	-									
+interactors_of.P08195.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:05	21	15	3124	2	1	0.013	Q.S..G	3	7	7	6	0.44	4.66e-05	1	8	7
+interactors_of.P08195.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:05	21	15	3124	2	2	0.25	Q.[AS]..[AG]	2.54	10	8	7	1.31	0.001	1	8	7
+interactors_of.P08195.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:59	21	15	3124	1	1	0.26	STL	3	6	6	6	0.74	0.000545	1	6	6
+interactors_of.P08195.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:20	21	15	3124	0	0	0.3	-									
+interactors_of.P08195.Q99IB8-PRO_0000045596	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:52	21	15	3124	2	1	0.007	R..Q.S..G	4	5	5	4	0.031	3.72e-06	1	7	6
+interactors_of.P08195.Q99IB8-PRO_0000045596	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:52	21	15	3124	2	2	0.027	Q.S..G	3	7	7	6	0.42	3.94e-05	1	7	6
+interactors_of.P08195.P06821	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:48	21	15	3124	1	1	0.29	R..Q.S	3	6	6	5	0.45	0.000811	1	6	5
+interactors_of.P08195.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:40	21	15	3124	2	1	0.031	R..Q.S..G	4	5	5	4	0.029	3.26e-06	1	7	6
+interactors_of.P08195.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:40	21	15	3124	2	2	0.091	Q.S..G	3	7	7	6	0.39	2.85e-05	1	7	6
+interactors_of.P08195.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:57	21	15	3124	0	0	0.3	-									
+interactors_of.P08195.Q5EP28	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:29	21	15	3124	2	1	0.037	G..ST.G..I	5	3	3	3	0.002	1.73e-06	1	3	3
+interactors_of.P08195.Q5EP28	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:29	21	15	3124	2	2	0.046	Q.S..G	3	7	7	6	0.36	1.8e-05	2	7	6
+interactors_of.P08195.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:13:06	21	15	3124	3	1	0.011	R..Q.S..G	4	5	5	4	0.031	3.9e-06	1	7	6
+interactors_of.P08195.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:13:06	21	15	3124	3	2	0.019	G..ST.G..I	5	3	3	3	0.002	2.42e-06	2	3	3
+interactors_of.P08195.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:13:06	21	15	3124	3	3	0.047	Q.S..G	3	7	7	6	0.44	4.59e-05	1	7	6
+interactors_of.P08195.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:13:38	21	15	3124	0	0	0.3	-									
+interactors_of.P08195.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:39	21	15	3124	2	1	0.029	R..Q.S..G	4	5	5	4	0.029	3.26e-06	1	7	6
+interactors_of.P08195.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:39	21	15	3124	2	2	0.086	Q.S..G	3	7	7	6	0.39	2.85e-05	1	7	6
+interactors_of.P08195.C5E527	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:10:27	21	15	3124	0	0	0.3	-									
+interactors_of.P08195.Q05322	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:07	21	15	3124	1	1	0.21	STL	3	6	6	6	0.73	0.000515	1	6	6
+interactors_of.P08962.P03230	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:38	16	12	1803	0	0	0.3	-									
+interactors_of.P08962.Q9WMX2-PRO_0000037550	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:18	16	12	1803	0	0	0.3	-									
+interactors_of.P08962.P04578-PRO_0000038428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:43	16	12	1803	0	0	0.3	-									
+interactors_of.P09543.P03129	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:25	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P03179	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:43	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P03182	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:09:25	22	16	2569	1	1	0.2	IH..G	3	3	3	3	0.063	0.002	1	3	3
+interactors_of.P09543.P03220	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:56	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P03225	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:49	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P03246	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:54	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P06428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:59	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P06430	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:48	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:42	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:32	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P06464	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:55	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P06463	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:18	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P06932	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:41	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P0CK49	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:36	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:50	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:36	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P0CK58	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:52	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P30119	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:07	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:09	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.Q2MG95	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:51	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.Q2PRM9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:26	22	16	2569	0	0	0.3	-									
+interactors_of.P09543.Q9DUG7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:40	22	16	2569	0	0	0.3	-									
+interactors_of.P11166.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:43	14	11	989	1	1	0.045	LL..Q	3	5	5	5	0.19	2.47e-05	1	5	5
+interactors_of.P11166.P03182	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:41	14	11	989	0	0	0.3	-									
+interactors_of.P11166.P03246	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:54	14	11	989	0	0	0.3	-									
+interactors_of.P11166.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:05	14	11	989	0	0	0.3	-									
+interactors_of.P11166.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:33	14	11	989	0	0	0.3	-									
+interactors_of.P11166.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:02	14	11	989	0	0	0.3	-									
+interactors_of.P11166.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:45	14	11	989	0	0	0.3	-									
+interactors_of.P11166.P0CK49	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:57	14	11	989	1	1	0.021	LL..Q	3	5	5	5	0.19	2.36e-05	1	5	5
+interactors_of.P11166.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:59	14	11	989	2	1	0.009	LL..Q	3	5	5	5	0.2	3.19e-05	1	5	5
+interactors_of.P11166.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:59	14	11	989	2	2	0.24	R.S.P..E	4	3	3	3	0.029	0.000362	2	3	3
+interactors_of.P11166.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:56	14	11	989	0	0	0.3	-									
+interactors_of.P11166.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:17	14	11	989	0	0	0.3	-									
+interactors_of.P13667.Q76353	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:40	14	8	3230	2	1	0.017	S..RA..[GS]	3.77	8	6	5	0.15	6.9e-06	1	6	5
+interactors_of.P13667.Q76353	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:40	14	8	3230	2	2	0.15	S..RA..S	4	5	5	4	0.087	6.55e-05	1	6	5
+interactors_of.P13667.P03366	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:28	14	8	3230	0	0	0.3	-									
+interactors_of.P13667.P03220	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:41	14	8	3230	0	0	0.3	-									
+interactors_of.P13667.Q99IB8-PRO_0000045596	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:09:51	14	8	3230	0	0	0.3	-									
+interactors_of.P13667.P03468	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:18	14	8	3230	2	1	0.022	S..RA..[GS]	3.77	8	6	5	0.15	7.6e-06	1	6	5
+interactors_of.P13667.P03468	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:18	14	8	3230	2	2	0.18	S..RA..S	4	5	5	4	0.088	6.71e-05	1	6	5
+interactors_of.P13667.P24830	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:26	14	8	3230	0	0	0.3	-									
+interactors_of.P13667.P06921	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:00	14	8	3230	0	0	0.3	-									
+interactors_of.P13667.P06422	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:29	14	8	3230	4	1	0.001	S..RA..[GS]	3.77	8	6	5	0.058	1.64e-07	1	9	6
+interactors_of.P13667.P06422	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:29	14	8	3230	4	2	0.014	S..RA..S	4	5	5	4	0.028	2.11e-06	1	9	6
+interactors_of.P13667.P06422	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:29	14	8	3230	4	3	0.21	S..R.{0,1}A	3	13	9	6	0.64	0.000113	1	9	6
+interactors_of.P13667.P06422	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:29	14	8	3230	4	4	0.29	S..RA	3	10	7	5	0.34	0.000165	1	9	6
+interactors_of.P13667.P36780	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:50	14	8	3230	0	0	0.3	-									
+interactors_of.P13667.P03118	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:54	14	8	3230	3	1	0.043	S..[KR]A..[AGS]	3.4	10	7	5	0.15	7.8e-06	1	9	6
+interactors_of.P13667.P03118	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:54	14	8	3230	3	2	0.2	S..R.{0,1}A	3	13	9	6	0.64	0.000113	1	9	6
+interactors_of.P13667.P03118	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:54	14	8	3230	3	3	0.28	S..RA	3	10	7	5	0.34	0.000165	1	9	6
+interactors_of.P13667.P36778	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:16	14	8	3230	1	1	0.15	L.Q.Q.S	4	3	3	3	0.01	3.93e-05	1	3	3
+interactors_of.P13667.D2XQB9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:51	14	8	3230	2	1	0.003	S..RA..[GS]	3.77	8	6	5	0.14	4.81e-06	1	6	5
+interactors_of.P13667.D2XQB9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:51	14	8	3230	2	2	0.034	S..RA..S	4	5	5	4	0.079	4.88e-05	1	6	5
+interactors_of.P16615.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:57	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P04578	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:00	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:33	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P03177	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:34	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P03179	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:41	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P03182	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:41	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P03220	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:35	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P03225	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:53	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P03246	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:57	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P04494	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:18	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P06428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:02	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:12	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:27	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P06463	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:17	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:08	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:20	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P0CK49	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:35	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:44	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:01	29	24	3693	1	1	0.16	TQDQ	4	3	3	3	0.016	0.000121	1	3	3
+interactors_of.P16615.P0CK58	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:38	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P13285	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:22	29	24	3693	1	1	0.3	TQDQ	4	3	3	3	0.018	0.000146	1	3	3
+interactors_of.P16615.P30119	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:08	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:03	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.Q2MG95	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:51	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.Q69117	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:31	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.Q2PRM9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:32	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.Q9DUG7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:27	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.Q99IB8-PRO_0000045596	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:53	29	24	3693	0	0	0.3	-									
+interactors_of.P16615.Q05322	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:33	29	24	3693	0	0	0.3	-									
+interactors_of.P16989.P03496	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:20	16	11	4584	0	0	0.3	-									
+interactors_of.P16989.Q0HD54	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:06	16	11	4584	0	0	0.3	-									
+interactors_of.P16989.O56264	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:06	16	11	4584	0	0	0.3	-									
+interactors_of.P16989.P04487	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:05	16	11	4584	0	0	0.3	-									
+interactors_of.P16989.D1LN35	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:04	16	11	4584	0	0	0.3	-									
+interactors_of.P16989.P07939	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:39	16	11	4584	0	0	0.3	-									
+interactors_of.P16989.P03070	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:52	16	11	4584	0	0	0.3	-									
+interactors_of.P21912.P03182	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:29	22	13	3560	1	1	0.16	G..S.L..D	4	5	5	3	0.044	0.000848	1	5	3
+interactors_of.P21912.P03496	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:26	22	13	3560	0	0	0.3	-									
+interactors_of.P21912.Q0A2H0	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:09	22	13	3560	0	0	0.3	-									
+interactors_of.P21912.Q2PJP0	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:04	22	13	3560	0	0	0.3	-									
+interactors_of.P21912.Q6DP93	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:04	22	13	3560	0	0	0.3	-									
+interactors_of.P21912.P03508	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:49	22	13	3560	1	1	0.19	^..P..V	3	4	4	3	0.032	0.000455	1	4	3
+interactors_of.P21912.Q20MH4	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:11	22	13	3560	1	1	0.17	^..P..V	3	4	4	3	0.032	0.000455	1	4	3
+interactors_of.P21912.Q0A2H1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:25	22	13	3560	0	0	0.3	-									
+interactors_of.P21912.Q2PJP1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:31	22	13	3560	0	0	0.3	-									
+interactors_of.P21912.Q6DP94	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:01	22	13	3560	0	0	0.3	-									
+interactors_of.P21912.Q3SBS5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:44	22	13	3560	0	0	0.3	-									
+interactors_of.P21912.Q98131	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:01	22	13	3560	0	0	0.3	-									
+interactors_of.P21964.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:52	7	7	387	0	0	0.3	-									
+interactors_of.P21964.P12520	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:00	7	7	387	0	0	0.3	-									
+interactors_of.P21964.P03225	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:34	7	7	387	0	0	0.3	-									
+interactors_of.P21964.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:19	7	7	387	0	0	0.3	-									
+interactors_of.P21964.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:17	7	7	387	0	0	0.3	-									
+interactors_of.P21964.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:08	7	7	387	0	0	0.3	-									
+interactors_of.P21964.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:18	7	7	387	0	0	0.3	-									
+interactors_of.P27824.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:11:48	53	45	6810	0	0	0.3	-									
+interactors_of.P27824.P04578	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:11:19	53	45	6810	0	0	0.3	-									
+interactors_of.P27824.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:11:13	53	45	6810	0	0	0.3	-									
+interactors_of.P27824.Q9WMX2-PRO_0000037548	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:12:41	53	45	6810	0	0	0.3	-									
+interactors_of.P27824.Q9WMX2-PRO_0000037551	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:10:00	53	45	6810	0	0	0.3	-									
+interactors_of.P27824.Q9WMX2-PRO_0000037550	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:11:45	53	45	6810	0	0	0.3	-									
+interactors_of.P27824.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:08:50	53	45	6810	0	0	0.3	-									
+interactors_of.P27824.P03182	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:11:47	53	45	6810	0	0	0.3	-									
+interactors_of.P27824.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:11:07	53	45	6810	0	0	0.3	-									
+interactors_of.P27824.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:19:33	53	45	6810	0	0	0.3	-									
+interactors_of.P27824.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:08:18	53	45	6810	0	0	0.3	-									
+interactors_of.P27824.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:09:37	53	45	6810	0	0	0.3	-									
+interactors_of.P27824.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:09:05	53	45	6810	2	1	0.15	[WY].PE	2.77	8	7	7	0.92	0.000305	1	10	10
+interactors_of.P27824.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:09:05	53	45	6810	2	2	0.21	R..W..E	3	5	5	5	0.35	0.000419	1	10	10
+interactors_of.P27824.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:08:02	53	45	6810	0	0	0.3	-									
+interactors_of.P27824.Q9WMX2-PRO_0000037547	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:06:38	53	45	6810	0	0	0.3	-									
+interactors_of.P27824.Q99IB8-PRO_0000045596	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:06:21	53	45	6810	1	1	0.18	NST	3	8	8	8	1.29	0.000275	1	8	8
+interactors_of.P27824.O40918	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:07:54	53	45	6810	2	1	0.036	V..D.H.K	4	3	3	3	0.016	0.000127	1	3	3
+interactors_of.P27824.O40918	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:07:54	53	45	6810	2	2	0.29	K..KT	3	6	6	6	0.95	0.003	2	6	6
+interactors_of.P27824.P04601	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:06:18	53	45	6810	0	0	0.3	-									
+interactors_of.P35613.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:00	8	8	554	0	0	0.3	-									
+interactors_of.P35613.P03182	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:58	8	8	554	1	1	0.081	STL	3	4	4	4	0.19	0.000676	1	4	4
+interactors_of.P35613.P03246	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:50	8	8	554	0	0	0.3	-									
+interactors_of.P35613.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:13	8	8	554	0	0	0.3	-									
+interactors_of.P35613.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:18	8	8	554	0	0	0.3	-									
+interactors_of.P35613.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:11	8	8	554	1	1	0.24	STL	3	4	4	4	0.17	0.000499	1	4	4
+interactors_of.P35613.P0CK58	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:22	8	8	554	0	0	0.3	-									
+interactors_of.P35613.Q05322	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:35	8	8	554	1	1	0.18	STL	3	4	4	4	0.17	0.000429	1	4	4
+interactors_of.P35658.Q9J0X9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:17	9	4	882	2	1	0.083	LRS	3	4	4	4	0.097	3.37e-05	1	4	4
+interactors_of.P35658.Q9J0X9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:17	9	4	882	2	2	0.2	LRS.S	4	3	3	3	0.009	2.74e-05	1	4	4
+interactors_of.P35658.Q67020	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:47	9	4	882	2	1	0.004	QLRS	4	3	3	3	0.011	4.05e-05	1	4	4
+interactors_of.P35658.Q67020	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:47	9	4	882	2	2	0.032	LRS	3	4	4	4	0.23	0.00047	1	4	4
+interactors_of.P35658.P03508	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:16	9	4	882	0	0	0.3	-									
+interactors_of.P35658.Q0A2H1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:58	9	4	882	0	0	0.3	-									
+interactors_of.P35658.Q2PJP1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:48	9	4	882	0	0	0.3	-									
+interactors_of.P35658.Q6DP94	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:04	9	4	882	0	0	0.3	-									
+interactors_of.P35658.Q20P38	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:45	9	4	882	4	1	0.01	QLRS	4	3	3	3	0.007	1.42e-05	1	4	4
+interactors_of.P35658.Q20P38	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:45	9	4	882	4	2	0.038	LRS.S	4	3	3	3	0.013	5.77e-05	1	4	4
+interactors_of.P35658.Q20P38	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:45	9	4	882	4	3	0.053	LRS	3	4	4	4	0.18	0.000206	1	4	4
+interactors_of.P35658.Q20P38	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:45	9	4	882	4	4	0.079	QLR.{0,2}S	4	3	3	3	0.019	0.000121	1	4	4
+interactors_of.P35658.Q3SBS5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:03	9	4	882	0	0	0.3	-									
+interactors_of.P35658.E5LBS6	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:00	9	4	882	1	1	0.1	QLRS	4	3	3	3	0.01	3.11e-05	1	3	3
+interactors_of.P38435.P03182	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:42	8	8	937	1	1	0.14	VLE	3	4	4	4	0.24	0.001	1	4	4
+interactors_of.P38435.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:26	8	8	937	0	0	0.3	-									
+interactors_of.P38435.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:18	8	8	937	1	1	0.24	VLE	3	4	4	4	0.22	0.001	1	4	4
+interactors_of.P38435.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:09	8	8	937	0	0	0.3	-									
+interactors_of.P38435.Q99IB8-PRO_0000045600	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:54	8	8	937	0	0	0.3	-									
+interactors_of.P38435.P03452	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:56	8	8	937	0	0	0.3	-									
+interactors_of.P38435.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:47	8	8	937	0	0	0.3	-									
+interactors_of.P38435.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:03	8	8	937	0	0	0.3	-									
+interactors_of.P49257.P04578	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:59	6	5	923	0	0	0.3	-									
+interactors_of.P49257.P04578-PRO_0000038428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:34	6	5	923	0	0	0.3	-									
+interactors_of.P49257.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:35	6	5	923	0	0	0.3	-									
+interactors_of.P49257.Q99IB8-PRO_0000045596	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:24	6	5	923	0	0	0.3	-									
+interactors_of.P49257.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:20	6	5	923	2	1	0.15	[ST]T.G	2.77	6	5	5	0.57	0.000417	1	5	5
+interactors_of.P49257.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:20	6	5	923	2	2	0.2	STEG	4	3	3	3	0.024	0.000214	1	5	5
+interactors_of.P49257.Q98138	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:19	6	5	923	0	0	0.3	-									
+interactors_of.P49755.P04618	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:58	14	11	4987	0	0	0.3	-									
+interactors_of.P49755.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:31	14	11	4987	0	0	0.3	-									
+interactors_of.P49755.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:20	14	11	4987	0	0	0.3	-									
+interactors_of.P49755.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:57	14	11	4987	0	0	0.3	-									
+interactors_of.P49755.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:55	14	11	4987	0	0	0.3	-									
+interactors_of.P49755.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:13	14	11	4987	0	0	0.3	-									
+interactors_of.P49755.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:36	14	11	4987	0	0	0.3	-									
+interactors_of.P49755.Q05322	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:59	14	11	4987	0	0	0.3	-									
+interactors_of.P50395.B9VXK6	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:55	17	7	3405	0	0	0.3	-									
+interactors_of.P50395.P14340-PRO_0000037966	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:43	17	7	3405	0	0	0.3	-									
+interactors_of.P51570.Q99IB8-PRO_0000045596	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:49	6	4	1981	1	1	0.06	R..Q.S..G	4	4	4	3	0.01	3.21e-05	1	4	3
+interactors_of.P51570.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:48	6	4	1981	1	1	0.22	R..Q.S..G	4	4	4	3	0.009	2.51e-05	1	4	3
+interactors_of.P51570.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:34	6	4	1981	0	0	0.3	-									
+interactors_of.P51570.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:01	6	4	1981	1	1	0.096	R..Q.S..G	4	4	4	3	0.01	3.54e-05	1	4	3
+interactors_of.P51570.Q5EP37	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:11	6	4	1981	1	1	0.2	R..Q.S..G	4	4	4	3	0.009	2.51e-05	1	4	3
+interactors_of.P51570.C5E527	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:06	6	4	1981	0	0	0.3	-									
+interactors_of.P51648.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:50	13	8	3404	0	0	0.3	-									
+interactors_of.P51648.P29991-PRO_0000037946	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:19	13	8	3404	1	1	0.26	P..S..E	3	6	6	5	0.27	7.52e-05	1	6	5
+interactors_of.P51648.Q99IB8-PRO_0000045596	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:52	13	8	3404	2	1	0.093	VF..N	3	7	7	4	0.11	0.000139	1	7	4
+interactors_of.P51648.Q99IB8-PRO_0000045596	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:52	13	8	3404	2	2	0.21	R..Q.S..G	4	5	5	3	0.017	0.000123	2	5	3
+interactors_of.P51648.P06821	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:25	13	8	3404	0	0	0.3	-									
+interactors_of.P51648.P03468	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:06	13	8	3404	2	1	0.12	VF..N	3	7	7	4	0.1	0.000108	1	7	4
+interactors_of.P51648.P03468	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:06	13	8	3404	2	2	0.17	P..S..E	3	6	6	5	0.33	0.000162	2	6	5
+interactors_of.P51648.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:48	13	8	3404	1	1	0.23	VF..N	3	7	7	4	0.093	7.89e-05	1	7	4
+interactors_of.P51648.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:29	13	8	3404	2	1	0.21	VF..N	3	7	7	4	0.093	7.99e-05	1	7	4
+interactors_of.P51648.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:29	13	8	3404	2	2	0.28	P..S..E	3	6	6	5	0.31	0.000114	2	6	5
+interactors_of.P51648.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:45	13	8	3404	0	0	0.3	-									
+interactors_of.P51648.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:22	13	8	3404	1	1	0.07	P..S..E	3	6	6	5	0.33	0.000163	1	6	5
+interactors_of.P51648.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:26	13	8	3404	1	1	0.22	VF..N	3	7	7	4	0.093	7.89e-05	1	7	4
+interactors_of.P51648.C5E527	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:39	13	8	3404	2	1	0.22	VF..N	3	7	7	4	0.093	7.99e-05	1	7	4
+interactors_of.P51648.C5E527	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:39	13	8	3404	2	2	0.3	P..S..E	3	6	6	5	0.31	0.000114	2	6	5
+interactors_of.P51648.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:14	13	8	3404	0	0	0.3	-									
+interactors_of.P51648.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:11	13	8	3404	1	1	0.23	VF..N	3	7	7	4	0.093	7.89e-05	1	7	4
+interactors_of.P51659.Q6VGS8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:24	7	7	1422	0	0	0.3	-									
+interactors_of.P51659.Q99IB8-PRO_0000045602	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:17	7	7	1422	1	1	0.29	P..EG.P	4	3	3	3	0.01	4.48e-05	1	3	3
+interactors_of.P51659.P03427	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:11	7	7	1422	0	0	0.3	-									
+interactors_of.P51659.P03508	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:56	7	7	1422	1	1	0.18	NE..R..L	4	3	3	3	0.02	0.000162	1	3	3
+interactors_of.P51659.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:58	7	7	1422	0	0	0.3	-									
+interactors_of.P51659.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:38	7	7	1422	0	0	0.3	-									
+interactors_of.P52630.P11207	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:15:17	25	17	16522	0	0	0.3	-									
+interactors_of.P52630.Q997F2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:20:17	25	17	16522	0	0	0.3	-									
+interactors_of.P52630.Q9WMB5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:13:24	25	17	16522	0	0	0.3	-									
+interactors_of.P52630.O55777	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:11:21	25	17	16522	0	0	0.3	-									
+interactors_of.P52630.P0C1C7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:35	25	17	16522	0	0	0.3	-									
+interactors_of.P52630.P29991	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:58	25	17	16522	0	0	0.3	-									
+interactors_of.P52630.P0C1C6	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:23	25	17	16522	0	0	0.3	-									
+interactors_of.P52630.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:03	25	17	16522	0	0	0.3	-									
+interactors_of.P52630.P0C774	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:13:55	25	17	16522	0	0	0.3	-									
+interactors_of.P52630.P29991-PRO_0000037946	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:14:08	25	17	16522	0	0	0.3	-									
+interactors_of.P52630.Q77PU6	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:13:42	25	17	16522	0	0	0.3	-									
+interactors_of.P52756.O41957	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:59	14	11	4031	0	0	0.3	-									
+interactors_of.P52756.O40939	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:16	14	11	4031	0	0	0.3	-									
+interactors_of.P54136.P04591-PRO_0000038593	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:20	21	15	5911	1	1	0.044	EA.D.I.E	5	3	3	3	0.004	8.67e-06	1	3	3
+interactors_of.P54136.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:43	21	15	5911	0	0	0.3	-									
+interactors_of.P54136.P03427	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:50	21	15	5911	1	1	0.19	EA.D.I.E	5	3	3	3	0.004	8.11e-06	1	3	3
+interactors_of.P61201.P12520	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:28	5	5	661	0	0	0.3	-									
+interactors_of.P61201.Q99IB8-PRO_0000045598	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:20	5	5	661	0	0	0.3	-									
+interactors_of.P61201.P29991-PRO_0000037946	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:40	5	5	661	0	0	0.3	-									
+interactors_of.P61201.P29991-PRO_0000037941	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:13	5	5	661	0	0	0.3	-									
+interactors_of.P61201.O41946	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:14	5	5	661	0	0	0.3	-									
+interactors_of.P61619.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:15	8	7	1358	0	0	0.3	-									
+interactors_of.P61619.P04578-PRO_0000038427	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:26	8	7	1358	0	0	0.3	-									
+interactors_of.P61619.P04578	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:40	8	7	1358	0	0	0.3	-									
+interactors_of.P61619.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:12	8	7	1358	0	0	0.3	-									
+interactors_of.P61619.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:04	8	7	1358	3	1	0.057	E[LV][LV]	2.54	6	6	5	0.79	0.004	1	6	5
+interactors_of.P61619.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:04	8	7	1358	3	2	0.07	EVV	3	4	4	3	0.11	0.005	1	6	5
+interactors_of.P61619.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:04	8	7	1358	3	3	0.3	E[IV]..[IV]	2.54	5	5	4	0.67	0.022	1	6	5
+interactors_of.P61619.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:22	8	7	1358	0	0	0.3	-									
+interactors_of.P61619.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:27	8	7	1358	0	0	0.3	-									
+interactors_of.P61619.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:43	8	7	1358	0	0	0.3	-									
+interactors_of.P63151.P14254	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:05	19	18	4109	0	0	0.3	-									
+interactors_of.P63151.P06463	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:46	19	18	4109	3	1	0.007	[DE]RLQ	3.77	5	5	5	0.13	6.53e-06	1	7	7
+interactors_of.P63151.P06463	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:46	19	18	4109	3	2	0.013	Q..LQ..R	4	4	4	4	0.044	1.17e-05	1	7	7
+interactors_of.P63151.P06463	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:46	19	18	4109	3	3	0.29	Q..LQ.{0,2}R	4	4	4	4	0.14	0.000314	1	7	7
+interactors_of.P63151.Q2MG96	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:02	19	18	4109	0	0	0.3	-									
+interactors_of.P63151.Q69117	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:21	19	18	4109	0	0	0.3	-									
+interactors_of.P63151.Q99IB8-PRO_0000045599	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:04	19	18	4109	0	0	0.3	-									
+interactors_of.P63151.Q76S40	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:55	19	18	4109	0	0	0.3	-									
+interactors_of.P82979.Q8JPQ9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:40	18	13	6690	0	0	0.3	-									
+interactors_of.Q00587.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:29	13	6	3941	2	1	0.19	IP.RN	4	8	8	3	0.01	3.78e-05	1	8	3
+interactors_of.Q00587.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:29	13	6	3941	2	2	0.26	R..Q.S..G	4	7	7	3	0.012	5.46e-05	2	7	3
+interactors_of.Q00587.P03452	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:38	13	6	3941	0	0	0.3	-									
+interactors_of.Q00587.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:15:09	13	6	3941	1	1	0.2	IP.RN	4	8	8	3	0.008	2.31e-05	1	8	3
+interactors_of.Q00587.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:24	13	6	3941	1	1	0.23	IP.RN	4	8	8	3	0.009	3.04e-05	1	8	3
+interactors_of.Q00587.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:56	13	6	3941	1	1	0.24	R..Q.S..G	4	7	7	3	0.016	9.63e-05	1	7	3
+interactors_of.Q00587.Q5EP37	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:57	13	6	3941	1	1	0.18	IP.RN	4	8	8	3	0.008	2.31e-05	1	8	3
+interactors_of.Q00587.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:54	13	6	3941	2	1	0.2	S..G[ILV]	2.63	22	12	6	1.09	0.000487	1	12	6
+interactors_of.Q00587.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:54	13	6	3941	2	2	0.27	S..GV.E	4	5	5	3	0.025	0.000253	1	12	6
+interactors_of.Q00587.C5E524	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:08	13	6	3941	1	1	0.14	R..Q.S..G	4	7	7	3	0.016	9.63e-05	1	7	3
+interactors_of.Q00587.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:27	13	6	3941	1	1	0.19	IP.RN	4	8	8	3	0.008	2.31e-05	1	8	3
+interactors_of.Q00587.C5E527	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:21	13	6	3941	1	1	0.23	IP.RN	4	8	8	3	0.009	3.04e-05	1	8	3
+interactors_of.Q00587.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:56	13	6	3941	3	1	0.17	S..G[ILV]	2.63	22	12	6	1.09	0.000487	1	12	6
+interactors_of.Q00587.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:56	13	6	3941	3	2	0.23	S..GV.E	4	5	5	3	0.025	0.000253	1	12	6
+interactors_of.Q00587.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:56	13	6	3941	3	3	0.29	P.RN	3	9	9	4	0.23	0.000878	2	9	4
+interactors_of.Q00587.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:59	13	6	3941	1	1	0.2	IP.RN	4	8	8	3	0.008	2.31e-05	1	8	3
+interactors_of.Q00587.B4URF7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:47	13	6	3941	1	1	0.24	IP.RN	4	8	8	3	0.009	3.04e-05	1	8	3
+interactors_of.Q02539.Q01220	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:22:14	92	58	27755	0	0	0.3	-									
+interactors_of.Q02539.P03495	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:20:15	92	58	27755	2	1	0.11	K.KRK	4	9	9	9	1.29	4.15e-05	1	24	22
+interactors_of.Q02539.P03495	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:20:15	92	58	27755	2	2	0.13	K..RK	3	27	24	22	9.23	0.000133	1	24	22
+interactors_of.Q02539.Q997F2	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:31:45	92	58	27755	1	1	0.27	N.N.D	3	12	11	8	1.07	9.36e-05	1	11	8
+interactors_of.Q02539.D2CFJ1	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:23:21	92	58	27755	1	1	0.28	F.E..E	3	13	13	11	2.95	0.000626	1	13	11
+interactors_of.Q02539.P24772	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:34:17	92	58	27755	0	0	0.3	-									
+interactors_of.Q02539.P03496	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:26:34	92	58	27755	0	0	0.3	-									
+interactors_of.Q02539.Q80A33	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:11:56	92	58	27755	0	0	0.3	-									
+interactors_of.Q02539.P21605	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:32:24	92	58	27755	2	1	0.16	ME..E..K	4	5	5	5	0.21	6.56e-05	1	5	5
+interactors_of.Q02539.P21605	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:32:24	92	58	27755	2	2	0.29	D..A..I	3	9	9	9	1.77	0.000371	2	9	9
+interactors_of.Q02539.O55777	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:26:43	92	58	27755	2	1	0.065	D..S.TSS	5	4	4	4	0.024	2.12e-06	1	4	4
+interactors_of.Q02539.O55777	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:26:43	92	58	27755	2	2	0.27	N.N.D	3	12	11	8	1.07	9.36e-05	2	11	8
+interactors_of.Q02539.P0C1C7	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:20:18	92	58	27755	1	1	0.29	N.N.D	3	12	11	8	1.07	9.36e-05	1	11	8
+interactors_of.Q02539.A9YDK9	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:24:30	92	58	27755	0	0	0.3	-									
+interactors_of.Q02539.P0C765	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:22:24	92	58	27755	1	1	0.076	AS..N.D	4	5	5	5	0.15	1.56e-05	1	5	5
+interactors_of.Q02539.P03070	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:21:20	92	58	27755	5	1	0.23	K.KRK	4	9	9	9	1.28	4.05e-05	1	26	24
+interactors_of.Q02539.P03070	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:21:20	92	58	27755	5	2	0.25	K..RK	3	27	24	22	9.2	0.000127	1	26	24
+interactors_of.Q02539.P03070	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:21:20	92	58	27755	5	3	0.25	S.EN.D	4	5	5	5	0.19	4.48e-05	2	5	5
+interactors_of.Q02539.P03070	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:21:20	92	58	27755	5	4	0.26	KKRK	4	9	9	9	1.31	4.59e-05	1	26	24
+interactors_of.Q02539.P03070	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:21:20	92	58	27755	5	5	0.27	PP..K..V	4	7	7	6	0.39	4.96e-05	3	7	6
+interactors_of.Q02539.P03485	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:33:46	92	58	27755	3	1	0.046	E.AA	3	26	23	20	7.21	4.46e-05	1	23	20
+interactors_of.Q02539.P03485	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:33:46	92	58	27755	3	2	0.13	K..RK	3	27	24	22	9.24	0.000135	2	24	22
+interactors_of.Q02539.P03485	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:33:46	92	58	27755	3	3	0.15	N.N.D	3	12	11	8	1.16	0.000155	3	11	8
+interactors_of.Q02539.P03466	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:24:04	92	58	27755	1	1	0.095	E.AA	3	26	23	20	7.12	3.71e-05	1	23	20
+interactors_of.Q02539.I6TAH8	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:23:32	92	58	27755	3	1	0.099	E.AA	3	26	23	20	7.12	3.71e-05	1	23	20
+interactors_of.Q02539.I6TAH8	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:23:32	92	58	27755	3	2	0.14	AS..N.D	4	5	5	5	0.15	1.81e-05	2	5	5
+interactors_of.Q02539.I6TAH8	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:23:32	92	58	27755	3	3	0.27	N.N.D	3	12	11	8	1.1	0.000114	3	11	8
+interactors_of.Q02539.Q5EP28	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:19:00	92	58	27755	0	0	0.3	-									
+interactors_of.Q02539.C5E522	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:33:48	92	58	27755	0	0	0.3	-									
+interactors_of.Q02539.Q1K9H2	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:25:59	92	58	27755	0	0	0.3	-									
+interactors_of.Q03518.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:48	10	7	461	0	0	0.3	-									
+interactors_of.Q03518.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:55	10	7	461	0	0	0.3	-									
+interactors_of.Q03518.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:34	10	7	461	0	0	0.3	-									
+interactors_of.Q03518.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:33	10	7	461	0	0	0.3	-									
+interactors_of.Q03518.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:24	10	7	461	0	0	0.3	-									
+interactors_of.Q03518.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:22	10	7	461	0	0	0.3	-									
+interactors_of.Q03518.Q77CE4	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:17	10	7	461	0	0	0.3	-									
+interactors_of.Q03518.P03170	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:16	10	7	461	0	0	0.3	-									
+interactors_of.Q08999.P03129	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:29	14	8	2282	4	1	0.027	D.[ST]..ED	3.77	5	5	4	0.061	2.31e-05	1	9	6
+interactors_of.Q08999.P03129	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:29	14	8	2282	4	2	0.063	DL.C.E	4	6	6	3	0.011	5.54e-05	2	9	4
+interactors_of.Q08999.P03129	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:29	14	8	2282	4	3	0.23	ED..D	3	8	8	5	0.47	0.000614	1	9	6
+interactors_of.Q08999.P03129	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:29	14	8	2282	4	4	0.28	L.C.E	3	9	9	4	0.2	0.000778	2	9	4
+interactors_of.Q08999.A0MPS7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:13:00	14	8	2282	4	1	0.027	D.[ST]..ED	3.77	5	5	4	0.061	2.31e-05	1	9	6
+interactors_of.Q08999.A0MPS7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:13:00	14	8	2282	4	2	0.063	DL.C.E	4	6	6	3	0.011	5.54e-05	2	9	4
+interactors_of.Q08999.A0MPS7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:13:00	14	8	2282	4	3	0.23	ED..D	3	8	8	5	0.47	0.000614	1	9	6
+interactors_of.Q08999.A0MPS7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:13:00	14	8	2282	4	4	0.28	L.C.E	3	9	9	4	0.2	0.000778	2	9	4
+interactors_of.Q08999.P03255	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:47	14	8	2282	7	1	0.000131	L.CHE	4	5	5	4	0.006	2.54e-08	1	7	4
+interactors_of.Q08999.P03255	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:47	14	8	2282	7	2	0.001	DL.CHE	5	4	4	3	0.000452	8.77e-08	1	7	4
+interactors_of.Q08999.P03255	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:47	14	8	2282	7	3	0.046	DL.CH	4	4	4	3	0.005	9.06e-06	1	7	4
+interactors_of.Q08999.P03255	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:47	14	8	2282	7	4	0.048	L.CH	3	5	5	4	0.066	2.88e-05	1	7	4
+interactors_of.Q08999.P03255	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:47	14	8	2282	7	5	0.067	D..CHE	4	4	4	3	0.006	1.35e-05	1	7	4
+interactors_of.Q08999.P03255	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:47	14	8	2282	7	6	0.084	CHE	3	5	5	4	0.08	5.11e-05	1	7	4
+interactors_of.Q08999.P03255	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:47	14	8	2282	7	7	0.26	DL.C.E	4	6	6	3	0.012	5.81e-05	1	7	4
+interactors_of.Q08999.P06464	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:11:23	14	8	2282	7	1	0.002	S[DE]DE	3.77	5	5	5	0.11	1.99e-06	1	10	7
+interactors_of.Q08999.P06464	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:11:23	14	8	2282	7	2	0.045	S.{0,1}S.D..D	4	5	4	4	0.074	4.06e-05	1	10	7
+interactors_of.Q08999.P06464	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:11:23	14	8	2282	7	3	0.062	S.{0,1}SED..D	5	4	3	3	0.007	1.98e-05	1	10	7
+interactors_of.Q08999.P06464	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:11:23	14	8	2282	7	4	0.12	[AGS].DE	2.63	11	8	7	1.36	0.00032	1	10	7
+interactors_of.Q08999.P06464	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:11:23	14	8	2282	7	5	0.18	S.{0,1}SED	4	5	4	4	0.12	0.00018	1	10	7
+interactors_of.Q08999.P06464	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:11:23	14	8	2282	7	6	0.21	ED..D	3	8	8	5	0.47	0.000614	1	10	7
+interactors_of.Q08999.P06464	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:11:23	14	8	2282	7	7	0.26	L.C.E	3	9	9	4	0.2	0.000778	2	9	4
+interactors_of.Q08999.P06788	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:50	14	8	2282	10	1	3.27e-05	L.CHE	4	5	5	4	0.006	2.48e-08	1	7	4
+interactors_of.Q08999.P06788	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:50	14	8	2282	10	2	0.000213	DL.CHE	5	4	4	3	0.000362	5.62e-08	1	7	4
+interactors_of.Q08999.P06788	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:50	14	8	2282	10	3	0.000272	L.{0,1}CHE	4	7	5	4	0.013	2.06e-07	1	7	4
+interactors_of.Q08999.P06788	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:50	14	8	2282	10	4	0.009	DL.CH	4	4	4	3	0.004	6.62e-06	1	7	4
+interactors_of.Q08999.P06788	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:50	14	8	2282	10	5	0.014	D..CHE	4	4	4	3	0.005	1.06e-05	1	7	4
+interactors_of.Q08999.P06788	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:50	14	8	2282	10	6	0.014	L.CH	3	5	5	4	0.067	3.02e-05	1	7	4
+interactors_of.Q08999.P06788	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:50	14	8	2282	10	7	0.027	CHE	3	5	5	4	0.084	5.82e-05	1	7	4
+interactors_of.Q08999.P06788	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:50	14	8	2282	10	8	0.07	DL.C.E	4	6	6	3	0.011	5.54e-05	1	7	4
+interactors_of.Q08999.P06788	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:50	14	8	2282	10	9	0.11	L.{0,1}CH	3	7	5	4	0.14	0.000239	1	7	4
+interactors_of.Q08999.P06788	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:50	14	8	2282	10	10	0.18	DL..HE	4	4	4	3	0.019	0.000151	1	7	4
+interactors_of.Q08999.Q2PRM9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:12	14	8	2282	6	1	0.000164	L.CHE	4	5	5	4	0.006	2.3e-08	1	5	4
+interactors_of.Q08999.Q2PRM9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:12	14	8	2282	6	2	0.001	DL.CHE	5	4	4	3	0.000405	7.04e-08	1	5	4
+interactors_of.Q08999.Q2PRM9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:12	14	8	2282	6	3	0.048	DL.CH	4	4	4	3	0.004	6.83e-06	1	5	4
+interactors_of.Q08999.Q2PRM9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:12	14	8	2282	6	4	0.055	D..CHE	4	4	4	3	0.004	7.9e-06	1	5	4
+interactors_of.Q08999.Q2PRM9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:12	14	8	2282	6	5	0.056	L.CH	3	5	5	4	0.062	2.4e-05	1	5	4
+interactors_of.Q08999.Q2PRM9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:12	14	8	2282	6	6	0.073	CHE	3	5	5	4	0.068	3.14e-05	1	5	4
+interactors_of.Q08999.Q9DUG7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:07	14	8	2282	6	1	0.000161	L.CHE	4	5	5	4	0.006	2.3e-08	1	5	4
+interactors_of.Q08999.Q9DUG7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:07	14	8	2282	6	2	0.001	DL.CHE	5	4	4	3	0.000405	7.04e-08	1	5	4
+interactors_of.Q08999.Q9DUG7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:07	14	8	2282	6	3	0.047	DL.CH	4	4	4	3	0.004	6.83e-06	1	5	4
+interactors_of.Q08999.Q9DUG7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:07	14	8	2282	6	4	0.054	D..CHE	4	4	4	3	0.004	7.9e-06	1	5	4
+interactors_of.Q08999.Q9DUG7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:07	14	8	2282	6	5	0.057	L.CH	3	5	5	4	0.062	2.4e-05	1	5	4
+interactors_of.Q08999.Q9DUG7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:07	14	8	2282	6	6	0.074	CHE	3	5	5	4	0.068	3.14e-05	1	5	4
+interactors_of.Q13105.Q91B85	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:35	8	3	3660	0	0	0.3	-									
+interactors_of.Q13105.Q88489	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:15	8	3	3660	5	1	0.002	S.TVSS	5	5	5	3	0.000333	2.77e-08	1	7	3
+interactors_of.Q13105.Q88489	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:15	8	3	3660	5	2	0.097	S.TV.S	4	5	5	3	0.004	3.58e-06	1	7	3
+interactors_of.Q13105.Q88489	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:15	8	3	3660	5	3	0.1	S.TVS	4	5	5	3	0.004	3.8e-06	1	7	3
+interactors_of.Q13105.Q88489	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:15	8	3	3660	5	4	0.11	TVSS	4	7	7	3	0.004	4.04e-06	1	7	3
+interactors_of.Q13105.Q88489	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:15	8	3	3660	5	5	0.21	S..VSS	4	5	5	3	0.006	8.16e-06	1	7	3
+interactors_of.Q13105.P03496	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:36	8	3	3660	0	0	0.3	-									
+interactors_of.Q13105.Q0A2H0	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:23	8	3	3660	1	1	0.005	S.TVSS	5	5	5	3	0.002	5.97e-07	1	5	3
+interactors_of.Q13105.Q2PJP0	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:13	8	3	3660	2	1	0.004	S.TVSS	5	5	5	3	0.002	5.97e-07	1	5	3
+interactors_of.Q13105.Q2PJP0	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:13	8	3	3660	2	2	0.28	S.T.SS	4	5	5	3	0.023	0.000135	1	5	3
+interactors_of.Q13105.Q6DP93	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:14	8	3	3660	1	1	0.005	S.TVSS	5	5	5	3	0.002	5.97e-07	1	5	3
+interactors_of.Q13105.P03508	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:10	8	3	3660	1	1	0.25	TVSS	4	7	7	3	0.031	0.000234	1	7	3
+interactors_of.Q13105.Q2PJP1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:13	8	3	3660	6	1	0.001	S.TVSS	5	5	5	3	0.002	7.64e-07	1	7	3
+interactors_of.Q13105.Q2PJP1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:13	8	3	3660	6	2	0.099	S.T.SS	4	5	5	3	0.025	0.000158	1	7	3
+interactors_of.Q13105.Q2PJP1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:13	8	3	3660	6	3	0.12	S..VSS	4	5	5	3	0.028	0.00019	1	7	3
+interactors_of.Q13105.Q2PJP1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:13	8	3	3660	6	4	0.12	S.TV.S	4	5	5	3	0.028	0.000193	1	7	3
+interactors_of.Q13105.Q2PJP1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:13	8	3	3660	6	5	0.13	S.TVS	4	5	5	3	0.029	0.000213	1	7	3
+interactors_of.Q13105.Q2PJP1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:13	8	3	3660	6	6	0.14	TVSS	4	7	7	3	0.031	0.000234	1	7	3
+interactors_of.Q13586.P03220	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:16	15	14	2006	0	0	0.3	-									
+interactors_of.Q13586.P03246	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:14	15	14	2006	1	1	0.3	NPR	3	4	4	4	0.22	0.001	1	4	4
+interactors_of.Q13586.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:24	15	14	2006	0	0	0.3	-									
+interactors_of.Q13586.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:29	15	14	2006	0	0	0.3	-									
+interactors_of.Q13586.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:50	15	14	2006	0	0	0.3	-									
+interactors_of.Q13586.P0CK58	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:30	15	14	2006	0	0	0.3	-									
+interactors_of.Q13586.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:15	15	14	2006	0	0	0.3	-									
+interactors_of.Q13586.Q8AZJ3	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:59	15	14	2006	0	0	0.3	-									
+interactors_of.Q13724.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:43	12	12	1949	0	0	0.3	-									
+interactors_of.Q13724.P12520	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:08	12	12	1949	0	0	0.3	-									
+interactors_of.Q13724.P04578-PRO_0000038427	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:06	12	12	1949	0	0	0.3	-									
+interactors_of.Q13724.P03246	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:40	12	12	1949	0	0	0.3	-									
+interactors_of.Q13724.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:55	12	12	1949	0	0	0.3	-									
+interactors_of.Q13724.Q99IB8-PRO_0000045592	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:48	12	12	1949	1	1	0.24	S.GP	3	6	5	5	0.35	0.000279	1	5	5
+interactors_of.Q13724.Q99IB8-PRO_0000045596	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:37	12	12	1949	0	0	0.3	-									
+interactors_of.Q14677.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:42	7	3	2786	0	0	0.3	-									
+interactors_of.Q14677.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:31	7	3	2786	0	0	0.3	-									
+interactors_of.Q14677.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:53	7	3	2786	0	0	0.3	-									
+interactors_of.Q14677.Q5EP37	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:00	7	3	2786	0	0	0.3	-									
+interactors_of.Q14677.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:07	7	3	2786	0	0	0.3	-									
+interactors_of.Q14677.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:43	7	3	2786	0	0	0.3	-									
+interactors_of.Q14677.B4URF7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:20	7	3	2786	0	0	0.3	-									
+interactors_of.Q14789.P29991-PRO_0000308465	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:00	10	9	1291	0	0	0.3	-									
+interactors_of.Q14789.P88980	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:09:09	10	9	1291	0	0	0.3	-									
+interactors_of.Q14789.O41957	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:56	10	9	1291	0	0	0.3	-									
+interactors_of.Q14789.P88986	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:50	10	9	1291	0	0	0.3	-									
+interactors_of.Q14789.O41970	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:21	10	9	1291	0	0	0.3	-									
+interactors_of.Q15369.O41974	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:14	18	12	3000	0	0	0.3	-									
+interactors_of.Q15369.D2CFJ1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:54	18	12	3000	1	1	0.25	SS.VH	4	3	3	3	0.021	0.000197	1	3	3
+interactors_of.Q15369.A9YDK9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:20	18	12	3000	0	0	0.3	-									
+interactors_of.Q15369.P12504	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:19	18	12	3000	1	1	0.18	SS.VH	4	3	3	3	0.021	0.000199	1	3	3
+interactors_of.Q15369.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:44	18	12	3000	0	0	0.3	-									
+interactors_of.Q15369.P03129	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:55	18	12	3000	0	0	0.3	-									
+interactors_of.Q15369.P06788	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:40	18	12	3000	0	0	0.3	-									
+interactors_of.Q49A26.Q9WMX2-PRO_0000037548	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:16	15	5	1485	0	0	0.3	-									
+interactors_of.Q49A26.P06932	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:32	15	5	1485	0	0	0.3	-									
+interactors_of.Q49A26.P06430	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:29	15	5	1485	0	0	0.3	-									
+interactors_of.Q49A26.Q67020	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:35	15	5	1485	0	0	0.3	-									
+interactors_of.Q49A26.P03496	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:58	15	5	1485	2	1	0.26	DPN	3	5	5	3	0.025	0.00024	1	12	3
+interactors_of.Q49A26.P03496	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:58	15	5	1485	2	2	0.29	D.N.V	3	12	12	3	0.027	0.000267	1	12	3
+interactors_of.Q49A26.Q20MH3	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:09	15	5	1485	2	1	0.25	DPN	3	5	5	3	0.025	0.00024	1	12	3
+interactors_of.Q49A26.Q20MH3	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:09	15	5	1485	2	2	0.27	D.N.V	3	12	12	3	0.027	0.000267	1	12	3
+interactors_of.Q49A26.Q0A2H0	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:53	15	5	1485	1	1	0.25	D.N.V	3	12	12	3	0.027	0.000267	1	12	3
+interactors_of.Q49A26.Q2PJP0	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:16	15	5	1485	1	1	0.21	D.N.V	3	12	12	3	0.027	0.000267	1	12	3
+interactors_of.Q49A26.Q6DP93	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:08	15	5	1485	1	1	0.26	D.N.V	3	12	12	3	0.027	0.000267	1	12	3
+interactors_of.Q49A26.Q3SBS4	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:32	15	5	1485	1	1	0.22	D.N.V	3	12	12	3	0.027	0.000267	1	12	3
+interactors_of.Q49A26.P03508	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:15	15	5	1485	1	1	0.27	D.N.V	3	12	12	3	0.042	0.000666	1	12	3
+interactors_of.Q49A26.Q20MH4	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:02	15	5	1485	1	1	0.24	D.N.V	3	12	12	3	0.042	0.000666	1	12	3
+interactors_of.Q49A26.Q0A2H1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:08	15	5	1485	1	1	0.27	D.N.V	3	12	12	3	0.042	0.000666	1	12	3
+interactors_of.Q49A26.Q2PJP1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:43	15	5	1485	1	1	0.15	D.N.V	3	12	12	3	0.042	0.000666	1	12	3
+interactors_of.Q49A26.Q6DP94	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:37	15	5	1485	1	1	0.18	D.N.V	3	12	12	3	0.042	0.000666	1	12	3
+interactors_of.Q53H12.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:32	18	13	4254	0	0	0.3	-									
+interactors_of.Q53H12.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:11:26	18	13	4254	0	0	0.3	-									
+interactors_of.Q53H12.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:25	18	13	4254	0	0	0.3	-									
+interactors_of.Q53H12.P03433	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:11:52	18	13	4254	0	0	0.3	-									
+interactors_of.Q53H12.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:52	18	13	4254	1	1	0.22	PYS..T	4	5	5	3	0.008	2.57e-05	1	5	3
+interactors_of.Q53H12.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:39	18	13	4254	0	0	0.3	-									
+interactors_of.Q53H12.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:56	18	13	4254	0	0	0.3	-									
+interactors_of.Q53H12.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:54	18	13	4254	1	1	0.21	PYS..T	4	5	5	3	0.008	2.57e-05	1	5	3
+interactors_of.Q53H12.C5E527	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:52	18	13	4254	0	0	0.3	-									
+interactors_of.Q53H12.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:32	18	13	4254	1	1	0.22	PYS..T	4	5	5	3	0.008	2.57e-05	1	5	3
+interactors_of.Q53H12.B4URF7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:31	18	13	4254	0	0	0.3	-									
+interactors_of.Q5C9Z4.P06821	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:04	15	12	3673	0	0	0.3	-									
+interactors_of.Q5C9Z4.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:12	15	12	3673	1	1	0.097	KA.K.L.V	5	3	3	3	0.003	4.4e-06	1	3	3
+interactors_of.Q5C9Z4.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:24	15	12	3673	1	1	0.036	Q.S.R.R..T	5	3	3	3	0.003	4.63e-06	1	3	3
+interactors_of.Q5C9Z4.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:10	15	12	3673	0	0	0.3	-									
+interactors_of.Q5C9Z4.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:03	15	12	3673	1	1	0.23	Q.TR	3	7	7	6	0.51	8.12e-05	1	7	6
+interactors_of.Q5C9Z4.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:47	15	12	3673	2	1	0.11	Q.S.R.R..T	5	3	3	3	0.003	4.4e-06	1	3	3
+interactors_of.Q5C9Z4.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:47	15	12	3673	2	2	0.23	Q.TR	3	7	7	6	0.51	8.12e-05	2	7	6
+interactors_of.Q5H9R7.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:54	11	6	3794	1	1	0.15	IP.RN	4	8	8	3	0.009	3.01e-05	1	8	3
+interactors_of.Q5H9R7.P03225	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:33	11	6	3794	0	0	0.3	-									
+interactors_of.Q5H9R7.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:26	11	6	3794	0	0	0.3	-									
+interactors_of.Q5H9R7.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:09	11	6	3794	1	1	0.15	IP.RN	4	8	8	3	0.007	1.72e-05	1	8	3
+interactors_of.Q5H9R7.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:55	11	6	3794	1	1	0.18	IP.RN	4	8	8	3	0.008	2.36e-05	1	8	3
+interactors_of.Q5H9R7.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:52	11	6	3794	0	0	0.3	-									
+interactors_of.Q5H9R7.Q5EP37	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:08	11	6	3794	1	1	0.14	IP.RN	4	8	8	3	0.007	1.72e-05	1	8	3
+interactors_of.Q5H9R7.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:39	11	6	3794	1	1	0.14	IP.RN	4	8	8	3	0.007	1.72e-05	1	8	3
+interactors_of.Q5H9R7.C5E527	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:44	11	6	3794	1	1	0.19	IP.RN	4	8	8	3	0.008	2.36e-05	1	8	3
+interactors_of.Q5H9R7.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:19	11	6	3794	1	1	0.15	IP.RN	4	8	8	3	0.007	1.72e-05	1	8	3
+interactors_of.Q5H9R7.B4URF7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:48	11	6	3794	1	1	0.2	IP.RN	4	8	8	3	0.008	2.36e-05	1	8	3
+interactors_of.Q5HYI8.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:03	8	6	558	0	0	0.3	-									
+interactors_of.Q5HYI8.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:04	8	6	558	0	0	0.3	-									
+interactors_of.Q5HYI8.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:31	8	6	558	0	0	0.3	-									
+interactors_of.Q5SXM2.A5Z256	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:08	16	9	2406	0	0	0.3	-									
+interactors_of.Q5SXM2.P03496	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:28	16	9	2406	0	0	0.3	-									
+interactors_of.Q5SXM2.Q0A2H0	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:25	16	9	2406	0	0	0.3	-									
+interactors_of.Q5SXM2.Q2PJP0	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:44	16	9	2406	0	0	0.3	-									
+interactors_of.Q5SXM2.P03508	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:26	16	9	2406	0	0	0.3	-									
+interactors_of.Q5SXM2.Q20MH4	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:40	16	9	2406	0	0	0.3	-									
+interactors_of.Q5SXM2.Q0A2H1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:17	16	9	2406	0	0	0.3	-									
+interactors_of.Q5SXM2.Q2PJP1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:25	16	9	2406	0	0	0.3	-									
+interactors_of.Q5SXM2.Q6DP94	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:30	16	9	2406	0	0	0.3	-									
+interactors_of.Q5SXM2.Q3SBS5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:09	16	9	2406	0	0	0.3	-									
+interactors_of.Q5VTE0.Q01220	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:09:14	15	12	3190	0	0	0.3	-									
+interactors_of.Q5VTE0.P03496	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:50	15	12	3190	2	1	0.14	A.DV	3	7	6	6	0.56	0.000117	1	6	6
+interactors_of.Q5VTE0.P03496	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:50	15	12	3190	2	2	0.16	[AG]..A.DV	3.77	4	4	4	0.074	4.86e-05	1	6	6
+interactors_of.Q5VTE0.P04413	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:54	15	12	3190	2	1	0.16	A.DV	3	7	6	6	0.5	6.96e-05	1	6	6
+interactors_of.Q5VTE0.P04413	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:54	15	12	3190	2	2	0.19	[AG]..A.DV	3.77	4	4	4	0.062	2.84e-05	1	6	6
+interactors_of.Q5VTE0.A8E1C4	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:41	15	12	3190	1	1	0.047	A.DV	3	7	6	6	0.3	6.19e-06	1	6	6
+interactors_of.Q5VTE0.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:06	15	12	3190	2	1	0.18	A.DV	3	7	6	6	0.55	0.000108	1	6	6
+interactors_of.Q5VTE0.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:06	15	12	3190	2	2	0.21	[AG]..A.DV	3.77	4	4	4	0.07	4.17e-05	1	6	6
+interactors_of.Q5VTE0.Q9WPI5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:52	15	12	3190	0	0	0.3	-									
+interactors_of.Q5VTE0.O56264	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:06	15	12	3190	0	0	0.3	-									
+interactors_of.Q5VTE0.Q00335	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:31	15	12	3190	1	1	0.075	A.DV	3	7	6	6	0.51	8.13e-05	1	6	6
+interactors_of.Q5VTE0.P04487	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:02	15	12	3190	0	0	0.3	-									
+interactors_of.Q5VTE0.P15059	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:22	15	12	3190	0	0	0.3	-									
+interactors_of.Q5VTE0.P35256	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:48	15	12	3190	0	0	0.3	-									
+interactors_of.Q5VTE0.P12792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:22	15	12	3190	0	0	0.3	-									
+interactors_of.Q5VTE0.Q8JPQ9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:30	15	12	3190	0	0	0.3	-									
+interactors_of.Q5VTE0.Q05322	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:45	15	12	3190	0	0	0.3	-									
+interactors_of.Q5VTE0.P03427	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:36	15	12	3190	1	1	0.24	A.DV	3	7	6	6	0.52	8.63e-05	1	6	6
+interactors_of.Q8N448.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:09	19	11	3937	3	1	0.012	S..GV.E	4	6	6	4	0.023	1.44e-06	1	16	10
+interactors_of.Q8N448.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:09	19	11	3937	3	2	0.025	S..[AG][ILV]	2.4	23	16	10	2.17	8.55e-06	1	16	10
+interactors_of.Q8N448.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:09	19	11	3937	3	3	0.11	S..GV.E.{0,1}S	5	5	5	3	0.003	4.99e-06	1	16	10
+interactors_of.Q8N448.P03452	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:33	19	11	3937	0	0	0.3	-									
+interactors_of.Q8N448.P03433	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:52	19	11	3937	4	1	0.017	S..GV.E	4	6	6	4	0.027	2.24e-06	1	16	10
+interactors_of.Q8N448.P03433	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:52	19	11	3937	4	2	0.036	S..[AG][ILV]	2.4	23	16	10	2.29	1.36e-05	1	16	10
+interactors_of.Q8N448.P03433	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:52	19	11	3937	4	3	0.13	S..GV.{0,1}E	4	7	6	4	0.054	1.86e-05	1	16	10
+interactors_of.Q8N448.P03433	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:52	19	11	3937	4	4	0.14	S..GV.E.{0,1}S	5	5	5	3	0.004	6.68e-06	1	16	10
+interactors_of.Q8N448.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:35	19	11	3937	3	1	0.025	S..GV.E	4	6	6	4	0.028	2.57e-06	1	16	10
+interactors_of.Q8N448.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:35	19	11	3937	3	2	0.041	S..[AG][ILV]	2.4	23	16	10	2.27	1.25e-05	1	16	10
+interactors_of.Q8N448.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:35	19	11	3937	3	3	0.28	T[HK]..[ST]..G	3.54	6	6	4	0.066	3.34e-05	1	16	10
+interactors_of.Q8N448.P06821	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:04	19	11	3937	0	0	0.3	-									
+interactors_of.Q8N448.P03496	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:50	19	11	3937	0	0	0.3	-									
+interactors_of.Q8N448.P03485	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:46	19	11	3937	2	1	0.063	L..N..[AS]	2.77	8	8	7	0.86	6.11e-05	1	9	7
+interactors_of.Q8N448.P03485	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:46	19	11	3937	2	2	0.3	AL..N	3	7	7	5	0.37	0.000334	1	9	7
+interactors_of.Q8N448.P0DOF4	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:40	19	11	3937	0	0	0.3	-									
+interactors_of.Q8N448.P0DOF5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:31	19	11	3937	6	1	0.003	S..GV.E	4	6	6	4	0.027	2.44e-06	1	16	10
+interactors_of.Q8N448.P0DOF5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:31	19	11	3937	6	2	0.014	S..[AG][ILV]	2.4	23	16	10	2.55	3.48e-05	1	16	10
+interactors_of.Q8N448.P0DOF5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:31	19	11	3937	6	3	0.018	S..GV.E.{0,1}S	5	5	5	3	0.004	6.47e-06	1	16	10
+interactors_of.Q8N448.P0DOF5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:31	19	11	3937	6	4	0.086	S..G.{1,2}E.{0,2}S	4	7	7	5	0.26	8.57e-05	1	16	10
+interactors_of.Q8N448.P0DOF5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:31	19	11	3937	6	5	0.26	[AS].E[AG]	2.54	13	13	8	1.97	0.000784	1	16	10
+interactors_of.Q8N448.P0DOF5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:31	19	11	3937	6	6	0.27	PS..[AG]	2.77	14	11	7	1.35	0.000789	1	16	10
+interactors_of.Q8N448.P03495	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:53	19	11	3937	1	1	0.3	W.M.M	3	5	5	3	0.027	0.000332	1	5	3
+interactors_of.Q8N448.Q1K9E2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:57	19	11	3937	5	1	0.014	S..GV.E	4	6	6	4	0.027	2.24e-06	1	16	10
+interactors_of.Q8N448.Q1K9E2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:57	19	11	3937	5	2	0.03	S..[AG][ILV]	2.4	23	16	10	2.29	1.36e-05	1	16	10
+interactors_of.Q8N448.Q1K9E2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:57	19	11	3937	5	3	0.11	S..GV.E.{0,1}S	5	5	5	3	0.004	6.68e-06	1	16	10
+interactors_of.Q8N448.Q1K9E2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:57	19	11	3937	5	4	0.11	S..GV.{0,1}E	4	7	6	4	0.054	1.86e-05	1	16	10
+interactors_of.Q8N448.Q1K9E2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:57	19	11	3937	5	5	0.28	S..G.{1,2}E.{0,2}S	4	7	7	5	0.23	5.05e-05	1	16	10
+interactors_of.Q8N448.Q67296	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:06	19	11	3937	4	1	0.013	S..GV.E	4	6	6	4	0.023	1.44e-06	1	16	10
+interactors_of.Q8N448.Q67296	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:06	19	11	3937	4	2	0.027	S..[AG][ILV]	2.4	23	16	10	2.17	8.55e-06	1	16	10
+interactors_of.Q8N448.Q67296	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:06	19	11	3937	4	3	0.1	S..GV.{0,1}E	4	7	6	4	0.047	1.21e-05	1	16	10
+interactors_of.Q8N448.Q67296	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:06	19	11	3937	4	4	0.12	S..GV.E.{0,1}S	5	5	5	3	0.003	4.99e-06	1	16	10
+interactors_of.Q8N448.P0C206	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:22	19	11	3937	0	0	0.3	-									
+interactors_of.Q8N448.P14079	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:07	19	11	3937	0	0	0.3	-									
+interactors_of.Q8N448.P03346	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:10	19	11	3937	0	0	0.3	-									
+interactors_of.Q8N448.Q85601	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:44	19	11	3937	0	0	0.3	-									
+interactors_of.Q8N448.P03410	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:38	19	11	3937	0	0	0.3	-									
+interactors_of.Q8N448.P06788	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:09	19	11	3937	0	0	0.3	-									
+interactors_of.Q8N448.P06430	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:18	19	11	3937	0	0	0.3	-									
+interactors_of.Q8N7W2.Q9WMX2-PRO_0000037551	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:20	9	6	1812	0	0	0.3	-									
+interactors_of.Q8N7W2.Q04360	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:53	9	6	1812	0	0	0.3	-									
+interactors_of.Q8N7W2.P03129	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:57	9	6	1812	0	0	0.3	-									
+interactors_of.Q8N7W2.P06429	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:20	9	6	1812	0	0	0.3	-									
+interactors_of.Q8N7W2.P06932	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:34	9	6	1812	0	0	0.3	-									
+interactors_of.Q8N7W2.P06430	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:27	9	6	1812	0	0	0.3	-									
+interactors_of.Q8NI60.P06821	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:29	7	4	2029	1	1	0.11	PK..R	3	4	4	4	0.19	0.00027	1	4	4
+interactors_of.Q8NI60.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:42	7	4	2029	1	1	0.2	PK..R	3	4	4	4	0.13	7.56e-05	1	4	4
+interactors_of.Q8NI60.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:45	7	4	2029	1	1	0.11	PK..R	3	4	4	4	0.15	0.000114	1	4	4
+interactors_of.Q8NI60.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:41	7	4	2029	0	0	0.3	-									
+interactors_of.Q8NI60.C5E527	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:47	7	4	2029	0	0	0.3	-									
+interactors_of.Q8NI60.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:38	7	4	2029	1	1	0.21	PK..R	3	4	4	4	0.13	7.44e-05	1	4	4
+interactors_of.Q8NI60.B4URF7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:18	7	4	2029	0	0	0.3	-									
+interactors_of.Q8TED0.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:35	11	11	2473	0	0	0.3	-									
+interactors_of.Q8WVX9.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:00	15	10	3175	0	0	0.3	-									
+interactors_of.Q8WVX9.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:51	15	10	3175	1	1	0.21	IP.RN	4	6	6	3	0.01	4.28e-05	1	6	3
+interactors_of.Q8WVX9.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:41	15	10	3175	0	0	0.3	-									
+interactors_of.Q8WVX9.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:22	15	10	3175	0	0	0.3	-									
+interactors_of.Q8WVX9.P03452	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:18	15	10	3175	0	0	0.3	-									
+interactors_of.Q8WVX9.P06821	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:23	15	10	3175	0	0	0.3	-									
+interactors_of.Q8WVX9.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:29	15	10	3175	1	1	0.21	IP.RN	4	6	6	3	0.007	2.46e-05	1	6	3
+interactors_of.Q8WVX9.P0C0U1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:06	15	10	3175	0	0	0.3	-									
+interactors_of.Q8WVX9.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:46	15	10	3175	0	0	0.3	-									
+interactors_of.Q8WVX9.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:34	15	10	3175	1	1	0.29	S..GV.E	4	4	4	3	0.025	0.00028	1	4	3
+interactors_of.Q8WVX9.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:52	15	10	3175	1	1	0.2	IP.RN	4	6	6	3	0.007	2.46e-05	1	6	3
+interactors_of.Q8WVX9.C5E527	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:25	15	10	3175	1	1	0.26	IP.RN	4	6	6	3	0.009	3.49e-05	1	6	3
+interactors_of.Q8WVX9.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:59	15	10	3175	1	1	0.25	S..GV.E	4	4	4	3	0.025	0.00028	1	4	3
+interactors_of.Q8WVX9.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:08	15	10	3175	1	1	0.21	IP.RN	4	6	6	3	0.007	2.46e-05	1	6	3
+interactors_of.Q8WVX9.B4URF7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:23	15	10	3175	1	1	0.28	IP.RN	4	6	6	3	0.009	3.49e-05	1	6	3
+interactors_of.Q92538.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:35	12	10	1673	0	0	0.3	-									
+interactors_of.Q92538.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:05	12	10	1673	0	0	0.3	-									
+interactors_of.Q92538.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:19	12	10	1673	0	0	0.3	-									
+interactors_of.Q969X5.P04601	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:01	11	8	487	0	0	0.3	-									
+interactors_of.Q969X5.P03182	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:40	11	8	487	0	0	0.3	-									
+interactors_of.Q969X5.P03246	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:40	11	8	487	0	0	0.3	-									
+interactors_of.Q969X5.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:25	11	8	487	0	0	0.3	-									
+interactors_of.Q969X5.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:32	11	8	487	0	0	0.3	-									
+interactors_of.Q969X5.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:41	11	8	487	0	0	0.3	-									
+interactors_of.Q969X5.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:37	11	8	487	0	0	0.3	-									
+interactors_of.Q969X5.P0CK49	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:04	11	8	487	0	0	0.3	-									
+interactors_of.Q969X5.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:01	11	8	487	0	0	0.3	-									
+interactors_of.Q969X5.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:17	11	8	487	0	0	0.3	-									
+interactors_of.Q969X5.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:46	11	8	487	0	0	0.3	-									
+interactors_of.Q96T23.P08563-PRO_0000041302	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:12	12	1	4745	0	0	0.3	<									
+interactors_of.Q96T23.P06921	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:14	12	1	4745	0	0	0.3	<									
+interactors_of.Q96T23.P36780	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:13	12	1	4745	0	0	0.3	<									
+interactors_of.Q96T23.Q77UU1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:14	12	1	4745	0	0	0.3	<									
+interactors_of.Q96T23.P06422	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:12	12	1	4745	0	0	0.3	<									
+interactors_of.Q96T23.P04015	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:19	12	1	4745	0	0	0.3	<									
+interactors_of.Q96T23.P03120	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:11	12	1	4745	0	0	0.3	<									
+interactors_of.Q96T23.P06790	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:14	12	1	4745	0	0	0.3	<									
+interactors_of.Q96T23.P06423	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:18	12	1	4745	0	0	0.3	<									
+interactors_of.Q96T23.P24830	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:11	12	1	4745	0	0	0.3	<									
+interactors_of.Q96T23.P03118	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:53	12	1	4745	0	0	0.3	<									
+interactors_of.Q96T23.P36778	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:20	12	1	4745	0	0	0.3	<									
+interactors_of.Q96TA2.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:27	14	7	3607	0	0	0.3	-									
+interactors_of.Q96TA2.Q99IB8-PRO_0000045596	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:15	14	7	3607	1	1	0.1	R..Q.S..G	4	6	6	3	0.012	5.61e-05	1	6	3
+interactors_of.Q96TA2.P06821	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:01	14	7	3607	1	1	0.29	PK..R	3	7	7	4	0.21	0.000806	1	7	4
+interactors_of.Q96TA2.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:43	14	7	3607	0	0	0.3	-									
+interactors_of.Q96TA2.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:25	14	7	3607	0	0	0.3	-									
+interactors_of.Q96TA2.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:28	14	7	3607	1	1	0.16	R..Q.S..G	4	6	6	3	0.012	6.09e-05	1	6	3
+interactors_of.Q96TA2.Q5EP37	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:36	14	7	3607	0	0	0.3	-									
+interactors_of.Q96TA2.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:00	14	7	3607	1	1	0.1	S..GV.E	4	5	5	3	0.015	8.97e-05	1	5	3
+interactors_of.Q96TA2.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:57	14	7	3607	0	0	0.3	-									
+interactors_of.Q96TA2.C5E527	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:38	14	7	3607	0	0	0.3	-									
+interactors_of.Q96TA2.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:10	14	7	3607	1	1	0.088	S..GV.E	4	5	5	3	0.015	8.97e-05	1	5	3
+interactors_of.Q96TA2.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:15	14	7	3607	0	0	0.3	-									
+interactors_of.Q96TA2.B4URF7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:09	14	7	3607	0	0	0.3	-									
+interactors_of.Q96TA2.Q05322	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:35	14	7	3607	0	0	0.3	-									
+interactors_of.Q99442.P04578-PRO_0000038428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:27	17	14	1643	0	0	0.3	-									
+interactors_of.Q99442.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:44	17	14	1643	0	0	0.3	-									
+interactors_of.Q99442.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:06	17	14	1643	0	0	0.3	-									
+interactors_of.Q99442.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:33	17	14	1643	0	0	0.3	-									
+interactors_of.Q99442.Q2MG95	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:50	17	14	1643	0	0	0.3	-									
+interactors_of.Q99442.Q76SF8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:32	17	14	1643	0	0	0.3	-									
+interactors_of.Q9BQ70.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:35	15	11	5087	0	0	0.3	-									
+interactors_of.Q9BQ70.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:58	15	11	5087	0	0	0.3	-									
+interactors_of.Q9BQ70.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:45	15	11	5087	0	0	0.3	-									
+interactors_of.Q9BQ70.C5E527	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:53	15	11	5087	0	0	0.3	-									
+interactors_of.Q9BQ70.B4URF7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:12	15	11	5087	0	0	0.3	-									
+interactors_of.Q9BQ70.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:09:24	15	11	5087	0	0	0.3	-									
+interactors_of.Q9BX40.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:21	11	10	2831	0	0	0.3	-									
+interactors_of.Q9BX40.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:56	11	10	2831	0	0	0.3	-									
+interactors_of.Q9NXH8.P03129	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:51	13	12	1335	0	0	0.3	-									
+interactors_of.Q9NXH8.P03177	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:26	13	12	1335	0	0	0.3	-									
+interactors_of.Q9NXH8.P03225	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:54	13	12	1335	0	0	0.3	-									
+interactors_of.Q9NXH8.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:50	13	12	1335	0	0	0.3	-									
+interactors_of.Q9NXH8.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:22	13	12	1335	0	0	0.3	-									
+interactors_of.Q9NXH8.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:57	13	12	1335	0	0	0.3	-									
+interactors_of.Q9NXH8.P0CK58	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:32	13	12	1335	0	0	0.3	-									
+interactors_of.Q9NXH8.P30119	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:09	13	12	1335	1	1	0.036	S..LI	3	4	4	4	0.064	3.07e-05	1	4	4
+interactors_of.Q9NXH8.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:02	13	12	1335	0	0	0.3	-									
+interactors_of.Q9NXH8.Q2MG95	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:00	13	12	1335	1	1	0.12	G.GV..D	4	3	3	3	0.018	0.000141	1	3	3
+interactors_of.Q9NXH8.Q2MG96	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:01:04	13	12	1335	1	1	0.28	S..LI	3	4	4	4	0.13	0.000265	1	4	4
+interactors_of.Q9NXH8.Q69117	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:44	13	12	1335	1	1	0.13	S..LI	3	4	4	4	0.13	0.000264	1	4	4
+interactors_of.Q9NXH8.Q8AZJ3	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:36	13	12	1335	2	1	0.17	S..LI	3	4	4	4	0.14	0.000295	1	4	4
+interactors_of.Q9NXH8.Q8AZJ3	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:00:36	13	12	1335	2	2	0.23	G.GV..D	4	3	3	3	0.018	0.00014	2	3	3
+interactors_of.Q9NZ01.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:50	13	8	2326	2	1	0.14	IP.RN	4	5	5	3	0.008	2.77e-05	1	5	3
+interactors_of.Q9NZ01.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:50	13	8	2326	2	2	0.27	R..Q.S..G	4	5	5	3	0.011	5.64e-05	2	5	3
+interactors_of.Q9NZ01.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:14	13	8	2326	0	0	0.3	-									
+interactors_of.Q9NZ01.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:11	13	8	2326	0	0	0.3	-									
+interactors_of.Q9NZ01.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:20	13	8	2326	0	0	0.3	-									
+interactors_of.Q9NZ01.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:28	13	8	2326	0	0	0.3	-									
+interactors_of.Q9NZ01.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:37	13	8	2326	0	0	0.3	-									
+interactors_of.Q9NZ01.P06821	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:23	13	8	2326	1	1	0.21	P.RN	3	6	6	4	0.18	0.000556	1	6	4
+interactors_of.Q9NZ01.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:49	13	8	2326	1	1	0.13	IP.RN	4	5	5	3	0.006	1.37e-05	1	5	3
+interactors_of.Q9NZ01.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:39	13	8	2326	1	1	0.18	IP.RN	4	5	5	3	0.007	2.29e-05	1	5	3
+interactors_of.Q9NZ01.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:34	13	8	2326	1	1	0.24	R..Q.S..G	4	5	5	3	0.015	9.71e-05	1	5	3
+interactors_of.Q9NZ01.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:27	13	8	2326	3	1	0.023	S..G[LV]..S	3.77	6	6	4	0.057	1.87e-05	1	8	6
+interactors_of.Q9NZ01.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:27	13	8	2326	3	2	0.063	S..G[LV]	2.77	10	8	6	0.67	0.000145	1	8	6
+interactors_of.Q9NZ01.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:27	13	8	2326	3	3	0.21	S..GV.E	4	3	3	3	0.021	0.000189	1	8	6
+interactors_of.Q9NZ01.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:20	13	8	2326	1	1	0.12	IP.RN	4	5	5	3	0.006	1.37e-05	1	5	3
+interactors_of.Q9NZ01.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:16	13	8	2326	1	1	0.12	IP.RN	4	5	5	3	0.006	1.37e-05	1	5	3
+interactors_of.Q9NZM1.P03177	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:29	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.P03182	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:55	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.P03209	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:50	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.P03225	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:46	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.P03246	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:36	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:06	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:30	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.P06463	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:53	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:16	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.P0CK49	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:48	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:54	22	20	2878	1	1	0.12	S..CG	3	4	4	4	0.15	0.000467	1	4	4
+interactors_of.Q9NZM1.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:08	22	20	2878	1	1	0.11	TQDQ	4	3	3	3	0.013	7.83e-05	1	3	3
+interactors_of.Q9NZM1.P0CK58	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:20	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.P13285	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:46	22	20	2878	1	1	0.21	TQDQ	4	3	3	3	0.014	9.83e-05	1	3	3
+interactors_of.Q9NZM1.P30119	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:44	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:34	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.Q2MG95	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:43	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.Q2MG96	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:52	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.Q69117	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:07	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.Q8AZK7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:26	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.Q8AZJ3	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:24	22	20	2878	0	0	0.3	-									
+interactors_of.Q9NZM1.Q9DUG7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:36	22	20	2878	0	0	0.3	-									
+interactors_of.Q9UJZ1.P04578-PRO_0000038428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:36	5	5	522	0	0	0.3	-									
+interactors_of.Q9UJZ1.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:33	5	5	522	0	0	0.3	-									
+interactors_of.Q9UJZ1.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:37	5	5	522	0	0	0.3	-									
+interactors_of.Q9UJZ1.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:04	5	5	522	0	0	0.3	-									
+interactors_of.Q9UPN7.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:39	18	12	4423	1	1	0.067	K..PE	3	8	7	6	0.56	0.000126	1	7	6
+interactors_of.Q9UPN7.P30119	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:48	18	12	4423	1	1	0.12	K..PE	3	8	7	6	0.54	0.000107	1	7	6
+interactors_of.Q9UPN7.Q2MG95	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:34	18	12	4423	0	0	0.3	-									
+interactors_of.Q9UPN7.Q69117	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:57	18	12	4423	0	0	0.3	-									
+interactors_of.Q9UPN7.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:18	18	12	4423	0	0	0.3	-									
+interactors_of.Q9UPN7.Q5EP37	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:10	18	12	4423	0	0	0.3	-									
+interactors_of.Q9UPN7.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:21	18	12	4423	0	0	0.3	-									
+interactors_of.Q9UPN7.C5E527	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:07	18	12	4423	0	0	0.3	-									
+interactors_of.Q9UPN7.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:55	18	12	4423	0	0	0.3	-									
+interactors_of.Q9UPN7.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:46	18	12	4423	0	0	0.3	-									
+interactors_of.Q9UPN7.B4URF7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:25	18	12	4423	0	0	0.3	-									
+interactors_of.Q9UPN7.E5LBX0	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:39	18	12	4423	0	0	0.3	-									
+interactors_of.Q9UPU5.A8E1C4	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:24	15	15	3266	0	0	0.3	-									
+interactors_of.Q9UPU5.E5LBS6	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:55	15	15	3266	0	0	0.3	-									
+interactors_of.Q9Y4F1.P03211	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:38	14	8	2973	0	0	0.3	-									
+interactors_of.Q9Y4F1.P03433	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:51	14	8	2973	0	0	0.3	-									
+interactors_of.Q9Y4F1.A5A5U1	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:07	14	8	2973	1	1	0.25	N.D.D..L	4	3	3	3	0.016	0.000103	1	3	3
+interactors_of.Q9Y4F1.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:17	14	8	2973	0	0	0.3	-									
+interactors_of.Q9Y4F1.C5E524	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:22	14	8	2973	0	0	0.3	-									
+interactors_of.Q9Y4F1.B4URF7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:16	14	8	2973	0	0	0.3	-									
+interactors_of.Q9Y4W2.P04020	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:45	9	5	2916	0	0	0.3	-									
+interactors_of.Q9Y4W2.P03431	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:12	9	5	2916	0	0	0.3	-									
+interactors_of.Q9Y4W2.P03428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:40	9	5	2916	1	1	0.19	S..GV.E	4	4	4	3	0.008	2.56e-05	1	4	3
+interactors_of.Q9Y4W2.I6T1Z2	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:34	9	5	2916	0	0	0.3	-									
+interactors_of.Q9Y4W2.C5E526	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:40	9	5	2916	0	0	0.3	-									
+interactors_of.Q9Y4W2.C5E527	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:02:53	9	5	2916	1	1	0.2	S..GV.E	4	4	4	3	0.008	2.56e-05	1	4	3
+interactors_of.Q9Y4W2.Q20MH8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:06	9	5	2916	1	1	0.069	S..GV.E	4	4	4	3	0.014	6.96e-05	1	4	3
+interactors_of.Q9Y4W2.Q1K9H5	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:18	9	5	2916	0	0	0.3	-									
+interactors_of.Q9Y4W2.B4URF7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:05	9	5	2916	0	0	0.3	-									
+interactors_of.Q9Y5M8.P0DOE9	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:07:19	50	41	7838	1	1	0.06	MN.L	3	6	6	6	0.54	0.000205	1	6	6
+interactors_of.Q9Y5M8.Q77M19	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:05:53	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y5M8.P03177	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:12:35	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y5M8.P03182	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:10:44	50	41	7838	1	1	0.034	HP..E	3	7	7	7	0.91	0.000277	1	7	7
+interactors_of.Q9Y5M8.P03220	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:11:22	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y5M8.P03246	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:09:31	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y5M8.P06428	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:09:59	50	41	7838	1	1	0.27	G..K.S.L	4	4	4	4	0.18	0.000743	1	4	4
+interactors_of.Q9Y5M8.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:08:13	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y5M8.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:10:03	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y5M8.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:11:54	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y5M8.P06930	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:20:01	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y5M8.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:21:45	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y5M8.P0CK49	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:11:33	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y5M8.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:06:07	50	41	7838	1	1	0.068	HP..E	3	7	7	7	0.9	0.000256	1	7	7
+interactors_of.Q9Y5M8.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:14:26	50	41	7838	2	1	0.054	TE..Q..QD	5	3	3	3	0.005	1.4e-05	1	4	4
+interactors_of.Q9Y5M8.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:14:26	50	41	7838	2	2	0.17	TE..Q..Q	4	4	4	4	0.095	0.000123	1	4	4
+interactors_of.Q9Y5M8.P0CK58	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:14:26	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y5M8.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:12:40	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y5M8.Q2MG95	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:08:11	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y5M8.Q99IB8-PRO_0000045596	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:12:31	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y5M8.P06821	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:12:05	50	41	7838	1	1	0.074	GV..S..E..R	5	3	3	3	0.007	2.47e-05	1	3	3
+interactors_of.Q9Y5M8.C5E519	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:13:24	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y5M8.Q05322	2017-12-09	FreqDisComp-5-8	Ql5w2o3a3	QSig	00:09:42	50	41	7838	0	0	0.3	-									
+interactors_of.Q9Y6N5.P03129	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:33	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P03177	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:46	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P03179	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:49	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P03182	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:27	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P03209	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:29	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P03220	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:13:53	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P03225	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:14:19	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P03246	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:11:48	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P04020	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:09:31	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P06428	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:04:49	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P06430	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:03:35	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P06460	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:13:45	38	26	4774	1	1	0.3	E.V.V	3	6	5	5	1.09	0.022	1	5	5
+interactors_of.Q9Y6N5.P06461	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:12:13	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P06464	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:12:33	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P06463	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:52	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P06788	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:20	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P06792	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:05	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P06930	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:24	38	26	4774	1	1	0.23	H..K.T	3	5	5	4	0.25	0.002	1	5	4
+interactors_of.Q9Y6N5.P06932	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:09:11	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P06927	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:37	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P0CK49	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:10:57	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P0C739	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:18:38	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P0CK56	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:01	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P0CK58	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:08:34	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P30119	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:26	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.P69901	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:05:29	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.Q6VGS8	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:07:31	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.Q2MG95	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:05	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.Q2MG96	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:19	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.Q69117	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:12	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.Q2PRM9	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:49	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.Q8AZK7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:06:22	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.Q8AZJ3	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:10:49	38	26	4774	0	0	0.3	-									
+interactors_of.Q9Y6N5.Q9DUG7	2017-12-09	FreqDisComp-5-8	Ql5w2o2a3	QSig	00:11:04	38	26	4774	0	0	0.3	-									

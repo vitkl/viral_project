@@ -88,8 +88,7 @@ randomised_BioPlex$data$pair_id = paste0(randomised_BioPlex$data$IDs_interactor_
 ## Set standard options
 
 ```{r std_options}
-seed_list = c("O00264","O00469","O14545","O14979","O15031","O15269","O15270","O43149","O43164","O43294","O60518","O60825","O75477","O95639","P00403")
-
+seed_list = c("O00264","O00264-PRO_0000038428","O00469","O14545","O14979","O15031","O15269","O15270","O43149","O43164","O43294","O60518","O60825","O75477","O95639","P00403","P01892","P02795","P05023","P05546-PRO_0000037940","P05546-PRO_0000037946","P06576","P06703","P08195","P08962","P09543","P11166","P13667","P16615","P16615-PRO_0000045596","P16989","P21912","P21964","P27824","P35613","P35658","P38435","P49257","P49755","P50395","P50395-PRO_0000037966","P51570","P51648-PRO_0000045596","P51648","P51659","P52630","P52756","P54136","P61201","P61619","P63151","P82979","Q00587","Q02539","Q03188-PRO_0000037551","Q03518","Q08999","Q13105","Q13586","Q13724","Q13724-PRO_0000045596","Q14677","Q14789","Q15369","Q49A26","Q53H12","Q5C9Z4","Q5H9R7","Q5HYI8","Q5SXM2","Q5T3F8-PRO_0000037548","Q5VTE0","Q86YA3","Q8IZY2","Q8N448","Q8N7W2","Q8NBS9-PRO_0000045602","Q8NI60","Q8TED0","Q8WVX9","Q92538","Q92805","Q969X5","Q96ST2","Q96T23","Q96TA2","Q99442","Q9BQ70","Q9BX40","Q9H6S0-PRO_0000037576","Q9H9L4-PRO_0000037566","Q9NP80-PRO_0000037548","Q9NSY0","Q9NXH8","Q9NZ01","Q9NZM1","Q9UJZ1","Q9UPN7","Q9UPU5","Q9Y3T9-PRO_0000037713","Q9Y4F1","Q9Y4W2","Q9Y5M8","Q9Y6N5")
 # set standard options
 myPPInetwork2SLIMFinder = function(dataset_name = "SLIMFinder", slimlen = 5, maxwild = 2,
                                    interaction_main_set = Full_IntAct, interaction_query_set = all_viral_interaction,
@@ -114,7 +113,7 @@ myPPInetwork2SLIMFinder = function(dataset_name = "SLIMFinder", slimlen = 5, max
                           N_seq = 200,
                           seed_list = seed_list, # NULL for full run
                           memory_start = 350,
-                          memory_step = 100)
+                          memory_step = 1000)
 }
 
 # Download ELM data
@@ -128,7 +127,7 @@ if (!file.exists(elm_filename))
 
 ```{r params}
 analysis_type = c("qslimfinder", "slimfinder")
-datasets = c("Full_IntAct", "BioPlex", "Vidal", "randomised_BioPlex")
+datasets = c("Full_IntAct", "BioPlex", "Vidal", "randomised_BioPlex", "all_viral_interaction")
 domain_centered = c(F, T) # c(F, T)
 #slimlen = c(5, 8, 10)
 #maxwild = c(2, 3)
