@@ -28,8 +28,8 @@ suppressPackageStartupMessages({
 colors = RColorBrewer::brewer.pal(2, "Dark2")
 
 N_negative_sets = 200
-motif_types = c("MOD", "LIG") # "MOD", "LIG" / "DOC", "DEG", "CLV", "TRG"
-neg_set = c("all_proteins") # "all_instances", "all_proteins", "random"
+motif_types = c("DOC", "DEG", "CLV", "TRG") # "MOD", "LIG" / "DOC", "DEG", "CLV", "TRG"
+neg_set = c("all_instances") # "all_instances", "all_proteins", "random"
 query_predictor_col = "Sig" # "Sig" or "p.value" or "domain_motif_pval"
 filter_by_domain_data = NULL # "p.value < 0.05" or "fdr_pval < 0.05 & domain_count_per_IDs_interactor_viral > 1" or NULL
 #ROC:
