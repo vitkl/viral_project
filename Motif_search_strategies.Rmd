@@ -96,7 +96,7 @@ myPPInetwork2SLIMFinder = function(dataset_name = "SLIMFinder", slimlen = 5, max
                           interaction_main_set = interaction_main_set,
                           interaction_query_set = all_viral_interaction,
                           analysis_type = analysis_type,
-                          options = paste0("dismask=T consmask=F cloudfix=T probcut=0.3 minwild=0 maxwild=",maxwild," slimlen=",slimlen," alphahelix=F maxseq=1500 savespace=0 iuchdir=T extras=2"),
+                          options = paste0("dismask=T consmask=F cloudfix=T probcut=0.3 minwild=0 maxwild=",maxwild," slimlen=",slimlen," alphahelix=F maxseq=800 savespace=0 iuchdir=T extras=2"),
                           path2domain_enrich = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
                           domain_enrich_object = "res_count",
                           center_domains = center_domains,
@@ -146,6 +146,12 @@ for(a in analysis_type){
 }
 dataset_names[grepl("BioPlex",datasets), query_dataset := "all_viral_interaction_BioPlex"]
 dataset_names[!grepl("BioPlex",datasets), query_dataset := "all_viral_interaction"]
+
+# remove already finished names
+R_data_names = readLines("./RData_from_Motif_search_strategies")
+R_data_names = gsub("\\./processed_data_files/QSLIMFinder_instances_h2v_","", R_data_names)
+R_data_names = gsub("_clust201712\\.RData\\.zip","", R_data_names)
+dataset_names = dataset_names[!dataset_names %in% R_data_names]
 ```
 
 ## Perform motif search
@@ -161,10 +167,17 @@ clusterEvalQ(cl, {library(MItools); library(rtracklayer)})
 clusterExport(cl, ls(), envir=environment())
 
 R_data = parSapplyLB(cl = cl, X = 1:nrow(dataset_names), FUN = function(i){
-    myPPInetwork2SLIMFinder(dataset_name = dataset_names$dataset_names[i], slimlen = dataset_names$slimlen[i], maxwild = dataset_names$maxwild[i],
+    R_data_name = myPPInetwork2SLIMFinder(dataset_name = dataset_names$dataset_names[i], slimlen = dataset_names$slimlen[i], maxwild = dataset_names$maxwild[i],
                             interaction_main_set = eval(parse(text = dataset_names$datasets[i])),
                             interaction_query_set = eval(parse(text = dataset_names$query_dataset[i])),
                             center_domains = dataset_names$domain_centered[i], analysis_type = dataset_names$analysis_type[i])
+    R_data_names = readLines("./RData_from_Motif_search_strategies")
+    R_data_names = c(R_data_names, paste0(R_data_name, ".zip"))
+    write(R_data_names, "./RData_from_Motif_search_strategies")
+    zip(zipfile = paste0(R_data_name, ".zip"), files = R_data_name)
+    unlink(R_data_name)
+    
+    paste0(R_data_name, ".zip")
 }, simplify = TRUE, USE.NAMES = TRUE) # parSapplyLB is parSapply that accounts for different time each dataset might take
 
 stopCluster(cl)
