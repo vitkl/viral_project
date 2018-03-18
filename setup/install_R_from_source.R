@@ -1,9 +1,9 @@
 # install R from source
 wget http://cran.rstudio.com/src/base/R-latest.tar.gz
 tar xvf R-latest.tar.gz
-mv R-3.4.1 /hps/nobackup/research/petsalaki/users/vitalii/R
-cd /hps/nobackup/research/petsalaki/users/vitalii/R
-./configure --prefix=/hps/nobackup/research/petsalaki/users/vitalii/R  --enable-R-shlib --with-x=yes# to make sure you compile R shared library. Otherwise, RStudio will complain.
+mv R-3.4.4 /nfs/research1/petsalaki/users/vitalii/R
+cd /nfs/research1/petsalaki/users/vitalii/R
+./configure --prefix=/nfs/research1/petsalaki/users/vitalii/R  --enable-R-shlib --with-x=yes# to make sure you compile R shared library. Otherwise, RStudio will complain.
 
 # next, edit or create .bash_profile
 
@@ -25,6 +25,27 @@ export PATH
 # compile R
 make && make install
 
+## installing clustermq
+## install zeromq
+wget https://github.com/zeromq/libzmq/releases/download/v4.2.3/zeromq-4.2.3.tar.gz
+tar xzvf zeromq-4.2.3.tar.gz
+mv zeromq-4.2.3 /nfs/research1/petsalaki/users/vitalii/zeromq
+cd /nfs/research1/petsalaki/users/vitalii/zeromq
+./configure --prefix=/homes/vitalii/zeromq
+make
+make check
+make install
+## Edit ~/.bashrc NOT ~/.bash_profile (doesn't start the right version of R on EBI cluster) file:
+PATH=/homes/vitalii/zeromq/bin:$PATH
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/homes/vitalii/zeromq/lib/pkgconfig"
+## One need to put the directory that contains file libzmq.pc to the PKG_CONFIG_PATH
+export LD_LIBRARY_PATH="/nfs/research1/petsalaki/users/vitalii/R/lib64:/homes/vitalii/zeromq/lib:$LD_LIBRARY_PATH"
+# install zrmq and clustermq
+install.packages("rzmq")
+install.packages('clustermq')
+#C. If everything is going OK so far …and you managed to successfully install clustermq in your R. Then try to give it a test example:
+fx = function(x) x * 2
+Q(fx, x=1:3, n_jobs=1)
 
 ./configure --prefix=/nfs/research2/thornton/veronika/R/ --enable-R-shlib
 
