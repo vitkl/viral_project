@@ -17,4 +17,15 @@ SLIMFinder_Mann/.DS_Store
 SLIMFinder/.DS_Store
 SLIMFinder/.DS_Store
 *.xgmml
-processed_data_files/QSLIMFinder_instances_h2v_clust201710.RData
+processed_data_files/QSLIMFinder_instances_h2v_Full_IntAct_clust201710.RData
+.DS_Store
+Full_IntAct/input.gz
+Full_IntAct2/input.gz
+processed_data_files/.DS_Store
+processed_data_files/processed_data_files/QSLIMFinder_instances_h2v_qslimfinder.Full_IntAct.FALSE_clust201712.RData
+processed_data_files/QSLIMFinder_instances_h2v_qslimfinder.all_viral_interaction.FALSE_clust201712.RData
+processed_data_files/QSLIMFinder_instances_h2v_qslimfinder.Full_IntAct.TRUE_clust201801.RData.zip
+qslimfinder.Full_IntAct.FALSE/input.gz
+qslimfinder.Full_IntAct.FALSE/input.gz
+qslimfinder.Full_IntAct.TRUE/input.gz
+slimfinder.Vidal.TRUE/result/main_result.txt

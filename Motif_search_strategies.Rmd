@@ -90,15 +90,15 @@ randomised_BioPlex$data$pair_id = paste0(randomised_BioPlex$data$IDs_interactor_
 ```{r std_options}
 # set standard options
 myPPInetwork2SLIMFinder = function(dataset_name = "SLIMFinder", slimlen = 5, maxwild = 2,
-                                   interaction_main_set = Full_IntAct, interaction_query_set = all_viral_interaction,
+                                   interaction_main_set, interaction_query_set,
                                    center_domains = F, analysis_type = "qslimfinder"){
     PPInetwork2SLIMFinder(dataset_name = dataset_name,
                           interaction_main_set = interaction_main_set,
-                          interaction_query_set = all_viral_interaction,
+                          interaction_query_set = interaction_query_set,
                           analysis_type = analysis_type,
                           options = paste0("dismask=T consmask=F cloudfix=T probcut=0.3 minwild=0 maxwild=",maxwild," slimlen=",slimlen," alphahelix=F maxseq=800 savespace=0 iuchdir=T extras=2"),
-                          path2domain_enrich = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
-                          domain_enrich_object = "res_count",
+                          domain_res_file = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
+                          domain_results_obj = "res_count",
                           center_domains = center_domains,
                           fasta_path = "./data_files/all_human_viral_proteins.fasta",
                           main_set_only = F,
@@ -112,7 +112,7 @@ myPPInetwork2SLIMFinder = function(dataset_name = "SLIMFinder", slimlen = 5, max
                           N_seq = 200,
                           seed_list = NULL, # NULL for full run, seed_list for test run
                           memory_start = 350,
-                          memory_step = 1000)
+                          memory_step = 2000)
 }
 
 # Download ELM data
@@ -151,6 +151,8 @@ dataset_names[!grepl("BioPlex",datasets), query_dataset := "all_viral_interactio
 R_data_names = readLines("./RData_from_Motif_search_strategies")
 R_data_names = gsub("\\./processed_data_files/QSLIMFinder_instances_h2v_","", R_data_names)
 R_data_names = gsub("_clust201712\\.RData\\.zip","", R_data_names)
+R_data_names = gsub("_clust201801\\.RData\\.zip","", R_data_names)
+R_data_names = gsub("_clust201802\\.RData\\.zip","", R_data_names)
 dataset_names = dataset_names[!dataset_names %in% R_data_names]
 ```
 
@@ -159,7 +161,8 @@ dataset_names = dataset_names[!dataset_names %in% R_data_names]
 ```{r search}
 # set up parallel processing
 # create cluster
-cores = 8
+cores = 4
+if(n_cores > detectCores() - 1) n_cores = detectCores() - 1
 cl <- makeCluster(cores)
 # get library support needed to run the code
 clusterEvalQ(cl, {library(MItools); library(rtracklayer)})
@@ -171,11 +174,13 @@ R_data = parSapplyLB(cl = cl, X = 1:nrow(dataset_names), FUN = function(i){
                             interaction_main_set = eval(parse(text = dataset_names$datasets[i])),
                             interaction_query_set = eval(parse(text = dataset_names$query_dataset[i])),
                             center_domains = dataset_names$domain_centered[i], analysis_type = dataset_names$analysis_type[i])
+    
+    zip(zipfile = paste0(R_data_name, ".zip"), files = R_data_name)
+    unlink(R_data_name)
+    
     R_data_names = readLines("./RData_from_Motif_search_strategies")
     R_data_names = c(R_data_names, paste0(R_data_name, ".zip"))
     write(R_data_names, "./RData_from_Motif_search_strategies")
-    zip(zipfile = paste0(R_data_name, ".zip"), files = R_data_name)
-    unlink(R_data_name)
     
     paste0(R_data_name, ".zip")
 }, simplify = TRUE, USE.NAMES = TRUE) # parSapplyLB is parSapply that accounts for different time each dataset might take
