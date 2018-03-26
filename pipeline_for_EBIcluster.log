@@ -1,0 +1,609 @@
+
+
+processing file: Motif_search_strategies_IntAct_Vidal_viral2.Rmd
+  |                                                                         |                                                                 |   0%  |                                                                         |......                                                           |  10%
+  ordinary text without R code
+
+  |                                                                         |.............                                                    |  20%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+
+
+Execution halted
+
+------------------------------------------------------------
+Sender: LSF System <lsf@ebi6-239>
+Subject: Job 2985466: <Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R> in cluster <EBI> Exited
+
+Job <Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R> was submitted from host <ebi-cli-001> by user <vitalii> in cluster <EBI>.
+Job was executed on host(s) <3*ebi6-239>, in queue <research-rh7>, as user <vitalii> in cluster <EBI>.
+</homes/vitalii> was used as the home directory.
+</homes/vitalii> was used as the working directory.
+Started at Tue Feb 20 16:57:23 2018
+Results reported at Tue Feb 20 16:58:09 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
+------------------------------------------------------------
+
+TERM_OWNER: job killed by owner.
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :               30.84 sec.
+    Max Memory :             222 MB
+    Average Memory :         69.33 MB
+    Total Requested Memory : 25000.00 MB
+    Delta Memory :           24778.00 MB
+    (Delta: the difference between total requested memory and actual max usage.)
+    Max Swap :               913 MB
+
+    Max Processes :          3
+    Max Threads :            4
+
+The output (if any) is above this job summary.
+
+
+------------------------------------------------------------
+Sender: LSF System <lsf@ebi5-137>
+Subject: Job 2981323: <Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R> in cluster <EBI> Done
+
+Job <Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R> was submitted from host <ebi-cli-001> by user <vitalii> in cluster <EBI>.
+Job was executed on host(s) <3*ebi5-137>, in queue <research-rh7>, as user <vitalii> in cluster <EBI>.
+</homes/vitalii> was used as the home directory.
+</homes/vitalii> was used as the working directory.
+Started at Tue Feb 20 16:32:06 2018
+Results reported at Thu Feb 22 13:35:08 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :               6004.00 sec.
+    Max Memory :             11936 MB
+    Average Memory :         8661.00 MB
+    Total Requested Memory : 25000.00 MB
+    Delta Memory :           13064.00 MB
+    (Delta: the difference between total requested memory and actual max usage.)
+    Max Swap :               14758 MB
+
+    Max Processes :          18
+    Max Threads :            27
+
+The output (if any) is above this job summary.
+
+
+
+processing file: Motif_search_strategies_IntAct_Vidal_viral.Rmd
+  |                                                                         |                                                                 |   0%  |                                                                         |......                                                           |  10%
+  ordinary text without R code
+
+  |                                                                         |.............                                                    |  20%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                         |....................                                             |  30%
+  ordinary text without R code
+
+  |                                                                         |..........................                                       |  40%
+label: load_data
+  |                                                                         |................................                                 |  50%
+  ordinary text without R code
+
+  |                                                                         |.......................................                          |  60%
+label: std_options
+  |                                                                         |..............................................                   |  70%
+  ordinary text without R code
+
+  |                                                                         |....................................................             |  80%
+label: params
+  |                                                                         |..........................................................       |  90%
+  ordinary text without R code
+
+  |                                                                         |.................................................................| 100%
+label: search
+Job <3862984> is submitted to queue <research-rh7>.
+Job <3862994> is submitted to queue <research-rh7>.
+Job <3863004> is submitted to queue <research-rh7>.
+Job <3863008> is submitted to queue <research-rh7>.
+Job <3863015> is submitted to queue <research-rh7>.
+Job <3863032> is submitted to queue <research-rh7>.
+Job <3863043> is submitted to queue <research-rh7>.
+Job <3863052> is submitted to queue <research-rh7>.
+Job <3863067> is submitted to queue <research-rh7>.
+Job <3863079> is submitted to queue <research-rh7>.
+Job <3863090> is submitted to queue <research-rh7>.
+Job <3863104> is submitted to queue <research-rh7>.
+Job <3863118> is submitted to queue <research-rh7>.
+Job <3863127> is submitted to queue <research-rh7>.
+Job <3863143> is submitted to queue <research-rh7>.
+Job <3863154> is submitted to queue <research-rh7>.
+Job <3863162> is submitted to queue <research-rh7>.
+Job <3863173> is submitted to queue <research-rh7>.
+Job <3863178> is submitted to queue <research-rh7>.
+Job <3863184> is submitted to queue <research-rh7>.
+Job <3863189> is submitted to queue <research-rh7>.
+Job <3863195> is submitted to queue <research-rh7>.
+Job <3863200> is submitted to queue <research-rh7>.
+Job <3863205> is submitted to queue <research-rh7>.
+Job <3863212> is submitted to queue <research-rh7>.
+Job <3863217> is submitted to queue <research-rh7>.
+Job <3863222> is submitted to queue <research-rh7>.
+Job <3863229> is submitted to queue <research-rh7>.
+Job <3863233> is submitted to queue <research-rh7>.
+Job <3863239> is submitted to queue <research-rh7>.
+Job <3863244> is submitted to queue <research-rh7>.
+Job <3863248> is submitted to queue <research-rh7>.
+Job <3863252> is submitted to queue <research-rh7>.
+Job <3863258> is submitted to queue <research-rh7>.
+Job <3863263> is submitted to queue <research-rh7>.
+Job <3863269> is submitted to queue <research-rh7>.
+Job <3863274> is submitted to queue <research-rh7>.
+Job <3863279> is submitted to queue <research-rh7>.
+Job <3863285> is submitted to queue <research-rh7>.
+Job <3863291> is submitted to queue <research-rh7>.
+Job <3863296> is submitted to queue <research-rh7>.
+Job <3863302> is submitted to queue <research-rh7>.
+Job <3863307> is submitted to queue <research-rh7>.
+Job <3863315> is submitted to queue <research-rh7>.
+Job <3863320> is submitted to queue <research-rh7>.
+Job <3863326> is submitted to queue <research-rh7>.
+Job <3863332> is submitted to queue <research-rh7>.
+Job <3863340> is submitted to queue <research-rh7>.
+Job <3863345> is submitted to queue <research-rh7>.
+Job <3863350> is submitted to queue <research-rh7>.
+Job <3863355> is submitted to queue <research-rh7>.
+Job <3863361> is submitted to queue <research-rh7>.
+Job <3863366> is submitted to queue <research-rh7>.
+Job <3863372> is submitted to queue <research-rh7>.
+Job <3863377> is submitted to queue <research-rh7>.
+Job <3863383> is submitted to queue <research-rh7>.
+Job <3863389> is submitted to queue <research-rh7>.
+Job <3863394> is submitted to queue <research-rh7>.
+Job <3863400> is submitted to queue <research-rh7>.
+Job <3863406> is submitted to queue <research-rh7>.
+Job <3863411> is submitted to queue <research-rh7>.
+Job <3863416> is submitted to queue <research-rh7>.
+Job <3863422> is submitted to queue <research-rh7>.
+Job <3863428> is submitted to queue <research-rh7>.
+Job <3863433> is submitted to queue <research-rh7>.
+Job <3863439> is submitted to queue <research-rh7>.
+Job <3863445> is submitted to queue <research-rh7>.
+Job <3863450> is submitted to queue <research-rh7>.
+Job <3863456> is submitted to queue <research-rh7>.
+Job <3863461> is submitted to queue <research-rh7>.
+Job <3863467> is submitted to queue <research-rh7>.
+Job <3863473> is submitted to queue <research-rh7>.
+Job <3863478> is submitted to queue <research-rh7>.
+Job <3863484> is submitted to queue <research-rh7>.
+Job <3863489> is submitted to queue <research-rh7>.
+Job <3863494> is submitted to queue <research-rh7>.
+Job <3863500> is submitted to queue <research-rh7>.
+Job <3863505> is submitted to queue <research-rh7>.
+Job <3863510> is submitted to queue <research-rh7>.
+Job <3863518> is submitted to queue <research-rh7>.
+Job <3863522> is submitted to queue <research-rh7>.
+Job <3863527> is submitted to queue <research-rh7>.
+Job <3863535> is submitted to queue <research-rh7>.
+Job <3863544> is submitted to queue <research-rh7>.
+Job <3863553> is submitted to queue <research-rh7>.
+Job <3863559> is submitted to queue <research-rh7>.
+Job <3863565> is submitted to queue <research-rh7>.
+Job <3863570> is submitted to queue <research-rh7>.
+Job <3863576> is submitted to queue <research-rh7>.
+Job <3863581> is submitted to queue <research-rh7>.
+Job <3863586> is submitted to queue <research-rh7>.
+Job <3863592> is submitted to queue <research-rh7>.
+Job <3863598> is submitted to queue <research-rh7>.
+Job <3863603> is submitted to queue <research-rh7>.
+Job <3863609> is submitted to queue <research-rh7>.
+Job <3863615> is submitted to queue <research-rh7>.
+Job <3863621> is submitted to queue <research-rh7>.
+Job <3863627> is submitted to queue <research-rh7>.
+Job <3863633> is submitted to queue <research-rh7>.
+Job <3863638> is submitted to queue <research-rh7>.
+Job <3863643> is submitted to queue <research-rh7>.
+Job <3863650> is submitted to queue <research-rh7>.
+Job <3863657> is submitted to queue <research-rh7>.
+Job <3863663> is submitted to queue <research-rh7>.
+Job <3863668> is submitted to queue <research-rh7>.
+Job <3863673> is submitted to queue <research-rh7>.
+Job <3863678> is submitted to queue <research-rh7>.
+Job <3863684> is submitted to queue <research-rh7>.
+Job <3863689> is submitted to queue <research-rh7>.
+Job <3863694> is submitted to queue <research-rh7>.
+Job <3863700> is submitted to queue <research-rh7>.
+Job <3863705> is submitted to queue <research-rh7>.
+Job <3863711> is submitted to queue <research-rh7>.
+Job <3863716> is submitted to queue <research-rh7>.
+Job <3863721> is submitted to queue <research-rh7>.
+Job <3863726> is submitted to queue <research-rh7>.
+Job <3863731> is submitted to queue <research-rh7>.
+Job <3863737> is submitted to queue <research-rh7>.
+Job <3863742> is submitted to queue <research-rh7>.
+Job <3863747> is submitted to queue <research-rh7>.
+Job <3863753> is submitted to queue <research-rh7>.
+Job <3863759> is submitted to queue <research-rh7>.
+Job <3863767> is submitted to queue <research-rh7>.
+Job <3863776> is submitted to queue <research-rh7>.
+Job <3863780> is submitted to queue <research-rh7>.
+Job <3863786> is submitted to queue <research-rh7>.
+Job <3863792> is submitted to queue <research-rh7>.
+Job <3863799> is submitted to queue <research-rh7>.
+Job <3863804> is submitted to queue <research-rh7>.
+Job <3863807> is submitted to queue <research-rh7>.
+Job <3863809> is submitted to queue <research-rh7>.
+Job <3863813> is submitted to queue <research-rh7>.
+Job <3863818> is submitted to queue <research-rh7>.
+Job <3863819> is submitted to queue <research-rh7>.
+Job <3863824> is submitted to queue <research-rh7>.
+Job <3863830> is submitted to queue <research-rh7>.
+Job <3863835> is submitted to queue <research-rh7>.
+Job <3863842> is submitted to queue <research-rh7>.
+Job <3863848> is submitted to queue <research-rh7>.
+Job <3863853> is submitted to queue <research-rh7>.
+Job <3863859> is submitted to queue <research-rh7>.
+Job <3863865> is submitted to queue <research-rh7>.
+Job <3863871> is submitted to queue <research-rh7>.
+Job <3863877> is submitted to queue <research-rh7>.
+Job <3863882> is submitted to queue <research-rh7>.
+Job <3863888> is submitted to queue <research-rh7>.
+Job <3863894> is submitted to queue <research-rh7>.
+Job <3863899> is submitted to queue <research-rh7>.
+Job <3863905> is submitted to queue <research-rh7>.
+Job <3863911> is submitted to queue <research-rh7>.
+Job <3863917> is submitted to queue <research-rh7>.
+Job <3863922> is submitted to queue <research-rh7>.
+Job <3863928> is submitted to queue <research-rh7>.
+Job <3863933> is submitted to queue <research-rh7>.
+Job <3863939> is submitted to queue <research-rh7>.
+Job <3863945> is submitted to queue <research-rh7>.
+Job <3863951> is submitted to queue <research-rh7>.
+Job <3863956> is submitted to queue <research-rh7>.
+Job <3863963> is submitted to queue <research-rh7>.
+Job <3863969> is submitted to queue <research-rh7>.
+Job <3863974> is submitted to queue <research-rh7>.
+Job <3863979> is submitted to queue <research-rh7>.
+Job <3863987> is submitted to queue <research-rh7>.
+Job <3863993> is submitted to queue <research-rh7>.
+Job <3863998> is submitted to queue <research-rh7>.
+Job <3864004> is submitted to queue <research-rh7>.
+Job <3864009> is submitted to queue <research-rh7>.
+Job <3864014> is submitted to queue <research-rh7>.
+Job <3864020> is submitted to queue <research-rh7>.
+Job <3864024> is submitted to queue <research-rh7>.
+Job <3864031> is submitted to queue <research-rh7>.
+Job <3864037> is submitted to queue <research-rh7>.
+Job <3864042> is submitted to queue <research-rh7>.
+Job <3864047> is submitted to queue <research-rh7>.
+Job <3864053> is submitted to queue <research-rh7>.
+Job <3864058> is submitted to queue <research-rh7>.
+Job <3864065> is submitted to queue <research-rh7>.
+Job <3864072> is submitted to queue <research-rh7>.
+Job <3864078> is submitted to queue <research-rh7>.
+Job <3864086> is submitted to queue <research-rh7>.
+Job <3864091> is submitted to queue <research-rh7>.
+Job <3864097> is submitted to queue <research-rh7>.
+Job <3864102> is submitted to queue <research-rh7>.
+Job <3864108> is submitted to queue <research-rh7>.
+Job <3864114> is submitted to queue <research-rh7>.
+Job <3864119> is submitted to queue <research-rh7>.
+Job <3864125> is submitted to queue <research-rh7>.
+Job <3864130> is submitted to queue <research-rh7>.
+Job <3864135> is submitted to queue <research-rh7>.
+Job <3864141> is submitted to queue <research-rh7>.
+Job <3864144> is submitted to queue <research-rh7>.
+Job <3864149> is submitted to queue <research-rh7>.
+Job <3864152> is submitted to queue <research-rh7>.
+Job <3864155> is submitted to queue <research-rh7>.
+Job <3864158> is submitted to queue <research-rh7>.
+Job <3864163> is submitted to queue <research-rh7>.
+Job <3864168> is submitted to queue <research-rh7>.
+Job <3864173> is submitted to queue <research-rh7>.
+Job <3864178> is submitted to queue <research-rh7>.
+Job <3864184> is submitted to queue <research-rh7>.
+Job <3864190> is submitted to queue <research-rh7>.
+Job <3864195> is submitted to queue <research-rh7>.
+Job <3864201> is submitted to queue <research-rh7>.
+Job <3864205> is submitted to queue <research-rh7>.
+Job <3864211> is submitted to queue <research-rh7>.
+Job <3864216> is submitted to queue <research-rh7>.
+Job <3864221> is submitted to queue <research-rh7>.
+Job <3864226> is submitted to queue <research-rh7>.
+Job <3864232> is submitted to queue <research-rh7>.
+Job <3864238> is submitted to queue <research-rh7>.
+Job <3864243> is submitted to queue <research-rh7>.
+Job <3864248> is submitted to queue <research-rh7>.
+Job <3864253> is submitted to queue <research-rh7>.
+Job <3864260> is submitted to queue <research-rh7>.
+Job <3864268> is submitted to queue <research-rh7>.
+Job <3864273> is submitted to queue <research-rh7>.
+Job <3864279> is submitted to queue <research-rh7>.
+Job <3864285> is submitted to queue <research-rh7>.
+Job <3864290> is submitted to queue <research-rh7>.
+Job <3864296> is submitted to queue <research-rh7>.
+Job <3864301> is submitted to queue <research-rh7>.
+Job <3864306> is submitted to queue <research-rh7>.
+Job <3864312> is submitted to queue <research-rh7>.
+Job <3864317> is submitted to queue <research-rh7>.
+Job <3864322> is submitted to queue <research-rh7>.
+Job <3864326> is submitted to queue <research-rh7>.
+Job <3864332> is submitted to queue <research-rh7>.
+Job <3864336> is submitted to queue <research-rh7>.
+Job <3864340> is submitted to queue <research-rh7>.
+Job <3864346> is submitted to queue <research-rh7>.
+Job <3864351> is submitted to queue <research-rh7>.
+Job <3864357> is submitted to queue <research-rh7>.
+Job <3864362> is submitted to queue <research-rh7>.
+Job <3864368> is submitted to queue <research-rh7>.
+Job <3864374> is submitted to queue <research-rh7>.
+Job <3864378> is submitted to queue <research-rh7>.
+Job <3864384> is submitted to queue <research-rh7>.
+Job <3864390> is submitted to queue <research-rh7>.
+Job <3864394> is submitted to queue <research-rh7>.
+Job <3864399> is submitted to queue <research-rh7>.
+Job <3864405> is submitted to queue <research-rh7>.
+Job <3864410> is submitted to queue <research-rh7>.
+Job <3864416> is submitted to queue <research-rh7>.
+Job <3864421> is submitted to queue <research-rh7>.
+Job <3864428> is submitted to queue <research-rh7>.
+Job <3864433> is submitted to queue <research-rh7>.
+Job <3864438> is submitted to queue <research-rh7>.
+Job <3864443> is submitted to queue <research-rh7>.
+Job <3864449> is submitted to queue <research-rh7>.
+Job <3864454> is submitted to queue <research-rh7>.
+Job <3864461> is submitted to queue <research-rh7>.
+Job <3864466> is submitted to queue <research-rh7>.
+Job <3864472> is submitted to queue <research-rh7>.
+Job <3864477> is submitted to queue <research-rh7>.
+Job <3864483> is submitted to queue <research-rh7>.
+Job <3864488> is submitted to queue <research-rh7>.
+Job <3864493> is submitted to queue <research-rh7>.
+Job <3864498> is submitted to queue <research-rh7>.
+Job <3864504> is submitted to queue <research-rh7>.
+Job <3864508> is submitted to queue <research-rh7>.
+Job <3864512> is submitted to queue <research-rh7>.
+Job <3864516> is submitted to queue <research-rh7>.
+Job <3864518> is submitted to queue <research-rh7>.
+Job <3864523> is submitted to queue <research-rh7>.
+Job <3864530> is submitted to queue <research-rh7>.
+Job <3864535> is submitted to queue <research-rh7>.
+Job <3864540> is submitted to queue <research-rh7>.
+Job <3864545> is submitted to queue <research-rh7>.
+Job <3864552> is submitted to queue <research-rh7>.
+Job <3864557> is submitted to queue <research-rh7>.
+Job <3864562> is submitted to queue <research-rh7>.
+Job <3864569> is submitted to queue <research-rh7>.
+Job <3864574> is submitted to queue <research-rh7>.
+Job <3864579> is submitted to queue <research-rh7>.
+Job <3864584> is submitted to queue <research-rh7>.
+Job <3864590> is submitted to queue <research-rh7>.
+Job <3864596> is submitted to queue <research-rh7>.
+Job <3864601> is submitted to queue <research-rh7>.
+Job <3864607> is submitted to queue <research-rh7>.
+Job <3864613> is submitted to queue <research-rh7>.
+Job <3864619> is submitted to queue <research-rh7>.
+Job <3864624> is submitted to queue <research-rh7>.
+Job <3864628> is submitted to queue <research-rh7>.
+Job <3864634> is submitted to queue <research-rh7>.
+Job <3864642> is submitted to queue <research-rh7>.
+Job <3864647> is submitted to queue <research-rh7>.
+Job <3864653> is submitted to queue <research-rh7>.
+Job <3864657> is submitted to queue <research-rh7>.
+Job <3864663> is submitted to queue <research-rh7>.
+Job <3864668> is submitted to queue <research-rh7>.
+Job <3864673> is submitted to queue <research-rh7>.
+Job <3864680> is submitted to queue <research-rh7>.
+Job <3864685> is submitted to queue <research-rh7>.
+Job <3864691> is submitted to queue <research-rh7>.
+Job <3864696> is submitted to queue <research-rh7>.
+Job <3864701> is submitted to queue <research-rh7>.
+Job <3864706> is submitted to queue <research-rh7>.
+Job <3864711> is submitted to queue <research-rh7>.
+Job <3864716> is submitted to queue <research-rh7>.
+Job <3864722> is submitted to queue <research-rh7>.
+Job <3864727> is submitted to queue <research-rh7>.
+Job <3864733> is submitted to queue <research-rh7>.
+Job <3864739> is submitted to queue <research-rh7>.
+Job <3864744> is submitted to queue <research-rh7>.
+Job <3864749> is submitted to queue <research-rh7>.
+Job <3864754> is submitted to queue <research-rh7>.
+Job <3864759> is submitted to queue <research-rh7>.
+Job <3864764> is submitted to queue <research-rh7>.
+Job <3864770> is submitted to queue <research-rh7>.
+Job <3864776> is submitted to queue <research-rh7>.
+Job <3864782> is submitted to queue <research-rh7>.
+Job <3864787> is submitted to queue <research-rh7>.
+Job <3864794> is submitted to queue <research-rh7>.
+Job <3864799> is submitted to queue <research-rh7>.
+Job <3864805> is submitted to queue <research-rh7>.
+Job <3864811> is submitted to queue <research-rh7>.
+Job <3864816> is submitted to queue <research-rh7>.
+Job <3864820> is submitted to queue <research-rh7>.
+Job <3864824> is submitted to queue <research-rh7>.
+Job <3864832> is submitted to queue <research-rh7>.
+Job <3864839> is submitted to queue <research-rh7>.
+Job <3864848> is submitted to queue <research-rh7>.
+Job <3864855> is submitted to queue <research-rh7>.
+Job <3864860> is submitted to queue <research-rh7>.
+Job <3864865> is submitted to queue <research-rh7>.
+Job <3864872> is submitted to queue <research-rh7>.
+Job <3864876> is submitted to queue <research-rh7>.
+Job <3864882> is submitted to queue <research-rh7>.
+Job <3864887> is submitted to queue <research-rh7>.
+Job <3864892> is submitted to queue <research-rh7>.
+Job <3864897> is submitted to queue <research-rh7>.
+Job <3864903> is submitted to queue <research-rh7>.
+Job <3864908> is submitted to queue <research-rh7>.
+Job <3864913> is submitted to queue <research-rh7>.
+Job <3864918> is submitted to queue <research-rh7>.
+Job <3864922> is submitted to queue <research-rh7>.
+Job <3864925> is submitted to queue <research-rh7>.
+Job <3864932> is submitted to queue <research-rh7>.
+Job <3864938> is submitted to queue <research-rh7>.
+Job <3864944> is submitted to queue <research-rh7>.
+Job <3864952> is submitted to queue <research-rh7>.
+Job <3864957> is submitted to queue <research-rh7>.
+Job <3864962> is submitted to queue <research-rh7>.
+Job <3864967> is submitted to queue <research-rh7>.
+Job <3864973> is submitted to queue <research-rh7>.
+Job <3864979> is submitted to queue <research-rh7>.
+Job <3864984> is submitted to queue <research-rh7>.
+Job <3864989> is submitted to queue <research-rh7>.
+Job <3864995> is submitted to queue <research-rh7>.
+Job <3865001> is submitted to queue <research-rh7>.
+Job <3865007> is submitted to queue <research-rh7>.
+Job <3865013> is submitted to queue <research-rh7>.
+Job <3865018> is submitted to queue <research-rh7>.
+Job <3865024> is submitted to queue <research-rh7>.
+Job <3865029> is submitted to queue <research-rh7>.
+Job <3865033> is submitted to queue <research-rh7>.
+Job <3865040> is submitted to queue <research-rh7>.
+Job <3865044> is submitted to queue <research-rh7>.
+Job <3865049> is submitted to queue <research-rh7>.
+Job <3865054> is submitted to queue <research-rh7>.
+Job <3865061> is submitted to queue <research-rh7>.
+Job <3865067> is submitted to queue <research-rh7>.
+Job <3865072> is submitted to queue <research-rh7>.
+Job <3865078> is submitted to queue <research-rh7>.
+Job <3865083> is submitted to queue <research-rh7>.
+Job <3865087> is submitted to queue <research-rh7>.
+Job <3865093> is submitted to queue <research-rh7>.
+Job <3865098> is submitted to queue <research-rh7>.
+Job <3865103> is submitted to queue <research-rh7>.
+Job <3865108> is submitted to queue <research-rh7>.
+Job <3865114> is submitted to queue <research-rh7>.
+Job <3865120> is submitted to queue <research-rh7>.
+Job <3865124> is submitted to queue <research-rh7>.
+Job <3865128> is submitted to queue <research-rh7>.
+Job <3865133> is submitted to queue <research-rh7>.
+Job <3865139> is submitted to queue <research-rh7>.
+Job <3865144> is submitted to queue <research-rh7>.
+Job <3865148> is submitted to queue <research-rh7>.
+Job <3865154> is submitted to queue <research-rh7>.
+Job <3865161> is submitted to queue <research-rh7>.
+Job <3865166> is submitted to queue <research-rh7>.
+Job <3865171> is submitted to queue <research-rh7>.
+Job <3865176> is submitted to queue <research-rh7>.
+Job <3865181> is submitted to queue <research-rh7>.
+Job <3865187> is submitted to queue <research-rh7>.
+Job <3865191> is submitted to queue <research-rh7>.
+Job <3865197> is submitted to queue <research-rh7>.
+Job <3865203> is submitted to queue <research-rh7>.
+Job <3865208> is submitted to queue <research-rh7>.
+Job <3865212> is submitted to queue <research-rh7>.
+Job <3865216> is submitted to queue <research-rh7>.
+Job <3865221> is submitted to queue <research-rh7>.
+Job <3865222> is submitted to queue <research-rh7>.
+Job <3865227> is submitted to queue <research-rh7>.
+Job <3865233> is submitted to queue <research-rh7>.
+Job <3865237> is submitted to queue <research-rh7>.
+Job <3865242> is submitted to queue <research-rh7>.
+Job <3865246> is submitted to queue <research-rh7>.
+Job <3865254> is submitted to queue <research-rh7>.
+Job <3865259> is submitted to queue <research-rh7>.
+Job <3865264> is submitted to queue <research-rh7>.
+Job <3865270> is submitted to queue <research-rh7>.
+Job <3865275> is submitted to queue <research-rh7>.
+Job <3865280> is submitted to queue <research-rh7>.
+Job <3865285> is submitted to queue <research-rh7>.
+Job <3865293> is submitted to queue <research-rh7>.
+Job <3865298> is submitted to queue <research-rh7>.
+Job <3865303> is submitted to queue <research-rh7>.
+Job <3865307> is submitted to queue <research-rh7>.
+Job <3865312> is submitted to queue <research-rh7>.
+Job <3865318> is submitted to queue <research-rh7>.
+Job <3865323> is submitted to queue <research-rh7>.
+Job <3865328> is submitted to queue <research-rh7>.
+Job <3865333> is submitted to queue <research-rh7>.
+Job <3865339> is submitted to queue <research-rh7>.
+Job <3865344> is submitted to queue <research-rh7>.
+Job <3865349> is submitted to queue <research-rh7>.
+Job <3865354> is submitted to queue <research-rh7>.
+Job <3865359> is submitted to queue <research-rh7>.
+Job <3865365> is submitted to queue <research-rh7>.
+Job <3865370> is submitted to queue <research-rh7>.
+Job <3865375> is submitted to queue <research-rh7>.
+Job <3865380> is submitted to queue <research-rh7>.
+Job <3865386> is submitted to queue <research-rh7>.
+Job <3865391> is submitted to queue <research-rh7>.
+Job <3865396> is submitted to queue <research-rh7>.
+Job <3865401> is submitted to queue <research-rh7>.
+Job <3865407> is submitted to queue <research-rh7>.
+Job <3865412> is submitted to queue <research-rh7>.
+Job <3865418> is submitted to queue <research-rh7>.
+Job <3865423> is submitted to queue <research-rh7>.
+Job <3865427> is submitted to queue <research-rh7>.
+Job <3865432> is submitted to queue <research-rh7>.
+Job <3865437> is submitted to queue <research-rh7>.
+Job <3865442> is submitted to queue <research-rh7>.
+Job <3865446> is submitted to queue <research-rh7>.
+Job <3865454> is submitted to queue <research-rh7>.
+Job <3865459> is submitted to queue <research-rh7>.
+Job <3865464> is submitted to queue <research-rh7>.
+Job <3865468> is submitted to queue <research-rh7>.
+Job <3865473> is submitted to queue <research-rh7>.
+Job <3865479> is submitted to queue <research-rh7>.
+Job <3865482> is submitted to queue <research-rh7>.
+Job <3865487> is submitted to queue <research-rh7>.
+Job <3865493> is submitted to queue <research-rh7>.
+Job <3865498> is submitted to queue <research-rh7>.
+Job <3865504> is submitted to queue <research-rh7>.
+Job <3865509> is submitted to queue <research-rh7>.
+  adding: processed_data_files/QSLIMFinder_instances_h2v_qslimfinder.all_viral_interaction2.FALSE_clust201802.RData (deflated 16%)
+
+output file: Motif_search_strategies_IntAct_Vidal_viral.knit.md
+
+/usr/bin/pandoc +RTS -K512m -RTS Motif_search_strategies_IntAct_Vidal_viral.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral.html --smart --email-obfuscation none --self-contained --standalone --section-divs --table-of-contents --toc-depth 3 --template /hps/nobackup/research/petsalaki/users/vitalii/R/lib64/R/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /tmp/Rtmp1vfAHb/rmarkdown-str1514b5b3871dd.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' 
+
+Output created: /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral.html
+
+------------------------------------------------------------
+Sender: LSF System <lsf@hx-noah-05-04>
+Subject: Job 3844532: <Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R> in cluster <EBI> Done
+
+Job <Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R> was submitted from host <ebi-cli-002> by user <vitalii> in cluster <EBI>.
+Job was executed on host(s) <3*hx-noah-05-04>, in queue <research-rh7>, as user <vitalii> in cluster <EBI>.
+</homes/vitalii> was used as the home directory.
+</homes/vitalii> was used as the working directory.
+Started at Thu Feb 22 16:43:33 2018
+Results reported at Thu Feb 22 20:06:04 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :               393.27 sec.
+    Max Memory :             7687 MB
+    Average Memory :         6663.94 MB
+    Total Requested Memory : 25000.00 MB
+    Delta Memory :           17313.00 MB
+    (Delta: the difference between total requested memory and actual max usage.)
+    Max Swap :               10208 MB
+
+    Max Processes :          8
+    Max Threads :            13
+
+The output (if any) is above this job summary.
+
