@@ -33,3 +33,7 @@ qslimfinder.Full_IntAct2.FALSE/input.gz
 qslimfinder.Full_IntAct.TRUE/input.gz
 qslimfinder.Full_IntAct.FALSE/input.gz
 qslimfinder.Full_IntAct3.FALSE/input.gz
+processed_data_files/QSLIMFinder_instances_h2v_Full_IntAct2_clust201802.RData
+processed_data_files/QSLIMFinder_instances_h2v_qslimfinder.Full_IntAct3.FALSE_clust201802.RData
+processed_data_files/QSLIMFinder_instances_h2v_qslimfinder.Vidal3.FALSE_clust201802.RData
+processed_data_files/.DS_Store

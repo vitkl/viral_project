@@ -60,13 +60,13 @@ library(rmarkdown)
 ### TEST for reproducibility
 
 ### Motif search using multiple strategies: IntAct Vidal only_viral
-rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral.Rmd", 
-                  output_format = "html_document", 
-                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral.html")
-
-#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral2.Rmd", 
+#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral.Rmd", 
 #                  output_format = "html_document", 
-#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral_set_len2.html")
+#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral.html")
+
+rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral2.Rmd", 
+                  output_format = "html_document", 
+                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral_set_len2.html")
 
 ### re-run the same pipeline as an Rmd file
 #rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/QSLIMFinder_instances_h2v.Rmd", 

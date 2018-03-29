@@ -52,18 +52,21 @@ Total: 1 \* 1 \* 2 \* 1 \* 1 = 2 conditions
 
 ```{r load_data}
 # load ppi data
-IntAct = loadIntActFTP(dir = "./data_files/IntActRelease_2017Nov13/")
+IntAct = loadIntActFTP(dir = "./data_files/IntActRelease_2017Nov13/",
+                                                release = "2017Nov13")
 # human-viral
-all_viral_interaction3 = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
+all_viral_interaction4 = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
                                                 clean = TRUE, protein_only = TRUE,
-                                                MITABdata = IntAct, directory = "./data_files/")
+                                                MITABdata = IntAct, directory = "./data_files/",
+                                                releaseORdate = "2017Nov13")
 
 # human-human
-Full_IntAct3 = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
+Full_IntAct4 = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
                               clean = TRUE, protein_only = TRUE,
-                              MITABdata = IntAct, directory = "./data_files/")
+                              MITABdata = IntAct, directory = "./data_files/",
+                                                releaseORdate = "2017Nov13")
 
-Vidal3 = subsetMITABbyPMIDs(MITABdata = Full_IntAct3,
+Vidal4 = subsetMITABbyPMIDs(MITABdata = Full_IntAct4,
                            PMIDs = c("25416956", "unassigned1304"))
 ```
 
@@ -108,7 +111,7 @@ if (!file.exists(elm_filename))
 
 ```{r params}
 analysis_type = c("qslimfinder")
-datasets = c("Full_IntAct3", "Vidal3", "all_viral_interaction3")
+datasets = c("Full_IntAct4", "Vidal4", "all_viral_interaction4")
 domain_centered = c(F) # c(F, T)
 #slimlen = c(5, 8, 10)
 #maxwild = c(2, 3)
@@ -127,7 +130,7 @@ for(a in analysis_type){
     }
 }
 dataset_names[grepl("BioPlex",datasets), query_dataset := "all_viral_interaction_BioPlex"]
-dataset_names[!grepl("BioPlex",datasets), query_dataset := "all_viral_interaction3"]
+dataset_names[!grepl("BioPlex",datasets), query_dataset := "all_viral_interaction4"]
 
 # remove already finished names
 R_data_names = readLines("./RData_from_Motif_search_strategies")
