@@ -149,6 +149,14 @@ mean(old_datasets %in% very_old_datasets)
 mean(old_datasets %in% new_datasets)
 mean(new_datasets %in% old_datasets)
 mean(new_datasets %in% very_old_datasets)
+
+## when datasets overlap, do they give the same results?
+intact3_common = unique(intact3[intact3$Dataset %in% intact_old$Dataset])
+intact_old_common = unique(intact_old[intact_old$Dataset %in% intact3$Dataset])
+setorder(intact3_common)
+setorder(intact_old_common)
+all.equal(intact3_common,intact_old_common)
+mean(intact3_common$Sig == intact_old_common$Sig)
 ### conclusion
 # 1. all datasets are constructed from the original interaction data
 # 2. QSLIMFinder datasets (seed + query) are the same, except ~30, but 20% contain at least one different sequence per (seed + query). Most of these are due to new run containing more interacting partners for 16.55814% for seeds (the default is to use download new release if available). 5.7% though contained interactions unique to old run. Why? no idea. Only 0.15% of human-human and 0.48% of human-viral interactions are unique to old PPI dataset
