@@ -36,6 +36,14 @@ library(rmarkdown)
 #                  output_format = "html_document", 
 #                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Degree_distribution_in_the_network_clust.html")
 
+### Motif search for known motifs in viral proteins using multiple strategies
+rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_4_known_motifs.Rmd", 
+                  output_format = "html_document", 
+                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_4_known_motifs_clust.html")
+
+# In progress: check which datasets were already processed by motif search pipeline 
+# cat /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/RData_from_Motif_search_4_known_motifs
+
 ### Motif search using multiple strategies
 #rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies.Rmd", 
 #                  output_format = "html_document", 
@@ -64,9 +72,9 @@ library(rmarkdown)
 #                  output_format = "html_document", 
 #                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral.html")
 
-rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral2.Rmd", 
-                  output_format = "html_document", 
-                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral_set_len2.html")
+#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral2.Rmd", 
+#                  output_format = "html_document", 
+#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral_set_len2.html")
 
 ### re-run the same pipeline as an Rmd file
 #rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/QSLIMFinder_instances_h2v.Rmd", 
