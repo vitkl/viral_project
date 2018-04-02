@@ -60,9 +60,10 @@ We can estimate which domains in a human protein are likely to mediate interacti
 
 As a predictor, we use 1 - p-value for observing each motif in N of random sequences (matching sequence composition) in the set of M sequences (where N <= M, multiple hypothesis testing-corrected Sig p-value returned by SLIMFinder pipeline). A predictor that incorporated domain and motif p-values in calculated the following way:  "domain_motif_pval" = (1 - Sig) * (1 - domain_pval).   
 
-Plots show 5 key numbers:  
-M motif instances discovered at QSLIMFinder Sig threshold (probcut=0.3) /  
-these instances match N known instances in ELM (located in X proteins) /  
+Plots show 6 key numbers:  
+Total motif instances discovered at QSLIMFinder Sig threshold (probcut=0.3) /  
+M instances that match known motifs /  
+which match N known instances in ELM (located in X proteins) /  
 total known in ELM & discoverable using our datasets (located in Y proteins)  
 
 ROC (TP rate vs FP rate) or precision-recall curves show how many known motifs were recognised compared to false positive hits. As threshold decreases (1-p-value) more motifs are discovered including some of the M motifs that match known motifs. If only a few of the discovered motifs match known then both ROC and precision-recall curves look very step-like.   

@@ -79,9 +79,10 @@ We can estimate which domains in a human protein are likely to mediate interacti
 
 As a predictor, we use 1 - p-value for observing each motif in N of random sequences (matching sequence composition) in the set of M sequences (where N <= M, multiple hypothesis testing-corrected Sig p-value returned by SLIMFinder pipeline). A predictor that incorporated domain and motif p-values in calculated the following way:  "domain_motif_pval" = (1 - Sig) * (1 - domain_pval).   
 
-Plots show 5 key numbers:  
-M motif instances discovered at QSLIMFinder Sig threshold (probcut=0.3) /  
-these instances match N known instances in ELM (located in X proteins) /  
+Plots show 6 key numbers:  
+Total motif instances discovered at QSLIMFinder Sig threshold (probcut=0.3) /  
+M instances that match known motifs /  
+which match N known instances in ELM (located in X proteins) /  
 total known in ELM & discoverable using our datasets (located in Y proteins)  
 
 ROC (TP rate vs FP rate) or precision-recall curves show how many known motifs were recognised compared to false positive hits. As threshold decreases (1-p-value) more motifs are discovered including some of the M motifs that match known motifs. If only a few of the discovered motifs match known then both ROC and precision-recall curves look very step-like.   
@@ -90,7 +91,7 @@ For this benchmarking we look at motifs discovered in the same proteins where EL
 
 ### Not filtering by domain, predictor - SLIMFinder Sig
 
-![](compr_benchmarking_strateg_IntAct_Vidal_files/figure-html/not_filt_Sig-1.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_files/figure-html/not_filt_Sig-2.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_files/figure-html/not_filt_Sig-3.png)<!-- -->
+![](compr_benchmarking_strateg_IntAct_Vidal_precision_recall_files/figure-html/not_filt_Sig-1.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_precision_recall_files/figure-html/not_filt_Sig-2.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_precision_recall_files/figure-html/not_filt_Sig-3.png)<!-- -->
 
 ```
 ## $qslimfinder.Full_IntAct3.FALSE
@@ -108,7 +109,7 @@ What is the minimal set size that returns motif with Sig < 0.05?
 
 ### Not filtering by domain, predictor - "domain_motif_pval" = Sig * domain_pval
 
-![](compr_benchmarking_strateg_IntAct_Vidal_files/figure-html/not_filt_domain_motif_pval-1.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_files/figure-html/not_filt_domain_motif_pval-2.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_files/figure-html/not_filt_domain_motif_pval-3.png)<!-- -->
+![](compr_benchmarking_strateg_IntAct_Vidal_precision_recall_files/figure-html/not_filt_domain_motif_pval-1.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_precision_recall_files/figure-html/not_filt_domain_motif_pval-2.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_precision_recall_files/figure-html/not_filt_domain_motif_pval-3.png)<!-- -->
 
 ```
 ## $qslimfinder.Full_IntAct3.FALSE
@@ -123,7 +124,7 @@ What is the minimal set size that returns motif with Sig < 0.05?
 
 ## Filtering by domain, predictor - SLIMFinder Sig
 
-![](compr_benchmarking_strateg_IntAct_Vidal_files/figure-html/filt_Sig-1.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_files/figure-html/filt_Sig-2.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_files/figure-html/filt_Sig-3.png)<!-- -->
+![](compr_benchmarking_strateg_IntAct_Vidal_precision_recall_files/figure-html/filt_Sig-1.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_precision_recall_files/figure-html/filt_Sig-2.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_precision_recall_files/figure-html/filt_Sig-3.png)<!-- -->
 
 ```
 ## $qslimfinder.Full_IntAct3.FALSE
@@ -140,7 +141,7 @@ What is the minimal set size that returns motif with Sig < 0.05?
 
 Looks like proteins with many domains tend to interact with known motifs. If a protein has many domains one of them is going to have 
 
-![](compr_benchmarking_strateg_IntAct_Vidal_files/figure-html/filt_domain_motif_pval-1.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_files/figure-html/filt_domain_motif_pval-2.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_files/figure-html/filt_domain_motif_pval-3.png)<!-- -->
+![](compr_benchmarking_strateg_IntAct_Vidal_precision_recall_files/figure-html/filt_domain_motif_pval-1.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_precision_recall_files/figure-html/filt_domain_motif_pval-2.png)<!-- -->![](compr_benchmarking_strateg_IntAct_Vidal_precision_recall_files/figure-html/filt_domain_motif_pval-3.png)<!-- -->
 
 ```
 ## $qslimfinder.Full_IntAct3.FALSE
@@ -155,7 +156,7 @@ Looks like proteins with many domains tend to interact with known motifs. If a p
 
 
 ```
-## [1] "2018-04-01"
+## [1] "2018-04-02"
 ```
 
 ```
@@ -166,7 +167,7 @@ Looks like proteins with many domains tend to interact with known motifs. If a p
 ##  language (EN)                        
 ##  collate  en_GB.UTF-8                 
 ##  tz       Europe/London               
-##  date     2018-04-01                  
+##  date     2018-04-02                  
 ## 
 ##  package              * version   date       source                  
 ##  AnnotationDbi          1.40.0    2017-10-31 Bioconductor            

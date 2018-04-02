@@ -184,9 +184,10 @@ motif_setup_month = c(&quot;201802&quot;,
 3. All interactions between viral and human proteins in IntAct.</p>
 <p>We can estimate which domains in a human protein are likely to mediate interactions with viral proteins. If there is a domain mediating interaction it is more likely that there will be a corresponding motif on the other side. We can use only interaction data mediated by such domains. Alternatively, we can upweight motif predictions if there is a potential recognition domain in human protein (predictor - domain_motif_pval).</p>
 <p>As a predictor, we use 1 - p-value for observing each motif in N of random sequences (matching sequence composition) in the set of M sequences (where N &lt;= M, multiple hypothesis testing-corrected Sig p-value returned by SLIMFinder pipeline). A predictor that incorporated domain and motif p-values in calculated the following way: “domain_motif_pval” = (1 - Sig) * (1 - domain_pval).</p>
-<p>Plots show 5 key numbers:<br />
-M motif instances discovered at QSLIMFinder Sig threshold (probcut=0.3) /<br />
-these instances match N known instances in ELM (located in X proteins) /<br />
+<p>Plots show 6 key numbers:<br />
+Total motif instances discovered at QSLIMFinder Sig threshold (probcut=0.3) /<br />
+M instances that match known motifs /<br />
+which match N known instances in ELM (located in X proteins) /<br />
 total known in ELM &amp; discoverable using our datasets (located in Y proteins)</p>
 <p>ROC (TP rate vs FP rate) or precision-recall curves show how many known motifs were recognised compared to false positive hits. As threshold decreases (1-p-value) more motifs are discovered including some of the M motifs that match known motifs. If only a few of the discovered motifs match known then both ROC and precision-recall curves look very step-like.</p>
 <p>For this benchmarking we look at motifs discovered in the same proteins where ELM has known motif annotations. The total number of motifs discovered in all query proteins is 10 times higher.</p>
@@ -240,7 +241,7 @@ total known in ELM &amp; discoverable using our datasets (located in Y proteins)
 ## 
 ## $qslimfinder.all_viral_interaction3.FALSE
 ## NULL</code></pre>
-<pre><code>## [1] &quot;2018-04-01&quot;</code></pre>
+<pre><code>## [1] &quot;2018-04-02&quot;</code></pre>
 <pre><code>##  setting  value                       
 ##  version  R version 3.4.3 (2017-11-30)
 ##  system   x86_64, darwin15.6.0        
@@ -248,7 +249,7 @@ total known in ELM &amp; discoverable using our datasets (located in Y proteins)
 ##  language (EN)                        
 ##  collate  en_GB.UTF-8                 
 ##  tz       Europe/London               
-##  date     2018-04-01                  
+##  date     2018-04-02                  
 ## 
 ##  package              * version   date       source                  
 ##  AnnotationDbi          1.40.0    2017-10-31 Bioconductor            
