@@ -90,8 +90,9 @@ randomised_BioPlex4$data$IDs_interactor_B = randomised_BioPlex4$data$IDs_interac
 randomised_BioPlex4$data$pair_id = paste0(randomised_BioPlex4$data$IDs_interactor_A, "|", randomised_BioPlex4$data$IDs_interactor_B)
 ```
 
+## find human proteins that bind viral proteins with known motifs
+
 ```{r protein_w_known_motifs}
-# find human proteins that bind viral proteins with known motifs
 # load viral proteins with known motifs from ELM
 dbfile = "./data_files/instances10239.gff"
 dburl = "http://elm.eu.org/instances.gff?q=all&taxon=irus&instance_logic="
@@ -134,16 +135,18 @@ myPPInetwork2SLIMFinder = function(dataset_name = "SLIMFinder", slimlen = 5, max
                           write_log = T,
                           N_seq = 200,
                           seed_list = human_proteins, # human proteins that bind viral proteins with known motifs 
+                          query_list = viral_net_w_known_motifs, # viral proteins with known motifs 
                           memory_start = 350,
                           memory_step = 2000,
-                          Njobs_limit = 200)
+                          Njobs_limit = 100)
 }
 
 # Download ELM data
-elm_filename = paste0("/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/", "./data_files/", Sys.Date(), 
+elm_filename = paste0("./data_files/", data.table::year(Sys.Date()), 
                       "elms_index.tsv")
-if (!file.exists(elm_filename)) 
-    download.file("http://elm.eu.org/elms/elms_index.tsv", elm_filename)
+if (!file.exists(elm_filename)) {
+    download.file("http://elm.eu.org/elms/elms_index.tsv", elm_filename)   
+}
 ```
 
 ## Define parameters
@@ -212,6 +215,26 @@ stopCluster(cl)
 
 # paths to RData files containing all objects created by all runs of this pipeline
 print(R_data)
+```
+
+## Compare discovered motifs to known motifs
+
+```{r comparimotif, eval=FALSE}
+resultdirs = paste0("./", dataset_names$dataset_names, "/results/")
+software_path = "../software/cluster/"
+CompariMotif3_dburl = "http://elm.eu.org/elms/elms_index.tsv"
+CompariMotif3_dbpath = "./data_files/"
+LSF_project_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/"
+# compare discovered motifs to ELM
+for (resultdir in resultdirs) {
+    runCompariMotif3(input_file = paste0(resultdir, "motifs.txt"),
+                 slimpath = paste0(software_path, "slimsuite/tools/"),
+                 dbpath = CompariMotif3_dbpath,
+                 dburl = CompariMotif3_dburl,
+                 run = T, with = "db",
+                 out_file = paste0(resultdir, "comparimotif.tdt"),
+                 LSF_project_path = LSF_project_path)
+}
 ```
 
 ```{r, exit}

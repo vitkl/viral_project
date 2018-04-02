@@ -2,7 +2,7 @@
 
 ## cluster command line commands to run code in this RScript (pipeline_for_EBIcluster.R)
 # bsub -n 1 -q research-rh7 -M 8000 -R "rusage[mem=8000]" -o /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.log Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
-# bsub -n 3 -q research-rh7 -M 25000 -R "rusage[mem=25000]" -o /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.log Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
+# bsub -n 4 -q research-rh7 -M 25000 -R "rusage[mem=25000]" -o /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.log Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
 # bsub -n 8 -q research-rh7 -M 16000 -R "rusage[mem=16000]" Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
 ## for domain enrichment:
 # bsub -n 32 -q research-rh7 -M 64000 -R "rusage[mem=64000]" Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
