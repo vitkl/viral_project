@@ -33,8 +33,8 @@ neg_set = c("all_instances") # "all_instances", "all_proteins", "random"
 predictor_col = "domain_motif_pval" # "Sig" or "p.value" or "domain_motif_pval"
 normalise = F # if normalised Sig threshold of 0.3 becomes 1 (but this equalises Sig == 0.3 to true 1 - that is when motif was not found)
 #ROC:
-measure1 = "prec" # "tpr" or "prec"
-measure2 = "rec" # "fpr" or "rec"
+measure1 = "tpr" # "tpr" or "prec"
+measure2 = "fpr" # "fpr" or "rec"
 
 datasets = c("qslimfinder.Full_IntAct3.FALSE",
              "qslimfinder.Vidal3.FALSE",
