@@ -46,7 +46,7 @@ suppressPackageStartupMessages({
 
 4. QSLIMFinder (1)  
 
-Total: 1 \* 1 \* 2 \* 1 \* 1 = 2 conditions  
+Total: 1 \* 1 \* 2 \* 1 \* 1 = 3 conditions  
 
 ## load PPI data
 
@@ -55,18 +55,18 @@ Total: 1 \* 1 \* 2 \* 1 \* 1 = 2 conditions
 IntAct = loadIntActFTP(dir = "./data_files/IntActRelease_2017Nov13/",
                                                 release = "2017Nov13")
 # human-viral
-all_viral_interaction4 = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
+all_viral_interaction3 = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
                                                 clean = TRUE, protein_only = TRUE,
                                                 MITABdata = IntAct, directory = "./data_files/",
                                                 releaseORdate = "2017Nov13")
 
 # human-human
-Full_IntAct4 = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
+Full_IntAct3 = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
                               clean = TRUE, protein_only = TRUE,
                               MITABdata = IntAct, directory = "./data_files/",
                                                 releaseORdate = "2017Nov13")
 
-Vidal4 = subsetMITABbyPMIDs(MITABdata = Full_IntAct4,
+Vidal3 = subsetMITABbyPMIDs(MITABdata = Full_IntAct3,
                            PMIDs = c("25416956", "unassigned1304"))
 ```
 
@@ -101,17 +101,18 @@ myPPInetwork2SLIMFinder = function(dataset_name = "SLIMFinder", slimlen = 5, max
 }
 
 # Download ELM data
-elm_filename = paste0("/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/", "./data_files/", Sys.Date(), 
+elm_filename = paste0("./data_files/", data.table::year(Sys.Date()), 
                       "elms_index.tsv")
-if (!file.exists(elm_filename)) 
-    download.file("http://elm.eu.org/elms/elms_index.tsv", elm_filename)
+if (!file.exists(elm_filename)) {
+    download.file("http://elm.eu.org/elms/elms_index.tsv", elm_filename)   
+}
 ```
 
 ## Define parameters
 
 ```{r params}
 analysis_type = c("qslimfinder")
-datasets = c("Full_IntAct4", "Vidal4", "all_viral_interaction4")
+datasets = c("Full_IntAct3", "Vidal3", "all_viral_interaction3")
 domain_centered = c(F) # c(F, T)
 #slimlen = c(5, 8, 10)
 #maxwild = c(2, 3)
@@ -130,7 +131,7 @@ for(a in analysis_type){
     }
 }
 dataset_names[grepl("BioPlex",datasets), query_dataset := "all_viral_interaction_BioPlex"]
-dataset_names[!grepl("BioPlex",datasets), query_dataset := "all_viral_interaction4"]
+dataset_names[!grepl("BioPlex",datasets), query_dataset := "all_viral_interaction3"]
 
 # remove already finished names
 R_data_names = readLines("./RData_from_Motif_search_strategies")
@@ -138,41 +139,77 @@ R_data_names = gsub("\\./processed_data_files/QSLIMFinder_instances_h2v_","", R_
 R_data_names = gsub("_clust201712\\.RData\\.zip","", R_data_names)
 R_data_names = gsub("_clust201801\\.RData\\.zip","", R_data_names)
 R_data_names = gsub("_clust201802\\.RData\\.zip","", R_data_names)
-dataset_names = dataset_names[!dataset_names %in% R_data_names]
+dataset_names_not_done = dataset_names[!dataset_names %in% R_data_names]
 ```
 
 ## Perform motif search
 
 ```{r search}
-# set up parallel processing
-# create cluster
-cores = 3
-cl <- makeCluster(cores)
-# get library support needed to run the code
-clusterEvalQ(cl, {library(MItools); library(rtracklayer)})
-# put objects in place that might be needed for the code
-clusterExport(cl, ls(), envir=environment())
-
-R_data = parSapplyLB(cl = cl, X = 1:nrow(dataset_names), FUN = function(i){
-    R_data_name = myPPInetwork2SLIMFinder(dataset_name = dataset_names$dataset_names[i], 
-                            slimlen = dataset_names$slimlen[i], maxwild = dataset_names$maxwild[i],
-                            interaction_main_set = eval(parse(text = dataset_names$datasets[i])),
-                            interaction_query_set = eval(parse(text = dataset_names$query_dataset[i])),
-                            center_domains = dataset_names$domain_centered[i], 
-                            analysis_type = dataset_names$analysis_type[i])
+if(nrow(dataset_names_not_done) >= 1){
+    # set up parallel processing
+    # create cluster
+    cores = 3
+    cl <- makeCluster(cores)
+    # get library support needed to run the code
+    clusterEvalQ(cl, {library(MItools); library(rtracklayer)})
+    # put objects in place that might be needed for the code
+    clusterExport(cl, ls(), envir=environment())
     
-    zip(zipfile = paste0(R_data_name, ".zip"), files = R_data_name)
-    unlink(R_data_name)
+    R_data = parSapplyLB(cl = cl, X = 1:nrow(dataset_names_not_done), FUN = function(i){
+        R_data_name = myPPInetwork2SLIMFinder(dataset_name = dataset_names_not_done$dataset_names_not_done[i], 
+                                              slimlen = dataset_names_not_done$slimlen[i],
+                                              maxwild = dataset_names_not_done$maxwild[i],
+                                              interaction_main_set = eval(parse(text = dataset_names_not_done$datasets[i])),
+                                              interaction_query_set = eval(parse(text = dataset_names_not_done$query_dataset[i])),
+                                              center_domains = dataset_names_not_done$domain_centered[i], 
+                                              analysis_type = dataset_names_not_done$analysis_type[i])
+        
+        zip(zipfile = paste0(R_data_name, ".zip"), files = R_data_name)
+        unlink(R_data_name)
+        
+        R_data_names = readLines("./RData_from_Motif_search_strategies")
+        R_data_names = c(R_data_names, paste0(R_data_name, ".zip"))
+        write(R_data_names, "./RData_from_Motif_search_strategies")
+        
+        paste0(R_data_name, ".zip")
+    }, simplify = TRUE, USE.NAMES = TRUE) # parSapplyLB is parSapply that accounts for different time each dataset might take
     
-    R_data_names = readLines("./RData_from_Motif_search_strategies")
-    R_data_names = c(R_data_names, paste0(R_data_name, ".zip"))
-    write(R_data_names, "./RData_from_Motif_search_strategies")
-    
-    paste0(R_data_name, ".zip")
-}, simplify = TRUE, USE.NAMES = TRUE) # parSapplyLB is parSapply that accounts for different time each dataset might take
+    stopCluster(cl)
+    # paths to RData files containing all objects created by all runs of this pipeline
+    print(R_data)
+}
+```
 
-stopCluster(cl)
+## Compare discovered motifs to known motifs
 
-# paths to RData files containing all objects created by all runs of this pipeline
-print(R_data)
+```{r comparimotif}
+resultdirs = paste0("./", dataset_names$dataset_names, "/results/")
+software_path = "../software/cluster/"
+CompariMotif3_dburl = "http://elm.eu.org/elms/elms_index.tsv"
+CompariMotif3_dbpath = "./data_files/"
+LSF_project_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/"
+# compare discovered motifs to ELM
+for (resultdir in resultdirs) {
+    runCompariMotif3(input_file = paste0(resultdir, "motifs.txt"),
+                 slimpath = paste0(software_path, "slimsuite/tools/"),
+                 dbpath = CompariMotif3_dbpath,
+                 dburl = CompariMotif3_dburl,
+                 run = T, with = "db",
+                 out_file = paste0(resultdir, "comparimotif.tdt"),
+                 LSF_project_path = LSF_project_path)
+}
+```
+
+```{r, exit}
+Sys.Date. = Sys.Date()
+Sys.Date.
+session_info. = devtools::session_info()
+session_info.
+filename = paste0("./processed_data_files/Motif_search_strategies_IntAct_Vidal_viral2",
+                  format(Sys.Date(), "%Y%m"),"_",
+                  paste0(analysis_type,collapse = "_"),
+                  paste0(datasets,collapse = "_"),
+                  paste0(domain_centered,collapse = "_"),
+                  ".RData")
+save(list = ls(), file=filename)
 ```

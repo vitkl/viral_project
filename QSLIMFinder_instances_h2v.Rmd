@@ -92,8 +92,7 @@ forSLIMFinder = listInteractionSubsetFASTA(interaction_set1 = all_human_interact
                                            interaction_set2 = all_viral_interaction, 
                                            seed_id_vect = proteins_w_signif_domains,
                                            fasta = all.fasta,
-                                           single_interact_from_set2 = T, set1_only = F,
-                                           clustermq = T)
+                                           single_interact_from_set2 = T, set1_only = F)
 
 forSLIMFinder_Ready = filterInteractionSubsetFASTA_list(forSLIMFinder,  length_set1_min = 2, length_set2_min = 1)
 # how many viral-human pairs in which viral proteins interact with human protein (with relevant domain) but are not associated with the domain
