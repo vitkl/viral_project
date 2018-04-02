@@ -32,6 +32,7 @@ motif_types = c("MOD", "LIG", "DOC") # "MOD", "LIG", "DOC" / "DEG", "CLV", "TRG"
 neg_set = c("all_instances") # "all_instances", "all_proteins", "random"
 query_predictor_col = "Sig" # "Sig" or "p.value" or "domain_motif_pval"
 filter_by_domain_data = "p.value < 0.5" # "p.value < 0.05" or "fdr_pval < 0.05 & domain_count_per_IDs_interactor_viral > 1" or NULL
+normalise = F
 #ROC:
 measure1 = "tpr" # "tpr" or "prec"
 measure2 = "fpr" # "fpr" or "rec"
@@ -74,15 +75,15 @@ res_list_viral = mBenchmarkMotifs(datasets = datasets,
             query_res_query_only = T, motif_types = motif_types,
             all_res_excl_query = T,
             seed = 21, N = N_negative_sets, replace = T, within1sequence = T,
-            query_predictor_col = "Sig", all_predictor_col = "Sig", normalise = T,
+            query_predictor_col = "Sig", all_predictor_col = "Sig", normalise = normalise,
             minoverlap = 2, maxgap = 0, motif_setup_month = motif_setup_month,
             count_ranges_by = list(by = "IDs_domain_human", name = "motif_occ_per_domain",
                                    normalise_by = "domain_count", normalised_name = "normalised_motif_occ_per_domain"),
             filter_by_domain_data = filter_by_domain_data)
 
 par(mar = c(6,7,4,4))
-# mBenchmarkMotifsROC(res_list_viral, data_type = "query", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1), measure1 = measure1, measure2 = measure2)
-mBenchmarkMotifsROC(res_list_viral, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1), measure1 = measure1, measure2 = measure2)
+mBenchmarkMotifsROC(res_list_viral, data_type = "query", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1), measure1 = measure1, measure2 = measure2)
+#mBenchmarkMotifsROC(res_list_viral, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1), measure1 = measure1, measure2 = measure2)
 ```
 
 What is the minimal set size that returns motif with Sig < 0.05?  
@@ -107,15 +108,15 @@ res_list_viral_w_domains = mBenchmarkMotifs(datasets = datasets,
             query_res_query_only = T, motif_types = motif_types,
             all_res_excl_query = T,
             seed = 21, N = N_negative_sets, replace = T, within1sequence = T,
-            query_predictor_col = query_predictor_col, all_predictor_col = "Sig", normalise = T,
+            query_predictor_col = query_predictor_col, all_predictor_col = "Sig", normalise = normalise,
             minoverlap = 2, maxgap = 0, motif_setup_month = motif_setup_month,
             count_ranges_by = list(by = "IDs_domain_human", name = "motif_occ_per_domain",
                                    normalise_by = "domain_count", normalised_name = "normalised_motif_occ_per_domain"),
             filter_by_domain_data = filter_by_domain_data)
 
 par(mar = c(6,7,4,4))
-# mBenchmarkMotifsROC(res_list_viral_w_domains, data_type = "query", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1), measure1 = measure1, measure2 = measure2)
-mBenchmarkMotifsROC(res_list_viral_w_domains, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1), measure1 = measure1, measure2 = measure2)
+mBenchmarkMotifsROC(res_list_viral_w_domains, data_type = "query", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1), measure1 = measure1, measure2 = measure2)
+#mBenchmarkMotifsROC(res_list_viral_w_domains, data_type = "both", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.45 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1), measure1 = measure1, measure2 = measure2)
 #queryOCCByMCOL(res_list_viral_w_domains$full_Intact, keytype = "IDs_domain_human", key = "IPR032440")
 ```
 
