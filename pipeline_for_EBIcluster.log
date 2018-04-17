@@ -607,3 +607,1087 @@ Resource usage summary:
 
 The output (if any) is above this job summary.
 
+Fatal error: cannot open file '/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.Rdfsv': No such file or directory
+
+------------------------------------------------------------
+Sender: LSF System <lsf@ebi6-028>
+Subject: Job 4103224: <Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.Rdfsv> in cluster <EBI> Exited
+
+Job <Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.Rdfsv> was submitted from host <ebi-cli-003> by user <vitalii> in cluster <EBI>.
+Job was executed on host(s) <4*ebi6-028>, in queue <research-rh7>, as user <vitalii> in cluster <EBI>.
+</homes/vitalii> was used as the home directory.
+</hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project> was used as the working directory.
+Started at Tue Apr  3 00:14:14 2018
+Results reported at Tue Apr  3 00:14:15 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.Rdfsv
+------------------------------------------------------------
+
+Exited with exit code 2.
+
+Resource usage summary:
+
+    CPU time :               0.03 sec.
+    Total Requested Memory : 32000.00 MB
+    Delta Memory :           -
+    (Delta: the difference between total requested memory and actual max usage.)
+
+The output (if any) is above this job summary.
+
+
+
+processing file: Motif_search_4_known_motifs.Rmd
+  |                                                                         |                                                                 |   0%  |                                                                         |....                                                             |   6%
+  ordinary text without R code
+
+  |                                                                         |........                                                         |  12%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                         |............                                                     |  19%
+  ordinary text without R code
+
+  |                                                                         |................                                                 |  25%
+label: load_data
+  |                                                                         |....................                                             |  31%
+  ordinary text without R code
+
+  |                                                                         |........................                                         |  38%
+label: protein_w_known_motifs
+  |                                                                         |............................                                     |  44%
+  ordinary text without R code
+
+  |                                                                         |................................                                 |  50%
+label: std_options
+  |                                                                         |.....................................                            |  56%
+  ordinary text without R code
+
+  |                                                                         |.........................................                        |  62%
+label: params
+  |                                                                         |.............................................                    |  69%
+  ordinary text without R code
+
+  |                                                                         |.................................................                |  75%
+label: search
+Job <4103235> is submitted to queue <research-rh7>.
+Job <4103236> is submitted to queue <research-rh7>.
+Job <4103237> is submitted to queue <research-rh7>.
+Job <4103238> is submitted to queue <research-rh7>.
+Job <4103239> is submitted to queue <research-rh7>.
+Job <4103240> is submitted to queue <research-rh7>.
+Job <4103241> is submitted to queue <research-rh7>.
+Job <4103242> is submitted to queue <research-rh7>.
+Job <4103243> is submitted to queue <research-rh7>.
+Job <4103244> is submitted to queue <research-rh7>.
+Job <4103245> is submitted to queue <research-rh7>.
+Job <4103246> is submitted to queue <research-rh7>.
+Job <4103247> is submitted to queue <research-rh7>.
+Job <4103248> is submitted to queue <research-rh7>.
+Job <4103249> is submitted to queue <research-rh7>.
+Job <4103250> is submitted to queue <research-rh7>.
+Job <4103251> is submitted to queue <research-rh7>.
+Job <4103252> is submitted to queue <research-rh7>.
+Job <4103253> is submitted to queue <research-rh7>.
+Job <4103254> is submitted to queue <research-rh7>.
+Job <4103255> is submitted to queue <research-rh7>.
+Job <4103256> is submitted to queue <research-rh7>.
+Job <4103257> is submitted to queue <research-rh7>.
+Job <4103258> is submitted to queue <research-rh7>.
+Job <4103259> is submitted to queue <research-rh7>.
+Job <4103260> is submitted to queue <research-rh7>.
+Job <4103261> is submitted to queue <research-rh7>.
+Job <4103262> is submitted to queue <research-rh7>.
+Job <4103263> is submitted to queue <research-rh7>.
+Job <4103264> is submitted to queue <research-rh7>.
+Job <4103265> is submitted to queue <research-rh7>.
+Job <4103266> is submitted to queue <research-rh7>.
+Job <4103267> is submitted to queue <research-rh7>.
+Job <4103268> is submitted to queue <research-rh7>.
+Job <4103269> is submitted to queue <research-rh7>.
+Job <4103270> is submitted to queue <research-rh7>.
+Job <4103271> is submitted to queue <research-rh7>.
+Job <4103272> is submitted to queue <research-rh7>.
+Job <4103273> is submitted to queue <research-rh7>.
+Job <4103274> is submitted to queue <research-rh7>.
+Job <4103275> is submitted to queue <research-rh7>.
+Job <4103276> is submitted to queue <research-rh7>.
+Job <4103277> is submitted to queue <research-rh7>.
+Job <4103278> is submitted to queue <research-rh7>.
+Job <4103279> is submitted to queue <research-rh7>.
+Job <4103280> is submitted to queue <research-rh7>.
+Job <4103281> is submitted to queue <research-rh7>.
+Job <4103282> is submitted to queue <research-rh7>.
+Job <4103283> is submitted to queue <research-rh7>.
+Job <4103284> is submitted to queue <research-rh7>.
+Job <4103285> is submitted to queue <research-rh7>.
+Job <4103286> is submitted to queue <research-rh7>.
+Job <4103287> is submitted to queue <research-rh7>.
+Job <4103288> is submitted to queue <research-rh7>.
+Job <4103289> is submitted to queue <research-rh7>.
+Job <4103290> is submitted to queue <research-rh7>.
+Job <4103291> is submitted to queue <research-rh7>.
+Job <4103292> is submitted to queue <research-rh7>.
+Job <4103293> is submitted to queue <research-rh7>.
+Job <4103294> is submitted to queue <research-rh7>.
+Job <4103295> is submitted to queue <research-rh7>.
+Job <4103296> is submitted to queue <research-rh7>.
+Job <4103297> is submitted to queue <research-rh7>.
+Job <4103298> is submitted to queue <research-rh7>.
+Job <4103300> is submitted to queue <research-rh7>.
+Job <4103301> is submitted to queue <research-rh7>.
+Job <4103302> is submitted to queue <research-rh7>.
+Job <4103303> is submitted to queue <research-rh7>.
+Job <4103304> is submitted to queue <research-rh7>.
+Job <4103305> is submitted to queue <research-rh7>.
+Job <4103306> is submitted to queue <research-rh7>.
+Job <4103307> is submitted to queue <research-rh7>.
+Job <4103308> is submitted to queue <research-rh7>.
+Job <4103309> is submitted to queue <research-rh7>.
+Job <4103310> is submitted to queue <research-rh7>.
+Job <4103311> is submitted to queue <research-rh7>.
+Job <4103312> is submitted to queue <research-rh7>.
+Job <4103313> is submitted to queue <research-rh7>.
+Job <4103314> is submitted to queue <research-rh7>.
+Job <4103315> is submitted to queue <research-rh7>.
+Job <4103316> is submitted to queue <research-rh7>.
+Job <4103317> is submitted to queue <research-rh7>.
+Job <4103318> is submitted to queue <research-rh7>.
+Job <4103319> is submitted to queue <research-rh7>.
+Job <4103320> is submitted to queue <research-rh7>.
+Job <4103321> is submitted to queue <research-rh7>.
+Job <4103322> is submitted to queue <research-rh7>.
+Job <4103323> is submitted to queue <research-rh7>.
+Job <4103324> is submitted to queue <research-rh7>.
+Job <4103325> is submitted to queue <research-rh7>.
+Job <4103326> is submitted to queue <research-rh7>.
+Job <4103327> is submitted to queue <research-rh7>.
+Job <4103328> is submitted to queue <research-rh7>.
+Job <4103329> is submitted to queue <research-rh7>.
+Job <4103330> is submitted to queue <research-rh7>.
+Job <4103331> is submitted to queue <research-rh7>.
+Job <4103332> is submitted to queue <research-rh7>.
+Job <4103333> is submitted to queue <research-rh7>.
+Job <4103335> is submitted to queue <research-rh7>.
+Job <4103336> is submitted to queue <research-rh7>.
+Job <4103337> is submitted to queue <research-rh7>.
+Job <4103338> is submitted to queue <research-rh7>.
+Job <4103340> is submitted to queue <research-rh7>.
+Job <4103341> is submitted to queue <research-rh7>.
+Job <4103344> is submitted to queue <research-rh7>.
+Job <4103345> is submitted to queue <research-rh7>.
+Job <4103346> is submitted to queue <research-rh7>.
+Job <4103347> is submitted to queue <research-rh7>.
+Job <4103364> is submitted to queue <research-rh7>.
+Job <4103365> is submitted to queue <research-rh7>.
+Job <4103366> is submitted to queue <research-rh7>.
+Job <4103367> is submitted to queue <research-rh7>.
+Job <4103368> is submitted to queue <research-rh7>.
+Job <4103369> is submitted to queue <research-rh7>.
+Job <4103370> is submitted to queue <research-rh7>.
+Job <4103375> is submitted to queue <research-rh7>.
+Job <4103376> is submitted to queue <research-rh7>.
+Job <4103377> is submitted to queue <research-rh7>.
+Job <4103378> is submitted to queue <research-rh7>.
+Job <4103379> is submitted to queue <research-rh7>.
+Job <4103448> is submitted to queue <research-rh7>.
+Job <4103449> is submitted to queue <research-rh7>.
+Job <4103451> is submitted to queue <research-rh7>.
+Job <4103550> is submitted to queue <research-rh7>.
+Job <4103551> is submitted to queue <research-rh7>.
+Job <4103558> is submitted to queue <research-rh7>.
+Job <4103559> is submitted to queue <research-rh7>.
+Job <4103560> is submitted to queue <research-rh7>.
+Job <4103561> is submitted to queue <research-rh7>.
+Job <4103562> is submitted to queue <research-rh7>.
+Job <4103563> is submitted to queue <research-rh7>.
+Job <4103564> is submitted to queue <research-rh7>.
+Job <4103565> is submitted to queue <research-rh7>.
+Job <4103566> is submitted to queue <research-rh7>.
+Job <4103569> is submitted to queue <research-rh7>.
+Job <4103570> is submitted to queue <research-rh7>.
+Job <4103571> is submitted to queue <research-rh7>.
+Job <4103573> is submitted to queue <research-rh7>.
+Job <4103574> is submitted to queue <research-rh7>.
+Job <4103575> is submitted to queue <research-rh7>.
+Job <4103576> is submitted to queue <research-rh7>.
+Job <4103577> is submitted to queue <research-rh7>.
+Job <4103578> is submitted to queue <research-rh7>.
+Job <4103579> is submitted to queue <research-rh7>.
+Job <4103580> is submitted to queue <research-rh7>.
+Job <4103583> is submitted to queue <research-rh7>.
+Job <4103755> is submitted to queue <research-rh7>.
+Job <4103756> is submitted to queue <research-rh7>.
+Job <4103757> is submitted to queue <research-rh7>.
+Job <4103769> is submitted to queue <research-rh7>.
+Job <4103770> is submitted to queue <research-rh7>.
+Job <4103771> is submitted to queue <research-rh7>.
+Job <4103772> is submitted to queue <research-rh7>.
+Job <4103773> is submitted to queue <research-rh7>.
+Job <4103774> is submitted to queue <research-rh7>.
+Job <4103775> is submitted to queue <research-rh7>.
+Job <4103776> is submitted to queue <research-rh7>.
+Job <4103783> is submitted to queue <research-rh7>.
+Job <4103796> is submitted to queue <research-rh7>.
+Job <4103845> is submitted to queue <research-rh7>.
+Job <4103846> is submitted to queue <research-rh7>.
+Job <4103854> is submitted to queue <research-rh7>.
+Job <4103855> is submitted to queue <research-rh7>.
+Job <4103862> is submitted to queue <research-rh7>.
+Job <4103863> is submitted to queue <research-rh7>.
+Job <4103864> is submitted to queue <research-rh7>.
+Job <4103867> is submitted to queue <research-rh7>.
+Job <4103868> is submitted to queue <research-rh7>.
+Job <4103869> is submitted to queue <research-rh7>.
+Job <4103870> is submitted to queue <research-rh7>.
+Job <4103871> is submitted to queue <research-rh7>.
+Job <4103872> is submitted to queue <research-rh7>.
+Job <4103873> is submitted to queue <research-rh7>.
+Job <4103874> is submitted to queue <research-rh7>.
+Job <4103878> is submitted to queue <research-rh7>.
+Job <4103879> is submitted to queue <research-rh7>.
+Job <4103880> is submitted to queue <research-rh7>.
+Job <4103881> is submitted to queue <research-rh7>.
+Job <4103887> is submitted to queue <research-rh7>.
+Job <4103888> is submitted to queue <research-rh7>.
+Job <4103889> is submitted to queue <research-rh7>.
+Job <4103890> is submitted to queue <research-rh7>.
+Job <4103891> is submitted to queue <research-rh7>.
+Job <4103892> is submitted to queue <research-rh7>.
+Job <4104118> is submitted to queue <research-rh7>.
+Job <4104119> is submitted to queue <research-rh7>.
+Job <4104122> is submitted to queue <research-rh7>.
+Job <4104123> is submitted to queue <research-rh7>.
+Job <4104124> is submitted to queue <research-rh7>.
+Job <4104133> is submitted to queue <research-rh7>.
+Job <4104134> is submitted to queue <research-rh7>.
+Job <4104135> is submitted to queue <research-rh7>.
+Job <4104139> is submitted to queue <research-rh7>.
+Job <4104140> is submitted to queue <research-rh7>.
+Job <4104141> is submitted to queue <research-rh7>.
+Job <4104142> is submitted to queue <research-rh7>.
+Job <4104143> is submitted to queue <research-rh7>.
+Job <4104145> is submitted to queue <research-rh7>.
+Job <4104379> is submitted to queue <research-rh7>.
+Job <4104381> is submitted to queue <research-rh7>.
+Job <4104388> is submitted to queue <research-rh7>.
+Job <4104389> is submitted to queue <research-rh7>.
+Job <4104397> is submitted to queue <research-rh7>.
+Job <4104398> is submitted to queue <research-rh7>.
+Job <4104399> is submitted to queue <research-rh7>.
+Job <4104400> is submitted to queue <research-rh7>.
+Job <4104405> is submitted to queue <research-rh7>.
+Job <4104406> is submitted to queue <research-rh7>.
+Job <4104407> is submitted to queue <research-rh7>.
+Job <4104413> is submitted to queue <research-rh7>.
+Job <4104415> is submitted to queue <research-rh7>.
+Job <4104416> is submitted to queue <research-rh7>.
+Job <4104417> is submitted to queue <research-rh7>.
+Job <4104430> is submitted to queue <research-rh7>.
+Job <4104431> is submitted to queue <research-rh7>.
+Job <4104432> is submitted to queue <research-rh7>.
+Job <4104433> is submitted to queue <research-rh7>.
+Job <4104434> is submitted to queue <research-rh7>.
+Job <4104437> is submitted to queue <research-rh7>.
+Job <4104438> is submitted to queue <research-rh7>.
+Job <4104439> is submitted to queue <research-rh7>.
+Job <4104440> is submitted to queue <research-rh7>.
+Job <4104562> is submitted to queue <research-rh7>.
+Job <4104564> is submitted to queue <research-rh7>.
+Job <4104565> is submitted to queue <research-rh7>.
+Job <4104566> is submitted to queue <research-rh7>.
+Job <4104567> is submitted to queue <research-rh7>.
+Job <4104568> is submitted to queue <research-rh7>.
+Job <4104576> is submitted to queue <research-rh7>.
+Job <4104577> is submitted to queue <research-rh7>.
+Job <4104583> is submitted to queue <research-rh7>.
+Job <4104584> is submitted to queue <research-rh7>.
+Job <4104585> is submitted to queue <research-rh7>.
+Job <4104586> is submitted to queue <research-rh7>.
+Job <4104591> is submitted to queue <research-rh7>.
+Job <4104592> is submitted to queue <research-rh7>.
+Job <4104593> is submitted to queue <research-rh7>.
+Job <4104594> is submitted to queue <research-rh7>.
+Job <4104726> is submitted to queue <research-rh7>.
+Job <4104727> is submitted to queue <research-rh7>.
+Job <4104735> is submitted to queue <research-rh7>.
+Job <4104742> is submitted to queue <research-rh7>.
+Job <4104743> is submitted to queue <research-rh7>.
+Job <4104744> is submitted to queue <research-rh7>.
+Job <4104745> is submitted to queue <research-rh7>.
+Job <4104746> is submitted to queue <research-rh7>.
+Job <4104756> is submitted to queue <research-rh7>.
+Job <4104757> is submitted to queue <research-rh7>.
+Job <4104758> is submitted to queue <research-rh7>.
+Job <4104759> is submitted to queue <research-rh7>.
+Job <4104760> is submitted to queue <research-rh7>.
+Job <4104764> is submitted to queue <research-rh7>.
+Job <4104765> is submitted to queue <research-rh7>.
+Job <4104766> is submitted to queue <research-rh7>.
+Job <4104773> is submitted to queue <research-rh7>.
+Job <4104774> is submitted to queue <research-rh7>.
+Job <4104775> is submitted to queue <research-rh7>.
+Job <4104778> is submitted to queue <research-rh7>.
+Job <4104779> is submitted to queue <research-rh7>.
+Job <4104780> is submitted to queue <research-rh7>.
+Job <4104781> is submitted to queue <research-rh7>.
+Job <4104794> is submitted to queue <research-rh7>.
+Job <4104795> is submitted to queue <research-rh7>.
+Job <4104796> is submitted to queue <research-rh7>.
+Job <4104797> is submitted to queue <research-rh7>.
+Job <4104798> is submitted to queue <research-rh7>.
+Job <4104799> is submitted to queue <research-rh7>.
+Job <4104800> is submitted to queue <research-rh7>.
+Job <4104803> is submitted to queue <research-rh7>.
+Job <4104821> is submitted to queue <research-rh7>.
+Job <4104822> is submitted to queue <research-rh7>.
+Job <4104833> is submitted to queue <research-rh7>.
+Job <4104834> is submitted to queue <research-rh7>.
+Job <4104835> is submitted to queue <research-rh7>.
+Job <4104837> is submitted to queue <research-rh7>.
+Job <4104838> is submitted to queue <research-rh7>.
+Job <4104840> is submitted to queue <research-rh7>.
+Job <4104841> is submitted to queue <research-rh7>.
+Job <4104842> is submitted to queue <research-rh7>.
+Job <4104843> is submitted to queue <research-rh7>.
+Job <4104844> is submitted to queue <research-rh7>.
+Job <4104895> is submitted to queue <research-rh7>.
+Job <4104899> is submitted to queue <research-rh7>.
+Job <4104900> is submitted to queue <research-rh7>.
+Job <4104901> is submitted to queue <research-rh7>.
+Job <4104902> is submitted to queue <research-rh7>.
+Job <4104903> is submitted to queue <research-rh7>.
+Job <4104908> is submitted to queue <research-rh7>.
+Job <4104909> is submitted to queue <research-rh7>.
+Job <4104910> is submitted to queue <research-rh7>.
+Job <4104949> is submitted to queue <research-rh7>.
+Job <4104950> is submitted to queue <research-rh7>.
+Job <4104953> is submitted to queue <research-rh7>.
+Job <4104954> is submitted to queue <research-rh7>.
+Job <4104967> is submitted to queue <research-rh7>.
+Job <4104968> is submitted to queue <research-rh7>.
+Job <4104973> is submitted to queue <research-rh7>.
+Job <4104977> is submitted to queue <research-rh7>.
+Job <4104978> is submitted to queue <research-rh7>.
+Job <4104979> is submitted to queue <research-rh7>.
+Job <4104980> is submitted to queue <research-rh7>.
+Job <4104981> is submitted to queue <research-rh7>.
+Job <4104987> is submitted to queue <research-rh7>.
+Job <4104989> is submitted to queue <research-rh7>.
+Job <4104999> is submitted to queue <research-rh7>.
+Job <4105000> is submitted to queue <research-rh7>.
+Job <4105001> is submitted to queue <research-rh7>.
+Job <4105002> is submitted to queue <research-rh7>.
+Job <4105007> is submitted to queue <research-rh7>.
+Job <4105008> is submitted to queue <research-rh7>.
+Job <4105013> is submitted to queue <research-rh7>.
+Job <4105015> is submitted to queue <research-rh7>.
+Job <4105016> is submitted to queue <research-rh7>.
+Job <4105017> is submitted to queue <research-rh7>.
+Job <4105029> is submitted to queue <research-rh7>.
+Job <4105030> is submitted to queue <research-rh7>.
+Job <4105031> is submitted to queue <research-rh7>.
+Job <4105032> is submitted to queue <research-rh7>.
+Job <4105042> is submitted to queue <research-rh7>.
+Job <4105114> is submitted to queue <research-rh7>.
+Job <4105115> is submitted to queue <research-rh7>.
+Job <4105122> is submitted to queue <research-rh7>.
+Job <4105123> is submitted to queue <research-rh7>.
+Job <4105125> is submitted to queue <research-rh7>.
+Job <4105141> is submitted to queue <research-rh7>.
+Job <4105142> is submitted to queue <research-rh7>.
+Job <4105144> is submitted to queue <research-rh7>.
+Job <4105145> is submitted to queue <research-rh7>.
+Job <4105173> is submitted to queue <research-rh7>.
+Job <4105174> is submitted to queue <research-rh7>.
+Job <4105175> is submitted to queue <research-rh7>.
+Job <4105176> is submitted to queue <research-rh7>.
+Job <4105184> is submitted to queue <research-rh7>.
+Job <4105185> is submitted to queue <research-rh7>.
+Job <4105189> is submitted to queue <research-rh7>.
+Job <4105194> is submitted to queue <research-rh7>.
+Job <4105323> is submitted to queue <research-rh7>.
+Job <4105347> is submitted to queue <research-rh7>.
+Job <4105348> is submitted to queue <research-rh7>.
+Job <4105351> is submitted to queue <research-rh7>.
+Job <4105355> is submitted to queue <research-rh7>.
+Job <4105356> is submitted to queue <research-rh7>.
+Job <4105357> is submitted to queue <research-rh7>.
+Job <4105360> is submitted to queue <research-rh7>.
+Job <4105361> is submitted to queue <research-rh7>.
+Job <4105487> is submitted to queue <research-rh7>.
+Job <4105488> is submitted to queue <research-rh7>.
+Job <4105489> is submitted to queue <research-rh7>.
+Job <4105490> is submitted to queue <research-rh7>.
+Job <4105491> is submitted to queue <research-rh7>.
+Job <4105492> is submitted to queue <research-rh7>.
+Job <4105495> is submitted to queue <research-rh7>.
+Job <4105496> is submitted to queue <research-rh7>.
+Job <4105497> is submitted to queue <research-rh7>.
+Job <4105498> is submitted to queue <research-rh7>.
+Job <4105508> is submitted to queue <research-rh7>.
+Job <4105512> is submitted to queue <research-rh7>.
+Job <4105513> is submitted to queue <research-rh7>.
+Job <4105516> is submitted to queue <research-rh7>.
+Job <4105517> is submitted to queue <research-rh7>.
+Job <4105522> is submitted to queue <research-rh7>.
+Job <4105536> is submitted to queue <research-rh7>.
+Job <4105553> is submitted to queue <research-rh7>.
+Job <4105554> is submitted to queue <research-rh7>.
+Job <4105556> is submitted to queue <research-rh7>.
+Job <4105557> is submitted to queue <research-rh7>.
+Job <4105559> is submitted to queue <research-rh7>.
+Job <4105564> is submitted to queue <research-rh7>.
+Job <4105573> is submitted to queue <research-rh7>.
+Job <4105574> is submitted to queue <research-rh7>.
+Job <4105575> is submitted to queue <research-rh7>.
+Job <4105576> is submitted to queue <research-rh7>.
+Job <4105577> is submitted to queue <research-rh7>.
+Job <4105580> is submitted to queue <research-rh7>.
+Job <4105581> is submitted to queue <research-rh7>.
+Job <4105583> is submitted to queue <research-rh7>.
+Job <4105585> is submitted to queue <research-rh7>.
+Job <4105586> is submitted to queue <research-rh7>.
+Job <4105587> is submitted to queue <research-rh7>.
+Job <4105591> is submitted to queue <research-rh7>.
+Job <4105592> is submitted to queue <research-rh7>.
+Job <4105599> is submitted to queue <research-rh7>.
+Job <4105600> is submitted to queue <research-rh7>.
+Job <4105601> is submitted to queue <research-rh7>.
+Job <4105605> is submitted to queue <research-rh7>.
+Job <4105606> is submitted to queue <research-rh7>.
+Job <4105607> is submitted to queue <research-rh7>.
+Job <4105608> is submitted to queue <research-rh7>.
+Job <4105616> is submitted to queue <research-rh7>.
+Job <4105618> is submitted to queue <research-rh7>.
+Job <4105619> is submitted to queue <research-rh7>.
+Job <4105622> is submitted to queue <research-rh7>.
+Job <4105624> is submitted to queue <research-rh7>.
+Job <4105625> is submitted to queue <research-rh7>.
+Job <4105639> is submitted to queue <research-rh7>.
+Job <4105640> is submitted to queue <research-rh7>.
+Job <4105641> is submitted to queue <research-rh7>.
+Job <4105644> is submitted to queue <research-rh7>.
+Job <4105645> is submitted to queue <research-rh7>.
+Job <4105649> is submitted to queue <research-rh7>.
+Job <4105650> is submitted to queue <research-rh7>.
+Job <4105652> is submitted to queue <research-rh7>.
+Job <4105653> is submitted to queue <research-rh7>.
+Job <4105654> is submitted to queue <research-rh7>.
+Job <4105655> is submitted to queue <research-rh7>.
+Job <4105659> is submitted to queue <research-rh7>.
+Job <4105660> is submitted to queue <research-rh7>.
+Job <4105661> is submitted to queue <research-rh7>.
+Job <4105662> is submitted to queue <research-rh7>.
+Job <4105665> is submitted to queue <research-rh7>.
+Job <4105666> is submitted to queue <research-rh7>.
+Job <4106353> is submitted to queue <research-rh7>.
+Job <4106355> is submitted to queue <research-rh7>.
+Job <4106360> is submitted to queue <research-rh7>.
+Job <4106361> is submitted to queue <research-rh7>.
+Job <4106363> is submitted to queue <research-rh7>.
+Job <4106364> is submitted to queue <research-rh7>.
+Job <4443348> is submitted to queue <research-rh7>.
+Job <4443349> is submitted to queue <research-rh7>.
+Job <4443350> is submitted to queue <research-rh7>.
+Job <4443351> is submitted to queue <research-rh7>.
+Job <4443352> is submitted to queue <research-rh7>.
+Job <4443353> is submitted to queue <research-rh7>.
+Job <4443354> is submitted to queue <research-rh7>.
+Job <4443355> is submitted to queue <research-rh7>.
+Job <4443356> is submitted to queue <research-rh7>.
+Job <4443357> is submitted to queue <research-rh7>.
+Job <4443358> is submitted to queue <research-rh7>.
+Job <4443359> is submitted to queue <research-rh7>.
+Job <4443360> is submitted to queue <research-rh7>.
+Job <4443361> is submitted to queue <research-rh7>.
+Job <4443362> is submitted to queue <research-rh7>.
+Job <4443363> is submitted to queue <research-rh7>.
+Job <4443364> is submitted to queue <research-rh7>.
+Job <4443365> is submitted to queue <research-rh7>.
+Job <4443366> is submitted to queue <research-rh7>.
+Job <4443367> is submitted to queue <research-rh7>.
+Job <4443368> is submitted to queue <research-rh7>.
+Job <4443369> is submitted to queue <research-rh7>.
+Job <4443370> is submitted to queue <research-rh7>.
+Job <4443371> is submitted to queue <research-rh7>.
+Job <4443372> is submitted to queue <research-rh7>.
+Job <4443373> is submitted to queue <research-rh7>.
+Job <4443374> is submitted to queue <research-rh7>.
+Job <4443375> is submitted to queue <research-rh7>.
+Job <4443376> is submitted to queue <research-rh7>.
+Job <4443377> is submitted to queue <research-rh7>.
+Job <4443378> is submitted to queue <research-rh7>.
+Job <4443379> is submitted to queue <research-rh7>.
+Job <4443380> is submitted to queue <research-rh7>.
+Job <4443381> is submitted to queue <research-rh7>.
+Job <4443382> is submitted to queue <research-rh7>.
+Job <4443383> is submitted to queue <research-rh7>.
+Job <4443384> is submitted to queue <research-rh7>.
+Job <4443385> is submitted to queue <research-rh7>.
+Job <4443386> is submitted to queue <research-rh7>.
+Job <4443387> is submitted to queue <research-rh7>.
+Job <4443388> is submitted to queue <research-rh7>.
+Job <4443389> is submitted to queue <research-rh7>.
+Job <4443390> is submitted to queue <research-rh7>.
+Job <4443391> is submitted to queue <research-rh7>.
+Job <4443392> is submitted to queue <research-rh7>.
+Job <4443393> is submitted to queue <research-rh7>.
+Job <4443394> is submitted to queue <research-rh7>.
+Job <4443395> is submitted to queue <research-rh7>.
+Job <4443396> is submitted to queue <research-rh7>.
+Job <4443397> is submitted to queue <research-rh7>.
+Job <4443398> is submitted to queue <research-rh7>.
+Job <4443399> is submitted to queue <research-rh7>.
+Job <4443400> is submitted to queue <research-rh7>.
+Job <4443401> is submitted to queue <research-rh7>.
+Job <4443402> is submitted to queue <research-rh7>.
+Job <4443403> is submitted to queue <research-rh7>.
+Job <4443404> is submitted to queue <research-rh7>.
+Job <4443405> is submitted to queue <research-rh7>.
+Job <4443406> is submitted to queue <research-rh7>.
+Job <4443407> is submitted to queue <research-rh7>.
+Job <4443408> is submitted to queue <research-rh7>.
+Job <4443409> is submitted to queue <research-rh7>.
+Job <4443410> is submitted to queue <research-rh7>.
+Job <4443411> is submitted to queue <research-rh7>.
+Job <4443412> is submitted to queue <research-rh7>.
+Job <4443413> is submitted to queue <research-rh7>.
+Job <4443414> is submitted to queue <research-rh7>.
+Job <4443415> is submitted to queue <research-rh7>.
+Job <4443416> is submitted to queue <research-rh7>.
+Job <4443417> is submitted to queue <research-rh7>.
+Job <4443418> is submitted to queue <research-rh7>.
+Job <4443419> is submitted to queue <research-rh7>.
+Job <4443420> is submitted to queue <research-rh7>.
+Job <4443421> is submitted to queue <research-rh7>.
+Job <4443422> is submitted to queue <research-rh7>.
+Job <4443424> is submitted to queue <research-rh7>.
+Job <4443425> is submitted to queue <research-rh7>.
+Job <4443426> is submitted to queue <research-rh7>.
+Job <4443427> is submitted to queue <research-rh7>.
+Job <4443428> is submitted to queue <research-rh7>.
+Job <4443429> is submitted to queue <research-rh7>.
+Job <4443430> is submitted to queue <research-rh7>.
+Job <4443431> is submitted to queue <research-rh7>.
+Job <4443432> is submitted to queue <research-rh7>.
+Job <4443433> is submitted to queue <research-rh7>.
+Job <4443434> is submitted to queue <research-rh7>.
+Job <4443435> is submitted to queue <research-rh7>.
+Job <4443436> is submitted to queue <research-rh7>.
+Job <4443437> is submitted to queue <research-rh7>.
+Job <4443438> is submitted to queue <research-rh7>.
+Job <4443439> is submitted to queue <research-rh7>.
+Job <4443440> is submitted to queue <research-rh7>.
+Job <4443441> is submitted to queue <research-rh7>.
+Job <4443442> is submitted to queue <research-rh7>.
+Job <4443443> is submitted to queue <research-rh7>.
+Job <4443444> is submitted to queue <research-rh7>.
+Job <4443445> is submitted to queue <research-rh7>.
+Job <4443446> is submitted to queue <research-rh7>.
+Job <4443447> is submitted to queue <research-rh7>.
+Job <4446057> is submitted to queue <research-rh7>.
+Job <4446058> is submitted to queue <research-rh7>.
+Job <4446145> is submitted to queue <research-rh7>.
+Job <4446282> is submitted to queue <research-rh7>.
+Job <4446284> is submitted to queue <research-rh7>.
+Job <4446468> is submitted to queue <research-rh7>.
+Job <4447964> is submitted to queue <research-rh7>.
+Job <4447971> is submitted to queue <research-rh7>.
+Job <4447976> is submitted to queue <research-rh7>.
+Job <4450433> is submitted to queue <research-rh7>.
+Job <4450437> is submitted to queue <research-rh7>.
+Job <4452959> is submitted to queue <research-rh7>.
+Job <4453126> is submitted to queue <research-rh7>.
+Job <4453406> is submitted to queue <research-rh7>.
+Job <4453835> is submitted to queue <research-rh7>.
+Job <4453914> is submitted to queue <research-rh7>.
+Job <4454391> is submitted to queue <research-rh7>.
+Job <4454537> is submitted to queue <research-rh7>.
+Job <4454616> is submitted to queue <research-rh7>.
+Job <4454617> is submitted to queue <research-rh7>.
+Job <4456027> is submitted to queue <research-rh7>.
+Job <4456271> is submitted to queue <research-rh7>.
+Job <4457007> is submitted to queue <research-rh7>.
+Job <4457065> is submitted to queue <research-rh7>.
+Job <4457415> is submitted to queue <research-rh7>.
+Job <4457416> is submitted to queue <research-rh7>.
+Job <4458087> is submitted to queue <research-rh7>.
+Job <4460839> is submitted to queue <research-rh7>.
+Job <4461181> is submitted to queue <research-rh7>.
+Job <4461495> is submitted to queue <research-rh7>.
+Job <4463194> is submitted to queue <research-rh7>.
+Job <4464071> is submitted to queue <research-rh7>.
+Job <4465538> is submitted to queue <research-rh7>.
+Job <4471296> is submitted to queue <research-rh7>.
+Job <4472730> is submitted to queue <research-rh7>.
+Job <4481209> is submitted to queue <research-rh7>.
+Job <4492989> is submitted to queue <research-rh7>.
+Job <4492993> is submitted to queue <research-rh7>.
+Job <4494586> is submitted to queue <research-rh7>.
+Job <4495786> is submitted to queue <research-rh7>.
+Job <4495788> is submitted to queue <research-rh7>.
+Job <4507649> is submitted to queue <research-rh7>.
+Job <4510538> is submitted to queue <research-rh7>.
+Job <4517819> is submitted to queue <research-rh7>.
+Job <4521932> is submitted to queue <research-rh7>.
+Job <4523803> is submitted to queue <research-rh7>.
+Job <4523900> is submitted to queue <research-rh7>.
+Job <4524080> is submitted to queue <research-rh7>.
+Job <4524816> is submitted to queue <research-rh7>.
+Job <4525153> is submitted to queue <research-rh7>.
+Job <4525453> is submitted to queue <research-rh7>.
+Job <4527016> is submitted to queue <research-rh7>.
+Job <4527019> is submitted to queue <research-rh7>.
+Job <4527021> is submitted to queue <research-rh7>.
+Job <4527022> is submitted to queue <research-rh7>.
+Job <4527646> is submitted to queue <research-rh7>.
+Job <4527647> is submitted to queue <research-rh7>.
+Job <4528062> is submitted to queue <research-rh7>.
+Job <4528424> is submitted to queue <research-rh7>.
+Job <4528425> is submitted to queue <research-rh7>.
+Job <4529252> is submitted to queue <research-rh7>.
+Job <4529268> is submitted to queue <research-rh7>.
+Job <4529353> is submitted to queue <research-rh7>.
+Job <4529566> is submitted to queue <research-rh7>.
+Job <4530083> is submitted to queue <research-rh7>.
+Job <4530165> is submitted to queue <research-rh7>.
+Job <4530245> is submitted to queue <research-rh7>.
+Job <4530553> is submitted to queue <research-rh7>.
+Job <4530671> is submitted to queue <research-rh7>.
+Job <4531070> is submitted to queue <research-rh7>.
+Job <4531190> is submitted to queue <research-rh7>.
+Job <4531359> is submitted to queue <research-rh7>.
+Job <4531376> is submitted to queue <research-rh7>.
+Job <4531561> is submitted to queue <research-rh7>.
+Job <4531562> is submitted to queue <research-rh7>.
+Job <4531563> is submitted to queue <research-rh7>.
+Job <4531564> is submitted to queue <research-rh7>.
+Job <4531565> is submitted to queue <research-rh7>.
+Job <4531566> is submitted to queue <research-rh7>.
+Job <4531567> is submitted to queue <research-rh7>.
+Job <4531568> is submitted to queue <research-rh7>.
+Job <4532654> is submitted to queue <research-rh7>.
+Job <4533813> is submitted to queue <research-rh7>.
+Job <4533814> is submitted to queue <research-rh7>.
+Job <4534153> is submitted to queue <research-rh7>.
+Job <4534602> is submitted to queue <research-rh7>.
+Job <4534688> is submitted to queue <research-rh7>.
+Job <4535012> is submitted to queue <research-rh7>.
+Job <4535054> is submitted to queue <research-rh7>.
+Job <4535112> is submitted to queue <research-rh7>.
+Job <4535216> is submitted to queue <research-rh7>.
+Job <4535225> is submitted to queue <research-rh7>.
+Job <4535398> is submitted to queue <research-rh7>.
+Job <4535503> is submitted to queue <research-rh7>.
+Job <4535601> is submitted to queue <research-rh7>.
+Job <4535630> is submitted to queue <research-rh7>.
+Job <4535784> is submitted to queue <research-rh7>.
+Job <4537275> is submitted to queue <research-rh7>.
+Job <4538362> is submitted to queue <research-rh7>.
+Job <4538484> is submitted to queue <research-rh7>.
+Job <4538654> is submitted to queue <research-rh7>.
+Job <4538797> is submitted to queue <research-rh7>.
+Job <4539939> is submitted to queue <research-rh7>.
+Job <4540253> is submitted to queue <research-rh7>.
+Job <4540714> is submitted to queue <research-rh7>.
+Job <4540966> is submitted to queue <research-rh7>.
+Job <4541147> is submitted to queue <research-rh7>.
+Job <4541155> is submitted to queue <research-rh7>.
+Job <4541178> is submitted to queue <research-rh7>.
+Job <4541776> is submitted to queue <research-rh7>.
+Job <4541874> is submitted to queue <research-rh7>.
+Job <4542284> is submitted to queue <research-rh7>.
+Job <4543353> is submitted to queue <research-rh7>.
+Job <4544457> is submitted to queue <research-rh7>.
+Job <4544458> is submitted to queue <research-rh7>.
+Job <4544613> is submitted to queue <research-rh7>.
+Job <4545392> is submitted to queue <research-rh7>.
+Job <4545816> is submitted to queue <research-rh7>.
+Job <4545817> is submitted to queue <research-rh7>.
+Job <4546478> is submitted to queue <research-rh7>.
+Job <4546539> is submitted to queue <research-rh7>.
+Job <4546584> is submitted to queue <research-rh7>.
+Job <4546585> is submitted to queue <research-rh7>.
+Job <4546718> is submitted to queue <research-rh7>.
+Job <4553396> is submitted to queue <research-rh7>.
+Job <4553965> is submitted to queue <research-rh7>.
+Job <4556561> is submitted to queue <research-rh7>.
+Job <4556562> is submitted to queue <research-rh7>.
+Job <4557852> is submitted to queue <research-rh7>.
+Job <4559613> is submitted to queue <research-rh7>.
+Job <4559767> is submitted to queue <research-rh7>.
+Job <4562468> is submitted to queue <research-rh7>.
+Job <4564979> is submitted to queue <research-rh7>.
+Job <4566678> is submitted to queue <research-rh7>.
+Job <4568429> is submitted to queue <research-rh7>.
+Job <4570140> is submitted to queue <research-rh7>.
+Job <4578030> is submitted to queue <research-rh7>.
+Job <4578032> is submitted to queue <research-rh7>.
+Job <4579582> is submitted to queue <research-rh7>.
+Job <4580211> is submitted to queue <research-rh7>.
+Job <4584276> is submitted to queue <research-rh7>.
+Job <4591173> is submitted to queue <research-rh7>.
+Job <4592235> is submitted to queue <research-rh7>.
+Job <4592418> is submitted to queue <research-rh7>.
+Job <4599090> is submitted to queue <research-rh7>.
+Job <4599114> is submitted to queue <research-rh7>.
+Job <4599231> is submitted to queue <research-rh7>.
+Job <4600579> is submitted to queue <research-rh7>.
+Job <4600629> is submitted to queue <research-rh7>.
+Job <4600631> is submitted to queue <research-rh7>.
+Job <4602720> is submitted to queue <research-rh7>.
+Job <4602740> is submitted to queue <research-rh7>.
+Job <4606943> is submitted to queue <research-rh7>.
+Job <4609786> is submitted to queue <research-rh7>.
+Job <4615875> is submitted to queue <research-rh7>.
+Job <4622919> is submitted to queue <research-rh7>.
+Job <4625682> is submitted to queue <research-rh7>.
+Job <4626101> is submitted to queue <research-rh7>.
+Job <4635430> is submitted to queue <research-rh7>.
+Job <4636376> is submitted to queue <research-rh7>.
+Job <4636377> is submitted to queue <research-rh7>.
+Job <4636378> is submitted to queue <research-rh7>.
+Job <4636410> is submitted to queue <research-rh7>.
+Job <4637025> is submitted to queue <research-rh7>.
+Job <4637026> is submitted to queue <research-rh7>.
+Job <4637082> is submitted to queue <research-rh7>.
+Job <4640686> is submitted to queue <research-rh7>.
+Job <4640867> is submitted to queue <research-rh7>.
+Job <4641226> is submitted to queue <research-rh7>.
+Job <4641468> is submitted to queue <research-rh7>.
+Job <4646673> is submitted to queue <research-rh7>.
+Job <4648390> is submitted to queue <research-rh7>.
+Job <4648693> is submitted to queue <research-rh7>.
+Job <4651076> is submitted to queue <research-rh7>.
+Job <4651804> is submitted to queue <research-rh7>.
+Job <4653574> is submitted to queue <research-rh7>.
+Job <4654286> is submitted to queue <research-rh7>.
+Job <4654287> is submitted to queue <research-rh7>.
+Job <4655851> is submitted to queue <research-rh7>.
+Job <4655983> is submitted to queue <research-rh7>.
+Job <4657813> is submitted to queue <research-rh7>.
+Job <4658428> is submitted to queue <research-rh7>.
+Job <4658857> is submitted to queue <research-rh7>.
+Job <4659309> is submitted to queue <research-rh7>.
+Job <4660720> is submitted to queue <research-rh7>.
+Job <4660722> is submitted to queue <research-rh7>.
+Job <4662892> is submitted to queue <research-rh7>.
+Job <4662909> is submitted to queue <research-rh7>.
+Job <4663266> is submitted to queue <research-rh7>.
+Job <4663268> is submitted to queue <research-rh7>.
+Job <4663724> is submitted to queue <research-rh7>.
+Job <4663770> is submitted to queue <research-rh7>.
+Job <4664439> is submitted to queue <research-rh7>.
+Job <4664505> is submitted to queue <research-rh7>.
+Job <4664649> is submitted to queue <research-rh7>.
+Job <4665232> is submitted to queue <research-rh7>.
+Job <4668380> is submitted to queue <research-rh7>.
+Job <4669730> is submitted to queue <research-rh7>.
+Job <4669731> is submitted to queue <research-rh7>.
+Job <4670712> is submitted to queue <research-rh7>.
+Job <4672845> is submitted to queue <research-rh7>.
+Job <4673539> is submitted to queue <research-rh7>.
+Job <4682796> is submitted to queue <research-rh7>.
+Job <4684507> is submitted to queue <research-rh7>.
+Job <4685392> is submitted to queue <research-rh7>.
+Job <4688161> is submitted to queue <research-rh7>.
+Job <4688245> is submitted to queue <research-rh7>.
+Job <4688246> is submitted to queue <research-rh7>.
+Job <4697104> is submitted to queue <research-rh7>.
+Job <4697105> is submitted to queue <research-rh7>.
+Job <4697106> is submitted to queue <research-rh7>.
+Job <4697981> is submitted to queue <research-rh7>.
+Job <4700404> is submitted to queue <research-rh7>.
+Job <4700405> is submitted to queue <research-rh7>.
+Job <4701160> is submitted to queue <research-rh7>.
+Job <4701161> is submitted to queue <research-rh7>.
+Job <4701464> is submitted to queue <research-rh7>.
+Job <4707182> is submitted to queue <research-rh7>.
+Job <4707194> is submitted to queue <research-rh7>.
+Job <4707333> is submitted to queue <research-rh7>.
+Job <4707334> is submitted to queue <research-rh7>.
+Job <4707837> is submitted to queue <research-rh7>.
+Job <4707838> is submitted to queue <research-rh7>.
+Job <4717408> is submitted to queue <research-rh7>.
+Job <4720360> is submitted to queue <research-rh7>.
+Job <4721979> is submitted to queue <research-rh7>.
+Job <4723023> is submitted to queue <research-rh7>.
+Job <4723768> is submitted to queue <research-rh7>.
+Job <4737290> is submitted to queue <research-rh7>.
+Job <4737873> is submitted to queue <research-rh7>.
+Job <4738487> is submitted to queue <research-rh7>.
+Job <4739689> is submitted to queue <research-rh7>.
+Job <4743498> is submitted to queue <research-rh7>.
+Job <4743728> is submitted to queue <research-rh7>.
+Job <4743902> is submitted to queue <research-rh7>.
+Job <4744206> is submitted to queue <research-rh7>.
+Job <4765880> is submitted to queue <research-rh7>.
+Job <4770475> is submitted to queue <research-rh7>.
+Job <4773529> is submitted to queue <research-rh7>.
+Job <4773588> is submitted to queue <research-rh7>.
+Job <4793007> is submitted to queue <research-rh7>.
+Job <4797587> is submitted to queue <research-rh7>.
+LSF is processing your request. Please wait ...
+LSF is processing your request. Please wait ...
+LSF is processing your request. Please wait ...
+LSF is processing your request. Please wait ...
+LSF is processing your request. Please wait ...
+Job <4802748> is submitted to queue <research-rh7>.
+Job <4802769> is submitted to queue <research-rh7>.
+Job <4802802> is submitted to queue <research-rh7>.
+Job <4811834> is submitted to queue <research-rh7>.
+Job <4817199> is submitted to queue <research-rh7>.
+Job <4850612> is submitted to queue <research-rh7>.
+Job <4850620> is submitted to queue <research-rh7>.
+Job <4850628> is submitted to queue <research-rh7>.
+Job <4855297> is submitted to queue <research-rh7>.
+Job <4857856> is submitted to queue <research-rh7>.
+Job <4900015> is submitted to queue <research-rh7>.
+Job <4920768> is submitted to queue <research-rh7>.
+Job <4951916> is submitted to queue <research-rh7>.
+Job <4955287> is submitted to queue <research-rh7>.
+Job <4957038> is submitted to queue <research-rh7>.
+Job <4992661> is submitted to queue <research-rh7>.
+Job <4992670> is submitted to queue <research-rh7>.
+Job <5009590> is submitted to queue <research-rh7>.
+Job <5011765> is submitted to queue <research-rh7>.
+Job <5011766> is submitted to queue <research-rh7>.
+Job <5012401> is submitted to queue <research-rh7>.
+Job <5030736> is submitted to queue <research-rh7>.
+Job <5030771> is submitted to queue <research-rh7>.
+Job <5031907> is submitted to queue <research-rh7>.
+Job <5032507> is submitted to queue <research-rh7>.
+Job <5032977> is submitted to queue <research-rh7>.
+Job <5033273> is submitted to queue <research-rh7>.
+Job <5033377> is submitted to queue <research-rh7>.
+Job <5033417> is submitted to queue <research-rh7>.
+Job <5035117> is submitted to queue <research-rh7>.
+Job <5036653> is submitted to queue <research-rh7>.
+Job <5037889> is submitted to queue <research-rh7>.
+Job <5038454> is submitted to queue <research-rh7>.
+Job <5039388> is submitted to queue <research-rh7>.
+Job <5039484> is submitted to queue <research-rh7>.
+Job <5040009> is submitted to queue <research-rh7>.
+Job <5050414> is submitted to queue <research-rh7>.
+Job <5057322> is submitted to queue <research-rh7>.
+Job <5057520> is submitted to queue <research-rh7>.
+Job <5063319> is submitted to queue <research-rh7>.
+Job <5063890> is submitted to queue <research-rh7>.
+Job <5063950> is submitted to queue <research-rh7>.
+Job <5064036> is submitted to queue <research-rh7>.
+Job <5065547> is submitted to queue <research-rh7>.
+Job <5065548> is submitted to queue <research-rh7>.
+Job <5066835> is submitted to queue <research-rh7>.
+Job <5068181> is submitted to queue <research-rh7>.
+Job <5068182> is submitted to queue <research-rh7>.
+Job <5069293> is submitted to queue <research-rh7>.
+Job <5071770> is submitted to queue <research-rh7>.
+Job <5072138> is submitted to queue <research-rh7>.
+Job <5072139> is submitted to queue <research-rh7>.
+Job <5073151> is submitted to queue <research-rh7>.
+Job <5073153> is submitted to queue <research-rh7>.
+Job <5075062> is submitted to queue <research-rh7>.
+Job <5086506> is submitted to queue <research-rh7>.
+Job <5103537> is submitted to queue <research-rh7>.
+Job <5103538> is submitted to queue <research-rh7>.
+Job <5104050> is submitted to queue <research-rh7>.
+Job <5104313> is submitted to queue <research-rh7>.
+Job <5104365> is submitted to queue <research-rh7>.
+Job <5130819> is submitted to queue <research-rh7>.
+Job <5131283> is submitted to queue <research-rh7>.
+Job <5131631> is submitted to queue <research-rh7>.
+Job <5131699> is submitted to queue <research-rh7>.
+Job <5131979> is submitted to queue <research-rh7>.
+Job <5132005> is submitted to queue <research-rh7>.
+Job <5134715> is submitted to queue <research-rh7>.
+Job <5444698> is submitted to queue <research-rh7>.
+Job <5444699> is submitted to queue <research-rh7>.
+Job <5444700> is submitted to queue <research-rh7>.
+Job <5444701> is submitted to queue <research-rh7>.
+Job <5444702> is submitted to queue <research-rh7>.
+Job <5444703> is submitted to queue <research-rh7>.
+Job <5444704> is submitted to queue <research-rh7>.
+Job <5444705> is submitted to queue <research-rh7>.
+Job <5444706> is submitted to queue <research-rh7>.
+Job <5444707> is submitted to queue <research-rh7>.
+Job <5444708> is submitted to queue <research-rh7>.
+Job <5444709> is submitted to queue <research-rh7>.
+Job <5444710> is submitted to queue <research-rh7>.
+Job <5444711> is submitted to queue <research-rh7>.
+Job <5444712> is submitted to queue <research-rh7>.
+Job <5444713> is submitted to queue <research-rh7>.
+Job <5444714> is submitted to queue <research-rh7>.
+Job <5444715> is submitted to queue <research-rh7>.
+Job <5444716> is submitted to queue <research-rh7>.
+Job <5444717> is submitted to queue <research-rh7>.
+Job <5444718> is submitted to queue <research-rh7>.
+Job <5444719> is submitted to queue <research-rh7>.
+Job <5444721> is submitted to queue <research-rh7>.
+Job <5444722> is submitted to queue <research-rh7>.
+Job <5444723> is submitted to queue <research-rh7>.
+Job <5444724> is submitted to queue <research-rh7>.
+Job <5444725> is submitted to queue <research-rh7>.
+Job <5444726> is submitted to queue <research-rh7>.
+Job <5444727> is submitted to queue <research-rh7>.
+Job <5444728> is submitted to queue <research-rh7>.
+Job <5444729> is submitted to queue <research-rh7>.
+Job <5444730> is submitted to queue <research-rh7>.
+Job <5444731> is submitted to queue <research-rh7>.
+Job <5444732> is submitted to queue <research-rh7>.
+Job <5444733> is submitted to queue <research-rh7>.
+Job <5444734> is submitted to queue <research-rh7>.
+Job <5444735> is submitted to queue <research-rh7>.
+Job <5444736> is submitted to queue <research-rh7>.
+Job <5444737> is submitted to queue <research-rh7>.
+Job <5444738> is submitted to queue <research-rh7>.
+Job <5444739> is submitted to queue <research-rh7>.
+Job <5444740> is submitted to queue <research-rh7>.
+Job <5444742> is submitted to queue <research-rh7>.
+Job <5444743> is submitted to queue <research-rh7>.
+Job <5444744> is submitted to queue <research-rh7>.
+Job <5444745> is submitted to queue <research-rh7>.
+Job <5444746> is submitted to queue <research-rh7>.
+Job <5444747> is submitted to queue <research-rh7>.
+Job <5444748> is submitted to queue <research-rh7>.
+Job <5444749> is submitted to queue <research-rh7>.
+Job <5444750> is submitted to queue <research-rh7>.
+Job <5444751> is submitted to queue <research-rh7>.
+Job <5444752> is submitted to queue <research-rh7>.
+Job <5444753> is submitted to queue <research-rh7>.
+Job <5444754> is submitted to queue <research-rh7>.
+Job <5444755> is submitted to queue <research-rh7>.
+Job <5444756> is submitted to queue <research-rh7>.
+Job <5444757> is submitted to queue <research-rh7>.
+Job <5444758> is submitted to queue <research-rh7>.
+Job <5444759> is submitted to queue <research-rh7>.
+Job <5444760> is submitted to queue <research-rh7>.
+Job <5444761> is submitted to queue <research-rh7>.
+Job <5444762> is submitted to queue <research-rh7>.
+Job <5444763> is submitted to queue <research-rh7>.
+Job <5444764> is submitted to queue <research-rh7>.
+Job <5444765> is submitted to queue <research-rh7>.
+Job <5444767> is submitted to queue <research-rh7>.
+Job <5444768> is submitted to queue <research-rh7>.
+Job <5444769> is submitted to queue <research-rh7>.
+Job <5444770> is submitted to queue <research-rh7>.
+Job <5444771> is submitted to queue <research-rh7>.
+Job <5444772> is submitted to queue <research-rh7>.
+Job <5444773> is submitted to queue <research-rh7>.
+Job <5444774> is submitted to queue <research-rh7>.
+Job <5444775> is submitted to queue <research-rh7>.
+Job <5444776> is submitted to queue <research-rh7>.
+Job <5444777> is submitted to queue <research-rh7>.
+Job <5444778> is submitted to queue <research-rh7>.
+Job <5444779> is submitted to queue <research-rh7>.
+Job <5444780> is submitted to queue <research-rh7>.
+Job <5444781> is submitted to queue <research-rh7>.
+Job <5444782> is submitted to queue <research-rh7>.
+Job <5444783> is submitted to queue <research-rh7>.
+Job <5444784> is submitted to queue <research-rh7>.
+Job <5444785> is submitted to queue <research-rh7>.
+Job <5444786> is submitted to queue <research-rh7>.
+Job <5444787> is submitted to queue <research-rh7>.
+Job <5444788> is submitted to queue <research-rh7>.
+Job <5444789> is submitted to queue <research-rh7>.
+Job <5444791> is submitted to queue <research-rh7>.
+Job <5444792> is submitted to queue <research-rh7>.
+Job <5444793> is submitted to queue <research-rh7>.
+Job <5444794> is submitted to queue <research-rh7>.
+Job <5444795> is submitted to queue <research-rh7>.
+Job <5444796> is submitted to queue <research-rh7>.
+Job <5444797> is submitted to queue <research-rh7>.
+Job <5444798> is submitted to queue <research-rh7>.
+Job <5444799> is submitted to queue <research-rh7>.
+Job <5444800> is submitted to queue <research-rh7>.
+Job <5450309> is submitted to queue <research-rh7>.
+Job <5451592> is submitted to queue <research-rh7>.
+Job <5452190> is submitted to queue <research-rh7>.
+Job <5452545> is submitted to queue <research-rh7>.
+Job <5452987> is submitted to queue <research-rh7>.
+Job <5454702> is submitted to queue <research-rh7>.
+Job <5455201> is submitted to queue <research-rh7>.
+Job <5461204> is submitted to queue <research-rh7>.
+Job <5464208> is submitted to queue <research-rh7>.
+Job <5464209> is submitted to queue <research-rh7>.
+Job <5465536> is submitted to queue <research-rh7>.
+Job <5465862> is submitted to queue <research-rh7>.
+Job <5465892> is submitted to queue <research-rh7>.
+Job <5465961> is submitted to queue <research-rh7>.
+Job <5467007> is submitted to queue <research-rh7>.
+Job <5469188> is submitted to queue <research-rh7>.
+Job <5469370> is submitted to queue <research-rh7>.
+Job <5469371> is submitted to queue <research-rh7>.
+Job <5469862> is submitted to queue <research-rh7>.
+Job <5470153> is submitted to queue <research-rh7>.
+Job <5470821> is submitted to queue <research-rh7>.
+Job <5470866> is submitted to queue <research-rh7>.
+Job <5471031> is submitted to queue <research-rh7>.
+Job <5471032> is submitted to queue <research-rh7>.
+Job <5471448> is submitted to queue <research-rh7>.
+Job <5471728> is submitted to queue <research-rh7>.
+Job <5471739> is submitted to queue <research-rh7>.
+Job <5471757> is submitted to queue <research-rh7>.
+Job <5471758> is submitted to queue <research-rh7>.
+Job <5472513> is submitted to queue <research-rh7>.
+Job <5473232> is submitted to queue <research-rh7>.
+Job <5474421> is submitted to queue <research-rh7>.
+Job <5476048> is submitted to queue <research-rh7>.
+Job <5476134> is submitted to queue <research-rh7>.
+Job <5477845> is submitted to queue <research-rh7>.
+Job <5478045> is submitted to queue <research-rh7>.
+Job <5479013> is submitted to queue <research-rh7>.
+Job <5483668> is submitted to queue <research-rh7>.
+Job <5484840> is submitted to queue <research-rh7>.
+Job <5484894> is submitted to queue <research-rh7>.
+Job <5485319> is submitted to queue <research-rh7>.
+Job <5485320> is submitted to queue <research-rh7>.
+Job <5488099> is submitted to queue <research-rh7>.
+Job <5489228> is submitted to queue <research-rh7>.
+Job <5490964> is submitted to queue <research-rh7>.
+Job <5493078> is submitted to queue <research-rh7>.
+Job <5493660> is submitted to queue <research-rh7>.
+Job <5495824> is submitted to queue <research-rh7>.
+Execution halted
+Execution halted
+
+------------------------------------------------------------
+Sender: LSF System <lsf@ebi6-167>
+Subject: Job 4103226: <Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R> in cluster <EBI> Exited
+
+Job <Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R> was submitted from host <ebi-cli-001> by user <vitalii> in cluster <EBI>.
+Job was executed on host(s) <4*ebi6-167>, in queue <research-rh7>, as user <vitalii> in cluster <EBI>.
+</homes/vitalii> was used as the home directory.
+</homes/vitalii> was used as the working directory.
+Started at Tue Apr  3 00:14:25 2018
+Results reported at Tue Apr 10 00:21:27 2018
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
+------------------------------------------------------------
+
+TERM_RUNLIMIT: job killed after reaching LSF run time limit.
+Exited with signal termination: Stopped (signal).
+
+Resource usage summary:
+
+    CPU time :               2717.24 sec.
+    Max Memory :             9289 MB
+    Average Memory :         8738.54 MB
+    Total Requested Memory : 32000.00 MB
+    Delta Memory :           22711.00 MB
+    (Delta: the difference between total requested memory and actual max usage.)
+    Max Swap :               11593 MB
+
+    Max Processes :          9
+    Max Threads :            22
+
+The output (if any) is above this job summary.
+
