@@ -183,7 +183,7 @@ if(nrow(dataset_names_not_done) >= 1){
 ## Compare discovered motifs to known motifs
 
 ```{r comparimotif}
-resultdirs = paste0("./", dataset_names$dataset_names, "/results/")
+resultdirs = paste0("./", dataset_names$dataset_names, "/result/")
 software_path = "../software/cluster/"
 CompariMotif3_dburl = "http://elm.eu.org/elms/elms_index.tsv"
 CompariMotif3_dbpath = "./data_files/"

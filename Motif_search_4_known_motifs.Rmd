@@ -135,7 +135,7 @@ myPPInetwork2SLIMFinder = function(dataset_name = "SLIMFinder", slimlen = 5, max
                           write_log = T,
                           N_seq = 200,
                           seed_list = human_proteins, # human proteins that bind viral proteins with known motifs 
-                          query_list = viral_net_w_known_motifs, # viral proteins with known motifs 
+                          query_list = viral_proteins_w_known_motifs, # viral proteins with known motifs 
                           memory_start = 350,
                           memory_step = 2000,
                           Njobs_limit = 100)
