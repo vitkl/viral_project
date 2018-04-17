@@ -33,8 +33,11 @@ neg_set = c("all_instances") # "all_instances", "all_proteins", "random"
 predictor_col = "domain_motif_pval" # "Sig" or "p.value" or "domain_motif_pval"
 normalise = F # if normalised Sig threshold of 0.3 becomes 1 (but this equalises Sig == 0.3 to true 1 - that is when motif was not found)
 #ROC:
-measure1 = "tpr" # "tpr" or "prec"
-measure2 = "fpr" # "fpr" or "rec"
+measure1 = "prec" # "tpr" or "prec"
+measure2 = "rec" # "fpr" or "rec"
+both_metrics_vs_cutoff = T
+single_metric = c("auc","prbe")[1]
+single_metric_name = c("Median AUC", "Prec-rec break-even")[1]
 
 datasets = c("qslimfinder.Full_IntAct3.FALSE",
              "qslimfinder.Vidal3.FALSE",
@@ -96,7 +99,11 @@ res_list_viral = mBenchmarkMotifs(datasets = datasets,
             filter_by_domain_data = filter_by_domain_data)
 
 par(mar = c(6,7,4,4))
-mBenchmarkMotifsROC(res_list_viral, data_type = "query", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.95 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1), measure1 = measure1, measure2 = measure2)
+mBenchmarkMotifsROC(res_list_viral, data_type = "query", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.95 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1),
+                    measure1 = measure1, measure2 = measure2,
+                    single_metric = single_metric,
+                    single_metric_name = single_metric_name, x_query = 0.6,
+                    both_metrics_vs_cutoff = both_metrics_vs_cutoff)
 ```
 
 What is the minimal set size that returns motif with Sig < 0.05?  
@@ -196,6 +203,6 @@ filter_by_domain_data_print = gsub(" ","",filter_by_domain_data)
 filter_by_domain_data_print = gsub("<*","",filter_by_domain_data_print)
 filter_by_domain_data_print = gsub("<*","",filter_by_domain_data_print)
 filter_by_domain_data_print = gsub("=*","",filter_by_domain_data_print)
-filename = paste0("./processed_data_files/compr_benchmarking_strategIntVid",format(Sys.Date(), "%Y%m"),"_",paste0(motif_types,collapse = "_"),"_",neg_set,"_",predictor_col,"_", filter_by_domain_data_print,"_type_", measure1, measure2,".RData")
+filename = paste0("./processed_data_files/compr_benchmarking_strategIntVid",format(Sys.Date., "%Y%m"),"_",paste0(motif_types,collapse = "_"),"_",neg_set,"_",predictor_col,"_", filter_by_domain_data_print,"_type_", measure1, measure2,".RData")
 save(list = ls(), file=filename)
 ```
