@@ -303,81 +303,81 @@ replotFigureVenn = function(figure, main, fontfamily = "Arial", ...){
 }
 ##################################################################################### "MOD", "LIG", "DOC"
 
-figure = figureVenn(filter_by_domain_data = NULL,
+figureMODLIGDOC = figureVenn(filter_by_domain_data = NULL,
                     main = "human network searched for motifs present in viral proteins (not filtered by domain)",
                     motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
                     datasets = datasets,
                     motif_pval_cutoffs_viral = c(0.3, 0.1, 0.03))
-figure2 = replotFigureVenn(figure,
+figureMODLIGDOC2 = replotFigureVenn(figureMODLIGDOC,
                  main = "")
-ggsave(filename = "Venn_not_filtered_MOD_LIG_DOC.svg", plot = figure2$big_plot_text,
+ggsave(filename = "Venn_not_filtered_MOD_LIG_DOC.svg", plot = figureMODLIGDOC2$big_plot_text,
        device = "svg", width = 12.79787, height = 11.60638, units = "in")
 #grid.newpage()
 #grid.draw(figure2$big_plot_text)
 
-figure_filtered = figureVenn(filter_by_domain_data = "p.value < 0.5",
+figureMODLIGDOC2_filtered = figureVenn(filter_by_domain_data = "p.value < 0.5",
                              main = "human network searched for motifs present in viral proteins (filtered by domain)",
                              motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
                              datasets = datasets)
-figure_filtered2 = replotFigureVenn(figure_filtered,
+figureMODLIGDOC2_filtered2 = replotFigureVenn(figureMODLIGDOC2_filtered,
                  main = "")
-ggsave(filename = "Venn_filtered_MOD_LIG_DOC.svg", plot = figure_filtered2$big_plot_text,
+ggsave(filename = "Venn_filtered_MOD_LIG_DOC.svg", plot = figureMODLIGDOC2_filtered2$big_plot_text,
        device = "svg", width = 12.79787, height = 11.60638, units = "in")
 #grid.newpage()
 #grid.draw(figure_filtered2$big_plot_text)
 ##################################################################################### "MOD", "LIG", "DOC", "DEG", "CLV"
 motif_types = c("MOD", "LIG", "DOC", "DEG", "CLV")
 
-figure = figureVenn(filter_by_domain_data = NULL,
+figureMODLIGDOC2DEGCLV = figureVenn(filter_by_domain_data = NULL,
                     main = "human network searched for motifs present in viral proteins (not filtered by domain)",
                     motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
                     datasets = datasets,
                     motif_pval_cutoffs_IntAct = c(0.3, 0.063, 0.003),
                     motif_pval_cutoffs_viral = c(0.3, 0.1, 0.03))
-figure2 = replotFigureVenn(figure,
+figureMODLIGDOC2DEGCLV2 = replotFigureVenn(figureMODLIGDOC2DEGCLV,
                  main = "")
-ggsave(filename = "Venn_not_filtered_MOD_LIG_DOC_DEG_CLV.svg", plot = figure2$big_plot_text,
+ggsave(filename = "Venn_not_filtered_MOD_LIG_DOC_DEG_CLV.svg", plot = figureMODLIGDOC2DEGCLV2$big_plot_text,
        device = "svg", width = 12.79787, height = 11.60638, units = "in")
 #grid.newpage()
 #grid.draw(figure2$big_plot_text)
 
-figure_filtered = figureVenn(filter_by_domain_data = "p.value < 0.5",
+figureMODLIGDOC2DEGCLV_filtered = figureVenn(filter_by_domain_data = "p.value < 0.5",
                              main = "human network searched for motifs present in viral proteins (filtered by domain)",
                              motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
                              datasets = datasets,
                     motif_pval_cutoffs_IntAct = c(0.3, 0.039, 0.002),
                     motif_pval_cutoffs_viral = c(0.3, 0.14, 0.04))
-figure_filtered2 = replotFigureVenn(figure_filtered,
+figureMODLIGDOC2DEGCLV_filtered2 = replotFigureVenn(figureMODLIGDOC2DEGCLV_filtered,
                  main = "")
-ggsave(filename = "Venn_filtered_MOD_LIG_DOC_DEG_CLV.svg", plot = figure_filtered2$big_plot_text,
+ggsave(filename = "Venn_filtered_MOD_LIG_DOC_DEG_CLV.svg", plot = figureMODLIGDOC2DEGCLV_filtered2$big_plot_text,
        device = "svg", width = 12.79787, height = 11.60638, units = "in")
 #grid.newpage()
 #grid.draw(figure_filtered2$big_plot_text)
 ##################################################################################### "MOD", "LIG", "DOC" "DEG", "CLV", "TRG"
 motif_types = c("MOD", "LIG", "DOC", "DEG", "CLV", "TRG")
 
-figure = figureVenn(filter_by_domain_data = NULL,
+figureMODLIGDOC2DEGCLVTRG = figureVenn(filter_by_domain_data = NULL,
                     main = "human network searched for motifs present in viral proteins (not filtered by domain)",
                     motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
                     datasets = datasets,
                     motif_pval_cutoffs_IntAct = c(0.3, 0.063, 0.003),
                     motif_pval_cutoffs_viral = c(0.3, 0.1, 0.03))
-figure2 = replotFigureVenn(figure,
+figureMODLIGDOC2DEGCLVTRG2 = replotFigureVenn(figureMODLIGDOC2DEGCLVTRG,
                  main = "")
-ggsave(filename = "Venn_not_filtered_MOD_LIG_DOC_DEG_CLV_TRG.svg", plot = figure2$big_plot_text,
+ggsave(filename = "Venn_not_filtered_MOD_LIG_DOC_DEG_CLV_TRG.svg", plot = figureMODLIGDOC2DEGCLVTRG2$big_plot_text,
        device = "svg", width = 12.79787, height = 11.60638, units = "in")
 #grid.newpage()
 #grid.draw(figure2$big_plot_text)
 
-figure_filtered = figureVenn(filter_by_domain_data = "p.value < 0.5",
+figureMODLIGDOC2DEGCLVTRG_filtered = figureVenn(filter_by_domain_data = "p.value < 0.5",
                              main = "human network searched for motifs present in viral proteins (filtered by domain)",
                              motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
                              datasets = datasets,
                     motif_pval_cutoffs_IntAct = c(0.3, 0.039, 0.002),
                     motif_pval_cutoffs_viral = c(0.3, 0.14, 0.04))
-figure_filtered2 = replotFigureVenn(figure_filtered,
+figureMODLIGDOC2DEGCLVTRG_filtered2 = replotFigureVenn(figureMODLIGDOC2DEGCLVTRG_filtered,
                  main = "")
-ggsave(filename = "Venn_filtered_MOD_LIG_DOC_DEG_CLV_TRG.svg", plot = figure_filtered2$big_plot_text,
+ggsave(filename = "Venn_filtered_MOD_LIG_DOC_DEG_CLV_TRG.svg", plot = figureMODLIGDOC2DEGCLVTRG_filtered2$big_plot_text,
        device = "svg", width = 12.79787, height = 11.60638, units = "in")
 #grid.newpage()
 #grid.draw(figure_filtered2$big_plot_text)
