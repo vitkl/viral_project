@@ -1,7 +1,7 @@
 # Pipeline for de-novo discovery of SLIMs using viral-human protein interaction network 
 
 ## cluster command line commands to run code in this RScript (pipeline_for_EBIcluster.R)
-# bsub -n 1 -q research-rh7 -M 8000 -R "rusage[mem=8000]" -o /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.log Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
+# bsub -n 1 -q research-rh7 -M 16000 -R "rusage[mem=16000]" -o /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.log Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
 # bsub -n 4 -q research-rh7 -M 32000 -R "rusage[mem=32000]" -o /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.log Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
 # bsub -n 8 -q research-rh7 -M 16000 -R "rusage[mem=16000]" Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
 ## for domain enrichment:
@@ -36,10 +36,15 @@ library(rmarkdown)
 #                  output_format = "html_document", 
 #                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Degree_distribution_in_the_network_clust.html")
 
-### Motif search for known motifs in viral proteins using multiple strategies
-rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_4_known_motifs.Rmd", 
+### Motif search for known motifs in viral proteins using multiple strategies - as of 18.04 all jobs fails
+#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_4_known_motifs.Rmd", 
+#                  output_format = "html_document", 
+#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_4_known_motifs_clust.html")
+
+### Venn diagrams
+rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/compr_benchmarking_venn.Rmd", 
                   output_format = "html_document", 
-                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_4_known_motifs_clust.html")
+                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/compr_benchmarking_venn_clust.html")
 
 # In progress: check which datasets were already processed by motif search pipeline 
 # cat /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/RData_from_Motif_search_4_known_motifs

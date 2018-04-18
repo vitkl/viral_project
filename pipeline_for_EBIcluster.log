@@ -1691,3 +1691,73 @@ Resource usage summary:
 
 The output (if any) is above this job summary.
 
+
+
+processing file: compr_benchmarking_venn.Rmd
+  |                                                                         |                                                                 |   0%  |                                                                         |...........                                                      |  17%
+  ordinary text without R code
+
+  |                                                                         |......................                                           |  33%
+label: setup (with options) 
+List of 1
+ $ include: logi TRUE
+
+  |                                                                         |................................                                 |  50%
+  ordinary text without R code
+
+  |                                                                         |...........................................                      |  67%
+label: not_filt_Sig
+71 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+71 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+71 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+71 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+71 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+71 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+71 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+71 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+81 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+81 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+81 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+81 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+81 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+81 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+81 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+71 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+71 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+71 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+71 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+71 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+71 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+71 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+81 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+81 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+81 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+81 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+81 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+81 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+81 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)
+40 occurences out of 230 total in ELM in query proteins could have been discovered (QSLIMFinder query proteins, all types of motifs)

@@ -11,7 +11,7 @@ output:
 ```{r setup, include=TRUE}
 knitr::opts_chunk$set(echo = FALSE, fig.width = 12, fig.height = 8, warning = FALSE, message = FALSE)
 
-packages = c("MItools", "RColorBrewer", "devtools")
+packages = c("MItools", "RColorBrewer", "devtools", "grid","gridExtra", "ggplot2", "VennDiagram", "svglite")
 if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
     packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
     # specifying mirror is necessary for some Linux systems
@@ -95,6 +95,7 @@ res_list_viral = myBenchmarkMotifs(neg_set = "all_instances",
                                    dataset = datasets[1], datasets)
 #####################################################################################
 plotVenn = function(res, ...){
+    #grid.newpage()
     if(res$N_query_total_instances_found < res$N_query_known_instances) rotation.degree = 180 else rotation.degree = 0
     venn.plot <- VennDiagram::draw.pairwise.venn(
         area1 = res$N_query_total_instances_found,
@@ -112,15 +113,21 @@ plotVenn = function(res, ...){
         ext.line.lwd = 2,
         ext.line.lty = "dashed",
         rotation.degree = rotation.degree,
+        ind = F,
         ...
     );
+    #grid.newpage()
     venn = gTree(children=venn.plot, name="venn")
+    #grid.newpage()
     # since multiple matches are possible between datasets I need to edit numbers shown on a diagram
     venn = editGrob(venn, paste0(venn[["childrenOrder"]][7]),
                     label = paste0("",res$N_query_found_match_known_instances,
                                    "    \nmatching known\n     ",res$N_query_known_match_instances_found, ""),
                     grep = T)
-    venn = editGrob(venn, paste0(venn[["childrenOrder"]][5]),
+    #grid.newpage()
+    #if(rotation.degree == 0) discovered_ind = 5 else discovered_ind = 6
+    discovered_ind = 5
+    venn = editGrob(venn, paste0(venn[["childrenOrder"]][discovered_ind]),
                     label = res$N_query_total_instances_found - res$N_query_found_match_known_instances,
                     grep = T)
     #grid.newpage()
@@ -134,10 +141,11 @@ plotAnnotVenn = function(res, main = "", sub = "",
                          main_fontsize = 22, sub_fontsize = 17,
                          main_lineheight = 1.4, sub_lineheight = 0.9,
                          cex = 1.8, cat.cex = 1.8,
-                         fontfamily = "serif", ...) {
+                         fontfamily = "Arial", ...) { # "serif" "Arial"
     
     lay = matrix(c(1), nrow = 1, ncol = 1)
-    annotated_venn = plotVenn(res, fontfamily = fontfamily, cex = cex, cat.cex = cat.cex)
+    annotated_venn = plotVenn(res, fontfamily = fontfamily, cat.fontfamily = fontfamily,
+                              cex = cex, cat.cex = cat.cex)
     if(sub != "") {
         lay = matrix(c(1,2,2,2,2,2), nrow = 6, ncol = 1)
         sub_grob = textGrob(sub,
@@ -168,7 +176,7 @@ plotAnnotVenn(res_list_viral, main = "corrected p-value < 0.3")
 mPlotAnnotVenn = function(filter_by_domain_data = NULL,
                           motif_pval_cutoffs = c(0.3, 0.05, 0.002),
                           motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
-                          dataset = datasets[1], datasets = datasets) {
+                          dataset = datasets[1], datasets = datasets, fontfamily = "Arial") {
         annotated_venns = lapply(motif_pval_cutoffs, function(motif_pval_cutoff){
             res_instances = myBenchmarkMotifs(neg_set = "all_instances",
                                               filter_by_domain_data = filter_by_domain_data,
@@ -184,7 +192,8 @@ mPlotAnnotVenn = function(filter_by_domain_data = NULL,
                                            sub = paste0(res_instances$N_query_prot_with_known_instances,
                                                         " proteins contain known SLIMs (",
                                                         res_instances$N_query_prot_with_known_instances_found," proteins recovered)\n",
-                                                        res_proteins$N_query_total_instances_found," SLIMs predicted in other proteins"))
+                                                        res_proteins$N_query_total_instances_found," SLIMs predicted in other proteins"),
+                                           fontfamily = fontfamily)
         })
         gridExtra::arrangeGrob(grobs = annotated_venns, ncol=1)
 }
@@ -196,7 +205,8 @@ figureVenn = function(filter_by_domain_data = NULL,
                       stringent_prec = 0.5,
                       lenient_cutoff = 0.3,
                       motif_pval_cutoffs_IntAct = NULL,
-                      motif_pval_cutoffs_viral = NULL,...){
+                      motif_pval_cutoffs_viral = NULL,
+                      fontfamily = "Arial", ...){
     res_list_IntAct = myBenchmarkMotifs(neg_set = "all_instances",
                                         filter_by_domain_data = filter_by_domain_data,
                                         motif_pval_cutoff = 1,
@@ -212,9 +222,9 @@ figureVenn = function(filter_by_domain_data = NULL,
     big_plot_IntAct = mPlotAnnotVenn(filter_by_domain_data = filter_by_domain_data,
                                      motif_pval_cutoffs = motif_pval_cutoffs_IntAct,
                                      motif_pval_tags = motif_pval_tags,
-                                     dataset = datasets[1], datasets = datasets)
+                                     dataset = datasets[1], datasets = datasets, fontfamily = fontfamily)
     IntAct_grob = textGrob("including all human data (IntAct)",
-                           gp=gpar(fontsize=25, fontfamily = "serif",
+                           gp=gpar(fontsize=25, fontfamily = fontfamily,
                                    lineheight = 1.4, ...))
     
     res_list_viral = myBenchmarkMotifs(neg_set = "all_instances",
@@ -233,9 +243,9 @@ figureVenn = function(filter_by_domain_data = NULL,
     big_plot_viral = mPlotAnnotVenn(filter_by_domain_data = filter_by_domain_data,
                                     motif_pval_cutoffs = motif_pval_cutoffs_viral,
                                     motif_pval_tags = motif_pval_tags,
-                                    dataset = datasets[3], datasets = datasets)
+                                    dataset = datasets[3], datasets = datasets, fontfamily = fontfamily)
     viral_grob = textGrob("only viral-human data",
-                          gp=gpar(fontsize=25, fontfamily = "serif",
+                          gp=gpar(fontsize=25, fontfamily = fontfamily,
                                   lineheight = 1.4, ...))
     
     big_plot = gridExtra::arrangeGrob(big_plot_IntAct, big_plot_viral, nrow=1)
@@ -245,7 +255,7 @@ figureVenn = function(filter_by_domain_data = NULL,
                                                                   nrow = 7, ncol = 1))
     if(main != ""){
         main_grob = textGrob(main,
-                          gp=gpar(fontsize=27, fontfamily = "serif",
+                          gp=gpar(fontsize=27, fontfamily = fontfamily,
                                   lineheight = 1, ...))
         big_plot_text = gridExtra::arrangeGrob(main_grob, big_plot_text, ncol=1,
                                            layout_matrix = matrix(c(1,rep(2,7)),
@@ -259,12 +269,12 @@ figureVenn = function(filter_by_domain_data = NULL,
          big_plot_viral = big_plot_viral, viral_grob = viral_grob)
 }
 #####################################################################################
-replotFigureVenn = function(figure, main, ...){
+replotFigureVenn = function(figure, main, fontfamily = "Arial", ...){
     IntAct_grob = textGrob("including all human data (IntAct)",
-                           gp=gpar(fontsize=24, fontfamily = "serif",
+                           gp=gpar(fontsize=24, fontfamily = fontfamily,
                                    lineheight = 1, ...))
     viral_grob = textGrob("only viral-human data",
-                          gp=gpar(fontsize=24, fontfamily = "serif",
+                          gp=gpar(fontsize=24, fontfamily = fontfamily,
                                   lineheight = 1, ...))
     
     big_plot = gridExtra::arrangeGrob(rectGrob(gp=gpar(col = "white")),
@@ -279,7 +289,7 @@ replotFigureVenn = function(figure, main, ...){
                                                                   nrow = 8, ncol = 1))
     if(main != ""){
         main_grob = textGrob(main,
-                          gp=gpar(fontsize=27, fontfamily = "serif",
+                          gp=gpar(fontsize=27, fontfamily = fontfamily,
                                   lineheight = 1, ...))
         big_plot_text = gridExtra::arrangeGrob(main_grob, big_plot_text, ncol=1,
                                            layout_matrix = matrix(c(1,rep(2,7)),
