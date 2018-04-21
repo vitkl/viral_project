@@ -59,11 +59,11 @@ motif_setup_month = c("201802",
 
 ```{r, not_filt_Sig}
 #####################################################################################
-myBenchmarkMotifs = function(neg_set, filter_by_domain_data, motif_pval_cutoff, dataset, datasets, return_all = F){
+myBenchmarkMotifs = function(neg_set, filter_by_domain_data, motif_pval_cutoff, dataset, datasets, return_all = F, merge_domain_data = F){
     res = mBenchmarkMotifs(datasets = dataset, 
                            descriptions = descriptions[datasets == dataset],
                            dir = "./", 
-                           merge_domain_data = F, neg_set = neg_set,
+                           merge_domain_data = merge_domain_data, neg_set = neg_set,
                            domain_res_file = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
                            domain_results_obj = "res_count", motif_input_obj = "forSLIMFinder_Ready",
                            one_from_cloud = T, type = "QSLIMFinder",
@@ -121,12 +121,11 @@ plotVenn = function(res, ...){
     #grid.newpage()
     # since multiple matches are possible between datasets I need to edit numbers shown on a diagram
     venn = editGrob(venn, paste0(venn[["childrenOrder"]][7]),
-                    label = paste0("",res$N_query_found_match_known_instances,
-                                   "    \nmatching known\n     ",res$N_query_known_match_instances_found, ""),
+                    label = paste0(res$N_query_found_match_known_instances,
+                                   " / ",res$N_query_known_match_instances_found),
                     grep = T)
     #grid.newpage()
-    #if(rotation.degree == 0) discovered_ind = 5 else discovered_ind = 6
-    discovered_ind = 5
+    if(rotation.degree == 0) discovered_ind = 5 else discovered_ind = 6
     venn = editGrob(venn, paste0(venn[["childrenOrder"]][discovered_ind]),
                     label = res$N_query_total_instances_found - res$N_query_found_match_known_instances,
                     grep = T)
@@ -190,7 +189,7 @@ mPlotAnnotVenn = function(filter_by_domain_data = NULL,
                                            main = paste0(motif_pval_tags[motif_pval_cutoffs == motif_pval_cutoff],
                                                          ": adj. p-value < ", signif(motif_pval_cutoff, 2)),
                                            sub = paste0(res_instances$N_query_prot_with_known_instances,
-                                                        " proteins contain known SLIMs (",
+                                                        " proteins with known SLIMs (",
                                                         res_instances$N_query_prot_with_known_instances_found," proteins recovered)\n",
                                                         res_proteins$N_query_total_instances_found," SLIMs predicted in other proteins"),
                                            fontfamily = fontfamily)
@@ -205,8 +204,10 @@ figureVenn = function(filter_by_domain_data = NULL,
                       stringent_prec = 0.5,
                       lenient_cutoff = 0.3,
                       motif_pval_cutoffs_IntAct = NULL,
+                      motif_pval_cutoffs_Vidal = NULL,
                       motif_pval_cutoffs_viral = NULL,
                       fontfamily = "Arial", ...){
+    ################################################################################ IntAct
     res_list_IntAct = myBenchmarkMotifs(neg_set = "all_instances",
                                         filter_by_domain_data = filter_by_domain_data,
                                         motif_pval_cutoff = 1,
@@ -226,7 +227,27 @@ figureVenn = function(filter_by_domain_data = NULL,
     IntAct_grob = textGrob("including all human data (IntAct)",
                            gp=gpar(fontsize=25, fontfamily = fontfamily,
                                    lineheight = 1.4, ...))
-    
+    ################################################################################ Vidal
+    res_list_Vidal = myBenchmarkMotifs(neg_set = "all_instances",
+                                        filter_by_domain_data = filter_by_domain_data,
+                                        motif_pval_cutoff = 1,
+                                        dataset = datasets[2], datasets, return_all = T)
+    rocr_list_Vidal = mBenchmarkMotifsROC(res_list_Vidal$res, measure1 = "prec", measure2 = "rec", ROCR_data = T)
+    if(is.null(motif_pval_cutoffs_Vidal)){
+        motif_pval_cutoffs_Vidal = c(lenient_cutoff,
+                                      1 - min(rocr_list_Vidal[1,1][[1]]@cutoffs[[1]][rocr_list_Vidal[2,1][[1]]@y.values[[1]] >
+                                                                                          rocr_list_Vidal[2,1][[1]]@x.values[[1]]], na.rm = T),
+                                      1 - min(rocr_list_Vidal[1,1][[1]]@cutoffs[[1]][rocr_list_Vidal[2,1][[1]]@y.values[[1]] > stringent_prec],
+                                              na.rm = T))
+    }
+    big_plot_Vidal = mPlotAnnotVenn(filter_by_domain_data = filter_by_domain_data,
+                                     motif_pval_cutoffs = motif_pval_cutoffs_Vidal,
+                                     motif_pval_tags = motif_pval_tags,
+                                     dataset = datasets[2], datasets = datasets, fontfamily = fontfamily)
+    Vidal_grob = textGrob("including human data (Vidal)",
+                           gp=gpar(fontsize=25, fontfamily = fontfamily,
+                                   lineheight = 1.4, ...))
+    ################################################################################ viral only
     res_list_viral = myBenchmarkMotifs(neg_set = "all_instances",
                                        filter_by_domain_data = filter_by_domain_data,
                                        motif_pval_cutoff = 1,
@@ -248,8 +269,8 @@ figureVenn = function(filter_by_domain_data = NULL,
                           gp=gpar(fontsize=25, fontfamily = fontfamily,
                                   lineheight = 1.4, ...))
     
-    big_plot = gridExtra::arrangeGrob(big_plot_IntAct, big_plot_viral, nrow=1)
-    big_text = gridExtra::arrangeGrob(IntAct_grob, viral_grob, nrow=1)
+    big_plot = gridExtra::arrangeGrob(big_plot_IntAct, big_plot_Vidal, big_plot_viral, nrow=1)
+    big_text = gridExtra::arrangeGrob(IntAct_grob, Vidal_grob, viral_grob, nrow=1)
     big_plot_text = gridExtra::arrangeGrob(big_text, big_plot, ncol=1,
                                            layout_matrix = matrix(c(1,rep(2,6)),
                                                                   nrow = 7, ncol = 1))
@@ -263,9 +284,11 @@ figureVenn = function(filter_by_domain_data = NULL,
     }
     
     list(big_plot_text = big_plot_text,
-         res_list_IntAct = res_list_IntAct, rocr_list_IntAct = rocr_list_IntAct,
-         res_list_viral = res_list_viral, rocr_list_viral = rocr_list_viral,
+         res_list_IntAct = res_list_IntAct, rocr_list_IntAct = rocr_list_IntAct, 
+         res_list_Vidal = res_list_Vidal, rocr_list_Vidal = rocr_list_Vidal,
+         res_list_viral = res_list_viral, rocr_list_viral = rocr_list_viral, 
          big_plot_IntAct = big_plot_IntAct, IntAct_grob = IntAct_grob,
+         big_plot_Vidal = big_plot_Vidal, Vidal_grob = Vidal_grob,
          big_plot_viral = big_plot_viral, viral_grob = viral_grob)
 }
 #####################################################################################
@@ -273,17 +296,24 @@ replotFigureVenn = function(figure, main, fontfamily = "Arial", ...){
     IntAct_grob = textGrob("including all human data (IntAct)",
                            gp=gpar(fontsize=24, fontfamily = fontfamily,
                                    lineheight = 1, ...))
+    Vidal_grob = textGrob("including human data (Vidal)",
+                           gp=gpar(fontsize=24, fontfamily = fontfamily,
+                                   lineheight = 1, ...))
     viral_grob = textGrob("only viral-human data",
                           gp=gpar(fontsize=24, fontfamily = fontfamily,
                                   lineheight = 1, ...))
     
     big_plot = gridExtra::arrangeGrob(rectGrob(gp=gpar(col = "white")),
+                                      figure$big_plot_viral,
+                                      rectGrob(gp=gpar(col = "white")),
                                       figure$big_plot_IntAct,
                                       rectGrob(gp=gpar(col = "white")),
-                                      figure$big_plot_viral, nrow=1,
-                                      layout_matrix = matrix(c(1,rep(2,6),3,rep(4,6)),
-                                                                  nrow = 1, ncol = 14))
-    big_text = gridExtra::arrangeGrob(IntAct_grob, viral_grob, nrow=1)
+                                      figure$big_plot_Vidal, nrow=1,
+                                      layout_matrix = matrix(c(1,rep(2,6),
+                                                               3,rep(4,6),
+                                                               5,rep(6,6)),
+                                                                  nrow = 1, ncol = 21))
+    big_text = gridExtra::arrangeGrob(viral_grob, IntAct_grob, Vidal_grob, nrow=1)
     big_plot_text = gridExtra::arrangeGrob(big_text, big_plot, ncol=1,
                                            layout_matrix = matrix(c(1,rep(2,7)),
                                                                   nrow = 8, ncol = 1))
@@ -296,9 +326,11 @@ replotFigureVenn = function(figure, main, fontfamily = "Arial", ...){
                                                                   nrow = 8, ncol = 1))
     }
     list(big_plot_text = big_plot_text,
-         res_list_IntAct = figure$res_list_IntAct, rocr_list_IntAct = figure$rocr_list_IntAct,
-         res_list_viral = figure$res_list_viral, rocr_list_viral = figure$rocr_list_viral,
+         res_list_IntAct = figure$res_list_IntAct, rocr_list_IntAct = figure$rocr_list_IntAct, 
+         res_list_Vidal = figure$res_list_Vidal, rocr_list_Vidal = figure$rocr_list_Vidal,
+         res_list_viral = figure$res_list_viral, rocr_list_viral = figure$rocr_list_viral, 
          big_plot_IntAct = figure$big_plot_IntAct, IntAct_grob = IntAct_grob,
+         big_plot_Vidal = figure$big_plot_Vidal, Vidal_grob = Vidal_grob,
          big_plot_viral = figure$big_plot_viral, viral_grob = viral_grob)
 }
 ##################################################################################### "MOD", "LIG", "DOC"
@@ -311,7 +343,7 @@ figureMODLIGDOC = figureVenn(filter_by_domain_data = NULL,
 figureMODLIGDOC2 = replotFigureVenn(figureMODLIGDOC,
                  main = "")
 ggsave(filename = "Venn_not_filtered_MOD_LIG_DOC.svg", plot = figureMODLIGDOC2$big_plot_text,
-       device = "svg", width = 12.79787, height = 11.60638, units = "in")
+       device = "svg", width = 19.3, height = 11.60638, units = "in")
 #grid.newpage()
 #grid.draw(figure2$big_plot_text)
 
@@ -322,9 +354,10 @@ figureMODLIGDOC2_filtered = figureVenn(filter_by_domain_data = "p.value < 0.5",
 figureMODLIGDOC2_filtered2 = replotFigureVenn(figureMODLIGDOC2_filtered,
                  main = "")
 ggsave(filename = "Venn_filtered_MOD_LIG_DOC.svg", plot = figureMODLIGDOC2_filtered2$big_plot_text,
-       device = "svg", width = 12.79787, height = 11.60638, units = "in")
+       device = "svg", width = 19.3, height = 11.60638, units = "in")
 #grid.newpage()
 #grid.draw(figure_filtered2$big_plot_text)
+##################################################################################### ^ copy optimal and stringent motif_pval_cutoffs
 ##################################################################################### "MOD", "LIG", "DOC", "DEG", "CLV"
 motif_types = c("MOD", "LIG", "DOC", "DEG", "CLV")
 
@@ -333,11 +366,12 @@ figureMODLIGDOC2DEGCLV = figureVenn(filter_by_domain_data = NULL,
                     motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
                     datasets = datasets,
                     motif_pval_cutoffs_IntAct = c(0.3, 0.063, 0.003),
+                    motif_pval_cutoffs_Vidal = c(0.3, 0.069, 8e-05),
                     motif_pval_cutoffs_viral = c(0.3, 0.1, 0.03))
 figureMODLIGDOC2DEGCLV2 = replotFigureVenn(figureMODLIGDOC2DEGCLV,
                  main = "")
 ggsave(filename = "Venn_not_filtered_MOD_LIG_DOC_DEG_CLV.svg", plot = figureMODLIGDOC2DEGCLV2$big_plot_text,
-       device = "svg", width = 12.79787, height = 11.60638, units = "in")
+       device = "svg", width = 19.3, height = 11.60638, units = "in")
 #grid.newpage()
 #grid.draw(figure2$big_plot_text)
 
@@ -346,11 +380,12 @@ figureMODLIGDOC2DEGCLV_filtered = figureVenn(filter_by_domain_data = "p.value < 
                              motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
                              datasets = datasets,
                     motif_pval_cutoffs_IntAct = c(0.3, 0.039, 0.002),
+                    motif_pval_cutoffs_Vidal = c(0.3, 0.027, 7.4e-05),
                     motif_pval_cutoffs_viral = c(0.3, 0.14, 0.04))
 figureMODLIGDOC2DEGCLV_filtered2 = replotFigureVenn(figureMODLIGDOC2DEGCLV_filtered,
                  main = "")
 ggsave(filename = "Venn_filtered_MOD_LIG_DOC_DEG_CLV.svg", plot = figureMODLIGDOC2DEGCLV_filtered2$big_plot_text,
-       device = "svg", width = 12.79787, height = 11.60638, units = "in")
+       device = "svg", width = 19.3, height = 11.60638, units = "in")
 #grid.newpage()
 #grid.draw(figure_filtered2$big_plot_text)
 ##################################################################################### "MOD", "LIG", "DOC" "DEG", "CLV", "TRG"
@@ -361,11 +396,12 @@ figureMODLIGDOC2DEGCLVTRG = figureVenn(filter_by_domain_data = NULL,
                     motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
                     datasets = datasets,
                     motif_pval_cutoffs_IntAct = c(0.3, 0.063, 0.003),
+                    motif_pval_cutoffs_Vidal = c(0.3, 0.069, 8e-05),
                     motif_pval_cutoffs_viral = c(0.3, 0.1, 0.03))
 figureMODLIGDOC2DEGCLVTRG2 = replotFigureVenn(figureMODLIGDOC2DEGCLVTRG,
                  main = "")
 ggsave(filename = "Venn_not_filtered_MOD_LIG_DOC_DEG_CLV_TRG.svg", plot = figureMODLIGDOC2DEGCLVTRG2$big_plot_text,
-       device = "svg", width = 12.79787, height = 11.60638, units = "in")
+       device = "svg", width = 19.3, height = 11.60638, units = "in")
 #grid.newpage()
 #grid.draw(figure2$big_plot_text)
 
@@ -374,14 +410,168 @@ figureMODLIGDOC2DEGCLVTRG_filtered = figureVenn(filter_by_domain_data = "p.value
                              motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
                              datasets = datasets,
                     motif_pval_cutoffs_IntAct = c(0.3, 0.039, 0.002),
+                    motif_pval_cutoffs_Vidal = c(0.3, 0.027, 7.4e-05),
                     motif_pval_cutoffs_viral = c(0.3, 0.14, 0.04))
 figureMODLIGDOC2DEGCLVTRG_filtered2 = replotFigureVenn(figureMODLIGDOC2DEGCLVTRG_filtered,
                  main = "")
 ggsave(filename = "Venn_filtered_MOD_LIG_DOC_DEG_CLV_TRG.svg", plot = figureMODLIGDOC2DEGCLVTRG_filtered2$big_plot_text,
-       device = "svg", width = 12.79787, height = 11.60638, units = "in")
+       device = "svg", width = 19.3, height = 11.60638, units = "in")
 #grid.newpage()
 #grid.draw(figure_filtered2$big_plot_text)
 #####################################################################################
+```
+
+# protein-domain-motif-protein network
+
+```{r}
+# get motif & domains (stringent threshold)
+IntAct = myBenchmarkMotifs(neg_set = "all_proteins",
+                  filter_by_domain_data = "p.value < 0.5",
+                  motif_pval_cutoff = 0.002,
+                  dataset = datasets[1], datasets,
+                  return_all = T, merge_domain_data = T)
+viral = myBenchmarkMotifs(neg_set = "all_proteins",
+                  filter_by_domain_data = "p.value < 0.5",
+                  motif_pval_cutoff = 0.04,
+                  dataset = datasets[3], datasets,
+                  return_all = T, merge_domain_data = T)
+```
+
+```{r, eval=FALSE}
+# get readable names for proteins and domains 
+paste0("https://www.uniprot.org/uniprot/?query=id:", uniprot_id,"&format=tab&columns=id,genes,entry%20name,protein%20names,organism,organism-id")
+InterProEntryTypes = getInterProEntryTypes("./data_files/entry.list")
+
+# reconstruct GRanges into network
+dataset4Cytoscape = function(uniprot_id = "P03126")
+IntAct_GRanges =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query
+Nrows = length(IntAct_GRanges)
+IntAct_network = data.table(source = c(IntAct_GRanges$interacts_with,   IntAct_GRanges$IDs_domain_human, IntAct_GRanges$Pattern),
+                            target = c(IntAct_GRanges$IDs_domain_human, IntAct_GRanges$Pattern,          IntAct_GRanges$query),
+                            Sig =    c(rep(1, Nrows),                   IntAct_GRanges$Sig,              rep(1, Nrows)),
+                            type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
+                            type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
+IntAct_network = unique(IntAct_network[complete.cases(IntAct_network)])
+IntAct_network_types = unique(data.table(node = c(IntAct_network$source, IntAct_network$target),
+                                         type = c(IntAct_network$type_source, IntAct_network$type_target)))
+fwrite(IntAct_network, "./results/IntAct_network", sep = "\t")
+fwrite(IntAct_network_types, "./results/IntAct_network_types", sep = "\t")
+
+#################################################  recovered motifs network
+IntAct_GRanges_rec =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query
+Nrows = length(IntAct_GRanges_rec)
+IntAct_network_rec = data.table(source = c(IntAct_GRanges_rec$interacts_with,   IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern),
+                            target = c(IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern,          IntAct_GRanges_rec$query),
+                            Sig =    c(rep(1, Nrows),                   IntAct_GRanges_rec$Sig,              rep(1, Nrows)),
+                            type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
+                            type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
+IntAct_network_rec = unique(IntAct_network_rec[complete.cases(IntAct_network_rec)])
+IntAct_network_rec_types = unique(data.table(node = c(IntAct_network_rec$source, IntAct_network_rec$target),
+                                  type = c(IntAct_network_rec$type_source, IntAct_network_rec$type_target)))
+fwrite(IntAct_network_rec, "./results/IntAct_network_rec", sep = "\t")
+fwrite(IntAct_network_rec_types, "./results/IntAct_network_rec_types", sep = "\t")
+#################################################  recovered motifs network for P03126
+IntAct_GRanges_rec =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query
+IntAct_GRanges_rec = IntAct_GRanges_rec[IntAct_GRanges_rec$query == "P03126"]
+Nrows = length(IntAct_GRanges_rec)
+IntAct_network_rec = data.table(source = c(IntAct_GRanges_rec$interacts_with,   IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern),
+                            target = c(IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern,          IntAct_GRanges_rec$query),
+                            Sig =    c(rep(1, Nrows),                   IntAct_GRanges_rec$Sig,              rep(1, Nrows)),
+                            type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
+                            type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
+IntAct_network_rec = unique(IntAct_network_rec[complete.cases(IntAct_network_rec)])
+IntAct_network_rec_types = unique(data.table(node = c(IntAct_network_rec$source, IntAct_network_rec$target),
+                                  type = c(IntAct_network_rec$type_source, IntAct_network_rec$type_target)))
+domain_prop_P03126 = unique(data.table(node = IntAct_GRanges_rec$IDs_domain_human,
+                                       p.value = IntAct_GRanges_rec$p.value))
+fwrite(IntAct_network_rec, "./results/IntAct_network_recP03126", sep = "\t")
+fwrite(IntAct_network_rec_types, "./results/IntAct_network_rec_typesP03126", sep = "\t")
+fwrite(domain_prop_P03126, "./results/domain_prop_P03126", sep = "\t")
+#################################################  recovered motifs network for P03428
+IntAct_GRanges_rec =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query
+IntAct_GRanges_rec = IntAct_GRanges_rec[IntAct_GRanges_rec$query == "P03428"]
+Nrows = length(IntAct_GRanges_rec)
+IntAct_network_rec = data.table(source = c(IntAct_GRanges_rec$interacts_with,   IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern),
+                            target = c(IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern,          IntAct_GRanges_rec$query),
+                            Sig =    c(rep(1, Nrows),                   IntAct_GRanges_rec$Sig,              rep(1, Nrows)),
+                            type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
+                            type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
+IntAct_network_rec = unique(IntAct_network_rec[complete.cases(IntAct_network_rec)])
+IntAct_network_rec_types = unique(data.table(node = c(IntAct_network_rec$source, IntAct_network_rec$target),
+                                  type = c(IntAct_network_rec$type_source, IntAct_network_rec$type_target)))
+domain_prop_P03428 = unique(data.table(node = IntAct_GRanges_rec$IDs_domain_human,
+                                       p.value = IntAct_GRanges_rec$p.value))
+fwrite(IntAct_network_rec, "./results/IntAct_network_recP03428", sep = "\t")
+fwrite(IntAct_network_rec_types, "./results/IntAct_network_rec_typesP03428", sep = "\t")
+fwrite(domain_prop_P03428, "./results/domain_prop_P03428", sep = "\t")
+#################################################  recovered motifs network for P06463
+IntAct_GRanges_rec =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query
+IntAct_GRanges_rec = IntAct_GRanges_rec[IntAct_GRanges_rec$query == "P06463"]
+Nrows = length(IntAct_GRanges_rec)
+IntAct_network_rec = data.table(source = c(IntAct_GRanges_rec$interacts_with,   IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern),
+                            target = c(IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern,          IntAct_GRanges_rec$query),
+                            Sig =    c(rep(1, Nrows),                   IntAct_GRanges_rec$Sig,              rep(1, Nrows)),
+                            type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
+                            type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
+IntAct_network_rec = unique(IntAct_network_rec[complete.cases(IntAct_network_rec)])
+IntAct_network_rec_types = unique(data.table(node = c(IntAct_network_rec$source, IntAct_network_rec$target),
+                                  type = c(IntAct_network_rec$type_source, IntAct_network_rec$type_target)))
+domain_prop_P06463 = unique(data.table(node = IntAct_GRanges_rec$IDs_domain_human,
+                                       p.value = IntAct_GRanges_rec$p.value))
+fwrite(IntAct_network_rec, "./results/IntAct_network_recP06463", sep = "\t")
+fwrite(IntAct_network_rec_types, "./results/IntAct_network_rec_typesP06463", sep = "\t")
+fwrite(domain_prop_P06463, "./results/domain_prop_P06463", sep = "\t")
+#################################################  candidate motifs network for P03070 ################################################
+IntAct_GRanges_cand =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query
+IntAct_GRanges_cand = IntAct_GRanges_cand[IntAct_GRanges_cand$query == "P03070"]
+Nrows = length(IntAct_GRanges_cand)
+IntAct_network_cand = data.table(source = c(IntAct_GRanges_cand$interacts_with,   IntAct_GRanges_cand$IDs_domain_human, IntAct_GRanges_cand$Pattern),
+                            target = c(IntAct_GRanges_cand$IDs_domain_human, IntAct_GRanges_cand$Pattern,          IntAct_GRanges_cand$query),
+                            Sig =    c(rep(1, Nrows),                   IntAct_GRanges_cand$Sig,              rep(1, Nrows)),
+                            type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
+                            type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
+IntAct_network_cand = unique(IntAct_network_cand[complete.cases(IntAct_network_cand)])
+IntAct_network_cand_types = unique(data.table(node = c(IntAct_network_cand$source, IntAct_network_cand$target),
+                                  type = c(IntAct_network_cand$type_source, IntAct_network_cand$type_target)))
+domain_prop_P03070 = unique(data.table(node = IntAct_GRanges_cand$IDs_domain_human,
+                                       p.value = IntAct_GRanges_cand$p.value))
+fwrite(IntAct_network_cand, "./results/IntAct_network_candP03070", sep = "\t")
+fwrite(IntAct_network_cand_types, "./results/IntAct_network_cand_typesP03070", sep = "\t")
+fwrite(domain_prop_P03070, "./results/domain_prop_P03070", sep = "\t")
+#################################################  candidate motifs network for Q2PJP0 #################################################
+IntAct_GRanges_cand =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query
+IntAct_GRanges_cand = IntAct_GRanges_cand[IntAct_GRanges_cand$query == "Q2PJP0"]
+Nrows = length(IntAct_GRanges_cand)
+IntAct_network_cand = data.table(source = c(IntAct_GRanges_cand$interacts_with,   IntAct_GRanges_cand$IDs_domain_human, IntAct_GRanges_cand$Pattern),
+                            target = c(IntAct_GRanges_cand$IDs_domain_human, IntAct_GRanges_cand$Pattern,          IntAct_GRanges_cand$query),
+                            Sig =    c(rep(1, Nrows),                   IntAct_GRanges_cand$Sig,              rep(1, Nrows)),
+                            type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
+                            type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
+IntAct_network_cand = unique(IntAct_network_cand[complete.cases(IntAct_network_cand)])
+IntAct_network_cand_types = unique(data.table(node = c(IntAct_network_cand$source, IntAct_network_cand$target),
+                                  type = c(IntAct_network_cand$type_source, IntAct_network_cand$type_target)))
+domain_prop_Q2PJP0 = unique(data.table(node = IntAct_GRanges_cand$IDs_domain_human,
+                                       p.value = IntAct_GRanges_cand$p.value))
+fwrite(IntAct_network_cand, "./results/IntAct_network_candQ2PJP0", sep = "\t")
+fwrite(IntAct_network_cand_types, "./results/IntAct_network_cand_typesQ2PJP0", sep = "\t")
+fwrite(domain_prop_Q2PJP0, "./results/domain_prop_Q2PJP0", sep = "\t")
+#################################################  candidate motifs network for Q67296 #################################################
+IntAct_GRanges_cand =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query
+IntAct_GRanges_cand = IntAct_GRanges_cand[IntAct_GRanges_cand$query == "Q67296"]
+Nrows = length(IntAct_GRanges_cand)
+IntAct_network_cand = data.table(source = c(IntAct_GRanges_cand$interacts_with,   IntAct_GRanges_cand$IDs_domain_human, IntAct_GRanges_cand$Pattern),
+                            target = c(IntAct_GRanges_cand$IDs_domain_human, IntAct_GRanges_cand$Pattern,          IntAct_GRanges_cand$query),
+                            Sig =    c(rep(1, Nrows),                   IntAct_GRanges_cand$Sig,              rep(1, Nrows)),
+                            type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
+                            type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
+IntAct_network_cand = unique(IntAct_network_cand[complete.cases(IntAct_network_cand)])
+IntAct_network_cand_types = unique(data.table(node = c(IntAct_network_cand$source, IntAct_network_cand$target),
+                                  type = c(IntAct_network_cand$type_source, IntAct_network_cand$type_target)))
+domain_prop_Q67296 = unique(data.table(node = IntAct_GRanges_cand$IDs_domain_human,
+                                       p.value = IntAct_GRanges_cand$p.value))
+fwrite(IntAct_network_cand, "./results/IntAct_network_candQ67296", sep = "\t")
+fwrite(IntAct_network_cand_types, "./results/IntAct_network_cand_typesQ67296", sep = "\t")
+fwrite(domain_prop_Q67296, "./results/domain_prop_Q67296", sep = "\t")
 ```
 
 
@@ -390,6 +580,6 @@ Sys.Date. = Sys.Date()
 Sys.Date.
 session_info. = devtools::session_info()
 session_info.
-filename = paste0("./processed_data_files/compr_benchmarking_venn",format(Sys.Date., "%Y%m"),"_type_", measure1, measure2,".RData")
+filename = paste0("./processed_data_files/compr_benchmarking_venn_IntVidVir",format(Sys.Date., "%Y%m"),"_type_", measure1, measure2,".RData")
 save(list = ls(), file=filename)
 ```

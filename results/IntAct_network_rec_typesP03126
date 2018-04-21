@@ -1,0 +1,14 @@
+node	type
+P26045	human_protein
+Q12959	human_protein
+Q14160	human_protein
+IPR011993	human_domain
+IPR001478	human_domain
+IPR008144	human_domain
+IPR027417	human_domain
+IPR008145	human_domain
+IPR032675	human_domain
+ET..$	viral_motif
+[ST].[LV]$	viral_motif
+[DE]T.[ILV]$	viral_motif
+P03126	viral_protein

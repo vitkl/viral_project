@@ -1,0 +1,16 @@
+source	target	Sig	type_source	type_target
+Q92997	IPR001158	1	human_protein	human_domain
+Q92997	IPR011991	1	human_protein	human_domain
+Q92997	IPR003351	1	human_protein	human_domain
+Q92997	IPR001478	1	human_protein	human_domain
+Q92997	IPR024580	1	human_protein	human_domain
+Q92997	IPR000591	1	human_protein	human_domain
+Q92997	IPR029071	1	human_protein	human_domain
+IPR001158	KR.R	0.000151	human_domain	viral_motif
+IPR011991	KR.R	0.000151	human_domain	viral_motif
+IPR003351	KR.R	0.000151	human_domain	viral_motif
+IPR001478	KR.R	0.000151	human_domain	viral_motif
+IPR024580	KR.R	0.000151	human_domain	viral_motif
+IPR000591	KR.R	0.000151	human_domain	viral_motif
+IPR029071	KR.R	0.000151	human_domain	viral_motif
+KR.R	Q67296	1	viral_motif	viral_protein

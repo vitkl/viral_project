@@ -1,0 +1,17 @@
+node	type
+O14908	human_protein
+P78352	human_protein
+Q14160	human_protein
+Q96RT1	human_protein
+Q96SI9	human_protein
+IPR001478	human_domain
+IPR001452	human_domain
+IPR027417	human_domain
+IPR032675	human_domain
+IPR014720	human_domain
+IPR006561	human_domain
+[ST].V$	viral_motif
+[ST].[ILV]$	viral_motif
+[DE]..V$	viral_motif
+LR.{0,2}G.G.T	viral_motif
+Q2PJP0	viral_protein
