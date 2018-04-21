@@ -1,174 +1,174 @@
 Pattern	Human_recognition_domain_name	Domain_p.value	Viral_protein	Human_protein	matching_known	Viral_protein_names	Viral_entry_name	Human_protein_names	Human_entry_name	Human_recognition_domain	Motif_Sig	unique_position	Viral_gene_names	Human_gene_names
-S.TVSS	BTB/POZ domain	0.105559370770074	Q0A2H0	Q13105		Non-structural protein 1	NS1_I59A0	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR000210	0.005	Q0A2H0_3_8	NS	ZBTB17
-S.TVSS	BTB/POZ domain	0.107127100580777	Q2PJP0	Q13105		Non-structural protein 1	Q2PJP0_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR000210	0.004	Q2PJP0_3_8	NS1	ZBTB17
+DL.C.E	Retinoblastoma-associated protein, B-box	0.000105528962033248	A0MPS7	Q08999		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR002719	0.013	A0MPS7_21_26	E7	RBL2
+DL.C.E	Retinoblastoma-associated protein, A-box	0.000105528962033248	A0MPS7	Q08999		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR002720	0.013	A0MPS7_21_26	E7	RBL2
+DL.C.E	Cyclin-like	0.000105528962033248	A0MPS7	Q08999		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR013763	0.013	A0MPS7_21_26	E7	RBL2
+DL.C.E	Retinoblastoma-associated protein, C-terminal	0.000105528962033248	A0MPS7	Q08999		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR015030	0.013	A0MPS7_21_26	E7	RBL2
+DL.C.E	Retinoblastoma-associated protein, N-terminal	0.000105528962033248	A0MPS7	Q08999		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR024599	0.013	A0MPS7_21_26	E7	RBL2
+DL.C.E	Retinoblastoma-associated protein, B-box	0.000105528962033248	A0MPS7	P28749		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR002719	0.02	A0MPS7_21_26	E7	RBL1
+DL.C.E	Retinoblastoma-associated protein, A-box	0.000105528962033248	A0MPS7	P28749		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR002720	0.02	A0MPS7_21_26	E7	RBL1
+DL.C.E	Cyclin-like	0.000105528962033248	A0MPS7	P28749		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR013763	0.02	A0MPS7_21_26	E7	RBL1
+DL.C.E	Retinoblastoma-associated protein, C-terminal	0.000105528962033248	A0MPS7	P28749		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR015030	0.02	A0MPS7_21_26	E7	RBL1
+DL.C.E	Retinoblastoma-associated protein, N-terminal	0.000105528962033248	A0MPS7	P28749		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR024599	0.02	A0MPS7_21_26	E7	RBL1
 G..ST.G..I	RNA recognition motif domain	0.000289539143998842	C5E522	O14979		Nucleoprotein	C5E522_9INFA	Heterogeneous nuclear ribonucleoprotein D-like	HNRDL_HUMAN	IPR000504	0.011	C5E522_356_365	NP	HNRNPDL
+R..Q.S..G	Armadillo-like helical	0.000210996510344443	C5E526	Q9UBB4		RNA-directed RNA polymerase catalytic subunit	C5E526_9INFA	Ataxin-10	ATX10_HUMAN	IPR011989	0.024	C5E526_45_53	PB1	ATXN10
 G..ST.G..I	RNA recognition motif domain	0	D1LN35	O14979		Non-structural protein 1	D1LN35_9INFA	Heterogeneous nuclear ribonucleoprotein D-like	HNRDL_HUMAN	IPR000504	0.006	D1LN35_45_54	NS1	HNRNPDL
+K.KR	DZF domain	0.107195443369886	D1LN35	Q12905		Non-structural protein 1	D1LN35_9INFA	Interleukin enhancer-binding factor 2	ILF2_HUMAN	IPR006561	0.021	D1LN35_217_220	NS1	ILF2
 P..T..DV	RNA recognition motif domain	0	D1LN35	P07910		Non-structural protein 1	D1LN35_9INFA	Heterogeneous nuclear ribonucleoproteins C1/C2	HNRPC_HUMAN	IPR000504	0.025	D1LN35_167_174	NS1	HNRNPC
 T..SS	RNA recognition motif domain	0	D1LN35	P38159		Non-structural protein 1	D1LN35_9INFA	RNA-binding motif protein, X chromosome	RBMX_HUMAN	IPR000504	0.03	D1LN35_202_206	NS1	RBMX
+S..RA..S	Thioredoxin-like fold	3.19198409311558e-05	D2XQB9	P13667		Envelope glycoprotein L	D2XQB9_HHV8	Protein disulfide-isomerase A4	PDIA4_HUMAN	IPR012336	0.02	D2XQB9_149_156	ORF47	PDIA4
+KM..A.{0,1}S	Winged helix-turn-helix DNA-binding domain	0.129173110467315	H9XIJ5	Q9H1D9		Polymerase basic protein 2	H9XIJ5_I75A3	DNA-directed RNA polymerase III subunit RPC6	RPC6_HUMAN	IPR011991	0.023	H9XIJ5_80_86	PB2	POLR3F
+S..G[LV]	K Homology domain	0.186453007799803	I6T1Z2	Q15365		Non-structural protein 1	I6T1Z2_I68A0	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.000473	I6T1Z2_48_52	NS1	PCBP1
+S..G[LV]	K Homology domain, type 1	0.186453007799803	I6T1Z2	Q15365		Non-structural protein 1	I6T1Z2_I68A0	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.000473	I6T1Z2_48_52	NS1	PCBP1
+S..G[LV]	K Homology domain	0.0130708256543483	O41951	Q15365		34 protein	O41951_MHV68	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.000329	O41951_77_81	GAMMAHV.ORF34	PCBP1
+S..G[LV]	K Homology domain, type 1	0.0130708256543483	O41951	Q15365		34 protein	O41951_MHV68	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.000329	O41951_77_81	GAMMAHV.ORF34	PCBP1
 G..ST.G..I	RNA recognition motif domain	0	O56264	O14979		Non-structural protein 1	NS1_I97A1	Heterogeneous nuclear ribonucleoprotein D-like	HNRDL_HUMAN	IPR000504	0.006	O56264_45_54	NS	HNRNPDL
+D..TAT	P-loop containing nucleoside triphosphate hydrolase	0.000366606321186282	O56264	O00571		Non-structural protein 1	NS1_I97A1	ATP-dependent RNA helicase DDX3X	DDX3X_HUMAN	IPR027417	0.006	O56264_53_58	NS	DDX3X
+K.KR	DZF domain	0.16998512905654	O56264	Q12905		Non-structural protein 1	NS1_I97A1	Interleukin enhancer-binding factor 2	ILF2_HUMAN	IPR006561	0.023	O56264_217_220	NS	ILF2
 P..T..DV	RNA recognition motif domain	0	O56264	P07910		Non-structural protein 1	NS1_I97A1	Heterogeneous nuclear ribonucleoproteins C1/C2	HNRPC_HUMAN	IPR000504	0.028	O56264_167_174	NS	HNRNPC
 T..SS	RNA recognition motif domain	0	O56264	P38159		Non-structural protein 1	NS1_I97A1	RNA-binding motif protein, X chromosome	RBMX_HUMAN	IPR000504	0.032	O56264_202_206	NS	RBMX
-G..ST.G..I	RNA recognition motif domain	1.46896831190152e-05	P03466	O14979		Nucleoprotein	NCAP_I34A1	Heterogeneous nuclear ribonucleoprotein D-like	HNRDL_HUMAN	IPR000504	0.011	P03466_356_365	NP	HNRNPDL
-G..ST.G..I	RNA recognition motif domain	1.48391486573766e-07	P03496	O14979		Non-structural protein 1	NS1_I34A1	Heterogeneous nuclear ribonucleoprotein D-like	HNRDL_HUMAN	IPR000504	0.007	P03496_45_54	NS	HNRNPDL
-P..T..DV	RNA recognition motif domain	1.48391486573766e-07	P03496	P07910		Non-structural protein 1	NS1_I34A1	Heterogeneous nuclear ribonucleoproteins C1/C2	HNRPC_HUMAN	IPR000504	0.03	P03496_167_174	NS	HNRNPC
-M.G.I	RNA recognition motif domain	1.48391486573766e-07	P03496	P09651		Non-structural protein 1	NS1_I34A1	Heterogeneous nuclear ribonucleoprotein A1	ROA1_HUMAN	IPR000504	0.038	P03496_222_226	NS	HNRNPA1
-T..SS	RNA recognition motif domain	0.00289038166202593	Q04360	P38159		mRNA export factor ICP27 homolog	ICP27_EBVB9	RNA-binding motif protein, X chromosome	RBMX_HUMAN	IPR000504	0.027	Q04360_117_121	BMLF1;	RBMX
-P..T..DV	RNA recognition motif domain	0.0460786573982702	Q0HD54	P07910		Non-structural protein 1	NS1_I40A0	Heterogeneous nuclear ribonucleoproteins C1/C2	HNRPC_HUMAN	IPR000504	0.029	Q0HD54_167_174	NS	HNRNPC
-P..T..DV	RNA recognition motif domain	0	Q6QDQ4	P07910		N	Q6QDQ4_PRRSV	Heterogeneous nuclear ribonucleoproteins C1/C2	HNRPC_HUMAN	IPR000504	0.033	Q6QDQ4_56_63	N	HNRNPC
-M.G.I	RNA recognition motif domain	0	Q6QDQ4	P09651		N	Q6QDQ4_PRRSV	Heterogeneous nuclear ribonucleoprotein A1	ROA1_HUMAN	IPR000504	0.037	Q6QDQ4_25_29	N	HNRNPA1
-T..SS	RNA recognition motif domain	0	Q6QDQ4	P38159		N	Q6QDQ4_PRRSV	RNA-binding motif protein, X chromosome	RBMX_HUMAN	IPR000504	0.031	Q6QDQ4_118_122	N	RBMX
-G..ST.G..I	RNA recognition motif domain	0.0106781641896638	Q77M19	O14979		V protein	Q77M19_MEASW	Heterogeneous nuclear ribonucleoprotein D-like	HNRDL_HUMAN	IPR000504	0.003	Q77M19_219_228	P	HNRNPDL
-P..T..DV	RNA recognition motif domain	0	Q99AU3	P07910		Non-structural protein 1	NS1_I18A0	Heterogeneous nuclear ribonucleoproteins C1/C2	HNRPC_HUMAN	IPR000504	0.027	Q99AU3_167_174	NS	HNRNPC
-TQDQ	Protein kinase domain	0.0483676931050686	P13285	P09619		Latent membrane protein 2	LMP2_EBVB9	Platelet-derived growth factor receptor beta	PGFRB_HUMAN	IPR000719	0.031	P13285_79_82	LMP2	PDGFRB
-S.L.E	Cytochrome b5-like heme/steroid binding domain	0.190712767346334	P03182	O00264		Apoptosis regulator BHRF1	EAR_EBVB9	Membrane-associated progesterone receptor component 1	PGRC1_HUMAN	IPR001199	0.021	P03182_151_155	BHRF1	PGRMC1
-TQDQ	Serine-threonine/tyrosine-protein kinase, catalytic domain	0.0483676931050686	P13285	P09619		Latent membrane protein 2	LMP2_EBVB9	Platelet-derived growth factor receptor beta	PGFRB_HUMAN	IPR001245	0.031	P13285_79_82	LMP2	PDGFRB
 [ST].[LV]$	PDZ domain	1.86510182165127e-05	P03126	Q12959	matching_known	Protein E6	VE6_HPV16	Disks large homolog 1	DLG1_HUMAN	IPR001478	8.53e-10	P03126_156_158	E6	DLG1
 ET.[LV]$	PDZ domain	1.86510182165127e-05	P03126	Q14160	matching_known	Protein E6	VE6_HPV16	Protein scribble homolog	SCRIB_HUMAN	IPR001478	5.8e-06	P03126_155_158	E6	SCRIB
+DL.C.E	Cyclin-like	0.00475220945202503	P03129	Q08999	matching_known	Protein E7	VE7_HPV16	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR013763	0.013	P03129_21_26	E7	RBL2
+DL.C.E	Cyclin-like	0.00475220945202503	P03129	P28749	matching_known	Protein E7	VE7_HPV16	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR013763	0.02	P03129_21_26	E7	RBL1
+S.L.E	Cytochrome b5-like heme/steroid binding domain	0.190712767346334	P03182	O00264		Apoptosis regulator BHRF1	EAR_EBVB9	Membrane-associated progesterone receptor component 1	PGRC1_HUMAN	IPR001199	0.021	P03182_151_155	BHRF1	PGRMC1
+DL.CHE	Cyclin-like	0.00474163204413847	P03255	Q08999	matching_known	Early E1A protein	E1A_ADE05	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR013763	0.000415	P03255_121_126		RBL2
+DL.CHE	Cyclin-like	0.00474163204413847	P03255	P28749	matching_known	Early E1A protein	E1A_ADE05	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR013763	0.000841	P03255_121_126		RBL1
+D..TAT	P-loop containing nucleoside triphosphate hydrolase	0	P03427	O00571		Polymerase basic protein 2	PB2_I33A0	ATP-dependent RNA helicase DDX3X	DDX3X_HUMAN	IPR027417	0.01	P03427_746_751	PB2	DDX3X
+S..GV.E	Zinc finger, RING/FYVE/PHD-type	0.0116882470589746	P03428	Q8N448		Polymerase basic protein 2	PB2_I34A1	Ligand of Numb protein X 2	LNX2_HUMAN	IPR013083	0.012	P03428_481_487	PB2	LNX2
+A.DV	K Homology domain	0.084580415133546	P03428	Q15365		Polymerase basic protein 2	PB2_I34A1	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.021	P03428_159_162	PB2	PCBP1
+A.DV	K Homology domain, type 1	0.084580415133546	P03428	Q15365		Polymerase basic protein 2	PB2_I34A1	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.021	P03428_159_162	PB2	PCBP1
+S..GV.E	Zinc finger, RING/FYVE/PHD-type	0.0133140348029699	P03431	Q8N448		RNA-directed RNA polymerase catalytic subunit	RDRP_I34A1	Ligand of Numb protein X 2	LNX2_HUMAN	IPR013083	0.025	P03431_678_684	PB1	LNX2
+S..GV.E	Zinc finger, RING-type	0.115605109979609	P03433	Q8N448		Polymerase acidic protein	PA_I34A1	Ligand of Numb protein X 2	LNX2_HUMAN	IPR001841	0.017	P03433_624_630	PA	LNX2
+S..GV.E	Zinc finger, RING/FYVE/PHD-type	0.115605109979609	P03433	Q8N448		Polymerase acidic protein	PA_I34A1	Ligand of Numb protein X 2	LNX2_HUMAN	IPR013083	0.017	P03433_624_630	PA	LNX2
+G..ST.G..I	RNA recognition motif domain	1.46896831190152e-05	P03466	O14979		Nucleoprotein	NCAP_I34A1	Heterogeneous nuclear ribonucleoprotein D-like	HNRDL_HUMAN	IPR000504	0.011	P03466_356_365	NP	HNRNPDL
+S..G[LV]	K Homology domain	0.00613211879921235	P03496	Q15365		Non-structural protein 1	NS1_I34A1	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.000573	P03496_48_52	NS	PCBP1
+S..G[LV]	K Homology domain, type 1	0.00613211879921235	P03496	Q15365		Non-structural protein 1	NS1_I34A1	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.000573	P03496_48_52	NS	PCBP1
+G..ST.G..I	RNA recognition motif domain	1.48391486573766e-07	P03496	O14979		Non-structural protein 1	NS1_I34A1	Heterogeneous nuclear ribonucleoprotein D-like	HNRDL_HUMAN	IPR000504	0.007	P03496_45_54	NS	HNRNPDL
+A.DV	K Homology domain	0.00613211879921235	P03496	Q15365		Non-structural protein 1	NS1_I34A1	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.015	P03496_171_174	NS	PCBP1
+A.DV	K Homology domain, type 1	0.00613211879921235	P03496	Q15365		Non-structural protein 1	NS1_I34A1	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.015	P03496_171_174	NS	PCBP1
+K.KR	DZF domain	0.0959894897937407	P03496	Q12905		Non-structural protein 1	NS1_I34A1	Interleukin enhancer-binding factor 2	ILF2_HUMAN	IPR006561	0.025	P03496_217_220	NS	ILF2
+H..ED..N	Ribosomal protein S5 domain 2-type fold	0.0545149486533305	P03496	P08238		Non-structural protein 1	NS1_I34A1	Heat shock protein HSP 90-beta	HS90B_HUMAN	IPR020568	0.027	P03496_169_176	NS	HSP90AB1
+P..T..DV	RNA recognition motif domain	1.48391486573766e-07	P03496	P07910		Non-structural protein 1	NS1_I34A1	Heterogeneous nuclear ribonucleoproteins C1/C2	HNRPC_HUMAN	IPR000504	0.03	P03496_167_174	NS	HNRNPC
+M.G.I	RNA recognition motif domain	1.48391486573766e-07	P03496	P09651		Non-structural protein 1	NS1_I34A1	Heterogeneous nuclear ribonucleoprotein A1	ROA1_HUMAN	IPR000504	0.038	P03496_222_226	NS	HNRNPA1
 [ST].[LV]$	PDZ domain	4.55498550755444e-06	P06427	Q12959		Protein E6	VE6_HPV33	Disks large homolog 1	DLG1_HUMAN	IPR001478	3.38e-10	P06427_147_149	E6	DLG1
 ET.[LV]$	PDZ domain	4.55498550755444e-06	P06427	Q14160		Protein E6	VE6_HPV33	Protein scribble homolog	SCRIB_HUMAN	IPR001478	1.86e-06	P06427_146_149	E6	SCRIB
+[DE]..PS	Tetratricopeptide repeat-containing domain	0.171826703892007	P06428	Q8NHQ1		Protein E6	VE6_HPV08	Centrosomal protein of 70 kDa	CEP70_HUMAN	IPR013026	0.03	P06428_15_19	E6	CEP70
+DL.C.E	Retinoblastoma-associated protein, B-box	0.119533313100392	P06430	P28749		Protein E7	VE7_HPV08	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR002719	0.006	P06430_26_31	E7	RBL1
+DL.C.E	Retinoblastoma-associated protein, A-box	0.119533313100392	P06430	P28749		Protein E7	VE7_HPV08	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR002720	0.006	P06430_26_31	E7	RBL1
+DL.C.E	Cyclin-like	0.119533313100392	P06430	P28749		Protein E7	VE7_HPV08	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR013763	0.006	P06430_26_31	E7	RBL1
+DL.C.E	Retinoblastoma-associated protein, C-terminal	0.119533313100392	P06430	P28749		Protein E7	VE7_HPV08	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR015030	0.006	P06430_26_31	E7	RBL1
+DL.C.E	Retinoblastoma-associated protein, N-terminal	0.119533313100392	P06430	P28749		Protein E7	VE7_HPV08	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR024599	0.006	P06430_26_31	E7	RBL1
+E.VP	Peptidase S54, rhomboid domain	0.0641078403290113	P06460	Q8NBM4		Probable protein E5A	VE5A_HPV6B	Ubiquitin-associated domain-containing protein 2	UBAC2_HUMAN	IPR022764	0.016	P06460_2_5		UBAC2
+YMN	P-loop containing nucleoside triphosphate hydrolase	0.00463349851662349	P06461	Q9NVI7		Probable protein E5B	VE5B_HPV6B	ATPase family AAA domain-containing protein 3A	ATD3A_HUMAN	IPR027417	0.007	P06461_70_72		ATAD3A
+[ST].[LV]$	P-loop containing nucleoside triphosphate hydrolase	7.64670446624832e-06	P06463	Q12959	matching_known	Protein E6	VE6_HPV18	Disks large homolog 1	DLG1_HUMAN	IPR027417	7.91e-10	P06463_156_158	E6	DLG1
 ET.[LV]$	PDZ domain	0.000159157330344421	P06463	Q14160	matching_known	Protein E6	VE6_HPV18	Protein scribble homolog	SCRIB_HUMAN	IPR001478	5.31e-06	P06463_155_158	E6	SCRIB
+T..P..LP	P-loop containing nucleoside triphosphate hydrolase	7.64670446624832e-06	P06463	P33993		Protein E6	VE6_HPV18	DNA replication licensing factor MCM7	MCM7_HUMAN	IPR027417	0.034	P06463_8_15	E6	MCM7
+DL.CHE	Cyclin-like	0.00166798962651968	P06788	Q08999		Protein E7	VE7_HPV18	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR013763	5.59e-05	P06788_24_29	E7	RBL2
+DL.CHE	Cyclin-like	0.00166798962651968	P06788	P28749		Protein E7	VE7_HPV18	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR013763	8.01e-05	P06788_24_29	E7	RBL1
 SLLTE	PDZ domain	0.0617714254585678	P06821	O14641		Matrix protein 2	M2_I34A1	Segment polarity protein dishevelled homolog DVL-2	DVL2_HUMAN	IPR001478	0.022	P06821_2_6	M	DVL2
+SLLTE	Ubiquitin-related domain	0.0617714254585678	P06821	O14641		Matrix protein 2	M2_I34A1	Segment polarity protein dishevelled homolog DVL-2	DVL2_HUMAN	IPR029071	0.022	P06821_2_6	M	DVL2
+R.E.G	Armadillo-type fold	7.15279564613941e-06	P06821	O00410		Matrix protein 2	M2_I34A1	Importin-5	IPO5_HUMAN	IPR016024	0.028	P06821_12_16	M	IPO5
 [ST].[LV]$	PDZ domain	0.000109949388057433	P0C213	Q12959		Protein Tax-1	TAX_HTL1F	Disks large homolog 1	DLG1_HUMAN	IPR001478	9.33e-09	P0C213_351_353	tax	DLG1
 ET.[LV]$	PDZ domain	0.000109949388057433	P0C213	Q14160		Protein Tax-1	TAX_HTL1F	Protein scribble homolog	SCRIB_HUMAN	IPR001478	1.66e-05	P0C213_350_353	tax	SCRIB
 E..V$	PDZ domain	0.000109949388057433	P0C213	Q96RT1		Protein Tax-1	TAX_HTL1F	Erbin	ERBIN_HUMAN	IPR001478	0.002	P0C213_350_353	tax	ERBIN
+TQDQ	Immunoglobulin-like fold	0.0106579852051325	P0CK56	P09619		Uncharacterized protein BDLF4	UL92_EBVB9	Platelet-derived growth factor receptor beta	PGFRB_HUMAN	IPR013783	0.009	P0CK56_97_100	BDLF4	PDGFRB
+S..GV.E	Zinc finger, RING/FYVE/PHD-type	0.0171047291105767	P0DOF5	Q8N448		Matrix protein 2	M2_I72A2	Ligand of Numb protein X 2	LNX2_HUMAN	IPR013083	0.003	P0DOF5_64_70	M	LNX2
+TQDQ	Protein kinase domain	0.0483676931050686	P13285	P09619		Latent membrane protein 2	LMP2_EBVB9	Platelet-derived growth factor receptor beta	PGFRB_HUMAN	IPR000719	0.031	P13285_79_82	LMP2	PDGFRB
+TQDQ	Serine-threonine/tyrosine-protein kinase, catalytic domain	0.0483676931050686	P13285	P09619		Latent membrane protein 2	LMP2_EBVB9	Platelet-derived growth factor receptor beta	PGFRB_HUMAN	IPR001245	0.031	P13285_79_82	LMP2	PDGFRB
+TQDQ	Protein kinase-like domain	0.0483676931050686	P13285	P09619		Latent membrane protein 2	LMP2_EBVB9	Platelet-derived growth factor receptor beta	PGFRB_HUMAN	IPR011009	0.031	P13285_79_82	LMP2	PDGFRB
+TQDQ	Immunoglobulin-like fold	0.0483676931050686	P13285	P09619		Latent membrane protein 2	LMP2_EBVB9	Platelet-derived growth factor receptor beta	PGFRB_HUMAN	IPR013783	0.031	P13285_79_82	LMP2	PDGFRB
 [ST].[LV]$	PDZ domain	0.00443106669255909	P16717	Q12959		Putative fusion protein	VFUS_SHEVK	Disks large homolog 1	DLG1_HUMAN	IPR001478	6.72e-09	P16717_146_148	HM2	DLG1
 T.[LV]$	PDZ domain	0.00443106669255909	P16717	Q14160		Putative fusion protein	VFUS_SHEVK	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0.000302	P16717_146_148	HM2	SCRIB
 [ST].[LV]$	PDZ domain	0.0211228721991774	P17386	Q12959		Protein E6	VE6_HPV31	Disks large homolog 1	DLG1_HUMAN	IPR001478	6.35e-10	P17386_147_149	E6	DLG1
+[ST].[LV]$	Guanylate kinase-like domain	0.0211228721991774	P17386	Q12959		Protein E6	VE6_HPV31	Disks large homolog 1	DLG1_HUMAN	IPR008144	6.35e-10	P17386_147_149	E6	DLG1
+[ST].[LV]$	Guanylate kinase/L-type calcium channel beta subunit	0.0211228721991774	P17386	Q12959		Protein E6	VE6_HPV31	Disks large homolog 1	DLG1_HUMAN	IPR008145	6.35e-10	P17386_147_149	E6	DLG1
+[ST].[LV]$	P-loop containing nucleoside triphosphate hydrolase	0.0211228721991774	P17386	Q12959		Protein E6	VE6_HPV31	Disks large homolog 1	DLG1_HUMAN	IPR027417	6.35e-10	P17386_147_149	E6	DLG1
+K.KR	DZF domain	0.107018054572149	P21605	Q12905		Protein E3	E3_VACCW	Interleukin enhancer-binding factor 2	ILF2_HUMAN	IPR006561	0.014	P21605_165_168	VACWR059	ILF2
 [ST].[LV]$	PDZ domain	0.00453501858210227	P21735	Q12959		Protein E6	VE6_HPV45	Disks large homolog 1	DLG1_HUMAN	IPR001478	7.41e-10	P21735_156_158	E6	DLG1
 ET.[LV]$	PDZ domain	0.00453501858210227	P21735	Q14160		Protein E6	VE6_HPV45	Protein scribble homolog	SCRIB_HUMAN	IPR001478	4.75e-06	P21735_155_158	E6	SCRIB
 [ST].[LV]$	PDZ domain	0.00447416445364111	P24835	Q12959		Protein E6	VE6_HPV39	Disks large homolog 1	DLG1_HUMAN	IPR001478	6e-10	P24835_156_158	E6	DLG1
 ET.[LV]$	PDZ domain	0.00447416445364111	P24835	Q14160		Protein E6	VE6_HPV39	Protein scribble homolog	SCRIB_HUMAN	IPR001478	3.89e-06	P24835_155_158	E6	SCRIB
+[ST].[LV]$	P-loop containing nucleoside triphosphate hydrolase	0.00448878667498772	P26555	Q12959		Protein E6	VE6_HPV58	Disks large homolog 1	DLG1_HUMAN	IPR027417	4.51e-10	P26555_147_149	E6	DLG1
 [ST].[LV]$	PDZ domain	0.00453564599784776	P27228	Q12959		Protein E6	VE6_HPV35	Disks large homolog 1	DLG1_HUMAN	IPR001478	5.27e-10	P27228_147_149	E6	DLG1
 ET.[LV]$	PDZ domain	0.00453564599784776	P27228	Q14160		Protein E6	VE6_HPV35	Protein scribble homolog	SCRIB_HUMAN	IPR001478	3.37e-06	P27228_146_149	E6	SCRIB
+S..LI	P-loop containing nucleoside triphosphate hydrolase	0.000619164837323531	P30119	Q9NXH8		Uncharacterized protein BTRF1	BTRF1_EBVB9	Torsin-4A	TOR4A_HUMAN	IPR027417	0.036	P30119_233_237	BTRF1	TOR4A
+S..EIP..G	Immunoglobulin-like fold	0.0418805745226699	P36778	P02751		Regulatory protein E2	VE2_HPV03	Fibronectin	FINC_HUMAN	IPR013783	0.016	P36778_205_213	E2	FN1
 [ST].[LV]$	PDZ domain	0.000102967736608026	P50804	Q12959		Protein E6	VE6_HPV70	Disks large homolog 1	DLG1_HUMAN	IPR001478	6.1e-10	P50804_156_158	E6	DLG1
 ET.[LV]$	PDZ domain	0.000102967736608026	P50804	Q14160		Protein E6	VE6_HPV70	Protein scribble homolog	SCRIB_HUMAN	IPR001478	3.94e-06	P50804_155_158	E6	SCRIB
 E..V$	PDZ domain	0.000102967736608026	P50804	Q96RT1		Protein E6	VE6_HPV70	Erbin	ERBIN_HUMAN	IPR001478	0.000587	P50804_155_158	E6	ERBIN
-E..[LV]$	PDZ domain	0.0086355887529516	Q0A2H0	Q14160		Non-structural protein 1	NS1_I59A0	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0.000104	Q0A2H0_227_230	NS	SCRIB
-E..[LV]$	PDZ domain	0.00313667272804275	Q2PJP0	Q14160		Non-structural protein 1	Q2PJP0_9INFA	Protein scribble homolog	SCRIB_HUMAN	IPR001478	8.46e-05	Q2PJP0_222_225	NS1	SCRIB
-E..V$	PDZ domain	0.00313667272804275	Q2PJP0	Q96RT1		Non-structural protein 1	Q2PJP0_9INFA	Erbin	ERBIN_HUMAN	IPR001478	0.001	Q2PJP0_222_225	NS1	ERBIN
-S..GV.E	PDZ domain	0.0141382545333211	Q67296	Q8N448		Polymerase basic protein 2	PB2_I72A2	Ligand of Numb protein X 2	LNX2_HUMAN	IPR001478	0.013	Q67296_481_487	PB2	LNX2
-E..[LV]$	PDZ domain	0.00151854108016383	Q6DP93	Q14160		Non-structural protein 1	Q6DP93_9INFA	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0.000105	Q6DP93_222_225	NS	SCRIB
-E..V$	PDZ domain	0.00151854108016383	Q6DP93	Q96RT1		Non-structural protein 1	Q6DP93_9INFA	Erbin	ERBIN_HUMAN	IPR001478	0.001	Q6DP93_222_225	NS	ERBIN
-S..GV.E	Zinc finger, RING-type	0.115605109979609	P03433	Q8N448		Polymerase acidic protein	PA_I34A1	Ligand of Numb protein X 2	LNX2_HUMAN	IPR001841	0.017	P03433_624_630	PA	LNX2
-DL.C.E	Retinoblastoma-associated protein, B-box	0.000105528962033248	A0MPS7	P28749		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR002719	0.02	A0MPS7_21_26	E7	RBL1
-DL.C.E	Retinoblastoma-associated protein, B-box	0.000105528962033248	A0MPS7	Q08999		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR002719	0.013	A0MPS7_21_26	E7	RBL2
-DL.C.E	Retinoblastoma-associated protein, B-box	0.119533313100392	P06430	P28749		Protein E7	VE7_HPV08	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR002719	0.006	P06430_26_31	E7	RBL1
-DL.CHE	Retinoblastoma-associated protein, B-box	0.0261716816117472	Q9DUG7	P28749		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR002719	0.000864	Q9DUG7_104_109		RBL1
-DL.CHE	Retinoblastoma-associated protein, B-box	0.0261716816117472	Q9DUG7	Q08999		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR002719	0.000401	Q9DUG7_104_109		RBL2
-DL.C.E	Retinoblastoma-associated protein, A-box	0.000105528962033248	A0MPS7	P28749		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR002720	0.02	A0MPS7_21_26	E7	RBL1
-DL.C.E	Retinoblastoma-associated protein, A-box	0.000105528962033248	A0MPS7	Q08999		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR002720	0.013	A0MPS7_21_26	E7	RBL2
-DL.C.E	Retinoblastoma-associated protein, A-box	0.119533313100392	P06430	P28749		Protein E7	VE7_HPV08	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR002720	0.006	P06430_26_31	E7	RBL1
-DL.CHE	Retinoblastoma-associated protein, A-box	0.0261716816117472	Q9DUG7	P28749		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR002720	0.000864	Q9DUG7_104_109		RBL1
-DL.CHE	Retinoblastoma-associated protein, A-box	0.0261716816117472	Q9DUG7	Q08999		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR002720	0.000401	Q9DUG7_104_109		RBL2
-S..G[LV]	K Homology domain	0.186453007799803	I6T1Z2	Q15365		Non-structural protein 1	I6T1Z2_I68A0	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.000473	I6T1Z2_48_52	NS1	PCBP1
-S..G[LV]	K Homology domain	0.0130708256543483	O41951	Q15365		34 protein	O41951_MHV68	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.000329	O41951_77_81	GAMMAHV.ORF34	PCBP1
-A.DV	K Homology domain	0.084580415133546	P03428	Q15365		Polymerase basic protein 2	PB2_I34A1	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.021	P03428_159_162	PB2	PCBP1
-A.DV	K Homology domain	0.00613211879921235	P03496	Q15365		Non-structural protein 1	NS1_I34A1	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.015	P03496_171_174	NS	PCBP1
-S..G[LV]	K Homology domain	0.00613211879921235	P03496	Q15365		Non-structural protein 1	NS1_I34A1	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.000573	P03496_48_52	NS	PCBP1
-S..G[LV]	K Homology domain	0.172459905633407	Q1K9H2	Q15365		Nucleoprotein	Q1K9H2_I33A0	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.001	Q1K9H2_359_363	NP	PCBP1
-S..G[LV]	K Homology domain	0.12833483652492	Q77M19	Q15365		V protein	Q77M19_MEASW	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.00042	Q77M19_103_107	P	PCBP1
-A.DV	K Homology domain	0.12833483652492	Q77M19	Q15365		V protein	Q77M19_MEASW	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.023	Q77M19_179_182	P	PCBP1
-S..G[LV]	K Homology domain, type 1	0.186453007799803	I6T1Z2	Q15365		Non-structural protein 1	I6T1Z2_I68A0	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.000473	I6T1Z2_48_52	NS1	PCBP1
-S..G[LV]	K Homology domain, type 1	0.0130708256543483	O41951	Q15365		34 protein	O41951_MHV68	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.000329	O41951_77_81	GAMMAHV.ORF34	PCBP1
-A.DV	K Homology domain, type 1	0.084580415133546	P03428	Q15365		Polymerase basic protein 2	PB2_I34A1	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.021	P03428_159_162	PB2	PCBP1
-A.DV	K Homology domain, type 1	0.00613211879921235	P03496	Q15365		Non-structural protein 1	NS1_I34A1	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.015	P03496_171_174	NS	PCBP1
-S..G[LV]	K Homology domain, type 1	0.00613211879921235	P03496	Q15365		Non-structural protein 1	NS1_I34A1	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.000573	P03496_48_52	NS	PCBP1
-S..G[LV]	K Homology domain, type 1	0.172459905633407	Q1K9H2	Q15365		Nucleoprotein	Q1K9H2_I33A0	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.001	Q1K9H2_359_363	NP	PCBP1
-S..G[LV]	K Homology domain, type 1	0.12833483652492	Q77M19	Q15365		V protein	Q77M19_MEASW	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.00042	Q77M19_103_107	P	PCBP1
-A.DV	K Homology domain, type 1	0.12833483652492	Q77M19	Q15365		V protein	Q77M19_MEASW	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.023	Q77M19_179_182	P	PCBP1
-K.KR	DZF domain	0.107195443369886	D1LN35	Q12905		Non-structural protein 1	D1LN35_9INFA	Interleukin enhancer-binding factor 2	ILF2_HUMAN	IPR006561	0.021	D1LN35_217_220	NS1	ILF2
-K.KR	DZF domain	0.16998512905654	O56264	Q12905		Non-structural protein 1	NS1_I97A1	Interleukin enhancer-binding factor 2	ILF2_HUMAN	IPR006561	0.023	O56264_217_220	NS	ILF2
-K.KR	DZF domain	0.0959894897937407	P03496	Q12905		Non-structural protein 1	NS1_I34A1	Interleukin enhancer-binding factor 2	ILF2_HUMAN	IPR006561	0.025	P03496_217_220	NS	ILF2
-K.KR	DZF domain	0.107018054572149	P21605	Q12905		Protein E3	E3_VACCW	Interleukin enhancer-binding factor 2	ILF2_HUMAN	IPR006561	0.014	P21605_165_168	VACWR059	ILF2
-K.KR	DZF domain	0.140615708672301	Q0HD54	Q12905		Non-structural protein 1	NS1_I40A0	Interleukin enhancer-binding factor 2	ILF2_HUMAN	IPR006561	0.024	Q0HD54_217_220	NS	ILF2
-K.KR	DZF domain	0.12574524316365	Q6QDQ4	Q12905		N	Q6QDQ4_PRRSV	Interleukin enhancer-binding factor 2	ILF2_HUMAN	IPR006561	0.014	Q6QDQ4_10_13	N	ILF2
-R..N.P.L	LIS1 homology motif	0.000196767968755402	Q98143	Q96S59		Thymidine kinase	Q98143_HHV8	Ran-binding protein 9	RANB9_HUMAN	IPR006594	0.01	Q98143_557_564	ORF21	RANBP9
-R..N.P.L	CTLH, C-terminal LisH motif	0.000196767968755402	Q98143	Q96S59		Thymidine kinase	Q98143_HHV8	Ran-binding protein 9	RANB9_HUMAN	IPR006595	0.01	Q98143_557_564	ORF21	RANBP9
-[ST].[LV]$	Guanylate kinase-like domain	0.0211228721991774	P17386	Q12959		Protein E6	VE6_HPV31	Disks large homolog 1	DLG1_HUMAN	IPR008144	6.35e-10	P17386_147_149	E6	DLG1
-[ST].[LV]$	Guanylate kinase/L-type calcium channel beta subunit	0.0211228721991774	P17386	Q12959		Protein E6	VE6_HPV31	Disks large homolog 1	DLG1_HUMAN	IPR008145	6.35e-10	P17386_147_149	E6	DLG1
-E.VP	UBA-like	0.062630271959802	Q20MH8	Q8NBM4		Matrix protein 2	Q20MH8_I33A0	Ubiquitin-associated domain-containing protein 2	UBAC2_HUMAN	IPR009060	0.024	Q20MH8_66_69	M2	UBAC2
-TQDQ	Protein kinase-like domain	0.0483676931050686	P13285	P09619		Latent membrane protein 2	LMP2_EBVB9	Platelet-derived growth factor receptor beta	PGFRB_HUMAN	IPR011009	0.031	P13285_79_82	LMP2	PDGFRB
-S.TVSS	SKP1/BTB/POZ domain	0.105559370770074	Q0A2H0	Q13105		Non-structural protein 1	NS1_I59A0	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR011333	0.005	Q0A2H0_3_8	NS	ZBTB17
-S.TVSS	SKP1/BTB/POZ domain	0.107127100580777	Q2PJP0	Q13105		Non-structural protein 1	Q2PJP0_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR011333	0.004	Q2PJP0_3_8	NS1	ZBTB17
-S.TVSS	SKP1/BTB/POZ domain	0.0976652753536016	Q2PJP1	Q13105		Nuclear export protein	Q2PJP1_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR011333	0.001	Q2PJP1_3_8	NS2	ZBTB17
-R..Q.S..G	Armadillo-like helical	0.000210996510344443	C5E526	Q9UBB4		RNA-directed RNA polymerase catalytic subunit	C5E526_9INFA	Ataxin-10	ATX10_HUMAN	IPR011989	0.024	C5E526_45_53	PB1	ATXN10
+YMN	P-loop containing nucleoside triphosphate hydrolase	0.000870566602011858	P69901	Q9NVI7		Probable protein E5B	VE5B_HPV11	ATPase family AAA domain-containing protein 3A	ATD3A_HUMAN	IPR027417	0.015	P69901_72_74		ATAD3A
+T..SS	RNA recognition motif domain	0.00289038166202593	Q04360	P38159		mRNA export factor ICP27 homolog	ICP27_EBVB9	RNA-binding motif protein, X chromosome	RBMX_HUMAN	IPR000504	0.027	Q04360_117_121	BMLF1;	RBMX
+PG.A..S	GroEL-like apical domain	0.0566339554728397	Q05322	P48643		Membrane-associated protein VP24	VP24_EBOZM	T-complex protein 1 subunit epsilon	TCPE_HUMAN	IPR027409	0.026	Q05322_214_220	VP24	CCT5
+PG.A..S	GroEL-like equatorial domain	0.0566339554728397	Q05322	P48643		Membrane-associated protein VP24	VP24_EBOZM	T-complex protein 1 subunit epsilon	TCPE_HUMAN	IPR027413	0.026	Q05322_214_220	VP24	CCT5
 NL.[AS]	Armadillo-like helical	0.0072660004597569	Q05322	Q14974		Membrane-associated protein VP24	VP24_EBOZM	Importin subunit beta-1	IMB1_HUMAN	IPR011989	0.033	Q05322_9_12	VP24	KPNB1
-V.ESM..E	Armadillo-like helical	0.000145579761183948	Q76353	O60518		Integrase	Q76353_9HIV1	Ran-binding protein 6	RNBP6_HUMAN	IPR011989	0.000148	Q76353_150_157		RANBP6
-SA$	Tetratricopeptide-like helical domain	0.0693837595833694	Q67020	Q9Y262		Protein PA-X	Q67020_9INFA	Eukaryotic translation initiation factor 3 subunit L	EIF3L_HUMAN	IPR011990	0.007	Q67020_92_93	PA	EIF3L
-KM..A.{0,1}S	Winged helix-turn-helix DNA-binding domain	0.129173110467315	H9XIJ5	Q9H1D9		Polymerase basic protein 2	H9XIJ5_I75A3	DNA-directed RNA polymerase III subunit RPC6	RPC6_HUMAN	IPR011991	0.023	H9XIJ5_80_86	PB2	POLR3F
-S..RA..S	Thioredoxin-like fold	3.19198409311558e-05	D2XQB9	P13667		Envelope glycoprotein L	D2XQB9_HHV8	Protein disulfide-isomerase A4	PDIA4_HUMAN	IPR012336	0.02	D2XQB9_149_156	ORF47	PDIA4
-[DE]..PS	Tetratricopeptide repeat-containing domain	0.171826703892007	P06428	Q8NHQ1		Protein E6	VE6_HPV08	Centrosomal protein of 70 kDa	CEP70_HUMAN	IPR013026	0.03	P06428_15_19	E6	CEP70
-S..GV.E	Zinc finger, RING/FYVE/PHD-type	0.0116882470589746	P03428	Q8N448		Polymerase basic protein 2	PB2_I34A1	Ligand of Numb protein X 2	LNX2_HUMAN	IPR013083	0.012	P03428_481_487	PB2	LNX2
-S..GV.E	Zinc finger, RING/FYVE/PHD-type	0.0133140348029699	P03431	Q8N448		RNA-directed RNA polymerase catalytic subunit	RDRP_I34A1	Ligand of Numb protein X 2	LNX2_HUMAN	IPR013083	0.025	P03431_678_684	PB1	LNX2
-S..GV.E	Zinc finger, RING/FYVE/PHD-type	0.115605109979609	P03433	Q8N448		Polymerase acidic protein	PA_I34A1	Ligand of Numb protein X 2	LNX2_HUMAN	IPR013083	0.017	P03433_624_630	PA	LNX2
-S..GV.E	Zinc finger, RING/FYVE/PHD-type	0.0171047291105767	P0DOF5	Q8N448		Matrix protein 2	M2_I72A2	Ligand of Numb protein X 2	LNX2_HUMAN	IPR013083	0.003	P0DOF5_64_70	M	LNX2
+NL.[AS]	Armadillo-type fold	0.0072660004597569	Q05322	Q14974		Membrane-associated protein VP24	VP24_EBOZM	Importin subunit beta-1	IMB1_HUMAN	IPR016024	0.033	Q05322_9_12	VP24	KPNB1
+E..[LV]$	PDZ domain	0.0086355887529516	Q0A2H0	Q14160		Non-structural protein 1	NS1_I59A0	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0.000104	Q0A2H0_227_230	NS	SCRIB
+S.TVSS	BTB/POZ domain	0.105559370770074	Q0A2H0	Q13105		Non-structural protein 1	NS1_I59A0	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR000210	0.005	Q0A2H0_3_8	NS	ZBTB17
+S.TVSS	SKP1/BTB/POZ domain	0.105559370770074	Q0A2H0	Q13105		Non-structural protein 1	NS1_I59A0	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR011333	0.005	Q0A2H0_3_8	NS	ZBTB17
 S.TVSS	Zinc finger, RING/FYVE/PHD-type	0.105559370770074	Q0A2H0	Q13105		Non-structural protein 1	NS1_I59A0	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013083	0.005	Q0A2H0_3_8	NS	ZBTB17
-S.TVSS	Zinc finger, RING/FYVE/PHD-type	0.107127100580777	Q2PJP0	Q13105		Non-structural protein 1	Q2PJP0_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013083	0.004	Q2PJP0_3_8	NS1	ZBTB17
-S.TVSS	Zinc finger, RING/FYVE/PHD-type	0.0976652753536016	Q2PJP1	Q13105		Nuclear export protein	Q2PJP1_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013083	0.001	Q2PJP1_3_8	NS2	ZBTB17
-S.TVSS	Zinc finger, RING/FYVE/PHD-type	0.0903871537384637	Q6DP93	Q13105		Non-structural protein 1	Q6DP93_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013083	0.005	Q6DP93_3_8	NS	ZBTB17
-S.TVSS	Zinc finger, RING/FYVE/PHD-type	0.00165224098441508	Q88489	Q13105		Genome polyprotein	Q88489_9FLAV	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013083	0.002	Q88489_444_449		ZBTB17
 S.TVSS	Zinc finger C2H2-type	0.105559370770074	Q0A2H0	Q13105		Non-structural protein 1	NS1_I59A0	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013087	0.005	Q0A2H0_3_8	NS	ZBTB17
-S.TVSS	Zinc finger C2H2-type	0.107127100580777	Q2PJP0	Q13105		Non-structural protein 1	Q2PJP0_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013087	0.004	Q2PJP0_3_8	NS1	ZBTB17
-S.TVSS	Zinc finger C2H2-type	0.0976652753536016	Q2PJP1	Q13105		Nuclear export protein	Q2PJP1_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013087	0.001	Q2PJP1_3_8	NS2	ZBTB17
-S.TVSS	Zinc finger C2H2-type	0.0903871537384637	Q6DP93	Q13105		Non-structural protein 1	Q6DP93_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013087	0.005	Q6DP93_3_8	NS	ZBTB17
-R..N.P.L	Concanavalin A-like lectin/glucanase domain	0.0803461472498903	Q77M19	Q96S59		V protein	Q77M19_MEASW	Ran-binding protein 9	RANB9_HUMAN	IPR013320	0.014	Q77M19_199_206	P	RANBP9
-DL.C.E	Cyclin-like	0.000105528962033248	A0MPS7	P28749		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR013763	0.02	A0MPS7_21_26	E7	RBL1
-DL.C.E	Cyclin-like	0.000105528962033248	A0MPS7	Q08999		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR013763	0.013	A0MPS7_21_26	E7	RBL2
-DL.C.E	Cyclin-like	0.00475220945202503	P03129	P28749	matching_known	Protein E7	VE7_HPV16	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR013763	0.02	P03129_21_26	E7	RBL1
-DL.C.E	Cyclin-like	0.00475220945202503	P03129	Q08999	matching_known	Protein E7	VE7_HPV16	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR013763	0.013	P03129_21_26	E7	RBL2
-DL.CHE	Cyclin-like	0.00474163204413847	P03255	P28749	matching_known	Early E1A protein	E1A_ADE05	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR013763	0.000841	P03255_121_126		RBL1
-DL.CHE	Cyclin-like	0.00474163204413847	P03255	Q08999	matching_known	Early E1A protein	E1A_ADE05	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR013763	0.000415	P03255_121_126		RBL2
-DL.C.E	Cyclin-like	0.119533313100392	P06430	P28749		Protein E7	VE7_HPV08	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR013763	0.006	P06430_26_31	E7	RBL1
-DL.CHE	Cyclin-like	0.00166798962651968	P06788	P28749		Protein E7	VE7_HPV18	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR013763	8.01e-05	P06788_24_29	E7	RBL1
-DL.CHE	Cyclin-like	0.00166798962651968	P06788	Q08999		Protein E7	VE7_HPV18	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR013763	5.59e-05	P06788_24_29	E7	RBL2
-DL.CHE	Cyclin-like	0.00789575958903067	Q2PRM9	P28749		Large T	Q2PRM9_POVBK	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR013763	0.000908	Q2PRM9_104_109		RBL1
-DL.CHE	Cyclin-like	0.00789575958903067	Q2PRM9	Q08999		Large T	Q2PRM9_POVBK	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR013763	0.000421	Q2PRM9_104_109		RBL2
-DL.CHE	Cyclin-like	0.0261716816117472	Q9DUG7	P28749		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR013763	0.000864	Q9DUG7_104_109		RBL1
-DL.CHE	Cyclin-like	0.0261716816117472	Q9DUG7	Q08999		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR013763	0.000401	Q9DUG7_104_109		RBL2
-TQDQ	Immunoglobulin-like fold	0.0106579852051325	P0CK56	P09619		Uncharacterized protein BDLF4	UL92_EBVB9	Platelet-derived growth factor receptor beta	PGFRB_HUMAN	IPR013783	0.009	P0CK56_97_100	BDLF4	PDGFRB
-TQDQ	Immunoglobulin-like fold	0.0483676931050686	P13285	P09619		Latent membrane protein 2	LMP2_EBVB9	Platelet-derived growth factor receptor beta	PGFRB_HUMAN	IPR013783	0.031	P13285_79_82	LMP2	PDGFRB
-S..EIP..G	Immunoglobulin-like fold	0.0418805745226699	P36778	P02751		Regulatory protein E2	VE2_HPV03	Fibronectin	FINC_HUMAN	IPR013783	0.016	P36778_205_213	E2	FN1
-DL.C.E	Retinoblastoma-associated protein, C-terminal	0.000105528962033248	A0MPS7	P28749		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR015030	0.02	A0MPS7_21_26	E7	RBL1
-DL.C.E	Retinoblastoma-associated protein, C-terminal	0.000105528962033248	A0MPS7	Q08999		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR015030	0.013	A0MPS7_21_26	E7	RBL2
-DL.C.E	Retinoblastoma-associated protein, C-terminal	0.119533313100392	P06430	P28749		Protein E7	VE7_HPV08	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR015030	0.006	P06430_26_31	E7	RBL1
-DL.CHE	Retinoblastoma-associated protein, C-terminal	0.0261716816117472	Q9DUG7	P28749		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR015030	0.000864	Q9DUG7_104_109		RBL1
-DL.CHE	Retinoblastoma-associated protein, C-terminal	0.0261716816117472	Q9DUG7	Q08999		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR015030	0.000401	Q9DUG7_104_109		RBL2
+S.E..K..I	P-loop containing nucleoside triphosphate hydrolase	0.105559370770074	Q0A2H0	Q9NY93		Non-structural protein 1	NS1_I59A0	Probable ATP-dependent RNA helicase DDX56	DDX56_HUMAN	IPR027417	0.039	Q0A2H0_73_81	NS	DDX56
+K.KR	DZF domain	0.140615708672301	Q0HD54	Q12905		Non-structural protein 1	NS1_I40A0	Interleukin enhancer-binding factor 2	ILF2_HUMAN	IPR006561	0.024	Q0HD54_217_220	NS	ILF2
+P..T..DV	RNA recognition motif domain	0.0460786573982702	Q0HD54	P07910		Non-structural protein 1	NS1_I40A0	Heterogeneous nuclear ribonucleoproteins C1/C2	HNRPC_HUMAN	IPR000504	0.029	Q0HD54_167_174	NS	HNRNPC
+S..G[LV]	K Homology domain	0.172459905633407	Q1K9H2	Q15365		Nucleoprotein	Q1K9H2_I33A0	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.001	Q1K9H2_359_363	NP	PCBP1
+S..G[LV]	K Homology domain, type 1	0.172459905633407	Q1K9H2	Q15365		Nucleoprotein	Q1K9H2_I33A0	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.001	Q1K9H2_359_363	NP	PCBP1
+V.ESM..E	Armadillo-type fold	0.000195993490839254	Q1K9H5	O60518		RNA-directed RNA polymerase catalytic subunit	Q1K9H5_I33A0	Ran-binding protein 6	RNBP6_HUMAN	IPR016024	0.000146	Q1K9H5_170_177	PB1	RANBP6
+R..Q.S..G	Mitochondrial carrier domain	0.208226251328013	Q1K9H5	Q9H936		RNA-directed RNA polymerase catalytic subunit	Q1K9H5_I33A0	Mitochondrial glutamate carrier 1	GHC1_HUMAN	IPR023395	0.006	Q1K9H5_45_53	PB1	SLC25A22
+R..Q.S..G	Mitochondrial carrier domain	0.208226251328013	Q1K9H5	P53007		RNA-directed RNA polymerase catalytic subunit	Q1K9H5_I33A0	Tricarboxylate transport protein, mitochondrial	TXTP_HUMAN	IPR023395	0.007	Q1K9H5_45_53	PB1	SLC25A1
+V.ESM..E	Armadillo-type fold	3.20623381473614e-06	Q20MH8	O60518		Matrix protein 2	Q20MH8_I33A0	Ran-binding protein 6	RNBP6_HUMAN	IPR016024	2.49e-05	Q20MH8_68_75	M2	RANBP6
+E.VP	UBA-like	0.062630271959802	Q20MH8	Q8NBM4		Matrix protein 2	Q20MH8_I33A0	Ubiquitin-associated domain-containing protein 2	UBAC2_HUMAN	IPR009060	0.024	Q20MH8_66_69	M2	UBAC2
+R.E.G	Armadillo-type fold	3.20623381473614e-06	Q20MH8	O00410		Matrix protein 2	Q20MH8_I33A0	Importin-5	IPO5_HUMAN	IPR016024	0.025	Q20MH8_12_16	M2	IPO5
 P.RN	Pyridoxal phosphate-dependent transferase, major region, subdomain 1	0.062630271959802	Q20MH8	O15269		Matrix protein 2	Q20MH8_I33A0	Serine palmitoyltransferase 1	SPTC1_HUMAN	IPR015421	0.032	Q20MH8_10_13	M2	SPTLC1
 P.RN	Pyridoxal phosphate-dependent transferase, subdomain 2	0.062630271959802	Q20MH8	O15269		Matrix protein 2	Q20MH8_I33A0	Serine palmitoyltransferase 1	SPTC1_HUMAN	IPR015422	0.032	Q20MH8_10_13	M2	SPTLC1
 P.RN	Pyridoxal phosphate-dependent transferase	0.062630271959802	Q20MH8	O15269		Matrix protein 2	Q20MH8_I33A0	Serine palmitoyltransferase 1	SPTC1_HUMAN	IPR015424	0.032	Q20MH8_10_13	M2	SPTLC1
-R.E.G	Armadillo-type fold	7.15279564613941e-06	P06821	O00410		Matrix protein 2	M2_I34A1	Importin-5	IPO5_HUMAN	IPR016024	0.028	P06821_12_16	M	IPO5
-NL.[AS]	Armadillo-type fold	0.0072660004597569	Q05322	Q14974		Membrane-associated protein VP24	VP24_EBOZM	Importin subunit beta-1	IMB1_HUMAN	IPR016024	0.033	Q05322_9_12	VP24	KPNB1
-V.ESM..E	Armadillo-type fold	0.000195993490839254	Q1K9H5	O60518		RNA-directed RNA polymerase catalytic subunit	Q1K9H5_I33A0	Ran-binding protein 6	RNBP6_HUMAN	IPR016024	0.000146	Q1K9H5_170_177	PB1	RANBP6
-R.E.G	Armadillo-type fold	3.20623381473614e-06	Q20MH8	O00410		Matrix protein 2	Q20MH8_I33A0	Importin-5	IPO5_HUMAN	IPR016024	0.025	Q20MH8_12_16	M2	IPO5
-V.ESM..E	Armadillo-type fold	3.20623381473614e-06	Q20MH8	O60518		Matrix protein 2	Q20MH8_I33A0	Ran-binding protein 6	RNBP6_HUMAN	IPR016024	2.49e-05	Q20MH8_68_75	M2	RANBP6
-V.ESM..E	Armadillo-type fold	0.000145579761183948	Q76353	O60518		Integrase	Q76353_9HIV1	Ran-binding protein 6	RNBP6_HUMAN	IPR016024	0.000148	Q76353_150_157		RANBP6
-H..ED..N	Ribosomal protein S5 domain 2-type fold	0.0545149486533305	P03496	P08238		Non-structural protein 1	NS1_I34A1	Heat shock protein HSP 90-beta	HS90B_HUMAN	IPR020568	0.027	P03496_169_176	NS	HSP90AB1
-E.VP	Peptidase S54, rhomboid domain	0.0641078403290113	P06460	Q8NBM4		Probable protein E5A	VE5A_HPV6B	Ubiquitin-associated domain-containing protein 2	UBAC2_HUMAN	IPR022764	0.016	P06460_2_5		UBAC2
-R..Q.S..G	Mitochondrial carrier domain	0.208226251328013	Q1K9H5	P53007		RNA-directed RNA polymerase catalytic subunit	Q1K9H5_I33A0	Tricarboxylate transport protein, mitochondrial	TXTP_HUMAN	IPR023395	0.007	Q1K9H5_45_53	PB1	SLC25A1
-R..Q.S..G	Mitochondrial carrier domain	0.208226251328013	Q1K9H5	Q9H936		RNA-directed RNA polymerase catalytic subunit	Q1K9H5_I33A0	Mitochondrial glutamate carrier 1	GHC1_HUMAN	IPR023395	0.006	Q1K9H5_45_53	PB1	SLC25A22
-DL.C.E	Retinoblastoma-associated protein, N-terminal	0.000105528962033248	A0MPS7	P28749		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR024599	0.02	A0MPS7_21_26	E7	RBL1
-DL.C.E	Retinoblastoma-associated protein, N-terminal	0.000105528962033248	A0MPS7	Q08999		Protein E7	A0MPS7_HPV16	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR024599	0.013	A0MPS7_21_26	E7	RBL2
-DL.C.E	Retinoblastoma-associated protein, N-terminal	0.119533313100392	P06430	P28749		Protein E7	VE7_HPV08	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR024599	0.006	P06430_26_31	E7	RBL1
-DL.CHE	Retinoblastoma-associated protein, N-terminal	0.0261716816117472	Q9DUG7	P28749		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR024599	0.000864	Q9DUG7_104_109		RBL1
-DL.CHE	Retinoblastoma-associated protein, N-terminal	0.0261716816117472	Q9DUG7	Q08999		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR024599	0.000401	Q9DUG7_104_109		RBL2
-PG.A..S	GroEL-like apical domain	0.0566339554728397	Q05322	P48643		Membrane-associated protein VP24	VP24_EBOZM	T-complex protein 1 subunit epsilon	TCPE_HUMAN	IPR027409	0.026	Q05322_214_220	VP24	CCT5
+E..[LV]$	PDZ domain	0.00313667272804275	Q2PJP0	Q14160		Non-structural protein 1	Q2PJP0_9INFA	Protein scribble homolog	SCRIB_HUMAN	IPR001478	8.46e-05	Q2PJP0_222_225	NS1	SCRIB
+E..V$	PDZ domain	0.00313667272804275	Q2PJP0	Q96RT1		Non-structural protein 1	Q2PJP0_9INFA	Erbin	ERBIN_HUMAN	IPR001478	0.001	Q2PJP0_222_225	NS1	ERBIN
+S.TVSS	BTB/POZ domain	0.107127100580777	Q2PJP0	Q13105		Non-structural protein 1	Q2PJP0_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR000210	0.004	Q2PJP0_3_8	NS1	ZBTB17
+S.TVSS	SKP1/BTB/POZ domain	0.107127100580777	Q2PJP0	Q13105		Non-structural protein 1	Q2PJP0_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR011333	0.004	Q2PJP0_3_8	NS1	ZBTB17
+S.TVSS	Zinc finger, RING/FYVE/PHD-type	0.107127100580777	Q2PJP0	Q13105		Non-structural protein 1	Q2PJP0_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013083	0.004	Q2PJP0_3_8	NS1	ZBTB17
+S.TVSS	Zinc finger C2H2-type	0.107127100580777	Q2PJP0	Q13105		Non-structural protein 1	Q2PJP0_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013087	0.004	Q2PJP0_3_8	NS1	ZBTB17
+S.TVSS	SKP1/BTB/POZ domain	0.0976652753536016	Q2PJP1	Q13105		Nuclear export protein	Q2PJP1_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR011333	0.001	Q2PJP1_3_8	NS2	ZBTB17
+S.TVSS	Zinc finger, RING/FYVE/PHD-type	0.0976652753536016	Q2PJP1	Q13105		Nuclear export protein	Q2PJP1_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013083	0.001	Q2PJP1_3_8	NS2	ZBTB17
+S.TVSS	Zinc finger C2H2-type	0.0976652753536016	Q2PJP1	Q13105		Nuclear export protein	Q2PJP1_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013087	0.001	Q2PJP1_3_8	NS2	ZBTB17
+DL.CHE	Cyclin-like	0.00789575958903067	Q2PRM9	Q08999		Large T	Q2PRM9_POVBK	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR013763	0.000421	Q2PRM9_104_109		RBL2
+DL.CHE	Cyclin-like	0.00789575958903067	Q2PRM9	P28749		Large T	Q2PRM9_POVBK	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR013763	0.000908	Q2PRM9_104_109		RBL1
+SA$	Tetratricopeptide-like helical domain	0.0693837595833694	Q67020	Q9Y262		Protein PA-X	Q67020_9INFA	Eukaryotic translation initiation factor 3 subunit L	EIF3L_HUMAN	IPR011990	0.007	Q67020_92_93	PA	EIF3L
+S..GV.E	PDZ domain	0.0141382545333211	Q67296	Q8N448		Polymerase basic protein 2	PB2_I72A2	Ligand of Numb protein X 2	LNX2_HUMAN	IPR001478	0.013	Q67296_481_487	PB2	LNX2
 PG.A..S	GroEL-like apical domain	0.0499603417964456	Q69117	P48643		Tripartite terminase subunit 2	Q69117_EBVG	T-complex protein 1 subunit epsilon	TCPE_HUMAN	IPR027409	0.023	Q69117_16_22	BFRF1A	CCT5
-PG.A..S	GroEL-like equatorial domain	0.0566339554728397	Q05322	P48643		Membrane-associated protein VP24	VP24_EBOZM	T-complex protein 1 subunit epsilon	TCPE_HUMAN	IPR027413	0.026	Q05322_214_220	VP24	CCT5
 PG.A..S	GroEL-like equatorial domain	0.0499603417964456	Q69117	P48643		Tripartite terminase subunit 2	Q69117_EBVG	T-complex protein 1 subunit epsilon	TCPE_HUMAN	IPR027413	0.023	Q69117_16_22	BFRF1A	CCT5
-D..TAT	P-loop containing nucleoside triphosphate hydrolase	0.000366606321186282	O56264	O00571		Non-structural protein 1	NS1_I97A1	ATP-dependent RNA helicase DDX3X	DDX3X_HUMAN	IPR027417	0.006	O56264_53_58	NS	DDX3X
-D..TAT	P-loop containing nucleoside triphosphate hydrolase	0	P03427	O00571		Polymerase basic protein 2	PB2_I33A0	ATP-dependent RNA helicase DDX3X	DDX3X_HUMAN	IPR027417	0.01	P03427_746_751	PB2	DDX3X
-YMN	P-loop containing nucleoside triphosphate hydrolase	0.00463349851662349	P06461	Q9NVI7		Probable protein E5B	VE5B_HPV6B	ATPase family AAA domain-containing protein 3A	ATD3A_HUMAN	IPR027417	0.007	P06461_70_72		ATAD3A
-T..P..LP	P-loop containing nucleoside triphosphate hydrolase	7.64670446624832e-06	P06463	P33993		Protein E6	VE6_HPV18	DNA replication licensing factor MCM7	MCM7_HUMAN	IPR027417	0.034	P06463_8_15	E6	MCM7
-[ST].[LV]$	P-loop containing nucleoside triphosphate hydrolase	7.64670446624832e-06	P06463	Q12959	matching_known	Protein E6	VE6_HPV18	Disks large homolog 1	DLG1_HUMAN	IPR027417	7.91e-10	P06463_156_158	E6	DLG1
-[ST].[LV]$	P-loop containing nucleoside triphosphate hydrolase	0.0211228721991774	P17386	Q12959		Protein E6	VE6_HPV31	Disks large homolog 1	DLG1_HUMAN	IPR027417	6.35e-10	P17386_147_149	E6	DLG1
-[ST].[LV]$	P-loop containing nucleoside triphosphate hydrolase	0.00448878667498772	P26555	Q12959		Protein E6	VE6_HPV58	Disks large homolog 1	DLG1_HUMAN	IPR027417	4.51e-10	P26555_147_149	E6	DLG1
-S..LI	P-loop containing nucleoside triphosphate hydrolase	0.000619164837323531	P30119	Q9NXH8		Uncharacterized protein BTRF1	BTRF1_EBVB9	Torsin-4A	TOR4A_HUMAN	IPR027417	0.036	P30119_233_237	BTRF1	TOR4A
-YMN	P-loop containing nucleoside triphosphate hydrolase	0.000870566602011858	P69901	Q9NVI7		Probable protein E5B	VE5B_HPV11	ATPase family AAA domain-containing protein 3A	ATD3A_HUMAN	IPR027417	0.015	P69901_72_74		ATAD3A
-S.E..K..I	P-loop containing nucleoside triphosphate hydrolase	0.105559370770074	Q0A2H0	Q9NY93		Non-structural protein 1	NS1_I59A0	Probable ATP-dependent RNA helicase DDX56	DDX56_HUMAN	IPR027417	0.039	Q0A2H0_73_81	NS	DDX56
+E..[LV]$	PDZ domain	0.00151854108016383	Q6DP93	Q14160		Non-structural protein 1	Q6DP93_9INFA	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0.000105	Q6DP93_222_225	NS	SCRIB
+E..V$	PDZ domain	0.00151854108016383	Q6DP93	Q96RT1		Non-structural protein 1	Q6DP93_9INFA	Erbin	ERBIN_HUMAN	IPR001478	0.001	Q6DP93_222_225	NS	ERBIN
+S.TVSS	Zinc finger, RING/FYVE/PHD-type	0.0903871537384637	Q6DP93	Q13105		Non-structural protein 1	Q6DP93_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013083	0.005	Q6DP93_3_8	NS	ZBTB17
+S.TVSS	Zinc finger C2H2-type	0.0903871537384637	Q6DP93	Q13105		Non-structural protein 1	Q6DP93_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013087	0.005	Q6DP93_3_8	NS	ZBTB17
+K.KR	DZF domain	0.12574524316365	Q6QDQ4	Q12905		N	Q6QDQ4_PRRSV	Interleukin enhancer-binding factor 2	ILF2_HUMAN	IPR006561	0.014	Q6QDQ4_10_13	N	ILF2
+T..SS	RNA recognition motif domain	0	Q6QDQ4	P38159		N	Q6QDQ4_PRRSV	RNA-binding motif protein, X chromosome	RBMX_HUMAN	IPR000504	0.031	Q6QDQ4_118_122	N	RBMX
+P..T..DV	RNA recognition motif domain	0	Q6QDQ4	P07910		N	Q6QDQ4_PRRSV	Heterogeneous nuclear ribonucleoproteins C1/C2	HNRPC_HUMAN	IPR000504	0.033	Q6QDQ4_56_63	N	HNRNPC
+M.G.I	RNA recognition motif domain	0	Q6QDQ4	P09651		N	Q6QDQ4_PRRSV	Heterogeneous nuclear ribonucleoprotein A1	ROA1_HUMAN	IPR000504	0.037	Q6QDQ4_25_29	N	HNRNPA1
+V.ESM..E	Armadillo-like helical	0.000145579761183948	Q76353	O60518		Integrase	Q76353_9HIV1	Ran-binding protein 6	RNBP6_HUMAN	IPR011989	0.000148	Q76353_150_157		RANBP6
+V.ESM..E	Armadillo-type fold	0.000145579761183948	Q76353	O60518		Integrase	Q76353_9HIV1	Ran-binding protein 6	RNBP6_HUMAN	IPR016024	0.000148	Q76353_150_157		RANBP6
+S..G[LV]	K Homology domain	0.12833483652492	Q77M19	Q15365		V protein	Q77M19_MEASW	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.00042	Q77M19_103_107	P	PCBP1
+S..G[LV]	K Homology domain, type 1	0.12833483652492	Q77M19	Q15365		V protein	Q77M19_MEASW	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.00042	Q77M19_103_107	P	PCBP1
+G..ST.G..I	RNA recognition motif domain	0.0106781641896638	Q77M19	O14979		V protein	Q77M19_MEASW	Heterogeneous nuclear ribonucleoprotein D-like	HNRDL_HUMAN	IPR000504	0.003	Q77M19_219_228	P	HNRNPDL
+R..N.P.L	Concanavalin A-like lectin/glucanase domain	0.0803461472498903	Q77M19	Q96S59		V protein	Q77M19_MEASW	Ran-binding protein 9	RANB9_HUMAN	IPR013320	0.014	Q77M19_199_206	P	RANBP9
+A.DV	K Homology domain	0.12833483652492	Q77M19	Q15365		V protein	Q77M19_MEASW	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004087	0.023	Q77M19_179_182	P	PCBP1
+A.DV	K Homology domain, type 1	0.12833483652492	Q77M19	Q15365		V protein	Q77M19_MEASW	Poly(rC)-binding protein 1	PCBP1_HUMAN	IPR004088	0.023	Q77M19_179_182	P	PCBP1
 R..Q.S..G	P-loop containing nucleoside triphosphate hydrolase	0.000436104253293326	Q77M19	P06576		V protein	Q77M19_MEASW	ATP synthase subunit beta, mitochondrial	ATPB_HUMAN	IPR027417	0.029	Q77M19_98_106	P	ATP5F1B
-GS.SSM	P-loop containing nucleoside triphosphate hydrolase	2.65163877674923e-07	Q8JPQ9	O00571		Non-structural protein NS-S	NSS_BUNL8	ATP-dependent RNA helicase DDX3X	DDX3X_HUMAN	IPR027417	0.002	Q8JPQ9_34_39	N	DDX3X
-GS.SSM	P-loop containing nucleoside triphosphate hydrolase	2.65163877674923e-07	Q8JPQ9	P17844		Non-structural protein NS-S	NSS_BUNL8	Probable ATP-dependent RNA helicase DDX5	DDX5_HUMAN	IPR027417	0.002	Q8JPQ9_34_39	N	DDX5
-D..TAT	P-loop containing nucleoside triphosphate hydrolase	0.0406817127400664	Q9WMX2	O00571		Genome polyprotein [Cleaved into: Core protein p21	POLG_HCVCO	ATP-dependent RNA helicase DDX3X	DDX3X_HUMAN	IPR027417	0.022	Q9WMX2_2361_2366		DDX3X
 GG.{0,1}A.R	Heat shock protein 70kD, peptide-binding domain	0.0312210315654434	Q77M19	P11021		V protein	Q77M19_MEASW	Endoplasmic reticulum chaperone BiP	BIP_HUMAN	IPR029047	0.038	Q77M19_73_77	P	HSPA5
 GG.{0,1}A.R	Heat shock protein 70kD, C-terminal domain	0.0312210315654434	Q77M19	P11021		V protein	Q77M19_MEASW	Endoplasmic reticulum chaperone BiP	BIP_HUMAN	IPR029048	0.038	Q77M19_73_77	P	HSPA5
-SLLTE	Ubiquitin-related domain	0.0617714254585678	P06821	O14641		Matrix protein 2	M2_I34A1	Segment polarity protein dishevelled homolog DVL-2	DVL2_HUMAN	IPR029071	0.022	P06821_2_6	M	DVL2
+S.TVSS	Zinc finger, RING/FYVE/PHD-type	0.00165224098441508	Q88489	Q13105		Genome polyprotein	Q88489_9FLAV	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013083	0.002	Q88489_444_449		ZBTB17
+GS.SSM	P-loop containing nucleoside triphosphate hydrolase	2.65163877674923e-07	Q8JPQ9	O00571		Non-structural protein NS-S	NSS_BUNL8	ATP-dependent RNA helicase DDX3X	DDX3X_HUMAN	IPR027417	0.002	Q8JPQ9_34_39	N	DDX3X
+GS.SSM	P-loop containing nucleoside triphosphate hydrolase	2.65163877674923e-07	Q8JPQ9	P17844		Non-structural protein NS-S	NSS_BUNL8	Probable ATP-dependent RNA helicase DDX5	DDX5_HUMAN	IPR027417	0.002	Q8JPQ9_34_39	N	DDX5
+R..N.P.L	LIS1 homology motif	0.000196767968755402	Q98143	Q96S59		Thymidine kinase	Q98143_HHV8	Ran-binding protein 9	RANB9_HUMAN	IPR006594	0.01	Q98143_557_564	ORF21	RANBP9
+R..N.P.L	CTLH, C-terminal LisH motif	0.000196767968755402	Q98143	Q96S59		Thymidine kinase	Q98143_HHV8	Ran-binding protein 9	RANB9_HUMAN	IPR006595	0.01	Q98143_557_564	ORF21	RANBP9
+P..T..DV	RNA recognition motif domain	0	Q99AU3	P07910		Non-structural protein 1	NS1_I18A0	Heterogeneous nuclear ribonucleoproteins C1/C2	HNRPC_HUMAN	IPR000504	0.027	Q99AU3_167_174	NS	HNRNPC
+DL.CHE	Retinoblastoma-associated protein, B-box	0.0261716816117472	Q9DUG7	Q08999		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR002719	0.000401	Q9DUG7_104_109		RBL2
+DL.CHE	Retinoblastoma-associated protein, A-box	0.0261716816117472	Q9DUG7	Q08999		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR002720	0.000401	Q9DUG7_104_109		RBL2
+DL.CHE	Cyclin-like	0.0261716816117472	Q9DUG7	Q08999		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR013763	0.000401	Q9DUG7_104_109		RBL2
+DL.CHE	Retinoblastoma-associated protein, C-terminal	0.0261716816117472	Q9DUG7	Q08999		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR015030	0.000401	Q9DUG7_104_109		RBL2
+DL.CHE	Retinoblastoma-associated protein, N-terminal	0.0261716816117472	Q9DUG7	Q08999		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR024599	0.000401	Q9DUG7_104_109		RBL2
+DL.CHE	Retinoblastoma-associated protein, B-box	0.0261716816117472	Q9DUG7	P28749		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR002719	0.000864	Q9DUG7_104_109		RBL1
+DL.CHE	Retinoblastoma-associated protein, A-box	0.0261716816117472	Q9DUG7	P28749		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR002720	0.000864	Q9DUG7_104_109		RBL1
+DL.CHE	Cyclin-like	0.0261716816117472	Q9DUG7	P28749		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR013763	0.000864	Q9DUG7_104_109		RBL1
+DL.CHE	Retinoblastoma-associated protein, C-terminal	0.0261716816117472	Q9DUG7	P28749		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR015030	0.000864	Q9DUG7_104_109		RBL1
+DL.CHE	Retinoblastoma-associated protein, N-terminal	0.0261716816117472	Q9DUG7	P28749		Large T-antigen	Q9DUG7_POVJC	Retinoblastoma-like protein 1	RBL1_HUMAN	IPR024599	0.000864	Q9DUG7_104_109		RBL1
+D..TAT	P-loop containing nucleoside triphosphate hydrolase	0.0406817127400664	Q9WMX2	O00571		Genome polyprotein [Cleaved into: Core protein p21	POLG_HCVCO	ATP-dependent RNA helicase DDX3X	DDX3X_HUMAN	IPR027417	0.022	Q9WMX2_2361_2366		DDX3X
