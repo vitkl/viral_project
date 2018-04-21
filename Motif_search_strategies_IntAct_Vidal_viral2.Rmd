@@ -39,8 +39,10 @@ suppressPackageStartupMessages({
 
 2. Comparing interaction datasets (2):  
 - Full IntAct  
-- Vidal  
 - all_viral_interaction  
+- BioPlex  
+- randomised_BioPlex  
+- randomised_all_viral_interaction  
 
 3. Protein-centered strategy (1)  
 
@@ -55,19 +57,44 @@ Total: 1 \* 1 \* 2 \* 1 \* 1 = 3 conditions
 IntAct = loadIntActFTP(dir = "./data_files/IntActRelease_2017Nov13/",
                                                 release = "2017Nov13")
 # human-viral
-all_viral_interaction3 = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
+all_viral_interaction3cloudfixF = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
                                                 clean = TRUE, protein_only = TRUE,
                                                 MITABdata = IntAct, directory = "./data_files/",
                                                 releaseORdate = "2017Nov13")
+# need to simplify isoform IDs for human proteins
+all_viral_interaction_BioPlex3cloudfixF = copy(all_viral_interaction3cloudfixF)
+all_viral_interaction_BioPlex3cloudfixF$data$IDs_interactor_A = gsub("-[[:digit:]]+$","",
+                                                            all_viral_interaction_BioPlex3cloudfixF$data$IDs_interactor_A)
+all_viral_interaction_BioPlex3cloudfixF$data$pair_id = paste0(all_viral_interaction_BioPlex3cloudfixF$data$IDs_interactor_A,
+                                                     "|", all_viral_interaction_BioPlex3cloudfixF$data$IDs_interactor_B)
+all_viral_interaction_BioPlex3cloudfixF$data = unique(all_viral_interaction_BioPlex3cloudfixF$data)
 
 # human-human
-Full_IntAct3 = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
+Full_IntAct3cloudfixF = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
                               clean = TRUE, protein_only = TRUE,
                               MITABdata = IntAct, directory = "./data_files/",
                                                 releaseORdate = "2017Nov13")
 
-Vidal3 = subsetMITABbyPMIDs(MITABdata = Full_IntAct3,
+Vidal3cloudfixF = subsetMITABbyPMIDs(MITABdata = Full_IntAct3cloudfixF,
                            PMIDs = c("25416956", "unassigned1304"))
+BioPlex3cloudfixF = loadBioplex(dir = "./data_files/",
+                      url = "http://bioplex.hms.harvard.edu/data/BioPlex_2.3_interactionList.tsv")
+
+randomised_BioPlex3cloudfixF = copy(BioPlex3cloudfixF)
+randomised_BioPlex3cloudfixF$data$Publication_Identifiers = NA
+randomised_BioPlex3cloudfixF$data$Confidence_values = NA
+randomised_BioPlex3cloudfixF$data = unique(randomised_BioPlex3cloudfixF$data)
+set.seed(1)
+randomised_BioPlex3cloudfixF$data$IDs_interactor_B = randomised_BioPlex3cloudfixF$data$IDs_interactor_B[sample.int(length(randomised_BioPlex3cloudfixF$data$IDs_interactor_B))]
+randomised_BioPlex3cloudfixF$data$pair_id = paste0(randomised_BioPlex3cloudfixF$data$IDs_interactor_A, "|", randomised_BioPlex3cloudfixF$data$IDs_interactor_B)
+
+randomised_all_viral_interaction3cloudfixF = copy(all_viral_interaction3cloudfixF)
+randomised_all_viral_interaction3cloudfixF$data$Publication_Identifiers = NA
+randomised_all_viral_interaction3cloudfixF$data$Confidence_values = NA
+randomised_all_viral_interaction3cloudfixF$data = unique(randomised_all_viral_interaction3cloudfixF$data)
+set.seed(1)
+randomised_all_viral_interaction3cloudfixF$data$IDs_interactor_B = randomised_all_viral_interaction3cloudfixF$data$IDs_interactor_B[sample.int(length(randomised_all_viral_interaction3cloudfixF$data$IDs_interactor_B))]
+randomised_all_viral_interaction3cloudfixF$data$pair_id = paste0(randomised_all_viral_interaction3cloudfixF$data$IDs_interactor_A, "|", randomised_all_viral_interaction3cloudfixF$data$IDs_interactor_B)
 ```
 
 ## Set standard options
@@ -81,7 +108,7 @@ myPPInetwork2SLIMFinder = function(dataset_name = "SLIMFinder", slimlen = 5, max
                           interaction_main_set = interaction_main_set,
                           interaction_query_set = interaction_query_set,
                           analysis_type = analysis_type,
-                          options = paste0("dismask=T consmask=F cloudfix=T probcut=0.3 minwild=0 maxwild=",maxwild," slimlen=",slimlen," alphahelix=F maxseq=800 savespace=0 iuchdir=T extras=2"),
+                          options = paste0("dismask=T consmask=F cloudfix=F probcut=0.3 minwild=0 maxwild=",maxwild," slimlen=",slimlen," alphahelix=F maxseq=800 savespace=0 iuchdir=T extras=2"),
                           domain_res_file = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
                           domain_results_obj = "res_count",
                           center_domains = center_domains,
@@ -112,7 +139,7 @@ if (!file.exists(elm_filename)) {
 
 ```{r params}
 analysis_type = c("qslimfinder")
-datasets = c("Full_IntAct3", "Vidal3", "all_viral_interaction3")
+datasets = c("Full_IntAct3cloudfixF", "all_viral_interaction3cloudfixF","BioPlex3cloudfixF", "randomised_BioPlex3cloudfixF", "randomised_all_viral_interaction3cloudfixF") # "Vidal3cloudfixF"
 domain_centered = c(F) # c(F, T)
 #slimlen = c(5, 8, 10)
 #maxwild = c(2, 3)
@@ -130,8 +157,10 @@ for(a in analysis_type){
         }
     }
 }
-dataset_names[grepl("BioPlex",datasets), query_dataset := "all_viral_interaction_BioPlex"]
-dataset_names[!grepl("BioPlex",datasets), query_dataset := "all_viral_interaction3"]
+# assign correct query dataset
+dataset_names[grepl("BioPlex",datasets), query_dataset := "all_viral_interaction_BioPlex3cloudfixF"]
+dataset_names[!grepl("BioPlex",datasets), query_dataset := "all_viral_interaction3cloudfixF"]
+dataset_names[grepl("randomised_all_viral_interaction3cloudfixF",datasets), query_dataset := "randomised_all_viral_interaction3cloudfixF"]
 
 # remove already finished names
 R_data_names = readLines("./RData_from_Motif_search_strategies")
