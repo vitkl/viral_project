@@ -504,10 +504,10 @@ readableNet = function(Net){
     Net = merge(Net, InterProEntryTypes, by = "Human_recognition_domain", all.x = T, all.y = F)
     
     # reorder column names 
-    Net = Net[, .(Pattern, Human_recognition_domain_name, Domain_p.value,
-                  Viral_protein, Human_protein, matching_known,
+    Net = Net[, .(Pattern, Human_recognition_domain_name, Domain_p.value, unique_position,
+                  Human_protein, matching_known,
                   Viral_protein_names, Viral_entry_name, Human_protein_names, Human_entry_name,
-                  Human_recognition_domain, Motif_Sig, unique_position,
+                  Human_recognition_domain, Motif_Sig, Viral_protein,
                   Viral_gene_names, Human_gene_names)]
     setorder(Net, Viral_protein, Motif_Sig, Domain_p.value)
     unique(Net)

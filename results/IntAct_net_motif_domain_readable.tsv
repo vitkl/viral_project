@@ -1,166 +1,166 @@
-Pattern	Human_recognition_domain_name	Domain_p.value	Viral_protein	Human_protein	matching_known	Viral_protein_names	Viral_entry_name	Human_protein_names	Human_entry_name	Human_recognition_domain	Motif_Sig	unique_position	Viral_gene_names	Human_gene_names
-KRKR	Armadillo-like helical	0.000798850352431081	B4URF7	P52294		Polymerase basic protein 2	B4URF7_I33A0	Importin subunit alpha-5	IMA5_HUMAN	IPR011989	1.21e-09	B4URF7_736_739	PB2	KPNA1
-KRKR	Armadillo-type fold	0.000798850352431081	B4URF7	P52294		Polymerase basic protein 2	B4URF7_I33A0	Importin subunit alpha-5	IMA5_HUMAN	IPR016024	1.21e-09	B4URF7_736_739	PB2	KPNA1
-E.V..G.{0,2}N.{0,1}Q	WD40/YVTN repeat-like-containing domain	0.00817757136076572	B4URF7	O95163		Polymerase basic protein 2	B4URF7_I33A0	Elongator complex protein 1	ELP1_HUMAN	IPR015943	0.000562	B4URF7_342_350	PB2	ELP1
-KR.{0,1}L.{0,1}V.G	MAGE homology domain	0.214057224635149	B4URF7	Q12816		Polymerase basic protein 2	B4URF7_I33A0	Trophinin	TROP_HUMAN	IPR002190	0.000678	B4URF7_663_669	PB2	TRO
-E.V..G.{0,2}N.{0,1}Q	WD40/YVTN repeat-like-containing domain	0.0142308926095462	C5E527	O95163		Polymerase basic protein 2	C5E527_9INFA	Elongator complex protein 1	ELP1_HUMAN	IPR015943	0.000529	C5E527_342_350	PB2	ELP1
-KRKR	Importin-alpha, importin-beta-binding domain	3.6639529584186e-05	E5LBT9	O60684		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-7	IMA7_HUMAN	IPR002652	1.96e-11	E5LBT9_339_342	ORF17	KPNA6
-KRKR	Armadillo-like helical	3.6639529584186e-05	E5LBT9	O60684		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-7	IMA7_HUMAN	IPR011989	1.96e-11	E5LBT9_339_342	ORF17	KPNA6
-KRKR	Armadillo-type fold	3.6639529584186e-05	E5LBT9	O60684		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-7	IMA7_HUMAN	IPR016024	1.96e-11	E5LBT9_339_342	ORF17	KPNA6
-KRKR	Importin-alpha, importin-beta-binding domain	3.6639529584186e-05	E5LBT9	P52294		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-5	IMA5_HUMAN	IPR002652	1.4e-09	E5LBT9_339_342	ORF17	KPNA1
-KRKR	Armadillo-like helical	3.6639529584186e-05	E5LBT9	P52294		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-5	IMA5_HUMAN	IPR011989	1.4e-09	E5LBT9_339_342	ORF17	KPNA1
-KRKR	Armadillo-type fold	3.6639529584186e-05	E5LBT9	P52294		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-5	IMA5_HUMAN	IPR016024	1.4e-09	E5LBT9_339_342	ORF17	KPNA1
-KRK	Importin-alpha, importin-beta-binding domain	3.6639529584186e-05	E5LBT9	P52292		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-1	IMA1_HUMAN	IPR002652	0.000708	E5LBT9_339_341	ORF17	KPNA2
-KRK	Armadillo-like helical	3.6639529584186e-05	E5LBT9	P52292		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000708	E5LBT9_339_341	ORF17	KPNA2
-KRK	Armadillo-type fold	3.6639529584186e-05	E5LBT9	P52292		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000708	E5LBT9_339_341	ORF17	KPNA2
-KRKR	Importin-alpha, importin-beta-binding domain	0.00412734456237159	F5HE15	O60684		Core gene UL26.5 family protein	F5HE15_HHV8	Importin subunit alpha-7	IMA7_HUMAN	IPR002652	1.6e-11	F5HE15_93_96	ORF17.5	KPNA6
-KRKR	Armadillo-like helical	0.00412734456237159	F5HE15	O60684		Core gene UL26.5 family protein	F5HE15_HHV8	Importin subunit alpha-7	IMA7_HUMAN	IPR011989	1.6e-11	F5HE15_93_96	ORF17.5	KPNA6
-KRKR	Armadillo-type fold	0.00412734456237159	F5HE15	O60684		Core gene UL26.5 family protein	F5HE15_HHV8	Importin subunit alpha-7	IMA7_HUMAN	IPR016024	1.6e-11	F5HE15_93_96	ORF17.5	KPNA6
-KRKR	Importin-alpha, importin-beta-binding domain	0.00412734456237159	F5HE15	P52294		Core gene UL26.5 family protein	F5HE15_HHV8	Importin subunit alpha-5	IMA5_HUMAN	IPR002652	1.14e-09	F5HE15_93_96	ORF17.5	KPNA1
-KRKR	Armadillo-like helical	0.00412734456237159	F5HE15	P52294		Core gene UL26.5 family protein	F5HE15_HHV8	Importin subunit alpha-5	IMA5_HUMAN	IPR011989	1.14e-09	F5HE15_93_96	ORF17.5	KPNA1
-KRKR	Armadillo-type fold	0.00412734456237159	F5HE15	P52294		Core gene UL26.5 family protein	F5HE15_HHV8	Importin subunit alpha-5	IMA5_HUMAN	IPR016024	1.14e-09	F5HE15_93_96	ORF17.5	KPNA1
-KRK	Tetratricopeptide-like helical domain	0.00110623074703045	I6T1Z2	Q9Y2X3		Non-structural protein 1	I6T1Z2_I68A0	Nucleolar protein 58	NOP58_HUMAN	IPR011990	0.000791	I6T1Z2_219_221	NS1	NOP58
-KRK	Armadillo-like helical	0.0130007165390764	O92837	P52292		Minor capsid protein	O92837_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000215	O92837_203_205	VP3	KPNA2
-KRK	Armadillo-type fold	0.0130007165390764	O92837	P52292		Minor capsid protein	O92837_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000215	O92837_203_205	VP3	KPNA2
-DSG	WD40/YVTN repeat-like-containing domain	0.0168420159054956	P03070	Q9UKB1		Large T antigen	LT_SV40	F-box/WD repeat-containing protein 11	FBW1B_HUMAN	IPR015943	1.79e-07	P03070_656_658		FBXW11
-DSG	WD40-repeat-containing domain	0.0168420159054956	P03070	Q9UKB1		Large T antigen	LT_SV40	F-box/WD repeat-containing protein 11	FBW1B_HUMAN	IPR017986	1.79e-07	P03070_656_658		FBXW11
-KRK	Importin-alpha, importin-beta-binding domain	0.00747277167600188	P03070	O60684		Large T antigen	LT_SV40	Importin subunit alpha-7	IMA7_HUMAN	IPR002652	1.89e-07	P03070_129_131		KPNA6
-KRK	Armadillo-like helical	0.00747277167600188	P03070	O60684		Large T antigen	LT_SV40	Importin subunit alpha-7	IMA7_HUMAN	IPR011989	1.89e-07	P03070_129_131		KPNA6
-KRK	Armadillo-type fold	0.00747277167600188	P03070	O60684		Large T antigen	LT_SV40	Importin subunit alpha-7	IMA7_HUMAN	IPR016024	1.89e-07	P03070_129_131		KPNA6
-DSG	WD40/YVTN repeat-like-containing domain	0.0168420159054956	P03070	Q9Y297		Large T antigen	LT_SV40	F-box/WD repeat-containing protein 1A	FBW1A_HUMAN	IPR015943	6.93e-06	P03070_656_658		BTRC
-DSG	WD40-repeat-containing domain	0.0168420159054956	P03070	Q9Y297		Large T antigen	LT_SV40	F-box/WD repeat-containing protein 1A	FBW1A_HUMAN	IPR017986	6.93e-06	P03070_656_658		BTRC
-KRK	Importin-alpha, importin-beta-binding domain	0.00747277167600188	P03070	P52292		Large T antigen	LT_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR002652	0.000457	P03070_129_131		KPNA2
-KRK	Armadillo-like helical	0.00747277167600188	P03070	P52292		Large T antigen	LT_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000457	P03070_129_131		KPNA2
-KRK	Armadillo-type fold	0.00747277167600188	P03070	P52292		Large T antigen	LT_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000457	P03070_129_131		KPNA2
-KRK	Armadillo-like helical	0.0131233023428333	P03087	P52292		Major capsid protein VP1	VP1_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000462	P03087_5_7		KPNA2
-KRK	Armadillo-type fold	0.0131233023428333	P03087	P52292		Major capsid protein VP1	VP1_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000462	P03087_5_7		KPNA2
-KRK	Armadillo-like helical	3.03604852212748e-06	P03101	P52292		Major capsid protein L1	VL1_HPV16	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000385	P03101_484_486	L1	KPNA2
-KRK	Armadillo-like helical	3.03604852212748e-06	P03101	P52292		Major capsid protein L1	VL1_HPV16	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000385	P03101_499_501	L1	KPNA2
-KRK	Armadillo-like helical	3.03604852212748e-06	P03101	P52292		Major capsid protein L1	VL1_HPV16	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000385	P03101_502_504	L1	KPNA2
-KRK	Armadillo-type fold	3.03604852212748e-06	P03101	P52292		Major capsid protein L1	VL1_HPV16	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000385	P03101_484_486	L1	KPNA2
-KRK	Armadillo-type fold	3.03604852212748e-06	P03101	P52292		Major capsid protein L1	VL1_HPV16	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000385	P03101_499_501	L1	KPNA2
-KRK	Armadillo-type fold	3.03604852212748e-06	P03101	P52292		Major capsid protein L1	VL1_HPV16	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000385	P03101_502_504	L1	KPNA2
-[ST].[LV]$	PDZ domain	1.86510182165127e-05	P03126	Q12959	matching_known	Protein E6	VE6_HPV16	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P03126_156_158	E6	DLG1
-[DE]T.[ILV]$	PDZ domain	1.86510182165127e-05	P03126	Q14160	matching_known	Protein E6	VE6_HPV16	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P03126_155_158	E6	SCRIB
-ET..$	PDZ domain	1.86510182165127e-05	P03126	P26045	matching_known	Protein E6	VE6_HPV16	Tyrosine-protein phosphatase non-receptor type 3	PTN3_HUMAN	IPR001478	4.27e-06	P03126_155_158	E6	PTPN3
-[KR][KR][KR][KR]	Importin-alpha, importin-beta-binding domain	0.0123994685214873	P03211	O60684		Epstein-Barr nuclear antigen 1	EBNA1_EBVB9	Importin subunit alpha-7	IMA7_HUMAN	IPR002652	9.09e-05	P03211_458_461	EBNA1	KPNA6
-[KR][KR][KR][KR]	Armadillo-like helical	0.0123994685214873	P03211	O60684		Epstein-Barr nuclear antigen 1	EBNA1_EBVB9	Importin subunit alpha-7	IMA7_HUMAN	IPR011989	9.09e-05	P03211_458_461	EBNA1	KPNA6
-[KR][KR][KR][KR]	Armadillo-type fold	0.0123994685214873	P03211	O60684		Epstein-Barr nuclear antigen 1	EBNA1_EBVB9	Importin subunit alpha-7	IMA7_HUMAN	IPR016024	9.09e-05	P03211_458_461	EBNA1	KPNA6
-RKR	Armadillo-type fold	0.0851931430163081	P03427	O00505		Polymerase basic protein 2	PB2_I33A0	Importin subunit alpha-4	IMA4_HUMAN	IPR016024	0.000781	P03427_737_739	PB2	KPNA3
-KR.R	PDZ domain	0.0457488167643397	P03428	Q92997	matching_known	Polymerase basic protein 2	PB2_I34A1	Segment polarity protein dishevelled homolog DVL-3	DVL3_HUMAN	IPR001478	0.000141	P03428_736_739	PB2	DVL3
-KR.R	PDZ domain	0.0457488167643397	P03428	Q92997	matching_known	Polymerase basic protein 2	PB2_I34A1	Segment polarity protein dishevelled homolog DVL-3	DVL3_HUMAN	IPR001478	0.000141	P03428_752_755	PB2	DVL3
-KR.R	PDZ domain	0.0381568277546372	P03431	Q92997		RNA-directed RNA polymerase catalytic subunit	RDRP_I34A1	Segment polarity protein dishevelled homolog DVL-3	DVL3_HUMAN	IPR001478	0.000177	P03431_669_672	PB1	DVL3
-[ST].V$	PDZ domain	0.0342884470758933	P03496	O14908		Non-structural protein 1	NS1_I34A1	PDZ domain-containing protein GIPC1	GIPC1_HUMAN	IPR001478	1.77e-07	P03496_228_230	NS	GIPC1
-LR.{0,2}G.G.T	Double-stranded RNA-binding domain	0.00460477469173743	P03496	Q96SI9		Non-structural protein 1	NS1_I34A1	Spermatid perinuclear RNA-binding protein	STRBP_HUMAN	IPR014720	1.35e-05	P03496_43_49	NS	STRBP
-KRK	Armadillo-like helical	0.000103557150318873	P04012	P52292		Major capsid protein L1	VL1_HPV11	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.00046	P04012_493_495	L1	KPNA2
-KRK	Armadillo-type fold	0.000103557150318873	P04012	P52292		Major capsid protein L1	VL1_HPV11	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.00046	P04012_493_495	L1	KPNA2
-[HR][HK]R.R	RNA recognition motif domain	0.108666821412664	P04015	Q07955		Regulatory protein E2	VE2_HPV11	Serine/arginine-rich splicing factor 1	SRSF1_HUMAN	IPR000504	8.79e-05	P04015_238_242	E2	SRSF1
-[HR]KR.R	RNA recognition motif domain	0.108666821412664	P04015	Q16629		Regulatory protein E2	VE2_HPV11	Serine/arginine-rich splicing factor 7	SRSF7_HUMAN	IPR000504	0.000108	P04015_238_242	E2	SRSF7
-T.AP..S..T	Zinc finger, RING/FYVE/PHD-type	0.00941079618434417	P04015	Q9NRL2		Regulatory protein E2	VE2_HPV11	Bromodomain adjacent to zinc finger domain protein 1A	BAZ1A_HUMAN	IPR013083	0.000688	P04015_219_228	E2	BAZ1A
-PAP	P-loop containing nucleoside triphosphate hydrolase	0.00201052772652107	P04487	Q00839		RNA-binding protein	RNB_HHV11	Heterogeneous nuclear ribonucleoprotein U	HNRPU_HUMAN	IPR027417	2.6e-06	P04487_7_9	US11	HNRNPU
-DSG	WD40/YVTN repeat-like-containing domain	0.0139111539099083	P05919	Q9UKB1		Protein Vpu	VPU_HV1H2	F-box/WD repeat-containing protein 11	FBW1B_HUMAN	IPR015943	2.88e-08	P05919_51_53	vpu	FBXW11
-DSG	WD40-repeat-containing domain	0.0139111539099083	P05919	Q9UKB1		Protein Vpu	VPU_HV1H2	F-box/WD repeat-containing protein 11	FBW1B_HUMAN	IPR017986	2.88e-08	P05919_51_53	vpu	FBXW11
-DSG	WD40/YVTN repeat-like-containing domain	0.0139111539099083	P05919	Q9Y297		Protein Vpu	VPU_HV1H2	F-box/WD repeat-containing protein 1A	FBW1A_HUMAN	IPR015943	1.01e-06	P05919_51_53	vpu	BTRC
-DSG	WD40-repeat-containing domain	0.0139111539099083	P05919	Q9Y297		Protein Vpu	VPU_HV1H2	F-box/WD repeat-containing protein 1A	FBW1A_HUMAN	IPR017986	1.01e-06	P05919_51_53	vpu	BTRC
-[ST].[LV]$	PDZ domain	4.55498550755444e-06	P06427	Q12959		Protein E6	VE6_HPV33	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P06427_147_149	E6	DLG1
-[DE]T.[ILV]$	PDZ domain	4.55498550755444e-06	P06427	Q14160		Protein E6	VE6_HPV33	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P06427_146_149	E6	SCRIB
-DY.[FY]	P-loop containing nucleoside triphosphate hydrolase	0.00463349851662349	P06461	P09543		Probable protein E5B	VE5B_HPV6B	2',3'-cyclic-nucleotide 3'-phosphodiesterase	CN37_HUMAN	IPR027417	0.000537	P06461_67_70		CNP
-[ST].[LV]$	P-loop containing nucleoside triphosphate hydrolase	7.64670446624832e-06	P06463	Q12959	matching_known	Protein E6	VE6_HPV18	Disks large homolog 1	DLG1_HUMAN	IPR027417	0	P06463_156_158	E6	DLG1
-[DE]T.[ILV]$	PDZ domain	0.000159157330344421	P06463	Q14160	matching_known	Protein E6	VE6_HPV18	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P06463_155_158	E6	SCRIB
-ET..$	PDZ domain	0.000159157330344421	P06463	P26045	matching_known	Protein E6	VE6_HPV18	Tyrosine-protein phosphatase non-receptor type 3	PTN3_HUMAN	IPR001478	3.96e-06	P06463_155_158	E6	PTPN3
-E..QR..E	Armadillo-like helical	0.0114269057578614	P06463	Q99460	matching_known	Protein E6	VE6_HPV18	26S proteasome non-ATPase regulatory subunit 1	PSMD1_HUMAN	IPR011989	0.000853	P06463_148_155	E6	PSMD1
-E..QR..E	Armadillo-type fold	0.0114269057578614	P06463	Q99460	matching_known	Protein E6	VE6_HPV18	26S proteasome non-ATPase regulatory subunit 1	PSMD1_HUMAN	IPR016024	0.000853	P06463_148_155	E6	PSMD1
-E.DE	PDZ domain	0.115665118524294	P06464	Q9NR12		Protein E7	VE7_HPV6B	PDZ and LIM domain protein 7	PDLI7_HUMAN	IPR001478	0.000754	P06464_36_39	E7	PDLIM7
-DL.CHE	Cyclin-like	0.00166798962651968	P06788	Q08999		Protein E7	VE7_HPV18	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR013763	0.001	P06788_24_29	E7	RBL2
-G.V.{0,1}G.{0,1}S	Keratin type II head	0.155327376448408	P06921	P02538		Regulatory protein E2	VE2_HPV05	Keratin, type II cytoskeletal 6A	K2C6A_HUMAN	IPR032444	0.001	P06921_404_409	E2	KRT6A
-G[KR].RGR	Histone deacetylase domain	0.00141131526038581	P08393	O15379		E3 ubiquitin-protein ligase ICP0	ICP0_HHV11	Histone deacetylase 3	HDAC3_HUMAN	IPR023801	0.000563	P08393_339_344	ICP0	HDAC3
-Q..H..RE..D	GroEL-like apical domain	0	P09992	P78371		Nucleoprotein	NCAP_LYCVA	T-complex protein 1 subunit beta	TCPB_HUMAN	IPR027409	0.000669	P09992_402_412	N	CCT2
-Q..H..RE..D	GroEL-like equatorial domain	0	P09992	P78371		Nucleoprotein	NCAP_LYCVA	T-complex protein 1 subunit beta	TCPB_HUMAN	IPR027413	0.000669	P09992_402_412	N	CCT2
-D.T..K..S	Armadillo-like helical	0.0173857373733513	P0C1C7	O00629		Protein W	W_NIPAV	Importin subunit alpha-3	IMA3_HUMAN	IPR011989	0.000528	P0C1C7_85_93	P/V/C	KPNA4
-D.T..K..S	Armadillo-type fold	0.0173857373733513	P0C1C7	O00629		Protein W	W_NIPAV	Importin subunit alpha-3	IMA3_HUMAN	IPR016024	0.000528	P0C1C7_85_93	P/V/C	KPNA4
-[ST].[LV]$	PDZ domain	0.000109949388057433	P0C213	Q12959		Protein Tax-1	TAX_HTL1F	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P0C213_351_353	tax	DLG1
-[DE]T.[ILV]$	PDZ domain	0.000109949388057433	P0C213	Q14160		Protein Tax-1	TAX_HTL1F	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P0C213_350_353	tax	SCRIB
-[DE]..V$	PDZ domain	0.000109949388057433	P0C213	Q96RT1		Protein Tax-1	TAX_HTL1F	Erbin	ERBIN_HUMAN	IPR001478	4.19e-06	P0C213_350_353	tax	ERBIN
-P..P.P.D	P-loop containing nucleoside triphosphate hydrolase	0.00153232676378166	P0C739	P51148		Protein BNLF2a	BNL2A_EBVB9	Ras-related protein Rab-5C	RAB5C_HUMAN	IPR027417	0.000943	P0C739_28_35	BNLF2a	RAB5C
-E.LG.D	GroEL-like apical domain	0.216951325367602	P0DOE9	P10809		Non-structural protein 1	NS1_HRSVA	60 kDa heat shock protein, mitochondrial	CH60_HUMAN	IPR027409	0.000522	P0DOE9_131_136	1C	HSPD1
-[ST].[LV]$	PDZ domain	0.00443106669255909	P16717	Q12959		Putative fusion protein	VFUS_SHEVK	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P16717_146_148	HM2	DLG1
-T.L$	PDZ domain	0.00443106669255909	P16717	Q14160		Putative fusion protein	VFUS_SHEVK	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P16717_146_148	HM2	SCRIB
-[ST].[LV]$	PDZ domain	0.0211228721991774	P17386	Q12959		Protein E6	VE6_HPV31	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P17386_147_149	E6	DLG1
-[ST].[LV]$	Guanylate kinase-like domain	0.0211228721991774	P17386	Q12959		Protein E6	VE6_HPV31	Disks large homolog 1	DLG1_HUMAN	IPR008144	0	P17386_147_149	E6	DLG1
-[ST].[LV]$	Guanylate kinase/L-type calcium channel beta subunit	0.0211228721991774	P17386	Q12959		Protein E6	VE6_HPV31	Disks large homolog 1	DLG1_HUMAN	IPR008145	0	P17386_147_149	E6	DLG1
-[ST].[LV]$	P-loop containing nucleoside triphosphate hydrolase	0.0211228721991774	P17386	Q12959		Protein E6	VE6_HPV31	Disks large homolog 1	DLG1_HUMAN	IPR027417	0	P17386_147_149	E6	DLG1
-[ST].[LV]$	PDZ domain	0.00453501858210227	P21735	Q12959		Protein E6	VE6_HPV45	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P21735_156_158	E6	DLG1
-[DE]T.[ILV]$	PDZ domain	0.00453501858210227	P21735	Q14160		Protein E6	VE6_HPV45	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P21735_155_158	E6	SCRIB
-[ST].[LV]$	PDZ domain	0.00447416445364111	P24835	Q12959		Protein E6	VE6_HPV39	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P24835_156_158	E6	DLG1
-[DE]T.[ILV]$	PDZ domain	0.00447416445364111	P24835	Q14160		Protein E6	VE6_HPV39	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P24835_155_158	E6	SCRIB
-[ST].[LV]$	P-loop containing nucleoside triphosphate hydrolase	0.00448878667498772	P26555	Q12959		Protein E6	VE6_HPV58	Disks large homolog 1	DLG1_HUMAN	IPR027417	0	P26555_147_149	E6	DLG1
-[ST].[LV]$	PDZ domain	0.00453564599784776	P27228	Q12959		Protein E6	VE6_HPV35	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P27228_147_149	E6	DLG1
-[DE]T.[ILV]$	PDZ domain	0.00453564599784776	P27228	Q14160		Protein E6	VE6_HPV35	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P27228_146_149	E6	SCRIB
-C..PG	P-loop containing nucleoside triphosphate hydrolase	0.000619164837323531	P30119	P62191		Uncharacterized protein BTRF1	BTRF1_EBVB9	26S proteasome regulatory subunit 4	PRS4_HUMAN	IPR027417	0.000455	P30119_4_8	BTRF1	PSMC1
-KRKR	Importin-alpha, importin-beta-binding domain	0.000104504101597125	P31345	O60684		Polymerase basic protein 2	PB2_I75A3	Importin subunit alpha-7	IMA7_HUMAN	IPR002652	1.5e-11	P31345_736_739	PB2	KPNA6
-KRKR	Armadillo-like helical	0.000104504101597125	P31345	O60684		Polymerase basic protein 2	PB2_I75A3	Importin subunit alpha-7	IMA7_HUMAN	IPR011989	1.5e-11	P31345_736_739	PB2	KPNA6
-KRKR	Armadillo-type fold	0.000104504101597125	P31345	O60684		Polymerase basic protein 2	PB2_I75A3	Importin subunit alpha-7	IMA7_HUMAN	IPR016024	1.5e-11	P31345_736_739	PB2	KPNA6
-KRKR	Importin-alpha, importin-beta-binding domain	0.000104504101597125	P31345	P52294		Polymerase basic protein 2	PB2_I75A3	Importin subunit alpha-5	IMA5_HUMAN	IPR002652	1.23e-09	P31345_736_739	PB2	KPNA1
-KRKR	Armadillo-like helical	0.000104504101597125	P31345	P52294		Polymerase basic protein 2	PB2_I75A3	Importin subunit alpha-5	IMA5_HUMAN	IPR011989	1.23e-09	P31345_736_739	PB2	KPNA1
-KRKR	Armadillo-type fold	0.000104504101597125	P31345	P52294		Polymerase basic protein 2	PB2_I75A3	Importin subunit alpha-5	IMA5_HUMAN	IPR016024	1.23e-09	P31345_736_739	PB2	KPNA1
-PT..S.[ST]	Armadillo-type fold	0.0257471255710756	P36780	Q7Z6Z7		Regulatory protein E2	VE2_HPV09	E3 ubiquitin-protein ligase HUWE1	HUWE1_HUMAN	IPR016024	0.001	P36780_233_239	E2	HUWE1
-PT..S.[ST]	Armadillo-type fold	0.0257471255710756	P36780	Q7Z6Z7		Regulatory protein E2	VE2_HPV09	E3 ubiquitin-protein ligase HUWE1	HUWE1_HUMAN	IPR016024	0.001	P36780_320_326	E2	HUWE1
-[ST].[LV]$	PDZ domain	0.000102967736608026	P50804	Q12959		Protein E6	VE6_HPV70	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P50804_156_158	E6	DLG1
-[DE]T.[ILV]$	PDZ domain	0.000102967736608026	P50804	Q14160		Protein E6	VE6_HPV70	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P50804_155_158	E6	SCRIB
-[DE]..V$	PDZ domain	0.000102967736608026	P50804	Q96RT1		Protein E6	VE6_HPV70	Erbin	ERBIN_HUMAN	IPR001478	1.38e-06	P50804_155_158	E6	ERBIN
-PE.AEA	Protein kinase domain	0.00456219307216126	P89462	Q13546		Ribonucleoside-diphosphate reductase large subunit	RIR1_HHV2H	Receptor-interacting serine/threonine-protein kinase 1	RIPK1_HUMAN	IPR000719	0.00044	P89462_325_330	RIR1	RIPK1
-PE.AEA	Protein kinase-like domain	0.00456219307216126	P89462	Q13546		Ribonucleoside-diphosphate reductase large subunit	RIR1_HHV2H	Receptor-interacting serine/threonine-protein kinase 1	RIPK1_HUMAN	IPR011009	0.00044	P89462_325_330	RIR1	RIPK1
-PE.AEA	RHIM domain	0.00456219307216126	P89462	Q13546		Ribonucleoside-diphosphate reductase large subunit	RIR1_HHV2H	Receptor-interacting serine/threonine-protein kinase 1	RIPK1_HUMAN	IPR025735	0.00044	P89462_325_330	RIR1	RIPK1
-[ST].V$	PDZ domain	0.0086355887529516	Q0A2H0	O14908		Non-structural protein 1	NS1_I59A0	PDZ domain-containing protein GIPC1	GIPC1_HUMAN	IPR001478	1.53e-07	Q0A2H0_228_230	NS	GIPC1
-[ST].V$	SH3 domain	0.0086355887529516	Q0A2H0	P78352		Non-structural protein 1	NS1_I59A0	Disks large homolog 4	DLG4_HUMAN	IPR001452	1.12e-06	Q0A2H0_228_230	NS	DLG4
-[ST].V$	PDZ domain	0.0086355887529516	Q0A2H0	P78352		Non-structural protein 1	NS1_I59A0	Disks large homolog 4	DLG4_HUMAN	IPR001478	1.12e-06	Q0A2H0_228_230	NS	DLG4
-LR.{0,2}G.G.T	Double-stranded RNA-binding domain	4.83276919722069e-06	Q0A2H0	Q96SI9		Non-structural protein 1	NS1_I59A0	Spermatid perinuclear RNA-binding protein	STRBP_HUMAN	IPR014720	1.13e-05	Q0A2H0_43_49	NS	STRBP
-LR.{0,2}G.G.T	Double-stranded RNA-binding domain	3.35037847690063e-07	Q20MH3	Q96SI9		Non-structural protein 1	Q20MH3_I33A0	Spermatid perinuclear RNA-binding protein	STRBP_HUMAN	IPR014720	1.29e-05	Q20MH3_43_49	NS1	STRBP
-V.ESM..E	Armadillo-type fold	3.20623381473614e-06	Q20MH8	O60518		Matrix protein 2	Q20MH8_I33A0	Ran-binding protein 6	RNBP6_HUMAN	IPR016024	0.000233	Q20MH8_68_75	M2	RANBP6
-E.[LV].QL	Tetratricopeptide-like helical domain	0.010228541684832	Q2MG95	P49792		BVLF1	Q2MG95_EBVB9	E3 SUMO-protein ligase RanBP2	RBP2_HUMAN	IPR011990	0.001	Q2MG95_260_265	BVLF1	RANBP2
-[ST].[ILV]$	PDZ domain	0.00313667272804275	Q2PJP0	Q14160		Non-structural protein 1	Q2PJP0_9INFA	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	Q2PJP0_223_225	NS1	SCRIB
-[ST].V$	PDZ domain	0.00313667272804275	Q2PJP0	O14908		Non-structural protein 1	Q2PJP0_9INFA	PDZ domain-containing protein GIPC1	GIPC1_HUMAN	IPR001478	1.24e-07	Q2PJP0_223_225	NS1	GIPC1
-[ST].V$	PDZ domain	0.00313667272804275	Q2PJP0	P78352		Non-structural protein 1	Q2PJP0_9INFA	Disks large homolog 4	DLG4_HUMAN	IPR001478	9.09e-07	Q2PJP0_223_225	NS1	DLG4
-[DE]..V$	PDZ domain	0.00313667272804275	Q2PJP0	Q96RT1		Non-structural protein 1	Q2PJP0_9INFA	Erbin	ERBIN_HUMAN	IPR001478	3.03e-06	Q2PJP0_222_225	NS1	ERBIN
-LR.{0,2}G.G.T	Double-stranded RNA-binding domain	5.6840256741859e-06	Q2PJP0	Q96SI9		Non-structural protein 1	Q2PJP0_9INFA	Spermatid perinuclear RNA-binding protein	STRBP_HUMAN	IPR014720	8.84e-06	Q2PJP0_43_49	NS1	STRBP
-[GS].[FV]..I[IL].R	SKP1/BTB/POZ domain	0.0976652753536016	Q2PJP1	Q13105		Nuclear export protein	Q2PJP1_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR011333	0.001	Q2PJP1_7_15	NS2	ZBTB17
-[GS].[FV]..I[IL].R	Zinc finger, RING/FYVE/PHD-type	0.0976652753536016	Q2PJP1	Q13105		Nuclear export protein	Q2PJP1_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013083	0.001	Q2PJP1_7_15	NS2	ZBTB17
-[GS].[FV]..I[IL].R	Zinc finger C2H2-type	0.0976652753536016	Q2PJP1	Q13105		Nuclear export protein	Q2PJP1_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013087	0.001	Q2PJP1_7_15	NS2	ZBTB17
-LR.{0,2}G.G.T	Double-stranded RNA-binding domain	1.85378782426966e-07	Q3SBS4	Q96SI9		Non-structural protein 1	Q3SBS4_9INFA	Spermatid perinuclear RNA-binding protein	STRBP_HUMAN	IPR014720	9.16e-06	Q3SBS4_43_49	NS	STRBP
-EI[IV]QQ	EF-hand domain	0.111538514192444	Q5EP37	Q9BRK5		RNA-directed RNA polymerase catalytic subunit	Q5EP37_9INFA	45 kDa calcium-binding protein	CAB45_HUMAN	IPR002048	0.000666	Q5EP37_112_116	PB1	SDF4
-EI[IV]QQ	EF-hand domain pair	0.111538514192444	Q5EP37	Q9BRK5		RNA-directed RNA polymerase catalytic subunit	Q5EP37_9INFA	45 kDa calcium-binding protein	CAB45_HUMAN	IPR011992	0.000666	Q5EP37_112_116	PB1	SDF4
-KR.R	PDZ domain	0.0141382545333211	Q67296	Q92997		Polymerase basic protein 2	PB2_I72A2	Segment polarity protein dishevelled homolog DVL-3	DVL3_HUMAN	IPR001478	0.000151	Q67296_736_739	PB2	DVL3
-KR.R	PDZ domain	0.0141382545333211	Q67296	Q92997		Polymerase basic protein 2	PB2_I72A2	Segment polarity protein dishevelled homolog DVL-3	DVL3_HUMAN	IPR001478	0.000151	Q67296_752_755	PB2	DVL3
-[ST].V$	PDZ domain	0.00151854108016383	Q6DP93	O14908		Non-structural protein 1	Q6DP93_9INFA	PDZ domain-containing protein GIPC1	GIPC1_HUMAN	IPR001478	1.55e-07	Q6DP93_223_225	NS	GIPC1
-[ST].V$	PDZ domain	0.00151854108016383	Q6DP93	P78352		Non-structural protein 1	Q6DP93_9INFA	Disks large homolog 4	DLG4_HUMAN	IPR001478	1.13e-06	Q6DP93_223_225	NS	DLG4
-[DE]..V$	PDZ domain	0.00151854108016383	Q6DP93	Q96RT1		Non-structural protein 1	Q6DP93_9INFA	Erbin	ERBIN_HUMAN	IPR001478	3.77e-06	Q6DP93_222_225	NS	ERBIN
-LR.{0,2}G.G.T	Double-stranded RNA-binding domain	5.26503390945089e-07	Q6DP93	Q96SI9		Non-structural protein 1	Q6DP93_9INFA	Spermatid perinuclear RNA-binding protein	STRBP_HUMAN	IPR014720	1.17e-05	Q6DP93_43_49	NS	STRBP
-S.{0,1}V$	RNA recognition motif domain	6.13515186439954e-06	Q6VGS8	Q9NZI8		14.3 kDa protein	Q6VGS8_ADE05	Insulin-like growth factor 2 mRNA-binding protein 1	IF2B1_HUMAN	IPR000504	0.00074	Q6VGS8_126_128	E4	IGF2BP1
-V.ESM..E	Armadillo-like helical	0.000145579761183948	Q76353	O60518		Integrase	Q76353_9HIV1	Ran-binding protein 6	RNBP6_HUMAN	IPR011989	0.000869	Q76353_150_157		RANBP6
-V.ESM..E	Armadillo-type fold	0.000145579761183948	Q76353	O60518		Integrase	Q76353_9HIV1	Ran-binding protein 6	RNBP6_HUMAN	IPR016024	0.000869	Q76353_150_157		RANBP6
-EE..[KR].[LV]	PH domain-like	0.0803461472498903	Q77M19	O14654		V protein	Q77M19_MEASW	Insulin receptor substrate 4	IRS4_HUMAN	IPR011993	0.000774	Q77M19_3_9	P	IRS4
-[HR][HK]R.R	RNA recognition motif domain	0.102477527717283	Q77UU1	Q07955		Regulatory protein E2	Q77UU1_9PAPI	Serine/arginine-rich splicing factor 1	SRSF1_HUMAN	IPR000504	8.88e-05	Q77UU1_237_241	E2	SRSF1
-[HR]KR.R	RNA recognition motif domain	0.102477527717283	Q77UU1	Q16629		Regulatory protein E2	Q77UU1_9PAPI	Serine/arginine-rich splicing factor 7	SRSF7_HUMAN	IPR000504	0.000109	Q77UU1_237_241	E2	SRSF7
-L.{0,1}Q.LR	BAG domain	0.0798787794177283	Q8AZK7	O95816		Epstein-Barr nuclear antigen leader protein	EBNA5_EBVB9	BAG family molecular chaperone regulator 2	BAG2_HUMAN	IPR003103	0.000195	Q8AZK7_156_161	EBNA-LP	BAG2
-L.{0,1}Q.LR	BAG domain	0.0798787794177283	Q8AZK7	O95816		Epstein-Barr nuclear antigen leader protein	EBNA5_EBVB9	BAG family molecular chaperone regulator 2	BAG2_HUMAN	IPR003103	0.000195	Q8AZK7_222_227	EBNA-LP	BAG2
-L.{0,1}Q.LR	BAG domain	0.0798787794177283	Q8AZK7	O95816		Epstein-Barr nuclear antigen leader protein	EBNA5_EBVB9	BAG family molecular chaperone regulator 2	BAG2_HUMAN	IPR003103	0.000195	Q8AZK7_24_29	EBNA-LP	BAG2
-L.{0,1}Q.LR	BAG domain	0.0798787794177283	Q8AZK7	O95816		Epstein-Barr nuclear antigen leader protein	EBNA5_EBVB9	BAG family molecular chaperone regulator 2	BAG2_HUMAN	IPR003103	0.000195	Q8AZK7_288_293	EBNA-LP	BAG2
-L.{0,1}Q.LR	BAG domain	0.0798787794177283	Q8AZK7	O95816		Epstein-Barr nuclear antigen leader protein	EBNA5_EBVB9	BAG family molecular chaperone regulator 2	BAG2_HUMAN	IPR003103	0.000195	Q8AZK7_354_359	EBNA-LP	BAG2
-L.{0,1}Q.LR	BAG domain	0.0798787794177283	Q8AZK7	O95816		Epstein-Barr nuclear antigen leader protein	EBNA5_EBVB9	BAG family molecular chaperone regulator 2	BAG2_HUMAN	IPR003103	0.000195	Q8AZK7_420_425	EBNA-LP	BAG2
-L.{0,1}Q.LR	BAG domain	0.0798787794177283	Q8AZK7	O95816		Epstein-Barr nuclear antigen leader protein	EBNA5_EBVB9	BAG family molecular chaperone regulator 2	BAG2_HUMAN	IPR003103	0.000195	Q8AZK7_90_95	EBNA-LP	BAG2
-[KR]P.L.[AS]..S	S-adenosyl-L-methionine-dependent methyltransferase	0.152173963920857	Q8JPQ9	P22061		Non-structural protein NS-S	NSS_BUNL8	Protein-L-isoaspartate(D-aspartate) O-methyltransferase	PIMT_HUMAN	IPR029063	0.000567	Q8JPQ9_42_50	N	PCMT1
-P.R.[KR]..[ST]	Tubulin/FtsZ, GTPase domain	0.00623992860036026	Q8JPQ9	P68371		Non-structural protein NS-S	NSS_BUNL8	Tubulin beta-4B chain	TBB4B_HUMAN	IPR003008	0.00087	Q8JPQ9_40_47	N	TUBB4B
-P.R.[KR]..[ST]	Tubulin/FtsZ, C-terminal	0.00623992860036026	Q8JPQ9	P68371		Non-structural protein NS-S	NSS_BUNL8	Tubulin beta-4B chain	TBB4B_HUMAN	IPR008280	0.00087	Q8JPQ9_40_47	N	TUBB4B
-P.R.[KR]..[ST]	Tubulin/FtsZ, 2-layer sandwich domain	0.00623992860036026	Q8JPQ9	P68371		Non-structural protein NS-S	NSS_BUNL8	Tubulin beta-4B chain	TBB4B_HUMAN	IPR018316	0.00087	Q8JPQ9_40_47	N	TUBB4B
-D.T..K..S	Importin-alpha, importin-beta-binding domain	0.0940247270836459	Q997F2	O00629		Non-structural protein V	V_NIPAV	Importin subunit alpha-3	IMA3_HUMAN	IPR002652	0.000485	Q997F2_85_93	P/V/C	KPNA4
-D.T..K..S	Armadillo-like helical	0.0940247270836459	Q997F2	O00629		Non-structural protein V	V_NIPAV	Importin subunit alpha-3	IMA3_HUMAN	IPR011989	0.000485	Q997F2_85_93	P/V/C	KPNA4
-D.T..K..S	Armadillo-type fold	0.0940247270836459	Q997F2	O00629		Non-structural protein V	V_NIPAV	Importin subunit alpha-3	IMA3_HUMAN	IPR016024	0.000485	Q997F2_85_93	P/V/C	KPNA4
-E..R.Y	Basic-leucine zipper domain	0	Q9DGW5	P15336		Oncoprotein MEQ	MEQ_GAHVM	Cyclic AMP-dependent transcription factor ATF-2	ATF2_HUMAN	IPR004827	0.000202	Q9DGW5_296_301	MDV005	ATF2
-P..P.[HKR]	Protein kinase domain	1.22008559815535e-05	Q9QPN3	P12931		Protein Nef	NEF_HV1LA	Proto-oncogene tyrosine-protein kinase Src	SRC_HUMAN	IPR000719	0.001	Q9QPN3_72_77	nef	SRC
-P..P.[HKR]	SH2 domain	1.22008559815535e-05	Q9QPN3	P12931		Protein Nef	NEF_HV1LA	Proto-oncogene tyrosine-protein kinase Src	SRC_HUMAN	IPR000980	0.001	Q9QPN3_72_77	nef	SRC
-P..P.[HKR]	Serine-threonine/tyrosine-protein kinase, catalytic domain	1.22008559815535e-05	Q9QPN3	P12931		Protein Nef	NEF_HV1LA	Proto-oncogene tyrosine-protein kinase Src	SRC_HUMAN	IPR001245	0.001	Q9QPN3_72_77	nef	SRC
-P..P.[HKR]	SH3 domain	1.22008559815535e-05	Q9QPN3	P12931		Protein Nef	NEF_HV1LA	Proto-oncogene tyrosine-protein kinase Src	SRC_HUMAN	IPR001452	0.001	Q9QPN3_72_77	nef	SRC
-P..P.[HKR]	Protein kinase-like domain	1.22008559815535e-05	Q9QPN3	P12931		Protein Nef	NEF_HV1LA	Proto-oncogene tyrosine-protein kinase Src	SRC_HUMAN	IPR011009	0.001	Q9QPN3_72_77	nef	SRC
-PE.AEA	Protein kinase domain	0.00453612782227207	U5TQE9	Q13546		Ribonucleoside-diphosphate reductase large subunit	U5TQE9_HHV1	Receptor-interacting serine/threonine-protein kinase 1	RIPK1_HUMAN	IPR000719	0.000471	U5TQE9_320_325	UL39	RIPK1
-PE.AEA	Protein kinase-like domain	0.00453612782227207	U5TQE9	Q13546		Ribonucleoside-diphosphate reductase large subunit	U5TQE9_HHV1	Receptor-interacting serine/threonine-protein kinase 1	RIPK1_HUMAN	IPR011009	0.000471	U5TQE9_320_325	UL39	RIPK1
-PE.AEA	RHIM domain	0.00453612782227207	U5TQE9	Q13546		Ribonucleoside-diphosphate reductase large subunit	U5TQE9_HHV1	Receptor-interacting serine/threonine-protein kinase 1	RIPK1_HUMAN	IPR025735	0.000471	U5TQE9_320_325	UL39	RIPK1
+Pattern	Human_recognition_domain_name	Domain_p.value	unique_position	Human_protein	matching_known	Viral_protein_names	Viral_entry_name	Human_protein_names	Human_entry_name	Human_recognition_domain	Motif_Sig	Viral_protein	Viral_gene_names	Human_gene_names
+KRKR	Armadillo-like helical	0.000798850352431081	B4URF7_736_739	P52294		Polymerase basic protein 2	B4URF7_I33A0	Importin subunit alpha-5	IMA5_HUMAN	IPR011989	1.21e-09	B4URF7	PB2	KPNA1
+KRKR	Armadillo-type fold	0.000798850352431081	B4URF7_736_739	P52294		Polymerase basic protein 2	B4URF7_I33A0	Importin subunit alpha-5	IMA5_HUMAN	IPR016024	1.21e-09	B4URF7	PB2	KPNA1
+E.V..G.{0,2}N.{0,1}Q	WD40/YVTN repeat-like-containing domain	0.00817757136076572	B4URF7_342_350	O95163		Polymerase basic protein 2	B4URF7_I33A0	Elongator complex protein 1	ELP1_HUMAN	IPR015943	0.000562	B4URF7	PB2	ELP1
+KR.{0,1}L.{0,1}V.G	MAGE homology domain	0.214057224635149	B4URF7_663_669	Q12816		Polymerase basic protein 2	B4URF7_I33A0	Trophinin	TROP_HUMAN	IPR002190	0.000678	B4URF7	PB2	TRO
+E.V..G.{0,2}N.{0,1}Q	WD40/YVTN repeat-like-containing domain	0.0142308926095462	C5E527_342_350	O95163		Polymerase basic protein 2	C5E527_9INFA	Elongator complex protein 1	ELP1_HUMAN	IPR015943	0.000529	C5E527	PB2	ELP1
+KRKR	Importin-alpha, importin-beta-binding domain	3.6639529584186e-05	E5LBT9_339_342	O60684		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-7	IMA7_HUMAN	IPR002652	1.96e-11	E5LBT9	ORF17	KPNA6
+KRKR	Armadillo-like helical	3.6639529584186e-05	E5LBT9_339_342	O60684		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-7	IMA7_HUMAN	IPR011989	1.96e-11	E5LBT9	ORF17	KPNA6
+KRKR	Armadillo-type fold	3.6639529584186e-05	E5LBT9_339_342	O60684		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-7	IMA7_HUMAN	IPR016024	1.96e-11	E5LBT9	ORF17	KPNA6
+KRKR	Importin-alpha, importin-beta-binding domain	3.6639529584186e-05	E5LBT9_339_342	P52294		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-5	IMA5_HUMAN	IPR002652	1.4e-09	E5LBT9	ORF17	KPNA1
+KRKR	Armadillo-like helical	3.6639529584186e-05	E5LBT9_339_342	P52294		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-5	IMA5_HUMAN	IPR011989	1.4e-09	E5LBT9	ORF17	KPNA1
+KRKR	Armadillo-type fold	3.6639529584186e-05	E5LBT9_339_342	P52294		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-5	IMA5_HUMAN	IPR016024	1.4e-09	E5LBT9	ORF17	KPNA1
+KRK	Importin-alpha, importin-beta-binding domain	3.6639529584186e-05	E5LBT9_339_341	P52292		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-1	IMA1_HUMAN	IPR002652	0.000708	E5LBT9	ORF17	KPNA2
+KRK	Armadillo-like helical	3.6639529584186e-05	E5LBT9_339_341	P52292		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000708	E5LBT9	ORF17	KPNA2
+KRK	Armadillo-type fold	3.6639529584186e-05	E5LBT9_339_341	P52292		Capsid scaffolding protein	E5LBT9_HHV8	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000708	E5LBT9	ORF17	KPNA2
+KRKR	Importin-alpha, importin-beta-binding domain	0.00412734456237159	F5HE15_93_96	O60684		Core gene UL26.5 family protein	F5HE15_HHV8	Importin subunit alpha-7	IMA7_HUMAN	IPR002652	1.6e-11	F5HE15	ORF17.5	KPNA6
+KRKR	Armadillo-like helical	0.00412734456237159	F5HE15_93_96	O60684		Core gene UL26.5 family protein	F5HE15_HHV8	Importin subunit alpha-7	IMA7_HUMAN	IPR011989	1.6e-11	F5HE15	ORF17.5	KPNA6
+KRKR	Armadillo-type fold	0.00412734456237159	F5HE15_93_96	O60684		Core gene UL26.5 family protein	F5HE15_HHV8	Importin subunit alpha-7	IMA7_HUMAN	IPR016024	1.6e-11	F5HE15	ORF17.5	KPNA6
+KRKR	Importin-alpha, importin-beta-binding domain	0.00412734456237159	F5HE15_93_96	P52294		Core gene UL26.5 family protein	F5HE15_HHV8	Importin subunit alpha-5	IMA5_HUMAN	IPR002652	1.14e-09	F5HE15	ORF17.5	KPNA1
+KRKR	Armadillo-like helical	0.00412734456237159	F5HE15_93_96	P52294		Core gene UL26.5 family protein	F5HE15_HHV8	Importin subunit alpha-5	IMA5_HUMAN	IPR011989	1.14e-09	F5HE15	ORF17.5	KPNA1
+KRKR	Armadillo-type fold	0.00412734456237159	F5HE15_93_96	P52294		Core gene UL26.5 family protein	F5HE15_HHV8	Importin subunit alpha-5	IMA5_HUMAN	IPR016024	1.14e-09	F5HE15	ORF17.5	KPNA1
+KRK	Tetratricopeptide-like helical domain	0.00110623074703045	I6T1Z2_219_221	Q9Y2X3		Non-structural protein 1	I6T1Z2_I68A0	Nucleolar protein 58	NOP58_HUMAN	IPR011990	0.000791	I6T1Z2	NS1	NOP58
+KRK	Armadillo-like helical	0.0130007165390764	O92837_203_205	P52292		Minor capsid protein	O92837_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000215	O92837	VP3	KPNA2
+KRK	Armadillo-type fold	0.0130007165390764	O92837_203_205	P52292		Minor capsid protein	O92837_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000215	O92837	VP3	KPNA2
+DSG	WD40/YVTN repeat-like-containing domain	0.0168420159054956	P03070_656_658	Q9UKB1		Large T antigen	LT_SV40	F-box/WD repeat-containing protein 11	FBW1B_HUMAN	IPR015943	1.79e-07	P03070		FBXW11
+DSG	WD40-repeat-containing domain	0.0168420159054956	P03070_656_658	Q9UKB1		Large T antigen	LT_SV40	F-box/WD repeat-containing protein 11	FBW1B_HUMAN	IPR017986	1.79e-07	P03070		FBXW11
+KRK	Importin-alpha, importin-beta-binding domain	0.00747277167600188	P03070_129_131	O60684		Large T antigen	LT_SV40	Importin subunit alpha-7	IMA7_HUMAN	IPR002652	1.89e-07	P03070		KPNA6
+KRK	Armadillo-like helical	0.00747277167600188	P03070_129_131	O60684		Large T antigen	LT_SV40	Importin subunit alpha-7	IMA7_HUMAN	IPR011989	1.89e-07	P03070		KPNA6
+KRK	Armadillo-type fold	0.00747277167600188	P03070_129_131	O60684		Large T antigen	LT_SV40	Importin subunit alpha-7	IMA7_HUMAN	IPR016024	1.89e-07	P03070		KPNA6
+DSG	WD40/YVTN repeat-like-containing domain	0.0168420159054956	P03070_656_658	Q9Y297		Large T antigen	LT_SV40	F-box/WD repeat-containing protein 1A	FBW1A_HUMAN	IPR015943	6.93e-06	P03070		BTRC
+DSG	WD40-repeat-containing domain	0.0168420159054956	P03070_656_658	Q9Y297		Large T antigen	LT_SV40	F-box/WD repeat-containing protein 1A	FBW1A_HUMAN	IPR017986	6.93e-06	P03070		BTRC
+KRK	Importin-alpha, importin-beta-binding domain	0.00747277167600188	P03070_129_131	P52292		Large T antigen	LT_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR002652	0.000457	P03070		KPNA2
+KRK	Armadillo-like helical	0.00747277167600188	P03070_129_131	P52292		Large T antigen	LT_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000457	P03070		KPNA2
+KRK	Armadillo-type fold	0.00747277167600188	P03070_129_131	P52292		Large T antigen	LT_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000457	P03070		KPNA2
+KRK	Armadillo-like helical	0.0131233023428333	P03087_5_7	P52292		Major capsid protein VP1	VP1_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000462	P03087		KPNA2
+KRK	Armadillo-type fold	0.0131233023428333	P03087_5_7	P52292		Major capsid protein VP1	VP1_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000462	P03087		KPNA2
+KRK	Armadillo-like helical	3.03604852212748e-06	P03101_484_486	P52292		Major capsid protein L1	VL1_HPV16	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000385	P03101	L1	KPNA2
+KRK	Armadillo-like helical	3.03604852212748e-06	P03101_499_501	P52292		Major capsid protein L1	VL1_HPV16	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000385	P03101	L1	KPNA2
+KRK	Armadillo-like helical	3.03604852212748e-06	P03101_502_504	P52292		Major capsid protein L1	VL1_HPV16	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000385	P03101	L1	KPNA2
+KRK	Armadillo-type fold	3.03604852212748e-06	P03101_484_486	P52292		Major capsid protein L1	VL1_HPV16	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000385	P03101	L1	KPNA2
+KRK	Armadillo-type fold	3.03604852212748e-06	P03101_499_501	P52292		Major capsid protein L1	VL1_HPV16	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000385	P03101	L1	KPNA2
+KRK	Armadillo-type fold	3.03604852212748e-06	P03101_502_504	P52292		Major capsid protein L1	VL1_HPV16	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000385	P03101	L1	KPNA2
+[ST].[LV]$	PDZ domain	1.86510182165127e-05	P03126_156_158	Q12959	matching_known	Protein E6	VE6_HPV16	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P03126	E6	DLG1
+[DE]T.[ILV]$	PDZ domain	1.86510182165127e-05	P03126_155_158	Q14160	matching_known	Protein E6	VE6_HPV16	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P03126	E6	SCRIB
+ET..$	PDZ domain	1.86510182165127e-05	P03126_155_158	P26045	matching_known	Protein E6	VE6_HPV16	Tyrosine-protein phosphatase non-receptor type 3	PTN3_HUMAN	IPR001478	4.27e-06	P03126	E6	PTPN3
+[KR][KR][KR][KR]	Importin-alpha, importin-beta-binding domain	0.0123994685214873	P03211_458_461	O60684		Epstein-Barr nuclear antigen 1	EBNA1_EBVB9	Importin subunit alpha-7	IMA7_HUMAN	IPR002652	9.09e-05	P03211	EBNA1	KPNA6
+[KR][KR][KR][KR]	Armadillo-like helical	0.0123994685214873	P03211_458_461	O60684		Epstein-Barr nuclear antigen 1	EBNA1_EBVB9	Importin subunit alpha-7	IMA7_HUMAN	IPR011989	9.09e-05	P03211	EBNA1	KPNA6
+[KR][KR][KR][KR]	Armadillo-type fold	0.0123994685214873	P03211_458_461	O60684		Epstein-Barr nuclear antigen 1	EBNA1_EBVB9	Importin subunit alpha-7	IMA7_HUMAN	IPR016024	9.09e-05	P03211	EBNA1	KPNA6
+RKR	Armadillo-type fold	0.0851931430163081	P03427_737_739	O00505		Polymerase basic protein 2	PB2_I33A0	Importin subunit alpha-4	IMA4_HUMAN	IPR016024	0.000781	P03427	PB2	KPNA3
+KR.R	PDZ domain	0.0457488167643397	P03428_736_739	Q92997	matching_known	Polymerase basic protein 2	PB2_I34A1	Segment polarity protein dishevelled homolog DVL-3	DVL3_HUMAN	IPR001478	0.000141	P03428	PB2	DVL3
+KR.R	PDZ domain	0.0457488167643397	P03428_752_755	Q92997	matching_known	Polymerase basic protein 2	PB2_I34A1	Segment polarity protein dishevelled homolog DVL-3	DVL3_HUMAN	IPR001478	0.000141	P03428	PB2	DVL3
+KR.R	PDZ domain	0.0381568277546372	P03431_669_672	Q92997		RNA-directed RNA polymerase catalytic subunit	RDRP_I34A1	Segment polarity protein dishevelled homolog DVL-3	DVL3_HUMAN	IPR001478	0.000177	P03431	PB1	DVL3
+[ST].V$	PDZ domain	0.0342884470758933	P03496_228_230	O14908		Non-structural protein 1	NS1_I34A1	PDZ domain-containing protein GIPC1	GIPC1_HUMAN	IPR001478	1.77e-07	P03496	NS	GIPC1
+LR.{0,2}G.G.T	Double-stranded RNA-binding domain	0.00460477469173743	P03496_43_49	Q96SI9		Non-structural protein 1	NS1_I34A1	Spermatid perinuclear RNA-binding protein	STRBP_HUMAN	IPR014720	1.35e-05	P03496	NS	STRBP
+KRK	Armadillo-like helical	0.000103557150318873	P04012_493_495	P52292		Major capsid protein L1	VL1_HPV11	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.00046	P04012	L1	KPNA2
+KRK	Armadillo-type fold	0.000103557150318873	P04012_493_495	P52292		Major capsid protein L1	VL1_HPV11	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.00046	P04012	L1	KPNA2
+[HR][HK]R.R	RNA recognition motif domain	0.108666821412664	P04015_238_242	Q07955		Regulatory protein E2	VE2_HPV11	Serine/arginine-rich splicing factor 1	SRSF1_HUMAN	IPR000504	8.79e-05	P04015	E2	SRSF1
+[HR]KR.R	RNA recognition motif domain	0.108666821412664	P04015_238_242	Q16629		Regulatory protein E2	VE2_HPV11	Serine/arginine-rich splicing factor 7	SRSF7_HUMAN	IPR000504	0.000108	P04015	E2	SRSF7
+T.AP..S..T	Zinc finger, RING/FYVE/PHD-type	0.00941079618434417	P04015_219_228	Q9NRL2		Regulatory protein E2	VE2_HPV11	Bromodomain adjacent to zinc finger domain protein 1A	BAZ1A_HUMAN	IPR013083	0.000688	P04015	E2	BAZ1A
+PAP	P-loop containing nucleoside triphosphate hydrolase	0.00201052772652107	P04487_7_9	Q00839		RNA-binding protein	RNB_HHV11	Heterogeneous nuclear ribonucleoprotein U	HNRPU_HUMAN	IPR027417	2.6e-06	P04487	US11	HNRNPU
+DSG	WD40/YVTN repeat-like-containing domain	0.0139111539099083	P05919_51_53	Q9UKB1		Protein Vpu	VPU_HV1H2	F-box/WD repeat-containing protein 11	FBW1B_HUMAN	IPR015943	2.88e-08	P05919	vpu	FBXW11
+DSG	WD40-repeat-containing domain	0.0139111539099083	P05919_51_53	Q9UKB1		Protein Vpu	VPU_HV1H2	F-box/WD repeat-containing protein 11	FBW1B_HUMAN	IPR017986	2.88e-08	P05919	vpu	FBXW11
+DSG	WD40/YVTN repeat-like-containing domain	0.0139111539099083	P05919_51_53	Q9Y297		Protein Vpu	VPU_HV1H2	F-box/WD repeat-containing protein 1A	FBW1A_HUMAN	IPR015943	1.01e-06	P05919	vpu	BTRC
+DSG	WD40-repeat-containing domain	0.0139111539099083	P05919_51_53	Q9Y297		Protein Vpu	VPU_HV1H2	F-box/WD repeat-containing protein 1A	FBW1A_HUMAN	IPR017986	1.01e-06	P05919	vpu	BTRC
+[ST].[LV]$	PDZ domain	4.55498550755444e-06	P06427_147_149	Q12959		Protein E6	VE6_HPV33	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P06427	E6	DLG1
+[DE]T.[ILV]$	PDZ domain	4.55498550755444e-06	P06427_146_149	Q14160		Protein E6	VE6_HPV33	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P06427	E6	SCRIB
+DY.[FY]	P-loop containing nucleoside triphosphate hydrolase	0.00463349851662349	P06461_67_70	P09543		Probable protein E5B	VE5B_HPV6B	2',3'-cyclic-nucleotide 3'-phosphodiesterase	CN37_HUMAN	IPR027417	0.000537	P06461		CNP
+[ST].[LV]$	P-loop containing nucleoside triphosphate hydrolase	7.64670446624832e-06	P06463_156_158	Q12959	matching_known	Protein E6	VE6_HPV18	Disks large homolog 1	DLG1_HUMAN	IPR027417	0	P06463	E6	DLG1
+[DE]T.[ILV]$	PDZ domain	0.000159157330344421	P06463_155_158	Q14160	matching_known	Protein E6	VE6_HPV18	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P06463	E6	SCRIB
+ET..$	PDZ domain	0.000159157330344421	P06463_155_158	P26045	matching_known	Protein E6	VE6_HPV18	Tyrosine-protein phosphatase non-receptor type 3	PTN3_HUMAN	IPR001478	3.96e-06	P06463	E6	PTPN3
+E..QR..E	Armadillo-like helical	0.0114269057578614	P06463_148_155	Q99460	matching_known	Protein E6	VE6_HPV18	26S proteasome non-ATPase regulatory subunit 1	PSMD1_HUMAN	IPR011989	0.000853	P06463	E6	PSMD1
+E..QR..E	Armadillo-type fold	0.0114269057578614	P06463_148_155	Q99460	matching_known	Protein E6	VE6_HPV18	26S proteasome non-ATPase regulatory subunit 1	PSMD1_HUMAN	IPR016024	0.000853	P06463	E6	PSMD1
+E.DE	PDZ domain	0.115665118524294	P06464_36_39	Q9NR12		Protein E7	VE7_HPV6B	PDZ and LIM domain protein 7	PDLI7_HUMAN	IPR001478	0.000754	P06464	E7	PDLIM7
+DL.CHE	Cyclin-like	0.00166798962651968	P06788_24_29	Q08999		Protein E7	VE7_HPV18	Retinoblastoma-like protein 2	RBL2_HUMAN	IPR013763	0.001	P06788	E7	RBL2
+G.V.{0,1}G.{0,1}S	Keratin type II head	0.155327376448408	P06921_404_409	P02538		Regulatory protein E2	VE2_HPV05	Keratin, type II cytoskeletal 6A	K2C6A_HUMAN	IPR032444	0.001	P06921	E2	KRT6A
+G[KR].RGR	Histone deacetylase domain	0.00141131526038581	P08393_339_344	O15379		E3 ubiquitin-protein ligase ICP0	ICP0_HHV11	Histone deacetylase 3	HDAC3_HUMAN	IPR023801	0.000563	P08393	ICP0	HDAC3
+Q..H..RE..D	GroEL-like apical domain	0	P09992_402_412	P78371		Nucleoprotein	NCAP_LYCVA	T-complex protein 1 subunit beta	TCPB_HUMAN	IPR027409	0.000669	P09992	N	CCT2
+Q..H..RE..D	GroEL-like equatorial domain	0	P09992_402_412	P78371		Nucleoprotein	NCAP_LYCVA	T-complex protein 1 subunit beta	TCPB_HUMAN	IPR027413	0.000669	P09992	N	CCT2
+D.T..K..S	Armadillo-like helical	0.0173857373733513	P0C1C7_85_93	O00629		Protein W	W_NIPAV	Importin subunit alpha-3	IMA3_HUMAN	IPR011989	0.000528	P0C1C7	P/V/C	KPNA4
+D.T..K..S	Armadillo-type fold	0.0173857373733513	P0C1C7_85_93	O00629		Protein W	W_NIPAV	Importin subunit alpha-3	IMA3_HUMAN	IPR016024	0.000528	P0C1C7	P/V/C	KPNA4
+[ST].[LV]$	PDZ domain	0.000109949388057433	P0C213_351_353	Q12959		Protein Tax-1	TAX_HTL1F	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P0C213	tax	DLG1
+[DE]T.[ILV]$	PDZ domain	0.000109949388057433	P0C213_350_353	Q14160		Protein Tax-1	TAX_HTL1F	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P0C213	tax	SCRIB
+[DE]..V$	PDZ domain	0.000109949388057433	P0C213_350_353	Q96RT1		Protein Tax-1	TAX_HTL1F	Erbin	ERBIN_HUMAN	IPR001478	4.19e-06	P0C213	tax	ERBIN
+P..P.P.D	P-loop containing nucleoside triphosphate hydrolase	0.00153232676378166	P0C739_28_35	P51148		Protein BNLF2a	BNL2A_EBVB9	Ras-related protein Rab-5C	RAB5C_HUMAN	IPR027417	0.000943	P0C739	BNLF2a	RAB5C
+E.LG.D	GroEL-like apical domain	0.216951325367602	P0DOE9_131_136	P10809		Non-structural protein 1	NS1_HRSVA	60 kDa heat shock protein, mitochondrial	CH60_HUMAN	IPR027409	0.000522	P0DOE9	1C	HSPD1
+[ST].[LV]$	PDZ domain	0.00443106669255909	P16717_146_148	Q12959		Putative fusion protein	VFUS_SHEVK	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P16717	HM2	DLG1
+T.L$	PDZ domain	0.00443106669255909	P16717_146_148	Q14160		Putative fusion protein	VFUS_SHEVK	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P16717	HM2	SCRIB
+[ST].[LV]$	PDZ domain	0.0211228721991774	P17386_147_149	Q12959		Protein E6	VE6_HPV31	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P17386	E6	DLG1
+[ST].[LV]$	Guanylate kinase-like domain	0.0211228721991774	P17386_147_149	Q12959		Protein E6	VE6_HPV31	Disks large homolog 1	DLG1_HUMAN	IPR008144	0	P17386	E6	DLG1
+[ST].[LV]$	Guanylate kinase/L-type calcium channel beta subunit	0.0211228721991774	P17386_147_149	Q12959		Protein E6	VE6_HPV31	Disks large homolog 1	DLG1_HUMAN	IPR008145	0	P17386	E6	DLG1
+[ST].[LV]$	P-loop containing nucleoside triphosphate hydrolase	0.0211228721991774	P17386_147_149	Q12959		Protein E6	VE6_HPV31	Disks large homolog 1	DLG1_HUMAN	IPR027417	0	P17386	E6	DLG1
+[ST].[LV]$	PDZ domain	0.00453501858210227	P21735_156_158	Q12959		Protein E6	VE6_HPV45	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P21735	E6	DLG1
+[DE]T.[ILV]$	PDZ domain	0.00453501858210227	P21735_155_158	Q14160		Protein E6	VE6_HPV45	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P21735	E6	SCRIB
+[ST].[LV]$	PDZ domain	0.00447416445364111	P24835_156_158	Q12959		Protein E6	VE6_HPV39	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P24835	E6	DLG1
+[DE]T.[ILV]$	PDZ domain	0.00447416445364111	P24835_155_158	Q14160		Protein E6	VE6_HPV39	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P24835	E6	SCRIB
+[ST].[LV]$	P-loop containing nucleoside triphosphate hydrolase	0.00448878667498772	P26555_147_149	Q12959		Protein E6	VE6_HPV58	Disks large homolog 1	DLG1_HUMAN	IPR027417	0	P26555	E6	DLG1
+[ST].[LV]$	PDZ domain	0.00453564599784776	P27228_147_149	Q12959		Protein E6	VE6_HPV35	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P27228	E6	DLG1
+[DE]T.[ILV]$	PDZ domain	0.00453564599784776	P27228_146_149	Q14160		Protein E6	VE6_HPV35	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P27228	E6	SCRIB
+C..PG	P-loop containing nucleoside triphosphate hydrolase	0.000619164837323531	P30119_4_8	P62191		Uncharacterized protein BTRF1	BTRF1_EBVB9	26S proteasome regulatory subunit 4	PRS4_HUMAN	IPR027417	0.000455	P30119	BTRF1	PSMC1
+KRKR	Importin-alpha, importin-beta-binding domain	0.000104504101597125	P31345_736_739	O60684		Polymerase basic protein 2	PB2_I75A3	Importin subunit alpha-7	IMA7_HUMAN	IPR002652	1.5e-11	P31345	PB2	KPNA6
+KRKR	Armadillo-like helical	0.000104504101597125	P31345_736_739	O60684		Polymerase basic protein 2	PB2_I75A3	Importin subunit alpha-7	IMA7_HUMAN	IPR011989	1.5e-11	P31345	PB2	KPNA6
+KRKR	Armadillo-type fold	0.000104504101597125	P31345_736_739	O60684		Polymerase basic protein 2	PB2_I75A3	Importin subunit alpha-7	IMA7_HUMAN	IPR016024	1.5e-11	P31345	PB2	KPNA6
+KRKR	Importin-alpha, importin-beta-binding domain	0.000104504101597125	P31345_736_739	P52294		Polymerase basic protein 2	PB2_I75A3	Importin subunit alpha-5	IMA5_HUMAN	IPR002652	1.23e-09	P31345	PB2	KPNA1
+KRKR	Armadillo-like helical	0.000104504101597125	P31345_736_739	P52294		Polymerase basic protein 2	PB2_I75A3	Importin subunit alpha-5	IMA5_HUMAN	IPR011989	1.23e-09	P31345	PB2	KPNA1
+KRKR	Armadillo-type fold	0.000104504101597125	P31345_736_739	P52294		Polymerase basic protein 2	PB2_I75A3	Importin subunit alpha-5	IMA5_HUMAN	IPR016024	1.23e-09	P31345	PB2	KPNA1
+PT..S.[ST]	Armadillo-type fold	0.0257471255710756	P36780_233_239	Q7Z6Z7		Regulatory protein E2	VE2_HPV09	E3 ubiquitin-protein ligase HUWE1	HUWE1_HUMAN	IPR016024	0.001	P36780	E2	HUWE1
+PT..S.[ST]	Armadillo-type fold	0.0257471255710756	P36780_320_326	Q7Z6Z7		Regulatory protein E2	VE2_HPV09	E3 ubiquitin-protein ligase HUWE1	HUWE1_HUMAN	IPR016024	0.001	P36780	E2	HUWE1
+[ST].[LV]$	PDZ domain	0.000102967736608026	P50804_156_158	Q12959		Protein E6	VE6_HPV70	Disks large homolog 1	DLG1_HUMAN	IPR001478	0	P50804	E6	DLG1
+[DE]T.[ILV]$	PDZ domain	0.000102967736608026	P50804_155_158	Q14160		Protein E6	VE6_HPV70	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	P50804	E6	SCRIB
+[DE]..V$	PDZ domain	0.000102967736608026	P50804_155_158	Q96RT1		Protein E6	VE6_HPV70	Erbin	ERBIN_HUMAN	IPR001478	1.38e-06	P50804	E6	ERBIN
+PE.AEA	Protein kinase domain	0.00456219307216126	P89462_325_330	Q13546		Ribonucleoside-diphosphate reductase large subunit	RIR1_HHV2H	Receptor-interacting serine/threonine-protein kinase 1	RIPK1_HUMAN	IPR000719	0.00044	P89462	RIR1	RIPK1
+PE.AEA	Protein kinase-like domain	0.00456219307216126	P89462_325_330	Q13546		Ribonucleoside-diphosphate reductase large subunit	RIR1_HHV2H	Receptor-interacting serine/threonine-protein kinase 1	RIPK1_HUMAN	IPR011009	0.00044	P89462	RIR1	RIPK1
+PE.AEA	RHIM domain	0.00456219307216126	P89462_325_330	Q13546		Ribonucleoside-diphosphate reductase large subunit	RIR1_HHV2H	Receptor-interacting serine/threonine-protein kinase 1	RIPK1_HUMAN	IPR025735	0.00044	P89462	RIR1	RIPK1
+[ST].V$	PDZ domain	0.0086355887529516	Q0A2H0_228_230	O14908		Non-structural protein 1	NS1_I59A0	PDZ domain-containing protein GIPC1	GIPC1_HUMAN	IPR001478	1.53e-07	Q0A2H0	NS	GIPC1
+[ST].V$	SH3 domain	0.0086355887529516	Q0A2H0_228_230	P78352		Non-structural protein 1	NS1_I59A0	Disks large homolog 4	DLG4_HUMAN	IPR001452	1.12e-06	Q0A2H0	NS	DLG4
+[ST].V$	PDZ domain	0.0086355887529516	Q0A2H0_228_230	P78352		Non-structural protein 1	NS1_I59A0	Disks large homolog 4	DLG4_HUMAN	IPR001478	1.12e-06	Q0A2H0	NS	DLG4
+LR.{0,2}G.G.T	Double-stranded RNA-binding domain	4.83276919722069e-06	Q0A2H0_43_49	Q96SI9		Non-structural protein 1	NS1_I59A0	Spermatid perinuclear RNA-binding protein	STRBP_HUMAN	IPR014720	1.13e-05	Q0A2H0	NS	STRBP
+LR.{0,2}G.G.T	Double-stranded RNA-binding domain	3.35037847690063e-07	Q20MH3_43_49	Q96SI9		Non-structural protein 1	Q20MH3_I33A0	Spermatid perinuclear RNA-binding protein	STRBP_HUMAN	IPR014720	1.29e-05	Q20MH3	NS1	STRBP
+V.ESM..E	Armadillo-type fold	3.20623381473614e-06	Q20MH8_68_75	O60518		Matrix protein 2	Q20MH8_I33A0	Ran-binding protein 6	RNBP6_HUMAN	IPR016024	0.000233	Q20MH8	M2	RANBP6
+E.[LV].QL	Tetratricopeptide-like helical domain	0.010228541684832	Q2MG95_260_265	P49792		BVLF1	Q2MG95_EBVB9	E3 SUMO-protein ligase RanBP2	RBP2_HUMAN	IPR011990	0.001	Q2MG95	BVLF1	RANBP2
+[ST].[ILV]$	PDZ domain	0.00313667272804275	Q2PJP0_223_225	Q14160		Non-structural protein 1	Q2PJP0_9INFA	Protein scribble homolog	SCRIB_HUMAN	IPR001478	0	Q2PJP0	NS1	SCRIB
+[ST].V$	PDZ domain	0.00313667272804275	Q2PJP0_223_225	O14908		Non-structural protein 1	Q2PJP0_9INFA	PDZ domain-containing protein GIPC1	GIPC1_HUMAN	IPR001478	1.24e-07	Q2PJP0	NS1	GIPC1
+[ST].V$	PDZ domain	0.00313667272804275	Q2PJP0_223_225	P78352		Non-structural protein 1	Q2PJP0_9INFA	Disks large homolog 4	DLG4_HUMAN	IPR001478	9.09e-07	Q2PJP0	NS1	DLG4
+[DE]..V$	PDZ domain	0.00313667272804275	Q2PJP0_222_225	Q96RT1		Non-structural protein 1	Q2PJP0_9INFA	Erbin	ERBIN_HUMAN	IPR001478	3.03e-06	Q2PJP0	NS1	ERBIN
+LR.{0,2}G.G.T	Double-stranded RNA-binding domain	5.6840256741859e-06	Q2PJP0_43_49	Q96SI9		Non-structural protein 1	Q2PJP0_9INFA	Spermatid perinuclear RNA-binding protein	STRBP_HUMAN	IPR014720	8.84e-06	Q2PJP0	NS1	STRBP
+[GS].[FV]..I[IL].R	SKP1/BTB/POZ domain	0.0976652753536016	Q2PJP1_7_15	Q13105		Nuclear export protein	Q2PJP1_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR011333	0.001	Q2PJP1	NS2	ZBTB17
+[GS].[FV]..I[IL].R	Zinc finger, RING/FYVE/PHD-type	0.0976652753536016	Q2PJP1_7_15	Q13105		Nuclear export protein	Q2PJP1_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013083	0.001	Q2PJP1	NS2	ZBTB17
+[GS].[FV]..I[IL].R	Zinc finger C2H2-type	0.0976652753536016	Q2PJP1_7_15	Q13105		Nuclear export protein	Q2PJP1_9INFA	Zinc finger and BTB domain-containing protein 17	ZBT17_HUMAN	IPR013087	0.001	Q2PJP1	NS2	ZBTB17
+LR.{0,2}G.G.T	Double-stranded RNA-binding domain	1.85378782426966e-07	Q3SBS4_43_49	Q96SI9		Non-structural protein 1	Q3SBS4_9INFA	Spermatid perinuclear RNA-binding protein	STRBP_HUMAN	IPR014720	9.16e-06	Q3SBS4	NS	STRBP
+EI[IV]QQ	EF-hand domain	0.111538514192444	Q5EP37_112_116	Q9BRK5		RNA-directed RNA polymerase catalytic subunit	Q5EP37_9INFA	45 kDa calcium-binding protein	CAB45_HUMAN	IPR002048	0.000666	Q5EP37	PB1	SDF4
+EI[IV]QQ	EF-hand domain pair	0.111538514192444	Q5EP37_112_116	Q9BRK5		RNA-directed RNA polymerase catalytic subunit	Q5EP37_9INFA	45 kDa calcium-binding protein	CAB45_HUMAN	IPR011992	0.000666	Q5EP37	PB1	SDF4
+KR.R	PDZ domain	0.0141382545333211	Q67296_736_739	Q92997		Polymerase basic protein 2	PB2_I72A2	Segment polarity protein dishevelled homolog DVL-3	DVL3_HUMAN	IPR001478	0.000151	Q67296	PB2	DVL3
+KR.R	PDZ domain	0.0141382545333211	Q67296_752_755	Q92997		Polymerase basic protein 2	PB2_I72A2	Segment polarity protein dishevelled homolog DVL-3	DVL3_HUMAN	IPR001478	0.000151	Q67296	PB2	DVL3
+[ST].V$	PDZ domain	0.00151854108016383	Q6DP93_223_225	O14908		Non-structural protein 1	Q6DP93_9INFA	PDZ domain-containing protein GIPC1	GIPC1_HUMAN	IPR001478	1.55e-07	Q6DP93	NS	GIPC1
+[ST].V$	PDZ domain	0.00151854108016383	Q6DP93_223_225	P78352		Non-structural protein 1	Q6DP93_9INFA	Disks large homolog 4	DLG4_HUMAN	IPR001478	1.13e-06	Q6DP93	NS	DLG4
+[DE]..V$	PDZ domain	0.00151854108016383	Q6DP93_222_225	Q96RT1		Non-structural protein 1	Q6DP93_9INFA	Erbin	ERBIN_HUMAN	IPR001478	3.77e-06	Q6DP93	NS	ERBIN
+LR.{0,2}G.G.T	Double-stranded RNA-binding domain	5.26503390945089e-07	Q6DP93_43_49	Q96SI9		Non-structural protein 1	Q6DP93_9INFA	Spermatid perinuclear RNA-binding protein	STRBP_HUMAN	IPR014720	1.17e-05	Q6DP93	NS	STRBP
+S.{0,1}V$	RNA recognition motif domain	6.13515186439954e-06	Q6VGS8_126_128	Q9NZI8		14.3 kDa protein	Q6VGS8_ADE05	Insulin-like growth factor 2 mRNA-binding protein 1	IF2B1_HUMAN	IPR000504	0.00074	Q6VGS8	E4	IGF2BP1
+V.ESM..E	Armadillo-like helical	0.000145579761183948	Q76353_150_157	O60518		Integrase	Q76353_9HIV1	Ran-binding protein 6	RNBP6_HUMAN	IPR011989	0.000869	Q76353		RANBP6
+V.ESM..E	Armadillo-type fold	0.000145579761183948	Q76353_150_157	O60518		Integrase	Q76353_9HIV1	Ran-binding protein 6	RNBP6_HUMAN	IPR016024	0.000869	Q76353		RANBP6
+EE..[KR].[LV]	PH domain-like	0.0803461472498903	Q77M19_3_9	O14654		V protein	Q77M19_MEASW	Insulin receptor substrate 4	IRS4_HUMAN	IPR011993	0.000774	Q77M19	P	IRS4
+[HR][HK]R.R	RNA recognition motif domain	0.102477527717283	Q77UU1_237_241	Q07955		Regulatory protein E2	Q77UU1_9PAPI	Serine/arginine-rich splicing factor 1	SRSF1_HUMAN	IPR000504	8.88e-05	Q77UU1	E2	SRSF1
+[HR]KR.R	RNA recognition motif domain	0.102477527717283	Q77UU1_237_241	Q16629		Regulatory protein E2	Q77UU1_9PAPI	Serine/arginine-rich splicing factor 7	SRSF7_HUMAN	IPR000504	0.000109	Q77UU1	E2	SRSF7
+L.{0,1}Q.LR	BAG domain	0.0798787794177283	Q8AZK7_156_161	O95816		Epstein-Barr nuclear antigen leader protein	EBNA5_EBVB9	BAG family molecular chaperone regulator 2	BAG2_HUMAN	IPR003103	0.000195	Q8AZK7	EBNA-LP	BAG2
+L.{0,1}Q.LR	BAG domain	0.0798787794177283	Q8AZK7_222_227	O95816		Epstein-Barr nuclear antigen leader protein	EBNA5_EBVB9	BAG family molecular chaperone regulator 2	BAG2_HUMAN	IPR003103	0.000195	Q8AZK7	EBNA-LP	BAG2
+L.{0,1}Q.LR	BAG domain	0.0798787794177283	Q8AZK7_24_29	O95816		Epstein-Barr nuclear antigen leader protein	EBNA5_EBVB9	BAG family molecular chaperone regulator 2	BAG2_HUMAN	IPR003103	0.000195	Q8AZK7	EBNA-LP	BAG2
+L.{0,1}Q.LR	BAG domain	0.0798787794177283	Q8AZK7_288_293	O95816		Epstein-Barr nuclear antigen leader protein	EBNA5_EBVB9	BAG family molecular chaperone regulator 2	BAG2_HUMAN	IPR003103	0.000195	Q8AZK7	EBNA-LP	BAG2
+L.{0,1}Q.LR	BAG domain	0.0798787794177283	Q8AZK7_354_359	O95816		Epstein-Barr nuclear antigen leader protein	EBNA5_EBVB9	BAG family molecular chaperone regulator 2	BAG2_HUMAN	IPR003103	0.000195	Q8AZK7	EBNA-LP	BAG2
+L.{0,1}Q.LR	BAG domain	0.0798787794177283	Q8AZK7_420_425	O95816		Epstein-Barr nuclear antigen leader protein	EBNA5_EBVB9	BAG family molecular chaperone regulator 2	BAG2_HUMAN	IPR003103	0.000195	Q8AZK7	EBNA-LP	BAG2
+L.{0,1}Q.LR	BAG domain	0.0798787794177283	Q8AZK7_90_95	O95816		Epstein-Barr nuclear antigen leader protein	EBNA5_EBVB9	BAG family molecular chaperone regulator 2	BAG2_HUMAN	IPR003103	0.000195	Q8AZK7	EBNA-LP	BAG2
+[KR]P.L.[AS]..S	S-adenosyl-L-methionine-dependent methyltransferase	0.152173963920857	Q8JPQ9_42_50	P22061		Non-structural protein NS-S	NSS_BUNL8	Protein-L-isoaspartate(D-aspartate) O-methyltransferase	PIMT_HUMAN	IPR029063	0.000567	Q8JPQ9	N	PCMT1
+P.R.[KR]..[ST]	Tubulin/FtsZ, GTPase domain	0.00623992860036026	Q8JPQ9_40_47	P68371		Non-structural protein NS-S	NSS_BUNL8	Tubulin beta-4B chain	TBB4B_HUMAN	IPR003008	0.00087	Q8JPQ9	N	TUBB4B
+P.R.[KR]..[ST]	Tubulin/FtsZ, C-terminal	0.00623992860036026	Q8JPQ9_40_47	P68371		Non-structural protein NS-S	NSS_BUNL8	Tubulin beta-4B chain	TBB4B_HUMAN	IPR008280	0.00087	Q8JPQ9	N	TUBB4B
+P.R.[KR]..[ST]	Tubulin/FtsZ, 2-layer sandwich domain	0.00623992860036026	Q8JPQ9_40_47	P68371		Non-structural protein NS-S	NSS_BUNL8	Tubulin beta-4B chain	TBB4B_HUMAN	IPR018316	0.00087	Q8JPQ9	N	TUBB4B
+D.T..K..S	Importin-alpha, importin-beta-binding domain	0.0940247270836459	Q997F2_85_93	O00629		Non-structural protein V	V_NIPAV	Importin subunit alpha-3	IMA3_HUMAN	IPR002652	0.000485	Q997F2	P/V/C	KPNA4
+D.T..K..S	Armadillo-like helical	0.0940247270836459	Q997F2_85_93	O00629		Non-structural protein V	V_NIPAV	Importin subunit alpha-3	IMA3_HUMAN	IPR011989	0.000485	Q997F2	P/V/C	KPNA4
+D.T..K..S	Armadillo-type fold	0.0940247270836459	Q997F2_85_93	O00629		Non-structural protein V	V_NIPAV	Importin subunit alpha-3	IMA3_HUMAN	IPR016024	0.000485	Q997F2	P/V/C	KPNA4
+E..R.Y	Basic-leucine zipper domain	0	Q9DGW5_296_301	P15336		Oncoprotein MEQ	MEQ_GAHVM	Cyclic AMP-dependent transcription factor ATF-2	ATF2_HUMAN	IPR004827	0.000202	Q9DGW5	MDV005	ATF2
+P..P.[HKR]	Protein kinase domain	1.22008559815535e-05	Q9QPN3_72_77	P12931		Protein Nef	NEF_HV1LA	Proto-oncogene tyrosine-protein kinase Src	SRC_HUMAN	IPR000719	0.001	Q9QPN3	nef	SRC
+P..P.[HKR]	SH2 domain	1.22008559815535e-05	Q9QPN3_72_77	P12931		Protein Nef	NEF_HV1LA	Proto-oncogene tyrosine-protein kinase Src	SRC_HUMAN	IPR000980	0.001	Q9QPN3	nef	SRC
+P..P.[HKR]	Serine-threonine/tyrosine-protein kinase, catalytic domain	1.22008559815535e-05	Q9QPN3_72_77	P12931		Protein Nef	NEF_HV1LA	Proto-oncogene tyrosine-protein kinase Src	SRC_HUMAN	IPR001245	0.001	Q9QPN3	nef	SRC
+P..P.[HKR]	SH3 domain	1.22008559815535e-05	Q9QPN3_72_77	P12931		Protein Nef	NEF_HV1LA	Proto-oncogene tyrosine-protein kinase Src	SRC_HUMAN	IPR001452	0.001	Q9QPN3	nef	SRC
+P..P.[HKR]	Protein kinase-like domain	1.22008559815535e-05	Q9QPN3_72_77	P12931		Protein Nef	NEF_HV1LA	Proto-oncogene tyrosine-protein kinase Src	SRC_HUMAN	IPR011009	0.001	Q9QPN3	nef	SRC
+PE.AEA	Protein kinase domain	0.00453612782227207	U5TQE9_320_325	Q13546		Ribonucleoside-diphosphate reductase large subunit	U5TQE9_HHV1	Receptor-interacting serine/threonine-protein kinase 1	RIPK1_HUMAN	IPR000719	0.000471	U5TQE9	UL39	RIPK1
+PE.AEA	Protein kinase-like domain	0.00453612782227207	U5TQE9_320_325	Q13546		Ribonucleoside-diphosphate reductase large subunit	U5TQE9_HHV1	Receptor-interacting serine/threonine-protein kinase 1	RIPK1_HUMAN	IPR011009	0.000471	U5TQE9	UL39	RIPK1
+PE.AEA	RHIM domain	0.00453612782227207	U5TQE9_320_325	Q13546		Ribonucleoside-diphosphate reductase large subunit	U5TQE9_HHV1	Receptor-interacting serine/threonine-protein kinase 1	RIPK1_HUMAN	IPR025735	0.000471	U5TQE9	UL39	RIPK1
