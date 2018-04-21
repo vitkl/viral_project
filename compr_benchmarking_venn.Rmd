@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r setup, include=TRUE}
-knitr::opts_chunk$set(echo = FALSE, fig.width = 12, fig.height = 8, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(fig.width = 12, fig.height = 8, warning = FALSE, message = FALSE)
 
 packages = c("MItools", "RColorBrewer", "devtools", "grid","gridExtra", "ggplot2", "VennDiagram", "svglite")
 if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
@@ -435,13 +435,92 @@ viral = myBenchmarkMotifs(neg_set = "all_proteins",
                   motif_pval_cutoff = 0.04,
                   dataset = datasets[3], datasets,
                   return_all = T, merge_domain_data = T)
+
+bechmark2Net = function(occurence_query = IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query,
+                        matching_known = IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query) {
+Net = data.table(Viral_protein = occurence_query$query,
+                        Motif_Sig = occurence_query$Sig,
+                        Domain_p.value = occurence_query$p.value,
+                        Pattern = occurence_query$Pattern,
+                        Human_recognition_domain = occurence_query$IDs_domain_human,
+                        Human_protein = occurence_query$interacts_with,
+                        unique_position = paste0(GenomicRanges::seqnames(occurence_query), "_",
+                                              GenomicRanges::start(occurence_query), "_",
+                                              GenomicRanges::end(occurence_query)))
+Net = unique(Net)
+Net[, top_domain := Domain_p.value == min(Domain_p.value), by = unique_position]
+Net = Net[top_domain == TRUE]
+Net[, top_domain := NULL]
+setorder(Net, Motif_Sig, Domain_p.value)
+
+matching_known = data.table(unique_position = paste0(GenomicRanges::seqnames(matching_known), "_",
+                                                     GenomicRanges::start(matching_known), "_",
+                                                     GenomicRanges::end(matching_known)),
+                            matching_known = "matching_known")
+Net = merge(Net, matching_known, by = "unique_position", all.x = T, all.y = F, allow.cartesian=TRUE)
+unique(Net)
+}
+
+IntAct_net = bechmark2Net(occurence_query = IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query,
+                        matching_known = IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query)
+viral_net = bechmark2Net(occurence_query = viral$res$qslimfinder.all_viral_interaction3.FALSE$occurence_query,
+                        matching_known = viral$res$qslimfinder.all_viral_interaction3.FALSE$overlapping_GRanges_query)
 ```
 
 ```{r, eval=FALSE}
 # get readable names for proteins and domains 
-paste0("https://www.uniprot.org/uniprot/?query=id:", uniprot_id,"&format=tab&columns=id,genes,entry%20name,protein%20names,organism,organism-id")
-InterProEntryTypes = getInterProEntryTypes("./data_files/entry.list")
+readableNet = function(Net){
+proteins2gene_names = lapply(unique(c(Net$Viral_protein, Net$Human_protein)), function(uniprot_id) {
+    fread(paste0("https://www.uniprot.org/uniprot/?query=id:", uniprot_id,
+                 "&format=tab&columns=id,genes,entry%20name,protein%20names,organism,organism-id"),
+          stringsAsFactors = F)
+})
+proteins2gene_names = Reduce(rbind, proteins2gene_names)
+setnames(proteins2gene_names, colnames(proteins2gene_names),
+         c( "Entry", "Gene_names", "Entry_name", "Protein_names", "Organism", "Organism_ID"))
+proteins2gene_names[, Gene_names := gsub(" .*", "", Gene_names)] # pick only first gene name
+proteins2gene_names[, Protein_names := gsub(" \\(.*", "", Protein_names)] # pick only first protein name
+# fwrite(proteins2gene_names, "./results/IntAct_network_proteins2gene_names", sep = "\t")
+proteins2gene_names_human = proteins2gene_names[Organism_ID == 9606]
+proteins2gene_names_viral = proteins2gene_names[Organism_ID != 9606]
 
+proteins2gene_names_human[, c("Organism", "Organism_ID") := NULL]
+proteins2gene_names_viral[, c("Organism", "Organism_ID") := NULL]
+
+setnames(proteins2gene_names_human, colnames(proteins2gene_names_human),
+         c("Human_protein", "Human_gene_names", "Human_entry_name", "Human_protein_names"))
+setnames(proteins2gene_names_viral, colnames(proteins2gene_names_viral),
+         c("Viral_protein", "Viral_gene_names", "Viral_entry_name", "Viral_protein_names"))
+
+Net = merge(Net, proteins2gene_names_human, by = "Human_protein", all.x = T, all.y = F)
+Net = merge(Net, proteins2gene_names_viral, by = "Viral_protein", all.x = T, all.y = F)
+
+InterProEntryTypes = getInterProEntryTypes("./data_files/entry.list")
+InterProEntryTypes[, ENTRY_TYPE := NULL]
+setnames(InterProEntryTypes, colnames(InterProEntryTypes),
+         c("Human_recognition_domain", "Human_recognition_domain_name"))
+Net = merge(Net, InterProEntryTypes, by = "Human_recognition_domain", all.x = T, all.y = F)
+
+# reorder column names 
+Net = Net[, .(Pattern, Human_recognition_domain_name, Domain_p.value,
+              Viral_protein, Human_protein, matching_known,
+              Viral_protein_names, Viral_entry_name, Human_protein_names, Human_entry_name,
+              Human_recognition_domain, Motif_Sig, unique_position,
+              Viral_gene_names, Human_gene_names)]
+unique(Net)
+}
+
+IntAct_net = readableNet(IntAct_net)
+viral_net = readableNet(viral_net)
+
+fwrite(IntAct_net, "./results/IntAct_net_motif_domain_readable", sep = "\t")
+fwrite(viral_net, "./results/viral_net_motif_domain_readable", sep = "\t")
+
+fwrite(unique(IntAct_net[,.(Pattern)]), "./results/IntAct_net_patterns", sep = "\t")
+fwrite(unique(viral_net[,.(Pattern)]), "./results/viral_net_patterns", sep = "\t")
+```
+
+```{r}
 # reconstruct GRanges into network
 dataset4Cytoscape = function(uniprot_id = "P03126")
 IntAct_GRanges =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query
