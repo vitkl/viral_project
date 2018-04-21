@@ -516,11 +516,11 @@ readableNet = function(Net){
 IntAct_net = readableNet(IntAct_net)
 viral_net = readableNet(viral_net)
 
-fwrite(IntAct_net, "./results/IntAct_net_motif_domain_readable", sep = "\t")
-fwrite(viral_net, "./results/viral_net_motif_domain_readable", sep = "\t")
+fwrite(IntAct_net, "./results/IntAct_net_motif_domain_readable.tsv", sep = "\t")
+fwrite(viral_net, "./results/viral_net_motif_domain_readable.tsv", sep = "\t")
 
-fwrite(unique(IntAct_net[,.(Pattern)]), "./results/IntAct_net_patterns", sep = "\t")
-fwrite(unique(viral_net[,.(Pattern)]), "./results/viral_net_patterns", sep = "\t")
+fwrite(unique(IntAct_net[,.(Pattern)]), "./results/IntAct_net_patterns.tsv", sep = "\t")
+fwrite(unique(viral_net[,.(Pattern)]), "./results/viral_net_patterns.tsv", sep = "\t")
 ```
 
 ```{r}
