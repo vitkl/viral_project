@@ -185,7 +185,7 @@ if(nrow(dataset_names_not_done) >= 1){
     clusterExport(cl, ls(), envir=environment())
     
     R_data = parSapplyLB(cl = cl, X = 1:nrow(dataset_names_not_done), FUN = function(i){
-        R_data_name = myPPInetwork2SLIMFinder(dataset_name = dataset_names_not_done$dataset_names_not_done[i], 
+        R_data_name = myPPInetwork2SLIMFinder(dataset_name = dataset_names_not_done$dataset_names[i], 
                                               slimlen = dataset_names_not_done$slimlen[i],
                                               maxwild = dataset_names_not_done$maxwild[i],
                                               interaction_main_set = eval(parse(text = dataset_names_not_done$datasets[i])),
