@@ -430,11 +430,19 @@ IntAct = myBenchmarkMotifs(neg_set = "all_proteins",
                   motif_pval_cutoff = 0.002,
                   dataset = datasets[1], datasets,
                   return_all = T, merge_domain_data = T)
+IntAct_lenient = myBenchmarkMotifs(neg_set = "all_proteins",
+                  filter_by_domain_data = "p.value < 0.5",
+                  motif_pval_cutoff = 0.3,
+                  dataset = datasets[1], datasets,
+                  return_all = T, merge_domain_data = T)
 viral = myBenchmarkMotifs(neg_set = "all_proteins",
                   filter_by_domain_data = "p.value < 0.5",
                   motif_pval_cutoff = 0.04,
                   dataset = datasets[3], datasets,
                   return_all = T, merge_domain_data = T)
+```
+
+```{r}
 
 bechmark2Net = function(occurence_query = IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query,
                         matching_known = IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query) {
@@ -464,6 +472,22 @@ IntAct_net = bechmark2Net(occurence_query = IntAct$res$qslimfinder.Full_IntAct3.
                         matching_known = IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query)
 viral_net = bechmark2Net(occurence_query = viral$res$qslimfinder.all_viral_interaction3.FALSE$occurence_query,
                         matching_known = viral$res$qslimfinder.all_viral_interaction3.FALSE$overlapping_GRanges_query)
+```
+
+### find ELM domains
+
+```{r ELM_domains}
+if(!file.exists("./data_files/interactiondomains.tsv")) downloader::download("http://elm.eu.org/interactiondomains.tsv","./data_files/interactiondomains.tsv")
+interactiondomains = fread("./data_files/interactiondomains.tsv")
+interactiondomains[, pfam_id := `Interaction Domain Id`]
+
+domains_known = interactiondomains[, unique(pfam_id)]
+
+InterProScan_domains = readInterProGFF3("./processed_data_files/all_human_viral_protein_domains.gff3.gz")
+# get InterProID to member database ID mapping
+InterPro2memberDB = getInterPro2memberDB(InterProScan_domains)
+InterPro2memberDB = InterPro2memberDB[complete.cases(InterPro2memberDB)]
+domains_known_mapped = unique(InterPro2memberDB[memberDBID %in% domains_known | InterProID %in% domains_known, InterProID])
 ```
 
 ```{r, eval=FALSE}
@@ -503,9 +527,12 @@ readableNet = function(Net){
              c("Human_recognition_domain", "Human_recognition_domain_name"))
     Net = merge(Net, InterProEntryTypes, by = "Human_recognition_domain", all.x = T, all.y = F)
     
+    # mark known SLIM-interacting domains
+    Net[, in_ELM := Human_recognition_domain %in% domains_known_mapped]
+    
     # reorder column names 
     Net = Net[, .(Pattern, Human_recognition_domain_name, Domain_p.value, unique_position,
-                  Human_protein, matching_known,
+                  Human_protein, in_ELM, matching_known,
                   Viral_protein_names, Viral_entry_name, Human_protein_names, Human_entry_name,
                   Human_recognition_domain, Motif_Sig, Viral_protein,
                   Viral_gene_names, Human_gene_names)]
@@ -521,6 +548,126 @@ fwrite(viral_net, "./results/viral_net_motif_domain_readable.tsv", sep = "\t")
 
 fwrite(unique(IntAct_net[,.(Pattern)]), "./results/IntAct_net_patterns.tsv", sep = "\t")
 fwrite(unique(viral_net[,.(Pattern)]), "./results/viral_net_patterns.tsv", sep = "\t")
+```
+
+Armadillo like domains:  
+Viral proteins `r IntAct_net[grepl("Armadillo", Human_recognition_domain_name) & grepl("KR", Pattern), uniqueN(Viral_protein)]`.  
+Viral motifs `r IntAct_net[grepl("Armadillo", Human_recognition_domain_name) & grepl("KR", Pattern), uniqueN(unique_position)]`.  
+Human proteins `r IntAct_net[grepl("Armadillo", Human_recognition_domain_name) & grepl("KR", Pattern), uniqueN(Human_protein)]`.   
+
+PDZ domains:  
+Viral proteins `r IntAct_net[grepl("PDZ", Human_recognition_domain_name) & grepl("\\$", Pattern), uniqueN(Viral_protein)]`.  
+Viral motifs `r IntAct_net[grepl("PDZ", Human_recognition_domain_name) & grepl("\\$", Pattern), uniqueN(unique_position)]`.  
+Human proteins `r IntAct_net[grepl("PDZ", Human_recognition_domain_name) & grepl("\\$", Pattern), uniqueN(Human_protein)]`.   
+
+PDZ motifs:  
+Viral proteins `r IntAct_net[grepl("\\$", Pattern), uniqueN(Viral_protein)]`.  
+Viral motifs `r IntAct_net[grepl("\\$", Pattern), uniqueN(unique_position)]`.  
+Human proteins `r IntAct_net[grepl("\\$", Pattern), uniqueN(Human_protein)]`.   
+
+
+```{r more_motif_summaries}
+motifSummary = function(benchmarkMotifsResult = IntAct$res$qslimfinder.Full_IntAct3.FALSE,
+                        readable_net = IntAct_net,
+                        motif = "E.V..G.{0,2}N.{0,1}Q",
+                        viral_query = NULL,
+                        human_seed = NULL){
+    if(is.null(viral_query)) viral_query = readable_net$Viral_protein
+    if(is.null(human_seed)) human_seed = readable_net$Human_protein
+    if(is.null(motif)) motif = readable_net$Pattern
+    
+    readable_net_ind = readable_net$Pattern %in% motif & 
+        readable_net$Viral_protein %in% viral_query & 
+        readable_net$Human_protein %in% human_seed
+    occurence_query_ind = benchmarkMotifsResult$occurence_query$Pattern %in% motif &
+        benchmarkMotifsResult$occurence_query$query %in% viral_query &
+        benchmarkMotifsResult$occurence_query$interacts_with %in% human_seed
+    
+    occurence_query = benchmarkMotifsResult$occurence_query[occurence_query_ind]
+    occurence_query = data.table(UP = occurence_query$UP, UPNum = occurence_query$UPNum,
+                                 unique_position = paste0(GenomicRanges::seqnames(occurence_query), "_",
+                                                     GenomicRanges::start(occurence_query), "_",
+                                                     GenomicRanges::end(occurence_query)),
+                                 Occ = occurence_query$Occ, SeqNum = occurence_query$SeqNum, 
+                                 domain_count_per_IDs_interactor_viral = occurence_query$domain_count_per_IDs_interactor_viral,
+                                 IDs_interactor_viral_degree = occurence_query$IDs_interactor_viral_degree,
+                                 IDs_domain_human = occurence_query$IDs_domain_human,
+                                 Human_protein = occurence_query$interacts_with)
+    occurence_query = unique(occurence_query)
+    
+    occurence_ind = benchmarkMotifsResult$occurence$Pattern %in% motif &
+        benchmarkMotifsResult$occurence$query %in% viral_query &
+        benchmarkMotifsResult$occurence$interacts_with %in% human_seed
+    occurence_seqnames = as.character(GenomicRanges::seqnames(benchmarkMotifsResult$occurence[occurence_ind]))
+    occurence_seqnames = unique(occurence_seqnames)
+    
+    summary = paste0(
+        "viral query protein with motif: ",
+        paste0(unique(paste0(readable_net[readable_net_ind]$unique_position, " = ",
+                             readable_net[readable_net_ind]$Pattern, " = ",
+                             readable_net[readable_net_ind]$Viral_protein_names, " (",
+                             readable_net[readable_net_ind]$Viral_entry_name, ") ")), collapse = " | "), "\n",
+        uniqueN(paste0(readable_net[readable_net_ind]$unique_position, "=", readable_net[readable_net_ind]$Viral_protein_names)),
+        "\n\n",
+        "viral targeted human proteins: ",
+        paste0(unique(paste0(readable_net[readable_net_ind]$Human_protein, " = ", readable_net[readable_net_ind]$Human_protein_names)), collapse = " | "), "\n",
+        uniqueN(paste0(readable_net[readable_net_ind]$Human_protein, "=", readable_net[readable_net_ind]$Human_protein_names)),
+        "\n\n",
+        "UP support / UP: ",
+        paste0(unique(paste0("(", occurence_query$unique_position," in ", occurence_query$Human_protein," dataset) ",
+            occurence_query$UP, "/",
+            occurence_query$UPNum)), collapse = " | "),
+        "\n\n",
+        "Occurence / SeqNum: ",
+        paste0(unique(paste0("(", occurence_query$unique_position," in ", occurence_query$Human_protein," dataset) ",
+            occurence_query$Occ, "/",
+            occurence_query$SeqNum)), collapse = " | "),
+        "\n\n",
+        "top-1 domain(s): ",
+        paste0(paste0("(", occurence_query$unique_position,") ", occurence_query$IDs_domain_human), collapse = " | "),
+        "\n\n",
+        "domain_count_per_IDs_interactor_viral / IDs_interactor_viral_degree: ",
+        paste0(paste0(
+            occurence_query$domain_count_per_IDs_interactor_viral, "/",
+            occurence_query$IDs_interactor_viral_degree), collapse = " | "),
+        "\n\n",
+        "all with motif: ",
+        paste0(occurence_seqnames, collapse = " | "), "\n",
+        "N ", uniqueN(occurence_seqnames),
+        "\nN non-query with motif: ", uniqueN(occurence_seqnames) -
+            uniqueN(readable_net[readable_net_ind]$Viral_protein),
+        "\n\n"
+    )
+    cat(summary)
+}
+
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = "E.V..G.{0,2}N.{0,1}Q", viral_query = NULL, human_seed = NULL)
+
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = "[ST].[ILV]$", viral_query = NULL, human_seed = NULL)
+
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = "DSG", viral_query = "P03070", human_seed = NULL)
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = "DSG", viral_query = "P05919", human_seed = NULL)
+IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query[IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query$Pattern == "DSG"]
+
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = "EI[IV]QQ", viral_query = NULL, human_seed = NULL)
+ 
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = "LR.{0,2}G.G.T", viral_query = NULL, human_seed = NULL)
+IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query[IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query$Pattern == "LR.{0,2}G.G.T"]
+
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = "PE.AEA", viral_query = NULL, human_seed = NULL)
+IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query[IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query$Pattern == "PE.AEA"]
+
+
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = "P..P.[HKR]", viral_query = NULL, human_seed = NULL)
+IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query[IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query$Pattern == "PE.AEA"]
 ```
 
 ```{r}
