@@ -1,0 +1,10 @@
+node	node_readable	type	scale_by
+Q12959	Disks large homolog 1 (DLG1)	human_protein	
+Q14160	Protein scribble homolog (SCRIB)	human_protein	
+Q96RT1	Erbin (ERBIN)	human_protein	
+IPR001478	PDZ domain	human_domain	0.000102967736608026
+IPR032675	Leucine-rich repeat domain, L domain-like	human_domain	0.00889475086087574
+[ST].[LV]$	[ST].[LV]$	viral_motif	0
+[DE]T.[ILV]$	[DE]T.[ILV]$	viral_motif	0
+[DE]..V$	[DE]..V$	viral_motif	1.38e-06
+P50804	Protein E6 (VE6_HPV70)	viral_protein	

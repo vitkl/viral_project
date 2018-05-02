@@ -1,0 +1,24 @@
+source	target	source_readable	target_readable	type_source	type_target
+Q14160	IPR001478	Protein scribble homolog (SCRIB)	PDZ domain	human_protein	human_domain
+Q14160	IPR032675	Protein scribble homolog (SCRIB)	Leucine-rich repeat domain, L domain-like	human_protein	human_domain
+O14908	IPR001478	PDZ domain-containing protein GIPC1 (GIPC1)	PDZ domain	human_protein	human_domain
+P78352	IPR001478	Disks large homolog 4 (DLG4)	PDZ domain	human_protein	human_domain
+P78352	IPR001452	Disks large homolog 4 (DLG4)	SH3 domain	human_protein	human_domain
+P78352	IPR027417	Disks large homolog 4 (DLG4)	P-loop containing nucleoside triphosphate hydrolase	human_protein	human_domain
+Q96RT1	IPR001478	Erbin (ERBIN)	PDZ domain	human_protein	human_domain
+Q96RT1	IPR032675	Erbin (ERBIN)	Leucine-rich repeat domain, L domain-like	human_protein	human_domain
+Q96SI9	IPR014720	Spermatid perinuclear RNA-binding protein (STRBP)	Double-stranded RNA-binding domain	human_protein	human_domain
+Q96SI9	IPR006561	Spermatid perinuclear RNA-binding protein (STRBP)	DZF domain	human_protein	human_domain
+IPR001478	[ST].[ILV]$	PDZ domain	[ST].[ILV]$	human_domain	viral_motif
+IPR032675	[ST].[ILV]$	Leucine-rich repeat domain, L domain-like	[ST].[ILV]$	human_domain	viral_motif
+IPR001478	[ST].V$	PDZ domain	[ST].V$	human_domain	viral_motif
+IPR001452	[ST].V$	SH3 domain	[ST].V$	human_domain	viral_motif
+IPR027417	[ST].V$	P-loop containing nucleoside triphosphate hydrolase	[ST].V$	human_domain	viral_motif
+IPR001478	[DE]..V$	PDZ domain	[DE]..V$	human_domain	viral_motif
+IPR032675	[DE]..V$	Leucine-rich repeat domain, L domain-like	[DE]..V$	human_domain	viral_motif
+IPR014720	LR.{0,2}G.G.T	Double-stranded RNA-binding domain	LR.{0,2}G.G.T	human_domain	viral_motif
+IPR006561	LR.{0,2}G.G.T	DZF domain	LR.{0,2}G.G.T	human_domain	viral_motif
+[ST].[ILV]$	Q2PJP0	[ST].[ILV]$	Non-structural protein 1 (Q2PJP0_9INFA)	viral_motif	viral_protein
+[ST].V$	Q2PJP0	[ST].V$	Non-structural protein 1 (Q2PJP0_9INFA)	viral_motif	viral_protein
+[DE]..V$	Q2PJP0	[DE]..V$	Non-structural protein 1 (Q2PJP0_9INFA)	viral_motif	viral_protein
+LR.{0,2}G.G.T	Q2PJP0	LR.{0,2}G.G.T	Non-structural protein 1 (Q2PJP0_9INFA)	viral_motif	viral_protein

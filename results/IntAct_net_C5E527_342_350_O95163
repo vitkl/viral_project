@@ -1,0 +1,4 @@
+source	target	source_readable	target_readable	type_source	type_target
+O95163	IPR015943	Elongator complex protein 1 (ELP1)	WD40/YVTN repeat-like-containing domain	human_protein	human_domain
+IPR015943	E.V..G.{0,2}N.{0,1}Q	WD40/YVTN repeat-like-containing domain	E.V..G.{0,2}N.{0,1}Q	human_domain	viral_motif
+E.V..G.{0,2}N.{0,1}Q	C5E527	E.V..G.{0,2}N.{0,1}Q	Polymerase basic protein 2 (C5E527_9INFA)	viral_motif	viral_protein

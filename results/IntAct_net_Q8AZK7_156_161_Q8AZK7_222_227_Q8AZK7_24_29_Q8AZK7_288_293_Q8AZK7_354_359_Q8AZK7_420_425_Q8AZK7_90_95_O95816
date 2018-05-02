@@ -1,0 +1,4 @@
+source	target	source_readable	target_readable	type_source	type_target
+O95816	IPR003103	BAG family molecular chaperone regulator 2 (BAG2)	BAG domain	human_protein	human_domain
+IPR003103	L.{0,1}Q.LR	BAG domain	L.{0,1}Q.LR	human_domain	viral_motif
+L.{0,1}Q.LR	Q8AZK7	L.{0,1}Q.LR	Epstein-Barr nuclear antigen leader protein (EBNA5_EBVB9)	viral_motif	viral_protein

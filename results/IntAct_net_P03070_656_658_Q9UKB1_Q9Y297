@@ -1,0 +1,8 @@
+source	target	source_readable	target_readable	type_source	type_target
+Q9UKB1	IPR015943	F-box/WD repeat-containing protein 11 (FBXW11)	WD40/YVTN repeat-like-containing domain	human_protein	human_domain
+Q9UKB1	IPR017986	F-box/WD repeat-containing protein 11 (FBXW11)	WD40-repeat-containing domain	human_protein	human_domain
+Q9Y297	IPR015943	F-box/WD repeat-containing protein 1A (BTRC)	WD40/YVTN repeat-like-containing domain	human_protein	human_domain
+Q9Y297	IPR017986	F-box/WD repeat-containing protein 1A (BTRC)	WD40-repeat-containing domain	human_protein	human_domain
+IPR015943	DSG	WD40/YVTN repeat-like-containing domain	DSG	human_domain	viral_motif
+IPR017986	DSG	WD40-repeat-containing domain	DSG	human_domain	viral_motif
+DSG	P03070	DSG	Large T antigen (LT_SV40)	viral_motif	viral_protein

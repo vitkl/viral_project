@@ -424,6 +424,7 @@ ggsave(filename = "Venn_filtered_MOD_LIG_DOC_DEG_CLV_TRG.svg", plot = figureMODL
 # protein-domain-motif-protein network
 
 ```{r}
+motif_types = c("MOD", "LIG", "DOC")
 # get motif & domains (stringent threshold)
 IntAct = myBenchmarkMotifs(neg_set = "all_proteins",
                   filter_by_domain_data = "p.value < 0.5",
@@ -442,30 +443,61 @@ viral = myBenchmarkMotifs(neg_set = "all_proteins",
                   return_all = T, merge_domain_data = T)
 ```
 
-```{r}
+# do results overlap?
 
+```{r}
+IntAct_known = unique(paste0(seqnames(IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query), "_",
+                             start(IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query), "_",
+                             end(IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query)))
+viral_known = unique(paste0(seqnames(viral$res$qslimfinder.all_viral_interaction3.FALSE$overlapping_GRanges_query), "_",
+                            start(viral$res$qslimfinder.all_viral_interaction3.FALSE$overlapping_GRanges_query), "_",
+                            end(viral$res$qslimfinder.all_viral_interaction3.FALSE$overlapping_GRanges_query)))
+union_known = unique(c(IntAct_known, viral_known))
+
+IntAct_only = union_known %in% IntAct_known
+viral_only = union_known %in% viral_known
+
+names(IntAct_only) = union_known
+names(viral_only) = union_known
+
+# human network missed
+viral_net[unique_position == "P03129_21_26"]
+viral_net[unique_position == "P03129_32_36"]
+viral_net[unique_position == "P03255_121_126"]
+
+# viral network missed
+IntAct_net[unique_position == "P03428_736_739"]
+IntAct_net[unique_position == "P03428_752_755"]
+IntAct_net[unique_position == "P06463_148_155"]
+```
+
+```{r}
+# convert motif GRanges to simple network table
 bechmark2Net = function(occurence_query = IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query,
-                        matching_known = IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query) {
-Net = data.table(Viral_protein = occurence_query$query,
-                        Motif_Sig = occurence_query$Sig,
-                        Domain_p.value = occurence_query$p.value,
-                        Pattern = occurence_query$Pattern,
-                        Human_recognition_domain = occurence_query$IDs_domain_human,
-                        Human_protein = occurence_query$interacts_with,
-                        unique_position = paste0(GenomicRanges::seqnames(occurence_query), "_",
+                        matching_known = IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query,
+                        top_domain = T) {
+    Net = data.table(Viral_protein = occurence_query$query,
+                     Motif_Sig = occurence_query$Sig,
+                     Domain_p.value = occurence_query$p.value,
+                     Pattern = occurence_query$Pattern,
+                     Human_recognition_domain = occurence_query$IDs_domain_human,
+                     Human_protein = occurence_query$interacts_with,
+                     unique_position = paste0(GenomicRanges::seqnames(occurence_query), "_",
                                               GenomicRanges::start(occurence_query), "_",
                                               GenomicRanges::end(occurence_query)))
-Net = unique(Net)
-Net[, top_domain := Domain_p.value == min(Domain_p.value), by = unique_position]
-Net = Net[top_domain == TRUE]
-Net[, top_domain := NULL]
-
-matching_known = data.table(unique_position = paste0(GenomicRanges::seqnames(matching_known), "_",
-                                                     GenomicRanges::start(matching_known), "_",
-                                                     GenomicRanges::end(matching_known)),
-                            matching_known = "matching_known")
-Net = merge(Net, matching_known, by = "unique_position", all.x = T, all.y = F, allow.cartesian=TRUE)
-unique(Net)
+    Net = unique(Net)
+    if(top_domain){
+        Net[, top_domain := Domain_p.value == min(Domain_p.value), by = unique_position]
+        Net = Net[top_domain == TRUE]
+        Net[, top_domain := NULL]
+    }
+    
+    matching_known = data.table(unique_position = paste0(GenomicRanges::seqnames(matching_known), "_",
+                                                         GenomicRanges::start(matching_known), "_",
+                                                         GenomicRanges::end(matching_known)),
+                                matching_known = "matching_known")
+    Net = merge(Net, matching_known, by = "unique_position", all.x = T, all.y = F, allow.cartesian=TRUE)
+    unique(Net)
 }
 
 IntAct_net = bechmark2Net(occurence_query = IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query,
@@ -488,6 +520,32 @@ InterProScan_domains = readInterProGFF3("./processed_data_files/all_human_viral_
 InterPro2memberDB = getInterPro2memberDB(InterProScan_domains)
 InterPro2memberDB = InterPro2memberDB[complete.cases(InterPro2memberDB)]
 domains_known_mapped = unique(InterPro2memberDB[memberDBID %in% domains_known | InterProID %in% domains_known, InterProID])
+
+IntAct_all_dom = myBenchmarkMotifs(neg_set = "all_proteins",
+                  filter_by_domain_data = NULL,
+                  motif_pval_cutoff = 0.002,
+                  dataset = datasets[1], datasets,
+                  return_all = T, merge_domain_data = T)
+dom = IntAct_all_dom$res$qslimfinder.Full_IntAct3.FALSE$domain_res$data_with_pval
+dom[IDs_domain_human %in% domains_known_mapped, SLIM_binding := "yes"]
+dom[!IDs_domain_human %in% domains_known_mapped, SLIM_binding := "no / not known"]
+# how many human proteins have SLIM-binding domains
+dom[SLIM_binding == "yes", uniqueN(IDs_interactor_human)]
+# how many viral proteins target human proteins that have SLIM-binding domains
+dom[SLIM_binding == "yes", uniqueN(IDs_interactor_viral)]
+
+dom = unique(dom[,.(IDs_interactor_viral, IDs_domain_human, p.value, domain_type, SLIM_binding)])
+ggplot(dom, aes(p.value, color = SLIM_binding, fill = SLIM_binding)) +
+    geom_density(alpha = 0.3) + theme_light()
+ks.test(dom[SLIM_binding == "no / not known", p.value],
+        dom[SLIM_binding == "yes", p.value], 
+        alternative = "less")
+dom05 = dom[p.value < 0.5]
+dom05[, uniqueN(IDs_interactor_viral)]
+dom05[, uniqueN(IDs_domain_human)]
+
+# how many motif per protein
+table(IntAct_all_dom$res$qslimfinder.Full_IntAct3.FALSE$instances_query$ID, IntAct_all_dom$res$qslimfinder.Full_IntAct3.FALSE$instances_query$Primary_Acc)[, table(IntAct_all_dom$res$qslimfinder.Full_IntAct3.FALSE$instances_query$Primary_Acc) > 2]
 ```
 
 ```{r, eval=FALSE}
@@ -571,7 +629,8 @@ motifSummary = function(benchmarkMotifsResult = IntAct$res$qslimfinder.Full_IntA
                         readable_net = IntAct_net,
                         motif = "E.V..G.{0,2}N.{0,1}Q",
                         viral_query = NULL,
-                        human_seed = NULL){
+                        human_seed = NULL,
+                        results_dir = "./results/"){
     if(is.null(viral_query)) viral_query = readable_net$Viral_protein
     if(is.null(human_seed)) human_seed = readable_net$Human_protein
     if(is.null(motif)) motif = readable_net$Pattern
@@ -638,11 +697,49 @@ motifSummary = function(benchmarkMotifsResult = IntAct$res$qslimfinder.Full_IntA
             uniqueN(readable_net[readable_net_ind]$Viral_protein),
         "\n\n"
     )
+    
+    readable_net2 = readable_net[readable_net_ind]
+    # For Cytoscape: network table
+    Nrows = nrow(readable_net2)
+    readable_net3 = data.table(source = c(readable_net2$Human_protein,   readable_net2$Human_recognition_domain, readable_net2$Pattern),
+                                target = c(readable_net2$Human_recognition_domain, readable_net2$Pattern,          readable_net2$Viral_protein),
+                                source_readable = c(paste0(readable_net2$Human_protein_names, " (", readable_net2$Human_gene_names, ")"),  
+                                                    readable_net2$Human_recognition_domain_name,
+                                                    readable_net2$Pattern),
+                                target_readable = c(readable_net2$Human_recognition_domain_name,
+                                                    readable_net2$Pattern,
+                                                    paste0(readable_net2$Viral_protein_names, " (", readable_net2$Viral_entry_name, ")")),
+                                #Motif_Sig =    c(rep(1, Nrows),                   rep(1, Nrows),              readable_net2$Motif_Sig),
+                                type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
+                                type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
+    # For Cytoscape: node table
+    network_types = unique(data.table(node = c(readable_net3$source, readable_net3$target),
+                                             node_readable = c(readable_net3$source_readable, readable_net3$target_readable),
+                                             type = c(readable_net3$type_source, readable_net3$type_target),
+                                             scale_by = c(c(rep("", Nrows), readable_net2$Domain_p.value, readable_net2$Motif_Sig,
+                                                            readable_net2$Domain_p.value, readable_net2$Motif_Sig, rep("", Nrows)))))
+    readable_net3_file = paste0(as.character(as.list(match.call())[["readable_net"]]), "_",
+                                paste0(unique(readable_net[readable_net_ind]$unique_position), collapse = "_"), "_", 
+                                paste0(unique(readable_net[readable_net_ind]$Human_protein), collapse = "_"))
+    if(nchar(readable_net3_file) > 100) readable_net3_file = digest::digest(readable_net3_file, "sha1")
+    readable_net3_file = paste0(results_dir, readable_net3_file)
+    readable_net3 = unique(readable_net3[complete.cases(readable_net3)])
+    fwrite(readable_net3, 
+           readable_net3_file,
+           sep = "\t")
+    fwrite(network_types,
+           paste0(readable_net3_file,"types"),
+           sep = "\t")
+    
     cat(summary)
 }
+```
 
+```{r view_summaries}
 motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
-             motif = "E.V..G.{0,2}N.{0,1}Q", viral_query = NULL, human_seed = NULL)
+             motif = "E.V..G.{0,2}N.{0,1}Q", viral_query = "B4URF7", human_seed = NULL)
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = "E.V..G.{0,2}N.{0,1}Q", viral_query = "C5E527", human_seed = NULL)
 
 motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
              motif = "[ST].[ILV]$", viral_query = NULL, human_seed = NULL)
@@ -657,6 +754,9 @@ motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
              motif = "EI[IV]QQ", viral_query = NULL, human_seed = NULL)
  
 motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = NULL, viral_query = "P03126", human_seed = NULL)
+
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
              motif = "LR.{0,2}G.G.T", viral_query = NULL, human_seed = NULL)
 IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query[IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query$Pattern == "LR.{0,2}G.G.T"]
 
@@ -670,137 +770,88 @@ motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
 IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query[IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query$Pattern == "PE.AEA"]
 ```
 
-```{r}
-# reconstruct GRanges into network
-dataset4Cytoscape = function(uniprot_id = "P03126")
-    IntAct_GRanges =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query
-Nrows = length(IntAct_GRanges)
-IntAct_network = data.table(source = c(IntAct_GRanges$interacts_with,   IntAct_GRanges$IDs_domain_human, IntAct_GRanges$Pattern),
-                            target = c(IntAct_GRanges$IDs_domain_human, IntAct_GRanges$Pattern,          IntAct_GRanges$query),
-                            Sig =    c(rep(1, Nrows),                   IntAct_GRanges$Sig,              rep(1, Nrows)),
-                            type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
-                            type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
-IntAct_network = unique(IntAct_network[complete.cases(IntAct_network)])
-IntAct_network_types = unique(data.table(node = c(IntAct_network$source, IntAct_network$target),
-                                         type = c(IntAct_network$type_source, IntAct_network$type_target)))
-fwrite(IntAct_network, "./results/IntAct_network", sep = "\t")
-fwrite(IntAct_network_types, "./results/IntAct_network_types", sep = "\t")
+```{r write_cytoscape_files}
+IntAct_net = bechmark2Net(occurence_query = IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query,
+                        matching_known = IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query,
+                        top_domain = F)
+IntAct_net = readableNet(IntAct_net)
 
-#################################################  recovered motifs network
-IntAct_GRanges_rec =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query
-Nrows = length(IntAct_GRanges_rec)
-IntAct_network_rec = data.table(source = c(IntAct_GRanges_rec$interacts_with,   IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern),
-                                target = c(IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern,          IntAct_GRanges_rec$query),
-                                Sig =    c(rep(1, Nrows),                   IntAct_GRanges_rec$Sig,              rep(1, Nrows)),
-                                type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
-                                type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
-IntAct_network_rec = unique(IntAct_network_rec[complete.cases(IntAct_network_rec)])
-IntAct_network_rec_types = unique(data.table(node = c(IntAct_network_rec$source, IntAct_network_rec$target),
-                                             type = c(IntAct_network_rec$type_source, IntAct_network_rec$type_target)))
-fwrite(IntAct_network_rec, "./results/IntAct_network_rec", sep = "\t")
-fwrite(IntAct_network_rec_types, "./results/IntAct_network_rec_types", sep = "\t")
-#################################################  recovered motifs network for P03126
-IntAct_GRanges_rec =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query
-IntAct_GRanges_rec = IntAct_GRanges_rec[IntAct_GRanges_rec$query == "P03126"]
-Nrows = length(IntAct_GRanges_rec)
-IntAct_network_rec = data.table(source = c(IntAct_GRanges_rec$interacts_with,   IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern),
-                                target = c(IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern,          IntAct_GRanges_rec$query),
-                                Sig =    c(rep(1, Nrows),                   IntAct_GRanges_rec$Sig,              rep(1, Nrows)),
-                                type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
-                                type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
-IntAct_network_rec = unique(IntAct_network_rec[complete.cases(IntAct_network_rec)])
-IntAct_network_rec_types = unique(data.table(node = c(IntAct_network_rec$source, IntAct_network_rec$target),
-                                             type = c(IntAct_network_rec$type_source, IntAct_network_rec$type_target)))
-domain_prop_P03126 = unique(data.table(node = IntAct_GRanges_rec$IDs_domain_human,
-                                       p.value = IntAct_GRanges_rec$p.value))
-fwrite(IntAct_network_rec, "./results/IntAct_network_recP03126", sep = "\t")
-fwrite(IntAct_network_rec_types, "./results/IntAct_network_rec_typesP03126", sep = "\t")
-fwrite(domain_prop_P03126, "./results/domain_prop_P03126", sep = "\t")
-#################################################  recovered motifs network for P03428
-IntAct_GRanges_rec =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query
-IntAct_GRanges_rec = IntAct_GRanges_rec[IntAct_GRanges_rec$query == "P03428"]
-Nrows = length(IntAct_GRanges_rec)
-IntAct_network_rec = data.table(source = c(IntAct_GRanges_rec$interacts_with,   IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern),
-                                target = c(IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern,          IntAct_GRanges_rec$query),
-                                Sig =    c(rep(1, Nrows),                   IntAct_GRanges_rec$Sig,              rep(1, Nrows)),
-                                type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
-                                type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
-IntAct_network_rec = unique(IntAct_network_rec[complete.cases(IntAct_network_rec)])
-IntAct_network_rec_types = unique(data.table(node = c(IntAct_network_rec$source, IntAct_network_rec$target),
-                                             type = c(IntAct_network_rec$type_source, IntAct_network_rec$type_target)))
-domain_prop_P03428 = unique(data.table(node = IntAct_GRanges_rec$IDs_domain_human,
-                                       p.value = IntAct_GRanges_rec$p.value))
-fwrite(IntAct_network_rec, "./results/IntAct_network_recP03428", sep = "\t")
-fwrite(IntAct_network_rec_types, "./results/IntAct_network_rec_typesP03428", sep = "\t")
-fwrite(domain_prop_P03428, "./results/domain_prop_P03428", sep = "\t")
-#################################################  recovered motifs network for P06463
-IntAct_GRanges_rec =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query
-IntAct_GRanges_rec = IntAct_GRanges_rec[IntAct_GRanges_rec$query == "P06463"]
-Nrows = length(IntAct_GRanges_rec)
-IntAct_network_rec = data.table(source = c(IntAct_GRanges_rec$interacts_with,   IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern),
-                            target = c(IntAct_GRanges_rec$IDs_domain_human, IntAct_GRanges_rec$Pattern,          IntAct_GRanges_rec$query),
-                            Sig =    c(rep(1, Nrows),                   IntAct_GRanges_rec$Sig,              rep(1, Nrows)),
-                            type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
-                            type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
-IntAct_network_rec = unique(IntAct_network_rec[complete.cases(IntAct_network_rec)])
-IntAct_network_rec_types = unique(data.table(node = c(IntAct_network_rec$source, IntAct_network_rec$target),
-                                  type = c(IntAct_network_rec$type_source, IntAct_network_rec$type_target)))
-domain_prop_P06463 = unique(data.table(node = IntAct_GRanges_rec$IDs_domain_human,
-                                       p.value = IntAct_GRanges_rec$p.value))
-fwrite(IntAct_network_rec, "./results/IntAct_network_recP06463", sep = "\t")
-fwrite(IntAct_network_rec_types, "./results/IntAct_network_rec_typesP06463", sep = "\t")
-fwrite(domain_prop_P06463, "./results/domain_prop_P06463", sep = "\t")
-#################################################  candidate motifs network for P03070 ################################################
-IntAct_GRanges_cand =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query
-IntAct_GRanges_cand = IntAct_GRanges_cand[IntAct_GRanges_cand$query == "P03070"]
-Nrows = length(IntAct_GRanges_cand)
-IntAct_network_cand = data.table(source = c(IntAct_GRanges_cand$interacts_with,   IntAct_GRanges_cand$IDs_domain_human, IntAct_GRanges_cand$Pattern),
-                            target = c(IntAct_GRanges_cand$IDs_domain_human, IntAct_GRanges_cand$Pattern,          IntAct_GRanges_cand$query),
-                            Sig =    c(rep(1, Nrows),                   IntAct_GRanges_cand$Sig,              rep(1, Nrows)),
-                            type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
-                            type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
-IntAct_network_cand = unique(IntAct_network_cand[complete.cases(IntAct_network_cand)])
-IntAct_network_cand_types = unique(data.table(node = c(IntAct_network_cand$source, IntAct_network_cand$target),
-                                  type = c(IntAct_network_cand$type_source, IntAct_network_cand$type_target)))
-domain_prop_P03070 = unique(data.table(node = IntAct_GRanges_cand$IDs_domain_human,
-                                       p.value = IntAct_GRanges_cand$p.value))
-fwrite(IntAct_network_cand, "./results/IntAct_network_candP03070", sep = "\t")
-fwrite(IntAct_network_cand_types, "./results/IntAct_network_cand_typesP03070", sep = "\t")
-fwrite(domain_prop_P03070, "./results/domain_prop_P03070", sep = "\t")
-#################################################  candidate motifs network for Q2PJP0 #################################################
-IntAct_GRanges_cand =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query
-IntAct_GRanges_cand = IntAct_GRanges_cand[IntAct_GRanges_cand$query == "Q2PJP0"]
-Nrows = length(IntAct_GRanges_cand)
-IntAct_network_cand = data.table(source = c(IntAct_GRanges_cand$interacts_with,   IntAct_GRanges_cand$IDs_domain_human, IntAct_GRanges_cand$Pattern),
-                            target = c(IntAct_GRanges_cand$IDs_domain_human, IntAct_GRanges_cand$Pattern,          IntAct_GRanges_cand$query),
-                            Sig =    c(rep(1, Nrows),                   IntAct_GRanges_cand$Sig,              rep(1, Nrows)),
-                            type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
-                            type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
-IntAct_network_cand = unique(IntAct_network_cand[complete.cases(IntAct_network_cand)])
-IntAct_network_cand_types = unique(data.table(node = c(IntAct_network_cand$source, IntAct_network_cand$target),
-                                  type = c(IntAct_network_cand$type_source, IntAct_network_cand$type_target)))
-domain_prop_Q2PJP0 = unique(data.table(node = IntAct_GRanges_cand$IDs_domain_human,
-                                       p.value = IntAct_GRanges_cand$p.value))
-fwrite(IntAct_network_cand, "./results/IntAct_network_candQ2PJP0", sep = "\t")
-fwrite(IntAct_network_cand_types, "./results/IntAct_network_cand_typesQ2PJP0", sep = "\t")
-fwrite(domain_prop_Q2PJP0, "./results/domain_prop_Q2PJP0", sep = "\t")
-#################################################  candidate motifs network for Q67296 #################################################
-IntAct_GRanges_cand =  IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query
-IntAct_GRanges_cand = IntAct_GRanges_cand[IntAct_GRanges_cand$query == "Q67296"]
-Nrows = length(IntAct_GRanges_cand)
-IntAct_network_cand = data.table(source = c(IntAct_GRanges_cand$interacts_with,   IntAct_GRanges_cand$IDs_domain_human, IntAct_GRanges_cand$Pattern),
-                            target = c(IntAct_GRanges_cand$IDs_domain_human, IntAct_GRanges_cand$Pattern,          IntAct_GRanges_cand$query),
-                            Sig =    c(rep(1, Nrows),                   IntAct_GRanges_cand$Sig,              rep(1, Nrows)),
-                            type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
-                            type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
-IntAct_network_cand = unique(IntAct_network_cand[complete.cases(IntAct_network_cand)])
-IntAct_network_cand_types = unique(data.table(node = c(IntAct_network_cand$source, IntAct_network_cand$target),
-                                  type = c(IntAct_network_cand$type_source, IntAct_network_cand$type_target)))
-domain_prop_Q67296 = unique(data.table(node = IntAct_GRanges_cand$IDs_domain_human,
-                                       p.value = IntAct_GRanges_cand$p.value))
-fwrite(IntAct_network_cand, "./results/IntAct_network_candQ67296", sep = "\t")
-fwrite(IntAct_network_cand_types, "./results/IntAct_network_cand_typesQ67296", sep = "\t")
-fwrite(domain_prop_Q67296, "./results/domain_prop_Q67296", sep = "\t")
+# all motifs and domains
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = NULL, viral_query = NULL, human_seed = NULL)
+
+# known PDZ motifs
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = NULL, viral_query = "P03126", human_seed = NULL)
+
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = c("ET..$","[ST].V$", "[DE]T.[ILV]$"), viral_query = "P06463", human_seed = NULL)
+
+# Candidate PDZ motif
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = NULL, viral_query = "Q2PJP0", human_seed = NULL)
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = c("[DE]..V$", "[ST].[ILV]$", "[ST].V$"), viral_query = "Q2PJP0", human_seed = NULL)
+
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = NULL, viral_query = "P50804", human_seed = NULL)
+
+# candidate SH3 domain motif
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = "P..P.[HKR]", viral_query = NULL, human_seed = NULL)
+
+# candidate WD40 domain motif
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = "DSG", viral_query = NULL, human_seed = NULL)
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = "E.V..G.{0,2}N.{0,1}Q", viral_query = NULL, human_seed = NULL)
+
+# candidate LR.{0,2}G.G.T motif recognised by double-stranded RNA binding domain
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = "LR.{0,2}G.G.T", viral_query = NULL, human_seed = NULL)
+# candidate EI[IV]QQ motif potentially recognised by the EF hand domain
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = "EI[IV]QQ", viral_query = NULL, human_seed = NULL)
+
+# candidate motif L.{0,1}Q.LR potentially recognised by BAG domain
+motifSummary(IntAct$res$qslimfinder.Full_IntAct3.FALSE, IntAct_net,
+             motif = "L.{0,1}Q.LR", viral_query = NULL, human_seed = NULL)
+
+## Check that human proteins in this subnetwork were used to construst "successful" datasets - yes, they were - human protein ID is copied from "interacts_with" column of QSLIMFinder output which contains a seed protein for the dataset
+```
+
+```{r}
+# lets compare the number of large-scale studies in human vs viral
+# load ppi data
+IntAct_ppi = loadIntActFTP(dir = "./data_files/IntActRelease_2017Nov13/",
+                                                release = "2017Nov13")
+# human-viral
+all_viral_interaction_ppi = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
+                                                clean = TRUE, protein_only = TRUE,
+                                                MITABdata = IntAct_ppi, directory = "./data_files/",
+                                                releaseORdate = "2017Nov13")
+# human-human
+Full_IntAct_ppi = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
+                              clean = TRUE, protein_only = TRUE,
+                              MITABdata = IntAct_ppi, directory = "./data_files/",
+                                                releaseORdate = "2017Nov13")
+
+
+# number of interactions per study
+table(all_viral_interaction_ppi$data$Publication_Identifiers)[order(table(all_viral_interaction_ppi$data$Publication_Identifiers), decreasing = T)]
+countBaits = function(data){
+    viral_ppi_data = copy(data$data)
+    viral_prot = viral_ppi_data[, .(prot = c(IDs_interactor_A, IDs_interactor_B), 
+                                    bait_prey = c(bait_prey_status_A, bait_prey_status_B),
+                                    pmid = c(Publication_Identifiers, Publication_Identifiers))]
+    viral_prot = unique(viral_prot)
+    viral_prot[, bait_per_study := uniqueN(prot), by = .(pmid, bait_prey)]
+    viral_studies = unique(viral_prot[, .(bait_per_study, pmid, bait_prey)])
+    viral_studies[order(bait_per_study)][bait_prey == "bait"]
+}
+
+viral_studies = countBaits(all_viral_interaction_ppi)
+human_studies = countBaits(Full_IntAct_ppi)
 ```
 
 

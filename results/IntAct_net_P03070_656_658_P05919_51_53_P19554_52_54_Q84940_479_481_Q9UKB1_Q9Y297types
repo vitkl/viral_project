@@ -1,0 +1,22 @@
+node	node_readable	type	scale_by
+Q9UKB1	F-box/WD repeat-containing protein 11 (FBXW11)	human_protein	
+Q9Y297	F-box/WD repeat-containing protein 1A (BTRC)	human_protein	
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0168420159054956
+IPR017986	WD40-repeat-containing domain	human_domain	0.0168420159054956
+IPR001810	F-box domain	human_domain	0.0419180351388449
+IPR021977	D domain of beta-TrCP	human_domain	0.133528759101849
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0139111539099083
+IPR017986	WD40-repeat-containing domain	human_domain	0.0139111539099083
+IPR001810	F-box domain	human_domain	0.124599323563057
+IPR021977	D domain of beta-TrCP	human_domain	0.124599323563057
+		human_domain	
+DSG	DSG	viral_motif	1.79e-07
+DSG	DSG	viral_motif	6.93e-06
+DSG	DSG	viral_motif	2.88e-08
+DSG	DSG	viral_motif	1.01e-06
+DSG	DSG	viral_motif	1.13e-06
+DSG	DSG	viral_motif	3.56e-08
+P03070	Large T antigen (LT_SV40)	viral_protein	
+P05919	Protein Vpu (VPU_HV1H2)	viral_protein	
+P19554	Protein Vpu (VPU_HV1S1)	viral_protein	
+Q84940	Non-structural protein 1 (NSP1_ROTP5)	viral_protein	

@@ -1,0 +1,14 @@
+source	target	source_readable	target_readable	type_source	type_target
+P12931	IPR000719	Proto-oncogene tyrosine-protein kinase Src (SRC)	Protein kinase domain	human_protein	human_domain
+P12931	IPR000980	Proto-oncogene tyrosine-protein kinase Src (SRC)	SH2 domain	human_protein	human_domain
+P12931	IPR001245	Proto-oncogene tyrosine-protein kinase Src (SRC)	Serine-threonine/tyrosine-protein kinase, catalytic domain	human_protein	human_domain
+P12931	IPR001452	Proto-oncogene tyrosine-protein kinase Src (SRC)	SH3 domain	human_protein	human_domain
+P12931	IPR011009	Proto-oncogene tyrosine-protein kinase Src (SRC)	Protein kinase-like domain	human_protein	human_domain
+P12931	IPR020635	Proto-oncogene tyrosine-protein kinase Src (SRC)	Tyrosine-protein kinase, catalytic domain	human_protein	human_domain
+IPR000719	P..P.[HKR]	Protein kinase domain	P..P.[HKR]	human_domain	viral_motif
+IPR000980	P..P.[HKR]	SH2 domain	P..P.[HKR]	human_domain	viral_motif
+IPR001245	P..P.[HKR]	Serine-threonine/tyrosine-protein kinase, catalytic domain	P..P.[HKR]	human_domain	viral_motif
+IPR001452	P..P.[HKR]	SH3 domain	P..P.[HKR]	human_domain	viral_motif
+IPR011009	P..P.[HKR]	Protein kinase-like domain	P..P.[HKR]	human_domain	viral_motif
+IPR020635	P..P.[HKR]	Tyrosine-protein kinase, catalytic domain	P..P.[HKR]	human_domain	viral_motif
+P..P.[HKR]	Q9QPN3	P..P.[HKR]	Protein Nef (NEF_HV1LA)	viral_motif	viral_protein

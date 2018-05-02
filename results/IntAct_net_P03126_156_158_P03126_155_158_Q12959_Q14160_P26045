@@ -1,0 +1,20 @@
+source	target	source_readable	target_readable	type_source	type_target
+Q12959	IPR001478	Disks large homolog 1 (DLG1)	PDZ domain	human_protein	human_domain
+Q14160	IPR001478	Protein scribble homolog (SCRIB)	PDZ domain	human_protein	human_domain
+Q12959	IPR027417	Disks large homolog 1 (DLG1)	P-loop containing nucleoside triphosphate hydrolase	human_protein	human_domain
+Q12959	IPR008144	Disks large homolog 1 (DLG1)	Guanylate kinase-like domain	human_protein	human_domain
+Q12959	IPR008145	Disks large homolog 1 (DLG1)	Guanylate kinase/L-type calcium channel beta subunit	human_protein	human_domain
+Q14160	IPR032675	Protein scribble homolog (SCRIB)	Leucine-rich repeat domain, L domain-like	human_protein	human_domain
+P26045	IPR001478	Tyrosine-protein phosphatase non-receptor type 3 (PTPN3)	PDZ domain	human_protein	human_domain
+P26045	IPR011993	Tyrosine-protein phosphatase non-receptor type 3 (PTPN3)	PH domain-like	human_protein	human_domain
+IPR001478	[ST].[LV]$	PDZ domain	[ST].[LV]$	human_domain	viral_motif
+IPR001478	[DE]T.[ILV]$	PDZ domain	[DE]T.[ILV]$	human_domain	viral_motif
+IPR027417	[ST].[LV]$	P-loop containing nucleoside triphosphate hydrolase	[ST].[LV]$	human_domain	viral_motif
+IPR008144	[ST].[LV]$	Guanylate kinase-like domain	[ST].[LV]$	human_domain	viral_motif
+IPR008145	[ST].[LV]$	Guanylate kinase/L-type calcium channel beta subunit	[ST].[LV]$	human_domain	viral_motif
+IPR032675	[DE]T.[ILV]$	Leucine-rich repeat domain, L domain-like	[DE]T.[ILV]$	human_domain	viral_motif
+IPR001478	ET..$	PDZ domain	ET..$	human_domain	viral_motif
+IPR011993	ET..$	PH domain-like	ET..$	human_domain	viral_motif
+[ST].[LV]$	P03126	[ST].[LV]$	Protein E6 (VE6_HPV16)	viral_motif	viral_protein
+[DE]T.[ILV]$	P03126	[DE]T.[ILV]$	Protein E6 (VE6_HPV16)	viral_motif	viral_protein
+ET..$	P03126	ET..$	Protein E6 (VE6_HPV16)	viral_motif	viral_protein

@@ -1,0 +1,14 @@
+source	target	source_readable	target_readable	type_source	type_target
+Q12959	IPR001478	Disks large homolog 1 (DLG1)	PDZ domain	human_protein	human_domain
+Q14160	IPR001478	Protein scribble homolog (SCRIB)	PDZ domain	human_protein	human_domain
+Q14160	IPR032675	Protein scribble homolog (SCRIB)	Leucine-rich repeat domain, L domain-like	human_protein	human_domain
+Q96RT1	IPR001478	Erbin (ERBIN)	PDZ domain	human_protein	human_domain
+Q96RT1	IPR032675	Erbin (ERBIN)	Leucine-rich repeat domain, L domain-like	human_protein	human_domain
+IPR001478	[ST].[LV]$	PDZ domain	[ST].[LV]$	human_domain	viral_motif
+IPR001478	[DE]T.[ILV]$	PDZ domain	[DE]T.[ILV]$	human_domain	viral_motif
+IPR032675	[DE]T.[ILV]$	Leucine-rich repeat domain, L domain-like	[DE]T.[ILV]$	human_domain	viral_motif
+IPR001478	[DE]..V$	PDZ domain	[DE]..V$	human_domain	viral_motif
+IPR032675	[DE]..V$	Leucine-rich repeat domain, L domain-like	[DE]..V$	human_domain	viral_motif
+[ST].[LV]$	P50804	[ST].[LV]$	Protein E6 (VE6_HPV70)	viral_motif	viral_protein
+[DE]T.[ILV]$	P50804	[DE]T.[ILV]$	Protein E6 (VE6_HPV70)	viral_motif	viral_protein
+[DE]..V$	P50804	[DE]..V$	Protein E6 (VE6_HPV70)	viral_motif	viral_protein

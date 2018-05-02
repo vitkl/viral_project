@@ -1,0 +1,24 @@
+source	target	source_readable	target_readable	type_source	type_target
+Q14160	IPR001478	Protein scribble homolog (SCRIB)	PDZ domain	human_protein	human_domain
+P26045	IPR001478	Tyrosine-protein phosphatase non-receptor type 3 (PTPN3)	PDZ domain	human_protein	human_domain
+P26045	IPR011993	Tyrosine-protein phosphatase non-receptor type 3 (PTPN3)	PH domain-like	human_protein	human_domain
+P26045	IPR000299	Tyrosine-protein phosphatase non-receptor type 3 (PTPN3)	FERM domain	human_protein	human_domain
+P26045	IPR014352	Tyrosine-protein phosphatase non-receptor type 3 (PTPN3)	FERM/acyl-CoA-binding protein, 3-helical bundle	human_protein	human_domain
+P26045	IPR019748	Tyrosine-protein phosphatase non-receptor type 3 (PTPN3)	FERM central domain	human_protein	human_domain
+P26045	IPR019749	Tyrosine-protein phosphatase non-receptor type 3 (PTPN3)	Band 4.1 domain	human_protein	human_domain
+P26045	IPR029071	Tyrosine-protein phosphatase non-receptor type 3 (PTPN3)	Ubiquitin-related domain	human_protein	human_domain
+Q13425	IPR001478	Beta-2-syntrophin (SNTB2)	PDZ domain	human_protein	human_domain
+Q13425	IPR011993	Beta-2-syntrophin (SNTB2)	PH domain-like	human_protein	human_domain
+IPR001478	[DE]T.[ILV]$	PDZ domain	[DE]T.[ILV]$	human_domain	viral_motif
+IPR001478	ET..$	PDZ domain	ET..$	human_domain	viral_motif
+IPR011993	ET..$	PH domain-like	ET..$	human_domain	viral_motif
+IPR000299	ET..$	FERM domain	ET..$	human_domain	viral_motif
+IPR014352	ET..$	FERM/acyl-CoA-binding protein, 3-helical bundle	ET..$	human_domain	viral_motif
+IPR019748	ET..$	FERM central domain	ET..$	human_domain	viral_motif
+IPR019749	ET..$	Band 4.1 domain	ET..$	human_domain	viral_motif
+IPR029071	ET..$	Ubiquitin-related domain	ET..$	human_domain	viral_motif
+IPR001478	[ST].V$	PDZ domain	[ST].V$	human_domain	viral_motif
+IPR011993	[ST].V$	PH domain-like	[ST].V$	human_domain	viral_motif
+[DE]T.[ILV]$	P06463	[DE]T.[ILV]$	Protein E6 (VE6_HPV18)	viral_motif	viral_protein
+ET..$	P06463	ET..$	Protein E6 (VE6_HPV18)	viral_motif	viral_protein
+[ST].V$	P06463	[ST].V$	Protein E6 (VE6_HPV18)	viral_motif	viral_protein

@@ -1,0 +1,6 @@
+source	target	source_readable	target_readable	type_source	type_target
+Q9BRK5	IPR002048	45 kDa calcium-binding protein (SDF4)	EF-hand domain	human_protein	human_domain
+Q9BRK5	IPR011992	45 kDa calcium-binding protein (SDF4)	EF-hand domain pair	human_protein	human_domain
+IPR002048	EI[IV]QQ	EF-hand domain	EI[IV]QQ	human_domain	viral_motif
+IPR011992	EI[IV]QQ	EF-hand domain pair	EI[IV]QQ	human_domain	viral_motif
+EI[IV]QQ	Q5EP37	EI[IV]QQ	RNA-directed RNA polymerase catalytic subunit (Q5EP37_9INFA)	viral_motif	viral_protein

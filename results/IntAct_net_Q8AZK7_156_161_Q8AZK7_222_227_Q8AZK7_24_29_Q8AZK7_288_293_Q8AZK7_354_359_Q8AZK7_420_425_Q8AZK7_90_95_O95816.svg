@@ -1,0 +1,81 @@
+<?xml version="1.0" standalone="no"?>
+
+<svg 
+     version="1.1"
+     baseProfile="full"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:ev="http://www.w3.org/2001/xml-events"
+     x="0px"
+     y="0px"
+     width="923px"
+     height="570px"
+     viewBox="0 0 923 570"
+     >
+<title></title>
+<desc>Creator: FreeHEP Graphics2D Driver Producer: org.freehep.graphicsio.svg.SVGGraphics2D Revision Source:  Date: Friday, 27 April 2018 10:55:43 o'clock BST</desc>
+<g stroke-linejoin="miter" stroke-dashoffset="0" stroke-dasharray="none" stroke-width="1" stroke-miterlimit="10" stroke-linecap="square">
+<g fill-opacity="1" fill-rule="nonzero" stroke="none" fill="#ffffff">
+  <path d="M 0 0 L 923 0 L 923 570 L 0 570 L 0 0 z"/>
+</g> <!-- drawing style -->
+<g transform="matrix(1.183566329182039, 0, 0, 1.183566329182039, 461.5, 270.2634469871481)">
+<g stroke-linejoin="round" stroke-width="2" stroke-linecap="round" fill="none" stroke-opacity="1" stroke="#848484">
+  <path d="M 0 123.43267822265625 L 0 153.43267822265625"/>
+</g> <!-- drawing style -->
+</g> <!-- transform -->
+<g transform="matrix(1.183566329182039, 0, 0, 1.183566329182039, 461.5, 270.2634469871481)">
+<g stroke-linejoin="round" stroke-width="2" stroke-linecap="round" fill="none" stroke-opacity="1" stroke="#848484">
+  <path d="M 0 -46.35293197631836 C 0 -46.352928161621094 0 -39.63719940185547 0 -31.352928161621094 C 0 -23.06865692138672 0 -16.352930068969727 0 -16.35293197631836"/>
+</g> <!-- drawing style -->
+</g> <!-- transform -->
+<g transform="matrix(1.183566329182039, 0, 0, 1.183566329182039, 461.5, 270.2634469871481)">
+<g stroke-linejoin="round" stroke-width="2" stroke-linecap="round" fill="none" stroke-opacity="1" stroke="#848484">
+  <path d="M 0 -128.53073120117188 L 0 -98.53072357177734"/>
+</g> <!-- drawing style -->
+</g> <!-- transform -->
+<g transform="matrix(1.183566329182039, 0, 0, 1.183566329182039, 461.5, 270.2634469871481)">
+<g fill-opacity="1" fill-rule="nonzero" stroke="none" fill="#ff6666">
+  <path d="M -105 1.120269775390625 L -105 105.95948028564453 C -105 115.6096631438301 -97.17698110647659 123.43268203735352 -87.52679824829102 123.43268203735352 L 87.52679824829102 123.43268203735352 C 97.17698110647659 123.43268203735352 105 115.6096631438301 105 105.95948028564453 L 105 1.120269775390625 C 105 -8.529913082794952 97.17698110647659 -16.35293197631836 87.52679824829102 -16.35293197631836 L -87.52679824829102 -16.35293197631836 C -97.17698110647659 -16.35293197631836 -105 -8.529913082794952 -105 1.120269775390625 z"/>
+</g> <!-- drawing style -->
+</g> <!-- transform -->
+<g transform="matrix(1.183566329182039, 0, 0, 1.183566329182039, 397.91798460126563, 341.1154214012185)">
+<text fill-opacity="1" font-style="normal" font-family="TimesNewRomanPS-BoldMT" font-weight="normal" stroke="none" fill="#000000" font-size="20" x="0" y="0">L.{0,1}Q.LR</text>
+</g> <!-- transform -->
+<g transform="matrix(1.183566329182039, 0, 0, 1.183566329182039, 461.5, 270.2634469871481)">
+<g fill-opacity="1" fill-rule="nonzero" stroke="none" fill="#6666ff">
+  <path d="M -105 -211.65573120117188 L -105 -140.40573120117188 C -105 -133.8473497969312 -99.68338140424068 -128.53073120117188 -93.125 -128.53073120117188 L 93.125 -128.53073120117188 C 99.68338140424068 -128.53073120117188 105 -133.8473497969312 105 -140.40573120117188 L 105 -211.65573120117188 C 105 -218.21411260541254 99.68338140424068 -223.53073120117188 93.125 -223.53073120117188 L -93.125 -223.53073120117188 C -99.68338140424068 -223.53073120117188 -105 -218.21411260541254 -105 -211.65573120117188 z"/>
+</g> <!-- drawing style -->
+</g> <!-- transform -->
+<g transform="matrix(1.183566329182039, 0, 0, 1.183566329182039, 344.1489361310035, 42.18366326233502)">
+<text fill-opacity="1" font-style="normal" font-family="TimesNewRomanPS-BoldMT" font-weight="normal" stroke="none" fill="#000000" font-size="20" x="0" y="0">BAG family molecular </text>
+</g> <!-- transform -->
+<g transform="matrix(1.183566329182039, 0, 0, 1.183566329182039, 346.7842205358229, 69.40337718053524)">
+<text fill-opacity="1" font-style="normal" font-family="TimesNewRomanPS-BoldMT" font-weight="normal" stroke="none" fill="#000000" font-size="20" x="0" y="0">chaperone regulator 2 </text>
+</g> <!-- transform -->
+<g transform="matrix(1.183566329182039, 0, 0, 1.183566329182039, 419.0927259592881, 96.62309109873544)">
+<text fill-opacity="1" font-style="normal" font-family="TimesNewRomanPS-BoldMT" font-weight="normal" stroke="none" fill="#000000" font-size="20" x="0" y="0">(BAG2) </text>
+</g> <!-- transform -->
+<g transform="matrix(1.183566329182039, 0, 0, 1.183566329182039, 461.5, 270.2634469871481)">
+<g fill-opacity="1" fill-rule="nonzero" stroke="none" fill="#cccc00">
+  <path d="M -105 165.30767822265625 L -105 236.55767822265625 C -105 243.1160596268969 -99.68338140424068 248.43267822265625 -93.125 248.43267822265625 L 93.125 248.43267822265625 C 99.68338140424068 248.43267822265625 105 243.1160596268969 105 236.55767822265625 L 105 165.30767822265625 C 105 158.7492968184156 99.68338140424068 153.43267822265625 93.125 153.43267822265625 L -93.125 153.43267822265625 C -99.68338140424068 153.43267822265625 -105 158.7492968184156 -105 165.30767822265625 z"/>
+</g> <!-- drawing style -->
+</g> <!-- transform -->
+<g transform="matrix(1.183566329182039, 0, 0, 1.183566329182039, 351.0434411637875, 488.34486199004135)">
+<text fill-opacity="1" font-style="normal" font-family="TimesNewRomanPS-BoldMT" font-weight="normal" stroke="none" fill="#000000" font-size="20" x="0" y="0">Epstein-Barr nuclear </text>
+</g> <!-- transform -->
+<g transform="matrix(1.183566329182039, 0, 0, 1.183566329182039, 346.77266227088944, 515.5645759082415)">
+<text fill-opacity="1" font-style="normal" font-family="TimesNewRomanPS-BoldMT" font-weight="normal" stroke="none" fill="#000000" font-size="20" x="0" y="0">antigen leader protein </text>
+</g> <!-- transform -->
+<g transform="matrix(1.183566329182039, 0, 0, 1.183566329182039, 367.7913670523107, 542.7842898264417)">
+<text fill-opacity="1" font-style="normal" font-family="TimesNewRomanPS-BoldMT" font-weight="normal" stroke="none" fill="#000000" font-size="20" x="0" y="0">(EBNA5_EBVB9) </text>
+</g> <!-- transform -->
+<g transform="matrix(1.183566329182039, 0, 0, 1.183566329182039, 461.5, 270.2634469871481)">
+<g fill-opacity="1" fill-rule="nonzero" stroke="none" fill="#33ccff">
+  <path d="M -105 -92.00849962234497 L -105 -52.87515592575073 C -105 -49.27303110349806 -102.07990087282029 -46.35293197631836 -98.47777605056763 -46.35293197631836 L 98.47777605056763 -46.35293197631836 C 102.07990087282029 -46.35293197631836 105 -49.27303110349806 105 -52.87515592575073 L 105 -92.00849962234497 C 105 -95.61062444459763 102.07990087282029 -98.53072357177734 98.47777605056763 -98.53072357177734 L -98.47777605056763 -98.53072357177734 C -102.07990087282029 -98.53072357177734 -105 -95.61062444459763 -105 -92.00849962234497 z"/>
+</g> <!-- drawing style -->
+</g> <!-- transform -->
+<g transform="matrix(1.183566329182039, 0, 0, 1.183566329182039, 394.7452408770423, 192.00771761124278)">
+<text fill-opacity="1" font-style="normal" font-family="TimesNewRomanPS-BoldMT" font-weight="normal" stroke="none" fill="#000000" font-size="20" x="0" y="0">BAG domain</text>
+</g> <!-- transform -->
+</g> <!-- default stroke -->
+</svg> <!-- bounding box -->

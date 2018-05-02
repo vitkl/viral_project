@@ -1,0 +1,11 @@
+source	target	source_readable	target_readable	type_source	type_target
+Q96SI9	IPR014720	Spermatid perinuclear RNA-binding protein (STRBP)	Double-stranded RNA-binding domain	human_protein	human_domain
+Q96SI9	IPR006561	Spermatid perinuclear RNA-binding protein (STRBP)	DZF domain	human_protein	human_domain
+IPR014720	LR.{0,2}G.G.T	Double-stranded RNA-binding domain	LR.{0,2}G.G.T	human_domain	viral_motif
+IPR006561	LR.{0,2}G.G.T	DZF domain	LR.{0,2}G.G.T	human_domain	viral_motif
+LR.{0,2}G.G.T	P03496	LR.{0,2}G.G.T	Non-structural protein 1 (NS1_I34A1)	viral_motif	viral_protein
+LR.{0,2}G.G.T	Q0A2H0	LR.{0,2}G.G.T	Non-structural protein 1 (NS1_I59A0)	viral_motif	viral_protein
+LR.{0,2}G.G.T	Q20MH3	LR.{0,2}G.G.T	Non-structural protein 1 (Q20MH3_I33A0)	viral_motif	viral_protein
+LR.{0,2}G.G.T	Q2PJP0	LR.{0,2}G.G.T	Non-structural protein 1 (Q2PJP0_9INFA)	viral_motif	viral_protein
+LR.{0,2}G.G.T	Q3SBS4	LR.{0,2}G.G.T	Non-structural protein 1 (Q3SBS4_9INFA)	viral_motif	viral_protein
+LR.{0,2}G.G.T	Q6DP93	LR.{0,2}G.G.T	Non-structural protein 1 (Q6DP93_9INFA)	viral_motif	viral_protein

@@ -1,0 +1,5 @@
+node	node_readable	type	scale_by
+O95163	Elongator complex protein 1 (ELP1)	human_protein	
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0142308926095462
+E.V..G.{0,2}N.{0,1}Q	E.V..G.{0,2}N.{0,1}Q	viral_motif	0.000529
+C5E527	Polymerase basic protein 2 (C5E527_9INFA)	viral_protein	
