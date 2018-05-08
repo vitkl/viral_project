@@ -103,7 +103,14 @@ mBenchmarkMotifsROC(res_list_viral, data_type = "query", col_query = colors[1], 
                     measure1 = measure1, measure2 = measure2,
                     single_metric = single_metric,
                     single_metric_name = single_metric_name, x_query = 0.6,
-                    both_metrics_vs_cutoff = both_metrics_vs_cutoff)
+                    both_metrics_vs_cutoff = both_metrics_vs_cutoff, ROCR_data = T)
+sapply(colnames(benchmark), function(dataset) {
+    prec05cutoff = 1 - min(benchmark["ROC_prediction",dataset][[1]]@cutoffs[[1]][
+    benchmark["ROC_performance",dataset][[1]]@y.values[[1]] > 0.5], na.rm = T)
+known_at_prec05cutoff = res_list_viral[[dataset]]$overlapping_GRanges_query[
+    res_list_viral[[dataset]]$overlapping_GRanges_query$Sig <= prec05cutoff]
+unique(paste0(seqnames(known_at_prec05cutoff), "=", known_at_prec05cutoff$ID))
+})
 ```
 
 What is the minimal set size that returns motif with Sig < 0.05?  

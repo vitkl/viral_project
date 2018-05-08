@@ -93,6 +93,13 @@ res_list_viral = myBenchmarkMotifs(neg_set = "all_instances",
                                    filter_by_domain_data = NULL,
                                    motif_pval_cutoff = 1,
                                    dataset = datasets[1], datasets)
+sapply(colnames(benchmark), function(dataset) {
+    prec05cutoff = 1 - min(benchmark["ROC_prediction",dataset][[1]]@cutoffs[[1]][
+    benchmark["ROC_performance",dataset][[1]]@y.values[[1]] > 0.5], na.rm = T)
+known_at_prec05cutoff = res_list_viral$qslimfinder.Full_IntAct3cloudfixF.FALSE$overlapping_GRanges_query[
+    res_list_viral$qslimfinder.Full_IntAct3cloudfixF.FALSE$overlapping_GRanges_query$Sig <= prec05cutoff]
+unique(paste0(seqnames(known_at_prec05cutoff), "=", known_at_prec05cutoff$ID))
+})
 #####################################################################################
 plotVenn = function(res, ...){
     #grid.newpage()
