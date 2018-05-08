@@ -1,0 +1,237 @@
+---
+title: "Comprehensive benchmarking of motif instances (all types) - cloudfix=F option - only IntAct and BioPlex"
+author: "Vitalii Kleshchevnikov"
+date: "18/10/2017"
+output: 
+  html_document: 
+    keep_md: yes
+    toc: yes
+---
+
+```{r setup, include=TRUE}
+knitr::opts_chunk$set(echo = FALSE, fig.width = 12, fig.height = 8, warning = FALSE, message = FALSE)
+
+packages = c("MItools", "RColorBrewer", "devtools", "GenomicRanges")
+if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    # specifying mirror is necessary for some Linux systems
+    install.packages(packages_to_install, dependencies = T, repos = "http://mirrors.ebi.ac.uk/CRAN/")
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    source("https://bioconductor.org/biocLite.R")
+    biocLite(packages_to_install)
+    devtools::install_github("vitkl/MItools", dependencies = T)
+}
+suppressPackageStartupMessages({
+    library(GenomicRanges)
+    library(MItools)
+})
+
+colors = RColorBrewer::brewer.pal(2, "Dark2")
+
+N_negative_sets = 200
+motif_types = c("MOD", "LIG", "DOC") # "MOD", "LIG", "DOC" / "DEG", "CLV", "TRG"
+neg_set = c("all_instances") # "all_instances", "all_proteins", "random"
+predictor_col = "Sig" # "Sig" or "p.value" or "domain_motif_pval"
+normalise = F # if normalised Sig threshold of 0.3 becomes 1 (but this equalises Sig == 0.3 to true 1 - that is when motif was not found)
+#ROC:
+measure1 = "prec" # "tpr" or "prec"
+measure2 = "rec" # "fpr" or "rec"
+both_metrics_vs_cutoff = T
+single_metric = c("auc","prbe")[1]
+single_metric_name = c("Median AUC", "Prec-rec break-even")[1]
+
+datasets = c("qslimfinder.Full_IntAct3cloudfixF.FALSE",
+             "qslimfinder.BioPlex3cloudfixF.FALSE",
+             "qslimfinder.all_viral_interaction3cloudfixF.FALSE",
+             "qslimfinder.randomised_BioPlex3cloudfixF.FALSE",
+             "qslimfinder.randomised_all_viral_interaction3cloudfixF.FALSE",
+             "qslimfinder.Full_IntAct3.FALSE",
+             "qslimfinder.Vidal3.FALSE",
+             "qslimfinder.all_viral_interaction3.FALSE")
+descriptions = c("human network (full IntAct) searched \nfor motifs present in viral proteins",
+                 "human network (Bioplex data) searched \nfor motifs present in viral proteins",
+                 "human network (human-viral data only) searched \nfor motifs present in viral proteins",
+                 "randomised human network (Bioplex data) searched \nfor motifs present in viral proteins",
+                 "randomised human network (human-viral data only) searched \nfor motifs present in viral proteins",
+                 "human network (full IntAct) searched \nfor motifs present in viral proteins",
+                 "human network (Vidal's data only) searched \nfor motifs present in viral proteins",
+                 "human network (human-viral data only) searched \nfor motifs present in viral proteins")
+motif_setup_month = c("201804",
+                      "201804",
+                      "201804",
+                      "201804",
+                      "201804",
+                      "201802",
+                      "201802",
+                      "201802")
+```
+
+## Overview
+
+This analysis is identical to compr_benchmarking_strateg_IntAct_Vidal.Rmd.  
+
+The difference lies in datasets used and in setting QSLIMFinder cloudfix option to FALSE: cloudfix=T/F : Restrict output to clouds with 1+ fixed motif (recommended)
+
+
+
+### Not filtering by domain, predictor - SLIMFinder Sig
+
+```{r, not_filt_Sig}
+filter_by_domain_data = NULL # "p.value < 0.05" or "fdr_pval < 0.05 & domain_count_per_IDs_interactor_viral > 1" or NULL
+
+res_list_viral = mBenchmarkMotifs(datasets = datasets, 
+            descriptions = descriptions,
+            dir = "./", 
+            merge_domain_data = F, neg_set = neg_set,
+            domain_res_file = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
+            domain_results_obj = "res_count", motif_input_obj = "forSLIMFinder_Ready",
+            one_from_cloud = T, type = "QSLIMFinder",
+            dbfile_main = "./data_files/instances9606.gff",
+            dburl_main = "http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=",
+            dbfile_query = "./data_files/instances10239.gff",
+            dburl_query = "http://elm.eu.org/instances.gff?q=all&taxon=irus&instance_logic=",
+            query_res_query_only = T, motif_types = motif_types,
+            all_res_excl_query = T,
+            seed = 21, N = N_negative_sets, replace = T, within1sequence = T,
+            query_predictor_col = "Sig", all_predictor_col = "Sig", normalise = normalise,
+            minoverlap = 2, maxgap = 0, motif_setup_months = motif_setup_month,
+            count_ranges_by = list(by = "IDs_domain_human", name = "motif_occ_per_domain",
+                                   normalise_by = "domain_count", normalised_name = "normalised_motif_occ_per_domain"),
+            filter_by_domain_data = filter_by_domain_data)
+
+par(mar = c(6,7,4,4))
+benchmark = mBenchmarkMotifsROC(res_list_viral, data_type = "query", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.95 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1),
+                    measure1 = measure1, measure2 = measure2,
+                    single_metric = single_metric,
+                    single_metric_name = single_metric_name, x_query = 0.6,
+                    both_metrics_vs_cutoff = both_metrics_vs_cutoff, ROCR_data = T)
+sapply(colnames(benchmark), function(dataset) {
+    prec05cutoff = 1 - min(benchmark["ROC_prediction",dataset][[1]]@cutoffs[[1]][
+    benchmark["ROC_performance",dataset][[1]]@y.values[[1]] > 0.5], na.rm = T)
+known_at_prec05cutoff = res_list_viral[[dataset]]$overlapping_GRanges_query[
+    res_list_viral[[dataset]]$overlapping_GRanges_query$Sig <= prec05cutoff]
+unique(paste0(seqnames(known_at_prec05cutoff), "=", known_at_prec05cutoff$ID))
+})
+```
+
+What is the minimal set size that returns motif with Sig < 0.05?  
+`r min(res_list_viral$qslimfinder.Full_IntAct3.FALSE$occurence$SeqNum[res_list_viral$qslimfinder.Full_IntAct3.FALSE$occurence$Sig < 0.05])`  
+
+### Not filtering by domain, predictor - "domain_motif_pval" = Sig * domain_pval
+
+```{r, not_filt_domain_motif_pval, eval=FALSE}
+res_list_viral_w_domains = mBenchmarkMotifs(datasets = datasets, 
+            descriptions = descriptions,
+            dir = "./", 
+            merge_domain_data = T, neg_set = neg_set,
+            domain_res_file = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
+            domain_results_obj = "res_count", motif_input_obj = "forSLIMFinder_Ready",
+            one_from_cloud = T, type = "QSLIMFinder",
+            dbfile_main = "./data_files/instances9606.gff",
+            dburl_main = "http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=",
+            dbfile_query = "./data_files/instances10239.gff",
+            dburl_query = "http://elm.eu.org/instances.gff?q=all&taxon=irus&instance_logic=",
+            query_res_query_only = T, motif_types = motif_types,
+            all_res_excl_query = T,
+            seed = 21, N = N_negative_sets, replace = T, within1sequence = T,
+            query_predictor_col = predictor_col, all_predictor_col = predictor_col, normalise = normalise,
+            minoverlap = 2, maxgap = 0, motif_setup_months = motif_setup_month,
+            count_ranges_by = list(by = "IDs_domain_human", name = "motif_occ_per_domain",
+                                   normalise_by = "domain_count", normalised_name = "normalised_motif_occ_per_domain"),
+            filter_by_domain_data = filter_by_domain_data)
+
+par(mar = c(6,7,4,4))
+mBenchmarkMotifsROC(res_list_viral_w_domains, data_type = "query", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.95 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1), measure1 = measure1, measure2 = measure2)
+
+known = res_list_viral_w_domains$qslimfinder.Full_IntAct3cloudfixF.FALSE$occurence_query %in% res_list_viral_w_domains$qslimfinder.Full_IntAct3cloudfixF.FALSE$overlapping_GRanges_query
+qplot(res_list_viral_w_domains$qslimfinder.Full_IntAct3cloudfixF.FALSE$occurence_query$Sig,
+      res_list_viral_w_domains$qslimfinder.Full_IntAct3cloudfixF.FALSE$occurence_query$p.value,
+      geom = "point",
+      color = known) + scale_x_log10() + scale_y_log10() + xlab("motif p-value (Sig)") + ylab("domain p-value")
+```
+
+## Filtering by domain, predictor - SLIMFinder Sig
+
+```{r, filt_Sig}
+filter_by_domain_data = "p.value < 0.5" # "p.value < 0.05" or "fdr_pval < 0.05 & domain_count_per_IDs_interactor_viral > 1" or NULL
+
+res_list_viral_f = mBenchmarkMotifs(datasets = datasets, 
+            descriptions = descriptions,
+            dir = "./", 
+            merge_domain_data = F, neg_set = neg_set,
+            domain_res_file = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
+            domain_results_obj = "res_count", motif_input_obj = "forSLIMFinder_Ready",
+            one_from_cloud = T, type = "QSLIMFinder",
+            dbfile_main = "./data_files/instances9606.gff",
+            dburl_main = "http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=",
+            dbfile_query = "./data_files/instances10239.gff",
+            dburl_query = "http://elm.eu.org/instances.gff?q=all&taxon=irus&instance_logic=",
+            query_res_query_only = T, motif_types = motif_types,
+            all_res_excl_query = T,
+            seed = 21, N = N_negative_sets, replace = T, within1sequence = T,
+            query_predictor_col = "Sig", all_predictor_col = "Sig", normalise = normalise,
+            minoverlap = 2, maxgap = 0, motif_setup_months = motif_setup_month,
+            count_ranges_by = list(by = "IDs_domain_human", name = "motif_occ_per_domain",
+                                   normalise_by = "domain_count", normalised_name = "normalised_motif_occ_per_domain"),
+            filter_by_domain_data = filter_by_domain_data)
+
+par(mar = c(6,7,4,4))
+benchmark_f =  mBenchmarkMotifsROC(res_list_viral_f, data_type = "query",
+                                   col_query = colors[1], col_all = colors[2],
+                                   lwd = 4, text_args = "col = \"black\" | cex = 2",
+                                   legend_args = "x = 0.35 | y = 0.95 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"",
+                                   cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1),
+                                   measure1 = measure1, measure2 = measure2,
+                                   single_metric = single_metric,
+                                   single_metric_name = single_metric_name, x_query = 0.6,
+                                   both_metrics_vs_cutoff = both_metrics_vs_cutoff, ROCR_data = T)
+sapply(colnames(benchmark_f), function(dataset) {
+    prec05cutoff = 1 - min(benchmark_f["ROC_prediction",dataset][[1]]@cutoffs[[1]][
+    benchmark_f["ROC_performance",dataset][[1]]@y.values[[1]] > 0.5], na.rm = T)
+known_at_prec05cutoff = res_list_viral_f[[dataset]]$overlapping_GRanges_query[
+    res_list_viral_f[[dataset]]$overlapping_GRanges_query$Sig <= prec05cutoff]
+unique(paste0(seqnames(known_at_prec05cutoff), "=", known_at_prec05cutoff$ID))
+})
+```
+
+### Filtering by domain, predictor - "domain_motif_pval" = Sig * domain_pval
+
+Looks like proteins with many domains tend to interact with known motifs. If a protein has many domains one of them is going to have 
+
+```{r, filt_domain_motif_pval, eval=FALSE}
+res_list_viral_f_w_domains = mBenchmarkMotifs(datasets = datasets, 
+            descriptions = descriptions,
+            dir = "./", 
+            merge_domain_data = T, neg_set = neg_set,
+            domain_res_file = "./processed_data_files/what_we_find_VS_ELM_clust20171019.RData",
+            domain_results_obj = "res_count", motif_input_obj = "forSLIMFinder_Ready",
+            one_from_cloud = T, type = "QSLIMFinder",
+            dbfile_main = "./data_files/instances9606.gff",
+            dburl_main = "http://elm.eu.org/instances.gff?q=None&taxon=Homo%20sapiens&instance_logic=",
+            dbfile_query = "./data_files/instances10239.gff",
+            dburl_query = "http://elm.eu.org/instances.gff?q=all&taxon=irus&instance_logic=",
+            query_res_query_only = T, motif_types = motif_types,
+            all_res_excl_query = T,
+            seed = 21, N = N_negative_sets, replace = T, within1sequence = T,
+            query_predictor_col = predictor_col, all_predictor_col = predictor_col, normalise = normalise,
+            minoverlap = 2, maxgap = 0, motif_setup_months = motif_setup_month,
+            count_ranges_by = list(by = "IDs_domain_human", name = "motif_occ_per_domain",
+                                   normalise_by = "domain_count", normalised_name = "normalised_motif_occ_per_domain"),
+            filter_by_domain_data = filter_by_domain_data)
+
+par(mar = c(6,7,4,4))
+mBenchmarkMotifsROC(res_list_viral_f_w_domains, data_type = "query", col_query = colors[1], col_all = colors[2], lwd = 4, text_args = "col = \"black\" | cex = 2", legend_args = "x = 0.35 | y = 0.95 | cex = 1.7 | y.intersp = 1.2 | box.col = \"transparent\"| bg = \"transparent\"", cex.axis = 1.6, cex.lab = 1.7, cex.main = 2, xlim = c(0,1), ylim = c(0,1), measure1 = measure1, measure2 = measure2)
+```
+
+```{r, exit}
+Sys.Date. = Sys.Date()
+Sys.Date.
+session_info. = devtools::session_info()
+session_info.
+filter_by_domain_data_print = gsub(" ","",filter_by_domain_data)
+filter_by_domain_data_print = gsub("<*","",filter_by_domain_data_print)
+filter_by_domain_data_print = gsub("<*","",filter_by_domain_data_print)
+filter_by_domain_data_print = gsub("=*","",filter_by_domain_data_print)
+filename = paste0("./processed_data_files/compr_benchmarking_strategIntBiopRnad_cloudfixF_",format(Sys.Date., "%Y%m"),"_",paste0(motif_types,collapse = "_"),"_",neg_set,"_",predictor_col,"_", filter_by_domain_data_print,"_type_", measure1, measure2,".RData")
+save(list = ls(), file=filename)
+```
