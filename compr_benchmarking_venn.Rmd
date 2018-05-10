@@ -861,6 +861,17 @@ viral_studies = countBaits(all_viral_interaction_ppi)
 human_studies = countBaits(Full_IntAct_ppi)
 ```
 
+## Time spend per dataset
+
+```{r}
+motifs = fread("/Users/vk7/Desktop/ebi_projects/viral_project/qslimfinder.Full_IntAct3cloudfixF.FALSE/result/main_result.txt", stringsAsFactors = F)
+motifs[, time_in_sec := as.integer(as.POSIXct(strptime(RunTime, "%H:%M:%S")))]
+motifs[, time_in_sec := time_in_sec - min(time_in_sec)]
+dataset_times = unique(motifs[, .(Dataset, time_in_sec, SeqNum)])
+hist(dataset_times$time_in_sec)
+plot(dataset_times[SeqNum > 170 & SeqNum < 200]$SeqNum, dataset_times[SeqNum > 170 & SeqNum < 200]$time_in_sec)
+mean(dataset_times[SeqNum > 170 & SeqNum < 200]$time_in_sec)
+```
 
 ```{r, exit}
 Sys.Date. = Sys.Date()
