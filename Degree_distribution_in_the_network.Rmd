@@ -69,10 +69,12 @@ plotHumanViralDegree(degree_distributions_all)
 degree_distributions_two = humanViralDegree(data = HumanViralPPI,
   directory = "./data_files/", Interaction_detection_methods = "MI:0018",
   data_name = "two-hybrid data")
+plotHumanViralDegree(degree_distributions_two)
 degree_distributionsAPMS = humanViralDegree(data = HumanViralPPI,
   directory = "./data_files/", Interaction_detection_methods = "MI:0004",
   Identification_method = "MI:0433", PMIDs = NULL, inverse_filter = F,
   data_name = "AP-MS data")
+plotHumanViralDegree(degree_distributionsAPMS)
 degree_distributions = rbind(degree_distributions_all,degree_distributions_two,degree_distributionsAPMS)
 degree_distributions[, legend := gsub(":.+$","",legend)]
 p1 = plotHumanViralDegree(degree_distributions, y_text = 3)

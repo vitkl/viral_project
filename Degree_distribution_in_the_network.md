@@ -25,7 +25,7 @@ HumanViralPPI = loadHumanViralPPI(directory = "./data_files/",
 ```
 
 ```
-## Read 0.0% of 790620 rowsRead 6.3% of 790620 rowsRead 13.9% of 790620 rowsRead 16.4% of 790620 rowsRead 22.8% of 790620 rowsRead 31.6% of 790620 rowsRead 36.7% of 790620 rowsRead 45.5% of 790620 rowsRead 55.7% of 790620 rowsRead 59.4% of 790620 rowsRead 69.6% of 790620 rowsRead 79.7% of 790620 rowsRead 91.1% of 790620 rowsRead 790620 rows and 42 (of 42) columns from 2.995 GB file in 00:00:29
+## Read 0.0% of 790620 rowsRead 6.3% of 790620 rowsRead 16.4% of 790620 rowsRead 22.8% of 790620 rowsRead 31.6% of 790620 rowsRead 36.7% of 790620 rowsRead 44.3% of 790620 rowsRead 51.9% of 790620 rowsRead 59.4% of 790620 rowsRead 69.6% of 790620 rowsRead 79.7% of 790620 rowsRead 91.1% of 790620 rowsRead 790620 rows and 42 (of 42) columns from 2.995 GB file in 00:00:28
 ```
 
 ```r
@@ -81,6 +81,12 @@ degree_distributions_two = humanViralDegree(data = HumanViralPPI,
 ```
 
 ```r
+plotHumanViralDegree(degree_distributions_two)
+```
+
+![](Degree_distribution_in_the_network_files/figure-html/degree_all_data-1.png)<!-- -->
+
+```r
 degree_distributionsAPMS = humanViralDegree(data = HumanViralPPI,
   directory = "./data_files/", Interaction_detection_methods = "MI:0004",
   Identification_method = "MI:0433", PMIDs = NULL, inverse_filter = F,
@@ -94,13 +100,19 @@ degree_distributionsAPMS = humanViralDegree(data = HumanViralPPI,
 ```
 
 ```r
+plotHumanViralDegree(degree_distributionsAPMS)
+```
+
+![](Degree_distribution_in_the_network_files/figure-html/degree_all_data-2.png)<!-- -->
+
+```r
 degree_distributions = rbind(degree_distributions_all,degree_distributions_two,degree_distributionsAPMS)
 degree_distributions[, legend := gsub(":.+$","",legend)]
 p1 = plotHumanViralDegree(degree_distributions, y_text = 3)
 p1
 ```
 
-![](Degree_distribution_in_the_network_files/figure-html/degree_all_data-1.png)<!-- -->
+![](Degree_distribution_in_the_network_files/figure-html/degree_all_data-3.png)<!-- -->
 
 #### Degree distribution within human network based on specific datasets (Vidal's and Mann's)
 
