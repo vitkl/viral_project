@@ -450,6 +450,28 @@ viral = myBenchmarkMotifs(neg_set = "all_proteins",
                   return_all = T, merge_domain_data = T)
 ```
 
+# how many motif instance at a stringent threshold after domain filtering?
+
+```{r}
+instances = paste0(IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query$query, "_",
+                         IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query$Pattern)
+instances = instances[!is.na(IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query$IDs_domain_human)]
+instances = unique(instances)
+proteins = sapply((strsplit(instances, "_")), function(x) x[1])
+patterns = sapply((strsplit(instances, "_")), function(x) x[2])
+NLS_ind = grepl("KR", patterns) &
+    !grepl("G", patterns) & !grepl("P", patterns) & !grepl("H", patterns) &
+    !grepl("Q", patterns) & !grepl("S", patterns) & !grepl("E", patterns)
+
+non_NLS_instances = instances[!NLS_ind]
+non_NLS_proteins = unique(proteins[!NLS_ind])
+
+# how many proteins with motifs?
+length(non_NLS_proteins)
+# - 6 known
+length(non_NLS_proteins) - 6 
+```
+
 # do results overlap?
 
 ```{r}
