@@ -22,7 +22,7 @@
 
     И последнее, патенты по умолчанию представлены как USA, поскольку в CSL 1.0 нет переменной, соответствующей полю country в базе Zotero 4.0. Надеюсь, это будет исправлено в будущих версиях.</summary>
     <published>2010-03-22T10:40:00+06:00</published>
-    <updated>2018-06-03T22:53:42+00:00</updated>
+    <updated>2018-06-04T00:16:46+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale>
@@ -167,7 +167,7 @@
     <sort>
       <key macro="author-short"/>
     </sort>
-    <layout delimiter=";" prefix="(" suffix=")">
+    <layout delimiter="; " prefix="(" suffix=")">
       <text macro="author-short"/>
       <text macro="issued-year" prefix=", "/>
       <group prefix=", " delimiter=" ">
