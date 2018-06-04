@@ -1,0 +1,160 @@
+---
+title: 'Degree distribution in the human-human, human-viral and viral-viral network'
+author: "Vitalii Kleshchevnikov"
+date: "04/09/2017"
+output: 
+  html_document: 
+    keep_md: yes
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+packages = c("MItools", "rtracklayer", "ggplot2", "GGally", "RColorBrewer", "R.utils", "ontologyIndex")
+if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    # specifying mirror is necessary for some Linux systems
+    install.packages(packages_to_install, dependencies = T, repos = "http://mirrors.ebi.ac.uk/CRAN/")
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    source("https://bioconductor.org/biocLite.R")
+    biocLite(packages_to_install)
+    devtools::install_github("vitkl/MItools")
+}
+
+suppressPackageStartupMessages({
+    library(MItools)
+    library(rtracklayer)
+    library(ggplot2)
+    library(GGally)
+    library(RColorBrewer)
+    library(scales)
+    library(ontologyIndex)
+})
+```
+
+### Load PPI data and show degree distribution
+
+```{r load, fig.width=11, fig.height=8}
+# Load data.
+RData_file = paste0("./data_files/HumanViralPPI", "2017Nov13", ".RData")
+if(file.exists(RData_file)) load(RData_file) else {
+    HumanViralPPI = loadHumanViralPPI(directory = "./data_files/",
+                                  loadIntActFTP_dir = "./data_files/IntActRelease_2017Nov13/",
+                                  release = "2017Nov13")
+    save(HumanViralPPI, file = RData_file)
+}
+
+plotHumanViralDegree = function(degree_distributions, y_text = 2, median_text_size = 5.5, flip_grid = F, theme_std = theme_light, family_std = "Times New Roman"){
+    plot = ggplot(degree_distributions, aes(x = N, fill = legend, color = legend)) + geom_density() 
+    if(flip_grid) plot = plot + facet_grid(data_name ~ legend) else plot = plot + facet_grid(legend ~ data_name) 
+    plot = plot + theme_std() +
+        theme(strip.text.y = element_text(size = 18,angle = 0,family=family_std),
+              strip.text.x = element_text(size = 18,angle = 0,family=family_std),
+              plot.title=element_text(family=family_std),
+              panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
+              panel.background = element_rect(fill = '#FFFFFF', colour = 'grey'),
+              legend.position = "none",
+              axis.title = element_text(size = 18, family=family_std),
+              axis.text.x = element_text(size = 14, family=family_std),
+              axis.text.y = element_text(family=family_std)) +
+        scale_x_log10(breaks = c(1, 10, 100, 1000),
+                      labels = c(1, 10, 100, 1000)) +
+        xlab("Кількість взаємодій для кожного білку (степінь білку)") + ylab("Щільність розподілу")+
+        geom_vline(aes(xintercept = medianN, color = legend)) + 
+        geom_text(aes(x = medianN*9.5,label = medianN_lab, y = y_text), color = "black", size = median_text_size, family=family_std)+
+        annotation_logticks(sides = "b", color = "#444444", family=family_std)
+    plot
+}
+
+degree_distributions_all = humanViralDegree(data = HumanViralPPI,
+  directory = "./data_files/", data_name = "Full IntAct")
+# translate to Ukraininan
+toUkrainian = function(degree_distributions) {
+    degree_distributions = copy(degree_distributions)
+    # legend
+    degree_distributions[,legend := gsub("full human-human", "взаємодії білків \nлюдини", legend)]
+    degree_distributions[,legend := gsub("viral-viral \\(human host\\)", "взаємодії білків вірусів", legend)]
+    degree_distributions[,legend := gsub("viral-human", "взаємодії білків вірусів з білками людини", legend)]
+    degree_distributions[,legend := gsub("human-viral", "взаємодії білків людини з білками вірусів", legend)]
+    degree_distributions[,legend := gsub("viral-interacting proteins, human-human", "взаємодії білків \nлюдини, що є \nмішенями вірусів", legend)]
+    degree_distributions[,legend := gsub("viral-interacting proteins,\\\nhuman-human", "взаємодії білків \nлюдини, що є \nмішенями вірусів", legend)]
+    degree_distributions[,legend := gsub("interacting pairs", "взаємодіючих пар", legend)]
+    degree_distributions[,legend := gsub("human proteins", "білків людини", legend)]
+    degree_distributions[,legend := gsub("viral proteins", "білків вірусів", legend)]
+    # data_name Full IntAct
+    degree_distributions[,data_name := gsub("Full IntAct", "База даних IntAct", data_name)]
+    degree_distributions[,data_name := gsub("two-hybrid data", "Двогібридний метод", data_name)]
+    degree_distributions[,data_name := gsub("AP-MS data", "Мас-спектрометрія \nпісля афінної очистки", data_name)]
+    degree_distributions[,data_name := gsub("Vidal's data \\nincluding unpublished", "дані групи Відаля", data_name)]
+    degree_distributions[,data_name := gsub("Mann's \\n2015 paper", "дані групи Манна", data_name)]
+    # medianN_lab median + interacting partners
+    degree_distributions[medianN > 4, medianN_lab := gsub("interacting partners", "взаємодій", medianN_lab)]
+    degree_distributions[medianN <= 4, medianN_lab := gsub("interacting partners", "взаємодії", medianN_lab)]
+    degree_distributions[,medianN_lab := gsub("median", "Медіана", medianN_lab)]
+    degree_distributions
+}
+plotHumanViralDegree(toUkrainian(degree_distributions_all), theme_std = theme_bw)
+```
+
+#### Degree distribution based on all data, two-hybrid or affinity purification - mass spectrometry
+
+```{r, degree_all_data, fig.width=16, fig.height=10}
+degree_distributions_two = humanViralDegree(data = HumanViralPPI,
+  directory = "./data_files/", Interaction_detection_methods = "MI:0018",
+  data_name = "two-hybrid data")
+#plotHumanViralDegree(toUkrainian(degree_distributions_two), theme_std = theme_bw)
+degree_distributionsAPMS = humanViralDegree(data = HumanViralPPI,
+  directory = "./data_files/", Interaction_detection_methods = "MI:0004",
+  Identification_method = "MI:0433", PMIDs = NULL, inverse_filter = F,
+  data_name = "AP-MS data")
+#plotHumanViralDegree(toUkrainian(degree_distributionsAPMS), theme_std = theme_bw)
+degree_distributions = rbind(degree_distributions_all,degree_distributions_two,degree_distributionsAPMS)
+degree_distributions[, legend := gsub(":.+$","",legend)]
+
+plotHumanViralDegree(toUkrainian(degree_distributions), y_text = 3, theme_std = theme_bw)
+```
+
+#### Degree distribution within human network based on specific datasets (Vidal's and Mann's)
+
+```{r, degree_Vidal_data, fig.width=11, fig.height=8}
+degree_distributionsVidal = humanViralDegree(data = HumanViralPPI,
+  directory = "./data_files/", PMIDs = c("25416956", "unassigned1304"),
+  data_name = "Vidal's data \nincluding unpublished")
+#plotHumanViralDegree(toUkrainian(degree_distributionsVidal), theme_std = theme_bw)
+
+degree_distributionsMann = humanViralDegree(data = HumanViralPPI,
+  directory = "./data_files/", PMIDs = "26496610",
+  data_name = "Mann's \n2015 paper")
+#plotHumanViralDegree(toUkrainian(degree_distributionsMann), theme_std = theme_bw)
+```
+
+```{r, degree_Vidal_data_comb, fig.width=16, fig.height=8}
+degree_distributions = rbind(degree_distributions,degree_distributionsVidal,degree_distributionsMann)
+degree_distributions[, legend := gsub(":.+$","",legend)]
+degree_distributions = degree_distributions[legend %in% c("full human-human", "viral-interacting proteins, human-human"),]
+#degree_distributions[legend == "viral-interacting proteins, human-human",
+#                     legend := "viral-interacting proteins,\nhuman-human"]
+plotHumanViralDegree(toUkrainian(degree_distributions), y_text = 1, median_text_size = 7, theme_std = theme_bw)
+```
+
+```{r, degree_Vidal_data_comb_2h, fig.width=10.5, fig.height=8}
+two_h = degree_distributions[data_name %in% c("Full IntAct","two-hybrid data", "Vidal's data \nincluding unpublished")]
+two_h[, data_name := factor(data_name, levels = c("Full IntAct","two-hybrid data", "Vidal's data \nincluding unpublished", ordered = T))]
+plotHumanViralDegree(toUkrainian(two_h),
+                     y_text = 1, median_text_size = 7, theme_std = theme_bw)
+```
+
+```{r, degree_Vidal_data_comb_apms, fig.width=10.5, fig.height=8}
+ap_ms = degree_distributions[data_name %in% c("Full IntAct", "AP-MS data", "Mann's \n2015 paper")]
+ap_ms[, data_name := factor(data_name, levels = c("Full IntAct", "AP-MS data", "Mann's \n2015 paper"), ordered = T)]
+plotHumanViralDegree(toUkrainian(ap_ms),
+                     y_text = 1, median_text_size = 7, theme_std = theme_bw)
+```
+
+```{r, exit}
+Sys.Date. = Sys.Date()
+Sys.Date.
+session_info. = devtools::session_info()
+session_info.
+```

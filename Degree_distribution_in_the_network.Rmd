@@ -41,8 +41,10 @@ HumanViralPPI = loadHumanViralPPI(directory = "./data_files/",
                                   loadIntActFTP_dir = "./data_files/IntActRelease_2017Nov13/",
                                   release = "2017Nov13")
 
-plotHumanViralDegree = function(degree_distributions, y_text = 2, median_text_size = 5.5){
-    ggplot(degree_distributions, aes(x = N, fill = legend, color = legend)) + geom_density() + facet_grid(legend ~ data_name) + theme_light() +
+plotHumanViralDegree = function(degree_distributions, y_text = 2, median_text_size = 5.5, flip_grid = F){
+     plot = ggplot(degree_distributions, aes(x = N, fill = legend, color = legend)) + geom_density() 
+    if(flip_grid) plot = plot + facet_grid(data_name ~ legend) else plot = plot + facet_grid(legend ~ data_name) 
+    plot = plot + theme_light() +
         theme(strip.text.y = element_text(size = 18,angle = 0),
               strip.text.x = element_text(size = 18,angle = 0),
               panel.grid.major =  element_line(color = 'grey', size = 0.2, linetype = 'solid'),
@@ -101,6 +103,13 @@ degree_distributions[, legend := gsub(":.+$","",legend)]
 degree_distributions = degree_distributions[legend %in% c("full human-human", "viral-interacting proteins, human-human"),]
 degree_distributions[legend == "viral-interacting proteins, human-human",
                      legend := "viral-interacting proteins,\nhuman-human"]
-p4 = plotHumanViralDegree(degree_distributions, y_text = 1, median_text_size = 7)
-p4
+plotHumanViralDegree(degree_distributions, y_text = 1, median_text_size = 7)
+plotHumanViralDegree(degree_distributions, y_text = 1, median_text_size = 7, flip_grid = T)
+```
+
+```{r, exit}
+Sys.Date. = Sys.Date()
+Sys.Date.
+session_info. = devtools::session_info()
+session_info.
 ```
