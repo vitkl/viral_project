@@ -1,0 +1,257 @@
+---
+title: "Predict domains likely to mediate interaction and if they tend to bind linear motifs (the domains predicted are enriched in domains known to bind linear motifs)"
+author: "Vitalii Kleshchevnikov"
+date: "17/08/2017"
+output: 
+html_document: 
+keep_md: yes
+toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+packages = c("MItools", "rtracklayer", "ggplot2", "GGally", "RColorBrewer", "R.utils")
+if(mean(packages %in% names(installed.packages()[,"Package"])) != 1){
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    # specifying mirror is necessary for some Linux systems
+    install.packages(packages_to_install, dependencies = T, repos = "http://mirrors.ebi.ac.uk/CRAN/")
+    packages_to_install = packages[!packages %in% names(installed.packages()[,"Package"])]
+    source("https://bioconductor.org/biocLite.R")
+    biocLite(packages_to_install)
+    devtools::install_github("vitkl/MItools")
+}
+
+suppressPackageStartupMessages({
+    library(MItools)
+    library(rtracklayer)
+    library(ggplot2)
+    library(GGally)
+    library(RColorBrewer)
+})
+```
+
+## Setting up how many cores to use for analysis and fold-enrichment vs freqency
+
+```{r}
+# cores to use for multiprocessing: is the number of cores is small -> we are not on a cluster -> use all; if the number of cores is large -> we are on cluster -> use only 15 or 7 or 31 cores (n requested-1)
+if(detectCores() <= 4) cores_to_use = detectCores() - 1
+if(detectCores() > 4) cores_to_use = 31
+
+# how many permutations?
+N_permut = 500
+```
+
+# How many of the domains identified using our approach are in the ELM database (as compared to the population of all domains we tested)?
+
+## Calculate empirical pvalues using count of a domain among human interacting partners of each human protein
+
+```{r calculate_pvals_count}
+file_all = "./processed_data_files/human_net_w_domains"
+gunzip(paste0(file_all,".gz"))
+data_all = fread(file_all, sep = "\t", stringsAsFactors = F)
+unlink(file_all)
+
+file_BioPlex3 = "./processed_data_files/BioPlex3human_net_w_domains"
+gunzip(paste0(file_BioPlex3,".gz"))
+data_BioPlex3 = fread(file_BioPlex3, sep = "\t", stringsAsFactors = F)
+unlink(file_BioPlex3)
+
+# count function: set up standard parameters
+permuteCount = function(data, select_nodes = NULL, also_permuteYZ = F){
+    res = permutationPval(interactions2permute = IDs_interactor_human_A ~ IDs_interactor_human_B, # first set of interacting pairs (XY) that are to be permuted
+                          associations2test = IDs_interactor_human_A ~ IDs_domain_human_B, # set of interacting pairs to be tested (XZ), YZ interactions are assumed
+                          node_attr = list(IDs_interactor_human_A ~ IDs_interactor_human_A_degree,
+                                           IDs_domain_human_B ~ domain_count,
+                                           IDs_interactor_human_A + IDs_domain_human_B ~ domain_frequency_per_IDs_interactor_human_A),
+                          data = data,
+                          statistic = IDs_interactor_human_A + IDs_domain_human_B ~ .N,
+                          select_nodes = select_nodes,
+                          N = N_permut,
+                          cores = cores_to_use, seed = 2, also_permuteYZ = also_permuteYZ)
+    return(res)
+}
+# count: all protein interactions in IntAct and all domains - # permute IDs_interactor_human_A ~ IDs_interactor_human_B
+time = proc.time()
+res_count_all = permuteCount(data_all, select_nodes = NULL)
+proc.time() - time
+plot(res_count_all, main = "count: all proteins and domains")
+
+# count: protein interactions in BioPlex3 and all domains - # permute IDs_interactor_human_A ~ IDs_interactor_human_B
+time = proc.time()
+res_count_BioPlex3 = permuteCount(file_BioPlex3, select_nodes = NULL)
+proc.time() - time
+plot(res_count_BioPlex3, main = "count: all proteins and domains")
+```
+
+## Human protein degree and the background domain count of top-scoring proteins
+
+```{r plot_DegreeVScount, fig.height = 12, fig.width = 12, eval=FALSE}
+# count
+PermutResult2D(res = res_count_all, N = 250) +
+    ggtitle("2D-bin plots of 250 top-scoring human protein - domain pairs, \n statistic: count of a domain among interacting partners of a protein (IntAct)")
+
+# Fisher test p-value
+PermutResult2D(res = res_count_BioPlex3, N = 250) + 
+    ggtitle("2D-bin plots of 250 top-scoring human protein - domain pairs, \n statistic: count of a domain among interacting partners of a protein (BioPlex3)")
+```
+
+## Map domains known to interact with linear motifs from ELM to the domains we found
+
+```{r ELMdownload_and_map}
+if(!file.exists("./data_files/interactiondomains.tsv")) downloader::download("http://elm.eu.org/interactiondomains.tsv","./data_files/interactiondomains.tsv")
+interactiondomains = fread("./data_files/interactiondomains.tsv")
+interactiondomains[, pfam_id := `Interaction Domain Id`]
+
+domains_known = interactiondomains[, unique(pfam_id)]
+
+InterProScan_domains = readInterProGFF3("../viral_project/processed_data_files/all_human_viral_protein_domains.gff3.gz")
+# get InterProID to member database ID mapping
+InterPro2memberDB = getInterPro2memberDB(InterProScan_domains)
+InterPro2memberDB = InterPro2memberDB[complete.cases(InterPro2memberDB)]
+domains_known_mapped = unique(InterPro2memberDB[memberDBID %in% domains_known | InterProID %in% domains_known, InterProID])
+domains_not_mapped = unique(domains_known[!(domains_known %in% InterPro2memberDB$memberDBID | domains_known %in% InterPro2memberDB$InterProID)])
+```
+
+I did Fisher test to evaluate if the domains that we find are enriched in domains known to interact with linear motifs (from ELM). I have picked most likely human protein - human domain associations (by p-value). Then I counted how many known motif-binding domains we have found and did the Fisher test. Finally, I was choosing different p-value cutoffs.
+
+```{r overrepresentation_test}
+testEnrichment = function(N, res, rank_by = "p.value", domains_known_mapped, random = F, name = "", decreasing = F){
+    if(random) {
+        res$data_pval = unique(res$data_with_pval[,c("IDs_interactor_human_A", "IDs_domain_human_B", rank_by, "domain_type", "domain_count", "IDs_interactor_human_A_degree"), with = F])
+        domains_found = res$data_pval[sample(1:nrow(res$data_with_pval), N), unique(IDs_domain_human_B)]
+    } else {
+        res$data_pval = unique(res$data_with_pval[,c("IDs_interactor_human_A", "IDs_domain_human_B", rank_by, "domain_type", "domain_count", "IDs_interactor_human_A_degree"), with = F])
+        ind = order(unlist(res$data_pval[, c(rank_by), with = F]), decreasing = decreasing)[1:N] 
+        domains_found = res$data_pval[ind, unique(IDs_domain_human_B)]
+    }
+    
+    alldomains = res$data_with_pval[, unique(IDs_domain_human_B)]
+    known = factor(alldomains %in% domains_known_mapped, levels = c("TRUE", "FALSE"))
+    found = factor(alldomains %in% domains_found, levels = c("TRUE", "FALSE"))
+    table_res = table(known, found)
+    
+    test = fisher.test(table(known, found), alternative = "greater", conf.int = T)
+    
+    return(c(pval = test$p.value, odds_ratio = as.vector(test$estimate),
+             count = table_res["TRUE", "TRUE"], total_count = sum(as.logical(found)),
+             name = name))
+}
+runningTestEnrichment = function(res, name, rank_by = "p.value", decreasing = F){
+    enrichment = sapply(Ns, testEnrichment, res = res, 
+                        domains_known_mapped = domains_known_mapped, 
+                        name = name, rank_by = rank_by, decreasing = decreasing)
+    colnames(enrichment) = Ns
+    return(enrichment)
+}
+
+Ns = seq(25, 500, 25)
+# count
+enrichment = runningTestEnrichment(res_count_all, name = "domain frequency among interactors of a human protein, empirical pval")
+enrichment_justfreq = runningTestEnrichment(res_count_all, rank_by = "observed_statistic", name = "domain count among interactors of a human protein, frequency") res_count_BioPlex3
+enrichmentBioPlex3 = runningTestEnrichment(res_count_BioPlex3, name = "domain frequency among interactors of a human protein (BioPlex3), empirical pval")
+
+random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25), res){
+    set.seed(seed)
+    
+    quantiles = c(0.975, 0.75, 0.5, 0.25, 0.025)
+    quantile_names = c("97.5% quantile", "75% quantile", "median", "25% quantile", "2.5% quantile")
+    
+    pval_temp = replicate(N, {
+        enrichmentRANDOM = sapply(Ns, testEnrichment, res = res, domains_known_mapped = domains_known_mapped, random = T, name = "N random proteins")[1,]
+        names(enrichmentRANDOM) = Ns
+        as.numeric(enrichmentRANDOM)
+    })
+    pval = apply(pval_temp, 1, quantile, probs = quantiles)
+    rownames(pval) = quantile_names
+    colnames(pval) = Ns
+    
+    odds_ratio_temp = replicate(N, {
+        enrichmentRANDOM = sapply(Ns, testEnrichment, res = res, domains_known_mapped = domains_known_mapped, random = T, name = "N random proteins")[2,]
+        names(enrichmentRANDOM) = Ns
+        as.numeric(enrichmentRANDOM)
+    })
+    odds_ratio = apply(odds_ratio_temp, 1, quantile, probs = quantiles)
+    rownames(odds_ratio) = quantile_names
+    colnames(odds_ratio) = Ns
+    
+    count_temp = replicate(N, {
+        enrichmentRANDOM = sapply(Ns, testEnrichment, res = res, domains_known_mapped = domains_known_mapped, random = T, name = "N random proteins")[3,]
+        names(enrichmentRANDOM) = Ns
+        as.numeric(enrichmentRANDOM)
+    })
+    count = apply(count_temp, 1, quantile, probs = quantiles)
+    rownames(count) = quantile_names
+    colnames(count) = Ns
+    
+    return(list(pval = pval, odds_ratio = odds_ratio, count = count))
+}
+
+enrichmentRANDOM = random_domains(1000, 1, res = res_count_all)
+```
+
+As we include more proteins, the number of known domains we find increases and then levels off (probably because some of the known SLIM-binding domains do not interact with viral proteins). ????? is this true for human? should always increase
+
+```{r domains_found, fig.height = 9, fig.width = 10, eval=FALSE}
+plotEnrichment(enrichment, enrichment_justfreq, enrichmentBioPlex3,
+               random_domains = enrichmentRANDOM, 
+               domains_known_mapped = domains_known_mapped, type = "count", plot_type = "l")
+```
+
+## As we include more proteins, the Fisher test odds ratio decreases (we add more stuff that is not known). Odds ratio measures how much more likely are we to find a domain using our procedure if it’s a known domain as compared to if it’s not a known domain.
+
+```{r fisher_odds_ratio, fig.height = 9, fig.width = 10, eval=FALSE}
+plotEnrichment(enrichment, enrichment_justfreq, enrichmentBioPlex3,
+               random_domains = enrichmentRANDOM, 
+               domains_known_mapped = domains_known_mapped, type = "odds_ratio", plot_type = "l")
+```
+
+## corresponding P-values from the Fisher test 
+
+```{r fisher_pval, fig.height = 9, fig.width = 10, eval=FALSE}
+plotEnrichment(enrichment, enrichment_justfreq, enrichmentBioPlex3,
+               random_domains = enrichmentRANDOM, 
+               domains_known_mapped = domains_known_mapped, type = "pval", plot_type = "l")
+```
+
+## How many human proteins are known per each of the domain instances in top 200 protein-domain pairs?
+
+```{r top200_n_inter}
+selectTopHits = function(res, N){
+    res$data_pval = unique(res$data_with_pval[,.(IDs_interactor_human_A, IDs_domain_human_B, p.value, domain_type, domain_count, IDs_interactor_human_A_degree)])
+    pairs200pval = res$data_pval[order(p.value, decreasing = F)[1:N], max(p.value)]
+    
+    restop100 = res
+    restop100$data_with_pval = restop100$data_with_pval[p.value <= pairs200pval, ]
+    restop100$data_with_pval[, N_human_per_human_w_domain := length(unique(IDs_interactor_human_A)), by = .(IDs_interactor_human_B, IDs_domain_human_B)]
+    return(restop100)
+}
+restop100 = selectTopHits(res_count_all, N = 250)
+plot(restop100, IDs_interactor_human_B ~ N_human_per_human_w_domain)
+plot(restop100)
+```
+
+`r restop100$data_with_pval[N_human_per_human_w_domain >= 5, length(unique(IDs_interactor_human_B))]` human proteins with enriched domains have 5 or more human interacting partners.  
+`r restop100$data_with_pval[N_human_per_human_w_domain >= 10, length(unique(IDs_interactor_human_B))]` human proteins with enriched domains have 10 or more human interacting partners.  
+
+### what are those domains? are they known ELM-interacting domains? which proteins they are in? 
+
+```{r}
+restop100$data_with_pval[N_human_per_human_w_domain >= 10, unique(IDs_domain_human_B)]
+restop100$data_with_pval[N_human_per_human_w_domain >= 10, unique(IDs_domain_human_B)] %in% domains_known_mapped
+restop100$data_with_pval[N_human_per_human_w_domain >= 10 & IDs_domain_human_B == "IPR000504", unique(IDs_interactor_human_B)]
+DT::datatable(restop100$data_with_pval[N_human_per_human_w_domain >= 10,])
+```
+
+## R session information
+
+```{r}
+filename = paste0("./processed_data_files/predict_domain_human_clust",gsub("-","",Sys.Date()),".RData")
+filename = paste0("./processed_data_files/predict_domain_human_clust",gsub("-","","2017-10-19"),".RData")
+save(list = ls(), file=filename)
+#R.utils::gzip(filename = "./processed_data_files/predict_domain_human_clust11092017.RData",
+#              destname = "./processed_data_files/predict_domain_human_clust11092017.RData.gz",
+#              remove = T, overwrite = T)
+Sys.Date()
+sessionInfo()
+```

@@ -93,13 +93,13 @@ res_list_viral = myBenchmarkMotifs(neg_set = "all_instances",
                                    filter_by_domain_data = NULL,
                                    motif_pval_cutoff = 1,
                                    dataset = datasets[1], datasets)
-sapply(colnames(benchmark), function(dataset) {
-    prec05cutoff = 1 - min(benchmark["ROC_prediction",dataset][[1]]@cutoffs[[1]][
-    benchmark["ROC_performance",dataset][[1]]@y.values[[1]] > 0.5], na.rm = T)
-known_at_prec05cutoff = res_list_viral$qslimfinder.Full_IntAct3cloudfixF.FALSE$overlapping_GRanges_query[
-    res_list_viral$qslimfinder.Full_IntAct3cloudfixF.FALSE$overlapping_GRanges_query$Sig <= prec05cutoff]
-unique(paste0(seqnames(known_at_prec05cutoff), "=", known_at_prec05cutoff$ID))
-})
+#sapply(colnames(benchmark), function(dataset) {
+#    prec05cutoff = 1 - min(benchmark["ROC_prediction",dataset][[1]]@cutoffs[[1]][
+#       benchmark["ROC_performance",dataset][[1]]@y.values[[1]] > 0.5], na.rm = T)
+#    known_at_prec05cutoff = res_list_viral$qslimfinder.Full_IntAct3cloudfixF.FALSE$overlapping_GRanges_query[
+#        res_list_viral$qslimfinder.Full_IntAct3cloudfixF.FALSE$overlapping_GRanges_query$Sig <= prec05cutoff]
+#    unique(paste0(seqnames(known_at_prec05cutoff), "=", known_at_prec05cutoff$ID))
+#})
 #####################################################################################
 plotVenn = function(res, ...){
     #grid.newpage()
@@ -428,9 +428,10 @@ ggsave(filename = "Venn_filtered_MOD_LIG_DOC_DEG_CLV_TRG.svg", plot = figureMODL
 #####################################################################################
 ```
 
-# protein-domain-motif-protein network
+# Create protein-domain-motif-protein network
 
-```{r}
+```{r protein_domain_motif_protein_network}
+# choose motif types, domain and motif p-value threshold
 motif_types = c("MOD", "LIG", "DOC")
 # get motif & domains (stringent threshold)
 IntAct = myBenchmarkMotifs(neg_set = "all_proteins",
@@ -438,9 +439,9 @@ IntAct = myBenchmarkMotifs(neg_set = "all_proteins",
                   motif_pval_cutoff = 0.002,
                   dataset = datasets[1], datasets,
                   return_all = T, merge_domain_data = T)
-IntAct_lenient = myBenchmarkMotifs(neg_set = "all_proteins",
+IntAct_optimal = myBenchmarkMotifs(neg_set = "all_proteins",
                   filter_by_domain_data = "p.value < 0.5",
-                  motif_pval_cutoff = 0.3,
+                  motif_pval_cutoff = 0.039,
                   dataset = datasets[1], datasets,
                   return_all = T, merge_domain_data = T)
 viral = myBenchmarkMotifs(neg_set = "all_proteins",
@@ -901,5 +902,6 @@ Sys.Date.
 session_info. = devtools::session_info()
 session_info.
 filename = paste0("./processed_data_files/compr_benchmarking_venn_IntVidVir",format(Sys.Date., "%Y%m"),"_type_", measure1, measure2,".RData")
+filename
 save(list = ls(), file=filename)
 ```

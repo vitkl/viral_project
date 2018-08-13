@@ -46,11 +46,15 @@ I read interaction data and clean this data to make it more useble. Then, I filt
 # load protein-domain mapping
 protein_domain_pair = fread(file = "./processed_data_files/protein_domain_pair", stringsAsFactors = F, sep = "\t")
 # load PPI data
+all_human_interaction = fullInteractome(taxid = 9606, database = "IntActFTP", format = "tab27",
+                                        clean = TRUE, protein_only = TRUE, directory = "./data_files/")
 all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
                                         clean = TRUE, protein_only = TRUE, directory = "./data_files/")
 all_within_viral_interaction = fullInteractome(taxid = 10239, database = "IntActFTP", format = "tab27",
                                         clean = TRUE, protein_only = TRUE, directory = "./data_files/")
 all_within_viral_interaction = subsetMITABbyID(MITABdata = all_within_viral_interaction, ID_seed = unique(all_viral_interaction$data$IDs_interactor_B), within_seed = T, only_seed2nonseed = F)
+BioPlex3 = loadBioplex(dir = "./data_files/",
+                       url = "http://bioplex.hms.harvard.edu/data/BioPlex_2.3_interactionList.tsv")
 
 # N domains
 protein_domain_pair[IDs_protein %in% unique(all_viral_interaction$data$IDs_interactor_A), uniqueN(IDs_domain)]
@@ -63,18 +67,47 @@ qplot(protein_domain_pair[IDs_protein %in% unique(all_viral_interaction$data$IDs
 
 Viral proteins have `r length(unique(all_viral_interaction$data$pair_id))` known interacting pairs with human proteins while only `r length(unique(all_within_viral_interaction$data$pair_id))` with other viral proteins.  
 
-Both the network and the domain data contain more information than necessary for identifying domains likely to mediate interaction. Selecting only what's necessary: viral_protein_UniprotID - human_protein_UniprotID - human_domain_InterProID.  
+Both the interaction network table and the domain data contain more information than necessary for identifying domains likely to mediate interaction. Selecting only what's necessary: viral_protein_UniprotID - human_protein_UniprotID - human_domain_InterProID.  
 
 ```{r simplify_interactions}
 all_viral_interaction_simp = unique(all_viral_interaction$data[,.(IDs_interactor_human = IDs_interactor_A,
                                                                   IDs_interactor_viral = IDs_interactor_B,
                                                                   Taxid_interactor_human = Taxid_interactor_A,
                                                                   Taxid_interactor_viral = Taxid_interactor_B)])
+# human interactions need simplyfying
+all_human_interaction_simp = unique(all_human_interaction$data[,.(Taxid_interactor_human_A = Taxid_interactor_A,
+                                                                  Taxid_interactor_human_B = Taxid_interactor_B,
+                                                                  pair_id = pair_id)])
+# but also expanding into directional network (both A -> B and B -> A)
+all_human_interaction_simp[, c("IDs_interactor_human_A", "IDs_interactor_human_B") := tstrsplit(pair_id, "\\|")]
+all_human_interaction_simp = rbind(all_human_interaction_simp,
+                                   all_human_interaction_simp[,.(IDs_interactor_human_A = IDs_interactor_human_B,
+                                                                 IDs_interactor_human_B = IDs_interactor_human_A,
+                                                                 Taxid_interactor_human_A = Taxid_interactor_human_B,
+                                                                  Taxid_interactor_human_B = Taxid_interactor_human_A,
+                                                                  pair_id = pair_id)])
+all_human_interaction_simp[, pair_id := NULL]
+all_human_interaction_simp = unique(all_human_interaction_simp)
+
+# Human interactions from BioPlex3 BioPlex3
+BioPlex3_human_interaction_simp = unique(BioPlex3$data[,.(Taxid_interactor_human_A = Taxid_interactor_A,
+                                                                  Taxid_interactor_human_B = Taxid_interactor_B,
+                                                                  pair_id = pair_id)])
+# but also expanding into directional network (both A -> B and B -> A)
+BioPlex3_human_interaction_simp[, c("IDs_interactor_human_A", "IDs_interactor_human_B") := tstrsplit(pair_id, "\\|")]
+BioPlex3_human_interaction_simp = rbind(BioPlex3_human_interaction_simp,
+                                   BioPlex3_human_interaction_simp[,.(IDs_interactor_human_A = IDs_interactor_human_B,
+                                                                 IDs_interactor_human_B = IDs_interactor_human_A,
+                                                                 Taxid_interactor_human_A = Taxid_interactor_human_B,
+                                                                  Taxid_interactor_human_B = Taxid_interactor_human_A,
+                                                                  pair_id = pair_id)])
+BioPlex3_human_interaction_simp[, pair_id := NULL]
+BioPlex3_human_interaction_simp = unique(BioPlex3_human_interaction_simp)
 ```
 
 Next, the frequency of each domain is calculated and simplified domain information (IDs_protein, IDs_domain, domain_type) is integrated with the simplified network data described above.  
 
-```{r simplified interactions}
+```{r interactions_plus_domains_viral}
 protein_domain_pair_temp = copy(protein_domain_pair)[, IDs_interactor_human := IDs_protein][, IDs_protein := NULL][, IDs_domain_human := IDs_domain][, IDs_domain := NULL]
 
 # calculate total number of human proteins
@@ -112,7 +145,77 @@ viral_human_w_domains[is.na(IDs_domain_human), fold_enrichment := 0]
 fwrite(viral_human_w_domains, file = "./processed_data_files/viral_human_net_w_domains", sep = "\t")
 ```
 
-## Summary of the network
+```{r interactions_plus_domains_human}
+protein_domain_pair_temp = copy(protein_domain_pair)[, IDs_interactor_human_B := IDs_protein][, IDs_protein := NULL][, IDs_domain_human_B := IDs_domain][, IDs_domain := NULL]
+
+# calculate total number of human proteins
+protein_domain_pair_temp[, N_prot_w_interactors := length(unique(IDs_interactor_human_B))]
+# calculate domain count and frequency
+protein_domain_pair_temp[, domain_count := length(unique(IDs_interactor_human_B)), by = IDs_domain_human_B]
+protein_domain_pair_temp[, domain_frequency := domain_count / N_prot_w_interactors]
+
+# calculate network descriptive stats
+# viral protein degree
+all_human_interaction_simp[, IDs_interactor_human_A_degree := length(unique(IDs_interactor_human_B)), by = IDs_interactor_human_A]
+# human protein degree
+all_human_interaction_simp[, IDs_interactor_human_B_degree := length(unique(IDs_interactor_human_A)), by = IDs_interactor_human_B]
+
+# I keep all interactions even if a human protein has no known domain (all.x = F, all.y = T)
+human_w_domains = merge(protein_domain_pair_temp, all_human_interaction_simp, all.x = F, all.y = T, by = "IDs_interactor_human_B", allow.cartesian = T)
+
+# human domains per viral protein
+human_w_domains[, IDs_domain_human_B_per_IDs_interactor_human_A := length(unique(IDs_domain_human_B)), by = IDs_interactor_human_A]
+# viral protein per human domain
+human_w_domains[, IDs_interactor_human_A_per_IDs_domain_human_B := length(unique(IDs_interactor_human_A)), by = IDs_domain_human_B]
+
+# domain count but per viral protein human domain instances (how many proteins the domain is located in) per viral protein (ID) and human domain (ID)
+human_w_domains[, domain_count_per_IDs_interactor_human_A := length(unique(IDs_interactor_human_B)), by = .(IDs_interactor_human_A, IDs_domain_human_B)]
+human_w_domains[is.na(IDs_domain_human_B), domain_count_per_IDs_interactor_viral := 0]
+# domain frequency but per viral protein
+human_w_domains[, domain_frequency_per_IDs_interactor_human_A := domain_count_per_IDs_interactor_human_A / IDs_interactor_human_A_degree, by = IDs_interactor_human_A]
+human_w_domains[is.na(IDs_domain_human_B), domain_frequency_per_IDs_interactor_human_A := 0]
+# fold enrichment
+human_w_domains[, fold_enrichment := domain_frequency_per_IDs_interactor_human_A / domain_frequency]
+human_w_domains[is.na(IDs_domain_human_B), fold_enrichment := 0]
+
+
+# save resulting network
+fwrite(human_w_domains, file = "./processed_data_files/human_net_w_domains", sep = "\t")
+gzip("./processed_data_files/human_net_w_domains", remove = T, overwrite = T)
+```
+
+```{r interactions_plus_domains_human_BioPlex3}
+# calculate network descriptive stats
+# viral protein degree
+BioPlex3_human_interaction_simp[, IDs_interactor_human_A_degree := length(unique(IDs_interactor_human_B)), by = IDs_interactor_human_A]
+# human protein degree
+BioPlex3_human_interaction_simp[, IDs_interactor_human_B_degree := length(unique(IDs_interactor_human_A)), by = IDs_interactor_human_B]
+
+# I keep all interactions even if a human protein has no known domain (all.x = F, all.y = T)
+BioPlex3human_w_domains = merge(protein_domain_pair_temp, BioPlex3_human_interaction_simp, all.x = F, all.y = T, by = "IDs_interactor_human_B", allow.cartesian = T)
+
+# human domains per viral protein
+BioPlex3human_w_domains[, IDs_domain_human_B_per_IDs_interactor_human_A := length(unique(IDs_domain_human_B)), by = IDs_interactor_human_A]
+# viral protein per human domain
+BioPlex3human_w_domains[, IDs_interactor_human_A_per_IDs_domain_human_B := length(unique(IDs_interactor_human_A)), by = IDs_domain_human_B]
+
+# domain count but per viral protein human domain instances (how many proteins the domain is located in) per viral protein (ID) and human domain (ID)
+BioPlex3human_w_domains[, domain_count_per_IDs_interactor_human_A := length(unique(IDs_interactor_human_B)), by = .(IDs_interactor_human_A, IDs_domain_human_B)]
+BioPlex3human_w_domains[is.na(IDs_domain_human_B), domain_count_per_IDs_interactor_viral := 0]
+# domain frequency but per viral protein
+BioPlex3human_w_domains[, domain_frequency_per_IDs_interactor_human_A := domain_count_per_IDs_interactor_human_A / IDs_interactor_human_A_degree, by = IDs_interactor_human_A]
+BioPlex3human_w_domains[is.na(IDs_domain_human_B), domain_frequency_per_IDs_interactor_human_A := 0]
+# fold enrichment
+BioPlex3human_w_domains[, fold_enrichment := domain_frequency_per_IDs_interactor_human_A / domain_frequency]
+BioPlex3human_w_domains[is.na(IDs_domain_human_B), fold_enrichment := 0]
+
+
+# save resulting network
+fwrite(BioPlex3human_w_domains, file = "./processed_data_files/BioPlex3human_net_w_domains", sep = "\t")
+gzip("./processed_data_files/BioPlex3human_net_w_domains", remove = T, overwrite = T)
+```
+
+## Summary of the viral-human network
 
 The plot below show the relationships (2D histogram), distribution density (on the diagonal) and pearson correlation for a number of parameters characterising human domains, viral proteins or it's interactions:
 
@@ -151,6 +254,8 @@ d2_bin_plot = GGally::ggpairs(viral_human_w_domains[!is.na(IDs_domain_human),.(d
           strip.text.x = element_text(angle = 90, size = 10))
 d2_bin_plot
 ```
+
+## Summary of the viral-human network
 
 ## R session information
 

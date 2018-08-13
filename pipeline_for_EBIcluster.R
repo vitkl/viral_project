@@ -10,82 +10,88 @@
 ## Pipeline
 ######## uncomment relevant parts of the code
 library(rmarkdown)
+proj_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/"
 
-### Download interaction data, retrieve protein sequences, run InterProScan to predict domains
-#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/interactions_and_sequences.Rmd", 
+### 1 Download interaction data, retrieve protein sequences, run InterProScan to predict domains
+#rmarkdown::render(input = paste0(proj_path, "interactions_and_sequences.Rmd"), 
 #                  output_format = "html_document", 
-#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/interactions_and_sequences_clust.html")
+#                  output_file=paste0(proj_path, "interactions_and_sequences_clust.html"))
 
-### Remove redundant domain predictions
-#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/remove_redundant_domains.Rmd", 
+### 2 Remove redundant domain predictions
+#rmarkdown::render(input = paste0(proj_path, "remove_redundant_domains.Rmd"), 
 #                  output_format = "html_document", 
-#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/remove_redundant_domains_clust.html")
+#                  output_file=paste0(proj_path, "remove_redundant_domains_clust.html"))
 
-### Combine domain and protein interaction data
-#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/map_domains_to_human_viral_network.Rmd", 
-#                  output_format = "html_document", 
-#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/map_domains_to_human_viral_network_clust.html")
+### 3 Combine domain and protein interaction data
+rmarkdown::render(input = paste0(proj_path, "map_domains_to_human_viral_network.Rmd"), 
+                  output_format = "html_document", 
+                  output_file=paste0(proj_path, "map_domains_to_human_viral_network_clust.html"))
 
-### Estimate which domains are likely to mediate interaction
-#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/what_we_find_VS_ELM_count_justFisher.Rmd", 
+### 4 Estimate which domains are likely to mediate interactions of viral with human proteins
+#rmarkdown::render(input = paste0(proj_path, "predict_domain_viral_clust_count.Rmd"), 
 #                  output_format = "html_document", 
-#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/what_we_find_VS_ELM_count_justFisher_clust.html")
+#                  output_file=paste0(proj_path, "predict_domain_viral_clust_count.html"))
 
-### Analyse degree distribution in human and human-viral protein interaction network
-#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Degree_distribution_in_the_network.Rmd", 
-#                  output_format = "html_document", 
-#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Degree_distribution_in_the_network_clust.html")
+### 4.1 (optional) Estimate which domains are likely to mediate interactions between human proteins
+rmarkdown::render(input = paste0(proj_path, "predict_domain_human_clust_count.Rmd"), 
+                  output_format = "html_document", 
+                  output_file=paste0(proj_path, "predict_domain_human_clust_count.html"))
 
-### Motif search for known motifs in viral proteins using multiple strategies - as of 18.04 all jobs fails
-#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_4_known_motifs.Rmd", 
+### 5 Analyse degree distribution in human and human-viral protein interaction network
+#rmarkdown::render(input = paste0(proj_path, "Degree_distribution_in_the_network.Rmd"), 
 #                  output_format = "html_document", 
-#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_4_known_motifs_clust.html")
+#                  output_file=paste0(proj_path, "Degree_distribution_in_the_network_clust.html"))
 
-### Venn diagrams
-#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/compr_benchmarking_venn.Rmd", 
+### 6 Motif search for known motifs in viral proteins using multiple strategies - as of 18.04 all jobs fails
+#rmarkdown::render(input = paste0(proj_path, "Motif_search_4_known_motifs.Rmd"), 
 #                  output_format = "html_document", 
-#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/compr_benchmarking_venn_clust.html")
+#                  output_file=paste0(proj_path, "Motif_search_4_known_motifs_clust.html"))
+
+### 7 Venn diagrams
+#rmarkdown::render(input = paste0(proj_path, "compr_benchmarking_venn.Rmd"), 
+#                  output_format = "html_document", 
+#                  output_file=paste0(proj_path, "compr_benchmarking_venn_clust.html"))
 
 # In progress: check which datasets were already processed by motif search pipeline 
 # cat /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/RData_from_Motif_search_4_known_motifs
 
 ### Motif search using multiple strategies
-#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies.Rmd", 
+#rmarkdown::render(input = paste0(proj_path, "Motif_search_strategies.Rmd"), 
 #                  output_format = "html_document", 
-#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_clust.html")
+#                  output_file=paste0(proj_path, "Motif_search_strategies_clust.html"))
 
 # In progress: check which datasets were already processed by motif search pipeline 
 # cat /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/RData_from_Motif_search_strategies
 
 ### Motif prediction benchmarking using known motif instances (from ELM database)
-# rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/compr_benchmarking_strateg.Rmd", 
+# rmarkdown::render(input = paste0(proj_path, "compr_benchmarking_strateg.Rmd"), 
 #                  output_format = "html_document", 
-#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/compr_benchmarking_strateg.html")
+#                  output_file=paste0(proj_path, "compr_benchmarking_strateg.html"))
 
 
 
 #bsub -n 16 -q research-rh7 -M 16000 -R "rusage[mem=16000]" -Is $SHELL
 #library(rmarkdown);
-#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/what_we_find_VS_ELM_copy.Rmd", 
+#rmarkdown::render(input = paste0(proj_path, "what_we_find_VS_ELM_copy.Rmd"), 
 #                  output_format = "html_document", 
-#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/what_we_find_VS_ELM_copy_clust.html")
+#                  output_file=paste0(proj_path, "what_we_find_VS_ELM_copy_clust.html"))
 
 ### TEST for reproducibility
 
 ### Motif search using multiple strategies: IntAct Vidal only_viral
-#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral.Rmd", 
+#rmarkdown::render(input = paste0(proj_path, "Motif_search_strategies_IntAct_Vidal_viral.Rmd"), 
 #                  output_format = "html_document", 
-#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral.html")
+#                  output_file=paste0(proj_path, "Motif_search_strategies_IntAct_Vidal_viral.html"))
 
-rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral2.Rmd", 
-                  output_format = "html_document", 
-                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/Motif_search_strategies_IntAct_Vidal_viral_clust.html")
+#rmarkdown::render(input = paste0(proj_path, "Motif_search_strategies_IntAct_Vidal_viral2.Rmd"), 
+#                  output_format = "html_document", 
+#                  output_file=paste0(proj_path, "Motif_search_strategies_IntAct_Vidal_viral_clust.html"))
 
 ### re-run the same pipeline as an Rmd file
-#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/QSLIMFinder_instances_h2v.Rmd", 
+#rmarkdown::render(input = paste0(proj_path, "QSLIMFinder_instances_h2v.Rmd"), 
 #                  output_format = "html_document", 
-#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/QSLIMFinder_instances_h2v_FullIntAct2.html")
+#                  output_file=paste0(proj_path, "QSLIMFinder_instances_h2v_FullIntAct2.html"))
 
-#rmarkdown::render(input = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/QSLIMFinder_instances_h2v_Vidal.Rmd", 
+#rmarkdown::render(input = paste0(proj_path, "QSLIMFinder_instances_h2v_Vidal.Rmd"), 
 #                  output_format = "html_document", 
-#                  output_file="/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/QSLIMFinder_instances_h2v_Vidal2.html")
+#                  output_file=paste0(proj_path, "QSLIMFinder_instances_h2v_Vidal2.html"))
