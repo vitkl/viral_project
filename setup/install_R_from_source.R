@@ -1,3 +1,4 @@
+###############
 # install R from source
 wget http://cran.rstudio.com/src/base/R-latest.tar.gz
 tar xvf R-latest.tar.gz
@@ -24,7 +25,7 @@ export PATH
 
 # compile R
 make && make install
-
+############# EBI cluster
 ## installing clustermq
 ## install zeromq
 wget https://github.com/zeromq/libzmq/releases/download/v4.2.3/zeromq-4.2.3.tar.gz
@@ -44,8 +45,35 @@ export LD_LIBRARY_PATH="/nfs/research1/petsalaki/users/vitalii/R/lib64:/homes/vi
 install.packages("rzmq")
 install.packages('clustermq')
 #C. If everything is going OK so far …and you managed to successfully install clustermq in your R. Then try to give it a test example:
+library("clustermq")
 fx = function(x) x * 2
 Q(fx, x=1:3, n_jobs=1)
+##########
+
+############# Sanger cluster
+## installing clustermq
+## install zeromq
+wget https://github.com/zeromq/libzmq/releases/download/v4.2.5/zeromq-4.2.5.tar.gz
+tar xzvf zeromq-4.2.5.tar.gz
+#mv zeromq-4.2.5 $vk7/software/zeromq
+cd zeromq-4.2.5
+./configure --prefix=$vk7/software/zeromq
+make
+make check
+make install
+## Edit ~/.bashrc NOT ~/.bash_profile (doesn't start the right version of R on EBI cluster) file:
+PATH=$vk7/software/zeromq/bin:$PATH
+export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$vk7/software/zeromq/lib/pkgconfig"
+## One need to put the directory that contains file libzmq.pc to the PKG_CONFIG_PATH
+export LD_LIBRARY_PATH="$vk7/software/R/lib64:$vk7/software/zeromq/lib:$LD_LIBRARY_PATH"
+# install zrmq and clustermq
+install.packages("rzmq")
+install.packages('clustermq')
+#C. If everything is going OK so far …and you managed to successfully install clustermq in your R. Then try to give it a test example:
+library("clustermq")
+fx = function(x) x * 2
+Q(fx, x=1:3, n_jobs=1)
+##########
 
 ./configure --prefix=/nfs/research2/thornton/veronika/R/ --enable-R-shlib
 
