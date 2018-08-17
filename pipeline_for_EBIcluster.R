@@ -23,16 +23,18 @@ proj_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_projec
 #                  output_file=paste0(proj_path, "remove_redundant_domains_clust.html"))
 
 ### 3 Combine domain and protein interaction data
-rmarkdown::render(input = paste0(proj_path, "map_domains_to_human_viral_network.Rmd"), 
-                  output_format = "html_document", 
-                  output_file=paste0(proj_path, "map_domains_to_human_viral_network_clust.html"))
+#rmarkdown::render(input = paste0(proj_path, "map_domains_to_human_viral_network.Rmd"), 
+#                  output_format = "html_document", 
+#                  output_file=paste0(proj_path, "map_domains_to_human_viral_network_clust.html"))
 
 ### 4 Estimate which domains are likely to mediate interactions of viral with human proteins
+# bsub -n 32 -q research-rh7 -M 64000 -R "rusage[mem=64000]" Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
 #rmarkdown::render(input = paste0(proj_path, "predict_domain_viral_clust_count.Rmd"), 
 #                  output_format = "html_document", 
 #                  output_file=paste0(proj_path, "predict_domain_viral_clust_count.html"))
 
 ### 4.1 (optional) Estimate which domains are likely to mediate interactions between human proteins
+#bsub -n 1 -q research-rh7 -M 20000 -R "rusage[mem=20000]" Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
 rmarkdown::render(input = paste0(proj_path, "predict_domain_human_clust_count.Rmd"), 
                   output_format = "html_document", 
                   output_file=paste0(proj_path, "predict_domain_human_clust_count.html"))

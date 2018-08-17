@@ -1,0 +1,77 @@
+Connecting ebi via SSH ...
+Sending common data ...
+Submitting 60 worker jobs (ID: 6264) ...
+Running 600 calculations (1 calls/chunk) ...
+60 warnings occurred in processing                                                                                  NAs introduced by coercionNAs introduced by coercionNAs introduced by coercionNAs introduced by coercionNAs introduced by coercionNAs introduced by coercionNAs introduced by coercion
+(#10) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#11) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#12) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#14) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#15) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#16) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#17) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#19) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#2) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#20) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#21) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#22) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#23) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#24) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#25) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#26) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#27) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#28) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#29) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#3) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#30) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#32) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#33) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#34) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#35) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#36) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#37) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#38) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#39) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#4) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#40) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#41) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#42) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#43) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#44) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#45) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#46) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#47) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#48) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#49) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#5) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#50) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#51) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#52) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#57) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#6) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#7) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#71) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#8) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#9) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’Master: [11412.8s 1.3% CPU]; Worker: [avg 98.4% CPU, max 11942.6 Mb]
+     user    system   elapsed 
+  184.811    72.863 11490.371 
+Connecting ebi via SSH ...
+Sending common data ...
+Submitting 13 worker jobs (ID: 7362) ...
+Running 13 calculations (1 calls/chunk) ...
+NAs introduced by coercion13 warnings occurred in processing                                                        NAs introduced by coercion
+(#1) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#10) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#11) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#12) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#13) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#2) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#3) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#4) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#5) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#6) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#7) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#8) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’
+(#9) replacing previous import ‘GenomicRanges::shift’ by ‘data.table::shift’ when loading ‘MItools’Master: [655.4s 0.3% CPU]; Worker: [avg 97.5% CPU, max 1585.2 Mb]
+   user  system elapsed 
+  4.704   3.804 661.896 
