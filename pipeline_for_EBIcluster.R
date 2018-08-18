@@ -11,6 +11,7 @@
 ######## uncomment relevant parts of the code
 library(rmarkdown)
 proj_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/"
+proj_path = "/nfs/research1/petsalaki/users/vitalii/vitalii/viral_project/"
 
 ### 1 Download interaction data, retrieve protein sequences, run InterProScan to predict domains
 #rmarkdown::render(input = paste0(proj_path, "interactions_and_sequences.Rmd"), 
@@ -34,7 +35,8 @@ proj_path = "/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_projec
 #                  output_file=paste0(proj_path, "predict_domain_viral_clust_count.html"))
 
 ### 4.1 (optional) Estimate which domains are likely to mediate interactions between human proteins
-#bsub -n 1 -q research-rh7 -M 20000 -R "rusage[mem=20000]" Rscript /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
+#bsub -n 1 -q research-rh7 -M 32000 -R "rusage[mem=32000] select[mem>32000]" Rscript /nfs/research1/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
+#/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
 rmarkdown::render(input = paste0(proj_path, "predict_domain_human_clust_count.Rmd"), 
                   output_format = "html_document", 
                   output_file=paste0(proj_path, "predict_domain_human_clust_count.html"))

@@ -45,7 +45,7 @@ cores_to_use = NULL
 N_permut = 1000
 
 filename = paste0("./processed_data_files/predict_domain_human_clust",gsub("-","",Sys.Date()),".RData")
-filename = paste0("./processed_data_files/predict_domain_human_clust",gsub("-","","2018-08-17"),".RData")
+filename = paste0("./processed_data_files/predict_domain_human_clust",gsub("-","","2018-08-19"),".RData")
 ```
 
 # How many of the domains identified using our approach are in the ELM database (as compared to the population of all domains we tested)?
@@ -66,7 +66,7 @@ data_BioPlex3 = data_BioPlex3[IDs_interactor_human_B != "UNKNOWN"]
 unlink(file_BioPlex3)
 
 # count function: set up standard parameters
-permuteCount = function(data, select_nodes = NULL, also_permuteYZ = F, N_permut = 10){
+permuteCount = function(data, select_nodes = NULL, also_permuteYZ = F, N_permut = 10, clustermq_jobs = 60, clustermq_mem = 12500){
     permutationPval(interactions2permute = IDs_interactor_human_A ~ IDs_interactor_human_B, # first set of interacting pairs (XY) that are to be permuted
                     associations2test = IDs_interactor_human_A ~ IDs_domain_human_B, # set of interacting pairs to be tested (XZ), YZ interactions are assumed
                     node_attr = list(IDs_interactor_human_A ~ IDs_interactor_human_A_degree,
@@ -77,16 +77,16 @@ permuteCount = function(data, select_nodes = NULL, also_permuteYZ = F, N_permut 
                     select_nodes = select_nodes,
                     N = N_permut,
                     cores = NULL, seed = 2, also_permuteYZ = F,
-                    clustermq = T, clustermq_mem = 12500,
-                    split_comp_inner_N = 3, clustermq_jobs = 60,
+                    clustermq = T, clustermq_mem = clustermq_mem,
+                    split_comp_inner_N = 4, clustermq_jobs = clustermq_jobs,
                     clustermq_log_worker = F)
 }
 # count: all protein interactions in IntAct and all domains - # permute IDs_interactor_human_A ~ IDs_interactor_human_B
-load(filename)
+if(file.exists(filename)) load(filename)
 if(!"res_count_all" %in% objects()){
     time = proc.time()
     res_count_all = permuteCount(data_all, select_nodes = IDs_domain_human_B ~ domain_count >= 1,
-                                 N_permut = 1800)
+                                 N_permut = 5000, clustermq_jobs = 100, clustermq_mem = 12500)
     proc.time() - time
     # save results
     save(list = ls(), file=filename)
@@ -94,10 +94,10 @@ if(!"res_count_all" %in% objects()){
 plot(res_count_all, main = "count: all proteins and domains")
 
 # count: protein interactions in BioPlex3 and all domains - # permute IDs_interactor_human_A ~ IDs_interactor_human_B
-if(!"res_count_all" %in% objects()){
+if(!"res_count_BioPlex3" %in% objects()){
     time = proc.time()
     res_count_BioPlex3 = permuteCount(data_BioPlex3, select_nodes = IDs_domain_human_B ~ domain_count >= 1,
-                                      N_permut = 40)
+                                      N_permut = 10000, clustermq_jobs = 100, clustermq_mem = 2500)
     proc.time() - time
     # save results
     save(list = ls(), file=filename)
@@ -172,7 +172,7 @@ enrichment = runningTestEnrichment(res_count_all, name = "domain frequency among
 enrichment_justfreq = runningTestEnrichment(res_count_all, rank_by = "observed_statistic", name = "domain count among interactors of a human protein, frequency", Ns = Ns) 
 enrichmentBioPlex3 = runningTestEnrichment(res_count_BioPlex3, name = "domain frequency among interactors of a human protein (BioPlex3), empirical pval", Ns = Ns)
 
-random_domains = function(N = 100, seed = seed, Ns = seq(25, 500, 25), res){
+random_domains = function(N = 100, seed = seed, Ns = seq(25, 1000, 40), res){
     set.seed(seed)
     
     quantiles = c(0.975, 0.75, 0.5, 0.25, 0.025)
