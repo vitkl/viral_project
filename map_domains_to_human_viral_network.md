@@ -10,7 +10,7 @@ output:
 
 
 
-Date: 2018-08-15 21:08:40
+Date: 2018-08-21 10:34:35
 
 ## Map domain information on the protein interaction network
 
@@ -306,6 +306,12 @@ fwrite(human_w_domains, file = "./processed_data_files/human_net_w_domains", sep
 gzip("./processed_data_files/human_net_w_domains", remove = T, overwrite = T)
 ```
 
+```
+## Warning in file.remove(filename): cannot remove file './
+## processed_data_files/human_net_w_domains', reason 'No such file or
+## directory'
+```
+
 
 ```r
 # calculate network descriptive stats
@@ -324,7 +330,7 @@ BioPlex3human_w_domains[, IDs_interactor_human_A_per_IDs_domain_human_B := lengt
 
 # domain count but per viral protein human domain instances (how many proteins the domain is located in) per viral protein (ID) and human domain (ID)
 BioPlex3human_w_domains[, domain_count_per_IDs_interactor_human_A := length(unique(IDs_interactor_human_B)), by = .(IDs_interactor_human_A, IDs_domain_human_B)]
-BioPlex3human_w_domains[is.na(IDs_domain_human_B), domain_count_per_IDs_interactor_viral := 0]
+BioPlex3human_w_domains[is.na(IDs_domain_human_B), domain_count_per_IDs_interactor_human_A := 0]
 # domain frequency but per viral protein
 BioPlex3human_w_domains[, domain_frequency_per_IDs_interactor_human_A := domain_count_per_IDs_interactor_human_A / IDs_interactor_human_A_degree, by = IDs_interactor_human_A]
 BioPlex3human_w_domains[is.na(IDs_domain_human_B), domain_frequency_per_IDs_interactor_human_A := 0]
@@ -396,7 +402,7 @@ Sys.Date()
 ```
 
 ```
-## [1] "2018-08-15"
+## [1] "2018-08-21"
 ```
 
 ```r
