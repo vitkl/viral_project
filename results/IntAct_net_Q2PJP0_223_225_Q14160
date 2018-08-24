@@ -1,0 +1,4 @@
+source	target	source_readable	target_readable	type_source	type_target
+Q14160	IPR001478	Protein scribble homolog (SCRIB)	PDZ domain	human_protein	human_domain
+IPR001478	[ST].[ILV]$	PDZ domain	[ST].[ILV]$	human_domain	viral_motif
+[ST].[ILV]$	Q2PJP0	[ST].[ILV]$	Non-structural protein 1 (Q2PJP0_9INFA)	viral_motif	viral_protein

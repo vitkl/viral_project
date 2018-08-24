@@ -1,6 +1,6 @@
 node	node_readable	type	scale_by
-Q9BRK5	45 kDa calcium-binding protein (SDF4)	human_protein	
+Q9BRK5	45 kDa calcium-binding protein (SDF4)	human_protein	""
 IPR002048	EF-hand domain	human_domain	0.111538514192444
 IPR011992	EF-hand domain pair	human_domain	0.111538514192444
 EI[IV]QQ	EI[IV]QQ	viral_motif	0.000666
-Q5EP37	RNA-directed RNA polymerase catalytic subunit (Q5EP37_9INFA)	viral_protein	
+Q5EP37	RNA-directed RNA polymerase catalytic subunit (Q5EP37_9INFA)	viral_protein	""

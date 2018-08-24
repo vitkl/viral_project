@@ -1,0 +1,9 @@
+source	target	source_readable	target_readable	type_source	type_target
+Q13546	IPR000719	Receptor-interacting serine/threonine-protein kinase 1 (RIPK1)	Protein kinase domain	human_protein	human_domain
+Q13546	IPR011009	Receptor-interacting serine/threonine-protein kinase 1 (RIPK1)	Protein kinase-like domain	human_protein	human_domain
+Q13546	IPR025735	Receptor-interacting serine/threonine-protein kinase 1 (RIPK1)	RHIM domain	human_protein	human_domain
+IPR000719	PE.AEA	Protein kinase domain	PE.AEA	human_domain	viral_motif
+IPR011009	PE.AEA	Protein kinase-like domain	PE.AEA	human_domain	viral_motif
+IPR025735	PE.AEA	RHIM domain	PE.AEA	human_domain	viral_motif
+PE.AEA	P89462	PE.AEA	Ribonucleoside-diphosphate reductase large subunit (RIR1_HHV2H)	viral_motif	viral_protein
+PE.AEA	U5TQE9	PE.AEA	Ribonucleoside-diphosphate reductase large subunit (U5TQE9_HHV1)	viral_motif	viral_protein

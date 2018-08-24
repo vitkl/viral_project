@@ -1,0 +1,5 @@
+node	node_readable	type	scale_by
+Q14160	Protein scribble homolog (SCRIB)	human_protein	""
+IPR001478	PDZ domain	human_domain	0.00313667272804275
+[ST].[ILV]$	[ST].[ILV]$	viral_motif	0
+Q2PJP0	Non-structural protein 1 (Q2PJP0_9INFA)	viral_protein	""

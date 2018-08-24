@@ -1,7 +1,7 @@
 node	node_readable	type	scale_by
-Q12959	Disks large homolog 1 (DLG1)	human_protein	
-Q14160	Protein scribble homolog (SCRIB)	human_protein	
-P26045	Tyrosine-protein phosphatase non-receptor type 3 (PTPN3)	human_protein	
+Q12959	Disks large homolog 1 (DLG1)	human_protein	""
+Q14160	Protein scribble homolog (SCRIB)	human_protein	""
+P26045	Tyrosine-protein phosphatase non-receptor type 3 (PTPN3)	human_protein	""
 IPR001478	PDZ domain	human_domain	1.86510182165127e-05
 IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.0198397045088626
 IPR008144	Guanylate kinase-like domain	human_domain	0.090402565368526
@@ -11,4 +11,4 @@ IPR011993	PH domain-like	human_domain	0.090402565368526
 [ST].[LV]$	[ST].[LV]$	viral_motif	0
 [DE]T.[ILV]$	[DE]T.[ILV]$	viral_motif	0
 ET..$	ET..$	viral_motif	4.27e-06
-P03126	Protein E6 (VE6_HPV16)	viral_protein	
+P03126	Protein E6 (VE6_HPV16)	viral_protein	""

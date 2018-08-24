@@ -1,7 +1,7 @@
 node	node_readable	type	scale_by
-Q14160	Protein scribble homolog (SCRIB)	human_protein	
-P26045	Tyrosine-protein phosphatase non-receptor type 3 (PTPN3)	human_protein	
-Q13425	Beta-2-syntrophin (SNTB2)	human_protein	
+Q14160	Protein scribble homolog (SCRIB)	human_protein	""
+P26045	Tyrosine-protein phosphatase non-receptor type 3 (PTPN3)	human_protein	""
+Q13425	Beta-2-syntrophin (SNTB2)	human_protein	""
 IPR001478	PDZ domain	human_domain	0.000159157330344421
 IPR011993	PH domain-like	human_domain	0.0231124701174142
 IPR000299	FERM domain	human_domain	0.0521253844483607
@@ -12,4 +12,4 @@ IPR029071	Ubiquitin-related domain	human_domain	0.150478261954425
 [DE]T.[ILV]$	[DE]T.[ILV]$	viral_motif	0
 ET..$	ET..$	viral_motif	3.96e-06
 [ST].V$	[ST].V$	viral_motif	0.000956
-P06463	Protein E6 (VE6_HPV18)	viral_protein	
+P06463	Protein E6 (VE6_HPV18)	viral_protein	""

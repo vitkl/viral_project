@@ -28,9 +28,9 @@ make && make install
 ############# EBI cluster
 ## installing clustermq
 ## install zeromq
-wget https://github.com/zeromq/libzmq/releases/download/v4.2.3/zeromq-4.2.3.tar.gz
-tar xzvf zeromq-4.2.3.tar.gz
-mv zeromq-4.2.3 /nfs/research1/petsalaki/users/vitalii/zeromq
+wget https://github.com/zeromq/libzmq/releases/download/v4.2.5/zeromq-4.2.5.tar.gz
+tar xzvf zeromq-4.2.5.tar.gz
+mv zeromq-4.2.5 /nfs/research1/petsalaki/users/vitalii/zeromq
 cd /nfs/research1/petsalaki/users/vitalii/zeromq
 ./configure --prefix=/homes/vitalii/zeromq
 make

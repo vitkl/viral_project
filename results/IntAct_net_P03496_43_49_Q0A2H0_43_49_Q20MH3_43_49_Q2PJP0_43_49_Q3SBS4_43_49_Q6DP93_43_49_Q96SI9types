@@ -1,5 +1,5 @@
 node	node_readable	type	scale_by
-Q96SI9	Spermatid perinuclear RNA-binding protein (STRBP)	human_protein	
+Q96SI9	Spermatid perinuclear RNA-binding protein (STRBP)	human_protein	""
 IPR014720	Double-stranded RNA-binding domain	human_domain	0.00460477469173743
 IPR006561	DZF domain	human_domain	0.0959894897937407
 IPR014720	Double-stranded RNA-binding domain	human_domain	4.83276919722069e-06
@@ -18,9 +18,9 @@ LR.{0,2}G.G.T	LR.{0,2}G.G.T	viral_motif	1.29e-05
 LR.{0,2}G.G.T	LR.{0,2}G.G.T	viral_motif	8.84e-06
 LR.{0,2}G.G.T	LR.{0,2}G.G.T	viral_motif	9.16e-06
 LR.{0,2}G.G.T	LR.{0,2}G.G.T	viral_motif	1.17e-05
-P03496	Non-structural protein 1 (NS1_I34A1)	viral_protein	
-Q0A2H0	Non-structural protein 1 (NS1_I59A0)	viral_protein	
-Q20MH3	Non-structural protein 1 (Q20MH3_I33A0)	viral_protein	
-Q2PJP0	Non-structural protein 1 (Q2PJP0_9INFA)	viral_protein	
-Q3SBS4	Non-structural protein 1 (Q3SBS4_9INFA)	viral_protein	
-Q6DP93	Non-structural protein 1 (Q6DP93_9INFA)	viral_protein	
+P03496	Non-structural protein 1 (NS1_I34A1)	viral_protein	""
+Q0A2H0	Non-structural protein 1 (NS1_I59A0)	viral_protein	""
+Q20MH3	Non-structural protein 1 (Q20MH3_I33A0)	viral_protein	""
+Q2PJP0	Non-structural protein 1 (Q2PJP0_9INFA)	viral_protein	""
+Q3SBS4	Non-structural protein 1 (Q3SBS4_9INFA)	viral_protein	""
+Q6DP93	Non-structural protein 1 (Q6DP93_9INFA)	viral_protein	""

@@ -1,8 +1,8 @@
 node	node_readable	type	scale_by
-Q9UKB1	F-box/WD repeat-containing protein 11 (FBXW11)	human_protein	
-Q9Y297	F-box/WD repeat-containing protein 1A (BTRC)	human_protein	
+Q9UKB1	F-box/WD repeat-containing protein 11 (FBXW11)	human_protein	""
+Q9Y297	F-box/WD repeat-containing protein 1A (BTRC)	human_protein	""
 IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0139111539099083
 IPR017986	WD40-repeat-containing domain	human_domain	0.0139111539099083
 DSG	DSG	viral_motif	2.88e-08
 DSG	DSG	viral_motif	1.01e-06
-P05919	Protein Vpu (VPU_HV1H2)	viral_protein	
+P05919	Protein Vpu (VPU_HV1H2)	viral_protein	""

@@ -1,0 +1,5 @@
+node	node_readable	type	scale_by
+O95816	BAG family molecular chaperone regulator 2 (BAG2)	human_protein	""
+IPR003103	BAG domain	human_domain	0.0798787794177283
+L.{0,1}Q.LR	L.{0,1}Q.LR	viral_motif	0.000195
+Q8AZK7	Epstein-Barr nuclear antigen leader protein (EBNA5_EBVB9)	viral_protein	""

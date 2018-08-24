@@ -1,9 +1,9 @@
 node	node_readable	type	scale_by
-Q14160	Protein scribble homolog (SCRIB)	human_protein	
-O14908	PDZ domain-containing protein GIPC1 (GIPC1)	human_protein	
-P78352	Disks large homolog 4 (DLG4)	human_protein	
-Q96RT1	Erbin (ERBIN)	human_protein	
-Q96SI9	Spermatid perinuclear RNA-binding protein (STRBP)	human_protein	
+Q14160	Protein scribble homolog (SCRIB)	human_protein	""
+O14908	PDZ domain-containing protein GIPC1 (GIPC1)	human_protein	""
+P78352	Disks large homolog 4 (DLG4)	human_protein	""
+Q96RT1	Erbin (ERBIN)	human_protein	""
+Q96SI9	Spermatid perinuclear RNA-binding protein (STRBP)	human_protein	""
 IPR001478	PDZ domain	human_domain	0.00313667272804275
 IPR032675	Leucine-rich repeat domain, L domain-like	human_domain	0.0276433390877031
 IPR001452	SH3 domain	human_domain	0.00901686963013301
@@ -15,4 +15,4 @@ IPR006561	DZF domain	human_domain	0.107127100580777
 [ST].V$	[ST].V$	viral_motif	9.09e-07
 [DE]..V$	[DE]..V$	viral_motif	3.03e-06
 LR.{0,2}G.G.T	LR.{0,2}G.G.T	viral_motif	8.84e-06
-Q2PJP0	Non-structural protein 1 (Q2PJP0_9INFA)	viral_protein	
+Q2PJP0	Non-structural protein 1 (Q2PJP0_9INFA)	viral_protein	""

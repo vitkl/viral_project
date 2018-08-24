@@ -20,8 +20,8 @@ KRKR	Importin-alpha, importin-beta-binding domain	0.00412734456237159	F5HE15_93_
 KRKR	Armadillo-like helical	0.00412734456237159	F5HE15_93_96	P52294	FALSE		Core gene UL26.5 family protein	F5HE15_HHV8	Importin subunit alpha-5	IMA5_HUMAN	IPR011989	1.14e-09	F5HE15	ORF17.5	KPNA1
 KRKR	Armadillo-type fold	0.00412734456237159	F5HE15_93_96	P52294	TRUE		Core gene UL26.5 family protein	F5HE15_HHV8	Importin subunit alpha-5	IMA5_HUMAN	IPR016024	1.14e-09	F5HE15	ORF17.5	KPNA1
 KRK	Tetratricopeptide-like helical domain	0.00110623074703045	I6T1Z2_219_221	Q9Y2X3	FALSE		Non-structural protein 1	I6T1Z2_I68A0	Nucleolar protein 58	NOP58_HUMAN	IPR011990	0.000791	I6T1Z2	NS1	NOP58
-KRK	Armadillo-like helical	0.0130007165390764	O92837_203_205	P52292	FALSE		Minor capsid protein	O92837_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000215	O92837	VP3	KPNA2
-KRK	Armadillo-type fold	0.0130007165390764	O92837_203_205	P52292	TRUE		Minor capsid protein	O92837_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000215	O92837	VP3	KPNA2
+KRK	Armadillo-like helical	0.0130007165390764	O92837_203_205	P52292	FALSE		Minor capsid protein	O92837_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR011989	0.000215	O92837	vp3	KPNA2
+KRK	Armadillo-type fold	0.0130007165390764	O92837_203_205	P52292	TRUE		Minor capsid protein	O92837_SV40	Importin subunit alpha-1	IMA1_HUMAN	IPR016024	0.000215	O92837	vp3	KPNA2
 DSG	WD40/YVTN repeat-like-containing domain	0.0168420159054956	P03070_656_658	Q9UKB1	FALSE		Large T antigen	LT_SV40	F-box/WD repeat-containing protein 11	FBW1B_HUMAN	IPR015943	1.79e-07	P03070		FBXW11
 DSG	WD40-repeat-containing domain	0.0168420159054956	P03070_656_658	Q9UKB1	TRUE		Large T antigen	LT_SV40	F-box/WD repeat-containing protein 11	FBW1B_HUMAN	IPR017986	1.79e-07	P03070		FBXW11
 KRK	Importin-alpha, importin-beta-binding domain	0.00747277167600188	P03070_129_131	O60684	FALSE		Large T antigen	LT_SV40	Importin subunit alpha-7	IMA7_HUMAN	IPR002652	1.89e-07	P03070		KPNA6
@@ -47,8 +47,8 @@ ET..$	PDZ domain	1.86510182165127e-05	P03126_155_158	P26045	TRUE	matching_known	
 [KR][KR][KR][KR]	Armadillo-like helical	0.0123994685214873	P03211_458_461	O60684	FALSE		Epstein-Barr nuclear antigen 1	EBNA1_EBVB9	Importin subunit alpha-7	IMA7_HUMAN	IPR011989	9.09e-05	P03211	EBNA1	KPNA6
 [KR][KR][KR][KR]	Armadillo-type fold	0.0123994685214873	P03211_458_461	O60684	TRUE		Epstein-Barr nuclear antigen 1	EBNA1_EBVB9	Importin subunit alpha-7	IMA7_HUMAN	IPR016024	9.09e-05	P03211	EBNA1	KPNA6
 RKR	Armadillo-type fold	0.0851931430163081	P03427_737_739	O00505	TRUE		Polymerase basic protein 2	PB2_I33A0	Importin subunit alpha-4	IMA4_HUMAN	IPR016024	0.000781	P03427	PB2	KPNA3
-KR.R	PDZ domain	0.0457488167643397	P03428_736_739	Q92997	TRUE	matching_known	Polymerase basic protein 2	PB2_I34A1	Segment polarity protein dishevelled homolog DVL-3	DVL3_HUMAN	IPR001478	0.000141	P03428	PB2	DVL3
-KR.R	PDZ domain	0.0457488167643397	P03428_752_755	Q92997	TRUE	matching_known	Polymerase basic protein 2	PB2_I34A1	Segment polarity protein dishevelled homolog DVL-3	DVL3_HUMAN	IPR001478	0.000141	P03428	PB2	DVL3
+KR.R	PDZ domain	0.0457488167643397	P03428_736_739	Q92997	TRUE		Polymerase basic protein 2	PB2_I34A1	Segment polarity protein dishevelled homolog DVL-3	DVL3_HUMAN	IPR001478	0.000141	P03428	PB2	DVL3
+KR.R	PDZ domain	0.0457488167643397	P03428_752_755	Q92997	TRUE		Polymerase basic protein 2	PB2_I34A1	Segment polarity protein dishevelled homolog DVL-3	DVL3_HUMAN	IPR001478	0.000141	P03428	PB2	DVL3
 KR.R	PDZ domain	0.0381568277546372	P03431_669_672	Q92997	TRUE		RNA-directed RNA polymerase catalytic subunit	RDRP_I34A1	Segment polarity protein dishevelled homolog DVL-3	DVL3_HUMAN	IPR001478	0.000177	P03431	PB1	DVL3
 [ST].V$	PDZ domain	0.0342884470758933	P03496_228_230	O14908	TRUE		Non-structural protein 1	NS1_I34A1	PDZ domain-containing protein GIPC1	GIPC1_HUMAN	IPR001478	1.77e-07	P03496	NS	GIPC1
 LR.{0,2}G.G.T	Double-stranded RNA-binding domain	0.00460477469173743	P03496_43_49	Q96SI9	FALSE		Non-structural protein 1	NS1_I34A1	Spermatid perinuclear RNA-binding protein	STRBP_HUMAN	IPR014720	1.35e-05	P03496	NS	STRBP

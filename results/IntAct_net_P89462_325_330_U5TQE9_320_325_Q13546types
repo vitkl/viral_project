@@ -1,0 +1,12 @@
+node	node_readable	type	scale_by
+Q13546	Receptor-interacting serine/threonine-protein kinase 1 (RIPK1)	human_protein	""
+IPR000719	Protein kinase domain	human_domain	0.00456219307216126
+IPR011009	Protein kinase-like domain	human_domain	0.00456219307216126
+IPR025735	RHIM domain	human_domain	0.00456219307216126
+IPR000719	Protein kinase domain	human_domain	0.00453612782227206
+IPR011009	Protein kinase-like domain	human_domain	0.00453612782227206
+IPR025735	RHIM domain	human_domain	0.00453612782227206
+PE.AEA	PE.AEA	viral_motif	0.00044
+PE.AEA	PE.AEA	viral_motif	0.000471
+P89462	Ribonucleoside-diphosphate reductase large subunit (RIR1_HHV2H)	viral_protein	""
+U5TQE9	Ribonucleoside-diphosphate reductase large subunit (U5TQE9_HHV1)	viral_protein	""

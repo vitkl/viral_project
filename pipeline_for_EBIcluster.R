@@ -37,9 +37,9 @@ proj_path = "/nfs/research1/petsalaki/users/vitalii/vitalii/viral_project/"
 ### 4.1 (optional) Estimate which domains are likely to mediate interactions between human proteins
 #bsub -n 1 -q research-rh7 -M 32000 -R "rusage[mem=32000] select[mem>32000]" Rscript /nfs/research1/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
 #/hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
-rmarkdown::render(input = paste0(proj_path, "predict_domain_human_clust_count.Rmd"), 
-                  output_format = "html_document", 
-                  output_file=paste0(proj_path, "predict_domain_human_clust_count.html"))
+#rmarkdown::render(input = paste0(proj_path, "predict_domain_human_clust_count.Rmd"), 
+#                  output_format = "html_document", 
+#                  output_file=paste0(proj_path, "predict_domain_human_clust_count.html"))
 
 ### 5 Analyse degree distribution in human and human-viral protein interaction network
 #rmarkdown::render(input = paste0(proj_path, "Degree_distribution_in_the_network.Rmd"), 
@@ -67,10 +67,12 @@ rmarkdown::render(input = paste0(proj_path, "predict_domain_human_clust_count.Rm
 # In progress: check which datasets were already processed by motif search pipeline 
 # cat /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/RData_from_Motif_search_strategies
 
-### Motif prediction benchmarking using known motif instances (from ELM database)
-# rmarkdown::render(input = paste0(proj_path, "compr_benchmarking_strateg.Rmd"), 
-#                  output_format = "html_document", 
-#                  output_file=paste0(proj_path, "compr_benchmarking_strateg.html"))
+### Motif prediction benchmarking using known motif instances (from ELM database) + other output for the paper
+# bsub -n 1 -q research-rh7 -M 16000 -R "rusage[mem=16000]" Rscript /nfs/research1/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
+# /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
+ rmarkdown::render(input = paste0(proj_path, "compr_benchmarking_venn.Rmd"), 
+                  output_format = "html_document", 
+                  output_file=paste0(proj_path, "compr_benchmarking_venn_clust.html"))
 
 
 
