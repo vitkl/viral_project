@@ -1,0 +1,761 @@
+node	node_readable	type	p_value	N_human_instances_bind_domain	scale_by	scale_by2
+P52294	Importin subunit alpha-5 (KPNA1)	human_protein	""	""	""	""
+Q15051	IQ calmodulin-binding motif-containing protein 1 (IQCB1)	human_protein	""	""	""	""
+Q9NTJ3	Structural maintenance of chromosomes protein 4 (SMC4)	human_protein	""	""	""	""
+O60812	Heterogeneous nuclear ribonucleoprotein C-like 1 (HNRNPCL1)	human_protein	""	""	""	""
+Q6PKG0	La-related protein 1 (LARP1)	human_protein	""	""	""	""
+Q6R327	Rapamycin-insensitive companion of mTOR (RICTOR)	human_protein	""	""	""	""
+Q13043	Serine/threonine-protein kinase 4 (STK4)	human_protein	""	""	""	""
+Q00839	Heterogeneous nuclear ribonucleoprotein U (HNRNPU)	human_protein	""	""	""	""
+O60684	Importin subunit alpha-7 (KPNA6)	human_protein	""	""	""	""
+P52292	Importin subunit alpha-1 (KPNA2)	human_protein	""	""	""	""
+P38606	V-type proton ATPase catalytic subunit A (ATP6V1A)	human_protein	""	""	""	""
+Q14683	Structural maintenance of chromosomes protein 1A (SMC1A)	human_protein	""	""	""	""
+P07237	Protein disulfide-isomerase (P4HB)	human_protein	""	""	""	""
+Q02539	Histone H1.1 (HIST1H1A)	human_protein	""	""	""	""
+Q14164	Inhibitor of nuclear factor kappa-B kinase subunit epsilon (IKBKE)	human_protein	""	""	""	""
+Q13451	Peptidyl-prolyl cis-trans isomerase FKBP5 (FKBP5)	human_protein	""	""	""	""
+Q12873	Chromodomain-helicase-DNA-binding protein 3 (CHD3)	human_protein	""	""	""	""
+Q13042	Cell division cycle protein 16 homolog (CDC16)	human_protein	""	""	""	""
+P42336	Phosphatidylinositol 4,5-bisphosphate 3-kinase catalytic subunit alpha isoform (PIK3CA)	human_protein	""	""	""	""
+Q9UKB1	F-box/WD repeat-containing protein 11 (FBXW11)	human_protein	""	""	""	""
+Q9Y297	F-box/WD repeat-containing protein 1A (BTRC)	human_protein	""	""	""	""
+O00505	Importin subunit alpha-4 (KPNA3)	human_protein	""	""	""	""
+P06493	Cyclin-dependent kinase 1 (CDK1)	human_protein	""	""	""	""
+O43683	Mitotic checkpoint serine/threonine-protein kinase BUB1 (BUB1)	human_protein	""	""	""	""
+Q12959	Disks large homolog 1 (DLG1)	human_protein	""	""	""	""
+Q14160	Protein scribble homolog (SCRIB)	human_protein	""	""	""	""
+P24278	Zinc finger and BTB domain-containing protein 25 (ZBTB25)	human_protein	""	""	""	""
+P62191	26S proteasome regulatory subunit 4 (PSMC1)	human_protein	""	""	""	""
+P30153	Serine/threonine-protein phosphatase 2A 65 kDa regulatory subunit A alpha isoform (PPP2R1A)	human_protein	""	""	""	""
+P54646	5'-AMP-activated protein kinase catalytic subunit alpha-2 (PRKAA2)	human_protein	""	""	""	""
+Q9Y5M8	Signal recognition particle receptor subunit beta (SRPRB)	human_protein	""	""	""	""
+Q13077	TNF receptor-associated factor 1 (TRAF1)	human_protein	""	""	""	""
+O00268	Transcription initiation factor TFIID subunit 4 (TAF4)	human_protein	""	""	""	""
+Q14192	Four and a half LIM domains protein 2 (FHL2)	human_protein	""	""	""	""
+Q9Y230	RuvB-like 2 (RUVBL2)	human_protein	""	""	""	""
+P29590	Protein PML (PML)	human_protein	""	""	""	""
+P05556	Integrin beta-1 (ITGB1)	human_protein	""	""	""	""
+P51148	Ras-related protein Rab-5C (RAB5C)	human_protein	""	""	""	""
+Q53G59	Kelch-like protein 12 (KLHL12)	human_protein	""	""	""	""
+P33991	DNA replication licensing factor MCM4 (MCM4)	human_protein	""	""	""	""
+Q99613	Eukaryotic translation initiation factor 3 subunit C (EIF3C)	human_protein	""	""	""	""
+P50990	T-complex protein 1 subunit theta (CCT8)	human_protein	""	""	""	""
+Q92997	Segment polarity protein dishevelled homolog DVL-3 (DVL3)	human_protein	""	""	""	""
+P45984	Mitogen-activated protein kinase 9 (MAPK9)	human_protein	""	""	""	""
+Q8N448	Ligand of Numb protein X 2 (LNX2)	human_protein	""	""	""	""
+P04049	RAF proto-oncogene serine/threonine-protein kinase (RAF1)	human_protein	""	""	""	""
+P62805	Histone H4 (HIST1H4A)	human_protein	""	""	""	""
+Q9H190	Syntenin-2 (SDCBP2)	human_protein	""	""	""	""
+O95793	Double-stranded RNA-binding protein Staufen homolog 1 (STAU1)	human_protein	""	""	""	""
+P27348	14-3-3 protein theta (YWHAQ)	human_protein	""	""	""	""
+Q07955	Serine/arginine-rich splicing factor 1 (SRSF1)	human_protein	""	""	""	""
+O60885	Bromodomain-containing protein 4 (BRD4)	human_protein	""	""	""	""
+P09874	Poly [ADP-ribose] polymerase 1 (PARP1)	human_protein	""	""	""	""
+P54132	Bloom syndrome protein (BLM)	human_protein	""	""	""	""
+P68104	Elongation factor 1-alpha 1 (EEF1A1)	human_protein	""	""	""	""
+P78371	T-complex protein 1 subunit beta (CCT2)	human_protein	""	""	""	""
+P26196	Probable ATP-dependent RNA helicase DDX6 (DDX6)	human_protein	""	""	""	""
+Q96I25	Splicing factor 45 (RBM17)	human_protein	""	""	""	""
+Q9UHD8	Septin-9 (SEPT9)	human_protein	""	""	""	""
+Q9H9D4	Zinc finger protein 408 (ZNF408)	human_protein	""	""	""	""
+Q9P0L0	Vesicle-associated membrane protein-associated protein A (VAPA)	human_protein	""	""	""	""
+Q09472	Histone acetyltransferase p300 (EP300)	human_protein	""	""	""	""
+P17980	26S proteasome regulatory subunit 6A (PSMC3)	human_protein	""	""	""	""
+P33993	DNA replication licensing factor MCM7 (MCM7)	human_protein	""	""	""	""
+Q9NR12	PDZ and LIM domain protein 7 (PDLIM7)	human_protein	""	""	""	""
+Q04864	Proto-oncogene c-Rel (REL)	human_protein	""	""	""	""
+P85037	Forkhead box protein K1 (FOXK1)	human_protein	""	""	""	""
+P24941	Cyclin-dependent kinase 2 (CDK2)	human_protein	""	""	""	""
+P61962	DDB1- and CUL4-associated factor 7 (DCAF7)	human_protein	""	""	""	""
+P50570	Dynamin-2 (DNM2)	human_protein	""	""	""	""
+O15379	Histone deacetylase 3 (HDAC3)	human_protein	""	""	""	""
+P49368	T-complex protein 1 subunit gamma (CCT3)	human_protein	""	""	""	""
+O95817	BAG family molecular chaperone regulator 3 (BAG3)	human_protein	""	""	""	""
+P17544	Cyclic AMP-dependent transcription factor ATF-7 (ATF7)	human_protein	""	""	""	""
+P53621	Coatomer subunit alpha (COPA)	human_protein	""	""	""	""
+Q71U36	Tubulin alpha-1A chain (TUBA1A)	human_protein	""	""	""	""
+P37173	TGF-beta receptor type-2 (TGFBR2)	human_protein	""	""	""	""
+P42574	Caspase-3 (CASP3)	human_protein	""	""	""	""
+O60506	Heterogeneous nuclear ribonucleoprotein Q (SYNCRIP)	human_protein	""	""	""	""
+P48643	T-complex protein 1 subunit epsilon (CCT5)	human_protein	""	""	""	""
+P50991	T-complex protein 1 subunit delta (CCT4)	human_protein	""	""	""	""
+O14920	Inhibitor of nuclear factor kappa-B kinase subunit beta (IKBKB)	human_protein	""	""	""	""
+Q9NRL2	Bromodomain adjacent to zinc finger domain protein 1A (BAZ1A)	human_protein	""	""	""	""
+Q01130	Serine/arginine-rich splicing factor 2 (SRSF2)	human_protein	""	""	""	""
+P38159	RNA-binding motif protein, X chromosome (RBMX)	human_protein	""	""	""	""
+P55795	Heterogeneous nuclear ribonucleoprotein H2 (HNRNPH2)	human_protein	""	""	""	""
+P68431	Histone H3.1 (HIST1H3A)	human_protein	""	""	""	""
+P78352	Disks large homolog 4 (DLG4)	human_protein	""	""	""	""
+Q92569	Phosphatidylinositol 3-kinase regulatory subunit gamma (PIK3R3)	human_protein	""	""	""	""
+P20618	Proteasome subunit beta type-1 (PSMB1)	human_protein	""	""	""	""
+P15822	Zinc finger protein 40 (HIVEP1)	human_protein	""	""	""	""
+P31249	Homeobox protein Hox-D3 (HOXD3)	human_protein	""	""	""	""
+P23458	Tyrosine-protein kinase JAK1 (JAK1)	human_protein	""	""	""	""
+P63151	Serine/threonine-protein phosphatase 2A 55 kDa regulatory subunit B alpha isoform (PPP2R2A)	human_protein	""	""	""	""
+P41252	Isoleucine--tRNA ligase, cytoplasmic (IARS)	human_protein	""	""	""	""
+P62491	Ras-related protein Rab-11A (RAB11A)	human_protein	""	""	""	""
+Q16531	DNA damage-binding protein 1 (DDB1)	human_protein	""	""	""	""
+Q09028	Histone-binding protein RBBP4 (RBBP4)	human_protein	""	""	""	""
+P11802	Cyclin-dependent kinase 4 (CDK4)	human_protein	""	""	""	""
+Q9Y265	RuvB-like 1 (RUVBL1)	human_protein	""	""	""	""
+O75533	Splicing factor 3B subunit 1 (SF3B1)	human_protein	""	""	""	""
+P47897	Glutamine--tRNA ligase (QARS)	human_protein	""	""	""	""
+P61978	Heterogeneous nuclear ribonucleoprotein K (HNRNPK)	human_protein	""	""	""	""
+Q8N1F7	Nuclear pore complex protein Nup93 (NUP93)	human_protein	""	""	""	""
+P15336	Cyclic AMP-dependent transcription factor ATF-2 (ATF2)	human_protein	""	""	""	""
+P12931	Proto-oncogene tyrosine-protein kinase Src (SRC)	human_protein	""	""	""	""
+P11940	Polyadenylate-binding protein 1 (PABPC1)	human_protein	""	""	""	""
+P07910	Heterogeneous nuclear ribonucleoproteins C1/C2 (HNRNPC)	human_protein	""	""	""	""
+Q9Y572	Receptor-interacting serine/threonine-protein kinase 3 (RIPK3)	human_protein	""	""	""	""
+IPR011989	Armadillo-like helical	human_domain	0.000798850352431081	top: 3, all: 12	3	12
+IPR016024	Armadillo-type fold	human_domain	0.000798850352431081	top: 3, all: 12	3	12
+IPR011989	Armadillo-like helical	human_domain	0.000798850352431081	top: 3, all: 19	3	19
+IPR016024	Armadillo-type fold	human_domain	0.000798850352431081	top: 3, all: 21	3	21
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.000798850352431081	top: 11, all: 28	11	28
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.000798850352431081	top: 3, all: 13	3	13
+IPR000504	RNA recognition motif domain	human_domain	0.000289539143998842	top: 3, all: 6	3	6
+IPR011991	Winged helix-turn-helix DNA-binding domain	human_domain	0.0053809122739711	top: 4, all: 11	4	11
+IPR016024	Armadillo-type fold	human_domain	0.000402514372447856	top: 3, all: 6	3	6
+IPR011009	Protein kinase-like domain	human_domain	0.0142308926095462	top: 12, all: 26	12	26
+IPR000719	Protein kinase domain	human_domain	0.023084606533485	top: 12, all: 26	12	26
+IPR011009	Protein kinase-like domain	human_domain	0.0142308926095462	top: 7, all: 13	7	13
+IPR000719	Protein kinase domain	human_domain	0.023084606533485	top: 7, all: 13	7	13
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.00116875839198364	top: 3, all: 13	3	13
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.0090256696034433	top: 15, all: 31	15	31
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.0090256696034433	top: 12, all: 31	12	31
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.0090256696034433	top: 4, all: 11	4	11
+IPR011989	Armadillo-like helical	human_domain	3.6639529584186e-05	top: 4, all: 12	4	12
+IPR016024	Armadillo-type fold	human_domain	3.6639529584186e-05	top: 4, all: 12	4	12
+IPR011989	Armadillo-like helical	human_domain	3.6639529584186e-05	top: 3, all: 12	3	12
+IPR016024	Armadillo-type fold	human_domain	3.6639529584186e-05	top: 3, all: 12	3	12
+IPR011989	Armadillo-like helical	human_domain	3.6639529584186e-05	top: 3, all: 22	3	22
+IPR016024	Armadillo-type fold	human_domain	3.6639529584186e-05	top: 4, all: 22	4	22
+IPR011989	Armadillo-like helical	human_domain	0.00412734456237159	top: 4, all: 12	4	12
+IPR016024	Armadillo-type fold	human_domain	0.00412734456237159	top: 4, all: 12	4	12
+IPR011989	Armadillo-like helical	human_domain	0.00412734456237159	top: 3, all: 12	3	12
+IPR016024	Armadillo-type fold	human_domain	0.00412734456237159	top: 3, all: 12	3	12
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.0763146263833944	top: 6, all: 8	6	8
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.00110623074703045	top: 5, all: 17	5	17
+IPR012336	Thioredoxin-like fold	human_domain	0.186453007799803	top: 3, all: 6	3	6
+IPR000504	RNA recognition motif domain	human_domain	0.00117105719576643	top: 3, all: 6	3	6
+IPR011991	Winged helix-turn-helix DNA-binding domain	human_domain	0.00567418299089226	top: 3, all: 4	3	4
+IPR000719	Protein kinase domain	human_domain	0.0089399445337977	top: 10, all: 29	10	29
+IPR011009	Protein kinase-like domain	human_domain	0.0089399445337977	top: 11, all: 29	11	29
+IPR011990	Tetratricopeptide-like helical domain	human_domain	0.00885996526412209	top: 7, all: 19	7	19
+IPR013026	Tetratricopeptide repeat-containing domain	human_domain	0.00885996526412209	top: 7, all: 17	7	17
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.000406452502630719	top: 4, all: 23	4	23
+IPR013083	Zinc finger, RING/FYVE/PHD-type	human_domain	0.0904264748128663	top: 4, all: 21	4	21
+IPR011990	Tetratricopeptide-like helical domain	human_domain	0.00540782828731864	top: 4, all: 8	4	8
+IPR011009	Protein kinase-like domain	human_domain	0.16998512905654	top: 5, all: 7	5	7
+IPR011989	Armadillo-like helical	human_domain	0.0130007165390764	top: 3, all: 22	3	22
+IPR016024	Armadillo-type fold	human_domain	0.0130007165390764	top: 4, all: 22	4	22
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0168420159054956	top: 8, all: 25	8	25
+IPR017986	WD40-repeat-containing domain	human_domain	0.0168420159054956	top: 7, all: 23	7	23
+IPR001810	F-box domain	human_domain	0.0419180351388449	top: 4, all: 21	4	21
+IPR021977	D domain of beta-TrCP	human_domain	0.133528759101849	top: 4, all: 21	4	21
+IPR011989	Armadillo-like helical	human_domain	0.00747277167600188	top: 5, all: 21	5	21
+IPR016024	Armadillo-type fold	human_domain	0.00747277167600188	top: 5, all: 23	5	23
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0168420159054956	top: 6, all: 29	6	29
+IPR017986	WD40-repeat-containing domain	human_domain	0.0168420159054956	top: 7, all: 27	7	27
+IPR001810	F-box domain	human_domain	0.0419180351388449	top: 4, all: 26	4	26
+IPR021977	D domain of beta-TrCP	human_domain	0.133528759101849	top: 4, all: 23	4	23
+IPR011989	Armadillo-like helical	human_domain	0.00747277167600188	top: 3, all: 22	3	22
+IPR016024	Armadillo-type fold	human_domain	0.00747277167600188	top: 4, all: 22	4	22
+IPR011989	Armadillo-like helical	human_domain	0.00747277167600188	top: 3, all: 13	3	13
+IPR011989	Armadillo-like helical	human_domain	0.00747277167600188	top: 4, all: 17	4	17
+IPR016024	Armadillo-type fold	human_domain	0.00747277167600188	top: 3, all: 13	3	13
+IPR016024	Armadillo-type fold	human_domain	0.00747277167600188	top: 4, all: 17	4	17
+IPR011991	Winged helix-turn-helix DNA-binding domain	human_domain	0.00747277167600188	top: 3, all: 4	3	4
+IPR000719	Protein kinase domain	human_domain	0.0168420159054956	top: 5, all: 18	5	18
+IPR011009	Protein kinase-like domain	human_domain	0.0168420159054956	top: 5, all: 19	5	19
+IPR011989	Armadillo-like helical	human_domain	0.00747277167600188	top: 6, all: 19	6	19
+IPR016024	Armadillo-type fold	human_domain	0.00747277167600188	top: 6, all: 19	6	19
+IPR000719	Protein kinase domain	human_domain	0.0168420159054956	top: 12, all: 34	12	34
+IPR011009	Protein kinase-like domain	human_domain	0.0168420159054956	top: 17, all: 34	17	34
+IPR011990	Tetratricopeptide-like helical domain	human_domain	0.133528759101849	top: 6, all: 16	6	16
+IPR011989	Armadillo-like helical	human_domain	0.0131233023428333	top: 3, all: 22	3	22
+IPR016024	Armadillo-type fold	human_domain	0.0131233023428333	top: 4, all: 22	4	22
+IPR011989	Armadillo-like helical	human_domain	3.03604852212748e-06	top: 3, all: 22	3	22
+IPR016024	Armadillo-type fold	human_domain	3.03604852212748e-06	top: 4, all: 22	4	22
+IPR001478	PDZ domain	human_domain	1.86510182165127e-05	top: 13, all: 18	13	18
+IPR001478	PDZ domain	human_domain	1.86510182165127e-05	top: 6, all: 11	6	11
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.0198397045088626	top: 6, all: 8	6	8
+IPR008144	Guanylate kinase-like domain	human_domain	0.090402565368526	top: 4, all: 6	4	6
+IPR008145	Guanylate kinase/L-type calcium channel beta subunit	human_domain	0.090402565368526	top: 4, all: 6	4	6
+IPR013083	Zinc finger, RING/FYVE/PHD-type	human_domain	0.0148111520037625	top: 3, all: 8	3	8
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.00475220945202503	top: 5, all: 17	5	17
+IPR016024	Armadillo-type fold	human_domain	0.0282022866002974	top: 3, all: 14	3	14
+IPR000719	Protein kinase domain	human_domain	0.000835273934550126	top: 3, all: 18	3	18
+IPR011009	Protein kinase-like domain	human_domain	0.000835273934550126	top: 4, all: 18	4	18
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.028368258225629	top: 4, all: 9	4	9
+IPR008974	TRAF-like	human_domain	0.0355475694800765	top: 5, all: 26	5	26
+IPR009072	Histone-fold	human_domain	0.0451223048355771	top: 5, all: 8	5	8
+IPR011989	Armadillo-like helical	human_domain	0.0123994685214873	top: 4, all: 18	4	18
+IPR016024	Armadillo-type fold	human_domain	0.0123994685214873	top: 4, all: 20	4	20
+IPR011989	Armadillo-like helical	human_domain	0.0123994685214873	top: 4, all: 23	4	23
+IPR016024	Armadillo-type fold	human_domain	0.0123994685214873	top: 4, all: 23	4	23
+IPR011989	Armadillo-like helical	human_domain	0.0123994685214873	top: 6, all: 19	6	19
+IPR016024	Armadillo-type fold	human_domain	0.0123994685214873	top: 6, all: 19	6	19
+IPR001781	Zinc finger, LIM-type	human_domain	0.00316473114161947	top: 4, all: 21	4	21
+IPR001781	Zinc finger, LIM-type	human_domain	0.010784892409309	top: 4, all: 21	4	21
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.00552849510611244	top: 4, all: 6	4	6
+IPR013083	Zinc finger, RING/FYVE/PHD-type	human_domain	0.000566772545496645	top: 3, all: 13	3	13
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.00454926962658056	top: 4, all: 9	4	9
+IPR032695	Integrin domain	human_domain	0.161341365063923	top: 3, all: 8	3	8
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.00454926962658056	top: 9, all: 21	9	21
+IPR005225	Small GTP-binding protein domain	human_domain	0.0275978489260675	top: 3, all: 19	3	19
+IPR013083	Zinc finger, RING/FYVE/PHD-type	human_domain	0.0182492546768156	top: 3, all: 13	3	13
+IPR000210	BTB/POZ domain	human_domain	0.020997272464762	top: 3, all: 9	3	9
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.00243813181249188	top: 11, all: 23	11	23
+IPR001208	MCM domain	human_domain	0.0245864490815241	top: 3, all: 22	3	22
+IPR012340	Nucleic acid-binding, OB-fold	human_domain	0.0245864490815241	top: 3, all: 22	3	22
+IPR027925	MCM N-terminal domain	human_domain	0.0245864490815241	top: 3, all: 22	3	22
+IPR033762	MCM OB domain	human_domain	0.0245864490815241	top: 3, all: 22	3	22
+IPR011991	Winged helix-turn-helix DNA-binding domain	human_domain	0.000760276205084529	top: 3, all: 9	3	9
+IPR016024	Armadillo-type fold	human_domain	0.0851931430163081	top: 3, all: 13	3	13
+IPR011989	Armadillo-like helical	human_domain	0.199516700274864	top: 3, all: 13	3	13
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0	top: 3, all: 10	3	10
+IPR027409	GroEL-like apical domain	human_domain	0.0851931430163081	top: 4, all: 12	4	12
+IPR027413	GroEL-like equatorial domain	human_domain	0.0851931430163081	top: 4, all: 12	4	12
+IPR001478	PDZ domain	human_domain	0.0457488167643397	top: 8, all: 35	8	35
+IPR011009	Protein kinase-like domain	human_domain	0.0175709694095063	top: 7, all: 19	7	19
+IPR000719	Protein kinase domain	human_domain	0.0275030974834316	top: 6, all: 19	6	19
+IPR016024	Armadillo-type fold	human_domain	0.00397073254567565	top: 3, all: 21	3	21
+IPR011989	Armadillo-like helical	human_domain	0.00558510085904692	top: 3, all: 19	3	19
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.00558510085904692	top: 11, all: 28	11	28
+IPR001478	PDZ domain	human_domain	0.0457488167643397	top: 5, all: 28	5	28
+IPR029071	Ubiquitin-related domain	human_domain	0.084580415133546	top: 4, all: 24	4	24
+IPR011991	Winged helix-turn-helix DNA-binding domain	human_domain	0.198719765737347	top: 4, all: 20	4	20
+IPR013083	Zinc finger, RING/FYVE/PHD-type	human_domain	0.0116882470589746	top: 6, all: 15	6	15
+IPR001478	PDZ domain	human_domain	0.0457488167643397	top: 3, all: 8	3	8
+IPR001478	PDZ domain	human_domain	0.0381568277546372	top: 8, all: 35	8	35
+IPR016024	Armadillo-type fold	human_domain	0.00362970141065627	top: 3, all: 6	3	6
+IPR013083	Zinc finger, RING/FYVE/PHD-type	human_domain	0.0133140348029699	top: 6, all: 15	6	15
+IPR001478	PDZ domain	human_domain	0.0381568277546372	top: 3, all: 8	3	8
+IPR011989	Armadillo-like helical	human_domain	0.0320306632149092	top: 6, all: 19	6	19
+IPR016024	Armadillo-type fold	human_domain	0.0320306632149092	top: 6, all: 19	6	19
+IPR000504	RNA recognition motif domain	human_domain	1.46896831190152e-05	top: 3, all: 6	3	6
+IPR011009	Protein kinase-like domain	human_domain	0.0400915778891767	top: 7, all: 19	7	19
+IPR000719	Protein kinase domain	human_domain	0.130270232435913	top: 6, all: 19	6	19
+IPR011991	Winged helix-turn-helix DNA-binding domain	human_domain	0.0400915778891767	top: 3, all: 4	3	4
+IPR011009	Protein kinase-like domain	human_domain	0.0400915778891767	top: 7, all: 20	7	20
+IPR000719	Protein kinase domain	human_domain	0.130270232435913	top: 7, all: 20	7	20
+IPR009072	Histone-fold	human_domain	0	top: 3, all: 6	3	6
+IPR001478	PDZ domain	human_domain	0.0400915778891767	top: 8, all: 15	8	15
+IPR014720	Double-stranded RNA-binding domain	human_domain	0.0400915778891767	top: 3, all: 11	3	11
+IPR023410	14-3-3 domain	human_domain	0.0342884470758933	top: 14, all: 33	14	33
+IPR011009	Protein kinase-like domain	human_domain	0.0545149486533305	top: 7, all: 19	7	19
+IPR000719	Protein kinase domain	human_domain	0.214593331015092	top: 6, all: 19	6	19
+IPR011991	Winged helix-turn-helix DNA-binding domain	human_domain	0.0228948937769496	top: 3, all: 4	3	4
+IPR011009	Protein kinase-like domain	human_domain	0.0545149486533305	top: 5, all: 7	5	7
+IPR011990	Tetratricopeptide-like helical domain	human_domain	0.214593331015092	top: 7, all: 19	7	19
+IPR013026	Tetratricopeptide repeat-containing domain	human_domain	0.214593331015092	top: 7, all: 17	7	17
+IPR011989	Armadillo-like helical	human_domain	0.000103557150318873	top: 3, all: 22	3	22
+IPR016024	Armadillo-type fold	human_domain	0.000103557150318873	top: 4, all: 22	4	22
+IPR000504	RNA recognition motif domain	human_domain	0.108666821412664	top: 3, all: 9	3	9
+IPR001487	Bromodomain	human_domain	0.0284410325672867	top: 3, all: 11	3	11
+IPR001357	BRCT domain	human_domain	0.0105199136066609	top: 3, all: 14	3	14
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0	top: 3, all: 11	3	11
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.00439554404809005	top: 12, all: 54	12	54
+IPR027409	GroEL-like apical domain	human_domain	0.000268450603966368	top: 13, all: 22	13	22
+IPR027413	GroEL-like equatorial domain	human_domain	0.000268450603966368	top: 13, all: 22	13	22
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.00201052772652107	top: 10, all: 49	10	49
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.00201052772652107	top: 3, all: 23	3	23
+IPR000504	RNA recognition motif domain	human_domain	0.0387378195393008	top: 4, all: 13	4	13
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0139111539099083	top: 8, all: 25	8	25
+IPR017986	WD40-repeat-containing domain	human_domain	0.0139111539099083	top: 7, all: 23	7	23
+IPR001810	F-box domain	human_domain	0.124599323563057	top: 4, all: 21	4	21
+IPR021977	D domain of beta-TrCP	human_domain	0.124599323563057	top: 4, all: 21	4	21
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0139111539099083	top: 6, all: 29	6	29
+IPR017986	WD40-repeat-containing domain	human_domain	0.0139111539099083	top: 7, all: 27	7	27
+IPR001810	F-box domain	human_domain	0.124599323563057	top: 4, all: 26	4	26
+IPR021977	D domain of beta-TrCP	human_domain	0.124599323563057	top: 4, all: 23	4	23
+IPR001478	PDZ domain	human_domain	4.55498550755444e-06	top: 13, all: 18	13	18
+IPR001478	PDZ domain	human_domain	4.55498550755444e-06	top: 6, all: 11	6	11
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.000788142858841122	top: 3, all: 6	3	6
+IPR013087	Zinc finger C2H2-type	human_domain	0.120848522249391	top: 4, all: 5	4	5
+IPR001478	PDZ domain	human_domain	0.00491285896410085	top: 3, all: 8	3	8
+IPR013083	Zinc finger, RING/FYVE/PHD-type	human_domain	0.0341423731286826	top: 6, all: 15	6	15
+IPR013783	Immunoglobulin-like fold	human_domain	0.00710724714278861	top: 11, all: 23	11	23
+IPR001487	Bromodomain	human_domain	0.0420970973842745	top: 3, all: 18	3	18
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	7.64670446624832e-06	top: 6, all: 8	6	8
+IPR001478	PDZ domain	human_domain	0.000159157330344421	top: 13, all: 18	13	18
+IPR001478	PDZ domain	human_domain	0.000159157330344421	top: 6, all: 11	6	11
+IPR008144	Guanylate kinase-like domain	human_domain	0.0521253844483607	top: 4, all: 6	4	6
+IPR008145	Guanylate kinase/L-type calcium channel beta subunit	human_domain	0.0521253844483607	top: 4, all: 6	4	6
+IPR001452	SH3 domain	human_domain	0.150478261954425	top: 4, all: 7	4	7
+IPR011989	Armadillo-like helical	human_domain	0.0114269057578614	top: 7, all: 23	7	23
+IPR016024	Armadillo-type fold	human_domain	0.0114269057578614	top: 8, all: 24	8	24
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	7.64670446624832e-06	top: 9, all: 14	9	14
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	7.64670446624832e-06	top: 29, all: 98	29	98
+IPR001478	PDZ domain	human_domain	0.115665118524294	top: 5, all: 18	5	18
+IPR013783	Immunoglobulin-like fold	human_domain	0.115665118524294	top: 5, all: 14	5	14
+IPR011991	Winged helix-turn-helix DNA-binding domain	human_domain	0.0320397172460036	top: 4, all: 18	4	18
+IPR000253	Forkhead-associated (FHA) domain	human_domain	0.115665118524294	top: 5, all: 14	5	14
+IPR008984	SMAD/FHA domain	human_domain	0.115665118524294	top: 5, all: 15	5	15
+IPR000719	Protein kinase domain	human_domain	0.0921495316476274	top: 8, all: 34	8	34
+IPR011009	Protein kinase-like domain	human_domain	0.0921495316476274	top: 11, all: 35	11	35
+IPR013083	Zinc finger, RING/FYVE/PHD-type	human_domain	0.16553360758205	top: 3, all: 8	3	8
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0617714254585678	top: 9, all: 29	9	29
+IPR017986	WD40-repeat-containing domain	human_domain	0.16553360758205	top: 6, all: 28	6	28
+IPR013083	Zinc finger, RING/FYVE/PHD-type	human_domain	0.16553360758205	top: 3, all: 6	3	6
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.00176488609609558	top: 3, all: 16	3	16
+IPR011989	Armadillo-like helical	human_domain	0.00229283245467692	top: 3, all: 13	3	13
+IPR016024	Armadillo-type fold	human_domain	0.00229283245467692	top: 3, all: 13	3	13
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.0645383657405268	top: 4, all: 9	4	9
+IPR023801	Histone deacetylase domain	human_domain	0.00141131526038581	top: 4, all: 6	4	6
+IPR027409	GroEL-like apical domain	human_domain	0	top: 4, all: 16	4	16
+IPR027413	GroEL-like equatorial domain	human_domain	0	top: 4, all: 16	4	16
+IPR011989	Armadillo-like helical	human_domain	0.0354786504593603	top: 6, all: 19	6	19
+IPR016024	Armadillo-type fold	human_domain	0.0354786504593603	top: 6, all: 19	6	19
+IPR023410	14-3-3 domain	human_domain	0.00113645796766326	top: 14, all: 33	14	33
+IPR011989	Armadillo-like helical	human_domain	0.0173857373733513	top: 3, all: 13	3	13
+IPR016024	Armadillo-type fold	human_domain	0.0173857373733513	top: 3, all: 13	3	13
+IPR011991	Winged helix-turn-helix DNA-binding domain	human_domain	0.0845562664562326	top: 3, all: 4	3	4
+IPR011989	Armadillo-like helical	human_domain	0.0173857373733513	top: 6, all: 19	6	19
+IPR016024	Armadillo-type fold	human_domain	0.0173857373733513	top: 6, all: 19	6	19
+IPR001478	PDZ domain	human_domain	0.000109949388057433	top: 13, all: 18	13	18
+IPR001478	PDZ domain	human_domain	0.000109949388057433	top: 6, all: 11	6	11
+IPR001202	WW domain	human_domain	0.225688390242603	top: 5, all: 11	5	11
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.00153232676378166	top: 8, all: 16	8	16
+IPR013783	Immunoglobulin-like fold	human_domain	0.00193119400750768	top: 5, all: 16	5	16
+IPR004827	Basic-leucine zipper domain	human_domain	0	top: 5, all: 8	5	8
+IPR013087	Zinc finger C2H2-type	human_domain	0.0481811350417882	top: 4, all: 11	4	11
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.211530223333986	top: 3, all: 13	3	13
+IPR001781	Zinc finger, LIM-type	human_domain	0.0150435031771353	top: 5, all: 12	5	12
+IPR003008	Tubulin/FtsZ, GTPase domain	human_domain	0.00232496651041642	top: 7, all: 23	7	23
+IPR008280	Tubulin/FtsZ, C-terminal	human_domain	0.00232496651041642	top: 7, all: 23	7	23
+IPR018316	Tubulin/FtsZ, 2-layer sandwich domain	human_domain	0.00232496651041642	top: 7, all: 23	7	23
+IPR011009	Protein kinase-like domain	human_domain	0.0483676931050686	top: 3, all: 8	3	8
+IPR001478	PDZ domain	human_domain	0.00443106669255909	top: 13, all: 18	13	18
+IPR001478	PDZ domain	human_domain	0.00443106669255909	top: 6, all: 11	6	11
+IPR001309	Peptidase C14,  p20 domain	human_domain	0.00452706220200004	top: 3, all: 5	3	5
+IPR002138	Peptidase C14, caspase non-catalytic subunit p10	human_domain	0.00452706220200004	top: 3, all: 5	3	5
+IPR015917	Peptidase C14A, caspase catalytic domain	human_domain	0.00452706220200004	top: 3, all: 5	3	5
+IPR029030	Caspase-like domain	human_domain	0.00452706220200004	top: 3, all: 5	3	5
+IPR001478	PDZ domain	human_domain	0.0211228721991774	top: 13, all: 18	13	18
+IPR008144	Guanylate kinase-like domain	human_domain	0.0211228721991774	top: 4, all: 6	4	6
+IPR008145	Guanylate kinase/L-type calcium channel beta subunit	human_domain	0.0211228721991774	top: 4, all: 6	4	6
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.0211228721991774	top: 6, all: 8	6	8
+IPR000504	RNA recognition motif domain	human_domain	2.48994094851914e-05	top: 4, all: 11	4	11
+IPR027409	GroEL-like apical domain	human_domain	0.000806688192342446	top: 3, all: 11	3	11
+IPR027413	GroEL-like equatorial domain	human_domain	0.000806688192342446	top: 3, all: 11	3	11
+IPR027409	GroEL-like apical domain	human_domain	0.000806688192342446	top: 4, all: 10	4	10
+IPR027413	GroEL-like equatorial domain	human_domain	0.000806688192342446	top: 4, all: 10	4	10
+IPR027409	GroEL-like apical domain	human_domain	0.000806688192342446	top: 18, all: 60	18	60
+IPR027413	GroEL-like equatorial domain	human_domain	0.000806688192342446	top: 20, all: 60	20	60
+IPR001478	PDZ domain	human_domain	0.00453501858210227	top: 13, all: 18	13	18
+IPR001478	PDZ domain	human_domain	0.00453501858210227	top: 6, all: 11	6	11
+IPR000719	Protein kinase domain	human_domain	0.053971658245484	top: 4, all: 8	4	8
+IPR011009	Protein kinase-like domain	human_domain	0.053971658245484	top: 4, all: 8	4	8
+IPR001478	PDZ domain	human_domain	0.00447416445364111	top: 13, all: 18	13	18
+IPR001478	PDZ domain	human_domain	0.00447416445364111	top: 6, all: 11	6	11
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.00448878667498772	top: 6, all: 8	6	8
+IPR001478	PDZ domain	human_domain	0.00453564599784776	top: 13, all: 18	13	18
+IPR001478	PDZ domain	human_domain	0.00453564599784776	top: 6, all: 11	6	11
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.000619164837323531	top: 3, all: 6	3	6
+IPR011989	Armadillo-like helical	human_domain	0.000104504101597125	top: 4, all: 12	4	12
+IPR016024	Armadillo-type fold	human_domain	0.000104504101597125	top: 4, all: 12	4	12
+IPR011989	Armadillo-like helical	human_domain	0.000104504101597125	top: 3, all: 12	3	12
+IPR016024	Armadillo-type fold	human_domain	0.000104504101597125	top: 3, all: 12	3	12
+IPR013083	Zinc finger, RING/FYVE/PHD-type	human_domain	0.0131461766690557	top: 3, all: 8	3	8
+IPR000504	RNA recognition motif domain	human_domain	0.0562092877054986	top: 5, all: 26	5	26
+IPR001478	PDZ domain	human_domain	0.000102967736608026	top: 13, all: 18	13	18
+IPR001478	PDZ domain	human_domain	0.000102967736608026	top: 6, all: 11	6	11
+IPR011009	Protein kinase-like domain	human_domain	0.0108886612590681	top: 4, all: 5	4	5
+IPR011009	Protein kinase-like domain	human_domain	0.0108886612590681	top: 5, all: 6	5	6
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.0108886612590681	top: 4, all: 15	4	15
+IPR000504	RNA recognition motif domain	human_domain	0.00289038166202593	top: 4, all: 5	4	5
+IPR000504	RNA recognition motif domain	human_domain	6.84844916951908e-05	top: 4, all: 7	4	7
+IPR009072	Histone-fold	human_domain	0.0072660004597569	top: 5, all: 21	5	21
+IPR001452	SH3 domain	human_domain	0.0086355887529516	top: 4, all: 7	4	7
+IPR001478	PDZ domain	human_domain	0.0086355887529516	top: 4, all: 6	4	6
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.105559370770074	top: 4, all: 5	4	5
+IPR000980	SH2 domain	human_domain	0.0327426973848036	top: 6, all: 10	6	10
+IPR000504	RNA recognition motif domain	human_domain	0.0002262197397139	top: 3, all: 6	3	6
+IPR016024	Armadillo-type fold	human_domain	0.0326061493301738	top: 4, all: 16	4	16
+IPR011989	Armadillo-like helical	human_domain	0.0663769368000588	top: 3, all: 15	3	15
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.000783837762182006	top: 11, all: 23	11	23
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	9.04113879036418e-06	top: 17, all: 32	17	32
+IPR005225	Small GTP-binding protein domain	human_domain	0.0320751274214732	top: 6, all: 26	6	26
+IPR029055	Nucleophile aminohydrolases, N-terminal	human_domain	0.0073637306562329	top: 5, all: 16	5	16
+IPR001478	PDZ domain	human_domain	0.00313667272804275	top: 9, all: 19	9	19
+IPR001478	PDZ domain	human_domain	0.00313667272804275	top: 4, all: 6	4	6
+IPR001452	SH3 domain	human_domain	0.00901686963013301	top: 4, all: 7	4	7
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.107127100580777	top: 4, all: 5	4	5
+IPR001478	PDZ domain	human_domain	0.00313667272804275	top: 3, all: 6	3	6
+IPR013083	Zinc finger, RING/FYVE/PHD-type	human_domain	0.0976652753536016	top: 3, all: 8	3	8
+IPR009057	Homeobox domain-like	human_domain	0.0354994092378604	top: 3, all: 3	3	3
+IPR000504	RNA recognition motif domain	human_domain	0.00162626797619926	top: 3, all: 6	3	6
+IPR001478	PDZ domain	human_domain	0.0141382545333211	top: 8, all: 35	8	35
+IPR001478	PDZ domain	human_domain	0.0141382545333211	top: 5, all: 28	5	28
+IPR011991	Winged helix-turn-helix DNA-binding domain	human_domain	0.0761914356793017	top: 4, all: 20	4	20
+IPR029071	Ubiquitin-related domain	human_domain	0.0761914356793017	top: 4, all: 24	4	24
+IPR001478	PDZ domain	human_domain	0.0141382545333211	top: 3, all: 8	3	8
+IPR013083	Zinc finger, RING/FYVE/PHD-type	human_domain	0.0761914356793017	top: 6, all: 15	6	15
+IPR000719	Protein kinase domain	human_domain	0.146973522024338	top: 3, all: 4	3	4
+IPR011009	Protein kinase-like domain	human_domain	0.146973522024338	top: 3, all: 4	3	4
+IPR017986	WD40-repeat-containing domain	human_domain	0.146973522024338	top: 4, all: 11	4	11
+IPR014729	Rossmann-like alpha/beta/alpha sandwich fold	human_domain	0.0217675968775421	top: 3, all: 14	3	14
+IPR001478	PDZ domain	human_domain	0.00151854108016383	top: 4, all: 6	4	6
+IPR001452	SH3 domain	human_domain	0.0198930618962651	top: 4, all: 7	4	7
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.0903871537384636	top: 4, all: 5	4	5
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.0149583903192517	top: 6, all: 8	6	8
+IPR001452	SH3 domain	human_domain	0.0784309549373413	top: 4, all: 7	4	7
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0286142535569307	top: 5, all: 13	5	13
+IPR017986	WD40-repeat-containing domain	human_domain	0.0286142535569307	top: 5, all: 14	5	14
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.000436104253293326	top: 3, all: 4	3	4
+IPR013783	Immunoglobulin-like fold	human_domain	0.12833483652492	top: 3, all: 11	3	11
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0128437978168513	top: 3, all: 20	3	20
+IPR017986	WD40-repeat-containing domain	human_domain	0.0192800926987939	top: 3, all: 20	3	20
+IPR027409	GroEL-like apical domain	human_domain	0.0312210315654434	top: 4, all: 20	4	20
+IPR027413	GroEL-like equatorial domain	human_domain	0.0312210315654434	top: 4, all: 20	4	20
+IPR011989	Armadillo-like helical	human_domain	0.000694874499478928	top: 4, all: 16	4	16
+IPR016024	Armadillo-type fold	human_domain	0.000996432778062301	top: 5, all: 16	5	16
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0128437978168513	top: 3, all: 6	3	6
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.000436104253293326	top: 4, all: 6	4	6
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0128437978168513	top: 3, all: 11	3	11
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0128437978168513	top: 5, all: 15	5	15
+IPR017986	WD40-repeat-containing domain	human_domain	0.0192800926987939	top: 5, all: 14	5	14
+IPR022052	Histone-binding protein RBBP4, N-terminal	human_domain	0.260371870350348	top: 3, all: 13	3	13
+IPR011989	Armadillo-like helical	human_domain	0.000694874499478928	top: 3, all: 19	3	19
+IPR016024	Armadillo-type fold	human_domain	0.000996432778062301	top: 3, all: 20	3	20
+IPR000719	Protein kinase domain	human_domain	1.89691410014189e-06	top: 3, all: 7	3	7
+IPR011009	Protein kinase-like domain	human_domain	1.89691410014189e-06	top: 3, all: 7	3	7
+IPR000504	RNA recognition motif domain	human_domain	0.102477527717283	top: 3, all: 9	3	9
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.00221176648575482	top: 7, all: 10	7	10
+IPR003593	AAA+ ATPase domain	human_domain	0.0248408554142186	top: 3, all: 10	3	10
+IPR011989	Armadillo-like helical	human_domain	0.0067987641874566	top: 3, all: 10	3	10
+IPR000504	RNA recognition motif domain	human_domain	0.000103345613456856	top: 6, all: 12	6	12
+IPR014729	Rossmann-like alpha/beta/alpha sandwich fold	human_domain	0.0798787794177283	top: 4, all: 14	4	14
+IPR004087	K Homology domain	human_domain	0.0798787794177283	top: 3, all: 20	3	20
+IPR004088	K Homology domain, type 1	human_domain	0.0798787794177283	top: 3, all: 20	3	20
+IPR000504	RNA recognition motif domain	human_domain	0.000103345613456856	top: 4, all: 12	4	12
+IPR011990	Tetratricopeptide-like helical domain	human_domain	0.00464922839593879	top: 3, all: 8	3	8
+IPR000504	RNA recognition motif domain	human_domain	0.000103345613456856	top: 4, all: 5	4	5
+IPR000504	RNA recognition motif domain	human_domain	0.000103345613456856	top: 5, all: 17	5	17
+IPR011991	Winged helix-turn-helix DNA-binding domain	human_domain	0.0940247270836459	top: 3, all: 4	3	4
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.0133022720377485	top: 15, all: 31	15	31
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.0133022720377485	top: 15, all: 37	15	37
+IPR004827	Basic-leucine zipper domain	human_domain	0	top: 3, all: 11	3	11
+IPR013087	Zinc finger C2H2-type	human_domain	0.0451438144760027	top: 4, all: 11	4	11
+IPR000719	Protein kinase domain	human_domain	1.22008559815535e-05	top: 16, all: 80	16	80
+IPR000980	SH2 domain	human_domain	1.22008559815535e-05	top: 41, all: 79	41	79
+IPR001245	Serine-threonine/tyrosine-protein kinase, catalytic domain	human_domain	1.22008559815535e-05	top: 6, all: 77	6	77
+IPR001452	SH3 domain	human_domain	1.22008559815535e-05	top: 47, all: 82	47	82
+IPR011009	Protein kinase-like domain	human_domain	1.22008559815535e-05	top: 17, all: 82	17	82
+IPR011989	Armadillo-like helical	human_domain	5.81235062622921e-05	top: 4, all: 24	4	24
+IPR016024	Armadillo-type fold	human_domain	5.81235062622921e-05	top: 4, all: 23	4	23
+IPR027409	GroEL-like apical domain	human_domain	0.131503236189665	top: 4, all: 20	4	20
+IPR027413	GroEL-like equatorial domain	human_domain	0.131503236189665	top: 4, all: 20	4	20
+IPR000504	RNA recognition motif domain	human_domain	3.73514248096919e-07	top: 4, all: 22	4	22
+IPR000504	RNA recognition motif domain	human_domain	3.73514248096919e-07	top: 7, all: 23	7	23
+IPR000719	Protein kinase domain	human_domain	0.00453612782227206	top: 7, all: 12	7	12
+IPR011009	Protein kinase-like domain	human_domain	0.00453612782227206	top: 7, all: 12	7	12
+KRKR	KRKR	viral_motif	1.21e-09	""	46.9999996654706	46.9999996654706
+E..E..Q	E..E..Q	viral_motif	0.014	""	43.1294117647059	43.1294117647059
+RKR	RKR	viral_motif	0.17	""	0	0
+Q..T.I	Q..T.I	viral_motif	0.017	""	42.3	42.3
+EVI	EVI	viral_motif	0.086	""	23.2235294117647	23.2235294117647
+I..K.{1,2}R.{1,2}K	I..K.{1,2}R.{1,2}K	viral_motif	0.03	""	38.7058823529412	38.7058823529412
+E..D.I	E..D.I	viral_motif	0.019	""	41.7470588235294	41.7470588235294
+N.N..T	N.N..T	viral_motif	0.024	""	40.3647058823529	40.3647058823529
+L.R..K	L.R..K	viral_motif	0.064	""	29.3058823529412	29.3058823529412
+R.A..E	R.A..E	viral_motif	0.12	""	13.8235294117647	13.8235294117647
+KRK.E	KRK.E	viral_motif	0.17	""	0	0
+KRKR	KRKR	viral_motif	1.96e-11	""	46.9999999945812	46.9999999945812
+KRKR	KRKR	viral_motif	1.4e-09	""	46.9999996129412	46.9999996129412
+KRK	KRK	viral_motif	0.000708	""	46.8042588235294	46.8042588235294
+KRKR	KRKR	viral_motif	1.6e-11	""	46.9999999955765	46.9999999955765
+KRKR	KRKR	viral_motif	1.14e-09	""	46.9999996848235	46.9999996848235
+L.D.D	L.D.D	viral_motif	0.094	""	21.0117647058824	21.0117647058824
+R.RR	R.RR	viral_motif	0.13	""	11.0588235294118	11.0588235294118
+EAL	EAL	viral_motif	0.17	""	0	0
+P..KR	P..KR	viral_motif	0.057	""	31.2411764705882	31.2411764705882
+G.G..T	G.G..T	viral_motif	0.073	""	26.8176470588235	26.8176470588235
+S..AS	S..AS	viral_motif	0.089	""	22.3941176470588	22.3941176470588
+PA..P	PA..P	viral_motif	0.018	""	42.0235294117647	42.0235294117647
+TP[AS][AS]	TP[AS][AS]	viral_motif	0.17	""	0	0
+KQK	KQK	viral_motif	0.028	""	39.2588235294118	39.2588235294118
+KRK	KRK	viral_motif	0.000215	""	46.9405588235294	46.9405588235294
+DSG	DSG	viral_motif	1.79e-07	""	46.9999505117647	46.9999505117647
+KRK	KRK	viral_motif	1.89e-07	""	46.9999477470588	46.9999477470588
+DSG	DSG	viral_motif	6.93e-06	""	46.9980840588235	46.9980840588235
+KRK	KRK	viral_motif	0.000457	""	46.8736529411765	46.8736529411765
+KRK	KRK	viral_motif	0.002	""	46.4470588235294	46.4470588235294
+P..KR	P..KR	viral_motif	0.049	""	33.4529411764706	33.4529411764706
+SD.E	SD.E	viral_motif	0.091	""	21.8411764705882	21.8411764705882
+E.EE	E.EE	viral_motif	0.093	""	21.2882352941177	21.2882352941177
+P[DE][DE]	P[DE][DE]	viral_motif	0.12	""	13.8235294117647	13.8235294117647
+KRK	KRK	viral_motif	0.000462	""	46.8722705882353	46.8722705882353
+KRK	KRK	viral_motif	0.000385	""	46.8935588235294	46.8935588235294
+[ST].[LV]$	[ST].[LV]$	viral_motif	0	""	47	47
+[DE]T.[ILV]$	[DE]T.[ILV]$	viral_motif	0	""	47	47
+E.E..I	E.E..I	viral_motif	0.002	""	46.4470588235294	46.4470588235294
+EED	EED	viral_motif	0.071	""	27.3705882352941	27.3705882352941
+P..QA	P..QA	viral_motif	0.11	""	16.5882352941177	16.5882352941177
+QA.P	QA.P	viral_motif	0.14	""	8.29411764705882	8.29411764705882
+R..QE	R..QE	viral_motif	0.047	""	34.0058823529412	34.0058823529412
+E..[AGS]F	E..[AGS]F	viral_motif	0.014	""	43.1294117647059	43.1294117647059
+P.TP	P.TP	viral_motif	0.16	""	2.76470588235294	2.76470588235294
+[KR][KR][KR][KR]	[KR][KR][KR][KR]	viral_motif	9.09e-05	""	46.9748688235294	46.9748688235294
+[KR][KR][KR][KR]	[KR][KR][KR][KR]	viral_motif	0.002	""	46.4470588235294	46.4470588235294
+E.EE	E.EE	viral_motif	0.08	""	24.8823529411765	24.8823529411765
+SSG	SSG	viral_motif	0.052	""	32.6235294117647	32.6235294117647
+SSG	SSG	viral_motif	0.11	""	16.5882352941177	16.5882352941177
+APR.R	APR.R	viral_motif	0.14	""	8.29411764705882	8.29411764705882
+KR.R	KR.R	viral_motif	0.03	""	38.7058823529412	38.7058823529412
+R..QE	R..QE	viral_motif	0.005	""	45.6176470588235	45.6176470588235
+Q..A..R	Q..A..R	viral_motif	0.11	""	16.5882352941177	16.5882352941177
+Q.EA	Q.EA	viral_motif	0.15	""	5.52941176470589	5.52941176470589
+KR.R	KR.R	viral_motif	0.042	""	35.3882352941176	35.3882352941176
+P[GS][AS]P	P[GS][AS]P	viral_motif	0.008	""	44.7882352941176	44.7882352941176
+E..K.K	E..K.K	viral_motif	0.12	""	13.8235294117647	13.8235294117647
+PV.A	PV.A	viral_motif	0.14	""	8.29411764705882	8.29411764705882
+RKR	RKR	viral_motif	0.000781	""	46.7840764705882	46.7840764705882
+KEK.[DE]	KEK.[DE]	viral_motif	0.005	""	45.6176470588235	45.6176470588235
+I.KK	I.KK	viral_motif	0.1	""	19.3529411764706	19.3529411764706
+KR.R	KR.R	viral_motif	0.000141	""	46.9610176470588	46.9610176470588
+E..E.L	E..E.L	viral_motif	0.006	""	45.3411764705882	45.3411764705882
+E..E..Q	E..E..Q	viral_motif	0.013	""	43.4058823529412	43.4058823529412
+T.SS	T.SS	viral_motif	0.086	""	23.2235294117647	23.2235294117647
+EEL	EEL	viral_motif	0.13	""	11.0588235294118	11.0588235294118
+KR.R	KR.R	viral_motif	0.000177	""	46.9510647058824	46.9510647058824
+I..K.{1,2}R.{1,2}K	I..K.{1,2}R.{1,2}K	viral_motif	0.032	""	38.1529411764706	38.1529411764706
+EEL	EEL	viral_motif	0.15	""	5.52941176470589	5.52941176470589
+E.EE	E.EE	viral_motif	0.098	""	19.9058823529412	19.9058823529412
+Q..T.I	Q..T.I	viral_motif	0.016	""	42.5764705882353	42.5764705882353
+E..E.L	E..E.L	viral_motif	0.002	""	46.4470588235294	46.4470588235294
+P..KR	P..KR	viral_motif	0.024	""	40.3647058823529	40.3647058823529
+RF..[AGS]	RF..[AGS]	viral_motif	0.098	""	19.9058823529412	19.9058823529412
+K..RK.A	K..RK.A	viral_motif	0.12	""	13.8235294117647	13.8235294117647
+KRK	KRK	viral_motif	0.15	""	5.52941176470589	5.52941176470589
+K.E..E	K.E..E	viral_motif	0.17	""	0	0
+EE.D	EE.D	viral_motif	0.002	""	46.4470588235294	46.4470588235294
+E..E.L	E..E.L	viral_motif	0.003	""	46.1705882352941	46.1705882352941
+P..KR	P..KR	viral_motif	0.028	""	39.2588235294118	39.2588235294118
+KQK	KQK	viral_motif	0.03	""	38.7058823529412	38.7058823529412
+S..AS	S..AS	viral_motif	0.067	""	28.4764705882353	28.4764705882353
+KRK	KRK	viral_motif	0.00046	""	46.8728235294118	46.8728235294118
+[HR][HK]R.R	[HR][HK]R.R	viral_motif	8.79e-05	""	46.9756982352941	46.9756982352941
+[HK][KR].[HKR]	[HK][KR].[HKR]	viral_motif	0.12	""	13.8235294117647	13.8235294117647
+RKR	RKR	viral_motif	0.028	""	39.2588235294118	39.2588235294118
+R.RR	R.RR	viral_motif	0.16	""	2.76470588235294	2.76470588235294
+[KR][KR].[KR]	[KR][KR].[KR]	viral_motif	0.13	""	11.0588235294118	11.0588235294118
+P.S.G	P.S.G	viral_motif	0.15	""	5.52941176470589	5.52941176470589
+PAP	PAP	viral_motif	2.6e-06	""	46.9992811764706	46.9992811764706
+AAG	AAG	viral_motif	0.13	""	11.0588235294118	11.0588235294118
+E..K..K	E..K..K	viral_motif	0.17	""	0	0
+DSG	DSG	viral_motif	2.88e-08	""	46.9999920376471	46.9999920376471
+DSG	DSG	viral_motif	1.01e-06	""	46.9997207647059	46.9997207647059
+DT..D	DT..D	viral_motif	0.15	""	5.52941176470589	5.52941176470589
+LKE.V	LKE.V	viral_motif	0.017	""	42.3	42.3
+EEL	EEL	viral_motif	0.008	""	44.7882352941176	44.7882352941176
+[DE]..P[LV]	[DE]..P[LV]	viral_motif	0.017	""	42.3	42.3
+STS	STS	viral_motif	0.039	""	36.2176470588235	36.2176470588235
+E..QR	E..QR	viral_motif	0.048	""	33.7294117647059	33.7294117647059
+L.R..E	L.R..E	viral_motif	0.067	""	28.4764705882353	28.4764705882353
+[DE]..[KR].[HKR]	[DE]..[KR].[HKR]	viral_motif	0.11	""	16.5882352941177	16.5882352941177
+E.DE	E.DE	viral_motif	0.000754	""	46.7915411764706	46.7915411764706
+S.ED	S.ED	viral_motif	0.009	""	44.5117647058823	44.5117647058823
+D..E.E	D..E.E	viral_motif	0.083	""	24.0529411764706	24.0529411764706
+D.EE	D.EE	viral_motif	0.079	""	25.1588235294118	25.1588235294118
+Q..[FIMV][DE]	Q..[FIMV][DE]	viral_motif	0.018	""	42.0235294117647	42.0235294117647
+G.FV	G.FV	viral_motif	0.043	""	35.1117647058824	35.1117647058824
+A..A..G	A..A..G	viral_motif	0.11	""	16.5882352941177	16.5882352941177
+P..KR	P..KR	viral_motif	0.008	""	44.7882352941176	44.7882352941176
+EK.K	EK.K	viral_motif	0.016	""	42.5764705882353	42.5764705882353
+G[KR].RGR	G[KR].RGR	viral_motif	0.000563	""	46.8443470588235	46.8443470588235
+LQ..R	LQ..R	viral_motif	0.1	""	19.3529411764706	19.3529411764706
+E.EE	E.EE	viral_motif	0.14	""	8.29411764705882	8.29411764705882
+P..KR	P..KR	viral_motif	0.009	""	44.5117647058823	44.5117647058823
+P..KR	P..KR	viral_motif	0.038	""	36.4941176470588	36.4941176470588
+GSS	GSS	viral_motif	0.01	""	44.2352941176471	44.2352941176471
+S..T.P	S..T.P	viral_motif	0.029	""	38.9823529411765	38.9823529411765
+SS..G	SS..G	viral_motif	0.13	""	11.0588235294118	11.0588235294118
+[DE]E..R	[DE]E..R	viral_motif	0.01	""	44.2352941176471	44.2352941176471
+LS.P	LS.P	viral_motif	0.073	""	26.8176470588235	26.8176470588235
+R.K.E	R.K.E	viral_motif	0.096	""	20.4588235294118	20.4588235294118
+KK..R	KK..R	viral_motif	0.11	""	16.5882352941177	16.5882352941177
+N.{0,1}GD	N.{0,1}GD	viral_motif	0.036	""	37.0470588235294	37.0470588235294
+T.L$	T.L$	viral_motif	0	""	47	47
+D.VD	D.VD	viral_motif	0.17	""	0	0
+S..E[DE]..S	S..E[DE]..S	viral_motif	0.018	""	42.0235294117647	42.0235294117647
+D.I..L	D.I..L	viral_motif	0.063	""	29.5823529411765	29.5823529411765
+[AS]P..[AS].P	[AS]P..[AS].P	viral_motif	0.071	""	27.3705882352941	27.3705882352941
+[DE].[ILV].[KR]	[DE].[ILV].[KR]	viral_motif	0.11	""	16.5882352941177	16.5882352941177
+NFS	NFS	viral_motif	0.02	""	41.4705882352941	41.4705882352941
+C..PG	C..PG	viral_motif	0.000455	""	46.8742058823529	46.8742058823529
+KRKR	KRKR	viral_motif	1.5e-11	""	46.9999999958529	46.9999999958529
+KRKR	KRKR	viral_motif	1.23e-09	""	46.9999996599412	46.9999996599412
+PP..D	PP..D	viral_motif	0.047	""	34.0058823529412	34.0058823529412
+Q..[HKR].[KR]	Q..[HKR].[KR]	viral_motif	0.11	""	16.5882352941177	16.5882352941177
+KQ.{0,2}K.{1,2}L	KQ.{0,2}K.{1,2}L	viral_motif	0.005	""	45.6176470588235	45.6176470588235
+EN.[DE]R	EN.[DE]R	viral_motif	0.006	""	45.3411764705882	45.3411764705882
+T..V.K	T..V.K	viral_motif	0.03	""	38.7058823529412	38.7058823529412
+SRG.G..T	SRG.G..T	viral_motif	0.15	""	5.52941176470589	5.52941176470589
+NN.N	NN.N	viral_motif	0.11	""	16.5882352941177	16.5882352941177
+GSS	GSS	viral_motif	0.072	""	27.0941176470588	27.0941176470588
+[ST].V$	[ST].V$	viral_motif	1.12e-06	""	46.9996903529412	46.9996903529412
+NN.V	NN.V	viral_motif	0.066	""	28.7529411764706	28.7529411764706
+K..KR	K..KR	viral_motif	0.023	""	40.6411764705882	40.6411764705882
+E..K.K	E..K.K	viral_motif	0.076	""	25.9882352941176	25.9882352941176
+EEL	EEL	viral_motif	0.005	""	45.6176470588235	45.6176470588235
+EE..Q	EE..Q	viral_motif	0.027	""	39.5352941176471	39.5352941176471
+[ST].[ILV]$	[ST].[ILV]$	viral_motif	0	""	47	47
+[ST].V$	[ST].V$	viral_motif	9.09e-07	""	46.9997486882353	46.9997486882353
+I.ED	I.ED	viral_motif	0.012	""	43.6823529411765	43.6823529411765
+A..S.D	A..S.D	viral_motif	0.055	""	31.7941176470588	31.7941176470588
+EA..R..L	EA..R..L	viral_motif	0.15	""	5.52941176470589	5.52941176470589
+KR.R	KR.R	viral_motif	0.000151	""	46.9582529411765	46.9582529411765
+T.SS	T.SS	viral_motif	0.092	""	21.5647058823529	21.5647058823529
+EEL	EEL	viral_motif	0.14	""	8.29411764705882	8.29411764705882
+V.G..P.G	V.G..P.G	viral_motif	0.061	""	30.1352941176471	30.1352941176471
+P..G..G	P..G..G	viral_motif	0.078	""	25.4352941176471	25.4352941176471
+V.S.{0,2}G	V.S.{0,2}G	viral_motif	0.092	""	21.5647058823529	21.5647058823529
+[ST].V$	[ST].V$	viral_motif	1.13e-06	""	46.9996875882353	46.9996875882353
+PA.P	PA.P	viral_motif	0.11	""	16.5882352941177	16.5882352941177
+K..H.R..S	K..H.R..S	viral_motif	0.008	""	44.7882352941176	44.7882352941176
+SEN	SEN	viral_motif	0.009	""	44.5117647058823	44.5117647058823
+R.LQ	R.LQ	viral_motif	0.035	""	37.3235294117647	37.3235294117647
+E.LR	E.LR	viral_motif	0.051	""	32.9	32.9
+KK..R	KK..R	viral_motif	0.057	""	31.2411764705882	31.2411764705882
+Q..L..[DE]S	Q..L..[DE]S	viral_motif	0.13	""	11.0588235294118	11.0588235294118
+L..PP	L..PP	viral_motif	0.13	""	11.0588235294118	11.0588235294118
+[GS][ILM][AS].P	[GS][ILM][AS].P	viral_motif	0.14	""	8.29411764705882	8.29411764705882
+E.DD	E.DD	viral_motif	0.15	""	5.52941176470589	5.52941176470589
+G.G.G	G.G.G	viral_motif	0.17	""	0	0
+P..[LV]..P.L	P..[LV]..P.L	viral_motif	0.095	""	20.7352941176471	20.7352941176471
+[HR][HK]R.R	[HR][HK]R.R	viral_motif	8.88e-05	""	46.9754494117647	46.9754494117647
+L.Q.L.{0,1}R	L.Q.L.{0,1}R	viral_motif	0.026	""	39.8117647058824	39.8117647058824
+R..R..G	R..R..G	viral_motif	0.042	""	35.3882352941176	35.3882352941176
+P..PG..P	P..PG..P	viral_motif	0.044	""	34.8352941176471	34.8352941176471
+P..PG	P..PG	viral_motif	0.063	""	29.5823529411765	29.5823529411765
+PG..P	PG..P	viral_motif	0.064	""	29.3058823529412	29.3058823529412
+S.SP[AS]	S.SP[AS]	viral_motif	0.087	""	22.9470588235294	22.9470588235294
+R..QE	R..QE	viral_motif	0.1	""	19.3529411764706	19.3529411764706
+RG.R..G	RG.R..G	viral_motif	0.11	""	16.5882352941177	16.5882352941177
+DED	DED	viral_motif	0.15	""	5.52941176470589	5.52941176470589
+P..KR	P..KR	viral_motif	0.035	""	37.3235294117647	37.3235294117647
+L.R..K	L.R..K	viral_motif	0.067	""	28.4764705882353	28.4764705882353
+RK.A	RK.A	viral_motif	0.076	""	25.9882352941176	25.9882352941176
+E..R.Y	E..R.Y	viral_motif	0.000202	""	46.9441529411765	46.9441529411765
+[DE]E..R	[DE]E..R	viral_motif	0.016	""	42.5764705882353	42.5764705882353
+P..P.[HKR]	P..P.[HKR]	viral_motif	0.001	""	46.7235294117647	46.7235294117647
+AA.P	AA.P	viral_motif	0.028	""	39.2588235294118	39.2588235294118
+E.LR	E.LR	viral_motif	0.12	""	13.8235294117647	13.8235294117647
+EE..R	EE..R	viral_motif	0.009	""	44.5117647058823	44.5117647058823
+EE..R	EE..R	viral_motif	0.016	""	42.5764705882353	42.5764705882353
+D..P..A	D..P..A	viral_motif	0.14	""	8.29411764705882	8.29411764705882
+B4URF7	Polymerase basic protein 2 (B4URF7_I33A0)	viral_protein	""	""	""	""
+C5E522	Nucleoprotein (C5E522_9INFA)	viral_protein	""	""	""	""
+C5E526	RNA-directed RNA polymerase catalytic subunit (C5E526_9INFA)	viral_protein	""	""	""	""
+C5E527	Polymerase basic protein 2 (C5E527_9INFA)	viral_protein	""	""	""	""
+D1LN35	Non-structural protein 1 (D1LN35_9INFA)	viral_protein	""	""	""	""
+E5LBT9	Capsid scaffolding protein (E5LBT9_HHV8)	viral_protein	""	""	""	""
+F5HE15	Core gene UL26.5 family protein (F5HE15_HHV8)	viral_protein	""	""	""	""
+F5HFG5	Membrane protein (F5HFG5_HHV8)	viral_protein	""	""	""	""
+I6T1Z2	Non-structural protein 1 (I6T1Z2_I68A0)	viral_protein	""	""	""	""
+I6TAH8	Nucleoprotein (I6TAH8_I68A0)	viral_protein	""	""	""	""
+K7Y1A2	Genome polyprotein (K7Y1A2_9HEPC)	viral_protein	""	""	""	""
+O39474	Non-structural 5A protein (O39474_9HEPC)	viral_protein	""	""	""	""
+O40939	ORF K10 (O40939_HHV8)	viral_protein	""	""	""	""
+O56264	Non-structural protein 1 (NS1_I97A1)	viral_protein	""	""	""	""
+O92837	Minor capsid protein (O92837_SV40)	viral_protein	""	""	""	""
+P03070	Large T antigen (LT_SV40)	viral_protein	""	""	""	""
+P03087	Major capsid protein VP1 (VP1_SV40)	viral_protein	""	""	""	""
+P03101	Major capsid protein L1 (VL1_HPV16)	viral_protein	""	""	""	""
+P03126	Protein E6 (VE6_HPV16)	viral_protein	""	""	""	""
+P03129	Protein E7 (VE7_HPV16)	viral_protein	""	""	""	""
+P03177	Thymidine kinase (KITH_EBVB9)	viral_protein	""	""	""	""
+P03188	Envelope glycoprotein B (GB_EBVB9)	viral_protein	""	""	""	""
+P03209	Replication and transcription activator (RTA_EBVB9)	viral_protein	""	""	""	""
+P03211	Epstein-Barr nuclear antigen 1 (EBNA1_EBVB9)	viral_protein	""	""	""	""
+P03220	Protein BGLF3 (UL95_EBVB9)	viral_protein	""	""	""	""
+P03225	Protein BDLF2 (BDLF2_EBVB9)	viral_protein	""	""	""	""
+P03243	E1B 55 kDa protein (E1B55_ADE05)	viral_protein	""	""	""	""
+P03246	E1B protein, small T-antigen (E1BS_ADE05)	viral_protein	""	""	""	""
+P03255	Early E1A protein (E1A_ADE05)	viral_protein	""	""	""	""
+P03346	Gag polyprotein (GAG_HTLV2)	viral_protein	""	""	""	""
+P03366	Gag-Pol polyprotein (POL_HV1B1)	viral_protein	""	""	""	""
+P03427	Polymerase basic protein 2 (PB2_I33A0)	viral_protein	""	""	""	""
+P03428	Polymerase basic protein 2 (PB2_I34A1)	viral_protein	""	""	""	""
+P03431	RNA-directed RNA polymerase catalytic subunit (RDRP_I34A1)	viral_protein	""	""	""	""
+P03433	Polymerase acidic protein (PA_I34A1)	viral_protein	""	""	""	""
+P03466	Nucleoprotein (NCAP_I34A1)	viral_protein	""	""	""	""
+P03495	Non-structural protein 1 (NS1_I72A2)	viral_protein	""	""	""	""
+P03496	Non-structural protein 1 (NS1_I34A1)	viral_protein	""	""	""	""
+P04012	Major capsid protein L1 (VL1_HPV11)	viral_protein	""	""	""	""
+P04015	Regulatory protein E2 (VE2_HPV11)	viral_protein	""	""	""	""
+P04296	Major DNA-binding protein (DNBI_HHV11)	viral_protein	""	""	""	""
+P04413	Serine/threonine-protein kinase US3 (US03_HHV11)	viral_protein	""	""	""	""
+P04487	RNA-binding protein (RNB_HHV11)	viral_protein	""	""	""	""
+P04591	Gag polyprotein (GAG_HV1H2)	viral_protein	""	""	""	""
+P05919	Protein Vpu (VPU_HV1H2)	viral_protein	""	""	""	""
+P06427	Protein E6 (VE6_HPV33)	viral_protein	""	""	""	""
+P06428	Protein E6 (VE6_HPV08)	viral_protein	""	""	""	""
+P06429	Protein E7 (VE7_HPV33)	viral_protein	""	""	""	""
+P06430	Protein E7 (VE7_HPV08)	viral_protein	""	""	""	""
+P06460	Probable protein E5A (VE5A_HPV6B)	viral_protein	""	""	""	""
+P06462	Protein E6 (VE6_HPV6B)	viral_protein	""	""	""	""
+P06463	Protein E6 (VE6_HPV18)	viral_protein	""	""	""	""
+P06464	Protein E7 (VE7_HPV6B)	viral_protein	""	""	""	""
+P06788	Protein E7 (VE7_HPV18)	viral_protein	""	""	""	""
+P06821	Matrix protein 2 (M2_I34A1)	viral_protein	""	""	""	""
+P06827	Nucleoprotein (NCAP_I72A2)	viral_protein	""	""	""	""
+P06930	Protein E6 (VE6_HPV05)	viral_protein	""	""	""	""
+P08393	E3 ubiquitin-protein ligase ICP0 (ICP0_HHV11)	viral_protein	""	""	""	""
+P09992	Nucleoprotein (NCAP_LYCVA)	viral_protein	""	""	""	""
+P0C1C6	Protein W (W_HENDH)	viral_protein	""	""	""	""
+P0C1C7	Protein W (W_NIPAV)	viral_protein	""	""	""	""
+P0C213	Protein Tax-1 (TAX_HTL1F)	viral_protein	""	""	""	""
+P0C739	Protein BNLF2a (BNL2A_EBVB9)	viral_protein	""	""	""	""
+P0C746	HTLV-1 basic zipper factor (HBZ_HTL1A)	viral_protein	""	""	""	""
+P0CK56	Uncharacterized protein BDLF4 (UL92_EBVB9)	viral_protein	""	""	""	""
+P12418	Microtubule-associated protein mu-2 (MU2_REOVD)	viral_protein	""	""	""	""
+P13285	Latent membrane protein 2 (LMP2_EBVB9)	viral_protein	""	""	""	""
+P16717	Putative fusion protein (VFUS_SHEVK)	viral_protein	""	""	""	""
+P17382	Replication protein E1 (VE1_HPV31)	viral_protein	""	""	""	""
+P17386	Protein E6 (VE6_HPV31)	viral_protein	""	""	""	""
+P21605	Protein E3 (E3_VACCW)	viral_protein	""	""	""	""
+P21698	Non-structural protein S (NSS_RVFVZ)	viral_protein	""	""	""	""
+P21735	Protein E6 (VE6_HPV45)	viral_protein	""	""	""	""
+P24772	Protein B14 (B14_VACCW)	viral_protein	""	""	""	""
+P24835	Protein E6 (VE6_HPV39)	viral_protein	""	""	""	""
+P26555	Protein E6 (VE6_HPV58)	viral_protein	""	""	""	""
+P27228	Protein E6 (VE6_HPV35)	viral_protein	""	""	""	""
+P30119	Uncharacterized protein BTRF1 (BTRF1_EBVB9)	viral_protein	""	""	""	""
+P31345	Polymerase basic protein 2 (PB2_I75A3)	viral_protein	""	""	""	""
+P36780	Regulatory protein E2 (VE2_HPV09)	viral_protein	""	""	""	""
+P50804	Protein E6 (VE6_HPV70)	viral_protein	""	""	""	""
+Q01220	Protein A52 (A52_VACCW)	viral_protein	""	""	""	""
+Q04360	mRNA export factor ICP27 homolog (ICP27_EBVB9)	viral_protein	""	""	""	""
+Q05127	Polymerase cofactor VP35 (VP35_EBOZM)	viral_protein	""	""	""	""
+Q05322	Membrane-associated protein VP24 (VP24_EBOZM)	viral_protein	""	""	""	""
+Q0A2H0	Non-structural protein 1 (NS1_I59A0)	viral_protein	""	""	""	""
+Q194T2	Non-structural protein 1 (Q194T2_9INFA)	viral_protein	""	""	""	""
+Q1K9H2	Nucleoprotein (Q1K9H2_I33A0)	viral_protein	""	""	""	""
+Q1K9H5	RNA-directed RNA polymerase catalytic subunit (Q1K9H5_I33A0)	viral_protein	""	""	""	""
+Q2MG95	BVLF1 (Q2MG95_EBVB9)	viral_protein	""	""	""	""
+Q2PJP0	Non-structural protein 1 (Q2PJP0_9INFA)	viral_protein	""	""	""	""
+Q2PJP1	Nuclear export protein (Q2PJP1_9INFA)	viral_protein	""	""	""	""
+Q2Q067	BZIP factor (Q2Q067_9DELA)	viral_protein	""	""	""	""
+Q5EP28	Nucleoprotein (Q5EP28_9INFA)	viral_protein	""	""	""	""
+Q67296	Polymerase basic protein 2 (PB2_I72A2)	viral_protein	""	""	""	""
+Q69117	Tripartite terminase subunit 2 (Q69117_EBVG)	viral_protein	""	""	""	""
+Q6DP93	Non-structural protein 1 (Q6DP93_9INFA)	viral_protein	""	""	""	""
+Q6VGS8	14.3 kDa protein (Q6VGS8_ADE05)	viral_protein	""	""	""	""
+Q76S40	Dihydrofolate reductase homolog (Q76S40_HHV8)	viral_protein	""	""	""	""
+Q77M19	V protein (Q77M19_MEASW)	viral_protein	""	""	""	""
+Q77Q36	viral cyclin homolog (VCYCL_HHV8P)	viral_protein	""	""	""	""
+Q77UU1	Regulatory protein E2 (Q77UU1_9PAPI)	viral_protein	""	""	""	""
+Q8AZK7	Epstein-Barr nuclear antigen leader protein (EBNA5_EBVB9)	viral_protein	""	""	""	""
+Q997F2	Non-structural protein V (V_NIPAV)	viral_protein	""	""	""	""
+Q99AU3	Non-structural protein 1 (NS1_I18A0)	viral_protein	""	""	""	""
+Q9DGW5	Oncoprotein MEQ (MEQ_GAHVM)	viral_protein	""	""	""	""
+Q9QPN3	Protein Nef (NEF_HV1LA)	viral_protein	""	""	""	""
+Q9WMB5	Nucleoprotein (NCAP_MEASC)	viral_protein	""	""	""	""
+Q9WMX2	Genome polyprotein [Cleaved into: Core protein p21 (POLG_HCVCO)	viral_protein	""	""	""	""
+Q9WPI5	Nonstructural protein NS1 (Q9WPI5_9INFA)	viral_protein	""	""	""	""
+U5TQE9	Ribonucleoside-diphosphate reductase large subunit (U5TQE9_HHV1)	viral_protein	""	""	""	""

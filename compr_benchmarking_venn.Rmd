@@ -61,6 +61,7 @@ Sys.Date. = as.Date("2018-08-23")
 Sys.Date.
 filename = paste0("./processed_data_files/compr_benchmarking_venn_IntVidVir_human_dom_",format(Sys.Date., "%Y%m"),"_type_", measure1, measure2,".RData")
 filename
+if(file.exists(filename)) load(filename)
 ```
 
 ## Overview
@@ -272,6 +273,17 @@ mPlotAnnotVenn = function(filter_by_domain_data = NULL,
     gridExtra::arrangeGrob(grobs = annotated_venns, ncol=1)
 }
 #####################################################################################
+generateCutoffs = function(rocr_list, lenient_cutoff, stringent_prec){
+    cutoffs = rocr_list[1,1][[1]]@cutoffs[[1]]
+    prec = rocr_list[2,1][[1]]@y.values[[1]]
+    rec = rocr_list[2,1][[1]]@x.values[[1]]
+    motif_pval_cutoffs = c(lenient_cutoff,
+                                   1 - min(cutoffs[prec >= rec & cutoffs != 0], na.rm = T),
+                                   1 - min(cutoffs[prec >= stringent_prec & cutoffs != 0], na.rm = T))
+    motif_pval_cutoffs[motif_pval_cutoffs == -Inf] = min(motif_pval_cutoffs[motif_pval_cutoffs != -Inf])
+    motif_pval_cutoffs
+}
+#####################################################################################
 figureVenn = function(filter_by_domain_data = NULL,
                       main = "",
                       motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
@@ -300,11 +312,7 @@ figureVenn = function(filter_by_domain_data = NULL,
                                         motif_setup_obj2 = NULL, occurence_filt = NULL)
     rocr_list_IntAct = mBenchmarkMotifsROC(res_list_IntAct$res, measure1 = "prec", measure2 = "rec", ROCR_data = T)
     if(is.null(motif_pval_cutoffs_IntAct)){
-        motif_pval_cutoffs_IntAct = c(lenient_cutoff,
-                                      1 - min(rocr_list_IntAct[1,1][[1]]@cutoffs[[1]][rocr_list_IntAct[2,1][[1]]@y.values[[1]] >=
-                                                                                          rocr_list_IntAct[2,1][[1]]@x.values[[1]]], na.rm = T),
-                                      1 - min(rocr_list_IntAct[1,1][[1]]@cutoffs[[1]][rocr_list_IntAct[2,1][[1]]@y.values[[1]] >= stringent_prec],
-                                              na.rm = T))
+        motif_pval_cutoffs_IntAct = generateCutoffs(rocr_list_IntAct, lenient_cutoff, stringent_prec)
         message(paste0("motif_pval_cutoffs_IntAct: ", paste0(motif_pval_cutoffs_IntAct, collapse = ", ")))
     }
     big_plot_IntAct = mPlotAnnotVenn(filter_by_domain_data = filter_by_domain_data,
@@ -332,11 +340,7 @@ figureVenn = function(filter_by_domain_data = NULL,
                                         motif_setup_obj2 = NULL, occurence_filt = NULL)
     rocr_list_BioPlex = mBenchmarkMotifsROC(res_list_BioPlex$res, measure1 = "prec", measure2 = "rec", ROCR_data = T)
     if(is.null(motif_pval_cutoffs_BioPlex)){
-        motif_pval_cutoffs_BioPlex = c(lenient_cutoff,
-                                       1 - min(rocr_list_BioPlex[1,1][[1]]@cutoffs[[1]][rocr_list_BioPlex[2,1][[1]]@y.values[[1]] >=
-                                                                                            rocr_list_BioPlex[2,1][[1]]@x.values[[1]]], na.rm = T),
-                                       1 - min(rocr_list_BioPlex[1,1][[1]]@cutoffs[[1]][rocr_list_BioPlex[2,1][[1]]@y.values[[1]] >= stringent_prec],
-                                               na.rm = T))
+        motif_pval_cutoffs_BioPlex = generateCutoffs(rocr_list_BioPlex, lenient_cutoff, stringent_prec)
         message(paste0("motif_pval_cutoffs_BioPlex: ", paste0(motif_pval_cutoffs_BioPlex, collapse = ", ")))
     }
     big_plot_BioPlex = mPlotAnnotVenn(filter_by_domain_data = filter_by_domain_data,
@@ -365,11 +369,7 @@ figureVenn = function(filter_by_domain_data = NULL,
                                            motif_setup_obj2 = NULL, occurence_filt = NULL)
         rocr_list_viral = mBenchmarkMotifsROC(res_list_viral$res, measure1 = "prec", measure2 = "rec", ROCR_data = T)
         if(is.null(motif_pval_cutoffs_viral)){
-            motif_pval_cutoffs_viral = c(lenient_cutoff,
-                                         1 - min(rocr_list_viral[1,1][[1]]@cutoffs[[1]][rocr_list_viral[2,1][[1]]@y.values[[1]] >=
-                                                                                            rocr_list_viral[2,1][[1]]@x.values[[1]]], na.rm = T),
-                                         1 - min(rocr_list_viral[1,1][[1]]@cutoffs[[1]][rocr_list_viral[2,1][[1]]@y.values[[1]] >= stringent_prec],
-                                                 na.rm = T))
+            motif_pval_cutoffs_viral = generateCutoffs(rocr_list_viral, lenient_cutoff, stringent_prec)
             message(paste0("motif_pval_cutoffs_viral: ", paste0(motif_pval_cutoffs_viral, collapse = ", ")))
         } 
         
@@ -469,7 +469,7 @@ replotFigureVenn = function(figure, main, fontfamily = "Arial", viral_only_venn 
 }
 ```
 
-```{r venn_diagrams}
+```{r venn_diagrams, eval=FALSE}
 ##################################################################################### "MOD", "LIG", "DOC"
 # All motifs
 start.time = Sys.time()
@@ -490,14 +490,14 @@ Sys.time() - start.time
 
 # Filter by viral-human domain predictions
 figureMODLIGDOC_filtered = figureVenn(filter_by_domain_data = "p.value < 0.5",
-                                       main = "human network searched for motifs present in viral proteins (filtered by domain)",
-                                       motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
-                                       datasets = datasets,
-                                       non_query_domain_results_obj = NULL, # res_count_all
-                                       query_domains_only = F, min_non_query_domain_support = 0,
-                                       return_all = F, merge_domain_data = F, descriptions = descriptions)
+                                      main = "human network searched for motifs present in viral proteins (filtered by domain)",
+                                      motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
+                                      datasets = datasets,
+                                      non_query_domain_results_obj = NULL, # res_count_all
+                                      query_domains_only = F, min_non_query_domain_support = 0,
+                                      return_all = F, merge_domain_data = F, descriptions = descriptions)
 figureMODLIGDOC_filtered2 = replotFigureVenn(figureMODLIGDOC_filtered,
-                                              main = "")$big_plot_text
+                                             main = "")$big_plot_text
 ggsave(filename = "Venn_filtered_MOD_LIG_DOC.svg", plot = figureMODLIGDOC_filtered2,
        device = "svg", width = 19.3, height = 11.60638, units = "in")
 save(list = ls(), file=filename)
@@ -549,104 +549,123 @@ figureMODLIGDOC_32 = replotFigureVenn(figureMODLIGDOC_3,
 ggsave(filename = "Venn_filtered_some_humanviral_dom_MOD_LIG_DOC.svg", plot = figureMODLIGDOC_32,
        device = "svg", width = 19.3, height = 11.60638, units = "in")
 save(list = ls(), file=filename)
+```
 
-# Filter by human-human and viral-human domain predictions - (4 human have the same top-1 domain)
+```{r MOD_LIG_DOC_top_domain, eval=FALSE}
+# Filter by human-human and viral-human domain predictions - (3 human have the same top-1 domain)
 figureMODLIGDOC_4 = figureVenn(filter_by_domain_data = "p.value < 0.5",
-                               main = "Filter by human-human and viral-human domain predictions (2 human protein have the same top-1 domain)",
+                               main = "Filter by human-human and viral-human domain predictions (3 human protein have the same top-1 domain)",
                                motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
+                               stringent_prec = 0.5,
                                datasets = datasets,
                                non_query_domain_results_obj = "res_count_all", # res_count_all
-                               query_domains_only = F, min_non_query_domain_support = 0, min_top_domain_support4motif_nq = 2,
+                               query_domains_only = F, min_non_query_domain_support = 0, min_top_domain_support4motif_nq = 3,
                                return_all = F, merge_domain_data = T, descriptions = descriptions,
                                viral_only_venn = T)
 figureMODLIGDOC_42 = replotFigureVenn(figureMODLIGDOC_4,
                                       main = "")$big_plot_text
 ggsave(filename = "Venn_filtered_some_human_top_dom_MOD_LIG_DOC.svg", plot = figureMODLIGDOC_42,
        device = "svg", width = 19.3, height = 11.60638, units = "in")
+
+# Filter by human-human and viral-human domain predictions - (3 human have the same top-1 domain)
+figureMODLIGDOC_5 = figureVenn(filter_by_domain_data = "p.value < 0.5",
+                               main = "Filter by human-human and viral-human domain predictions (3 human protein have the same top-1 domain)",
+                               motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
+                               stringent_prec = 0.3,
+                               datasets = datasets,
+                               non_query_domain_results_obj = "res_count_all", # res_count_all
+                               query_domains_only = F, min_non_query_domain_support = 0, min_top_domain_support4motif_nq = 3,
+                               return_all = F, merge_domain_data = T, descriptions = descriptions,
+                               viral_only_venn = T)
+figureMODLIGDOC_52 = replotFigureVenn(figureMODLIGDOC_5,
+                                      main = "")$big_plot_text
+ggsave(filename = "Venn_str_prec_filtered_some_human_top_dom_MOD_LIG_DOC.svg", plot = figureMODLIGDOC_52,
+       device = "svg", width = 19.3, height = 11.60638, units = "in")
 #grid.newpage()
 #grid.draw(figure_filtered2$big_plot_text)
 save(list = ls(), file=filename)
+```
+
+```{r non_MOD_LIG_DOC, eval=FALSE}
 ##################################################################################### ^ copy optimal and stringent motif_pval_cutoffs
-if(!MOD_LIG_DOC){
-    ##################################################################################### "MOD", "LIG", "DOC", "DEG", "CLV"
-    motif_types = c("MOD", "LIG", "DOC", "DEG", "CLV")
-    
-    figureMODLIGDOC2DEGCLV = figureVenn(filter_by_domain_data = NULL,
-                                        main = "human network searched for motifs present in viral proteins (not filtered by domain)",
-                                        motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
-                                        datasets = datasets,
-                                        motif_pval_cutoffs_IntAct = figureMODLIGDOC$motif_pval_cutoffs_IntAct,
-                                        motif_pval_cutoffs_BioPlex = figureMODLIGDOC$motif_pval_cutoffs_BioPlex,
-                                        motif_pval_cutoffs_viral = figureMODLIGDOC$motif_pval_cutoffs_viral,
-                                        non_query_domain_results_obj = NULL, # res_count_all
-                                        query_domains_only = F, min_non_query_domain_support = 0,
-                                        return_all = F, merge_domain_data = F)
-    figureMODLIGDOC2DEGCLV2 = replotFigureVenn(figureMODLIGDOC2DEGCLV,
-                                               main = "")
-    ggsave(filename = "Venn_not_filtered_MOD_LIG_DOC_DEG_CLV.svg", plot = figureMODLIGDOC2DEGCLV2$big_plot_text,
-           device = "svg", width = 19.3, height = 11.60638, units = "in")
-    #grid.newpage()
-    #grid.draw(figure2$big_plot_text)
-    
-    figureMODLIGDOC2DEGCLV_filtered = figureVenn(filter_by_domain_data = "p.value < 0.5",
-                                                 main = "human network searched for motifs present in viral proteins (filtered by domain)",
-                                                 motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
-                                                 datasets = datasets,
-                                                 motif_pval_cutoffs_IntAct = figureMODLIGDOC2_filtered$motif_pval_cutoffs_IntAct,
-                                                 motif_pval_cutoffs_BioPlex = figureMODLIGDOC2_filtered$motif_pval_cutoffs_BioPlex,
-                                                 motif_pval_cutoffs_viral = figureMODLIGDOC2_filtered$motif_pval_cutoffs_viral,
-                                                 non_query_domain_results_obj = NULL, # res_count_all
-                                                 query_domains_only = F, min_non_query_domain_support = 0,
-                                                 return_all = F, merge_domain_data = F)
-    figureMODLIGDOC2DEGCLV_filtered2 = replotFigureVenn(figureMODLIGDOC2DEGCLV_filtered,
-                                                        main = "")
-    ggsave(filename = "Venn_filtered_MOD_LIG_DOC_DEG_CLV.svg", plot = figureMODLIGDOC2DEGCLV_filtered2$big_plot_text,
-           device = "svg", width = 19.3, height = 11.60638, units = "in")
-    #grid.newpage()
-    #grid.draw(figure_filtered2$big_plot_text)
-    ##################################################################################### "MOD", "LIG", "DOC" "DEG", "CLV", "TRG"
-    motif_types = c("MOD", "LIG", "DOC", "DEG", "CLV", "TRG")
-    
-    figureMODLIGDOC2DEGCLVTRG = figureVenn(filter_by_domain_data = NULL,
-                                           main = "human network searched for motifs present in viral proteins (not filtered by domain)",
-                                           motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
-                                           datasets = datasets,
-                                           motif_pval_cutoffs_IntAct = figureMODLIGDOC$motif_pval_cutoffs_IntAct,
-                                           motif_pval_cutoffs_BioPlex = figureMODLIGDOC$motif_pval_cutoffs_BioPlex,
-                                           motif_pval_cutoffs_viral = figureMODLIGDOC$motif_pval_cutoffs_viral,
-                                           non_query_domain_results_obj = NULL, # res_count_all
-                                           query_domains_only = F, min_non_query_domain_support = 0,
-                                           return_all = F, merge_domain_data = F)
-    figureMODLIGDOC2DEGCLVTRG2 = replotFigureVenn(figureMODLIGDOC2DEGCLVTRG,
-                                                  main = "")
-    ggsave(filename = "Venn_not_filtered_MOD_LIG_DOC_DEG_CLV_TRG.svg", plot = figureMODLIGDOC2DEGCLVTRG2$big_plot_text,
-           device = "svg", width = 19.3, height = 11.60638, units = "in")
-    #grid.newpage()
-    #grid.draw(figure2$big_plot_text)
-    
-    figureMODLIGDOC2DEGCLVTRG_filtered = figureVenn(filter_by_domain_data = "p.value < 0.5",
-                                                    main = "human network searched for motifs present in viral proteins (filtered by domain)",
-                                                    motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
-                                                    datasets = datasets,
-                                                    motif_pval_cutoffs_IntAct = figureMODLIGDOC2_filtered$motif_pval_cutoffs_IntAct,
-                                                    motif_pval_cutoffs_BioPlex = figureMODLIGDOC2_filtered$motif_pval_cutoffs_BioPlex,
-                                                    motif_pval_cutoffs_viral = figureMODLIGDOC2_filtered$motif_pval_cutoffs_viral,
-                                                    non_query_domain_results_obj = NULL, # res_count_all
-                                                    query_domains_only = F, min_non_query_domain_support = 0,
-                                                    return_all = F, merge_domain_data = F)
-    figureMODLIGDOC2DEGCLVTRG_filtered2 = replotFigureVenn(figureMODLIGDOC2DEGCLVTRG_filtered,
-                                                           main = "")
-    ggsave(filename = "Venn_filtered_MOD_LIG_DOC_DEG_CLV_TRG.svg", plot = figureMODLIGDOC2DEGCLVTRG_filtered2$big_plot_text,
-           device = "svg", width = 19.3, height = 11.60638, units = "in")
-    #grid.newpage()
-    #grid.draw(figure_filtered2$big_plot_text)
-    #####################################################################################
-}
+##################################################################################### "MOD", "LIG", "DOC", "DEG", "CLV"
+motif_types = c("MOD", "LIG", "DOC", "DEG", "CLV")
+
+figureMODLIGDOC2DEGCLV = figureVenn(filter_by_domain_data = NULL,
+                                    main = "human network searched for motifs present in viral proteins (not filtered by domain)",
+                                    motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
+                                    datasets = datasets,
+                                    motif_pval_cutoffs_IntAct = figureMODLIGDOC$motif_pval_cutoffs_IntAct,
+                                    motif_pval_cutoffs_BioPlex = figureMODLIGDOC$motif_pval_cutoffs_BioPlex,
+                                    motif_pval_cutoffs_viral = figureMODLIGDOC$motif_pval_cutoffs_viral,
+                                    non_query_domain_results_obj = NULL, # res_count_all
+                                    query_domains_only = F, min_non_query_domain_support = 0,
+                                    return_all = F, merge_domain_data = F)
+figureMODLIGDOC2DEGCLV2 = replotFigureVenn(figureMODLIGDOC2DEGCLV,
+                                           main = "")
+ggsave(filename = "Venn_not_filtered_MOD_LIG_DOC_DEG_CLV.svg", plot = figureMODLIGDOC2DEGCLV2$big_plot_text,
+       device = "svg", width = 19.3, height = 11.60638, units = "in")
+#grid.newpage()
+#grid.draw(figure2$big_plot_text)
+
+figureMODLIGDOC2DEGCLV_filtered = figureVenn(filter_by_domain_data = "p.value < 0.5",
+                                             main = "human network searched for motifs present in viral proteins (filtered by domain)",
+                                             motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
+                                             datasets = datasets,
+                                             motif_pval_cutoffs_IntAct = figureMODLIGDOC2_filtered$motif_pval_cutoffs_IntAct,
+                                             motif_pval_cutoffs_BioPlex = figureMODLIGDOC2_filtered$motif_pval_cutoffs_BioPlex,
+                                             motif_pval_cutoffs_viral = figureMODLIGDOC2_filtered$motif_pval_cutoffs_viral,
+                                             non_query_domain_results_obj = NULL, # res_count_all
+                                             query_domains_only = F, min_non_query_domain_support = 0,
+                                             return_all = F, merge_domain_data = F)
+figureMODLIGDOC2DEGCLV_filtered2 = replotFigureVenn(figureMODLIGDOC2DEGCLV_filtered,
+                                                    main = "")
+ggsave(filename = "Venn_filtered_MOD_LIG_DOC_DEG_CLV.svg", plot = figureMODLIGDOC2DEGCLV_filtered2$big_plot_text,
+       device = "svg", width = 19.3, height = 11.60638, units = "in")
+#grid.newpage()
+#grid.draw(figure_filtered2$big_plot_text)
+##################################################################################### "MOD", "LIG", "DOC" "DEG", "CLV", "TRG"
+motif_types = c("MOD", "LIG", "DOC", "DEG", "CLV", "TRG")
+
+figureMODLIGDOC2DEGCLVTRG = figureVenn(filter_by_domain_data = NULL,
+                                       main = "human network searched for motifs present in viral proteins (not filtered by domain)",
+                                       motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
+                                       datasets = datasets,
+                                       motif_pval_cutoffs_IntAct = figureMODLIGDOC$motif_pval_cutoffs_IntAct,
+                                       motif_pval_cutoffs_BioPlex = figureMODLIGDOC$motif_pval_cutoffs_BioPlex,
+                                       motif_pval_cutoffs_viral = figureMODLIGDOC$motif_pval_cutoffs_viral,
+                                       non_query_domain_results_obj = NULL, # res_count_all
+                                       query_domains_only = F, min_non_query_domain_support = 0,
+                                       return_all = F, merge_domain_data = F)
+figureMODLIGDOC2DEGCLVTRG2 = replotFigureVenn(figureMODLIGDOC2DEGCLVTRG,
+                                              main = "")
+ggsave(filename = "Venn_not_filtered_MOD_LIG_DOC_DEG_CLV_TRG.svg", plot = figureMODLIGDOC2DEGCLVTRG2$big_plot_text,
+       device = "svg", width = 19.3, height = 11.60638, units = "in")
+#grid.newpage()
+#grid.draw(figure2$big_plot_text)
+
+figureMODLIGDOC2DEGCLVTRG_filtered = figureVenn(filter_by_domain_data = "p.value < 0.5",
+                                                main = "human network searched for motifs present in viral proteins (filtered by domain)",
+                                                motif_pval_tags = c("lenient cutoff", "optimal cutoff", "stringent cutoff"),
+                                                datasets = datasets,
+                                                motif_pval_cutoffs_IntAct = figureMODLIGDOC2_filtered$motif_pval_cutoffs_IntAct,
+                                                motif_pval_cutoffs_BioPlex = figureMODLIGDOC2_filtered$motif_pval_cutoffs_BioPlex,
+                                                motif_pval_cutoffs_viral = figureMODLIGDOC2_filtered$motif_pval_cutoffs_viral,
+                                                non_query_domain_results_obj = NULL, # res_count_all
+                                                query_domains_only = F, min_non_query_domain_support = 0,
+                                                return_all = F, merge_domain_data = F)
+figureMODLIGDOC2DEGCLVTRG_filtered2 = replotFigureVenn(figureMODLIGDOC2DEGCLVTRG_filtered,
+                                                       main = "")
+ggsave(filename = "Venn_filtered_MOD_LIG_DOC_DEG_CLV_TRG.svg", plot = figureMODLIGDOC2DEGCLVTRG_filtered2$big_plot_text,
+       device = "svg", width = 19.3, height = 11.60638, units = "in")
+#grid.newpage()
+#grid.draw(figure_filtered2$big_plot_text)
+#####################################################################################
 ```
 
 # Create protein-domain-motif-protein network
 
-```{r protein_domain_motif_protein_network}
+```{r protein_domain_motif_protein_network, eval=TRUE}
 # choose motif types, domain and motif p-value threshold
 motif_types = c("MOD", "LIG", "DOC")
 # get motif & domains (stringent threshold)
@@ -659,14 +678,15 @@ IntAct = myBenchmarkMotifs(neg_set = "all_proteins",
                            query_domains_only = F, min_non_query_domain_support = 0, merge_domain_data = T)
 
 figureMODLIGDOC_4$motif_pval_cutoffs_IntAct
+figureMODLIGDOC_5$motif_pval_cutoffs_IntAct
 IntAct_filt_hum_dom = myBenchmarkMotifs(neg_set = "all_proteins",
                                    filter_by_domain_data = "p.value < 0.5",
-                                   motif_pval_cutoff = figureMODLIGDOC_4$motif_pval_cutoffs_IntAct[2], # figureMODLIGDOC_4$motif_pval_cutoffs_IntAct,
+                                   motif_pval_cutoff = figureMODLIGDOC_4$motif_pval_cutoffs_IntAct[2],
                                    dataset = datasets[1], datasets = datasets,
                                    return_all = T, 
                                    non_query_domain_results_obj = "res_count_all", # res_count_all
                                    query_domains_only = F, min_non_query_domain_support = 0,
-                                   min_top_domain_support4motif_nq = 4, merge_domain_data = T)
+                                   min_top_domain_support4motif_nq = 3, merge_domain_data = T)
 rocr_list_IntAct = mBenchmarkMotifsROC(IntAct_filt_hum_dom$res, measure1 = "prec", measure2 = "rec", ROCR_data = T, legend_args = "x = 0.2 | y = 0.9")
 
 viral = myBenchmarkMotifs(neg_set = "all_proteins",
@@ -682,23 +702,15 @@ save(list = ls(), file=filename)
 # how many motif instance at a stringent threshold after domain filtering?
 
 ```{r}
+bench_res_cyt = IntAct_filt_hum_dom$res$qslimfinder.Full_IntAct3.FALSE
 instances = paste0(bench_res_cyt$occurence_query$query, "_",
                          bench_res_cyt$occurence_query$Pattern)
-instances = instances[!is.na(bench_res_cyt$occurence_query$IDs_domain_human)]
+instances = instances[!is.na(bench_res_cyt$occurence_query$domain)]
 instances = unique(instances)
 proteins = sapply((strsplit(instances, "_")), function(x) x[1])
 patterns = sapply((strsplit(instances, "_")), function(x) x[2])
-NLS_ind = grepl("KR", patterns) &
-    !grepl("G", patterns) & !grepl("P", patterns) & !grepl("H", patterns) &
-    !grepl("Q", patterns) & !grepl("S", patterns) & !grepl("E", patterns)
-
-non_NLS_instances = instances[!NLS_ind]
-non_NLS_proteins = unique(proteins[!NLS_ind])
-
-# how many proteins with motifs?
-length(non_NLS_proteins)
-# - 6 known
-length(non_NLS_proteins) - 6 
+unique(proteins)
+unique(patterns)
 ```
 
 # do results overlap?
@@ -719,11 +731,13 @@ names(IntAct_only) = union_known
 names(viral_only) = union_known
 ```
 
-```{r}
+```{r bechmark2Net}
 # convert motif GRanges to simple network table
-bechmark2Net = function(occurence_query = IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query,
-                        matching_known = IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query,
+bechmark2Net = function(benchmarkMotifsResult = IntAct$res$qslimfinder.Full_IntAct3.FALSE,
                         top_domain_by = c(NA, "p.value", "combined_p.value", "domain_support4motif_nq", "top_domain_support4motif_nq")) {
+    occurence_query = benchmarkMotifsResult$occurence_query
+    occurence = benchmarkMotifsResult$occurence
+    matching_known = benchmarkMotifsResult$overlapping_GRanges_query
     # check if some columns are in the result
     if(!"top_domain_support4motif_nq" %in% colnames(mcols(occurence_query))) occurence_query$top_domain_support4motif_nq = NA 
     if(!"domain_support4motif_nq" %in% colnames(mcols(occurence_query))) occurence_query$domain_support4motif_nq = NA
@@ -737,26 +751,26 @@ bechmark2Net = function(occurence_query = IntAct$res$qslimfinder.Full_IntAct3.FA
                      domain_support4motif_q = occurence_query$domain_support4motif_q,
                      Domain_combined_p.value = occurence_query$combined_p.value,
                      Pattern = occurence_query$Pattern,
-                     Human_recognition_domain = occurence_query$IDs_domain_human,
+                     Human_recognition_domain = occurence_query$domain,
                      Human_protein = occurence_query$interacts_with,
                      unique_position = paste0(GenomicRanges::seqnames(occurence_query), "_",
-                                              GenomicRanges::start(occurence_query), "_",
-                                              GenomicRanges::end(occurence_query)))
+                                                         GenomicRanges::start(occurence_query), "_",
+                                                         GenomicRanges::end(occurence_query)))
     Net = unique(Net)
-    if(!is.na(top_domain_by)){
-        if(top_domain_by == "p.value"){
+    if(!is.na(top_domain_by[1])){
+        if(top_domain_by[1] == "p.value"){
             Net[, top_domain := Domain_p.value ==
                     min(Domain_p.value), by = unique_position]
         }
-        if(top_domain_by == "combined_p.value") {
+        if(top_domain_by[1] == "combined_p.value") {
             Net[, top_domain := Domain_combined_p.value ==
                     min(Domain_combined_p.value), by = unique_position]
         }
-        if(top_domain_by == "domain_support4motif_nq") {
+        if(top_domain_by[1] == "domain_support4motif_nq") {
             Net[, top_domain := domain_support4motif_nq ==
                     max(domain_support4motif_nq), by = unique_position]
         }
-        if(top_domain_by == "top_domain_support4motif_nq") {
+        if(top_domain_by[1] == "top_domain_support4motif_nq") {
             Net[, top_domain := top_domain_support4motif_nq ==
                     max(top_domain_support4motif_nq), by = unique_position]
         }
@@ -769,16 +783,38 @@ bechmark2Net = function(occurence_query = IntAct$res$qslimfinder.Full_IntAct3.FA
                                                          GenomicRanges::end(matching_known)),
                                 matching_known = "matching_known")
     Net = merge(Net, matching_known, by = "unique_position", all.x = T, all.y = F, allow.cartesian=TRUE)
+    Net[is.na(Net$matching_known), matching_known := ""]
+    
+    # add non-viral proteins
+    occurence$unique_position = paste0(GenomicRanges::seqnames(occurence), "_",
+                                                         GenomicRanges::start(occurence), "_",
+                                                         GenomicRanges::end(occurence))
+    occurence = unique(as.data.table(occurence)[query != prot_names, .(Pattern, query, interacts_with, unique_position)])
+    occurence[, human_instances := paste0("when query interacts_with: ", unique(interacts_with),
+                                          " supporting human_instances: ", paste0(unique(unique_position), collapse = " | ")),
+              by = .(Pattern, query, interacts_with)]
+    occurence[, unique_position := NULL]
+    occurence = unique(occurence)
+    occurence[, human_instances := paste0("query: ",unique(query), ", Pattern:", Pattern,
+                                          ", interacts_with: (", paste0(unique(interacts_with), collapse = " | "),
+                                          "), human_instances: (", paste0(unique(human_instances), collapse = " || "),")"),
+              by = .(Pattern, query)]
+    
+    Net = merge(Net, unique(occurence), 
+                          by.x = c("Pattern", "Viral_protein", "Human_protein"),
+                          by.y = c("Pattern", "query", "interacts_with"),
+                          all.x = T, all.y = F) 
+    
     unique(Net)
 }
 
-IntAct_net = bechmark2Net(occurence_query = IntAct$res$qslimfinder.Full_IntAct3.FALSE$occurence_query,
-                        matching_known = IntAct$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query)
-IntAct_filt_hum_dom_net = bechmark2Net(occurence_query = IntAct_filt_hum_dom$res$qslimfinder.Full_IntAct3.FALSE$occurence_query,
-                        matching_known = IntAct_filt_hum_dom$res$qslimfinder.Full_IntAct3.FALSE$overlapping_GRanges_query,
-                        top_domain_by = "top_domain_support4motif_nq")
-viral_net = bechmark2Net(occurence_query = viral$res$qslimfinder.all_viral_interaction3.FALSE$occurence_query,
-                        matching_known = viral$res$qslimfinder.all_viral_interaction3.FALSE$overlapping_GRanges_query)
+IntAct_net = bechmark2Net(IntAct$res$qslimfinder.Full_IntAct3.FALSE)
+IntAct_filt_hum_dom_net = bechmark2Net(IntAct_filt_hum_dom$res$qslimfinder.Full_IntAct3.FALSE,
+                                       top_domain_by = "top_domain_support4motif_nq")
+viral_net = bechmark2Net(viral$res$qslimfinder.all_viral_interaction3.FALSE)
+
+# which known
+IntAct_filt_hum_dom_net[matching_known == "matching_known"]
 
 # human network missed
 viral_net[unique_position == "P03129_21_26"]
@@ -938,7 +974,7 @@ dom3[, both_SLIM_interaction := uniqueN(Correct_SLiM_binding) >= 2,
      by = .(protein_with_motif, network)]
 dom3 = dom3[both_SLIM_interaction == T]
 # domain protein pairs in each network
-dom3[, N_pairs := uniqueN(paste0(query, domain)), by = .(network, Correct_SLiM_binding)]
+dom3[, N_pairs := uniqueN(paste0(protein_with_motif, domain)), by = .(network, Correct_SLiM_binding)]
 dom3[, network := paste0(network,"\n",
                          unique(N_pairs[Correct_SLiM_binding == "yes"]), 
                          " correct domains ",
@@ -988,7 +1024,7 @@ conf = conf[colnames(conf),]
 image(conf)
 ```
 
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 # get readable names for proteins and domains 
 readableNet = function(Net){
     proteins2gene_names = lapply(unique(c(Net$Viral_protein, Net$Human_protein)), function(uniprot_id) {
@@ -1036,8 +1072,8 @@ readableNet = function(Net){
     # reorder column names 
     Net = Net[, .(Pattern, Human_recognition_domain_name, Domain_p.value, 
                   top_domain_support4motif_nq, domain_support4motif_nq,
-                  domain_support4motif_q, unique_position,
-                  Human_protein, in_ELM, matching_known,
+                  domain_support4motif_q, unique_position, 
+                  Human_protein, in_ELM, matching_known, human_instances,
                   Viral_protein_names, Viral_entry_name, Human_protein_names, Human_entry_name,
                   Human_recognition_domain, Motif_Sig, Viral_protein,
                   Viral_gene_names, Human_gene_names)]
@@ -1050,11 +1086,11 @@ IntAct_filt_hum_dom_net = readableNet(IntAct_filt_hum_dom_net)
 viral_net = readableNet(viral_net)
 
 fwrite(IntAct_net, "./results/IntAct_net_motif_domain_readable.tsv", sep = "\t")
-fwrite(IntAct_filt_hum_dom_net, "./results/IntAct_filt_hum_dom_net_motif_domain_readable.tsv", sep = "\t")
+fwrite(IntAct_filt_hum_dom_net, "./results_w_human_dom/IntAct_filt_hum_dom_net_motif_domain_readable.tsv", sep = "\t")
 fwrite(viral_net, "./results/viral_net_motif_domain_readable.tsv", sep = "\t")
 
 fwrite(unique(IntAct_net[,.(Pattern)]), "./results/IntAct_net_patterns.tsv", sep = "\t")
-fwrite(unique(IntAct_filt_hum_dom_net[,.(Pattern)]), "./results/IntAct_filt_hum_dom_net_patterns.tsv", sep = "\t")
+fwrite(unique(IntAct_filt_hum_dom_net[,.(Pattern)]), "./results_w_human_dom/IntAct_filt_hum_dom_net_patterns.tsv", sep = "\t")
 fwrite(unique(viral_net[,.(Pattern)]), "./results/viral_net_patterns.tsv", sep = "\t")
 ```
 
@@ -1098,9 +1134,11 @@ motifSummary = function(benchmarkMotifsResult = IntAct$res$qslimfinder.Full_IntA
                                                      GenomicRanges::start(occurence_query), "_",
                                                      GenomicRanges::end(occurence_query)),
                                  Occ = occurence_query$Occ, SeqNum = occurence_query$SeqNum, 
-                                 domain_count_per_IDs_interactor_viral = occurence_query$domain_count_per_IDs_interactor_viral,
-                                 IDs_interactor_viral_degree = occurence_query$IDs_interactor_viral_degree,
-                                 IDs_domain_human = occurence_query$IDs_domain_human,
+                                 domain_count_per_protein_with_motif = occurence_query$domain_count_per_protein_with_motif,
+                                 top_domain_support4motif_nq = occurence_query$top_domain_support4motif_nq,
+                                 domain_support4motif_nq = occurence_query$domain_support4motif_nq,
+                                 protein_with_motif_degree = occurence_query$protein_with_motif_degree,
+                                 domain = occurence_query$domain,
                                  Human_protein = occurence_query$interacts_with)
     occurence_query = unique(occurence_query)
     
@@ -1133,12 +1171,12 @@ motifSummary = function(benchmarkMotifsResult = IntAct$res$qslimfinder.Full_IntA
             occurence_query$SeqNum)), collapse = " | "),
         "\n\n",
         "top-1 domain(s): ",
-        paste0(paste0("(", occurence_query$unique_position,") ", occurence_query$IDs_domain_human), collapse = " | "),
+        paste0(paste0("(", occurence_query$unique_position,") ", occurence_query$domain), collapse = " | "),
         "\n\n",
-        "domain_count_per_IDs_interactor_viral / IDs_interactor_viral_degree: ",
+        "domain_support4motif_nq / protein_with_motif_degree: ",
         paste0(paste0(
-            occurence_query$domain_count_per_IDs_interactor_viral, "/",
-            occurence_query$IDs_interactor_viral_degree), collapse = " | "),
+            occurence_query$domain_support4motif_nq, "/",
+            occurence_query$protein_with_motif_degree), collapse = " | "),
         "\n\n",
         "all with motif: ",
         paste0(occurence_seqnames, collapse = " | "), "\n",
@@ -1152,22 +1190,33 @@ motifSummary = function(benchmarkMotifsResult = IntAct$res$qslimfinder.Full_IntA
     # For Cytoscape: network table
     Nrows = nrow(readable_net2)
     readable_net3 = data.table(source = c(readable_net2$Human_protein,   readable_net2$Human_recognition_domain, readable_net2$Pattern),
-                                target = c(readable_net2$Human_recognition_domain, readable_net2$Pattern,          readable_net2$Viral_protein),
-                                source_readable = c(paste0(readable_net2$Human_protein_names, " (", readable_net2$Human_gene_names, ")"),  
-                                                    readable_net2$Human_recognition_domain_name,
-                                                    readable_net2$Pattern),
-                                target_readable = c(readable_net2$Human_recognition_domain_name,
-                                                    readable_net2$Pattern,
-                                                    paste0(readable_net2$Viral_protein_names, " (", readable_net2$Viral_entry_name, ")")),
-                                #Motif_Sig =    c(rep(1, Nrows),                   rep(1, Nrows),              readable_net2$Motif_Sig),
-                                type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
-                                type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
+                               target = c(readable_net2$Human_recognition_domain, readable_net2$Pattern,          readable_net2$Viral_protein),
+                               source_readable = c(paste0(readable_net2$Human_protein_names, " (", readable_net2$Human_gene_names, ")"),  
+                                                   readable_net2$Human_recognition_domain_name,
+                                                   readable_net2$Pattern),
+                               target_readable = c(readable_net2$Human_recognition_domain_name,
+                                                   readable_net2$Pattern,
+                                                   paste0(readable_net2$Viral_protein_names, " (", readable_net2$Viral_entry_name, ")")),
+                               human_instances = c(readable_net2$human_instances, readable_net2$human_instances, readable_net2$human_instances),
+                               top_domain_support4motif_nq =    c(rep(1, Nrows),  readable_net2$top_domain_support4motif_nq,   rep(1, Nrows)),
+                               domain_support4motif_nq =    c(rep(1, Nrows),  readable_net2$domain_support4motif_nq,   rep(1, Nrows)),
+                               type_source = c(rep("human_protein", Nrows), rep("human_domain", Nrows),  rep("viral_motif", Nrows)),
+                               type_target = c(rep("human_domain", Nrows), rep("viral_motif", Nrows),  rep("viral_protein", Nrows)))
     # For Cytoscape: node table
+    rescaled_motif_pval = readable_net2[, (1 - Motif_Sig/ max(readable_net$Motif_Sig)) *
+                                            max(readable_net$top_domain_support4motif_nq)]
+    rescaled_motif_pval[is.nan(rescaled_motif_pval)]
     network_types = unique(data.table(node = c(readable_net3$source, readable_net3$target),
-                                             node_readable = c(readable_net3$source_readable, readable_net3$target_readable),
-                                             type = c(readable_net3$type_source, readable_net3$type_target),
-                                             scale_by = c(c(rep("", Nrows), readable_net2$Domain_p.value, readable_net2$Motif_Sig,
-                                                            readable_net2$Domain_p.value, readable_net2$Motif_Sig, rep("", Nrows)))))
+                                      node_readable = c(readable_net3$source_readable, readable_net3$target_readable),
+                                      type = c(readable_net3$type_source, readable_net3$type_target),
+                                      p_value = c(rep("", Nrows), readable_net2$Domain_p.value, readable_net2$Motif_Sig,
+                                                     readable_net2$Domain_p.value, readable_net2$Motif_Sig, rep("", Nrows)),
+                                      N_human_instances_bind_domain = c(rep("", Nrows), readable_net2[, paste0("top: ", top_domain_support4motif_nq,", all: ",domain_support4motif_nq)], rep("", Nrows),
+                                                     readable_net2[, paste0("top: ", top_domain_support4motif_nq,", all: ",domain_support4motif_nq)], rep("", Nrows), rep("", Nrows)),
+                                      scale_by = c(rep("", Nrows), readable_net2$top_domain_support4motif_nq, rescaled_motif_pval,
+                                                     readable_net2$top_domain_support4motif_nq, rescaled_motif_pval, rep("", Nrows)),
+                                      scale_by2 = c(rep("", Nrows), readable_net2$domain_support4motif_nq, rescaled_motif_pval,
+                                                     readable_net2$domain_support4motif_nq, rescaled_motif_pval, rep("", Nrows))))
     readable_net3_file = paste0(as.character(as.list(match.call())[["readable_net"]]), "_",
                                 paste0(unique(readable_net[readable_net_ind]$unique_position), collapse = "_"), "_", 
                                 paste0(unique(readable_net[readable_net_ind]$Human_protein), collapse = "_"))
@@ -1176,13 +1225,14 @@ motifSummary = function(benchmarkMotifsResult = IntAct$res$qslimfinder.Full_IntA
     readable_net3_file = paste0(results_dir, readable_net3_file)
     readable_net3 = unique(readable_net3[complete.cases(readable_net3)])
     fwrite(readable_net3, 
-           readable_net3_file,
+           paste0(readable_net3_file, "_network"),
            sep = "\t")
     fwrite(network_types,
-           paste0(readable_net3_file,"types"),
+           paste0(readable_net3_file,"_node_table"),
            sep = "\t")
     
     cat(summary)
+    list(network = readable_net3, node_table = network_types)
 }
 ```
 
@@ -1190,25 +1240,42 @@ motifSummary = function(benchmarkMotifsResult = IntAct$res$qslimfinder.Full_IntA
 
 ```{r write_cytoscape_files}
 # use 
-bench_res_cyt = IntAct_filt_hum_dom_net$res$qslimfinder.Full_IntAct3.FALSE
-IntAct_net = bechmark2Net(occurence_query = bench_res_cyt$occurence_query,
-                          matching_known = bench_res_cyt$overlapping_GRanges_query,
+bench_res_cyt = IntAct_filt_hum_dom$res$qslimfinder.Full_IntAct3.FALSE
+IntAct_net = bechmark2Net(bench_res_cyt,
                           top_domain_by = c(NA))
 IntAct_net = readableNet(IntAct_net)
 
 # all motifs and domains
-motifSummary(bench_res_cyt, IntAct_net,
+all = motifSummary(bench_res_cyt, IntAct_net,
              motif = NULL, viral_query = NULL, human_seed = NULL,
              results_dir = "./results_w_human_dom/")
+# import into Cytoscape:
+## 1. "Import network from file" ending in "_network", choose these types for each column:
+### "source" (source)                     "target" (target)                      
+### "source_readable" (source attribute)  "target_readable" (target attribute)           
+### "human_instances" "top_domain_support4motif_nq" "domain_support4motif_nq" (edge attributes) 
+### "type_source" (source attribute)      "type_target" (target attribute)  
+## 2. "Import table from files" ending in "_node_table":
+### Import data as: Node Table Columns
+### Key column for Network: Shared Name
+### "node" column in a table is a key column
+### choose floating point data type for these columns:
+### "p_value" "scale_by" "scale_by2"  (but not for "N_human_instances_bind_domain")
+## 3. File -> Import -> style -> motif_domain_network_style.xml (once per cytoscape session)
+### In the style pane select "motif_domain_network" style instead of "default" style
+## 4. Install yFiles Layout Algorithms. Apps -> App Manager -> find and install
+## 5. In the menu Layout select yFiles Hierarchic Layout
 
-if(TRUE){
-    # known PDZ motifs
-    motifSummary(bench_res_cyt, IntAct_net,
-                 motif = NULL, viral_query = "P03126", human_seed = NULL)
-    
-    motifSummary(bench_res_cyt, IntAct_net,
-                 motif = c("ET..$","[ST].V$", "[DE]T.[ILV]$"), viral_query = "P06463", human_seed = NULL)
-    
+
+# known PDZ motifs
+known_PDZ1 = motifSummary(bench_res_cyt, IntAct_net,
+             motif = NULL, viral_query = "P03126", human_seed = NULL,
+             results_dir = "./results_w_human_dom/")
+
+known_PDZ2 = motifSummary(bench_res_cyt, IntAct_net,
+             motif = c("ET..$","[ST].V$", "[DE]T.[ILV]$"), viral_query = "P06463", human_seed = NULL,
+             results_dir = "./results_w_human_dom/")
+if(FALSE){
     # Candidate PDZ motif
     motifSummary(bench_res_cyt, IntAct_net,
                  motif = NULL, viral_query = "Q2PJP0", human_seed = NULL)
@@ -1279,7 +1346,7 @@ human_studies = countBaits(Full_IntAct_ppi)
 
 ## Time spend per dataset
 
-```{r}
+```{r, eval = FALSE}
 motifs = fread("/Users/vk7/Desktop/ebi_projects/viral_project/qslimfinder.Full_IntAct3cloudfixF.FALSE/result/main_result.txt", stringsAsFactors = F)
 motifs[, time_in_sec := as.integer(as.POSIXct(strptime(RunTime, "%H:%M:%S")))]
 motifs[, time_in_sec := time_in_sec - min(time_in_sec)]

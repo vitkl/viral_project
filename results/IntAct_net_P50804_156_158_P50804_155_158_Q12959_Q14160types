@@ -1,0 +1,8 @@
+node	node_readable	type	p_value	N_human_instances_bind_domain	scale_by	scale_by2
+Q12959	Disks large homolog 1 (DLG1)	human_protein	""	""	""	""
+Q14160	Protein scribble homolog (SCRIB)	human_protein	""	""	""	""
+IPR001478	PDZ domain	human_domain	0.000102967736608026	top: 13, all: 18	13	18
+IPR001478	PDZ domain	human_domain	0.000102967736608026	top: 6, all: 11	6	11
+[ST].[LV]$	[ST].[LV]$	viral_motif	0	""	NaN	NaN
+[DE]T.[ILV]$	[DE]T.[ILV]$	viral_motif	0	""	NaN	NaN
+P50804	Protein E6 (VE6_HPV70)	viral_protein	""	""	""	""

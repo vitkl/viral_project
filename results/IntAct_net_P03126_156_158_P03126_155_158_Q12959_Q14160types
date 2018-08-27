@@ -1,0 +1,11 @@
+node	node_readable	type	p_value	N_human_instances_bind_domain	scale_by	scale_by2
+Q12959	Disks large homolog 1 (DLG1)	human_protein	""	""	""	""
+Q14160	Protein scribble homolog (SCRIB)	human_protein	""	""	""	""
+IPR001478	PDZ domain	human_domain	1.86510182165127e-05	top: 13, all: 18	13	18
+IPR001478	PDZ domain	human_domain	1.86510182165127e-05	top: 6, all: 11	6	11
+IPR027417	P-loop containing nucleoside triphosphate hydrolase	human_domain	0.0198397045088626	top: 6, all: 8	6	8
+IPR008144	Guanylate kinase-like domain	human_domain	0.090402565368526	top: 4, all: 6	4	6
+IPR008145	Guanylate kinase/L-type calcium channel beta subunit	human_domain	0.090402565368526	top: 4, all: 6	4	6
+[ST].[LV]$	[ST].[LV]$	viral_motif	0	""	NaN	NaN
+[DE]T.[ILV]$	[DE]T.[ILV]$	viral_motif	0	""	NaN	NaN
+P03126	Protein E6 (VE6_HPV16)	viral_protein	""	""	""	""

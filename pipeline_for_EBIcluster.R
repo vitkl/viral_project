@@ -68,7 +68,7 @@ proj_path = "/nfs/research1/petsalaki/users/vitalii/vitalii/viral_project/"
 # cat /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/RData_from_Motif_search_strategies
 
 ### Motif prediction benchmarking using known motif instances (from ELM database) + other output for the paper
-# bsub -n 1 -q research-rh7 -M 16000 -R "rusage[mem=16000]" Rscript /nfs/research1/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
+# bsub -n 1 -q research-rh7 -M 16000 -R "rusage[mem=16000] select[mem>16000]" Rscript /nfs/research1/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
 # /hps/nobackup/research/petsalaki/users/vitalii/vitalii/viral_project/pipeline_for_EBIcluster.R
  rmarkdown::render(input = paste0(proj_path, "compr_benchmarking_venn.Rmd"), 
                   output_format = "html_document", 

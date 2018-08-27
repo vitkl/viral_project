@@ -1,0 +1,42 @@
+_readable.tsv tables:
+
+"Pattern" - SLiM pattern
+"Human_recognition_domain_name" - self-evident
+"Domain_p.value" - empirical p-value for domain-viral protein pair
+"top_domain_support4motif_nq" - how many human instances of "Pattern" motif predicted using the same dataset (same Human_protein and Viral_protein) have the same "Human_recognition_domain" top-1 domain
+"domain_support4motif_nq" - similar to "top_domain_support4motif_nq" but counts "Human_recognition_domain" domain with p<0.5 not just the top domain. This threshold is set using mBenchmarkMotifs.
+"domain_support4motif_q" - similar to "domain_support4motif_nq" but counts domains predicted for other viral instances (rather than human)
+"unique_position" - position of "Pattern" in "Human_protein" 
+"Human_protein" - UniprotKB accession of human protein with domain
+"in_ELM" - is a "Human_recognition_domain" known SLiM-binding domain?
+"matching_known" - does "unique_position" SLiM match known
+"human_instances" - list of human instances of "Pattern" motif predicted using the same dataset (same Human_protein and Viral_protein)
+"Viral_protein_names" - protein name of a viral protein with motif recommended by Uniprot  
+"Viral_entry_name" - Uniprot entry name of a viral protein with motif
+"Human_protein_names" - protein name of a human protein with domain recommended by Uniprot     
+"Human_entry_name" - Uniprot entry name of a human protein with domain   
+"Human_recognition_domain" - InterPro domain ID
+"Motif_Sig" - "Sig" motif p-value provided by QSLIMFinder
+"Viral_protein" - UniprotKB accession of a viral protein with motif 
+"Viral_gene_names" - gene name of "Viral_protein"
+"Human_gene_names" - gene name of "Human_protein"
+
+_network tables:
+source - source node for Cytoscape
+target - target node for Cytoscape
+source_readable	- readable name of source
+target_readable	- readable name of target
+human_instances - list of human instances of "Pattern" motif predicted using the same dataset (same Human_protein and Viral_protein)
+top_domain_support4motif_nq - how many human instances of "Pattern" motif predicted using the same dataset (same Human_protein and Viral_protein) have the same "Human_recognition_domain" top-1 domain
+domain_support4motif_nq - similar to "top_domain_support4motif_nq" but counts "Human_recognition_domain" domain with p<0.5 not just the top domain. This threshold is set using mBenchmarkMotifs.
+type_source	- type of source (used for color mapping)
+type_target - type of target (used for color mapping)
+
+_node_table tables:
+node - nodes in source and target
+node_readable - readable name of node
+type - node type, motif, domain, viral protein, human protein
+p_value	- either Motif_Sig or Domain_p.value for motifs or domains correspondingly. !! attention: import to Cytoscape as floating point
+N_human_instances_bind_domain - shows both top: top_domain_support4motif_nq and all: domain_support4motif_nq. !! attention: import to Cytoscape as floating point
+scale_by - scaling factor for domain and motif nodes, based on Motif_Sig and top_domain_support4motif_nq !! attention: import to Cytoscape as floating point
+scale_by2 - alternative scaling factor !! attention: import to Cytoscape as floating point

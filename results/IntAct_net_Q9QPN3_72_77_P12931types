@@ -1,10 +1,9 @@
-node	node_readable	type	scale_by
-P12931	Proto-oncogene tyrosine-protein kinase Src (SRC)	human_protein	""
-IPR000719	Protein kinase domain	human_domain	1.22008559815535e-05
-IPR000980	SH2 domain	human_domain	1.22008559815535e-05
-IPR001245	Serine-threonine/tyrosine-protein kinase, catalytic domain	human_domain	1.22008559815535e-05
-IPR001452	SH3 domain	human_domain	1.22008559815535e-05
-IPR011009	Protein kinase-like domain	human_domain	1.22008559815535e-05
-IPR020635	Tyrosine-protein kinase, catalytic domain	human_domain	0.000558646693255382
-P..P.[HKR]	P..P.[HKR]	viral_motif	0.001
-Q9QPN3	Protein Nef (NEF_HV1LA)	viral_protein	""
+node	node_readable	type	p_value	N_human_instances_bind_domain	scale_by	scale_by2
+P12931	Proto-oncogene tyrosine-protein kinase Src (SRC)	human_protein	""	""	""	""
+IPR000719	Protein kinase domain	human_domain	1.22008559815535e-05	top: 16, all: 80	16	80
+IPR000980	SH2 domain	human_domain	1.22008559815535e-05	top: 41, all: 79	41	79
+IPR001245	Serine-threonine/tyrosine-protein kinase, catalytic domain	human_domain	1.22008559815535e-05	top: 6, all: 77	6	77
+IPR001452	SH3 domain	human_domain	1.22008559815535e-05	top: 47, all: 82	47	82
+IPR011009	Protein kinase-like domain	human_domain	1.22008559815535e-05	top: 17, all: 82	17	82
+P..P.[HKR]	P..P.[HKR]	viral_motif	0.001	""	0	0
+Q9QPN3	Protein Nef (NEF_HV1LA)	viral_protein	""	""	""	""

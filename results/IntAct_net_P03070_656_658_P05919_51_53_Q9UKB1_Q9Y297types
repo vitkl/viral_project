@@ -1,0 +1,25 @@
+node	node_readable	type	p_value	N_human_instances_bind_domain	scale_by	scale_by2
+Q9UKB1	F-box/WD repeat-containing protein 11 (FBXW11)	human_protein	""	""	""	""
+Q9Y297	F-box/WD repeat-containing protein 1A (BTRC)	human_protein	""	""	""	""
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0168420159054956	top: 8, all: 25	8	25
+IPR017986	WD40-repeat-containing domain	human_domain	0.0168420159054956	top: 7, all: 23	7	23
+IPR001810	F-box domain	human_domain	0.0419180351388449	top: 4, all: 21	4	21
+IPR021977	D domain of beta-TrCP	human_domain	0.133528759101849	top: 4, all: 21	4	21
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0168420159054956	top: 6, all: 29	6	29
+IPR017986	WD40-repeat-containing domain	human_domain	0.0168420159054956	top: 7, all: 27	7	27
+IPR001810	F-box domain	human_domain	0.0419180351388449	top: 4, all: 26	4	26
+IPR021977	D domain of beta-TrCP	human_domain	0.133528759101849	top: 4, all: 23	4	23
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0139111539099083	top: 8, all: 25	8	25
+IPR017986	WD40-repeat-containing domain	human_domain	0.0139111539099083	top: 7, all: 23	7	23
+IPR001810	F-box domain	human_domain	0.124599323563057	top: 4, all: 21	4	21
+IPR021977	D domain of beta-TrCP	human_domain	0.124599323563057	top: 4, all: 21	4	21
+IPR015943	WD40/YVTN repeat-like-containing domain	human_domain	0.0139111539099083	top: 6, all: 29	6	29
+IPR017986	WD40-repeat-containing domain	human_domain	0.0139111539099083	top: 7, all: 27	7	27
+IPR001810	F-box domain	human_domain	0.124599323563057	top: 4, all: 26	4	26
+IPR021977	D domain of beta-TrCP	human_domain	0.124599323563057	top: 4, all: 23	4	23
+DSG	DSG	viral_motif	1.79e-07	""	7.79336219336219	7.79336219336219
+DSG	DSG	viral_motif	6.93e-06	""	0	0
+DSG	DSG	viral_motif	2.88e-08	""	7.96675324675325	7.96675324675325
+DSG	DSG	viral_motif	1.01e-06	""	6.83405483405483	6.83405483405483
+P03070	Large T antigen (LT_SV40)	viral_protein	""	""	""	""
+P05919	Protein Vpu (VPU_HV1H2)	viral_protein	""	""	""	""
