@@ -2,7 +2,7 @@
 # install R from source
 wget http://cran.rstudio.com/src/base/R-latest.tar.gz
 tar xvf R-latest.tar.gz
-mv R-3.4.4 /nfs/research1/petsalaki/users/vitalii/R
+mv R-3.5.1 /nfs/research1/petsalaki/users/vitalii/R
 cd /nfs/research1/petsalaki/users/vitalii/R
 ./configure --prefix=/nfs/research1/petsalaki/users/vitalii/R  --enable-R-shlib --with-x=yes# to make sure you compile R shared library. Otherwise, RStudio will complain.
 

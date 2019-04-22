@@ -34,8 +34,11 @@ suppressPackageStartupMessages({
 I download all protein-protein interactions from IntAct (IMEx databases) involving viral proteins using PSICQUIC service in MITAB2.7 format (https://psicquic.github.io/MiqlReference27.html). I clean the data in the table to make it more useble. Then, I filter and keep only human-viral interactions.
 
 ```{r PSICQUIC_viral_human}
-all_viral_interaction = interSpeciesInteractome(taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
-                                        clean = TRUE, protein_only = TRUE, directory = "./data_files/")
+# read all IntAct data (filter later)
+IntAct = loadIntActFTP(dir = "./data_files/IntActRelease_2017Nov13/")
+all_viral_interaction = interSpeciesInteractome(MITABdata = IntAct,
+                                                taxid1 = 9606, taxid2 = 10239, database = "IntActFTP", format = "tab27",
+                                        clean = TRUE, protein_only = TRUE, directory = "./data_files/", releaseORdate = "2017Nov13")
 ```
 
 ## Searching for human-human PPI
